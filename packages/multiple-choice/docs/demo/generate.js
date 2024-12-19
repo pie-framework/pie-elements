@@ -56,7 +56,7 @@ exports.model = (id, element) => ({
       .blue {
         color: blue !important;
       }
-    `
+    `,
   },
   prompt: '',
   promptEnabled: true,

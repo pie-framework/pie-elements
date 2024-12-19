@@ -8,7 +8,26 @@ import { updateSessionValue } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
 
-export const isComplete = (session) => !!(session && session.value && session.value.length);
+export const isComplete = (session, model) => {
+  if (!session || !session.value) {
+    return false;
+  }
+
+  const { choiceMode, minSelections, maxSelections } = model || {};
+  const selections = session.value.length || 0;
+
+  if (choiceMode === 'radio') {
+    return !!selections;
+  }
+
+  if (selections < minSelections || selections > maxSelections) {
+    return false;
+  }
+
+  return true;
+
+  // !!(session && session.value && session.value.length);
+};
 
 export default class MultipleChoice extends HTMLElement {
   constructor() {
@@ -32,7 +51,6 @@ export default class MultipleChoice extends HTMLElement {
             this._model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question',
           );
           this.setAttribute('role', 'region');
-
           this.setLangAttribute();
 
           ReactDOM.render(element, this, () => {
@@ -52,7 +70,7 @@ export default class MultipleChoice extends HTMLElement {
         bubbles: true,
         composed: true,
         detail: {
-          complete: isComplete(this._session),
+          complete: isComplete(this._session, this._model),
           component: this.tagName.toLowerCase(),
         },
       });
@@ -67,7 +85,7 @@ export default class MultipleChoice extends HTMLElement {
             bubbles: true,
             composed: true,
             detail: {
-              complete: isComplete(this._session),
+              complete: isComplete(this._session, this._model),
               component: this.tagName.toLowerCase(),
               hasModel: this._model !== undefined,
             },
