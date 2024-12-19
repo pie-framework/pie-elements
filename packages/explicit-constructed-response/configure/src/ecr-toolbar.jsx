@@ -78,7 +78,6 @@ export class ECRToolbar extends React.Component {
 
     onKeyDown = (event) => {
         if (event.key === 'Enter') {
-            this.onAddChoice();
             return false;
         }
     };
@@ -86,7 +85,6 @@ export class ECRToolbar extends React.Component {
     onBlur = () => {
         if (this.clickedInside) {
             this.clickedInside = false;
-            return;
         }
     };
 
@@ -114,8 +112,7 @@ export class ECRToolbar extends React.Component {
                         this.onDone(val);
                     }}
                     onBlur={(e) => {
-                        const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
-                        this.preventDone = inInInsertCharacter;
+                        this.preventDone = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
                         this.onBlur(e);
                     }}
                     onKeyDown={this.onKeyDown}
