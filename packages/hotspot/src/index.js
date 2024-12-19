@@ -15,11 +15,15 @@ export default class Hotspot extends HTMLElement {
   }
 
   isComplete() {
-    if (!this._session) {
+    if (!this._session || !this._session.answers) {
       return false;
     }
 
-    return Array.isArray(this._session.answers) && this._session.answers.length > 0;
+    if (!Array.isArray(this._session.answers)) {
+      return false;
+    }
+
+    return this._session.answers.length > 0;
   }
 
   set session(s) {
