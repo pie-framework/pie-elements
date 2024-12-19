@@ -56,6 +56,11 @@ export interface MultipleChoicePie extends PieModel {
    */
   toolbarEditorPosition?: 'bottom' | 'top';
 
+  /** Indicates the background color for selected choices
+   * @default: 'initial'
+   */
+  selectedAnswerBackgroundColor?: string;
+
   /**
    * Indicates the order of choices presented to user
    * if true, answer choices will be presented in the order they are defined in the model

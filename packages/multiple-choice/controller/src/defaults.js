@@ -17,4 +17,5 @@ export default {
   teacherInstructions: '',
   teacherInstructionsEnabled: true,
   toolbarEditorPosition: 'bottom',
+  selectedAnswerBackgroundColor: 'initial',
 };

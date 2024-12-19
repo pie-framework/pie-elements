@@ -72,6 +72,7 @@ export class MultipleChoice extends React.Component {
         alwaysShowCorrect: PropTypes.bool,
         animationsDisabled: PropTypes.bool,
         language: PropTypes.string,
+        selectedAnswerBackgroundColor: PropTypes.string,
         onShowCorrectToggle: PropTypes.func,
         isSelectionButtonBelow: PropTypes.bool,
     };
@@ -291,6 +292,7 @@ export class MultipleChoice extends React.Component {
                         {choices.map((choice, index) => (
                             <StyledChoice
                                 choicesLayout={this.props.choicesLayout}
+                                selectedAnswerBackgroundColor={this.props.selectedAnswerBackgroundColor}
                                 gridColumns={gridColumns}
                                 key={`choice-${index}`}
                                 choice={choice}
