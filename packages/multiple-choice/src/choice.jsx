@@ -86,7 +86,6 @@ Choice.propTypes = {
   gridColumns: PropTypes.string,
   selectedAnswerBackgroundColor: PropTypes.string,
   isSelectionButtonBelow: PropTypes.bool
-  isSelectionButtonBelow: PropTypes.bool,
 };
 
 export default withStyles((theme) => ({
