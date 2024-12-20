@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.40.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.39.1...@pie-element/pie-models@13.40.0) (2024-12-20)
+
+
+### Features
+
+* **multiple-choice:** add background color for selected choices PD-3844 ([357488c](https://github.com/pie-framework/pie-elements/commit/357488ce35e8874be2a71e643a873c47a4ef64af))
+
+
+
+
+
 ## [13.39.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.39.0...@pie-element/pie-models@13.39.1) (2024-12-10)
 
 

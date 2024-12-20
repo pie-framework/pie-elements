@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.6.0...@pie-element/categorize@9.7.0) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+
+
+### Features
+
+* **categorize:** revert PD-4499 ([0f81d95](https://github.com/pie-framework/pie-elements/commit/0f81d950ab885a6946d904079cd2d3d82758b7ed))
+* **categorize:** update session complete condition PD-4610 ([1bdf41b](https://github.com/pie-framework/pie-elements/commit/1bdf41b920bf816774ce4f4c7e8cc3e19af703c2))
+
+
+
+
+
 # [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.5.0...@pie-element/categorize@9.6.0) (2024-12-10)
 
 

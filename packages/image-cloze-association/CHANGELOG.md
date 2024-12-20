@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.5.0...@pie-element/image-cloze-association@6.5.1) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+* **ica:** Use defaultClassName instead of className to ensure styles are applied in PreviewPrompt PD-4532 ([a48913b](https://github.com/pie-framework/pie-elements/commit/a48913b2172fc058816f8c9577d93950b9c0cd23))
+* **ICA:** show correct answers highlighted with green color PD-4587 ([6607c07](https://github.com/pie-framework/pie-elements/commit/6607c07ed203391fc9a7e43100629a87b0911da2))
+
+
+
+
+
 # [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.4.0...@pie-element/image-cloze-association@6.5.0) (2024-12-10)
 
 

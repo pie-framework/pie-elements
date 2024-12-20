@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@2.1.6...@pie-element/passage-configure@2.1.7) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+
+
+
+
+
 ## [2.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@2.1.5...@pie-element/passage-configure@2.1.6) (2024-12-10)
 
 
