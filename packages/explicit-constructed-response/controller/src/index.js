@@ -184,7 +184,7 @@ export const getScore = (config, session) => {
     return 0;
   }
 
-  const responseAreas = config.markup && config.markup.match(/\{\{(.)\}\}/g);
+  const responseAreas = config.markup && config.markup.match(/\{\{(.+?)\}\}/g);
   const maxScore = responseAreas ? responseAreas.length : 0;
   const correctCount = reduce(
     config.choices,
