@@ -91,6 +91,8 @@ export async function model(question, session, env, updateSession) {
     extraCSSRules: normalizedQuestion.extraCSSRules,
     fontSizeFactor: normalizedQuestion.fontSizeFactor,
     isSelectionButtonBelow: normalizedQuestion.isSelectionButtonBelow,
+    minSelections: normalizedQuestion.minSelections,
+    maxSelections: normalizedQuestion.maxSelections,
   };
 
   const { role, mode } = env || {};
