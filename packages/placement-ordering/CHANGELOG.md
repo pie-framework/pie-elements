@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.3.3...@pie-element/placement-ordering@10.3.4) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+* **placement-ordering:** Align grid items vertically centered for consistent layout PD-4592 ([0397dbd](https://github.com/pie-framework/pie-elements/commit/0397dbd243cdb2f27253a80948fbd5acc18e419a))
+* **placement-ordering:** conditionally add autoWidthToolbar to accommodate toolbar buttons when placementArea is true ([630fd52](https://github.com/pie-framework/pie-elements/commit/630fd5292d26de8020b4697a1c3e833c95de5e19))
+
+
+
+
+
 ## [10.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.3.2...@pie-element/placement-ordering@10.3.3) (2024-12-10)
 
 

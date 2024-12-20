@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.2.0...@pie-element/hotspot-controller@5.2.1) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+
+
+
+
+
 # [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.1.4...@pie-element/hotspot-controller@5.2.0) (2024-12-10)
 
 

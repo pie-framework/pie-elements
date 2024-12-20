@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.5.1...@pie-element/multiple-choice@9.6.0) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+
+
+### Features
+
+* **multiple-choice:** add background color for selected choices PD-3844 ([3ecfa80](https://github.com/pie-framework/pie-elements/commit/3ecfa8018b1ff825be86e08f930f7dc72ba907b1))
+* **multiple-choice:** add background color for selected choices PD-3844 ([357488c](https://github.com/pie-framework/pie-elements/commit/357488ce35e8874be2a71e643a873c47a4ef64af))
+* **multiple-choice:** add min/max selection possibility PD-3843 PD-4518 ([ead6fe3](https://github.com/pie-framework/pie-elements/commit/ead6fe3eda5d455d9e6d1ebda37ded18e54fa815))
+
+
+
+
+
 ## [9.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.5.0...@pie-element/multiple-choice@9.5.1) (2024-12-10)
 
 

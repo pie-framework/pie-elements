@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.3.3...@pie-element/math-inline@8.3.4) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+* **math-inline:** avoid rendering tooltip at start top, set flip false PD-4529 ([0c9e670](https://github.com/pie-framework/pie-elements/commit/0c9e6702c803232bee0982810a2eca69e1d32c3d))
+* update @pie-framework/math-validation PD-4410 ([1792639](https://github.com/pie-framework/pie-elements/commit/1792639d56e47ce3a418bf79323e19cdf7531460))
+
+
+
+
+
 ## [8.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.3.2...@pie-element/math-inline@8.3.3) (2024-12-10)
 
 
