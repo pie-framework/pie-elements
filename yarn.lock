@@ -2220,10 +2220,10 @@
     mathjs "^7.0.1"
     numeric "^1.2.6"
 
-"@pie-framework/math-validation@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.2.2.tgz#34402109b073f014287eb6c9451188819cc76645"
-  integrity sha512-QgLAZmi15SWL6jxUpYSOwhPODRUjuN2MCuC1My8HxoqyPoruUB6jcz8iton1t3wUOPG+eIp78v4GmU2KqHrokg==
+"@pie-framework/math-validation@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.2.3.tgz#af61994b22159b56aac31645f52f43f174c10087"
+  integrity sha512-TbuAOHGhJRAGx0vQ086P2EOHrH9cFTgAag7beDKMunrud4RE09hLCqwzkle9OBWeiCuotO8/nUg4C4aihu1H9Q==
   dependencies:
     lodash "^4.17.21"
     mathjs "^9.4.2"
@@ -2388,10 +2388,10 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
 
-"@pie-lib/pie-toolbox@2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.4.1.tgz#698f82d6c3fe0148404531b648bdd7241a46c1fa"
-  integrity sha512-ObzAu8mRpBjiGnNJN6Gnt/MhMlMDWsXhzr2tREWdrVANymm2/jG1L9rDTdPyszgC+ukf3qJmcSU2aV0ss87JnA==
+"@pie-lib/pie-toolbox@2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.5.0.tgz#908b18b06059f55b33262b77b6c7f0c270871add"
+  integrity sha512-10J8S5GQAxGL4nO/LA7VS9rErAx07HlSd7sNebojdl8os4aW8uwwZBosGmJ5ZYAkruSYcOGvgieQOjwnjhZGmg==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"

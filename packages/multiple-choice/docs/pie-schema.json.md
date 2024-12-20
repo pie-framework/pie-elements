@@ -115,6 +115,14 @@ Indicates the order of choices presented to user
 if true, answer choices will be presented in the order they are defined in the model
 If false, answer choices may be presented in a random order (depending upon the value of the lockChoiceOrder environment variable)
 
+# `minSelections` (number)
+
+Indicates that minimum selections that should be made (only for choice mode 'checkbox')
+
+# `maxSelections` (number)
+
+Indicates that maximum selections that should be made (only for choice mode 'checkbox')
+
 # `partialScoring` (boolean)
 
 Indicates that the item should use partial scoring

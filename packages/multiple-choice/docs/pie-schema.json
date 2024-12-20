@@ -129,6 +129,16 @@
       "type": "boolean",
       "title": "lockChoiceOrder"
     },
+    "minSelections": {
+      "description": "Indicates that minimum selections that should be made (only for choice mode 'checkbox')",
+      "type": "number",
+      "title": "minSelections"
+    },
+    "maxSelections": {
+      "description": "Indicates that maximum selections that should be made (only for choice mode 'checkbox')",
+      "type": "number",
+      "title": "maxSelections"
+    },
     "partialScoring": {
       "description": "Indicates that the item should use partial scoring",
       "type": "boolean",

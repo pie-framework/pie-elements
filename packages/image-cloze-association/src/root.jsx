@@ -249,6 +249,7 @@ export class ImageClozeAssociationComponent extends React.Component {
           correctAnswers.push({
             value: v,
             containerIndex: i,
+            isCorrect: true
           });
         });
       });

@@ -49,10 +49,6 @@ export function model(question, session, env, updateSession) {
           correctResponses = result.correctResponses;
           feedback = result.feedback;
         }
-
-        if (result.correctResponses === numberOfPossibleResponses) {
-          break;
-        }
       }
     }
 
