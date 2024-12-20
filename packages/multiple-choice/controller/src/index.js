@@ -92,6 +92,8 @@ export async function model(question, session, env, updateSession) {
     fontSizeFactor: normalizedQuestion.fontSizeFactor,
     isSelectionButtonBelow: normalizedQuestion.isSelectionButtonBelow,
     selectedAnswerBackgroundColor: normalizedQuestion.selectedAnswerBackgroundColor || 'initial',
+    minSelections: normalizedQuestion.minSelections,
+    maxSelections: normalizedQuestion.maxSelections,
   };
 
   const { role, mode } = env || {};

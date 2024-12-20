@@ -52,7 +52,7 @@ describe('categorize', () => {
         const el = new Categorize();
         el.tagName = 'categorize-el';
         el.session = { answers: [] };
-        el.changeAnswers([{ foo: 'bar' }]);
+        el.changeAnswers([{ choices: ['bar'] }]);
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', true));
       });
     });

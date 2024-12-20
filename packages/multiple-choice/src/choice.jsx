@@ -6,9 +6,7 @@ import classNames from 'classnames';
 import ChoiceInput from './choice-input';
 
 export class Choice extends React.Component {
-  static propTypes = {
-   updateSession: PropTypes.func,
-  };
+  static propTypes = {};
 
   onChange = (choice) => {
     const { disabled, onChoiceChanged } = this.props;
@@ -33,7 +31,6 @@ export class Choice extends React.Component {
       classes,
       choicesLayout,
       gridColumns,
-      updateSession,
       isSelectionButtonBelow,
       selectedAnswerBackgroundColor
     } = this.props;
@@ -52,10 +49,9 @@ export class Choice extends React.Component {
       index,
       choicesLayout,
       gridColumns,
-      updateSession,
       onChange: this.onChange,
       isEvaluateMode,
-      isSelectionButtonBelow
+      isSelectionButtonBelow,
     };
 
     const names = classNames(classes.choice, {
@@ -90,6 +86,7 @@ Choice.propTypes = {
   gridColumns: PropTypes.string,
   selectedAnswerBackgroundColor: PropTypes.string,
   isSelectionButtonBelow: PropTypes.bool
+  isSelectionButtonBelow: PropTypes.bool,
 };
 
 export default withStyles((theme) => ({

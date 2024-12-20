@@ -14,7 +14,11 @@ export default class ImageClozeAssociation extends HTMLElement {
   }
 
   isComplete() {
-    if (!this._session) {
+    if (!this._session || !this._session.answers) {
+      return false;
+    }
+
+    if (!Array.isArray(this._session.answers)) {
       return false;
     }
 
