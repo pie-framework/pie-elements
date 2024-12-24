@@ -34,12 +34,6 @@ const styles = (theme) => ({
     paddingTop: theme.spacing.unit * 2,
     marginLeft: theme.spacing.unit * 3.5,
   },
-  accessibilityHolder: {
-    flex: 1,
-    marginTop: theme.spacing.unit * 1.5,
-    paddingTop: theme.spacing.unit * 2,
-    marginLeft: theme.spacing.unit * 3.5,
-  },
   choiceConfigurationHolder: {
     display: 'flex',
     flexDirection: 'column',
@@ -115,7 +109,6 @@ const Design = withStyles(styles)((props) => {
     teacherInstructions = {},
     studentInstructions = {},
     rationale = {},
-    accessibility = {},
     scoringType = {},
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
@@ -135,7 +128,6 @@ const Design = withStyles(styles)((props) => {
     limitChoicesNumber,
     teacherInstructionsEnabled,
     rationaleEnabled,
-    accessibilityLabelsEnabled,
     feedbackEnabled,
     promptEnabled,
     spellCheckEnabled,
@@ -199,7 +191,6 @@ const Design = withStyles(styles)((props) => {
     promptEnabled: prompt.settings && toggle(prompt.label),
     rationaleEnabled: rationale.settings && toggle(rationale.label),
     spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-    accessibilityLabelsEnabled: accessibility.settings && toggle(accessibility.label),
     scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
     rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
   };
@@ -328,28 +319,6 @@ const Design = withStyles(styles)((props) => {
               {rationaleErrors?.[choice.value] && (
                 <div className={classes.errorText}>{rationaleErrors?.[choice.value]}</div>
               )}
-            </InputContainer>
-          )}
-
-          {accessibilityLabelsEnabled && (
-            <InputContainer
-              key={`accessibility-${index}`}
-              label={accessibility.label}
-              className={classes.accessibilityHolder}
-            >
-              <EditableHtml
-                className={classes.accessibility}
-                markup={choice.accessibility || ''}
-                onChange={(c) => onChoiceChanged(index, { ...choice, accessibility: c })}
-                imageSupport={imageSupport}
-                pluginProps={getPluginProps(configuration?.accessibility?.inputConfiguration)}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                mathMlOptions={mathMlOptions}
-              />
             </InputContainer>
           )}
         </div>
