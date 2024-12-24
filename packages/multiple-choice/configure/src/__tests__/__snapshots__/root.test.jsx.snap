@@ -12,7 +12,6 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
     classes={Object {}}
     model={
       Object {
-        "accessibilityLabelsEnabled": false,
         "choiceMode": "checkbox",
         "choicePrefix": "letters",
         "choices": Array [
@@ -93,7 +92,6 @@ exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
     classes={Object {}}
     model={
       Object {
-        "accessibilityLabelsEnabled": false,
         "choiceMode": "checkbox",
         "choicePrefix": "numbers",
         "choices": Array [
