@@ -234,7 +234,7 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    minWidth: '150px',
+    minWidth: '120px',
     padding: `0 ${theme.spacing.unit}px`,
   },
   radioButton: {
@@ -249,7 +249,7 @@ const styles = (theme) => ({
     flex: 0.5,
     display: 'flex',
     justifyContent: 'center',
-    minWidth: '48px',
+    minWidth: '45px',
     padding: `0 ${theme.spacing.unit}px`,
   },
   questionText: {
@@ -259,7 +259,7 @@ const styles = (theme) => ({
     padding: 0,
     maxWidth: 'unset',
     textAlign: 'left',
-    minWidth: '350px',
+    minWidth: '200px',
     marginRight: theme.spacing.unit,
     '&> div': {
       width: '100%',
