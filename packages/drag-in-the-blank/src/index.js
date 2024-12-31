@@ -12,7 +12,7 @@ export const isComplete = (session, model) => {
   return Object.values(session.value || {}).some((value) => !!value);
 };
 
-export default class InlineDropdown extends HTMLElement {
+export default class DragInTheBlank extends HTMLElement {
   constructor() {
     super();
     this._model = null;
