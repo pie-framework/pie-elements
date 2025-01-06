@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.5.1...@pie-element/image-cloze-association@6.6.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+* **image-cloze-association:** fix drag color when responseAreaFill exists PD-4554 ([2a788ba](https://github.com/pie-framework/pie-elements/commit/2a788bac0e7a683ff5fdc529beeb85cadb7cc301))
+
+
+### Features
+
+* add tests for session changed operation PD-4665 ([0a2d562](https://github.com/pie-framework/pie-elements/commit/0a2d562da49116a15baa47d0cbf7942eaddbf065))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.5.0...@pie-element/image-cloze-association@6.5.1) (2024-12-20)
 
 

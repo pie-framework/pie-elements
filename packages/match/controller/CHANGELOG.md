@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@7.1.6...@pie-element/match-controller@7.1.7) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+
+
+
+
+
 ## [7.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@7.1.5...@pie-element/match-controller@7.1.6) (2024-12-20)
 
 

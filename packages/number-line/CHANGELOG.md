@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.3.4...@pie-element/number-line@9.3.5) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+* **number-line:** for line & ray fix click on edges for selection PD-4590 ([1728223](https://github.com/pie-framework/pie-elements/commit/172822300bbd404eabd4e0d9c198682d44f70cf7))
+
+
+
+
+
 ## [9.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.3.3...@pie-element/number-line@9.3.4) (2024-12-20)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@8.3.5...@pie-element/match@8.3.6) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+* **match:** Reduced minWidth in answer config block and row to improve layout responsiveness PD-4426 ([c0dbb99](https://github.com/pie-framework/pie-elements/commit/c0dbb9936f763bce2b4d8969368f01ca126ab4b6))
+
+
+
+
+
 ## [8.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@8.3.4...@pie-element/match@8.3.5) (2024-12-20)
 
 
