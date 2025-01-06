@@ -112,7 +112,7 @@ export class Main extends React.Component {
         ]),
       spanishInput: spanishInput.settings && toggle(spanishInput.label),
       specialInput: specialInput.settings && toggle(specialInput.label),
-      dimensions: numberFields(dimensions.label, {
+      dimensions: dimensions.settings && numberFields(dimensions.label, {
         width: { label: 'Width (px)', suffix: 'px', min: 100, max: 1200 },
         height: { label: 'Height (px)', suffix: 'px', min: 100, max: 500 },
       }),
