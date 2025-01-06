@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hotspot renders snapshot 1`] = `
+<HotspotComponent
+  classes={
+    Object {
+      "collapsible": "HotspotComponent-collapsible-2",
+      "main": "HotspotComponent-main-1",
+      "prompt": "HotspotComponent-prompt-3",
+    }
+  }
+  model={
+    Object {
+      "dimensions": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "shapes": Object {
+        "circles": Array [],
+        "polygons": Array [],
+        "rectangles": Array [],
+      },
+    }
+  }
+  session={Object {}}
+/>
+`;
+
+exports[`hotspot renders snapshot with rationale 1`] = `
+<HotspotComponent
+  classes={
+    Object {
+      "collapsible": "HotspotComponent-collapsible-2",
+      "main": "HotspotComponent-main-1",
+      "prompt": "HotspotComponent-prompt-3",
+    }
+  }
+  model={
+    Object {
+      "dimensions": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "rationale": "This is rationale",
+      "shapes": Object {
+        "circles": Array [],
+        "polygons": Array [],
+        "rectangles": Array [],
+      },
+    }
+  }
+  session={Object {}}
+/>
+`;
+
+exports[`hotspot renders snapshot with teacherInstructions 1`] = `
+<HotspotComponent
+  classes={
+    Object {
+      "collapsible": "HotspotComponent-collapsible-2",
+      "main": "HotspotComponent-main-1",
+      "prompt": "HotspotComponent-prompt-3",
+    }
+  }
+  model={
+    Object {
+      "dimensions": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "shapes": Object {
+        "circles": Array [],
+        "polygons": Array [],
+        "rectangles": Array [],
+      },
+      "teacherInstructions": "These are teacher instructions",
+    }
+  }
+  session={Object {}}
+/>
+`;

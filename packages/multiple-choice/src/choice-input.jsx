@@ -98,6 +98,14 @@ const inputStyles = {
     cursor: 'not-allowed !important',
     pointerEvents: 'initial !important',
   },
+  focusVisibleUnchecked: {
+    outline: `1px solid ${color.focusUncheckedBorder()}`,
+    backgroundColor: color.focusUnchecked(),
+  },
+  focusVisibleChecked: {
+    outline: `1px solid ${color.focusCheckedBorder()}`,
+    backgroundColor: color.focusChecked(),
+  },
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
@@ -117,6 +125,8 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
       id={id}
       aria-label={accessibility}
       aria-checked={checked}
+      focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
+      disableRipple
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -145,6 +155,8 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
       id={id}
       aria-label={accessibility}
       aria-checked={checked}
+      focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
+      disableRipple
       {...miniProps}
       className={CLASS_NAME}
       classes={{

@@ -13,6 +13,7 @@ exports[`Render Main Component should match snapshot 1`] = `
     languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
+    minWidth="100px"
     onChange={[Function]}
     onDone={[Function]}
     pluginProps={
@@ -71,6 +72,7 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
     languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
+    minWidth="100px"
     onChange={[Function]}
     onDone={[Function]}
     pluginProps={

@@ -1,6 +1,6 @@
 export function updateSessionValue(session, model, data) {
   const { id, selected } = data;
-  const { multipleCorrect } = model;
+  const { multipleCorrect } = model || {};
   session.answers = session.answers || [];
 
   if (!selected) {

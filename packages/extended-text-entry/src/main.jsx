@@ -154,7 +154,8 @@ export class Main extends React.Component {
             className={classnames(classes.editor, 'response-area-editor')}
             onChange={this.changeSessionValue}
             markup={value || ''}
-            width={width && width.toString()}
+            maxWidth={width && width.toString()}
+            minWidth={'100px'}
             minHeight={height && height.toString()}
             maxHeight={maxHeight}
             disabled={disabled}
