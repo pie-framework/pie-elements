@@ -106,4 +106,9 @@ describe('SimpleQuestionBlock', () => {
 
     expect(component.instance().props.showKeypad).toEqual(false);
   });
+
+  it('does not call session change on render', () => {
+    component = wrapper();
+    expect(defaultProps.onSimpleResponseChange).not.toHaveBeenCalled();
+  });
 });
