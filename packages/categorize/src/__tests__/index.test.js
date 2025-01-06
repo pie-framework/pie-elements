@@ -47,13 +47,45 @@ describe('categorize', () => {
         expect(el.dispatchEvent).toBeCalledWith(new ModelSetEvent('categorize-el', false, true));
       });
     });
+
     describe('changeAnswers', () => {
-      it('dispatches session changed event', () => {
+      it('dispatches session changed event - add answer', () => {
         const el = new Categorize();
         el.tagName = 'categorize-el';
         el.session = { answers: [] };
-        el.changeAnswers([{ choices: ['bar'] }]);
+        el.changeAnswers([{ category: 'id-fruits', choices: ['apple'] }]);
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', true));
+      });
+
+      it('dispatches session changed event - remove answer', () => {
+        const el = new Categorize();
+        el.tagName = 'categorize-el';
+        el.session = { answers: [{ category: 'id-fruits', choices: ['apple'] }] };
+        el.changeAnswers([{ category: 'id-fruits', choices: [] }]);
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', false));
+      });
+
+      it('dispatches session changed event - add/remove answer', () => {
+        const el = new Categorize();
+        el.tagName = 'categorize-el';
+        el.session = { answers: [{ category: 'id-fruits', choices: ['apple'] }] };
+        el.changeAnswers([
+          { category: 'id-fruits', choices: ['apple'] },
+          { category: 'id-vegetables', choices: ['carrot'] },
+        ]);
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', true));
+
+        el.changeAnswers([
+          { category: 'id-fruits', choices: ['apple'] },
+          { category: 'id-vegetables', choices: [] },
+        ]);
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', true));
+
+        el.changeAnswers([
+          { category: 'id-fruits', choices: [] },
+          { category: 'id-vegetables', choices: [] },
+        ]);
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', false));
       });
     });
   });
