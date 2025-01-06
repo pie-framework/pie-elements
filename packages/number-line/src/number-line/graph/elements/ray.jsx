@@ -142,6 +142,7 @@ export class Ray extends React.Component {
           onDrag={drag}
           onDragStop={stopDrag}
           onMove={this.props.onMove}
+          onClick={this.props.onToggleSelect}
         />
         <Arrow x={arrowX} className={arrowClassNames} direction={arrowDirection} />
       </g>
