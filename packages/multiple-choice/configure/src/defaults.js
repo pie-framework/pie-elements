@@ -4,7 +4,6 @@
  */
 export default {
   model: {
-    accessibilityLabelsEnabled: false,
     choiceMode: 'checkbox',
     choicePrefix: 'letters',
     choices: [],
@@ -96,15 +95,6 @@ export default {
         image: { disabled: false },
       },
       required: false,
-    },
-    accessibility: {
-      settings: false,
-      label: 'Accessibility Label',
-      inputConfiguration: {
-        audio: { disabled: true },
-        video: { disabled: true },
-        image: { disabled: false },
-      },
     },
     scoringType: {
       settings: false,

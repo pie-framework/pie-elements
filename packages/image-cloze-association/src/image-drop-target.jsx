@@ -33,16 +33,17 @@ class ImageDropTarget extends React.Component {
       isOver,
     } = this.props;
     const { shouldHaveSmallPadding } = this.state;
+    const isDraggingElement = !!draggingElement.id;
 
     const containerClasses = cx(classes.responseContainer, isOver && classes.isOver, {
-      [classes.responseContainerDashed]: showDashedBorder && !draggingElement.id,
-      [classes.responseContainerActive]: !!draggingElement.id,
+      [classes.responseContainerDashed]: showDashedBorder && !isDraggingElement,
+      [classes.responseContainerActive]: isDraggingElement,
     });
 
     const updatedContainerStyle = {
       padding: maxResponsePerZone === 1 ? '0' : responseContainerPadding,
       ...containerStyle,
-      ...(responseAreaFill && { backgroundColor: responseAreaFill })
+      ...(responseAreaFill && !isDraggingElement && { backgroundColor: responseAreaFill })
     };
 
     return connectDropTarget(

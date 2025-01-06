@@ -625,11 +625,12 @@ exports[`Main component Match Snapshot 1`] = `
                         classes={
                           Object {
                             "main": "Component-main-52",
+                            "tableStyle": "Component-tableStyle-53",
                           }
                         }
                       >
                         <div
-                          className="Component-main-52"
+                          className="Component-main-52 Component-tableStyle-53"
                         >
                           <WithStyles(Component)
                             key="p-0"
@@ -637,12 +638,12 @@ exports[`Main component Match Snapshot 1`] = `
                             <Component
                               classes={
                                 Object {
-                                  "para": "Component-para-53",
+                                  "para": "Component-para-54",
                                 }
                               }
                             >
                               <div
-                                className="Component-para-53"
+                                className="Component-para-54"
                               >
                                 If the unit price of a notebook in Store A is $1.50, what is the unit price of a binder? $
                                 <div
@@ -669,14 +670,14 @@ exports[`Main component Match Snapshot 1`] = `
                                       TransitionComponent={[Function]}
                                       classes={
                                         Object {
-                                          "popper": "MuiTooltip-popper-54 Main-keypadTooltipPopper-5",
-                                          "popperInteractive": "MuiTooltip-popperInteractive-55",
-                                          "tooltip": "MuiTooltip-tooltip-56 Main-keypadTooltip-4",
-                                          "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom-61",
-                                          "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft-58",
-                                          "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight-59",
-                                          "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop-60",
-                                          "touch": "MuiTooltip-touch-57",
+                                          "popper": "MuiTooltip-popper-55 Main-keypadTooltipPopper-5",
+                                          "popperInteractive": "MuiTooltip-popperInteractive-56",
+                                          "tooltip": "MuiTooltip-tooltip-57 Main-keypadTooltip-4",
+                                          "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom-62",
+                                          "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft-59",
+                                          "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight-60",
+                                          "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop-61",
+                                          "touch": "MuiTooltip-touch-58",
                                         }
                                       }
                                       disableFocusListener={false}
@@ -1085,7 +1086,7 @@ exports[`Main component Match Snapshot 1`] = `
                                         </Static>
                                       </RootRef>
                                       <Popper
-                                        className="MuiTooltip-popper-54 Main-keypadTooltipPopper-5 MuiTooltip-popperInteractive-55"
+                                        className="MuiTooltip-popper-55 Main-keypadTooltipPopper-5 MuiTooltip-popperInteractive-56"
                                         disablePortal={false}
                                         id={null}
                                         onBlur={[Function]}
@@ -1124,14 +1125,14 @@ exports[`Main component Match Snapshot 1`] = `
                                       TransitionComponent={[Function]}
                                       classes={
                                         Object {
-                                          "popper": "MuiTooltip-popper-54 Main-keypadTooltipPopper-5",
-                                          "popperInteractive": "MuiTooltip-popperInteractive-55",
-                                          "tooltip": "MuiTooltip-tooltip-56 Main-keypadTooltip-4",
-                                          "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom-61",
-                                          "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft-58",
-                                          "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight-59",
-                                          "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop-60",
-                                          "touch": "MuiTooltip-touch-57",
+                                          "popper": "MuiTooltip-popper-55 Main-keypadTooltipPopper-5",
+                                          "popperInteractive": "MuiTooltip-popperInteractive-56",
+                                          "tooltip": "MuiTooltip-tooltip-57 Main-keypadTooltip-4",
+                                          "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom-62",
+                                          "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft-59",
+                                          "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight-60",
+                                          "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop-61",
+                                          "touch": "MuiTooltip-touch-58",
                                         }
                                       }
                                       disableFocusListener={false}
@@ -1540,7 +1541,7 @@ exports[`Main component Match Snapshot 1`] = `
                                         </Static>
                                       </RootRef>
                                       <Popper
-                                        className="MuiTooltip-popper-54 Main-keypadTooltipPopper-5 MuiTooltip-popperInteractive-55"
+                                        className="MuiTooltip-popper-55 Main-keypadTooltipPopper-5 MuiTooltip-popperInteractive-56"
                                         disablePortal={false}
                                         id={null}
                                         onBlur={[Function]}

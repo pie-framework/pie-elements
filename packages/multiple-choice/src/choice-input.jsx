@@ -98,10 +98,18 @@ const inputStyles = {
     cursor: 'not-allowed !important',
     pointerEvents: 'initial !important',
   },
+  focusVisibleUnchecked: {
+    outline: `1px solid ${color.focusUncheckedBorder()}`,
+    backgroundColor: color.focusUnchecked(),
+  },
+  focusVisibleChecked: {
+    outline: `1px solid ${color.focusCheckedBorder()}`,
+    backgroundColor: color.focusChecked(),
+  },
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
+  const { correctness, classes, checked, onChange, disabled, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -115,8 +123,9 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
   return (
     <Checkbox
       id={id}
-      aria-label={accessibility}
       aria-checked={checked}
+      focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
+      disableRipple
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -129,7 +138,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
+  const { correctness, classes, checked, onChange, disabled, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -143,8 +152,9 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
   return (
     <Radio
       id={id}
-      aria-label={accessibility}
       aria-checked={checked}
+      focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
+      disableRipple
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -166,7 +176,6 @@ export class ChoiceInput extends React.Component {
     feedback: PropTypes.string,
     label: PropTypes.string.isRequired,
     rationale: PropTypes.string,
-    accessibility: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
     classes: PropTypes.object,
@@ -179,7 +188,6 @@ export class ChoiceInput extends React.Component {
 
   static defaultProps = {
     rationale: null,
-    accessibility: null,
     checked: false,
     isEvaluateMode: false,
   };
@@ -209,7 +217,6 @@ export class ChoiceInput extends React.Component {
       classes,
       className,
       rationale,
-      accessibility,
       hideTick,
       isEvaluateMode,
       choicesLayout,
@@ -254,7 +261,6 @@ export class ChoiceInput extends React.Component {
                 control={
                   <span className={classes.belowSelectionComponent}>
                     <Tag
-                      accessibility={accessibility}
                       disabled={disabled}
                       checked={checked}
                       correctness={correctness}
@@ -274,7 +280,6 @@ export class ChoiceInput extends React.Component {
                 htmlFor={this.choiceId}
                 control={
                   <Tag
-                    accessibility={accessibility}
                     disabled={disabled}
                     checked={checked}
                     correctness={correctness}

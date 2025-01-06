@@ -70,7 +70,7 @@ export class SimpleQuestionBlockRaw extends React.Component {
           <div id={this.mathToolBarId}>
             <MathToolbar
               classNames={{ editor: classes.responseEditor }}
-              latex={session.response || ''}
+              latex={session.response}
               keypadMode={equationEditor}
               onChange={onSimpleResponseChange}
               onDone={() => {}}

@@ -225,6 +225,7 @@ export class Line extends React.Component {
               position={position.left}
               onDrag={onDragLeft}
               onMove={onMoveLeft}
+              onClick={onRectClick}
             />
             <Point
               {...common}
@@ -236,6 +237,7 @@ export class Line extends React.Component {
               position={position.right}
               onDrag={onDragRight}
               onMove={onMoveRight}
+              onClick={onRectClick}
             />
           </g>
         </g>
