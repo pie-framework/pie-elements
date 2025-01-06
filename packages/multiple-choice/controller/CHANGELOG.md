@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.4.0...@pie-element/multiple-choice-controller@5.4.1) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+* **multiple-choice:** Improve reading of responses, removed the redundant accessibility prop from choices PD-4552 ([15eb3df](https://github.com/pie-framework/pie-elements/commit/15eb3df1c2dfc60894c1c73decf0131e33d01a8c))
+
+
+
+
+
 # [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.3.1...@pie-element/multiple-choice-controller@5.4.0) (2024-12-20)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.1.6...@pie-element/extended-text-entry-configure@10.2.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+* **extended-text-entry:** display dimensions in settings panel based on settings prop PD-4662 ([a4b245f](https://github.com/pie-framework/pie-elements/commit/a4b245fb03c599ff6b3871c9af3f3e3b6bf6d76d))
+
+
+### Features
+
+* **extended-text-entry:** change max width from 500 to 1200px PD-4661 ([14214cc](https://github.com/pie-framework/pie-elements/commit/14214ccc8b70687e0e507d7f674902966c2f09c7))
+
+
+
+
+
 ## [10.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.1.5...@pie-element/extended-text-entry-configure@10.1.6) (2024-12-20)
 
 
