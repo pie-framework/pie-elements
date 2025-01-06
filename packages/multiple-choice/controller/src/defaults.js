@@ -1,5 +1,4 @@
 export default {
-  accessibilityLabelsEnabled: false,
   choiceMode: 'checkbox',
   choicePrefix: 'letters',
   choices: [],
