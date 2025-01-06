@@ -35,14 +35,14 @@ const styles = (theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     '&> div': {
-      width: '150px',
+      width: '120px',
       padding: `0 ${theme.spacing.unit}px`,
       textAlign: 'center',
     },
   },
   deleteIcon: {
     flex: 0.5,
-    minWidth: '48px',
+    minWidth: '45px',
     padding: `0 ${theme.spacing.unit}px`,
   },
   questionText: {
@@ -55,7 +55,7 @@ const styles = (theme) => ({
       padding: 0,
       maxWidth: 'unset',
       textAlign: 'left',
-      minWidth: '350px',
+      minWidth: '200px',
     },
   },
   rowTable: {
