@@ -123,8 +123,10 @@ export class ECRToolbar extends React.Component {
                     minHeight={'10px'}
                     maxHeight={'10px'}
                     spellCheck={spellCheck}
+                    autoWidthToolbar
                     toolbarOpts={{
-                        minWidth: 'auto'
+                        minWidth: 'auto',
+                        isHidden: pluginProps['characters'].disabled ? 'true' : 'false'
                     }}
                     {...inputProps}
                 />
