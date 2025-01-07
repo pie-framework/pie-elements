@@ -69,6 +69,7 @@ exports[`Choice snapshot renders 1`] = `
         ]
       }
       allowValidation={false}
+      autoWidthToolbar={true}
       className=""
       disableUnderline={true}
       languageCharactersProps={
@@ -82,6 +83,12 @@ exports[`Choice snapshot renders 1`] = `
       maxLength={25}
       onChange={[Function]}
       onDone={[Function]}
+      toolbarOpts={
+        Object {
+          "isHidden": "true",
+          "minWidth": "auto",
+        }
+      }
     />
     <WithStyles(IconButton)
       aria-label="delete"

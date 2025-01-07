@@ -12,6 +12,7 @@ exports[`ECRToolbar snapshot renders 1`] = `
     }
     allowValidation={false}
     autoFocus={true}
+    autoWidthToolbar={true}
     disableUnderline={true}
     languageCharactersProps={
       Array [
@@ -21,15 +22,16 @@ exports[`ECRToolbar snapshot renders 1`] = `
       ]
     }
     markup=""
-    maxHeight="10px"
+    maxHeight="15px"
     maxLength={25}
-    minHeight="10px"
+    minHeight="15px"
     onBlur={[Function]}
     onChange={[Function]}
     onDone={[Function]}
     onKeyDown={[Function]}
     toolbarOpts={
       Object {
+        "isHidden": "true",
         "minWidth": "auto",
       }
     }

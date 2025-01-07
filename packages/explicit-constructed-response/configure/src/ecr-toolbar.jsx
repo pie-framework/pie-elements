@@ -126,7 +126,7 @@ export class ECRToolbar extends React.Component {
                     autoWidthToolbar
                     toolbarOpts={{
                         minWidth: 'auto',
-                        isHidden: pluginProps['characters'].disabled ? 'true' : 'false',
+                        isHidden: pluginProps?.characters?.disabled ?? 'true',
                     }}
                     {...inputProps}
                 />
