@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import compact from 'lodash/compact';
 import debug from 'debug';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
