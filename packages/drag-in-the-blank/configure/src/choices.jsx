@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import find from 'lodash/find';
 import Button from '@material-ui/core/Button';
 import Choice from './choice';

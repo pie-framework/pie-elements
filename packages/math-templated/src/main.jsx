@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
 import { color, Collapsible, Readable, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import MathQuill from '@pie-framework/mathquill';
 import { Customizable } from '@pie-lib/pie-toolbox/mask-markup';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';

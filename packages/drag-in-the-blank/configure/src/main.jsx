@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 import { InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';

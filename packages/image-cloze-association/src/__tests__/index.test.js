@@ -4,7 +4,7 @@ import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-ev
 import ImageClozeAssociation from '../index';
 import { ImageClozeAssociationComponent } from '../root';
 
-jest.mock('@pie-lib/pie-toolbox/math-rendering-accessible', () => ({ renderMath: jest.fn() }));
+jest.mock('@pie-lib/pie-toolbox/math-rendering', () => ({ renderMath: jest.fn() }));
 
 describe('image-cloze-association', () => {
   describe('renders', () => {
