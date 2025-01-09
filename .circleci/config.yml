@@ -2,10 +2,10 @@ version: 2
 
 defaults: &defaults
   docker:
-    - image: cimg/node:18.12
+    - image: cimg/node:20.18
       environment:
         - NODE_OPTIONS=--max_old_space_size=4096
-  resource_class: medium+
+  resource_class: large
   working_directory: ~/repo
 
 save_src_cache: &save_src_cache
