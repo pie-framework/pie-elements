@@ -4,7 +4,7 @@ defaults: &defaults
   docker:
     - image: cimg/node:20.18
       environment:
-        - NODE_OPTIONS=--max_old_space_size=4096
+        - NODE_OPTIONS=--max_old_space_size=8192
   resource_class: large
   working_directory: ~/repo
 
