@@ -83,6 +83,7 @@ export class Main extends React.Component {
     } = model;
     const { annotations, comment, value } = session;
     const { width, height } = dimensions || {};
+    console.log(width, height);
     const maxHeight = '40vh';
     const toolbarOpts = { position: playersToolbarPosition === 'top' ? 'top' : 'bottom' };
 
@@ -163,6 +164,7 @@ export class Main extends React.Component {
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
             charactersLimit={50000}
+            autoWidthToolbar
             pluginProps={{
               math: {
                 disabled: !mathInput,
