@@ -118,23 +118,16 @@ export default class ExplicitConstructedResponse extends HTMLElement {
   }
 
   onConfigurationChanged(c) {
-    const previousInputConfig = this._model?.responseAreaInputConfiguration;
-
     this._configuration = c;
 
     const newInputConfig = this._configuration?.responseAreaInputConfiguration?.inputConfiguration;
 
-    if (previousInputConfig !== newInputConfig) {
-      this._model = {
-        ...this._model,
-        responseAreaInputConfiguration: newInputConfig
-      };
+    this._model = {
+      ...this._model,
+      responseAreaInputConfiguration: newInputConfig
+    };
 
-      this.onModelChanged(this._model);
-
-    } else {
-      this._render();
-    }
+    this.onModelChanged(this._model);
   }
 
 
