@@ -36,6 +36,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "textAlign": Object {
+              "disabled": true,
+            },
             "video": Object {
               "disabled": false,
             },
@@ -69,6 +72,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
               },
               "image": Object {
                 "disabled": true,
+              },
+              "textAlign": Object {
+                "disabled": false,
               },
               "video": Object {
                 "disabled": true,
@@ -108,6 +114,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
               "image": Object {
                 "disabled": false,
               },
+              "textAlign": Object {
+                "disabled": false,
+              },
               "video": Object {
                 "disabled": false,
               },
@@ -123,6 +132,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
               },
               "image": Object {
                 "disabled": true,
+              },
+              "textAlign": Object {
+                "disabled": false,
               },
               "video": Object {
                 "disabled": true,
@@ -239,6 +251,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": false,
           },
@@ -310,6 +325,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "image": Object {
             "disabled": true,
+          },
+          "textAlign": Object {
+            "disabled": false,
           },
           "video": Object {
             "disabled": true,
@@ -383,6 +401,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "image": Object {
             "disabled": true,
           },
+          "textAlign": Object {
+            "disabled": false,
+          },
           "video": Object {
             "disabled": true,
           },
@@ -453,6 +474,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "disabled": true,
           },
           "image": Object {
+            "disabled": true,
+          },
+          "textAlign": Object {
             "disabled": true,
           },
           "video": Object {
@@ -528,6 +552,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "disabled": false,
           },
           "image": Object {
+            "disabled": false,
+          },
+          "textAlign": Object {
             "disabled": false,
           },
           "video": Object {

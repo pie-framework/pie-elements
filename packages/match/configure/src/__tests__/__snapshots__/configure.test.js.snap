@@ -46,6 +46,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "image": Object {
                 "disabled": false,
               },
+              "textAlign": Object {
+                "disabled": true,
+              },
               "video": Object {
                 "disabled": true,
               },
@@ -81,6 +84,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               },
               "image": Object {
                 "disabled": false,
+              },
+              "textAlign": Object {
+                "disabled": true,
               },
               "video": Object {
                 "disabled": true,
@@ -118,6 +124,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "image": Object {
                 "disabled": false,
               },
+              "textAlign": Object {
+                "disabled": true,
+              },
               "video": Object {
                 "disabled": true,
               },
@@ -138,6 +147,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": true,
@@ -243,6 +255,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": true,
           },
@@ -347,6 +362,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": true,
           },
@@ -450,6 +468,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": true,

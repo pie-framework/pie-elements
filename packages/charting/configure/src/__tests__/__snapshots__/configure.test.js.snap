@@ -82,6 +82,9 @@ exports[`Configure renders snapshot 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "textAlign": Object {
+              "disabled": true,
+            },
             "video": Object {
               "disabled": false,
             },
@@ -328,6 +331,9 @@ exports[`Configure renders snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": false,
           },
@@ -365,6 +371,9 @@ exports[`Configure renders snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": false,
@@ -701,6 +710,9 @@ exports[`Configure renders snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": false,
