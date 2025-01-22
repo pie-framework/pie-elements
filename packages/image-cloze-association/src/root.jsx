@@ -255,7 +255,7 @@ export class ImageClozeAssociationComponent extends React.Component {
       });
     }
 
-    const warningMessage = translator.t('imageClozeAssociation.next', {
+    const warningMessage = translator.t('imageClozeAssociation.reachedLimit_other', {
       lng: language,
       count: maxResponsePerZone,
     });
