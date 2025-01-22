@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { InlineDropdown as DropDown } from '@pie-lib/pie-toolbox/mask-markup';
 import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 

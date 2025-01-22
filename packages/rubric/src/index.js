@@ -2,7 +2,7 @@ import Rubric from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 
 export default class RubricRender extends HTMLElement {
   constructor() {
