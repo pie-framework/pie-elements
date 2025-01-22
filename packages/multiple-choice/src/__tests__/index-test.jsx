@@ -5,7 +5,9 @@ import MultipleChoiceComponent from '../main';
 import MultipleChoice from '../index';
 import { isComplete } from '../index';
 
+jest.useFakeTimers();
 jest.mock('@pie-lib/pie-toolbox/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.mock('lodash/debounce', () => jest.fn((fn) => fn));
 
 describe('isComplete', () => {
   it.each`
@@ -61,25 +63,28 @@ describe('multiple-choice', () => {
     });
 
     describe('onChange', () => {
-      it('dispatches session changed event - add answer', () => {
+      it('dispatches session changed event - add answer (checkbox)', () => {
         const el = new MultipleChoice();
         el.tagName = 'mc-el';
+        el.model = { choiceMode: 'checkbox' };
         el.session = { value: [] };
         el._onChange({ value: 'a', selected: true });
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
       });
 
-      it('dispatches session changed event - remove answer', () => {
+      it('dispatches session changed event - remove answer (checkbox)', () => {
         const el = new MultipleChoice();
         el.tagName = 'mc-el';
+        el.model = { choiceMode: 'checkbox' };
         el.session = { value: ['a'] };
         el._onChange({ value: 'a', selected: false });
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', false));
       });
 
-      it('dispatches session changed event - add/remove answer', () => {
+      it('dispatches session changed event - add/remove answer (checkbox)', () => {
         const el = new MultipleChoice();
         el.tagName = 'mc-el';
+        el.model = { choiceMode: 'checkbox' };
         el.session = { value: ['1'] };
         el._onChange({ id: '2', selected: true });
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
@@ -89,6 +94,17 @@ describe('multiple-choice', () => {
 
         el._onChange({ id: '2', selected: false });
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', false));
+      });
+
+      it('dispatches session changed event - add/change answer (radio)', () => {
+        const el = new MultipleChoice();
+        el.tagName = 'mc-el';
+        el.model = { choiceMode: 'radio' };
+        el.session = { value: [] };
+        el._onChange({ value: 'a', selected: true });
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
+        el._onChange({ value: 'b', selected: true });
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
       });
     });
   });
