@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@4.0.14...@pie-element/calculator-configure@4.0.15) (2025-01-22)
+
+
+### Bug Fixes
+
+* build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
+
+
+
+
+
 ## [4.0.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@4.0.13...@pie-element/calculator-configure@4.0.14) (2025-01-06)
 
 

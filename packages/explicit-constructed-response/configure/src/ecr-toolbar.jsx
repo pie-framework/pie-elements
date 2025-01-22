@@ -50,7 +50,7 @@ export class ECRToolbar extends React.Component {
         markup: choice.label,
         toolbarStyle: {
           position: 'absolute',
-          top: `${top + domNodeRect.height + 20}px`,
+          top: `${top + domNodeRect.height + 17}px`,
           left: `${left + 20}px`,
           width: `${domNodeRect.width - 4}px`,
         },
@@ -120,12 +120,14 @@ export class ECRToolbar extends React.Component {
                     activePlugins={['languageCharacters']}
                     pluginProps={pluginProps}
                     languageCharactersProps={[{ language: 'spanish' }]}
-                    minHeight={'10px'}
-                    maxHeight={'10px'}
+                    minHeight={'15px'}
+                    maxHeight={'15px'}
                     spellCheck={spellCheck}
+                    autoWidthToolbar
                     toolbarOpts={{
-                        minWidth: 'auto'
-                    }}
+                        minWidth: 'auto',
+                        isHidden: !!pluginProps?.characters?.disabled
+                }}
                     {...inputProps}
                 />
             </div>
@@ -137,7 +139,7 @@ const StyledECRToolbar = withStyles((theme) => ({
     markup: {
         backgroundColor: theme.palette.common.white,
         outline: 'none',
-        lineHeight: '10px'
+        lineHeight: '15px'
     },
 }))(ECRToolbar);
 
