@@ -1100,6 +1100,21 @@ exports[`Main component Match Snapshot 1`] = `
                                     </Tooltip>
                                   </WithStyles(Tooltip)>
                                 </div>
+                                <WithStyles(Component)
+                                  key="spacer-1"
+                                >
+                                  <Component
+                                    classes={
+                                      Object {
+                                        "spacer": "Component-spacer-63",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="Component-spacer-63"
+                                    />
+                                  </Component>
+                                </WithStyles(Component)>
                                  $
                                 <div
                                   className="Main-expression-11 Main-incorrect-17"
@@ -1555,6 +1570,21 @@ exports[`Main component Match Snapshot 1`] = `
                                     </Tooltip>
                                   </WithStyles(Tooltip)>
                                 </div>
+                                <WithStyles(Component)
+                                  key="spacer-3"
+                                >
+                                  <Component
+                                    classes={
+                                      Object {
+                                        "spacer": "Component-spacer-63",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="Component-spacer-63"
+                                    />
+                                  </Component>
+                                </WithStyles(Component)>
                               </div>
                             </Component>
                           </WithStyles(Component)>
