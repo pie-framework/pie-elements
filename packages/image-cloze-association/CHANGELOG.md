@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.6.1...@pie-element/image-cloze-association@6.6.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+* **image-cloze-association:** chage icon to warning message and adapt style PD-3872 ([349ca8c](https://github.com/pie-framework/pie-elements/commit/349ca8c3c3f836f188cd4abe61dd655c84ba1fe4))
+* **image-cloze-association:** change key for the warningMessage PD-3872 ([04ee43f](https://github.com/pie-framework/pie-elements/commit/04ee43fe4d5cb4dfd3bee1480a09dfe344e220b8))
+* **image-cloze-association:** change key for the warningMessage PD-3872 ([186df29](https://github.com/pie-framework/pie-elements/commit/186df29623a891a684f4b33597bea7393faef196))
+
+
+
+
+
 ## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.6.0...@pie-element/image-cloze-association@6.6.1) (2025-01-22)
 
 

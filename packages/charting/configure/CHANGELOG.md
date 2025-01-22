@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@8.2.6...@pie-element/charting-configure@8.2.7) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+
+
+
+
+
 ## [8.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@8.2.5...@pie-element/charting-configure@8.2.6) (2025-01-22)
 
 
