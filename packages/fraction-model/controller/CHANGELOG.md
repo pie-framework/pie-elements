@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@2.0.15...@pie-element/fraction-model-controller@2.0.16) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 ## [2.0.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@2.0.14...@pie-element/fraction-model-controller@2.0.15) (2025-01-06)
 
 

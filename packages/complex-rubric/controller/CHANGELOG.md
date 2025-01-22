@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@3.0.14...@pie-element/complex-rubric-controller@3.0.15) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 ## [3.0.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@3.0.13...@pie-element/complex-rubric-controller@3.0.14) (2025-01-06)
 
 

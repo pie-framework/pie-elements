@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.3.5...@pie-element/complex-rubric@3.3.6) (2025-01-22)
+
+
+### Bug Fixes
+
+* removed old pie-lib dependencies [PD-4527] ([d072963](https://github.com/pie-framework/pie-elements/commit/d072963a8a813b27d9b5497bcf55142e4d745436))
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 ## [3.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.3.4...@pie-element/complex-rubric@3.3.5) (2025-01-06)
 
 

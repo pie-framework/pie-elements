@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.2.0...@pie-element/extended-text-entry-configure@10.2.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 # [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.1.6...@pie-element/extended-text-entry-configure@10.2.0) (2025-01-06)
 
 
