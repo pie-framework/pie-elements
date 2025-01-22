@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@3.1.7...@pie-element/boilerplate-item-type@3.1.8) (2025-01-22)
+
+
+### Bug Fixes
+
+* build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 ## [3.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@3.1.6...@pie-element/boilerplate-item-type@3.1.7) (2025-01-06)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.37.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.37.5...@pie-element/matrix-configure@0.37.6) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 ## [0.37.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.37.4...@pie-element/matrix-configure@0.37.5) (2025-01-06)
 
 

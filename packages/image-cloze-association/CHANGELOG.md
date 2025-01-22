@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.6.0...@pie-element/image-cloze-association@6.6.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 # [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.5.1...@pie-element/image-cloze-association@6.6.0) (2025-01-06)
 
 
