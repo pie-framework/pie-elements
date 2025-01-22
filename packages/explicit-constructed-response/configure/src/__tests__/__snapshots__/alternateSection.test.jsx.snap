@@ -85,7 +85,7 @@ exports[`Choice snapshot renders 1`] = `
       onDone={[Function]}
       toolbarOpts={
         Object {
-          "isHidden": "false",
+          "isHidden": false,
           "minWidth": "auto",
         }
       }

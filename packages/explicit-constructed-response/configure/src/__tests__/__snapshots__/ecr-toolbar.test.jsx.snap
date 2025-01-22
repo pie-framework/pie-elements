@@ -31,7 +31,7 @@ exports[`ECRToolbar snapshot renders 1`] = `
     onKeyDown={[Function]}
     toolbarOpts={
       Object {
-        "isHidden": "false",
+        "isHidden": false,
         "minWidth": "auto",
       }
     }
