@@ -90,6 +90,7 @@ export async function model(question, session, env, updateSession) {
     language: normalizedQuestion.language,
     extraCSSRules: normalizedQuestion.extraCSSRules,
     fontSizeFactor: normalizedQuestion.fontSizeFactor,
+    keyboardEventsEnabled: normalizedQuestion.keyboardEventsEnabled,
   };
 
   const { role, mode } = env || {};

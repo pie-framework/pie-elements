@@ -22,6 +22,7 @@ export default {
     teacherInstructions: '',
     teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
+    keyboardEventsEnabled: false,
   },
   configuration: {
     baseInputConfiguration: {

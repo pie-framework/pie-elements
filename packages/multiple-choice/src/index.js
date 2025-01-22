@@ -39,6 +39,10 @@ export default class MultipleChoice extends HTMLElement {
             log('render complete - render math');
             renderMath(this);
           });
+
+          if (this._model.keyboardEventsEnabled === true) {
+            this.enableKeyboardEvents();
+          }
         } else {
           log('skip');
         }
@@ -114,7 +118,9 @@ export default class MultipleChoice extends HTMLElement {
 
   connectedCallback() {
     this._rerender();
+  }
 
+  enableKeyboardEvents() {
     window.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
 
