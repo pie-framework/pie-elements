@@ -163,6 +163,7 @@ export class Main extends React.Component {
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
             charactersLimit={50000}
+            autoWidthToolbar
             pluginProps={{
               math: {
                 disabled: !mathInput,
