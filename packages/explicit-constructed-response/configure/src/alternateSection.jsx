@@ -115,6 +115,11 @@ export class Choice extends React.Component {
                 pluginProps={pluginProps}
                 languageCharactersProps={[{ language: 'spanish' }]}
                 spellCheck={spellCheck}
+                autoWidthToolbar
+                toolbarOpts={{
+                  minWidth: 'auto',
+                  isHidden: !!pluginProps?.characters?.disabled
+                }}
                 {...inputProps}
             />
             <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
