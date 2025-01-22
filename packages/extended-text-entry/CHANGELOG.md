@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.4.1...@pie-element/extended-text-entry@11.4.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+* **extended-text-entry:** code review changes - remode console log PD-4687 ([ffa011f](https://github.com/pie-framework/pie-elements/commit/ffa011fc2a0e7c2afb630e529051254899302d58))
+* **extended-text-entry:** fix student's view editor toolbar ([b814519](https://github.com/pie-framework/pie-elements/commit/b8145197d5209ea21138acad11f38446cb0e6a18))
+* **extended-text-entry:** updated snapshots ([0023578](https://github.com/pie-framework/pie-elements/commit/0023578de70e96fb75640825f21dd0c4b5ca0609))
+
+
+
+
+
 ## [11.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.4.0...@pie-element/extended-text-entry@11.4.1) (2025-01-22)
 
 
