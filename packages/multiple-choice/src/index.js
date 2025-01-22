@@ -64,7 +64,6 @@ export default class MultipleChoice extends HTMLElement {
     );
 
     this._dispatchResponseChanged = debounce(() => {
-      console.log('>> dispatch event');
       var event = new CustomEvent('session-changed', {
         bubbles: true,
         composed: true,
