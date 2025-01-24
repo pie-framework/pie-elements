@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -7,6 +8,7 @@ import { uid } from '@pie-lib/pie-toolbox/drag';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize:choice');
@@ -94,6 +96,18 @@ export class Choice extends React.Component {
     extraStyle: PropTypes.object,
     connectDragSource: PropTypes.func.isRequired,
   };
+
+    componentDidMount() {
+      this.rerenderMath();
+    }
+  
+    rerenderMath = () => {
+      //eslint-disable-next-line
+      const domNode = ReactDOM.findDOMNode(this);
+  
+      renderMath(domNode);
+    };
+  
 
   render() {
     const { connectDragSource, id, content, disabled, isDragging, correct, extraStyle } = this.props;

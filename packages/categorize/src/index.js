@@ -5,6 +5,11 @@ import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-ev
 import CategorizeComponent from './categorize';
 
 export default class Categorize extends HTMLElement {
+  constructor() {
+    super();
+    this.shouldRenderMath = true;
+  }
+
   set model(m) {
     this._model = m;
 
@@ -31,6 +36,7 @@ export default class Categorize extends HTMLElement {
     }
 
     this._session = s;
+    this.shouldRenderMath = false;
     this.render();
   }
 
@@ -57,6 +63,7 @@ export default class Categorize extends HTMLElement {
 
   changeAnswers(answers) {
     this._session.answers = answers;
+    this.shouldRenderMath = false;
 
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
@@ -77,7 +84,11 @@ export default class Categorize extends HTMLElement {
       });
 
       ReactDOM.render(el, this, () => {
-        renderMath(this);
+        if (this.shouldRenderMath) {
+          renderMath(this);
+        }
+
+        this.shouldRenderMath = true;
       });
     }
   }
