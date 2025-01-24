@@ -17,6 +17,9 @@ const styleSheet = (theme) => ({
     alignItems: 'center',
     backgroundColor: color.background(),
   },
+  choiceLabel: {
+    display: 'flex',
+  },
   checkboxHolder: {
     display: 'flex',
     alignItems: 'center',
@@ -242,7 +245,7 @@ export class ChoiceInput extends React.Component {
             <PreviewPrompt className="label" prompt={label} tagName="span" />
           </span>
         ) : (
-          <PreviewPrompt className="label" prompt={label} tagName="span" />
+          <PreviewPrompt className={classes.choiceLabel} prompt={label} tagName="span" />
         )}
       </>
     );
