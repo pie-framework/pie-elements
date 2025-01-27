@@ -34,6 +34,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "image": Object {
               "disabled": false,
             },
+            "textAlign": Object {
+              "disabled": true,
+            },
             "video": Object {
               "disabled": false,
             },
@@ -247,6 +250,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": false,
           },
@@ -300,6 +306,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           },
           "image": Object {
             "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": false,
@@ -407,6 +416,9 @@ There should be at least 2 tokens defined."
         "image": Object {
           "disabled": false,
         },
+        "textAlign": Object {
+          "disabled": true,
+        },
         "video": Object {
           "disabled": false,
         },
@@ -493,6 +505,9 @@ There should be at least 2 tokens defined."
         "image": Object {
           "disabled": false,
         },
+        "textAlign": Object {
+          "disabled": true,
+        },
         "video": Object {
           "disabled": true,
         },
@@ -544,6 +559,9 @@ There should be at least 2 tokens defined."
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": false,
           },
@@ -592,6 +610,9 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             },
             "image": Object {
               "disabled": false,
+            },
+            "textAlign": Object {
+              "disabled": true,
             },
             "video": Object {
               "disabled": false,
@@ -859,6 +880,9 @@ There should be at least 2 tokens defined."
         "image": Object {
           "disabled": false,
         },
+        "textAlign": Object {
+          "disabled": true,
+        },
         "video": Object {
           "disabled": false,
         },
@@ -944,6 +968,9 @@ There should be at least 2 tokens defined."
         },
         "image": Object {
           "disabled": false,
+        },
+        "textAlign": Object {
+          "disabled": true,
         },
         "video": Object {
           "disabled": true,

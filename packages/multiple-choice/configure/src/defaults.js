@@ -28,6 +28,7 @@ export default {
       audio: { disabled: false },
       video: { disabled: false },
       image: { disabled: false },
+      textAlign: { disabled: true },
     },
     choices: {
       inputConfiguration: {

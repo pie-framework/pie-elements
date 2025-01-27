@@ -28,6 +28,7 @@ const multiTraitDefaultConfiguration = {
     audio: { disabled: false },
     video: { disabled: false },
     image: { disabled: false },
+    textAlign: { disabled: true },
   },
   expandedInput: {
     inputConfiguration: {
@@ -142,6 +143,7 @@ const rubricDefaultConfiguration = {
     audio: { disabled: false },
     video: { disabled: false },
     image: { disabled: false },
+    textAlign: { disabled: true },
   },
   showExcludeZero: {
     settings: true,
@@ -160,6 +162,7 @@ const rubriclessDefaultConfiguration = {
     audio: { disabled: false },
     video: { disabled: false },
     image: { disabled: false },
+    textAlign: { disabled: true },
   },
   showExcludeZero: {
     settings: true,
