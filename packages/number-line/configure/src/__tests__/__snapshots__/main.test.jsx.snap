@@ -26,6 +26,9 @@ exports[`main snapshot renders 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "textAlign": Object {
+              "disabled": true,
+            },
             "video": Object {
               "disabled": false,
             },

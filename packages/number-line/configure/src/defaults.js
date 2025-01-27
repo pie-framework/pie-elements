@@ -34,6 +34,7 @@ export const configuration = {
     audio: { disabled: false },
     video: { disabled: false },
     image: { disabled: false },
+    textAlign: { disabled: true },
   },
   instruction: {
     settings: false,
