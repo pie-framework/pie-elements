@@ -109,6 +109,12 @@ This element must be one of the following enum values:
 
 Default: `": 'bottom'"`
 
+# `selectedAnswerBackgroundColor` (string)
+
+Indicates the background color for selected choices
+
+Default: `": 'initial'"`
+
 # `lockChoiceOrder` (boolean)
 
 Indicates the order of choices presented to user
@@ -184,6 +190,10 @@ Indicates if the selection button and choice prefix should be positioned below t
 # `fontSizeFactor` (number)
 
 Indicates font size adjustment factor
+
+# `autoplayAudioEnabled` (boolean)
+
+Indicates if the audio for the prompt should autoplay
 
 # `id` (string, required)
 

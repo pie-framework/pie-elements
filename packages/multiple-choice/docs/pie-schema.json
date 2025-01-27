@@ -124,6 +124,12 @@
       "type": "string",
       "title": "toolbarEditorPosition"
     },
+    "selectedAnswerBackgroundColor": {
+      "description": "Indicates the background color for selected choices",
+      "default": ": 'initial'",
+      "type": "string",
+      "title": "selectedAnswerBackgroundColor"
+    },
     "lockChoiceOrder": {
       "description": "Indicates the order of choices presented to user\nif true, answer choices will be presented in the order they are defined in the model\nIf false, answer choices may be presented in a random order (depending upon the value of the lockChoiceOrder environment variable)",
       "type": "boolean",
@@ -212,6 +218,11 @@
       "description": "Indicates font size adjustment factor",
       "type": "number",
       "title": "fontSizeFactor"
+    },
+    "autoplayAudioEnabled": {
+      "description": "Indicates if the audio for the prompt should autoplay",
+      "type": "boolean",
+      "title": "autoplayAudioEnabled"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
