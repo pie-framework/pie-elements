@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.2...@pie-element/multiple-choice@9.7.3) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4688, PD-4589, PD-4616 ([754480c](https://github.com/pie-framework/pie-elements/commit/754480c6c747fa9123d374df0287a644c8376939))
+* **multiple-choice:** prevent dots from rendering unless a display key is explicitly provided PD-4727 ([4d302e6](https://github.com/pie-framework/pie-elements/commit/4d302e619998810c315cdc047377837809adfb95))
+* **multiple-choice:** updated propTypes to make displayKey optional, aligning with the new behavior PD-4727 ([f1bf9c8](https://github.com/pie-framework/pie-elements/commit/f1bf9c8081aa91655a43f79be3272d3b9562e89e))
+
+
+
+
+
 ## [9.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.1...@pie-element/multiple-choice@9.7.2) (2025-01-22)
 
 

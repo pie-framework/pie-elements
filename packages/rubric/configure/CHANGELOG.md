@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.2.7...@pie-element/rubric-configure@4.2.8) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4688, PD-4589, PD-4616 ([754480c](https://github.com/pie-framework/pie-elements/commit/754480c6c747fa9123d374df0287a644c8376939))
+
+
+
+
+
 ## [4.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.2.6...@pie-element/rubric-configure@4.2.7) (2025-01-22)
 
 
