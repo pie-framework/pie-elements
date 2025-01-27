@@ -144,6 +144,10 @@ export default class MultipleChoice extends HTMLElement {
   connectedCallback() {
     this._rerender();
 
+    if (this._model && !this._model.autoplayAudioEnabled) {
+      return;
+    }
+
     const observer = new MutationObserver((mutationsList, observer) => {
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
