@@ -46,7 +46,7 @@ module.exports = {
   libs: {
     repository: 'pie-framework/pie-elements',
     packages: [
-      { name: '@pie-lib/pie-toolbox-module', version: '5.2.1' }
+      { name: '@pie-lib/pie-toolbox-module', version: '5.7.2' }
     ],
   },
 };

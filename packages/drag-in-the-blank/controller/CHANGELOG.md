@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.15...@pie-element/drag-in-the-blank-controller@6.0.16) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+
+
+
+
+
+## [6.0.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.14...@pie-element/drag-in-the-blank-controller@6.0.15) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
+## [6.0.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.13...@pie-element/drag-in-the-blank-controller@6.0.14) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+
+
+
+
+
+## [6.0.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.12...@pie-element/drag-in-the-blank-controller@6.0.13) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+* **drag-in-the-blank:** check alternates for feedback in evaluate PD-3227 ([974e3e9](https://github.com/pie-framework/pie-elements/commit/974e3e906b9722975173c7b1b12e3244d81b72cc))
+
+
+
+
+
+## [6.0.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.11...@pie-element/drag-in-the-blank-controller@6.0.12) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+
+
+
+## [6.0.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.10...@pie-element/drag-in-the-blank-controller@6.0.11) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+
+
+
 ## [6.0.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.9...@pie-element/drag-in-the-blank-controller@6.0.10) (2024-11-29)
 
 

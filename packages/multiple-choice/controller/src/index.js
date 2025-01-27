@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import isEmpty from 'lodash/isEmpty';
-import { isResponseCorrect, parseHTML } from './utils';
+import { isResponseCorrect } from './utils';
 import defaults from './defaults';
 import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/pie-toolbox/controller-utils';
 
@@ -10,10 +10,6 @@ const prepareChoice = (model, env, defaultFeedback) => (choice) => {
     label: choice.label,
     value: choice.value,
   };
-
-  if (model.accessibilityLabelsEnabled) {
-    out.accessibility = parseHTML(choice.accessibility).textContent || choice.value;
-  }
 
   if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
     out.rationale = model.rationaleEnabled ? choice.rationale : null;
@@ -90,6 +86,10 @@ export async function model(question, session, env, updateSession) {
     language: normalizedQuestion.language,
     extraCSSRules: normalizedQuestion.extraCSSRules,
     fontSizeFactor: normalizedQuestion.fontSizeFactor,
+    isSelectionButtonBelow: normalizedQuestion.isSelectionButtonBelow,
+    selectedAnswerBackgroundColor: normalizedQuestion.selectedAnswerBackgroundColor || 'initial',
+    minSelections: normalizedQuestion.minSelections,
+    maxSelections: normalizedQuestion.maxSelections,
     keyboardEventsEnabled: normalizedQuestion.keyboardEventsEnabled,
   };
 

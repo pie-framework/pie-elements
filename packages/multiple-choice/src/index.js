@@ -3,12 +3,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { updateSessionValue } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
 
-export const isComplete = (session) => !!(session && session.value && session.value.length);
+export const isComplete = (session, model) => {
+  if (!session || !session.value) {
+    return false;
+  }
+
+  const { choiceMode, minSelections = 1, maxSelections } = model || {};
+  const selections = session.value.length || 0;
+
+  if (choiceMode === 'radio') {
+    return !!selections;
+  }
+
+  if (selections < minSelections || selections > maxSelections) {
+    return false;
+  }
+
+  return true;
+};
 
 export default class MultipleChoice extends HTMLElement {
   constructor() {
@@ -32,7 +50,6 @@ export default class MultipleChoice extends HTMLElement {
             this._model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question',
           );
           this.setAttribute('role', 'region');
-
           this.setLangAttribute();
 
           ReactDOM.render(element, this, () => {
@@ -52,30 +69,17 @@ export default class MultipleChoice extends HTMLElement {
     );
 
     this._dispatchResponseChanged = debounce(() => {
-      var event = new CustomEvent('session-changed', {
-        bubbles: true,
-        composed: true,
-        detail: {
-          complete: isComplete(this._session),
-          component: this.tagName.toLowerCase(),
-        },
-      });
-
-      this.dispatchEvent(event);
+      this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model)));
     });
 
     this._dispatchModelSet = debounce(
       () => {
         this.dispatchEvent(
-          new CustomEvent('model-set', {
-            bubbles: true,
-            composed: true,
-            detail: {
-              complete: isComplete(this._session),
-              component: this.tagName.toLowerCase(),
-              hasModel: this._model !== undefined,
-            },
-          }),
+          new ModelSetEvent(
+            this.tagName.toLowerCase(),
+            isComplete(this._session, this._model),
+            this._model !== undefined,
+          ),
         );
       },
       50,

@@ -3,6 +3,101 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.6.1...@pie-element/image-cloze-association@6.6.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+* **image-cloze-association:** chage icon to warning message and adapt style PD-3872 ([349ca8c](https://github.com/pie-framework/pie-elements/commit/349ca8c3c3f836f188cd4abe61dd655c84ba1fe4))
+* **image-cloze-association:** change key for the warningMessage PD-3872 ([04ee43f](https://github.com/pie-framework/pie-elements/commit/04ee43fe4d5cb4dfd3bee1480a09dfe344e220b8))
+* **image-cloze-association:** change key for the warningMessage PD-3872 ([186df29](https://github.com/pie-framework/pie-elements/commit/186df29623a891a684f4b33597bea7393faef196))
+
+
+
+
+
+## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.6.0...@pie-element/image-cloze-association@6.6.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.5.1...@pie-element/image-cloze-association@6.6.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+* **image-cloze-association:** fix drag color when responseAreaFill exists PD-4554 ([2a788ba](https://github.com/pie-framework/pie-elements/commit/2a788bac0e7a683ff5fdc529beeb85cadb7cc301))
+
+
+### Features
+
+* add tests for session changed operation PD-4665 ([0a2d562](https://github.com/pie-framework/pie-elements/commit/0a2d562da49116a15baa47d0cbf7942eaddbf065))
+
+
+
+
+
+## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.5.0...@pie-element/image-cloze-association@6.5.1) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+* **ica:** Use defaultClassName instead of className to ensure styles are applied in PreviewPrompt PD-4532 ([a48913b](https://github.com/pie-framework/pie-elements/commit/a48913b2172fc058816f8c9577d93950b9c0cd23))
+* **ICA:** show correct answers highlighted with green color PD-4587 ([6607c07](https://github.com/pie-framework/pie-elements/commit/6607c07ed203391fc9a7e43100629a87b0911da2))
+
+
+
+
+
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.4.0...@pie-element/image-cloze-association@6.5.0) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+* **categorize:** delete class PD-4389 ([a04fbf3](https://github.com/pie-framework/pie-elements/commit/a04fbf3663fadb6b094bbcd72cd3778f62568124))
+* conclude merge with develop ([522c122](https://github.com/pie-framework/pie-elements/commit/522c122050c2b2a9c158f838f8dffc8d77ff1fdf))
+* delete unused style ([66d9601](https://github.com/pie-framework/pie-elements/commit/66d96015f37a0c72bf7de6332db947661f3d68e3))
+
+
+### Features
+
+* **categorize, hotspot, image-cloze-association:** extent fontSizeFactor to new elements PD-4389 ([c6480fb](https://github.com/pie-framework/pie-elements/commit/c6480fb201b6fd35edf50f46ef8e50b9f711f4be))
+* **image-cloze-association:** increase padding and margins for non-image reponse PD-4375 ([a089e28](https://github.com/pie-framework/pie-elements/commit/a089e28aa7a4161e2dd14b87a848bfc9cdc85911))
+
+
+
+
+
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.3.0...@pie-element/image-cloze-association@6.4.0) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+* **ica:** Fix Chrome behavior on iPads for image cloze association items by disabling image interactions in answer choices PD-4553 ([38164b0](https://github.com/pie-framework/pie-elements/commit/38164b071bad2acb6b0cbf307d59cb752e876ef1))
+* clean up ([2735fb0](https://github.com/pie-framework/pie-elements/commit/2735fb000ff76c7fa806cee353808c3ac57b94e8))
+* **image-cloze-association:** preserve response ids when moved back to possibleResponses, Added fallback to generate new ids only when shifted responses lack an id PD-4538 ([09751a0](https://github.com/pie-framework/pie-elements/commit/09751a0ba6b5ed356081d3e117e5857889c77796))
+
+
+### Features
+
+* **image-cloze-association:** change target droppable area on hover PD-4554 ([88894cd](https://github.com/pie-framework/pie-elements/commit/88894cdc4c6fce8890536428fb56fa7ff00b838e))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.2.2...@pie-element/image-cloze-association@6.3.0) (2024-11-29)
 
 

@@ -13,17 +13,14 @@ exports[`categories snapshots disabled 1`] = `
     }
   >
     <div>
-      <WithStyles(Typography)
-        key="category-label-0-0"
-      >
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "category label",
-            }
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "category label",
           }
-        />
-      </WithStyles(Typography)>
+        }
+        key="category-label-0-0"
+      />
       <WithStyles(Category)
         choices={Array []}
         disabled={true}
@@ -51,17 +48,14 @@ exports[`categories snapshots renders 1`] = `
     }
   >
     <div>
-      <WithStyles(Typography)
-        key="category-label-0-0"
-      >
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "category label",
-            }
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "category label",
           }
-        />
-      </WithStyles(Typography)>
+        }
+        key="category-label-0-0"
+      />
       <WithStyles(Category)
         choices={Array []}
         id="1"

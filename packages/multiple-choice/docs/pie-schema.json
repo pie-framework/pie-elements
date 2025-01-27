@@ -129,6 +129,16 @@
       "type": "boolean",
       "title": "lockChoiceOrder"
     },
+    "minSelections": {
+      "description": "Indicates that minimum selections that should be made (only for choice mode 'checkbox')",
+      "type": "number",
+      "title": "minSelections"
+    },
+    "maxSelections": {
+      "description": "Indicates that maximum selections that should be made (only for choice mode 'checkbox')",
+      "type": "number",
+      "title": "maxSelections"
+    },
     "partialScoring": {
       "description": "Indicates that the item should use partial scoring",
       "type": "boolean",
@@ -192,6 +202,16 @@
       "description": "Indicates the language of the component\nSupported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX",
       "type": "string",
       "title": "language"
+    },
+    "isSelectionButtonBelow": {
+      "description": "Indicates if the selection button and choice prefix should be positioned below the corresponding answer choice",
+      "type": "boolean",
+      "title": "isSelectionButtonBelow"
+    },
+    "fontSizeFactor": {
+      "description": "Indicates font size adjustment factor",
+      "type": "number",
+      "title": "fontSizeFactor"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",

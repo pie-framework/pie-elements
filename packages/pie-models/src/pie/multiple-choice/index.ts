@@ -56,12 +56,23 @@ export interface MultipleChoicePie extends PieModel {
    */
   toolbarEditorPosition?: 'bottom' | 'top';
 
+  /** Indicates the background color for selected choices
+   * @default: 'initial'
+   */
+  selectedAnswerBackgroundColor?: string;
+
   /**
    * Indicates the order of choices presented to user
    * if true, answer choices will be presented in the order they are defined in the model
    * If false, answer choices may be presented in a random order (depending upon the value of the lockChoiceOrder environment variable)
    */
   lockChoiceOrder?: boolean;
+
+  /** Indicates that minimum selections that should be made (only for choice mode 'checkbox') */
+  minSelections?: number;
+
+  /** Indicates that maximum selections that should be made (only for choice mode 'checkbox') */
+  maxSelections?: number;
 
   /** Indicates that the item should use partial scoring */
   partialScoring?: boolean;
@@ -100,6 +111,14 @@ export interface MultipleChoicePie extends PieModel {
    * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
    */
   language?: string;
+
+  /** Indicates if the selection button and choice prefix should be positioned below the corresponding answer choice */
+  isSelectionButtonBelow?: boolean;
+
+  /**
+   * Indicates font size adjustment factor
+   */
+  fontSizeFactor?: number;
 }
 
 interface ConfigureMaxImageDimensionsProp {

@@ -1,63 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Root snapshots model renders 1`] = `
-<Memo(DndProvider)
-  backend={[Function]}
-  context={[Window]}
-  options={
-    Object {
-      "backends": Array [
-        Object {
-          "backend": [Function],
-        },
-        Object {
-          "backend": [Function],
-          "options": Object {
-            "enableMouseEvents": true,
-            "enableTouchEvents": true,
-          },
-          "preview": true,
-          "skipDispatchOnTransition": true,
-          "transition": Object {
-            "_isMBTransition": true,
-            "check": [Function],
-            "event": "touchstart",
-          },
-        },
-      ],
-    }
-  }
->
-  <WithStyles(ImageClozeAssociationComponent)
-    model={
-      Object {
-        "answers": Array [
-          Object {
-            "containerIndex": 0,
-            "id": 1,
-            "value": "1",
-          },
-          Object {
-            "containerIndex": 1,
-            "id": 2,
-            "value": "2",
-          },
-        ],
-        "canDrag": true,
-        "draggingElement": Object {},
-        "duplicateResponses": false,
-        "image": Object {},
-        "maxResponsePerZone": 5,
-        "onAnswerSelect": [Function],
-        "onDragAnswerBegin": [Function],
-        "onDragAnswerEnd": [Function],
-        "possibleResponses": Array [],
-        "responseContainers": Array [],
-        "showDashedBorder": true,
-      }
-    }
-    updateAnswer={[Function]}
+exports[`Root snapshots renders correctly 1`] = `
+<WithStyles(UiLayout)>
+  <WithStyles(PreviewPrompt)
+    className="prompt"
   />
-  <PreviewComponent />
-</Memo(DndProvider)>
+  <WithStyles(PreviewPrompt) />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <WithStyles(InteractiveSection)
+    uiStyle={Object {}}
+  >
+    <WithStyles(ImageContainer)
+      answers={Array []}
+      canDrag={true}
+      draggingElement={
+        Object {
+          "id": "",
+          "value": "",
+        }
+      }
+      duplicateResponses={false}
+      maxResponsePerZone={1}
+      onAnswerSelect={[Function]}
+      onDragAnswerBegin={[Function]}
+      onDragAnswerEnd={[Function]}
+      responseContainers={
+        Array [
+          Object {
+            "id": "0",
+            "index": 0,
+          },
+          Object {
+            "id": "1",
+            "index": 1,
+          },
+        ]
+      }
+    />
+    <WithStyles(PossibleResponses)
+      canDrag={true}
+      customStyle={
+        Object {
+          "minWidth": "fit-content",
+        }
+      }
+      data={
+        Array [
+          Object {
+            "id": "0",
+            "value": "firstImage",
+          },
+          Object {
+            "id": "1",
+            "value": "secondImage",
+          },
+        ]
+      }
+      isVertical={false}
+      onAnswerRemove={[Function]}
+      onDragBegin={[Function]}
+      onDragEnd={[Function]}
+    />
+  </WithStyles(InteractiveSection)>
+</WithStyles(UiLayout)>
 `;

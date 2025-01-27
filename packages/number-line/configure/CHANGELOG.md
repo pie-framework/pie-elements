@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.2.6...@pie-element/number-line-configure@8.2.7) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+
+
+
+
+
+## [8.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.2.5...@pie-element/number-line-configure@8.2.6) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
+## [8.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.2.4...@pie-element/number-line-configure@8.2.5) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+
+
+
+
+
+## [8.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.2.3...@pie-element/number-line-configure@8.2.4) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+
+
+
+
+
+## [8.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.2.2...@pie-element/number-line-configure@8.2.3) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+
+
+
+## [8.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.2.1...@pie-element/number-line-configure@8.2.2) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+
+
+
 ## [8.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.2.0...@pie-element/number-line-configure@8.2.1) (2024-11-29)
 
 

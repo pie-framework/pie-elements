@@ -3,6 +3,98 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.1...@pie-element/multiple-choice@9.7.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+* **multiple-choice:** add minSelections default value and update events PD-4677 ([b8a1a22](https://github.com/pie-framework/pie-elements/commit/b8a1a22f3ea34aa8c03b03dd0bc1fbbc725c7a14))
+* **multiple-choice:** use session as source of truth for selected answers PD-4677 ([80a5d73](https://github.com/pie-framework/pie-elements/commit/80a5d7328a409b82e097c27a363afb77fead5491))
+
+
+
+
+
+## [9.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.0...@pie-element/multiple-choice@9.7.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
+# [9.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.6.0...@pie-element/multiple-choice@9.7.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+* **multiple-choice:** Improve reading of responses, removed the redundant accessibility prop from choices PD-4552 ([15eb3df](https://github.com/pie-framework/pie-elements/commit/15eb3df1c2dfc60894c1c73decf0131e33d01a8c))
+
+
+### Features
+
+* **multiple-choice:** improve focus indicator for checkboxes and radios to meet accessibility contrast requirements, disabled ripple effect for checkboxes and radios, Implemented distinct focus styles for checked and unchecked states PD-4555 ([f934331](https://github.com/pie-framework/pie-elements/commit/f9343319878253166e9be989185071990fa96824))
+* add tests for session changed operation PD-4665 ([0a2d562](https://github.com/pie-framework/pie-elements/commit/0a2d562da49116a15baa47d0cbf7942eaddbf065))
+
+
+
+
+
+# [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.5.1...@pie-element/multiple-choice@9.6.0) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+
+
+### Features
+
+* **multiple-choice:** add background color for selected choices PD-3844 ([3ecfa80](https://github.com/pie-framework/pie-elements/commit/3ecfa8018b1ff825be86e08f930f7dc72ba907b1))
+* **multiple-choice:** add background color for selected choices PD-3844 ([357488c](https://github.com/pie-framework/pie-elements/commit/357488ce35e8874be2a71e643a873c47a4ef64af))
+* **multiple-choice:** add min/max selection possibility PD-3843 PD-4518 ([ead6fe3](https://github.com/pie-framework/pie-elements/commit/ead6fe3eda5d455d9e6d1ebda37ded18e54fa815))
+
+
+
+
+
+## [9.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.5.0...@pie-element/multiple-choice@9.5.1) (2024-12-10)
+
+
+### Bug Fixes
+
+* conclude merge with develop ([522c122](https://github.com/pie-framework/pie-elements/commit/522c122050c2b2a9c158f838f8dffc8d77ff1fdf))
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+
+
+
+# [9.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.4.0...@pie-element/multiple-choice@9.5.0) (2024-12-05)
+
+
+### Bug Fixes
+
+* clean up ([8a1fb40](https://github.com/pie-framework/pie-elements/commit/8a1fb40d53ec5fa8a049f385ec0f7692f005d328))
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+### Features
+
+* **multiple-choice:** add documentation for isSelectionButtonBelow PD-3842 ([a15ef64](https://github.com/pie-framework/pie-elements/commit/a15ef64878053b7bdac12e620495ccc9a82b413c))
+* **multiple-choice:** use isSelectionButtonBelow property PD-3842 ([8b63ad0](https://github.com/pie-framework/pie-elements/commit/8b63ad0b300a8b8540aab87c4aa352b939fad7e5))
+* **multiple-choice:** wip PD-3842 ([4e439ba](https://github.com/pie-framework/pie-elements/commit/4e439ba5272516801305dacc7fc038fe67f6ff3d))
+
+
+
+
+
 # [9.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.3.2...@pie-element/multiple-choice@9.4.0) (2024-11-29)
 
 

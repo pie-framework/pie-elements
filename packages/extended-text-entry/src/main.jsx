@@ -154,7 +154,8 @@ export class Main extends React.Component {
             className={classnames(classes.editor, 'response-area-editor')}
             onChange={this.changeSessionValue}
             markup={value || ''}
-            width={width && width.toString()}
+            maxWidth={width && width.toString()}
+            minWidth={'100px'}
             minHeight={height && height.toString()}
             maxHeight={maxHeight}
             disabled={disabled}
@@ -162,6 +163,7 @@ export class Main extends React.Component {
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
             charactersLimit={50000}
+            autoWidthToolbar
             pluginProps={{
               math: {
                 disabled: !mathInput,

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 
 import ImageClozeAssociationComponent from './root';
@@ -14,7 +14,11 @@ export default class ImageClozeAssociation extends HTMLElement {
   }
 
   isComplete() {
-    if (!this._session) {
+    if (!this._session || !this._session.answers) {
+      return false;
+    }
+
+    if (!Array.isArray(this._session.answers)) {
       return false;
     }
 

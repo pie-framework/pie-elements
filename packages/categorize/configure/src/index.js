@@ -7,7 +7,7 @@ import {
   InsertSoundEvent,
   DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 
 import Main from './main';
 

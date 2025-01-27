@@ -2,12 +2,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-
 import Checkbox from '@material-ui/core/Checkbox';
 import { Feedback, color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import FeedbackTick from './feedback-tick';
 import Radio from '@material-ui/core/Radio';
 import classNames from 'classnames';
+
+import FeedbackTick from './feedback-tick';
 
 const CLASS_NAME = 'multiple-choice-component';
 
@@ -24,14 +24,32 @@ const styleSheet = (theme) => ({
     flex: 1,
     '& label': {
       color: color.text(),
-      '& > span':{
+      '& > span': {
         fontSize: 'inherit',
-      }
+      },
     },
   },
   horizontalLayout: {
     [`& .${CLASS_NAME}`]: {
       paddingRight: theme.spacing.unit,
+    },
+  },
+  belowLayout: {
+    '& > label': {
+      alignItems: 'flex-start',
+    },
+  },
+  belowLayoutCenter: {
+    justifyContent: 'center',
+    '& > label': {
+      alignItems: 'center',
+    },
+  },
+  belowSelectionComponent: {
+    display: 'flex',
+    alignItems: 'center',
+    '& > span': {
+      paddingLeft: 0,
     },
   },
 });
@@ -40,23 +58,20 @@ const formStyleSheet = {
   label: {
     color: `${color.text()} !important`, //'var(--choice-input-color, black)'
     backgroundColor: color.background(),
-    letterSpacing: 'normal'
+    letterSpacing: 'normal',
   },
   disabled: {
     // apply to all children
     '& *': {
       cursor: 'not-allowed !important',
-    }
-  }
+    },
+  },
 };
 
 export const StyledFormControlLabel = withStyles(formStyleSheet, {
   name: 'FormControlLabel',
 })((props) => (
-  <FormControlLabel
-    {...props}
-    classes={{ label: props.classes.label, disabled: props.classes.disabled }}
-  />
+  <FormControlLabel {...props} classes={{ label: props.classes.label, disabled: props.classes.disabled }} />
 ));
 
 const colorStyle = (varName, fallback) => ({
@@ -83,10 +98,18 @@ const inputStyles = {
     cursor: 'not-allowed !important',
     pointerEvents: 'initial !important',
   },
+  focusVisibleUnchecked: {
+    outline: `1px solid ${color.focusUncheckedBorder()}`,
+    backgroundColor: color.focusUnchecked(),
+  },
+  focusVisibleChecked: {
+    outline: `1px solid ${color.focusCheckedBorder()}`,
+    backgroundColor: color.focusChecked(),
+  },
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
+  const { correctness, classes, checked, onChange, disabled, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -100,8 +123,9 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
   return (
     <Checkbox
       id={id}
-      aria-label={accessibility}
       aria-checked={checked}
+      focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
+      disableRipple
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -114,7 +138,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
+  const { correctness, classes, checked, onChange, disabled, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -128,8 +152,9 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
   return (
     <Radio
       id={id}
-      aria-label={accessibility}
       aria-checked={checked}
+      focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
+      disableRipple
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -151,7 +176,6 @@ export class ChoiceInput extends React.Component {
     feedback: PropTypes.string,
     label: PropTypes.string.isRequired,
     rationale: PropTypes.string,
-    accessibility: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
     classes: PropTypes.object,
@@ -159,12 +183,11 @@ export class ChoiceInput extends React.Component {
     hideTick: PropTypes.bool,
     isEvaluateMode: PropTypes.bool,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-    updateSession: PropTypes.func,
+    isSelectionButtonBelow: PropTypes.bool,
   };
 
   static defaultProps = {
     rationale: null,
-    accessibility: null,
     checked: false,
     isEvaluateMode: false,
   };
@@ -177,10 +200,6 @@ export class ChoiceInput extends React.Component {
 
   onToggleChoice(event) {
     this.props.onChange(event);
-    this.props.updateSession({
-      value: this.props.value,
-      selected: !this.props.checked,
-    });
   }
 
   generateChoiceId() {
@@ -198,12 +217,12 @@ export class ChoiceInput extends React.Component {
       classes,
       className,
       rationale,
-      accessibility,
       hideTick,
       isEvaluateMode,
       choicesLayout,
       value,
       checked,
+      isSelectionButtonBelow,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -211,11 +230,13 @@ export class ChoiceInput extends React.Component {
 
     const holderClassNames = classNames(classes.checkboxHolder, {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
+      [classes.belowLayout]: isSelectionButtonBelow && choicesLayout !== 'grid',
+      [classes.belowLayoutCenter]: isSelectionButtonBelow && choicesLayout === 'grid',
     });
 
     const choicelabel = (
       <>
-        {displayKey ? (
+        {displayKey && !isSelectionButtonBelow ? (
           <span className={classes.row}>
             {displayKey}.{'\u00A0'}
             <PreviewPrompt className="label" prompt={label} tagName="span" />
@@ -231,22 +252,44 @@ export class ChoiceInput extends React.Component {
         <div className={classes.row}>
           {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
-            <StyledFormControlLabel
-              label={choicelabel}
-              value={value}
-              htmlFor={this.choiceId}
-              control={
-                <Tag
-                  accessibility={accessibility}
-                  disabled={disabled}
-                  checked={checked}
-                  correctness={correctness}
-                  value={value}
-                  id={this.choiceId}
-                  onChange={this.onToggleChoice}
-                />
-              }
-            />
+            {isSelectionButtonBelow ? (
+              <StyledFormControlLabel
+                label={choicelabel}
+                value={value}
+                htmlFor={this.choiceId}
+                labelPlacement={'top'}
+                control={
+                  <span className={classes.belowSelectionComponent}>
+                    <Tag
+                      disabled={disabled}
+                      checked={checked}
+                      correctness={correctness}
+                      value={value}
+                      id={this.choiceId}
+                      onChange={this.onToggleChoice}
+                      style={{ padding: 0 }}
+                    />
+                    {displayKey}.
+                  </span>
+                }
+              />
+            ) : (
+              <StyledFormControlLabel
+                label={choicelabel}
+                value={value}
+                htmlFor={this.choiceId}
+                control={
+                  <Tag
+                    disabled={disabled}
+                    checked={checked}
+                    correctness={correctness}
+                    value={value}
+                    id={this.choiceId}
+                    onChange={this.onToggleChoice}
+                  />
+                }
+              />
+            )}
           </div>
         </div>
         {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}

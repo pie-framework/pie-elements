@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+
 import ChoiceInput from './choice-input';
 
 export class Choice extends React.Component {
-  static propTypes = {
-   updateSession: PropTypes.func,
-  };
+  static propTypes = {};
 
   onChange = (choice) => {
     const { disabled, onChoiceChanged } = this.props;
@@ -32,7 +31,8 @@ export class Choice extends React.Component {
       classes,
       choicesLayout,
       gridColumns,
-      updateSession,
+      isSelectionButtonBelow,
+      selectedAnswerBackgroundColor
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -49,9 +49,9 @@ export class Choice extends React.Component {
       index,
       choicesLayout,
       gridColumns,
-      updateSession,
       onChange: this.onChange,
       isEvaluateMode,
+      isSelectionButtonBelow,
     };
 
     const names = classNames(classes.choice, {
@@ -59,8 +59,10 @@ export class Choice extends React.Component {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
+    const choiceBackground = selectedAnswerBackgroundColor && checked ? selectedAnswerBackgroundColor : 'initial';
+
     return (
-      <div className={choiceClass} key={index}>
+      <div className={choiceClass} key={index} style={{ backgroundColor: choiceBackground }}>
         <ChoiceInput {...choiceProps} className={names} />
       </div>
     );
@@ -82,12 +84,16 @@ Choice.propTypes = {
   displayKey: PropTypes.string,
   choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
   gridColumns: PropTypes.string,
+  selectedAnswerBackgroundColor: PropTypes.string,
+  isSelectionButtonBelow: PropTypes.bool
 };
 
 export default withStyles((theme) => ({
   choice: {
     paddingTop: theme.spacing.unit * 2.5,
     paddingBottom: theme.spacing.unit + 2,
+    paddingLeft: theme.spacing.unit + 2,
+    paddingRight: theme.spacing.unit + 2,
     borderBottom: `1px solid ${theme.palette.grey[300]}`,
   },
   noBorder: {

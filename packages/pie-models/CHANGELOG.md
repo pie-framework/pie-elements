@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.40.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.39.1...@pie-element/pie-models@13.40.0) (2024-12-20)
+
+
+### Features
+
+* **multiple-choice:** add background color for selected choices PD-3844 ([357488c](https://github.com/pie-framework/pie-elements/commit/357488ce35e8874be2a71e643a873c47a4ef64af))
+
+
+
+
+
+## [13.39.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.39.0...@pie-element/pie-models@13.39.1) (2024-12-10)
+
+
+### Bug Fixes
+
+* **categorize:** add fontSizeFactor to documentation PD-4389 ([cb334c6](https://github.com/pie-framework/pie-elements/commit/cb334c669586bc5eb09863cc5dcb303e9bd4f999))
+* conclude merge with develop ([522c122](https://github.com/pie-framework/pie-elements/commit/522c122050c2b2a9c158f838f8dffc8d77ff1fdf))
+
+
+
+
+
+# [13.39.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.38.1...@pie-element/pie-models@13.39.0) (2024-12-05)
+
+
+### Features
+
+* **multiple-choice:** add documentation for isSelectionButtonBelow PD-3842 ([a15ef64](https://github.com/pie-framework/pie-elements/commit/a15ef64878053b7bdac12e620495ccc9a82b413c))
+
+
+
+
+
 ## [13.38.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.38.0...@pie-element/pie-models@13.38.1) (2024-11-15)
 
 

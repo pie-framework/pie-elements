@@ -6,14 +6,20 @@ import { withStyles } from '@material-ui/core/styles';
 import { Collapsible, Readable, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import MathQuill from '@pie-framework/mathquill';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { treeFilter } from 'enzyme/build/RSTTraversal';
 
 // Utility function to simulate the toggle click and return the updated component
-const simulateToggleClick = (wrapper, toggleClassName) => {
-    const toggleContent = wrapper.find(toggleClassName).first();
-    toggleContent.simulate('click');
+const simulateToggleClick = (wrapper, toggleSelector) => {
+    const root = wrapper.getNodesInternal();
+    const elementToClick = wrapper.wrap(treeFilter(root[0], toggleSelector)).first();
+    if (elementToClick.length === 0) {
+        throw new Error(`Toggle element with selector '${toggleSelector}' not found`);
+    }
+    elementToClick.simulate('click');
     wrapper.update();
     return wrapper.find(CorrectAnswerToggle).first();
 };
+
 
 const defaultModel = {
     prompt: 'Solve the equation:',
@@ -114,12 +120,12 @@ describe('Main component', () => {
     });
 
     it('toggles CorrectAnswerToggle correctly', () => {
-        const updatedToggleComponent = simulateToggleClick(wrapper, '.CorrectAnswerToggle-content-27');
+        const updatedToggleComponent = simulateToggleClick(wrapper, el => el.props?.className?.includes('CorrectAnswerToggle-content'));
         expect(updatedToggleComponent.props().toggled).toBe(true);
     });
 
     it('show correct answers when correct answer toggle is true', () => {
-        const updatedToggleComponent = simulateToggleClick(wrapper, '.CorrectAnswerToggle-content-27');
+        simulateToggleClick(wrapper, el => el.props?.className?.includes('CorrectAnswerToggle-content'));
         const firstResponseArea = wrapper.find('Static').at(0);
         const secondResponseArea = wrapper.find('Static').at(1);
         expect(firstResponseArea.prop('latex')).toContain('2');

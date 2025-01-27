@@ -1,5 +1,4 @@
 export default {
-  accessibilityLabelsEnabled: false,
   choiceMode: 'checkbox',
   choicePrefix: 'letters',
   choices: [],
@@ -17,5 +16,6 @@ export default {
   teacherInstructions: '',
   teacherInstructionsEnabled: true,
   toolbarEditorPosition: 'bottom',
+  selectedAnswerBackgroundColor: 'initial',
   keyboardEventsEnabled: false,
 };

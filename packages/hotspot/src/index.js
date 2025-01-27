@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 
 import HotspotComponent from './hotspot';
@@ -15,11 +15,15 @@ export default class Hotspot extends HTMLElement {
   }
 
   isComplete() {
-    if (!this._session) {
+    if (!this._session || !this._session.answers) {
       return false;
     }
 
-    return Array.isArray(this._session.answers) && this._session.answers.length > 0;
+    if (!Array.isArray(this._session.answers)) {
+      return false;
+    }
+
+    return this._session.answers.length > 0;
   }
 
   set session(s) {

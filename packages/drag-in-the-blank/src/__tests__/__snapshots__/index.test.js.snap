@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`drag-in-the-blank renders snapshot 1`] = `
+<WithStyles(UiLayout)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <Component
+    choices={Array []}
+    correctResponse={Object {}}
+    showCorrectAnswer={false}
+    value={Object {}}
+  />
+</WithStyles(UiLayout)>
+`;
+
+exports[`drag-in-the-blank renders snapshot with rationale 1`] = `
+<WithStyles(UiLayout)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <Component
+    choices={Array []}
+    correctResponse={Object {}}
+    rationale="This is rationale"
+    showCorrectAnswer={false}
+    value={Object {}}
+  />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale",
+        "visible": "Hide Rationale",
+      }
+    }
+  >
+    <WithStyles(PreviewPrompt)
+      prompt="This is rationale"
+    />
+  </WithStyles(Collapsible)>
+</WithStyles(UiLayout)>
+`;
+
+exports[`drag-in-the-blank renders snapshot with teacherInstructions 1`] = `
+<WithStyles(UiLayout)>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Teacher Instructions",
+        "visible": "Hide Teacher Instructions",
+      }
+    }
+  >
+    <WithStyles(PreviewPrompt)
+      prompt="These are teacher instructions"
+    />
+  </WithStyles(Collapsible)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <Component
+    choices={Array []}
+    correctResponse={Object {}}
+    showCorrectAnswer={false}
+    teacherInstructions="These are teacher instructions"
+    value={Object {}}
+  />
+</WithStyles(UiLayout)>
+`;

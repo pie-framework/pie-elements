@@ -7,12 +7,14 @@ exports[`Render Main Component should match snapshot 1`] = `
   </h2>
   <EditableHtml
     allowValidation={false}
+    autoWidthToolbar={true}
     charactersLimit={50000}
     className="response-area-editor"
     highlightShape={true}
     languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
+    minWidth="100px"
     onChange={[Function]}
     onDone={[Function]}
     pluginProps={
@@ -65,12 +67,14 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
   </div>
   <EditableHtml
     allowValidation={false}
+    autoWidthToolbar={true}
     charactersLimit={50000}
     className="response-area-editor"
     highlightShape={true}
     languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
+    minWidth="100px"
     onChange={[Function]}
     onDone={[Function]}
     pluginProps={

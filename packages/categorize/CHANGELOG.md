@@ -3,6 +3,97 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.8.1...@pie-element/categorize@9.8.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+
+
+
+
+
+## [9.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.8.0...@pie-element/categorize@9.8.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
+# [9.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.7.0...@pie-element/categorize@9.8.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+
+
+### Features
+
+* add tests for session changed operation PD-4665 ([0a2d562](https://github.com/pie-framework/pie-elements/commit/0a2d562da49116a15baa47d0cbf7942eaddbf065))
+
+
+
+
+
+# [9.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.6.0...@pie-element/categorize@9.7.0) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+
+
+### Features
+
+* **categorize:** revert PD-4499 ([0f81d95](https://github.com/pie-framework/pie-elements/commit/0f81d950ab885a6946d904079cd2d3d82758b7ed))
+* **categorize:** update session complete condition PD-4610 ([1bdf41b](https://github.com/pie-framework/pie-elements/commit/1bdf41b920bf816774ce4f4c7e8cc3e19af703c2))
+
+
+
+
+
+# [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.5.0...@pie-element/categorize@9.6.0) (2024-12-10)
+
+
+### Bug Fixes
+
+* conclude merge with develop ([0a3c348](https://github.com/pie-framework/pie-elements/commit/0a3c3482c77b02c916b72d51bfe878cc86a74e68))
+* conclude merge with develop ([522c122](https://github.com/pie-framework/pie-elements/commit/522c122050c2b2a9c158f838f8dffc8d77ff1fdf))
+* delete unused style ([66d9601](https://github.com/pie-framework/pie-elements/commit/66d96015f37a0c72bf7de6332db947661f3d68e3))
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+### Features
+
+* **categorize, hotspot, image-cloze-association:** extent fontSizeFactor to new elements PD-4389 ([c6480fb](https://github.com/pie-framework/pie-elements/commit/c6480fb201b6fd35edf50f46ef8e50b9f711f4be))
+
+
+
+
+
+# [9.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.4.0...@pie-element/categorize@9.5.0) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+### Features
+
+* **categorize:** migrate ui_style row_min_height to minRowHeight PD-4499 ([026d359](https://github.com/pie-framework/pie-elements/commit/026d359c571c8c958a2e660e9e9266f60c574435))
+
+
+
+
+
 # [9.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.3.0...@pie-element/categorize@9.4.0) (2024-11-29)
 
 

@@ -19,27 +19,29 @@ export class PossibleResponse extends React.Component {
       bottom: '3px',
       right: '3px',
     };
-    let correctnessClass;
+    const correctnessClass = isCorrect === true ? 'baseCorrect' : isCorrect === false ? 'baseIncorrect' : undefined;
 
-    if (isCorrect === true) {
-      correctnessClass = 'baseCorrect';
-    } else if (isCorrect === false) {
-      correctnessClass = 'baseIncorrect';
-    }
+    const imgRegex = /<img[^>]+src="([^">]+)"/;
+    const containsImage = imgRegex.test(data.value);
+
+    const containerClassNames = classNames([
+      classes.base,
+      {
+        [classes.answerChoiceTransparency]: answerChoiceTransparency,
+        [classes[correctnessClass]]: !!correctnessClass,
+        [classes.textAnswerChoiceStyle]: !containsImage,
+      },
+    ]);
+
+    const promptClassNames = classNames([
+      classes.span,
+      { [classes.hiddenSpan]: data.hidden },
+    ]);
 
     return connectDragSource(
-      <div
-        className={classNames([
-          classes.base,
-          {
-            [classes.answerChoiceTransparency]: answerChoiceTransparency,
-            [classes[correctnessClass]]: !!correctnessClass,
-          },
-        ])}
-        style={containerStyle}
-      >
+      <div className={containerClassNames} style={containerStyle}>
         <PreviewPrompt
-          className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])}
+          defaultClassName={promptClassNames}
           prompt={data.value}
           tagName="span"
         />
@@ -76,6 +78,16 @@ const styles = () => ({
     justifyContent: 'center',
     minHeight: '28px',
     width: 'fit-content',
+    '& span img':{
+      // Added for touch devices, for image content.
+      // This will prevent the context menu from appearing and not allowing other interactions with the image.
+      // If interactions with the image in the token will be requested we should handle only the context Menu.
+      pointerEvents: 'none',
+    }
+  },
+  textAnswerChoiceStyle: {
+    padding: '0 10px',
+    margin: '4px 6px !important',
   },
   answerChoiceTransparency: {
     border: 'none',
@@ -93,10 +105,6 @@ const styles = () => ({
   },
   span: {
     backgroundColor: color.background(),
-    // Added for touch devices, for image content.
-    // This will prevent the context menu from appearing and not allowing other interactions with the image.
-    // If interactions with the image in the token will be requested we should handle only the context Menu.
-    pointerEvents: 'none',
   },
   hiddenSpan: {
     visibility: 'hidden',

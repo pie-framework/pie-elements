@@ -2,10 +2,10 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/pie-toolbox": "2.3.0",
+    "@pie-lib/pie-toolbox": "2.7.0",
     "lodash": "^4.17.15"
   },
-  "version": "7.2.0",
+  "version": "7.5.3",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

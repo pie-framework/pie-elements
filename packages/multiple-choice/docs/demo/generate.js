@@ -12,7 +12,6 @@ exports.model = (id, element) => ({
         type: 'none',
         value: '',
       },
-      accessibility: 'sweden',
     },
     {
       value: 'iceland',
@@ -22,7 +21,6 @@ exports.model = (id, element) => ({
         value: '',
       },
       rationale: 'Rationale for Iceland',
-      accessibility: 'iceland',
     },
     {
       value: 'norway',
@@ -32,7 +30,6 @@ exports.model = (id, element) => ({
         value: '',
       },
       rationale: 'Rationale for Norway',
-      accessibility: 'norway',
     },
     {
       correct: true,
@@ -43,7 +40,6 @@ exports.model = (id, element) => ({
         value: '',
       },
       rationale: 'Rationale for Finland',
-      accessibility: 'finland',
     },
   ],
   extraCSSRules: {
@@ -56,7 +52,7 @@ exports.model = (id, element) => ({
       .blue {
         color: blue !important;
       }
-    `
+    `,
   },
   prompt: '',
   promptEnabled: true,

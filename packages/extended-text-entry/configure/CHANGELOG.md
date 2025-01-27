@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.2.1...@pie-element/extended-text-entry-configure@10.2.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+
+
+
+
+
+## [10.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.2.0...@pie-element/extended-text-entry-configure@10.2.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
+# [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.1.6...@pie-element/extended-text-entry-configure@10.2.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+* **extended-text-entry:** display dimensions in settings panel based on settings prop PD-4662 ([a4b245f](https://github.com/pie-framework/pie-elements/commit/a4b245fb03c599ff6b3871c9af3f3e3b6bf6d76d))
+
+
+### Features
+
+* **extended-text-entry:** change max width from 500 to 1200px PD-4661 ([14214cc](https://github.com/pie-framework/pie-elements/commit/14214ccc8b70687e0e507d7f674902966c2f09c7))
+
+
+
+
+
+## [10.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.1.5...@pie-element/extended-text-entry-configure@10.1.6) (2024-12-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
+
+
+
+
+
+## [10.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.1.4...@pie-element/extended-text-entry-configure@10.1.5) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+
+
+
+## [10.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.1.3...@pie-element/extended-text-entry-configure@10.1.4) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+
+
+
 ## [10.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.1.2...@pie-element/extended-text-entry-configure@10.1.3) (2024-11-29)
 
 

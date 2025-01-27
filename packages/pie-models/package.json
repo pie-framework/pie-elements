@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/pie-models",
-  "version": "13.38.1",
+  "version": "13.40.0",
   "private": true,
   "description": "This project contains documented typescript interfaces for generating schema documentation.",
   "main": "index.js",
@@ -10,7 +10,7 @@
   ],
   "types": "lib/index.d.ts",
   "scripts": {
-    "make-schemas": "ts-node --max-old-space-size=4096 scripts/GenerateSchemas.ts -m",
+    "make-schemas": "ts-node scripts/GenerateSchemas.ts -m",
     "copy-schemas": "ts-node scripts/GenerateSchemas.ts -c",
     "build": "tsc",
     "view-docs": "docson -d dist/schemas",

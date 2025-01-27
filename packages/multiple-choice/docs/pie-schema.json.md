@@ -115,6 +115,14 @@ Indicates the order of choices presented to user
 if true, answer choices will be presented in the order they are defined in the model
 If false, answer choices may be presented in a random order (depending upon the value of the lockChoiceOrder environment variable)
 
+# `minSelections` (number)
+
+Indicates that minimum selections that should be made (only for choice mode 'checkbox')
+
+# `maxSelections` (number)
+
+Indicates that maximum selections that should be made (only for choice mode 'checkbox')
+
 # `partialScoring` (boolean)
 
 Indicates that the item should use partial scoring
@@ -168,6 +176,14 @@ Indicates if Rubric is enabled
 
 Indicates the language of the component
 Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+
+# `isSelectionButtonBelow` (boolean)
+
+Indicates if the selection button and choice prefix should be positioned below the corresponding answer choice
+
+# `fontSizeFactor` (number)
+
+Indicates font size adjustment factor
 
 # `id` (string, required)
 
