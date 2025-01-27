@@ -269,7 +269,7 @@ export class ChoiceInput extends React.Component {
                       onChange={this.onToggleChoice}
                       style={{ padding: 0 }}
                     />
-                    {displayKey}.
+                    {displayKey ? `${displayKey}.` : ''}
                   </span>
                 }
               />
