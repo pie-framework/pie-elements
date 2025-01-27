@@ -54,8 +54,8 @@ exports.model = (id, element) => ({
       }
     `,
   },
-  prompt: '',
-  promptEnabled: true,
+  "prompt": "<div> <audio controls=\"\" controlslist=\"nodownload\"><source type=\"audio/mp4\" src=\"https://assets.pie-api.com/assets/b9cb01ba-8c9d-49bb-a67f-f5c3b0dfc85c/audio/m4a/107784c6-fa5f-4060-ac53-8938971e3da5\"></audio></div>",  promptEnabled: true,
   toolbarEditorPosition: 'bottom',
   rubricEnabled: false,
+  autoplayAudioEnabled: true
 });

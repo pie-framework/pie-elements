@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.2.2...@pie-element/multiple-choice-configure@7.2.3) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+
+
+
+
+
+## [7.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.2.1...@pie-element/multiple-choice-configure@7.2.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 ## [7.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.2.0...@pie-element/multiple-choice-configure@7.2.1) (2025-01-06)
 
 

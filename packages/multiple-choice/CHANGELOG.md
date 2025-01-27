@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.1...@pie-element/multiple-choice@9.7.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+* **multiple-choice:** add minSelections default value and update events PD-4677 ([b8a1a22](https://github.com/pie-framework/pie-elements/commit/b8a1a22f3ea34aa8c03b03dd0bc1fbbc725c7a14))
+* **multiple-choice:** use session as source of truth for selected answers PD-4677 ([80a5d73](https://github.com/pie-framework/pie-elements/commit/80a5d7328a409b82e097c27a363afb77fead5491))
+
+
+
+
+
+## [9.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.0...@pie-element/multiple-choice@9.7.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 # [9.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.6.0...@pie-element/multiple-choice@9.7.0) (2025-01-06)
 
 

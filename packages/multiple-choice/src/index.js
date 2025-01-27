@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { updateSessionValue } from './session-updater';
 
@@ -17,7 +18,7 @@ export const isComplete = (session, model, audioComplete) => {
     return false;
   }
 
-  const { choiceMode, minSelections, maxSelections } = model || {};
+  const { choiceMode, minSelections = 1, maxSelections } = model || {};
   const selections = session.value.length || 0;
 
   if (choiceMode === 'radio') {
@@ -69,31 +70,17 @@ export default class MultipleChoice extends HTMLElement {
     );
 
     this._dispatchResponseChanged = debounce(() => {
-      console.log('>> dispatch event');
-      var event = new CustomEvent('session-changed', {
-        bubbles: true,
-        composed: true,
-        detail: {
-          complete: isComplete(this._session, this._model, this.audioComplete),
-          component: this.tagName.toLowerCase(),
-        },
-      });
-
-      this.dispatchEvent(event);
+      this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete)));
     });
 
     this._dispatchModelSet = debounce(
       () => {
         this.dispatchEvent(
-          new CustomEvent('model-set', {
-            bubbles: true,
-            composed: true,
-            detail: {
-              complete: isComplete(this._session, this._model),
-              component: this.tagName.toLowerCase(),
-              hasModel: this._model !== undefined,
-            },
-          }),
+          new ModelSetEvent(
+            this.tagName.toLowerCase(),
+            isComplete(this._session, this._model),
+            this._model !== undefined,
+          ),
         );
       },
       50,

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.37.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.37.6...@pie-element/matrix-configure@0.37.7) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+
+
+
+
+
+## [0.37.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.37.5...@pie-element/matrix-configure@0.37.6) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 ## [0.37.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.37.4...@pie-element/matrix-configure@0.37.5) (2025-01-06)
 
 

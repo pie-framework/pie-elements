@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { ShowRationale } from '@pie-lib/pie-toolbox/icons';
 import { color, Collapsible, PreviewPrompt, UiLayout, hasText } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import Translator from '@pie-lib/pie-toolbox/translator';
 
@@ -372,7 +372,6 @@ const WarningInfo = withStyles((theme) => ({
     padding: theme.spacing.unit,
     display: 'flex',
     alignItems: 'center',
-    width: 'fit-content',
     '& svg': {
       height: '30px',
     },
@@ -389,7 +388,7 @@ const WarningInfo = withStyles((theme) => ({
   <TransitionGroup>
     <CSSTransition classNames={'fb'} key="fb" timeout={300}>
       <div key="panel" className={classes.warning}>
-        <ShowRationale iconSet="emoji" shape="square" />
+        <NotInterestedIcon color={'secondary'} fontSize={'small'}/>
         <span className={classes.message} dangerouslySetInnerHTML={{ __html: message }} />
       </div>
     </CSSTransition>

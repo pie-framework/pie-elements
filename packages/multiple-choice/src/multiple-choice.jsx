@@ -92,9 +92,8 @@ export class MultipleChoice extends React.Component {
     super(props);
 
     this.state = {
-      selectedValue: null,
-      selectedValues: [],
       showCorrect: this.props.alwaysShowCorrect || false,
+      maxSelectionsErrorState: false,
     };
 
     this.onToggle = this.onToggle.bind(this);
@@ -107,27 +106,18 @@ export class MultipleChoice extends React.Component {
   }
 
   // handleChange was added for accessibility. Please see comments and videos from PD-2441.
-  // TODO: Should only be removed if a better solution is found.
   handleChange = (event) => {
     const { value, checked } = event.target;
-    const { choiceMode, maxSelections, onChoiceChanged } = this.props;
+    const { maxSelections, onChoiceChanged, session } = this.props;
 
-    if (choiceMode === 'radio') {
-      this.setState({ selectedValue: value });
-    } else {
-      const { selectedValues } = this.state;
+    if (session.value && session.value.length >= maxSelections) {
+      // show/hide max selections error when user select/deselect an answer
+      this.setState({ maxSelectionsErrorState: checked });
 
-      if (checked && selectedValues.length >= maxSelections) {
+      if (checked) {
+        // prevent selecting more answers
         return;
       }
-
-      this.setState((prevState) => {
-        const selectedValues = checked
-          ? [...prevState.selectedValues, value]
-          : prevState.selectedValues.filter((currentValue) => currentValue !== value);
-
-        return { selectedValues };
-      });
     }
 
     onChoiceChanged({ value, selected: checked });
@@ -205,13 +195,7 @@ export class MultipleChoice extends React.Component {
       return choice.correct || false;
     }
 
-    if (this.isSelected(choice.value)) {
-      return true;
-    }
-
-    return this.props.choiceMode === 'radio'
-      ? this.state.selectedValue === choice.value
-      : this.state.selectedValues.includes(choice.value);
+    return this.isSelected(choice.value);
   }
 
   // renderHeading function was added for accessibility.
@@ -251,7 +235,7 @@ export class MultipleChoice extends React.Component {
       autoplayAudioEnabled,
       session,
     } = this.props;
-    const { showCorrect } = this.state;
+    const { showCorrect, maxSelectionsErrorState } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
@@ -346,7 +330,7 @@ export class MultipleChoice extends React.Component {
             })}
           </div>
         )}
-        {choiceMode === 'checkbox' && selections >= maxSelections && (
+        {choiceMode === 'checkbox' && maxSelectionsErrorState && (
           <div className={classes.errorText}>
             {translator.t(`translation:multipleChoice:maxSelections_${maxSelections === 1 ? 'one' : 'other'}`, {
               lng: language,

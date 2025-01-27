@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.1.8...@pie-element/explicit-constructed-response-configure@7.1.9) (2025-01-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+* **ECR:** add error handling for undefined pluginProps PD-4616 ([6439cdb](https://github.com/pie-framework/pie-elements/commit/6439cdb0e9593ccf8d46f4128f0910f8a91e1c56))
+* **ECR:** Adjusted line spacing in the response area PD-4616 ([5803178](https://github.com/pie-framework/pie-elements/commit/580317864661b132c262a95932fc0e4d38fff34e))
+* **ECR:** code review changes - isHidden property in toolbarOpts as boolean PD-4616 ([33c269b](https://github.com/pie-framework/pie-elements/commit/33c269bf17d6f10339575119530bf61479515597))
+* **ECR:** hide editable html toolbar in ECR if characters is not enabled PD-4616 ([d26ed00](https://github.com/pie-framework/pie-elements/commit/d26ed008b3a787b73a38ebaa970c33a76ccf412d))
+* **ECR:** updated snapshots ([c8530fe](https://github.com/pie-framework/pie-elements/commit/c8530fe884908d529d15c4d7e4a01aeb4db5f75b))
+* **ECR:** updated snapshots ([a88285f](https://github.com/pie-framework/pie-elements/commit/a88285fcd8fcacd177c03c36e63bd7141f36d451))
+
+
+
+
+
+## [7.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.1.7...@pie-element/explicit-constructed-response-configure@7.1.8) (2025-01-22)
+
+
+### Bug Fixes
+
+* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
+
+
+
+
+
 ## [7.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.1.6...@pie-element/explicit-constructed-response-configure@7.1.7) (2025-01-06)
 
 
