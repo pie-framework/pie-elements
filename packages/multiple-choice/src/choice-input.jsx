@@ -169,7 +169,7 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
 export class ChoiceInput extends React.Component {
   static propTypes = {
     choiceMode: PropTypes.oneOf(['radio', 'checkbox']),
-    displayKey: PropTypes.string.isRequired,
+    displayKey: PropTypes.string,
     checked: PropTypes.bool.isRequired,
     correctness: PropTypes.string,
     disabled: PropTypes.bool.isRequired,
@@ -269,7 +269,7 @@ export class ChoiceInput extends React.Component {
                       onChange={this.onToggleChoice}
                       style={{ padding: 0 }}
                     />
-                    {displayKey}.
+                    {displayKey ? `${displayKey}.` : ''}
                   </span>
                 }
               />
