@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.4.8...@pie-element/complex-rubric-configure@2.5.0) (2025-01-27)
+
+
+### Features
+
+* enabled textAlign only for passage element [PD-3995] ([600d67f](https://github.com/pie-framework/pie-elements/commit/600d67fa31fc0e19761bc78381ba18036e7f64e7))
+
+
+
+
+
 ## [2.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.4.7...@pie-element/complex-rubric-configure@2.4.8) (2025-01-27)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-configure
