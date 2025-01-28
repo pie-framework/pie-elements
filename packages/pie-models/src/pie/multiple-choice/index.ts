@@ -119,6 +119,11 @@ export interface MultipleChoicePie extends PieModel {
    * Indicates font size adjustment factor
    */
   fontSizeFactor?: number;
+
+  /**
+   * Indicates if the audio for the prompt should autoplay
+   */
+  autoplayAudioEnabled?: boolean;
 }
 
 interface ConfigureMaxImageDimensionsProp {

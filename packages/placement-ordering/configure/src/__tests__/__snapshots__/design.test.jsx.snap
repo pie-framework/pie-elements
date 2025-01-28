@@ -15,6 +15,9 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "textAlign": Object {
+              "disabled": true,
+            },
             "video": Object {
               "disabled": false,
             },
@@ -260,6 +263,9 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": false,
           },
@@ -305,6 +311,9 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": false,
@@ -387,6 +396,9 @@ The correct ordering should not be identical to the initial ordering."
               "image": Object {
                 "disabled": false,
               },
+              "textAlign": Object {
+                "disabled": true,
+              },
               "video": Object {
                 "disabled": false,
               },
@@ -421,6 +433,9 @@ The correct ordering should not be identical to the initial ordering."
             "disabled": true,
           },
           "image": Object {
+            "disabled": true,
+          },
+          "textAlign": Object {
             "disabled": true,
           },
           "video": Object {
@@ -471,6 +486,9 @@ The correct ordering should not be identical to the initial ordering."
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": false,
           },
@@ -500,6 +518,9 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             },
             "image": Object {
               "disabled": false,
+            },
+            "textAlign": Object {
+              "disabled": true,
             },
             "video": Object {
               "disabled": false,
@@ -746,6 +767,9 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": false,
           },
@@ -791,6 +815,9 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": false,
@@ -873,6 +900,9 @@ The correct ordering should not be identical to the initial ordering."
               "image": Object {
                 "disabled": false,
               },
+              "textAlign": Object {
+                "disabled": true,
+              },
               "video": Object {
                 "disabled": false,
               },
@@ -907,6 +937,9 @@ The correct ordering should not be identical to the initial ordering."
             "disabled": true,
           },
           "image": Object {
+            "disabled": true,
+          },
+          "textAlign": Object {
             "disabled": true,
           },
           "video": Object {
@@ -956,6 +989,9 @@ The correct ordering should not be identical to the initial ordering."
           },
           "image": Object {
             "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": false,

@@ -85,6 +85,7 @@ export class MultipleChoice extends React.Component {
     isSelectionButtonBelow: PropTypes.bool,
     minSelections: PropTypes.number,
     maxSelections: PropTypes.number,
+    autoplayAudioEnabled: PropTypes.bool,
   };
 
   constructor(props) {
@@ -231,6 +232,7 @@ export class MultipleChoice extends React.Component {
       isSelectionButtonBelow,
       minSelections,
       maxSelections,
+      autoplayAudioEnabled,
       session,
     } = this.props;
     const { showCorrect, maxSelectionsErrorState } = this.state;
@@ -272,7 +274,13 @@ export class MultipleChoice extends React.Component {
         )}
 
         <fieldset className={classes.fieldset}>
-          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={'legend'} />
+          <PreviewPrompt
+            className="prompt"
+            defaultClassName="prompt"
+            prompt={prompt}
+            tagName={'legend'}
+            autoplayAudioEnabled={autoplayAudioEnabled}
+          />
 
           {!alwaysShowCorrect && (
             <CorrectAnswerToggle

@@ -91,6 +91,7 @@ export async function model(question, session, env, updateSession) {
     minSelections: normalizedQuestion.minSelections,
     maxSelections: normalizedQuestion.maxSelections,
     keyboardEventsEnabled: normalizedQuestion.keyboardEventsEnabled,
+    autoplayAudioEnabled: normalizedQuestion.autoplayAudioEnabled,
   };
 
   const { role, mode } = env || {};

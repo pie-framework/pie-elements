@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.38.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.37.8...@pie-element/matrix-configure@0.38.0) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3995, PD-4679 ([87dadfa](https://github.com/pie-framework/pie-elements/commit/87dadfacfae3b06690edaf0b3c4a5ea09981b153))
+
+
+### Features
+
+* enabled textAlign only for passage element [PD-3995] ([600d67f](https://github.com/pie-framework/pie-elements/commit/600d67fa31fc0e19761bc78381ba18036e7f64e7))
+
+
+
+
+
+## [0.37.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.37.7...@pie-element/matrix-configure@0.37.8) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4688, PD-4589, PD-4616 ([754480c](https://github.com/pie-framework/pie-elements/commit/754480c6c747fa9123d374df0287a644c8376939))
+
+
+
+
+
 ## [0.37.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.37.6...@pie-element/matrix-configure@0.37.7) (2025-01-22)
 
 

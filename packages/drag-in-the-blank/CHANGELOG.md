@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.5.3...@pie-element/drag-in-the-blank@6.6.0) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3995, PD-4679 ([87dadfa](https://github.com/pie-framework/pie-elements/commit/87dadfacfae3b06690edaf0b3c4a5ea09981b153))
+
+
+### Features
+
+* enabled textAlign only for passage element [PD-3995] ([600d67f](https://github.com/pie-framework/pie-elements/commit/600d67fa31fc0e19761bc78381ba18036e7f64e7))
+* updated snapshots [PD-3995] ([59702ab](https://github.com/pie-framework/pie-elements/commit/59702ab491722a24bd67a2c6dc70ad6540e3a909))
+
+
+
+
+
+## [6.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.5.2...@pie-element/drag-in-the-blank@6.5.3) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4688, PD-4589, PD-4616 ([754480c](https://github.com/pie-framework/pie-elements/commit/754480c6c747fa9123d374df0287a644c8376939))
+
+
+
+
+
 ## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.5.1...@pie-element/drag-in-the-blank@6.5.2) (2025-01-22)
 
 

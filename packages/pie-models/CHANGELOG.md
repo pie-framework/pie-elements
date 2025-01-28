@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.41.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.40.0...@pie-element/pie-models@13.41.0) (2025-01-27)
+
+
+### Features
+
+* **multiple-choice:** clean up and generate docs for autoplayAudioEnabled PD-4452 ([d67cbbe](https://github.com/pie-framework/pie-elements/commit/d67cbbe5fd5b364190a7b19d71112414a2ed600c))
+
+
+
+
+
 # [13.40.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.39.1...@pie-element/pie-models@13.40.0) (2024-12-20)
 
 

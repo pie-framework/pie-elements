@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.3...@pie-element/multiple-choice@9.8.0) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3995, PD-4679 ([87dadfa](https://github.com/pie-framework/pie-elements/commit/87dadfacfae3b06690edaf0b3c4a5ea09981b153))
+
+
+### Features
+
+* **multiple-choice:** add logic for autoplay audio PD-4452 ([942943a](https://github.com/pie-framework/pie-elements/commit/942943ab757531270c088164637cee54c63b321f))
+* **multiple-choice:** clean up and generate docs for autoplayAudioEnabled PD-4452 ([d67cbbe](https://github.com/pie-framework/pie-elements/commit/d67cbbe5fd5b364190a7b19d71112414a2ed600c))
+* enabled textAlign only for passage element [PD-3995] ([600d67f](https://github.com/pie-framework/pie-elements/commit/600d67fa31fc0e19761bc78381ba18036e7f64e7))
+
+
+
+
+
+## [9.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.2...@pie-element/multiple-choice@9.7.3) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4688, PD-4589, PD-4616 ([754480c](https://github.com/pie-framework/pie-elements/commit/754480c6c747fa9123d374df0287a644c8376939))
+* **multiple-choice:** prevent dots from rendering unless a display key is explicitly provided PD-4727 ([4d302e6](https://github.com/pie-framework/pie-elements/commit/4d302e619998810c315cdc047377837809adfb95))
+* **multiple-choice:** updated propTypes to make displayKey optional, aligning with the new behavior PD-4727 ([f1bf9c8](https://github.com/pie-framework/pie-elements/commit/f1bf9c8081aa91655a43f79be3272d3b9562e89e))
+
+
+
+
+
 ## [9.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.7.1...@pie-element/multiple-choice@9.7.2) (2025-01-22)
 
 

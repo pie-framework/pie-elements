@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@10.1.10...@pie-element/ebsr-configure@10.2.0) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3995, PD-4679 ([87dadfa](https://github.com/pie-framework/pie-elements/commit/87dadfacfae3b06690edaf0b3c4a5ea09981b153))
+
+
+### Features
+
+* enabled textAlign only for passage element [PD-3995] ([600d67f](https://github.com/pie-framework/pie-elements/commit/600d67fa31fc0e19761bc78381ba18036e7f64e7))
+
+
+
+
+
+## [10.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@10.1.9...@pie-element/ebsr-configure@10.1.10) (2025-01-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4688, PD-4589, PD-4616 ([754480c](https://github.com/pie-framework/pie-elements/commit/754480c6c747fa9123d374df0287a644c8376939))
+
+
+
+
+
 ## [10.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@10.1.8...@pie-element/ebsr-configure@10.1.9) (2025-01-22)
 
 
