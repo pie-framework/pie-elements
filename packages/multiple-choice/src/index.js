@@ -154,19 +154,23 @@ export default class MultipleChoice extends HTMLElement {
           const audio = this.querySelector('audio[autoplay]');
           if (!audio) return;
 
+          const info = this._createAudioInfoToast();
+          const enableAudio = () => {
+            if (this.querySelector('#play-audio-info')) {
+              audio.play();
+              this.removeChild(info);
+            }
+
+            document.removeEventListener('click', enableAudio);
+          };
+
           // if the audio is paused, it means the user has not interacted with the page yet and the audio will not play
           if (audio.paused && !this.querySelector('#play-audio-info')) {
             // add info message as a toast to enable audio playback
-            const info = this._createAudioInfoToast();
             this.appendChild(info);
-
-            const enableAudio = () => {
-              audio.play();
-              this.removeChild(info);
-              document.removeEventListener('click', enableAudio);
-            };
-
             document.addEventListener('click', enableAudio);
+          } else {
+            document.removeEventListener('click', enableAudio);
           }
 
           // we need to listen for the playing event to remove the toast in case the audio plays because of re-rendering
