@@ -10,7 +10,7 @@ import { updateSessionValue } from './session-updater';
 const log = debug('pie-ui:multiple-choice');
 
 export const isComplete = (session, model, audioComplete) => {
-  if (!audioComplete) {
+  if (model.autoplayAudioEnabled && !audioComplete) {
     return false;
   }
 
@@ -70,7 +70,9 @@ export default class MultipleChoice extends HTMLElement {
     );
 
     this._dispatchResponseChanged = debounce(() => {
-      this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete)));
+      this.dispatchEvent(
+        new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete)),
+      );
     });
 
     this._dispatchModelSet = debounce(
@@ -124,7 +126,8 @@ export default class MultipleChoice extends HTMLElement {
   _createAudioInfoToast() {
     const info = document.createElement('div');
     info.id = 'play-audio-info';
-    info.innerHTML = 'Click anywhere to enable audio autoplay. Browser restrictions require user interaction to play audio.';
+    info.innerHTML =
+      'Click anywhere to enable audio autoplay. Browser restrictions require user interaction to play audio.';
     Object.assign(info.style, {
       position: 'fixed',
       bottom: '20px',
@@ -152,6 +155,7 @@ export default class MultipleChoice extends HTMLElement {
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
           const audio = this.querySelector('audio[autoplay]');
+
           if (!audio) return;
 
           const info = this._createAudioInfoToast();
@@ -176,9 +180,11 @@ export default class MultipleChoice extends HTMLElement {
           // we need to listen for the playing event to remove the toast in case the audio plays because of re-rendering
           const handlePlaying = () => {
             const info = this.querySelector('#play-audio-info');
+
             if (info) {
               this.removeChild(info);
             }
+
             audio.removeEventListener('playing', handlePlaying);
           };
 
