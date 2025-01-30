@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.9.0...@pie-element/multiple-choice@9.9.1) (2025-01-30)
+
+
+### Bug Fixes
+
+* **multiple-choice:** check for autoplay to be enabled PD-4740 ([afb6aa3](https://github.com/pie-framework/pie-elements/commit/afb6aa3e87177af1a614877c9f467a49bf1a3169))
+
+
+
+
+
 # [9.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.8.0...@pie-element/multiple-choice@9.9.0) (2025-01-29)
 
 
