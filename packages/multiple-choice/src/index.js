@@ -10,7 +10,9 @@ import { updateSessionValue } from './session-updater';
 const log = debug('pie-ui:multiple-choice');
 
 export const isComplete = (session, model, audioComplete) => {
-  if (model.autoplayAudioEnabled && !audioComplete) {
+  const { autoplayAudioEnabled, completeAudioEnabled } = model || {};
+
+  if (autoplayAudioEnabled && completeAudioEnabled && !audioComplete) {
     return false;
   }
 
