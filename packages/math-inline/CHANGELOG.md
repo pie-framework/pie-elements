@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.0...@pie-element/math-inline@8.4.1) (2025-02-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4753, PD-4618, PD-4641 ([f73f2be](https://github.com/pie-framework/pie-elements/commit/f73f2bec76321a677fff71e575d19c0f2e5b1d9c))
+* **math-inline:** not reset state when keypad is pressed, verify if event is from current element PD-4602 ([fb0f874](https://github.com/pie-framework/pie-elements/commit/fb0f8741523fcedc16a832fdc96a6362cdc51e97))
+
+
+
+
+
 # [8.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.3.8...@pie-element/math-inline@8.4.0) (2025-01-27)
 
 
