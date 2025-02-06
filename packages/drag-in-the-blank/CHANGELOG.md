@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.6.0...@pie-element/drag-in-the-blank@6.6.1) (2025-02-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4753, PD-4618, PD-4641 ([f73f2be](https://github.com/pie-framework/pie-elements/commit/f73f2bec76321a677fff71e575d19c0f2e5b1d9c))
+* **ditb:** fix font size for fractions in mathematical answer choices PD-4641 ([ab4d5c5](https://github.com/pie-framework/pie-elements/commit/ab4d5c57f9e41e55c89ca6f4207a338ef71e25fe))
+
+
+
+
+
 # [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.5.3...@pie-element/drag-in-the-blank@6.6.0) (2025-01-27)
 
 
