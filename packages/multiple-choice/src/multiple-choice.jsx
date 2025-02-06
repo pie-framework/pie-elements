@@ -250,6 +250,20 @@ export class MultipleChoice extends React.Component {
       />
     );
 
+    const getMultipleChoiceMinSelectionErrorMessage = () => {
+      if (minSelections && maxSelections) {
+        return minSelections === maxSelections
+          ? translator.t('translation:multipleChoice:minmaxSelections_equal', { lng: language, minSelections })
+          : translator.t('translation:multipleChoice:minmaxSelections_range', { lng: language, minSelections, maxSelections });
+      }
+
+      if (minSelections) {
+        return translator.t('translation:multipleChoice:minSelections', { lng: language, minSelections });
+      }
+
+      return '';
+    };
+
     return (
       <div className={classNames(classes.main, className, 'multiple-choice')}>
         {partLabel && <h3 className={classes.partLabel}>{partLabel}</h3>}
@@ -322,12 +336,9 @@ export class MultipleChoice extends React.Component {
           </div>
         </fieldset>
 
-        {choiceMode === 'checkbox' && selections < minSelections && (
+        {choiceMode === 'checkbox' && (selections < minSelections) && (
           <div className={classes.errorText}>
-            {translator.t(`translation:multipleChoice:minSelections_${minSelections === 1 ? 'one' : 'other'}`, {
-              lng: language,
-              minSelections,
-            })}
+            {getMultipleChoiceMinSelectionErrorMessage()}
           </div>
         )}
         {choiceMode === 'checkbox' && maxSelectionsErrorState && (
