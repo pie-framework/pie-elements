@@ -33,7 +33,10 @@ export const BlankContent = withStyles((theme) => ({
     cursor: 'grab',
     '& img': {
         display: 'flex'
-    }
+    },
+    '& mjx-frac': {
+        fontSize: '120% !important',
+    },
   },
   deleteIcon: {
     position: 'absolute',

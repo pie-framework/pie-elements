@@ -124,6 +124,11 @@ export interface MultipleChoicePie extends PieModel {
    * Indicates if the audio for the prompt should autoplay
    */
   autoplayAudioEnabled?: boolean;
+
+  /**
+   * Indicates if the audio should reach the end before the item can be marked as 'complete'
+   */
+  completeAudioEnabled?: boolean;
 }
 
 interface ConfigureMaxImageDimensionsProp {
