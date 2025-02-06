@@ -12,5 +12,8 @@ export function updateSessionValue(session, model, data) {
     } else {
       session.answers = [item];
     }
+    
+    //update session metadata
+    session.selector = data.selector;
   }
 }
