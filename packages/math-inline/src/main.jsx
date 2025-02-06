@@ -39,6 +39,17 @@ function generateAdditionalKeys(keyData = []) {
   }));
 }
 
+function isChildOfCurrentPieElement(child, parent) {
+  let node = child;
+  while (node !== null) {
+    if (node === parent) {
+      return true;
+    }
+    node = node.parentNode;
+  }
+  return false;
+}
+
 function getKeyPadWidth(additionalKeys = [], equationEditor) {
   return Math.floor(additionalKeys.length / 5) * 30 + (equationEditor === 'miscellaneous' ? 600 : 500);
 }
@@ -324,21 +335,28 @@ export class Main extends React.Component {
   };
 
   handleKeyDown = (event, id) => {
+    // main layout has as id the actual pie-element id
+    // needed this to know if the event was triggered from the actual pie-element
+    const { config } = this.props.model;
+    const myElement = document.getElementById(config.id);
+    let isTrigerredFromActualPieElement = true;
+    isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, myElement);
+
     const isAnswerInputFocused = document.activeElement.getAttribute('aria-label') === 'Enter answer.';
     const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
 
     if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
-      if (this.state.activeAnswerBlock !== id) {
+      if (this.state.activeAnswerBlock !== id && isTrigerredFromActualPieElement) {
         this.cleanupKeyDownListener();
         this.setState({ activeAnswerBlock: id });
-        this.onSubFieldFocus(id)
+        this.onSubFieldFocus(id);
       }
 
       if (event.key === 'ArrowDown') {
         this.focusFirstKeypadElement();
       }
-    } else if ( event.key === 'Escape') {
-         this.setState({ activeAnswerBlock: '' });
+    } else if (event.key === 'Escape') {
+      this.setState({ activeAnswerBlock: '' });
     }
   };
 
@@ -468,6 +486,10 @@ export class Main extends React.Component {
   onBlur = (e) => {
     const { relatedTarget, currentTarget } = e || {};
 
+    // our keypad is in tooltip
+    // in this way we see if event was triggered from the keypad
+    const isKeypadOpen = currentTarget && currentTarget.closest('[role=tooltip]');
+
     function getParentWithRoleTooltip(element, depth = 0) {
       // only run this max 16 times
       if (!element || depth >= 16) return null;
@@ -502,7 +524,10 @@ export class Main extends React.Component {
     const childWithDataKeypad = parentWithTooltipRole ? getDeepChildDataKeypad(parentWithTooltipRole) : null;
 
     if (!relatedTarget || !currentTarget || !childWithDataKeypad?.attributes['data-keypad']) {
-      this.setState({ activeAnswerBlock: '' });
+      // if event was trigered from the keypad, avoid closing the keypad
+      if (!isKeypadOpen) {
+        this.setState({ activeAnswerBlock: '' });
+      }
     }
     // else {
     //     // Just for debugging purpose:
@@ -562,6 +587,7 @@ export class Main extends React.Component {
       responseType,
       equationEditor,
       customKeys,
+      id,
       env: { mode, role } = {},
     } = config || {};
     const displayNote = (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
@@ -727,7 +753,7 @@ export class Main extends React.Component {
         feedback)
     ) {
       return (
-        <UiLayout extraCSSRules={extraCSSRules}>
+        <UiLayout extraCSSRules={extraCSSRules} id={id}>
           <Tooltip
             interactive
             enterTouchDelay={0}
@@ -800,12 +826,17 @@ export class Main extends React.Component {
     }
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} ref={(r) => {
-        // eslint-disable-next-line react/no-find-dom-node
-        const domNode = ReactDOM.findDOMNode(r);
+      <UiLayout
+        id={id}
+        extraCSSRules={extraCSSRules}
+        className={classes.mainContainer}
+        ref={(r) => {
+          // eslint-disable-next-line react/no-find-dom-node
+          const domNode = ReactDOM.findDOMNode(r);
 
-        this.root = domNode || this.root;
-      }}>
+          this.root = domNode || this.root;
+        }}
+      >
         {midContent}
       </UiLayout>
     );
