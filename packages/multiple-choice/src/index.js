@@ -153,11 +153,16 @@ export default class MultipleChoice extends HTMLElement {
       return;
     }
 
+    // Observation:  audio in Chrome will have the autoplay attribute,
+    // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
+    // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
     const observer = new MutationObserver((mutationsList, observer) => {
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
-          const audio = this.querySelector('audio[autoplay]');
+          const audio = this.querySelector('audio');
+          const isInsidePrompt = audio && audio.closest('#preview-prompt');
 
+          if (audio && !isInsidePrompt) return;
           if (!audio) return;
 
           const info = this._createAudioInfoToast();
@@ -177,6 +182,8 @@ export default class MultipleChoice extends HTMLElement {
               // add info message as a toast to enable audio playback
               this.appendChild(info);
               document.addEventListener('click', enableAudio);
+            } else {
+              document.removeEventListener('click', enableAudio);
             }
           }, 500);
 
