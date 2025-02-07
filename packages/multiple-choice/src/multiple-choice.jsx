@@ -240,6 +240,8 @@ export class MultipleChoice extends React.Component {
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
     const selections = (session.value && session.value.length) || 0;
+    // Safari, Firefox, and Edge do not support autoplay audio smoothly in our use case
+    const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
 
     const teacherInstructionsDiv = (
       <PreviewPrompt
@@ -279,7 +281,7 @@ export class MultipleChoice extends React.Component {
             defaultClassName="prompt"
             prompt={prompt}
             tagName={'legend'}
-            autoplayAudioEnabled={autoplayAudioEnabled}
+            autoplayAudioEnabled={addAutoplayAudio}
           />
 
           {!alwaysShowCorrect && (
