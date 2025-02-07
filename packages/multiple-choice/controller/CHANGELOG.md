@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.5.0...@pie-element/multiple-choice-controller@5.6.0) (2025-02-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4753, PD-4618, PD-4641 ([f73f2be](https://github.com/pie-framework/pie-elements/commit/f73f2bec76321a677fff71e575d19c0f2e5b1d9c))
+
+
+### Features
+
+* **multiple-choice:** separate autoplay logic from item completion when audio ends PD-4781 ([5ca2278](https://github.com/pie-framework/pie-elements/commit/5ca22780587f8957e7ff8191a73751997c0675aa))
+
+
+
+
+
 # [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.4.4...@pie-element/multiple-choice-controller@5.5.0) (2025-01-27)
 
 

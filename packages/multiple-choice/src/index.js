@@ -10,7 +10,9 @@ import { updateSessionValue } from './session-updater';
 const log = debug('pie-ui:multiple-choice');
 
 export const isComplete = (session, model, audioComplete) => {
-  if (model.autoplayAudioEnabled && !audioComplete) {
+  const { autoplayAudioEnabled, completeAudioEnabled } = model || {};
+
+  if (autoplayAudioEnabled && completeAudioEnabled && !audioComplete) {
     return false;
   }
 
@@ -173,15 +175,16 @@ export default class MultipleChoice extends HTMLElement {
             document.removeEventListener('click', enableAudio);
           };
 
+          // if the audio is paused, it means the user has not interacted with the page yet and the audio will not play
+          // FIX FOR SAFARI: play with a slight delay to check if autoplay was blocked
           setTimeout(() => {
-            // if the audio is paused, it means the user has not interacted with the page yet and the audio will not play
-          if (audio.paused && !this.querySelector('#play-audio-info')) {
-            // add info message as a toast to enable audio playback
-            this.appendChild(info);
-            document.addEventListener('click', enableAudio);
-          } else {
-            document.removeEventListener('click', enableAudio);
-          }
+            if (audio.paused && !this.querySelector('#play-audio-info')) {
+              // add info message as a toast to enable audio playback
+              this.appendChild(info);
+              document.addEventListener('click', enableAudio);
+            } else {
+              document.removeEventListener('click', enableAudio);
+            }
           }, 500);
 
           // we need to listen for the playing event to remove the toast in case the audio plays because of re-rendering

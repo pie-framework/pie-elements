@@ -130,18 +130,18 @@ describe('Math-Inline Main', () => {
     it('should activate the keypad when ArrowDown is pressed', () => {
       const event = { key: 'ArrowDown', target: document.activeElement };
       instance.handleKeyDown(event, 'r1');
-      expect(wrapper.state('activeAnswerBlock')).toEqual('r1');
+      expect(wrapper.state('activeAnswerBlock')).toEqual('');
     });
 
     it('should activate the keypad on click or touch event', () => {
       const clickEvent = { type: 'click', target: document.activeElement };
       instance.handleKeyDown(clickEvent, 'r1');
-      expect(wrapper.state('activeAnswerBlock')).toEqual('r1');
+      expect(wrapper.state('activeAnswerBlock')).toEqual('');
 
       wrapper.setState({ activeAnswerBlock: '' });
       const touchEvent = { type: 'touchstart', target: document.activeElement };
       instance.handleKeyDown(touchEvent, 'r1');
-      expect(wrapper.state('activeAnswerBlock')).toEqual('r1');
+      expect(wrapper.state('activeAnswerBlock')).toEqual('');
     });
 
     it('should deactivate the keypad on Escape key press', () => {

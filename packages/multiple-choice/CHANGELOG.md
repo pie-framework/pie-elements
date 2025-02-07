@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.9.1...@pie-element/multiple-choice@9.10.0) (2025-02-06)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4753, PD-4618, PD-4641 ([f73f2be](https://github.com/pie-framework/pie-elements/commit/f73f2bec76321a677fff71e575d19c0f2e5b1d9c))
+* **MC:** safari fix for audio autoplay PD-4761 ([cbf922e](https://github.com/pie-framework/pie-elements/commit/cbf922ee1e8df54861397789ca5827f6284c10f4))
+
+
+### Features
+
+* **multiple-choice:** change wording of minSelections message when maxSelections is also in effect PD-4755 ([09fd384](https://github.com/pie-framework/pie-elements/commit/09fd3840c9e5069261afcea6809b52b63f5cfa03))
+* **multiple-choice:** separate autoplay logic from item completion when audio ends PD-4781 ([5ca2278](https://github.com/pie-framework/pie-elements/commit/5ca22780587f8957e7ff8191a73751997c0675aa))
+
+
+
+
+
 ## [9.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.9.0...@pie-element/multiple-choice@9.9.1) (2025-01-30)
 
 

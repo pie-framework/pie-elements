@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.42.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.41.0...@pie-element/pie-models@13.42.0) (2025-02-06)
+
+
+### Features
+
+* **multiple-choice:** separate autoplay logic from item completion when audio ends PD-4781 ([5ca2278](https://github.com/pie-framework/pie-elements/commit/5ca22780587f8957e7ff8191a73751997c0675aa))
+
+
+
+
+
 # [13.41.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.40.0...@pie-element/pie-models@13.41.0) (2025-01-27)
 
 
