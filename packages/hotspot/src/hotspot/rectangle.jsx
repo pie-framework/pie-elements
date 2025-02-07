@@ -18,7 +18,12 @@ class RectComponent extends React.Component {
 
     if (!disabled) {
       e.cancelBubble = true;
-      onClick({ id, selected: !selected });
+      
+      // get input method used for selection
+      const { detail } = e.evt;
+      let selector = detail ? 'Mouse' : 'Keyboard';
+      
+      onClick({ id, selected: !selected, selector });
     }
   };
 
