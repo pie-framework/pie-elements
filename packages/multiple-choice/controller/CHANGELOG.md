@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.6.0...@pie-element/multiple-choice-controller@5.7.0) (2025-02-07)
+
+
+### Features
+
+* **multiple-choice:** add keydown support for selecting options PD-4411 ([adbd2da](https://github.com/pie-framework/pie-elements/commit/adbd2dadad0e6af6b4efd0894b223d801e756e5d))
+
+
+
+
+
 # [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.5.0...@pie-element/multiple-choice-controller@5.6.0) (2025-02-06)
 
 

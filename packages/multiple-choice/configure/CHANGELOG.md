@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.3.1...@pie-element/multiple-choice-configure@7.4.0) (2025-02-07)
+
+
+### Features
+
+* **multiple-choice:** add keydown support for selecting options PD-4411 ([ec20a27](https://github.com/pie-framework/pie-elements/commit/ec20a2767fe183f371ffff47ccf94a438392eb29))
+* **multiple-choice:** add keydown support for selecting options PD-4411 ([adbd2da](https://github.com/pie-framework/pie-elements/commit/adbd2dadad0e6af6b4efd0894b223d801e756e5d))
+
+
+
+
+
 ## [7.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.3.0...@pie-element/multiple-choice-configure@7.3.1) (2025-02-06)
 
 
