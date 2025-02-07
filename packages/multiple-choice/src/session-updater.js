@@ -19,4 +19,7 @@ export function updateSessionValue(session, choiceMode, data) {
       session.value = [];
     }
   }
+  
+  //update session metadata
+  session.selector = data.selector;
 }

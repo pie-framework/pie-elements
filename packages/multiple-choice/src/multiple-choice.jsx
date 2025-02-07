@@ -109,7 +109,11 @@ export class MultipleChoice extends React.Component {
   handleChange = (event) => {
     const { value, checked } = event.target;
     const { maxSelections, onChoiceChanged, session } = this.props;
-
+    
+    // get input method used for selection
+    const { detail } = event.nativeEvent;
+    let selector = detail ? 'Mouse' : 'Keyboard';
+    
     if (session.value && session.value.length >= maxSelections) {
       // show/hide max selections error when user select/deselect an answer
       this.setState({ maxSelectionsErrorState: checked });
@@ -120,7 +124,7 @@ export class MultipleChoice extends React.Component {
       }
     }
 
-    onChoiceChanged({ value, selected: checked });
+    onChoiceChanged({ value, selected: checked, selector });
   };
 
   onToggle = () => {
