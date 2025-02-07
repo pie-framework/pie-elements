@@ -68,6 +68,7 @@ export function model(question, session, env, updateSession) {
       mode: env.mode,
       disabled: env.mode !== 'gather',
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
+      correctResponse: env.mode === 'evaluate' ? normalizedQuestion.correctResponse : undefined,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

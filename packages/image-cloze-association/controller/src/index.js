@@ -20,6 +20,7 @@ export const model = (question, session, env) => {
       mode: env.mode,
       ...questionCamelized,
       responseCorrect: env.mode === 'evaluate' ? getScore(questionCamelized, session) === 1 : undefined,
+      validation: env.mode === 'evaluate' ? questionCamelized.validation : undefined,
     };
 
     if (questionNormalized.shuffle) {
