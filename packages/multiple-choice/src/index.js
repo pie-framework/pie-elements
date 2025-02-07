@@ -63,6 +63,10 @@ export default class MultipleChoice extends HTMLElement {
             log('render complete - render math');
             renderMath(this);
           });
+
+          if (this._model.keyboardEventsEnabled === true) {
+            this.enableKeyboardEvents();
+          }
         } else {
           log('skip');
         }
@@ -153,11 +157,16 @@ export default class MultipleChoice extends HTMLElement {
       return;
     }
 
+    // Observation:  audio in Chrome will have the autoplay attribute,
+    // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
+    // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
     const observer = new MutationObserver((mutationsList, observer) => {
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
-          const audio = this.querySelector('audio[autoplay]');
+          const audio = this.querySelector('audio');
+          const isInsidePrompt = audio && audio.closest('#preview-prompt');
 
+          if (audio && !isInsidePrompt) return;
           if (!audio) return;
 
           const info = this._createAudioInfoToast();
@@ -177,6 +186,8 @@ export default class MultipleChoice extends HTMLElement {
               // add info message as a toast to enable audio playback
               this.appendChild(info);
               document.addEventListener('click', enableAudio);
+            } else {
+              document.removeEventListener('click', enableAudio);
             }
           }, 500);
 
@@ -208,5 +219,46 @@ export default class MultipleChoice extends HTMLElement {
     });
 
     observer.observe(this, { childList: true, subtree: true });
+  }
+
+  enableKeyboardEvents() {
+    window.addEventListener('keydown', this.handleKeyDown.bind(this));
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('keydown', this.handleKeyDown.bind(this));
+  }
+
+  /**
+   * Handles global keyboard events for selecting or toggling multiple-choice answers.
+   * Maps keys (1-9, 0, a-j, A-J) to choices and updates the session state accordingly.
+   * Ensures valid key presses toggle or select the appropriate choice based on the model.
+   */
+  handleKeyDown(event) {
+    if (!this._model || !this._session) {
+      return;
+    }
+
+    const keyToIndex = (key) => {
+      const numOffset = key >= '1' && key <= '9' ? key - '1' : key === '0' ? 9 : -1;
+      const letterOffset = /^[a-jA-J]$/.test(key) ? key.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0) : -1;
+      return numOffset >= 0 ? numOffset : letterOffset;
+    };
+
+    const choiceIndex = keyToIndex(event.key);
+
+    if (choiceIndex === undefined || choiceIndex >= this._model.choices.length) {
+      return;
+    }
+
+    const currentValue = this._session.value || [];
+    const choiceId = this._model.choices[choiceIndex].value;
+
+    const newValue = {
+      value: choiceId,
+      selected: !currentValue.includes(choiceId),
+    };
+
+    this._onChange(newValue);
   }
 }

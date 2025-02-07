@@ -90,6 +90,7 @@ export async function model(question, session, env, updateSession) {
     selectedAnswerBackgroundColor: normalizedQuestion.selectedAnswerBackgroundColor || 'initial',
     minSelections: normalizedQuestion.minSelections,
     maxSelections: normalizedQuestion.maxSelections,
+    keyboardEventsEnabled: normalizedQuestion.keyboardEventsEnabled,
     autoplayAudioEnabled: normalizedQuestion.autoplayAudioEnabled,
     completeAudioEnabled: normalizedQuestion.completeAudioEnabled,
   };
