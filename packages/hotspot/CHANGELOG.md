@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.5.1...@pie-element/hotspot@7.5.2) (2025-02-07)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
 ## [7.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.5.0...@pie-element/hotspot@7.5.1) (2025-02-06)
 
 

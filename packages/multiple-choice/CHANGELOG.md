@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.10.0...@pie-element/multiple-choice@9.11.0) (2025-02-07)
+
+
+### Bug Fixes
+
+* **multiple-choice:** autoplay issue with  Safari, Firefox, and Edge ghosts audio PD-4771 ([18f0c16](https://github.com/pie-framework/pie-elements/commit/18f0c164729e8a116e3bbb940731e00b0603f46b))
+
+
+### Features
+
+* **multiple-choice:** add keydown support for selecting options PD-4411 ([ec20a27](https://github.com/pie-framework/pie-elements/commit/ec20a2767fe183f371ffff47ccf94a438392eb29))
+* **multiple-choice:** add keydown support for selecting options PD-4411 ([adbd2da](https://github.com/pie-framework/pie-elements/commit/adbd2dadad0e6af6b4efd0894b223d801e756e5d))
+* **multiple-choice:** add keydown support for selecting options PD-4411 ([d0f940e](https://github.com/pie-framework/pie-elements/commit/d0f940e049276507c04fb8ff2b1eb011c10e492a))
+
+
+
+
+
 # [9.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.9.1...@pie-element/multiple-choice@9.10.0) (2025-02-06)
 
 
