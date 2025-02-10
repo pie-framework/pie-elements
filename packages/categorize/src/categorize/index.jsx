@@ -168,7 +168,7 @@ export class Categorize extends React.Component {
   render() {
     const { classes, model, session } = this.props;
     const { showCorrect, showMaxChoiceAlert } = this.state;
-    const { choicesPosition, extraCSSRules, note, showNote, env, language, maxChoicesPerCategory } = model;
+    const { choicesPosition, extraCSSRules, note, showNote, env, language, maxChoicesPerCategory, autoplayAudioEnabled } = model;
     const { mode, role } = env || {};
     const choicePosition = choicesPosition || 'above';
 
@@ -196,6 +196,9 @@ export class Categorize extends React.Component {
       maxChoicesPerCategory,
     });
 
+    // Safari, Firefox, and Edge do not support autoplay audio smoothly in our use case
+    const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
+
     const alertTitle = translator.t('common:warning', {
       lng: model.language,
     });
@@ -220,7 +223,7 @@ export class Categorize extends React.Component {
           </React.Fragment>
         )}
 
-        {model.prompt && <PreviewPrompt prompt={model.prompt} />}
+        {model.prompt && <PreviewPrompt prompt={model.prompt} autoplayAudioEnabled={addAutoplayAudio} />}
 
         <CorrectAnswerToggle
           show={showCorrect || correct === false}
