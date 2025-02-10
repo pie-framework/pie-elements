@@ -49,6 +49,34 @@ describe('controller', () => {
       });
     });
 
+    describe('correctResponse behavior across modes', () => {
+      it('does not include correctResponse in gather mode', async () => {
+        const result = await model(question, {}, { mode: 'gather' });
+    
+        expect(result.correctResponse).toBeUndefined();
+      });
+    
+      it('does not include correctResponse in view mode', async () => {
+        const result = await model(question, {}, { mode: 'view' });
+    
+        expect(result.correctResponse).toBeUndefined();
+      });
+    
+      it('includes correctResponse only in evaluate mode', async () => {
+        const result = await model(question, {}, { mode: 'evaluate' });
+    
+        expect(result.correctResponse).toBeDefined();
+      });
+    
+      it('ensures correctResponse is explicitly undefined when not in evaluate mode', async () => {
+        const gatherResult = await model(question, {}, { mode: 'gather' });
+        const viewResult = await model(question, {}, { mode: 'view' });
+    
+        expect(gatherResult.correctResponse).toBeUndefined();
+        expect(viewResult.correctResponse).toBeUndefined();
+      });
+    });    
+
     const assertGather = (label, extra, session, expected) => {
       it(`'mode: gather, ${label}'`, async () => {
         q = {
@@ -67,6 +95,7 @@ describe('controller', () => {
           disabled: false,
           feedback: {},
           responseCorrect: undefined,
+          correctResponse: undefined,
           ...expected,
         });
       });
@@ -129,6 +158,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          correctResponse: undefined,
           ...expected,
         });
       });
@@ -188,6 +218,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          correctResponse: undefined,
           ...expected,
         });
       });
