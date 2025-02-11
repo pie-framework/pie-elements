@@ -57,7 +57,8 @@ export default class Categorize extends HTMLElement {
 
   changeAnswers(answers) {
     this._session.answers = answers;
-
+    this._session.selector = 'Mouse';
+    
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
     this.render();
