@@ -37,7 +37,7 @@ class PolygonComponent extends React.Component {
 
     if (!disabled) {
       e.cancelBubble = true;
-      onClick({ id, selected: !selected });
+      onClick({ id, selected: !selected, selector: 'Mouse' });
     }
   };
 
