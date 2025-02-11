@@ -215,6 +215,7 @@ export class ImageClozeAssociationComponent extends React.Component {
         validation,
         teacherInstructions,
         prompt,
+        autoplayAudioEnabled,
         showDashedBorder,
         mode,
         rationale,
@@ -267,6 +268,9 @@ export class ImageClozeAssociationComponent extends React.Component {
       answersToShow = [...answersToShow, ...getUnansweredAnswers(answersToShow, validation)];
     }
 
+    // Safari, Firefox, and Edge do not support autoplay audio smoothly in our use case
+    const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
+
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.main} fontSizeFactor={fontSizeFactor}>
         {teacherInstructions && hasText(teacherInstructions) && (
@@ -281,7 +285,7 @@ export class ImageClozeAssociationComponent extends React.Component {
           </Collapsible>
         )}
 
-        <PreviewPrompt className="prompt" prompt={prompt} />
+        <PreviewPrompt className="prompt" prompt={prompt} autoplayAudioEnabled={addAutoplayAudio} />
 
         <PreviewPrompt prompt={stimulus} />
 
