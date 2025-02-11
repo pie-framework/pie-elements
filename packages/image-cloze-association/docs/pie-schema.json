@@ -241,6 +241,16 @@
       "type": "number",
       "title": "fontSizeFactor"
     },
+    "autoplayAudioEnabled": {
+      "description": "Indicates if the audio for the prompt should autoplay",
+      "type": "boolean",
+      "title": "autoplayAudioEnabled"
+    },
+    "completeAudioEnabled": {
+      "description": "Indicates if the audio should reach the end before the item can be marked as 'complete'",
+      "type": "boolean",
+      "title": "completeAudioEnabled"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
