@@ -15,12 +15,14 @@ export const model = (question, session, env) => {
   const questionCamelized = camelizeKeys(questionNormalized);
 
   return new Promise((resolve) => {
+    const shouldIncludeCorrectResponse = env.mode === 'evaluate' || (env.role === 'instructor' && env.mode === 'view');
+
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
       ...questionCamelized,
-      responseCorrect: env.mode === 'evaluate' ? getScore(questionCamelized, session) === 1 : undefined,
-      validation: env.mode === 'evaluate' ? questionCamelized.validation : undefined,
+      responseCorrect: shouldIncludeCorrectResponse ? getScore(questionCamelized, session) === 1 : undefined,
+      validation: shouldIncludeCorrectResponse ? questionCamelized.validation : undefined,
     };
 
     if (questionNormalized.shuffle) {

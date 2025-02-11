@@ -556,19 +556,21 @@ describe('controller', () => {
       expect(result.validation).toBeUndefined();
     });
   
-    it('includes validation only in evaluate mode', async () => {
-      const result = await model(question, {}, { mode: 'evaluate' });
+    it('includes validation in evaluate mode and when instructor is in view mode', async () => {
+      const evalResult = await model(question, {}, { mode: 'evaluate' });
+      const viewResult = await model(question, {}, { mode: 'view', role: 'instructor' });
+    
+      expect(evalResult.validation).toBeDefined();
+      expect(viewResult.validation).toBeDefined();
+    });    
   
-      expect(result.validation).toBeDefined();
-    });
-  
-    it('ensures validation is explicitly undefined when not in evaluate mode', async () => {
+    it('ensures validation is explicitly undefined when not in evaluate or instructor view mode', async () => {
       const gatherResult = await model(question, {}, { mode: 'gather' });
-      const viewResult = await model(question, {}, { mode: 'view' });
-  
+      const studentViewResult = await model(question, {}, { mode: 'view', role: 'student' });
+    
       expect(gatherResult.validation).toBeUndefined();
-      expect(viewResult.validation).toBeUndefined();
-    });
+      expect(studentViewResult.validation).toBeUndefined();
+    });    
   });  
 
   describe('getPartialScore', () => {
