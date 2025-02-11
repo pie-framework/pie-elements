@@ -197,6 +197,7 @@ export const model = (question, session, env, updateSession) =>
       fontSizeFactor,
       minRowHeight: minRowHeight,
       autoplayAudioEnabled,
+      completeAudioEnabled
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {

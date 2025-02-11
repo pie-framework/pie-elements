@@ -14,7 +14,6 @@ export default class Categorize extends HTMLElement {
   }
 
   isComplete() {
-
     const { autoplayAudioEnabled, completeAudioEnabled } =this._model || {};
 
     if (autoplayAudioEnabled && completeAudioEnabled && !this.audioComplete) {
@@ -95,7 +94,6 @@ export default class Categorize extends HTMLElement {
   }
 
   connectedCallback(){
-
     if (this._model && !this._model.autoplayAudioEnabled) {
       return;
     }
@@ -164,7 +162,6 @@ export default class Categorize extends HTMLElement {
 
     observer.observe(this, { childList: true, subtree: true });
   }
-
 
   render() {
     if (this._model && this._session) {
