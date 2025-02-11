@@ -40,6 +40,8 @@ export default class MultipleChoice extends HTMLElement {
     this._model = null;
     this._session = null;
     this.audioComplete = false;
+    this._boundHandleKeyDown = this.handleKeyDown.bind(this);
+    this._keyboardEventsEnabled = false;
 
     this._rerender = debounce(
       () => {
@@ -64,7 +66,7 @@ export default class MultipleChoice extends HTMLElement {
             renderMath(this);
           });
 
-          if (this._model.keyboardEventsEnabled === true) {
+          if (this._model.keyboardEventsEnabled === true && !this._keyboardEventsEnabled) {
             this.enableKeyboardEvents();
           }
         } else {
@@ -222,11 +224,17 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   enableKeyboardEvents() {
-    window.addEventListener('keydown', this.handleKeyDown.bind(this));
+    if (!this._keyboardEventsEnabled) {
+      window.addEventListener('keydown', this._boundHandleKeyDown);
+      this._keyboardEventsEnabled = true;
+    }
   }
 
   disconnectedCallback() {
-    window.removeEventListener('keydown', this.handleKeyDown.bind(this));
+    if (this._keyboardEventsEnabled) {
+      window.removeEventListener('keydown', this._boundHandleKeyDown);
+      this._keyboardEventsEnabled = false;
+    }
   }
 
   /**
