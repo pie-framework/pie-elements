@@ -40,7 +40,8 @@ export default class ImageClozeAssociation extends HTMLElement {
 
   updateAnswer(data) {
     this._session.answers = data;
-
+    this._session.selector = 'Mouse';
+    
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
     this._render();
