@@ -257,6 +257,7 @@ export default class MultipleChoice extends HTMLElement {
     const newValue = {
       value: choiceId,
       selected: !currentValue.includes(choiceId),
+      selector: 'Keyboard',
     };
 
     this._onChange(newValue);
