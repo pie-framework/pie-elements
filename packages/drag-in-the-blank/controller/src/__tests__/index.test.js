@@ -49,6 +49,40 @@ describe('controller', () => {
       });
     });
 
+    describe('correctResponse behavior across modes', () => {
+      it('does not include correctResponse in gather mode', async () => {
+        const result = await model(question, {}, { mode: 'gather' });
+    
+        expect(result.correctResponse).toBeUndefined();
+      });
+    
+      it('includes correctResponse in view mode for instructor', async () => {
+        const result = await model(question, {}, { mode: 'view', role: 'instructor' });
+    
+        expect(result.correctResponse).toBeDefined();
+      });
+    
+      it('does not include correctResponse in view mode for student', async () => {
+        const result = await model(question, {}, { mode: 'view', role: 'student' });
+    
+        expect(result.correctResponse).toBeUndefined();
+      });
+    
+      it('includes correctResponse in evaluate mode', async () => {
+        const result = await model(question, {}, { mode: 'evaluate' });
+    
+        expect(result.correctResponse).toBeDefined();
+      });
+    
+      it('ensures correctResponse is explicitly undefined when not in evaluate mode or instructor view', async () => {
+        const gatherResult = await model(question, {}, { mode: 'gather' });
+        const viewStudentResult = await model(question, {}, { mode: 'view', role: 'student' });
+    
+        expect(gatherResult.correctResponse).toBeUndefined();
+        expect(viewStudentResult.correctResponse).toBeUndefined();
+      });
+    });    
+
     const assertGather = (label, extra, session, expected) => {
       it(`'mode: gather, ${label}'`, async () => {
         q = {
@@ -67,6 +101,7 @@ describe('controller', () => {
           disabled: false,
           feedback: {},
           responseCorrect: undefined,
+          correctResponse: undefined,
           ...expected,
         });
       });
@@ -129,6 +164,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          correctResponse: q.correctResponse,
           ...expected,
         });
       });
@@ -188,6 +224,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          correctResponse: undefined,
           ...expected,
         });
       });
