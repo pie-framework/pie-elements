@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Root snapshots renders correctly 1`] = `
-<WithStyles(UiLayout)>
+<WithStyles(UiLayout)
+  id="main-container"
+>
   <WithStyles(PreviewPrompt)
     className="prompt"
   />
