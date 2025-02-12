@@ -28,6 +28,8 @@ export function model(question, session, env) {
     shapes,
     language,
     fontSizeFactor,
+    autoplayAudioEnabled,
+    completeAudioEnabled
   } = normalizedQuestion;
   const { rectangles, polygons, circles } = shapes || {};
 
@@ -45,6 +47,8 @@ export function model(question, session, env) {
       partialScoring,
       language,
       fontSizeFactor,
+      autoplayAudioEnabled,
+      completeAudioEnabled,
       shapes: {
         ...shapes,
         // eslint-disable-next-line no-unused-vars
