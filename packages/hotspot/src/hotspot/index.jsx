@@ -155,6 +155,7 @@ const styles = (theme) => ({
   main: {
     color: color.text(),
     backgroundColor: color.background(),
+    position: 'relative'
   },
   collapsible: {
     marginBottom: theme.spacing.unit * 2,
