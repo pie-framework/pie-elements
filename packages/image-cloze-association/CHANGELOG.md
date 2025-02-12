@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.7.1...@pie-element/image-cloze-association@6.8.0) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+* **image-cloze-association:** Ensure validation and responseCorrect are included for instructor view mode, refactor tests PD-4785 ([e48623e](https://github.com/pie-framework/pie-elements/commit/e48623e0a309b0f485b129a8f314bdc33c70e399))
+* Ensure correct response is included in the model only in evaluate mode PD-4785 ([15308de](https://github.com/pie-framework/pie-elements/commit/15308de11fd77e22e558461c1969e7d0eb67c771))
+* ensure correct response is only included in model for evaluate mode, refactor and add corresponding tests for drag-in-the-blank and image-cloze-association PD-4785 ([436e709](https://github.com/pie-framework/pie-elements/commit/436e709de9a9884c50296859a92435e500d01e74))
+
+
+### Features
+
+* **image-cloze-association:** add autoplay audio feature PD-4792 ([b245ffe](https://github.com/pie-framework/pie-elements/commit/b245ffe20f7d8987894a304c68424b5a2763a0c9))
+* **image-cloze-association:** adjust container to append audio autoplay button PD-4792 ([d751606](https://github.com/pie-framework/pie-elements/commit/d7516065965bc7d8056f5b9f340aa647b6663e4b))
+* **image-cloze-association:** update docu PD-4792 ([0d408c6](https://github.com/pie-framework/pie-elements/commit/0d408c60af117ccb5850da3b8f0552beb3f403f9))
+
+
+
+
+
 ## [6.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.7.0...@pie-element/image-cloze-association@6.7.1) (2025-02-06)
 
 

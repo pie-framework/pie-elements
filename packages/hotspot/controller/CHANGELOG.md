@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.2.7...@pie-element/hotspot-controller@5.3.0) (2025-02-12)
+
+
+### Bug Fixes
+
+* uncomment code ([1f0ef02](https://github.com/pie-framework/pie-elements/commit/1f0ef02d0c1a4da68b531b7275addb7a746fb0b6))
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+* **hotspot:** ensure correct response is only included in the  model for evaluate mode and for instructor role in view mode, refactor and add corresponding tests PD-4785 ([e6bbf75](https://github.com/pie-framework/pie-elements/commit/e6bbf7589f3257d1bbf13ef33302c0d8e1c32f49))
+
+
+### Features
+
+* **hotspot:** autoplay audio for STAR PD-4790 ([eba8bc4](https://github.com/pie-framework/pie-elements/commit/eba8bc4f98c8a9ee11e4617e804ee70d8172332d))
+
+
+
+
+
 ## [5.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.2.6...@pie-element/hotspot-controller@5.2.7) (2025-02-06)
 
 

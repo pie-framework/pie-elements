@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.4.0...@pie-element/multiple-choice-configure@7.4.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+
+
+
+
+
 # [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.3.1...@pie-element/multiple-choice-configure@7.4.0) (2025-02-07)
 
 

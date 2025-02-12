@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.9.1...@pie-element/categorize@9.10.0) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+* **categorize:** delete empty lines, add complete property to controller PD-4793 ([479cbf7](https://github.com/pie-framework/pie-elements/commit/479cbf7c29d04b858f15c4b95a0a0a213cdff5d9))
+
+
+### Features
+
+* **categorize:** add autoplay funtionality to categorize PD-4793 ([3e39315](https://github.com/pie-framework/pie-elements/commit/3e39315f546e80d5ffb579be4adb7fe433c9111c))
+* **categorize:** change audio auplay warning popup with play blue button PD-4793 ([d7e519f](https://github.com/pie-framework/pie-elements/commit/d7e519fe7db4a284aa147b332ec4a7c94e5535a4))
+* **categorize:** updated documentation PD-4793 ([ba1f3de](https://github.com/pie-framework/pie-elements/commit/ba1f3def2088503d503df4bb15ad114b485da848))
+
+
+
+
+
 ## [9.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.9.0...@pie-element/categorize@9.9.1) (2025-02-06)
 
 

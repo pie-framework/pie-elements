@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.11.0...@pie-element/multiple-choice@9.12.0) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+* **multiple-choice:** multiple event listeners conflict on re-render PD-4411 ([2cdc929](https://github.com/pie-framework/pie-elements/commit/2cdc9292b34c87393605f7bec3628871f3e514b8))
+
+
+### Features
+
+* **multiple-choice:** adjust container to append audio autoplay button PD-4783 ([8ed342a](https://github.com/pie-framework/pie-elements/commit/8ed342a01669c5297560a0ea20239298ccd0a886))
+* **multiple-choice:** change warning for audio autoplay with play button gif PD-4783 ([791080c](https://github.com/pie-framework/pie-elements/commit/791080c9e621ca467795c980488895d14566be00))
+
+
+
+
+
 # [9.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.10.0...@pie-element/multiple-choice@9.11.0) (2025-02-07)
 
 

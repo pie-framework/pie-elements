@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.19...@pie-element/drag-in-the-blank-controller@6.0.20) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+* **drag-in-the-blank:** Ensure correctResponse is included for instructor view mode, refactor tests PD-4785 ([cf200bd](https://github.com/pie-framework/pie-elements/commit/cf200bdc68e15e185753d5c9e09fa137a2623fc1))
+* Ensure correct response is included in the model only in evaluate mode PD-4785 ([15308de](https://github.com/pie-framework/pie-elements/commit/15308de11fd77e22e558461c1969e7d0eb67c771))
+* ensure correct response is only included in model for evaluate mode, refactor and add corresponding tests for drag-in-the-blank and image-cloze-association PD-4785 ([436e709](https://github.com/pie-framework/pie-elements/commit/436e709de9a9884c50296859a92435e500d01e74))
+
+
+
+
+
 ## [6.0.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.18...@pie-element/drag-in-the-blank-controller@6.0.19) (2025-02-06)
 
 
