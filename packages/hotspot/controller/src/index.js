@@ -31,6 +31,8 @@ export function model(question, session, env) {
   } = normalizedQuestion;
   const { rectangles, polygons, circles } = shapes || {};
 
+  const shouldIncludeCorrectResponse = env.mode === 'evaluate' || (env.role === 'instructor' && env.mode === 'view');
+
   return new Promise((resolve) => {
     const out = {
       disabled: env.mode !== 'gather',
@@ -46,13 +48,21 @@ export function model(question, session, env) {
       language,
       fontSizeFactor,
       shapes: {
-        ...shapes,
+       // ...shapes,
         // eslint-disable-next-line no-unused-vars
-        rectangles: (rectangles || []).map(({ index, ...rectProps }) => ({ ...rectProps })),
+        rectangles: (rectangles || []).map(({ index, correct, ...rectProps }) =>
+          shouldIncludeCorrectResponse ? { correct, ...rectProps } : { ...rectProps }
+        ),
         // eslint-disable-next-line no-unused-vars
-        polygons: (polygons || []).map(({ index, ...polyProps }) => ({ ...polyProps })),
+        polygons: (polygons || []).map(({ index, correct, ...polyProps }) =>
+          shouldIncludeCorrectResponse ? { correct, ...polyProps } : {...polyProps }
+        ),
         // eslint-disable-next-line no-unused-vars
-        circles: (circles || []).map(({ index, ...circleProps }) => ({ ...circleProps })),
+        circles: (circles || []).map(({ index, correct, ...circleProps }) => 
+        
+          shouldIncludeCorrectResponse ? { correct, ...circleProps } : { ...circleProps }
+        ),
+        
       },
       responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
       extraCSSRules: normalizedQuestion.extraCSSRules,
@@ -71,7 +81,6 @@ export function model(question, session, env) {
     out.prompt = normalizedQuestion.promptEnabled ? prompt : null;
     out.strokeWidth = normalizedQuestion.strokeWidth;
 
-    // console.log(out);
     resolve(out);
   });
 }
