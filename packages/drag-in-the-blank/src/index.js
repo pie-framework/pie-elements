@@ -55,6 +55,8 @@ export default class DragInTheBlank extends HTMLElement {
 
   changeSession = (value) => {
     this.session.value = value;
+    this.session.selector = 'Mouse';
+    
     this.dispatchChangedEvent();
     this._render();
   };
