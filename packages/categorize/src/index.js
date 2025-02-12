@@ -76,20 +76,26 @@ export default class Categorize extends HTMLElement {
   _createAudioInfoToast() {
     const info = document.createElement('div');
     info.id = 'play-audio-info';
-    info.innerHTML = 'Click anywhere to enable audio autoplay. Browser restrictions require user interaction to play audio.';
+
     Object.assign(info.style, {
-      position: 'fixed',
-      bottom: '20px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      backgroundColor: '#333',
-      color: '#fff',
-      padding: '10px 20px',
-      borderRadius: '5px',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-      zIndex: '1000',
+      position: 'absolute',
+      top: 0,
+      width:'100%',
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      background: 'white',
+      zIndex: '1000'
     });
 
+    const img = document.createElement('img');
+    img.src = 'https://student.assessment.renaissance.com/ce/quizenginecap/assets/img/playAppsSel.gif';
+    img.alt = 'Click anywhere to enable audio autoplay';
+    img.width = 500;
+    img.height = 300;
+
+    info.appendChild(img);
     return info;
   }
 
@@ -111,10 +117,11 @@ export default class Categorize extends HTMLElement {
           if (!audio) return;
 
           const info = this._createAudioInfoToast();
+          const container = this.querySelector('[class*="mainContainer"]');
           const enableAudio = () => {
             if (this.querySelector('#play-audio-info')) {
               audio.play();
-              this.removeChild(info);
+              container.removeChild(info);
             }
 
             document.removeEventListener('click', enableAudio);
@@ -125,7 +132,7 @@ export default class Categorize extends HTMLElement {
           setTimeout(() => {
             if (audio.paused && !this.querySelector('#play-audio-info')) {
               // add info message as a toast to enable audio playback
-              this.appendChild(info);
+              container.appendChild(info);
               document.addEventListener('click', enableAudio);
             } else {
               document.removeEventListener('click', enableAudio);

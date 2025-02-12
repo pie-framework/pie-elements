@@ -302,6 +302,7 @@ const styles = (theme) => ({
   mainContainer: {
     color: color.text(),
     backgroundColor: color.background(),
+    position: 'relative'
   },
   note: {
     marginBottom: theme.spacing.unit * 2,
