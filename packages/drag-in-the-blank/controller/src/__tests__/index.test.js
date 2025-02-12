@@ -56,24 +56,30 @@ describe('controller', () => {
         expect(result.correctResponse).toBeUndefined();
       });
     
-      it('does not include correctResponse in view mode', async () => {
-        const result = await model(question, {}, { mode: 'view' });
+      it('includes correctResponse in view mode for instructor', async () => {
+        const result = await model(question, {}, { mode: 'view', role: 'instructor' });
+    
+        expect(result.correctResponse).toBeDefined();
+      });
+    
+      it('does not include correctResponse in view mode for student', async () => {
+        const result = await model(question, {}, { mode: 'view', role: 'student' });
     
         expect(result.correctResponse).toBeUndefined();
       });
     
-      it('includes correctResponse only in evaluate mode', async () => {
+      it('includes correctResponse in evaluate mode', async () => {
         const result = await model(question, {}, { mode: 'evaluate' });
     
         expect(result.correctResponse).toBeDefined();
       });
     
-      it('ensures correctResponse is explicitly undefined when not in evaluate mode', async () => {
+      it('ensures correctResponse is explicitly undefined when not in evaluate mode or instructor view', async () => {
         const gatherResult = await model(question, {}, { mode: 'gather' });
-        const viewResult = await model(question, {}, { mode: 'view' });
+        const viewStudentResult = await model(question, {}, { mode: 'view', role: 'student' });
     
         expect(gatherResult.correctResponse).toBeUndefined();
-        expect(viewResult.correctResponse).toBeUndefined();
+        expect(viewStudentResult.correctResponse).toBeUndefined();
       });
     });    
 
@@ -158,7 +164,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
-          correctResponse: undefined,
+          correctResponse: q.correctResponse,
           ...expected,
         });
       });
