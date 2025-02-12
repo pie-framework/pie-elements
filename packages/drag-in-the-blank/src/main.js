@@ -77,6 +77,7 @@ const styles = (theme) => ({
     '& tr > td': {
       color: color.text(),
     },
+    position: 'relative'
   },
   collapsible: {
     marginBottom: theme.spacing.unit * 2,
