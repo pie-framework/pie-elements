@@ -21,6 +21,7 @@ const styles = (theme) => ({
   main: {
     color: color.text(),
     backgroundColor: color.background(),
+    position: 'relative'
   },
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
