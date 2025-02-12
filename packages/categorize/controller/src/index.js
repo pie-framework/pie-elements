@@ -149,6 +149,8 @@ export const model = (question, session, env, updateSession) =>
       extraCSSRules,
       minRowHeight,
       fontSizeFactor,
+      autoplayAudioEnabled,
+      completeAudioEnabled
     } = normalizedQuestion;
     let { choices, note } = normalizedQuestion;
     let fb;
@@ -194,6 +196,8 @@ export const model = (question, session, env, updateSession) =>
       extraCSSRules,
       fontSizeFactor,
       minRowHeight: minRowHeight,
+      autoplayAudioEnabled,
+      completeAudioEnabled
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {

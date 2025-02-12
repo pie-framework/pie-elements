@@ -197,6 +197,14 @@ Maximum number of choices
 
 Indicates font size adjustment factor
 
+# `autoplayAudioEnabled` (boolean)
+
+Indicates if the audio for the prompt should autoplay
+
+# `completeAudioEnabled` (boolean)
+
+Indicates if the audio should reach the end before the item can be marked as 'complete'
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

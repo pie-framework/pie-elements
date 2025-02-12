@@ -148,6 +148,16 @@ export interface CategorizePie extends PieModel {
    * Indicates font size adjustment factor
    */
   fontSizeFactor?: number;
+
+  /**
+   * Indicates if the audio for the prompt should autoplay
+   */
+  autoplayAudioEnabled?: boolean;
+
+  /**
+   * Indicates if the audio should reach the end before the item can be marked as 'complete'
+   */
+  completeAudioEnabled?: boolean;
 }
 
 interface ConfigureMaxImageDimensionsProp {
