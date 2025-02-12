@@ -135,6 +135,7 @@ export default class MultipleChoice extends HTMLElement {
 
     Object.assign(info.style, {
       position: 'absolute',
+      top: 0,
       width:'100%',
       height: '100%',
       display: 'flex',
@@ -174,8 +175,7 @@ export default class MultipleChoice extends HTMLElement {
           if (!audio) return;
 
           const info = this._createAudioInfoToast();
-          const container = this.querySelector('multiple-choice > div');
-
+          const container = this.querySelector('[class*="main"]');
           const enableAudio = () => {
             if (this.querySelector('#play-audio-info')) {
               audio.play();
