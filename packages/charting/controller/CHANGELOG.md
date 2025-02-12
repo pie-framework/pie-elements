@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@5.1.12...@pie-element/charting-controller@5.1.13) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+
+
+
+
+
 ## [5.1.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@5.1.11...@pie-element/charting-controller@5.1.12) (2025-02-06)
 
 

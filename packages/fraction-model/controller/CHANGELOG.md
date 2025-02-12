@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@2.0.20...@pie-element/fraction-model-controller@2.0.21) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+
+
+
+
+
 ## [2.0.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@2.0.19...@pie-element/fraction-model-controller@2.0.20) (2025-02-06)
 
 

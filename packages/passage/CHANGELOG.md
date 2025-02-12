@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@3.3.1...@pie-element/passage@3.3.2) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+
+
+
+
+
 ## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@3.3.0...@pie-element/passage@3.3.1) (2025-02-06)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@5.0.19...@pie-element/image-cloze-association-controller@5.0.20) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+* **image-cloze-association:** Ensure validation and responseCorrect are included for instructor view mode, refactor tests PD-4785 ([e48623e](https://github.com/pie-framework/pie-elements/commit/e48623e0a309b0f485b129a8f314bdc33c70e399))
+* Ensure correct response is included in the model only in evaluate mode PD-4785 ([15308de](https://github.com/pie-framework/pie-elements/commit/15308de11fd77e22e558461c1969e7d0eb67c771))
+* ensure correct response is only included in model for evaluate mode, refactor and add corresponding tests for drag-in-the-blank and image-cloze-association PD-4785 ([436e709](https://github.com/pie-framework/pie-elements/commit/436e709de9a9884c50296859a92435e500d01e74))
+
+
+
+
+
 ## [5.0.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@5.0.18...@pie-element/image-cloze-association-controller@5.0.19) (2025-02-06)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.43.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.42.0...@pie-element/pie-models@13.43.0) (2025-02-12)
+
+
+### Features
+
+* **categorize:** add autoplay funtionality to categorize PD-4793 ([719ac51](https://github.com/pie-framework/pie-elements/commit/719ac514da77af602548ed90a24c0407fce14849))
+* **drag-in-the-blank:** update docs PD-4791 ([a2f0ce8](https://github.com/pie-framework/pie-elements/commit/a2f0ce858b6ab3924ada9b19a01b6dd1aba7b828))
+* **hotspot:** update docs PD-4790 ([c56ed4a](https://github.com/pie-framework/pie-elements/commit/c56ed4a34f0f035bed55688b7102cbd959697096))
+* **image-cloze-association:** add autoplay audio feature PD-4792 ([b245ffe](https://github.com/pie-framework/pie-elements/commit/b245ffe20f7d8987894a304c68424b5a2763a0c9))
+
+
+
+
+
 # [13.42.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.41.0...@pie-element/pie-models@13.42.0) (2025-02-06)
 
 

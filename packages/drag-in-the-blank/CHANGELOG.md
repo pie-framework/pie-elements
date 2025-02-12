@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.6.1...@pie-element/drag-in-the-blank@6.7.0) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+* **drag-in-the-blank:** Ensure correctResponse is included for instructor view mode, refactor tests PD-4785 ([cf200bd](https://github.com/pie-framework/pie-elements/commit/cf200bdc68e15e185753d5c9e09fa137a2623fc1))
+* Ensure correct response is included in the model only in evaluate mode PD-4785 ([15308de](https://github.com/pie-framework/pie-elements/commit/15308de11fd77e22e558461c1969e7d0eb67c771))
+* ensure correct response is only included in model for evaluate mode, refactor and add corresponding tests for drag-in-the-blank and image-cloze-association PD-4785 ([436e709](https://github.com/pie-framework/pie-elements/commit/436e709de9a9884c50296859a92435e500d01e74))
+
+
+### Features
+
+* **ditb:** adjust container to append audio autoplay button PD-4791 ([01d9d26](https://github.com/pie-framework/pie-elements/commit/01d9d264ccda0fbf0944300f916916febc6fa6cd))
+* **drag-in-the-blank:** autoplay audio for STAR PD-4791 ([e8a0837](https://github.com/pie-framework/pie-elements/commit/e8a08378a52438ddd3bdbd9924e2f645a5ac1b47))
+* **drag-in-the-blank:** update docs PD-4791 ([a2f0ce8](https://github.com/pie-framework/pie-elements/commit/a2f0ce858b6ab3924ada9b19a01b6dd1aba7b828))
+
+
+
+
+
 ## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.6.0...@pie-element/drag-in-the-blank@6.6.1) (2025-02-06)
 
 

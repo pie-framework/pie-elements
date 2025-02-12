@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@10.2.4...@pie-element/ebsr-configure@10.2.5) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+
+
+
+
+
 ## [10.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@10.2.3...@pie-element/ebsr-configure@10.2.4) (2025-02-07)
 
 **Note:** Version bump only for package @pie-element/ebsr-configure

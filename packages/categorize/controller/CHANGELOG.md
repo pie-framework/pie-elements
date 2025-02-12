@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@7.5.6...@pie-element/categorize-controller@7.6.0) (2025-02-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
+* **categorize:** delete empty lines, add complete property to controller PD-4793 ([479cbf7](https://github.com/pie-framework/pie-elements/commit/479cbf7c29d04b858f15c4b95a0a0a213cdff5d9))
+
+
+### Features
+
+* **categorize:** add autoplay funtionality to categorize PD-4793 ([3e39315](https://github.com/pie-framework/pie-elements/commit/3e39315f546e80d5ffb579be4adb7fe433c9111c))
+
+
+
+
+
 ## [7.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@7.5.5...@pie-element/categorize-controller@7.5.6) (2025-02-06)
 
 
