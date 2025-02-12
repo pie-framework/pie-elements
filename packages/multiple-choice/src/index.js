@@ -5,7 +5,7 @@ import debounce from 'lodash/debounce';
 import debug from 'debug';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { updateSessionValue } from './session-updater';
+import { updateSessionValue, updateSessionMetadata } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
 
@@ -179,7 +179,9 @@ export default class MultipleChoice extends HTMLElement {
           const enableAudio = () => {
             if (this.querySelector('#play-audio-info')) {
               audio.play();
+              updateSessionMetadata(this._session, { audioStartTime: new Date().getTime() });
               container.removeChild(info);
+
             }
 
             document.removeEventListener('click', enableAudio);
@@ -212,6 +214,7 @@ export default class MultipleChoice extends HTMLElement {
 
           // we need to listen for the ended event to update the isComplete state
           const handleEnded = () => {
+            updateSessionMetadata(this._session, { audioEndTime: new Date().getTime() });
             this.audioComplete = true;
             this._dispatchResponseChanged();
             audio.removeEventListener('ended', handleEnded);
