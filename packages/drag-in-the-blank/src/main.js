@@ -32,9 +32,11 @@ export class Main extends React.Component {
   render() {
     const { showCorrectAnswer } = this.state;
     const { model, onChange, value, classes } = this.props;
-    const { extraCSSRules, prompt, mode, language, fontSizeFactor } = model;
+    const { extraCSSRules, prompt, mode, language, fontSizeFactor, autoplayAudioEnabled } = model;
     const modelWithValue = { ...model, value };
     const showCorrectAnswerToggle = mode === 'evaluate';
+    // Safari, Firefox, and Edge do not support autoplay audio smoothly in our use case
+    const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
@@ -47,7 +49,7 @@ export class Main extends React.Component {
           </Collapsible>
         )}
 
-        {prompt && <PreviewPrompt prompt={prompt} />}
+        {prompt && <PreviewPrompt className="prompt" prompt={prompt} autoplayAudioEnabled={addAutoplayAudio} />}
 
         <CorrectAnswerToggle
           show={showCorrectAnswerToggle}
@@ -75,6 +77,7 @@ const styles = (theme) => ({
     '& tr > td': {
       color: color.text(),
     },
+    position: 'relative'
   },
   collapsible: {
     marginBottom: theme.spacing.unit * 2,
