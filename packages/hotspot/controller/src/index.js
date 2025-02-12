@@ -48,7 +48,7 @@ export function model(question, session, env) {
       language,
       fontSizeFactor,
       shapes: {
-       // ...shapes,
+        ...shapes,
         // eslint-disable-next-line no-unused-vars
         rectangles: (rectangles || []).map(({ index, correct, ...rectProps }) =>
           shouldIncludeCorrectResponse ? { correct, ...rectProps } : { ...rectProps }
