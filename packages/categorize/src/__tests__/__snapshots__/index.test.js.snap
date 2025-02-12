@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`categorize renders snapshot 1`] = `
-<WithStyles(UiLayout)>
+<WithStyles(UiLayout)
+  id="main-container"
+>
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
@@ -62,7 +64,9 @@ exports[`categorize renders snapshot 1`] = `
 `;
 
 exports[`categorize renders snapshot with rationale 1`] = `
-<WithStyles(UiLayout)>
+<WithStyles(UiLayout)
+  id="main-container"
+>
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
@@ -137,7 +141,9 @@ exports[`categorize renders snapshot with rationale 1`] = `
 `;
 
 exports[`categorize renders snapshot with teacherInstructions 1`] = `
-<WithStyles(UiLayout)>
+<WithStyles(UiLayout)
+  id="main-container"
+>
   <WithStyles(Collapsible)
     labels={
       Object {

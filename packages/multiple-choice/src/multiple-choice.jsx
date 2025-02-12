@@ -19,6 +19,7 @@ const styles = (theme) => ({
     '& *': {
       '-webkit-font-smoothing': 'antialiased',
     },
+    position: 'relative'
   },
   partLabel: {
     display: 'block',
@@ -267,7 +268,7 @@ export class MultipleChoice extends React.Component {
     };
 
     return (
-      <div className={classNames(classes.main, className, 'multiple-choice')}>
+        <div id={'main-container'} className={classNames(classes.main, className, 'multiple-choice')}>
         {partLabel && <h3 className={classes.partLabel}>{partLabel}</h3>}
 
         {this.renderHeading()}
