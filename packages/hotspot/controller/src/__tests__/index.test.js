@@ -297,9 +297,9 @@ describe('controller', () => {
 
       it('returns shapes', () => {
         expect(result.shapes.rectangles).toEqual(
-          expect.arrayContaining([{ id: '1', correct: true }, { id: '2' }, { id: '3' }]),
+          expect.arrayContaining([{ id: '1' }, { id: '2' }, { id: '3' }]),
         );
-        expect(result.shapes.polygons).toEqual(expect.arrayContaining([{ id: '4', correct: true }]));
+        expect(result.shapes.polygons).toEqual(expect.arrayContaining([{ id: '4' }]));
       });
 
       it('does not return responseCorrect', () => {
@@ -367,6 +367,52 @@ describe('controller', () => {
         role: 'student',
       });
       expect(noResult).toBeNull();
+    });
+  });
+
+  describe('shouldIncludeCorrectResponse behavior', () => {
+    it('includes correct property when shouldIncludeCorrectResponse is true', async () => {
+      env = { mode: 'evaluate' };
+      result = await model(question, {}, env);
+      
+      expect(result.shapes.rectangles).toEqual(
+        expect.arrayContaining([{ id: '1', correct: true }, { id: '2' }, { id: '3' }])
+      );
+      expect(result.shapes.polygons).toEqual(expect.arrayContaining([{ id: '4', correct: true }]));
+      expect(result.shapes.circles).toEqual(expect.arrayContaining([{ id: '5', correct: true }]));
+    });
+
+    it('excludes correct property when shouldIncludeCorrectResponse is false', async () => {
+      env = { mode: 'gather' };
+      result = await model(question, {}, env);
+
+      expect(result.shapes.rectangles).toEqual(
+        expect.arrayContaining([{ id: '1' }, { id: '2' }, { id: '3' }])
+      );
+      expect(result.shapes.polygons).toEqual(expect.arrayContaining([{ id: '4' }]));
+      expect(result.shapes.circles).toEqual(expect.arrayContaining([{ id: '5' }]));
+    });
+
+    it('includes correct for instructor in view mode', async () => {
+      env = { mode: 'view', role: 'instructor' };
+      result = await model(question, {}, env);
+
+      expect(result.shapes.rectangles).toEqual(
+        expect.arrayContaining([{ id: '1', correct: true }, { id: '2' }, { id: '3' }])
+      );
+      expect(result.shapes.polygons).toEqual(expect.arrayContaining([{ id: '4', correct: true }]));
+      expect(result.shapes.circles).toEqual(expect.arrayContaining([{ id: '5', correct: true }]));
+    });
+
+    it('excludes correct for student in view mode', async () => {
+      env = { mode: 'view', role: 'student' };
+      result = await model(question, {}, env);
+
+      expect(result.shapes.rectangles).toEqual(
+        expect.arrayContaining([{ id: '1' }, { id: '2' }, { id: '3' }])
+      );
+      expect(result.shapes.polygons).toEqual(expect.arrayContaining([{ id: '4' }]));
+      expect(result.shapes.circles).toEqual(expect.arrayContaining([{ id: '5' }]));
     });
   });
 });

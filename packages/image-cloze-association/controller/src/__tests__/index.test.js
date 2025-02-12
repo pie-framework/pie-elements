@@ -469,12 +469,7 @@ describe('controller', () => {
       });
 
       it('returns validation', () => {
-        expect(result.validation).toEqual({
-          validResponse: {
-            score: 1,
-            value: [{ images: [rhomb, square] }, { images: [rhomb, square, trapeze] }],
-          },
-        });
+        expect(result.validation).toBeUndefined();
       });
 
       it('returns responseContainers', () => {
@@ -518,6 +513,15 @@ describe('controller', () => {
         return result;
       });
 
+      it('returns validation', () => {
+        expect(result.validation).toEqual({
+          validResponse: {
+            score: 1,
+            value: [{ images: [rhomb, square] }, { images: [rhomb, square, trapeze] }],
+          },
+        });
+      });
+
       it('returns is response correct', () => {
         expect(result.responseCorrect).toEqual(false);
       });
@@ -538,6 +542,36 @@ describe('controller', () => {
       returnModel({});
     });
   });
+
+  describe('validation property behavior across modes', () => {
+    it('does not include validation in gather mode', async () => {
+      const result = await model(question, {}, { mode: 'gather' });
+  
+      expect(result.validation).toBeUndefined();
+    });
+  
+    it('does not include validation in view mode', async () => {
+      const result = await model(question, {}, { mode: 'view' });
+  
+      expect(result.validation).toBeUndefined();
+    });
+  
+    it('includes validation in evaluate mode and when instructor is in view mode', async () => {
+      const evalResult = await model(question, {}, { mode: 'evaluate' });
+      const viewResult = await model(question, {}, { mode: 'view', role: 'instructor' });
+    
+      expect(evalResult.validation).toBeDefined();
+      expect(viewResult.validation).toBeDefined();
+    });    
+  
+    it('ensures validation is explicitly undefined when not in evaluate or instructor view mode', async () => {
+      const gatherResult = await model(question, {}, { mode: 'gather' });
+      const studentViewResult = await model(question, {}, { mode: 'view', role: 'student' });
+    
+      expect(gatherResult.validation).toBeUndefined();
+      expect(studentViewResult.validation).toBeUndefined();
+    });    
+  });  
 
   describe('getPartialScore', () => {
     const returnPartialScore = (sess) => {

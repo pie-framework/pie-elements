@@ -5,7 +5,7 @@ import debounce from 'lodash/debounce';
 import debug from 'debug';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { updateSessionValue } from './session-updater';
+import { updateSessionValue, updateSessionMetadata } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
 
@@ -40,6 +40,8 @@ export default class MultipleChoice extends HTMLElement {
     this._model = null;
     this._session = null;
     this.audioComplete = false;
+    this._boundHandleKeyDown = this.handleKeyDown.bind(this);
+    this._keyboardEventsEnabled = false;
 
     this._rerender = debounce(
       () => {
@@ -64,7 +66,7 @@ export default class MultipleChoice extends HTMLElement {
             renderMath(this);
           });
 
-          if (this._model.keyboardEventsEnabled === true) {
+          if (this._model.keyboardEventsEnabled === true && !this._keyboardEventsEnabled) {
             this.enableKeyboardEvents();
           }
         } else {
@@ -132,21 +134,26 @@ export default class MultipleChoice extends HTMLElement {
   _createAudioInfoToast() {
     const info = document.createElement('div');
     info.id = 'play-audio-info';
-    info.innerHTML =
-      'Click anywhere to enable audio autoplay. Browser restrictions require user interaction to play audio.';
+
     Object.assign(info.style, {
-      position: 'fixed',
-      bottom: '20px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      backgroundColor: '#333',
-      color: '#fff',
-      padding: '10px 20px',
-      borderRadius: '5px',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-      zIndex: '1000',
+      position: 'absolute',
+      top: 0,
+      width:'100%',
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      background: 'white',
+      zIndex: '1000'
     });
 
+    const img = document.createElement('img');
+    img.src = 'https://student.assessment.renaissance.com/ce/quizenginecap/assets/img/playAppsSel.gif';
+    img.alt = 'Click anywhere to enable audio autoplay';
+    img.width = 500;
+    img.height = 300;
+
+    info.appendChild(img);
     return info;
   }
 
@@ -170,10 +177,13 @@ export default class MultipleChoice extends HTMLElement {
           if (!audio) return;
 
           const info = this._createAudioInfoToast();
+          const container = this.querySelector('[class*="main"]');
           const enableAudio = () => {
             if (this.querySelector('#play-audio-info')) {
               audio.play();
-              this.removeChild(info);
+              updateSessionMetadata(this._session, { audioStartTime: new Date().getTime() });
+              container.removeChild(info);
+
             }
 
             document.removeEventListener('click', enableAudio);
@@ -184,7 +194,7 @@ export default class MultipleChoice extends HTMLElement {
           setTimeout(() => {
             if (audio.paused && !this.querySelector('#play-audio-info')) {
               // add info message as a toast to enable audio playback
-              this.appendChild(info);
+              container.appendChild(info);
               document.addEventListener('click', enableAudio);
             } else {
               document.removeEventListener('click', enableAudio);
@@ -206,6 +216,7 @@ export default class MultipleChoice extends HTMLElement {
 
           // we need to listen for the ended event to update the isComplete state
           const handleEnded = () => {
+            updateSessionMetadata(this._session, { audioEndTime: new Date().getTime() });
             this.audioComplete = true;
             this._dispatchResponseChanged();
             audio.removeEventListener('ended', handleEnded);
@@ -222,11 +233,17 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   enableKeyboardEvents() {
-    window.addEventListener('keydown', this.handleKeyDown.bind(this));
+    if (!this._keyboardEventsEnabled) {
+      window.addEventListener('keydown', this._boundHandleKeyDown);
+      this._keyboardEventsEnabled = true;
+    }
   }
 
   disconnectedCallback() {
-    window.removeEventListener('keydown', this.handleKeyDown.bind(this));
+    if (this._keyboardEventsEnabled) {
+      window.removeEventListener('keydown', this._boundHandleKeyDown);
+      this._keyboardEventsEnabled = false;
+    }
   }
 
   /**
@@ -257,6 +274,7 @@ export default class MultipleChoice extends HTMLElement {
     const newValue = {
       value: choiceId,
       selected: !currentValue.includes(choiceId),
+      selector: 'Keyboard',
     };
 
     this._onChange(newValue);

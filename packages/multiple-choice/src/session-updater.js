@@ -20,6 +20,16 @@ export function updateSessionValue(session, choiceMode, data) {
     }
   }
   
-  //update session metadata
-  session.selector = data.selector;
+  //update session value metadata
+  session.selector = data.selector; //the input method used to select the choice (e.g. mouse, keyboard)
+}
+
+export function updateSessionMetadata(session, metadata) {
+  session.audioStartTime = metadata.audioStartTime || session.audioStartTime; //timestamp when auto-played audio started playing
+  session.audioEndTime = metadata.audioEndTime || session.audioEndTime; //timestamp when auto-played audio completed playing
+  
+  if(!session.waitTime && session.audioStartTime && session.audioEndTime) {
+    // waitTime is elapsed time (in seconds) the user waited for auto-played audio to finish
+    session.waitTime = (session.audioEndTime - session.audioStartTime) / 1000;
+  }
 }
