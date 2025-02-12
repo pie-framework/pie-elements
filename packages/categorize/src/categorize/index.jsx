@@ -208,7 +208,7 @@ export class Categorize extends React.Component {
     });
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
+      <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
         {model.teacherInstructions && hasText(model.teacherInstructions) && (
           <React.Fragment>
             <Collapsible

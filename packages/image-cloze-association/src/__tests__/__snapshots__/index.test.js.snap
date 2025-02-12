@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`image-cloze-association renders snapshot 1`] = `
-<WithStyles(UiLayout)>
+<WithStyles(UiLayout)
+  id="main-container"
+>
   <WithStyles(PreviewPrompt)
     className="prompt"
   />
@@ -47,7 +49,9 @@ exports[`image-cloze-association renders snapshot 1`] = `
 `;
 
 exports[`image-cloze-association renders snapshot with rationale 1`] = `
-<WithStyles(UiLayout)>
+<WithStyles(UiLayout)
+  id="main-container"
+>
   <WithStyles(PreviewPrompt)
     className="prompt"
   />
@@ -105,7 +109,9 @@ exports[`image-cloze-association renders snapshot with rationale 1`] = `
 `;
 
 exports[`image-cloze-association renders snapshot with teacherInstructions 1`] = `
-<WithStyles(UiLayout)>
+<WithStyles(UiLayout)
+  id="main-container"
+>
   <WithStyles(Collapsible)
     labels={
       Object {

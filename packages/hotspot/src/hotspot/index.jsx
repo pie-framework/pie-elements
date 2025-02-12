@@ -89,7 +89,7 @@ class HotspotComponent extends React.Component {
     const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.main} fontSizeFactor={fontSizeFactor}>
+      <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.main} fontSizeFactor={fontSizeFactor}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}

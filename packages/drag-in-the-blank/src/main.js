@@ -39,7 +39,7 @@ export class Main extends React.Component {
     const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
+      <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
         {model.teacherInstructions && hasText(model.teacherInstructions) && (
           <Collapsible
             className={classes.collapsible}

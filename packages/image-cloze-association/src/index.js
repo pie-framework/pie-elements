@@ -98,7 +98,7 @@ export default class ImageClozeAssociation extends HTMLElement {
           if (!audio) return;
 
           const info = this._createAudioInfoToast();
-          const container = this.querySelector('[class*="main"]');
+          const container = this.querySelector('#main-container');
           const enableAudio = () => {
             if (this.querySelector('#play-audio-info')) {
               audio.play();
