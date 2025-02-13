@@ -181,9 +181,7 @@ export default class MultipleChoice extends HTMLElement {
           const enableAudio = () => {
             if (this.querySelector('#play-audio-info')) {
               audio.play();
-              updateSessionMetadata(this._session, { audioStartTime: new Date().getTime() });
               container.removeChild(info);
-
             }
 
             document.removeEventListener('click', enableAudio);
@@ -203,8 +201,9 @@ export default class MultipleChoice extends HTMLElement {
 
           // we need to listen for the playing event to remove the toast in case the audio plays because of re-rendering
           const handlePlaying = () => {
+            updateSessionMetadata(this._session, { audioStartTime: new Date().getTime() });
+            
             const info = this.querySelector('#play-audio-info');
-
             if (info) {
               this.removeChild(info);
             }
