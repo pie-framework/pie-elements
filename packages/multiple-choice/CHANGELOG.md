@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.12.2...@pie-element/multiple-choice@9.12.3) (2025-02-13)
+
+
+### Bug Fixes
+
+* PD-4804 updated container for all autoplay-supported elements ([34fabe3](https://github.com/pie-framework/pie-elements/commit/34fabe3b129e84f5cab9e4652e1a05bdd1cbb527))
+
+
+
+
+
 ## [9.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.12.1...@pie-element/multiple-choice@9.12.2) (2025-02-13)
 
 
