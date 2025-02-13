@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.6.1...@pie-element/hotspot@7.6.2) (2025-02-13)
+
+
+### Bug Fixes
+
+* PD-4804 updated container for all autoplay-supported elements ([34fabe3](https://github.com/pie-framework/pie-elements/commit/34fabe3b129e84f5cab9e4652e1a05bdd1cbb527))
+
+
+
+
+
 ## [7.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.6.0...@pie-element/hotspot@7.6.1) (2025-02-12)
 
 
