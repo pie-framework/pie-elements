@@ -125,7 +125,7 @@ export default class ImageClozeAssociation extends HTMLElement {
             const info = this.querySelector('#play-audio-info');
 
             if (info) {
-              this.removeChild(info);
+              container.removeChild(info);
             }
 
             audio.removeEventListener('playing', handlePlaying);
