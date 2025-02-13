@@ -25,8 +25,8 @@ export function updateSessionValue(session, choiceMode, data) {
 }
 
 export function updateSessionMetadata(session, metadata) {
-  session.audioStartTime = metadata.audioStartTime || session.audioStartTime; //timestamp when auto-played audio started playing
-  session.audioEndTime = metadata.audioEndTime || session.audioEndTime; //timestamp when auto-played audio completed playing
+  session.audioStartTime = session.audioStartTime || metadata.audioStartTime; //timestamp when auto-played audio started playing
+  session.audioEndTime = session.audioEndTime || metadata.audioEndTime; //timestamp when auto-played audio completed playing
   
   if(!session.waitTime && session.audioStartTime && session.audioEndTime) {
     // waitTime is elapsed time (in seconds) the user waited for auto-played audio to finish
