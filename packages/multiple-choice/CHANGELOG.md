@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.12.1...@pie-element/multiple-choice@9.12.2) (2025-02-13)
+
+
+### Bug Fixes
+
+* multiple-choice audio wait time ([5f5d4a2](https://github.com/pie-framework/pie-elements/commit/5f5d4a22f26093075111ca0f918da096f8687aa7))
+
+
+
+
+
 ## [9.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.12.0...@pie-element/multiple-choice@9.12.1) (2025-02-12)
 
 
