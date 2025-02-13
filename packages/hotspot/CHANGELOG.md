@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.6.0...@pie-element/hotspot@7.6.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* audio autoplay button update container PD-4783 ([57b97c0](https://github.com/pie-framework/pie-elements/commit/57b97c0b28ee7d6cfa57ede70c270bc379a9ee17))
+
+
+
+
+
 # [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.5.2...@pie-element/hotspot@7.6.0) (2025-02-12)
 
 

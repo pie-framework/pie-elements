@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.0...@pie-element/categorize@9.10.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* audio autoplay button update container PD-4783 ([57b97c0](https://github.com/pie-framework/pie-elements/commit/57b97c0b28ee7d6cfa57ede70c270bc379a9ee17))
+* PD-4783 update snapshots ([5d741ae](https://github.com/pie-framework/pie-elements/commit/5d741ae5c50fa0f080a91ede8a45cef80cf3997d))
+
+
+
+
+
 # [9.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.9.1...@pie-element/categorize@9.10.0) (2025-02-12)
 
 
