@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.3...@pie-element/categorize@9.10.4) (2025-02-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4801 ([194e2d7](https://github.com/pie-framework/pie-elements/commit/194e2d7e86a02887ffe03e13c062f8d98d543fd9))
+
+
+
+
+
 ## [9.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.2...@pie-element/categorize@9.10.3) (2025-02-14)
 
 **Note:** Version bump only for package @pie-element/categorize
