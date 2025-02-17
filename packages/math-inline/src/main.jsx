@@ -914,6 +914,7 @@ const styles = (theme) => ({
         paddingLeft: '0 !important',
         '& > .mq-editable-field': {
           minWidth: '10px',
+          padding: theme.spacing.unit / 4,
         },
       },
       '& sup': {
