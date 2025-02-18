@@ -215,6 +215,7 @@ exports[`Container snapshot renders 1`] = `
         Object {
           "height": 0,
           "maxHeight": 0,
+          "overflow": "scroll",
         }
       }
     >
@@ -347,6 +348,7 @@ exports[`Container snapshot renders disabled 1`] = `
         Object {
           "height": 0,
           "maxHeight": 0,
+          "overflow": "scroll",
         }
       }
     >
