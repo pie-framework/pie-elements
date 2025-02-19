@@ -83,13 +83,13 @@ export class Container extends Component {
   setDimensions() {
     const checkExist = setInterval(() => {
       try {
-        const { height } = this.drawable.getBoundingClientRect();
-        const width = this.props.session.width || this.drawable.getBoundingClientRect().width;
+        const { height, width } = this.drawable.getBoundingClientRect();
+        const effectiveWidth = this.props.session.width || width;
         if (height !== 0 && width !== 0) {
           this.setState({
             drawableDimensions: {
               height,
-              width,
+              width: effectiveWidth,
             },
           });
         }
