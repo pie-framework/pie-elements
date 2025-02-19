@@ -21,6 +21,7 @@ export default class DrawingResponse extends HTMLElement {
   sessionChanged = (update) => {
     this._session.drawables = update.drawables;
     this._session.texts = update.texts;
+    this._session.width = update.width;
 
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
