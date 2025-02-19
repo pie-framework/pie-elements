@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@3.1.14...@pie-element/boilerplate-item-type@3.1.15) (2025-02-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4168, PD-4723 ([921f1bf](https://github.com/pie-framework/pie-elements/commit/921f1bfff211979c859821bb15c369327cfacdf7))
+
+
+
+
+
 ## [3.1.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@3.1.13...@pie-element/boilerplate-item-type@3.1.14) (2025-02-14)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.3...@pie-element/math-inline@8.4.4) (2025-02-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4168, PD-4723 ([921f1bf](https://github.com/pie-framework/pie-elements/commit/921f1bfff211979c859821bb15c369327cfacdf7))
+* **math-inine:** overwrite mq-root-block padding and delete mw field padding PD-4803 ([6de66ce](https://github.com/pie-framework/pie-elements/commit/6de66ce1e907b0da40c788dbc66004dc37800877))
+* **math-inine:** overwrite mq-root-block padding and delete mw field padding PD-4803 ([1bb39cb](https://github.com/pie-framework/pie-elements/commit/1bb39cb772bc393e20c4e9d5b8f9b019d5799b3d))
+* **math-inline:** get rid of input margins to avoid stop events PD-4803 ([a07ca3c](https://github.com/pie-framework/pie-elements/commit/a07ca3c04771e5cd92f8ddb7e898deafdf450aa8))
+
+
+
+
+
 ## [8.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.2...@pie-element/math-inline@8.4.3) (2025-02-14)
 
 

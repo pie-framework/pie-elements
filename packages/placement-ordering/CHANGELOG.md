@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.4.3...@pie-element/placement-ordering@10.4.4) (2025-02-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4168, PD-4723 ([921f1bf](https://github.com/pie-framework/pie-elements/commit/921f1bfff211979c859821bb15c369327cfacdf7))
+
+
+
+
+
 ## [10.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.4.2...@pie-element/placement-ordering@10.4.3) (2025-02-14)
 
 
