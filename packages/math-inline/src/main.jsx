@@ -906,11 +906,14 @@ const styles = (theme) => ({
   },
   expression: {
     maxWidth: 'fit-content',
+    padding: theme.spacing.unit / 4,
     '& > .mq-math-mode': {
       '& > .mq-root-block': {
+        // PD-4803 unset padding as events are not correctly propagated in the proximity of math input
+        paddingRight: '0 !important',
+        paddingLeft: '0 !important',
         '& > .mq-editable-field': {
           minWidth: '10px',
-          margin: (theme.spacing.unit * 2) / 3,
           padding: theme.spacing.unit / 4,
         },
       },

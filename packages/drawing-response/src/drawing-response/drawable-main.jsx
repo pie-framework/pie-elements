@@ -57,10 +57,11 @@ export class DrawableMain extends React.Component {
   }
 
   handleSessionChange = () => {
-    const { onSessionChange, session, TextEntry } = this.props;
+    const { onSessionChange, session, TextEntry, drawableDimensions } = this.props;
     const { drawables } = this.state;
 
     const newSession = {
+      width: drawableDimensions.width,
       drawables: drawables.map((d) => d.toJson()),
       texts: TextEntry.all.map((text) => ({
         ...text,
