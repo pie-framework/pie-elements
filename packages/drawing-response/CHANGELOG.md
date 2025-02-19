@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@8.3.3...@pie-element/drawing-response@8.3.4) (2025-02-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4168, PD-4723 ([921f1bf](https://github.com/pie-framework/pie-elements/commit/921f1bfff211979c859821bb15c369327cfacdf7))
+* **drawing-response:** fix drawing response area is cut off PD-4739 ([a4d74ca](https://github.com/pie-framework/pie-elements/commit/a4d74ca8ac290fbfa870c4cec5a551a1843fe38b))
+* **drawing-response:** optimize setDimensions by reducing redundant DOM calls PD-4739 ([a2d061a](https://github.com/pie-framework/pie-elements/commit/a2d061ae56ff542c0a564201a272d0f90488f3eb))
+* **drawing-response:** update snapshots PD-4739 ([e77ec0d](https://github.com/pie-framework/pie-elements/commit/e77ec0d45ab1e3355904dc6c5236ab7c04853429))
+* **drawing-response:** update width in drawing response session PD-4739 ([79731e0](https://github.com/pie-framework/pie-elements/commit/79731e069c02428203e517f7866aaf54a968cbd7))
+
+
+
+
+
 ## [8.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@8.3.2...@pie-element/drawing-response@8.3.3) (2025-02-14)
 
 
