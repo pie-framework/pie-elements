@@ -162,8 +162,8 @@ export default class Categorize extends HTMLElement {
             
             let { audioStartTime, audioEndTime, waitTime } = this._session;
             if(!waitTime && audioStartTime && audioEndTime) {
-              // waitTime is elapsed time (in seconds) the user waited for auto-played audio to finish
-              this._session.waitTime = (audioEndTime - audioStartTime) / 1000;
+              // waitTime is elapsed time the user waited for auto-played audio to finish
+              this._session.waitTime = (audioEndTime - audioStartTime);
             }
             
             this.audioComplete = true;

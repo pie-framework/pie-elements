@@ -138,8 +138,10 @@ export default class DragInTheBlank extends HTMLElement {
 
           // we need to listen for the playing event to remove the toast in case the audio plays because of re-rendering
           const handlePlaying = () => {
+            //timestamp when auto-played audio started playing
+            this._session.audioStartTime = this._session.audioStartTime || new Date().getTime();
+            
             const info = this.querySelector('#play-audio-info');
-
             if (info) {
               container.removeChild(info);
             }
@@ -151,6 +153,15 @@ export default class DragInTheBlank extends HTMLElement {
 
           // we need to listen for the ended event to update the isComplete state
           const handleEnded = () => {
+            //timestamp when auto-played audio completed playing
+            this._session.audioEndTime = this._session.audioEndTime || new Date().getTime();
+            
+            let { audioStartTime, audioEndTime, waitTime } = this._session;
+            if(!waitTime && audioStartTime && audioEndTime) {
+              // waitTime is elapsed time the user waited for auto-played audio to finish
+              this._session.waitTime = (audioEndTime - audioStartTime);
+            }
+            
             this.audioComplete = true;
             this.dispatchChangedEvent();
             audio.removeEventListener('ended', handleEnded);

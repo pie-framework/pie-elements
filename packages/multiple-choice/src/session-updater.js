@@ -29,7 +29,7 @@ export function updateSessionMetadata(session, metadata) {
   session.audioEndTime = session.audioEndTime || metadata.audioEndTime; //timestamp when auto-played audio completed playing
   
   if(!session.waitTime && session.audioStartTime && session.audioEndTime) {
-    // waitTime is elapsed time (in seconds) the user waited for auto-played audio to finish
-    session.waitTime = (session.audioEndTime - session.audioStartTime) / 1000;
+    // waitTime is elapsed time the user waited for auto-played audio to finish
+    session.waitTime = (session.audioEndTime - session.audioStartTime);
   }
 }
