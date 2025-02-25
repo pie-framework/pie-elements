@@ -17,3 +17,13 @@ export function updateSessionValue(session, model, data) {
     session.selector = data.selector;
   }
 }
+
+export function updateSessionMetadata(session, metadata) {
+  session.audioStartTime = session.audioStartTime || metadata.audioStartTime; //timestamp when auto-played audio started playing
+  session.audioEndTime = session.audioEndTime || metadata.audioEndTime; //timestamp when auto-played audio completed playing
+  
+  if(!session.waitTime && session.audioStartTime && session.audioEndTime) {
+    // waitTime is elapsed time the user waited for auto-played audio to finish
+    session.waitTime = (session.audioEndTime - session.audioStartTime);
+  }
+}
