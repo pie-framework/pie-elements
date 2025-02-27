@@ -15,16 +15,12 @@ function markupToText(s) {
 }
 
 // IMPORTANT! If you make any changes to this function, please make sure you also update complex-rubric/controller/validateSimpleRubric function!“.
-export function validate(model, config) {
-  const { points, excludeZero } = model;
+export function validate(model) {
+  const { points } = model;
   const errors = {};
   const pointsDescriptorsErrors = {};
 
   (points || []).forEach((point, index) => {
-    if (index === 0 && excludeZero) {
-      // if excludeZero is true, the 0 point is not displayed, so it should not be validated
-      return;
-    }
 
     if (!point || point === '<div></div>') {
       pointsDescriptorsErrors[index] = 'Points descriptors cannot be empty.';
