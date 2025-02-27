@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.3.11...@pie-element/ebsr@10.3.12) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+
+
+
+
+
 ## [10.3.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.3.10...@pie-element/ebsr@10.3.11) (2025-02-25)
 
 **Note:** Version bump only for package @pie-element/ebsr

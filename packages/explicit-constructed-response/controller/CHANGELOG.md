@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@5.1.15...@pie-element/explicit-constructed-response-controller@5.1.16) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+* **ECR:** Adjust values in evaluate when answers include special characters PD-4821 ([4348d10](https://github.com/pie-framework/pie-elements/commit/4348d10eb8dc1b42ac999ddd6139f3c1070276ba))
+
+
+
+
+
 ## [5.1.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@5.1.14...@pie-element/explicit-constructed-response-controller@5.1.15) (2025-02-19)
 
 

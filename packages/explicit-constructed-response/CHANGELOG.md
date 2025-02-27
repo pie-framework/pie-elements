@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.3.4...@pie-element/explicit-constructed-response@7.3.5) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+* **ECR:** Adjust values in evaluate when answers include special characters PD-4821 ([4348d10](https://github.com/pie-framework/pie-elements/commit/4348d10eb8dc1b42ac999ddd6139f3c1070276ba))
+* **ECR:** revert snapshots PD-4821 ([b3eccf2](https://github.com/pie-framework/pie-elements/commit/b3eccf2b70ff5611b626f720988333014a365c87))
+* **ECR:** show in correct answers HTML reserved characters PD-4821 ([2a72db3](https://github.com/pie-framework/pie-elements/commit/2a72db3fc996b0f39b921a4b2a3594963e27dc9d))
+* **explicit-constructed-response:** get rid of local state as it should be updated based on session value PD-4695 ([96e5383](https://github.com/pie-framework/pie-elements/commit/96e53833da65d0d1c648adf5a21fec60780ef575))
+
+
+
+
+
 ## [7.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.3.3...@pie-element/explicit-constructed-response@7.3.4) (2025-02-19)
 
 
