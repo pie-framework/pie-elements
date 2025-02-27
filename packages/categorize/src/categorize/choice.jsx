@@ -120,12 +120,17 @@ export const spec = {
     return out;
   },
   endDrag: (props, monitor) => {
-    if (!monitor.didDrop()) {
-      const item = monitor.getItem();
-      if (item.categoryId) {
-        log('wasnt droppped - what to do?');
-        props.onRemoveChoice(item);
+    const delta = monitor.getDifferenceFromInitialOffset();
+    if (delta && (Math.abs(delta.x) > 5 || Math.abs(delta.y) > 5)) {
+      if (!monitor.didDrop()) {
+        const item = monitor.getItem();
+        if (item.categoryId) {
+          log('wasnt droppped - what to do?');
+          props.onRemoveChoice(item);
+        }
       }
+    } else {
+      log('long press on touch devices, not removing item');
     }
   },
 };

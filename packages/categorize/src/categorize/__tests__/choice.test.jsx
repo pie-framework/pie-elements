@@ -76,6 +76,7 @@ describe('spec', () => {
       monitor = {
         getItem: jest.fn().mockReturnValue(item),
         didDrop: jest.fn().mockReturnValue(false),
+        getDifferenceFromInitialOffset: jest.fn().mockReturnValue({ x: 10, y: 10 }), // Mock movement
       };
     });
 
@@ -93,7 +94,13 @@ describe('spec', () => {
     it('does not call onRemoveChoice monitor.didDrop returns true', () => {
       monitor.didDrop.mockReturnValue(true);
       spec.endDrag(props, monitor);
-      expect(props.onRemoveChoice).not.toBeCalledWith(item);
+      expect(props.onRemoveChoice).not.toBeCalled();
+    });
+
+    it('does not call onRemoveChoice if movement is too small', () => {
+      monitor.getDifferenceFromInitialOffset.mockReturnValue({ x: 2, y: 2 }); // Small movement
+      spec.endDrag(props, monitor);
+      expect(props.onRemoveChoice).not.toBeCalled();
     });
   });
 });
