@@ -174,7 +174,7 @@ export function model(question, session, env) {
 }
 
 export const prepareVal = (html) => {
-  return getInnerText(html).trim();
+  return decodeHTML(getInnerText(html).trim());
 };
 
 export const getScore = (config, session) => {
@@ -254,6 +254,11 @@ const getInnerText = (html) => {
         // Polyfill for replaceAll using replace and a global regex
     return html.replace(/<[^>]*>/g, '');
   }
+};
+
+const decodeHTML = (html) => {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return doc.body.textContent || '';
 };
 
 // remove all html tags except img and iframe

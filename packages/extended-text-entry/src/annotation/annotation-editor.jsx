@@ -579,6 +579,9 @@ class AnnotationEditor extends React.Component {
               audio: {
                 disabled: true,
               },
+              textAlign: {
+                disabled: true,
+              }
             }}
           />
         </InputContainer>

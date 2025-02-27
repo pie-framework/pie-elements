@@ -31,6 +31,9 @@ exports[`Render Main Component should match snapshot 1`] = `
         "table": Object {
           "disabled": true,
         },
+        "textAlign": Object {
+          "disabled": true,
+        },
         "video": Object {
           "disabled": true,
         },
@@ -89,6 +92,9 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
           "keypadMode": undefined,
         },
         "table": Object {
+          "disabled": true,
+        },
+        "textAlign": Object {
           "disabled": true,
         },
         "video": Object {
