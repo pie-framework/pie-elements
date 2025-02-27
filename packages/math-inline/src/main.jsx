@@ -88,6 +88,29 @@ function prepareForStatic(model, state) {
   }
 }
 
+function parseAnswers(session, model){
+  const answers = {};
+
+  if (model.config && model.config.expression) {
+    let answerBlocks = 1; // assume one at least
+    // build out local state model using responses declared in expression
+
+    (model.config.expression || '').replace(REGEX, () => {
+      answers[`r${answerBlocks}`] = {
+        value:
+            (session &&
+                session.answers &&
+                session.answers[`r${answerBlocks}`] &&
+                session.answers[`r${answerBlocks}`].value) ||
+            '',
+      };
+
+      answerBlocks += 1;
+    });
+  }
+  return answers;
+}
+
 export class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -98,26 +121,8 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-
-    const answers = {};
-
-    if (props.model.config && props.model.config.expression) {
-      let answerBlocks = 1; // assume one at least
-      // build out local state model using responses declared in expression
-
-      (props.model.config.expression || '').replace(REGEX, () => {
-        answers[`r${answerBlocks}`] = {
-          value:
-            (props.session &&
-              props.session.answers &&
-              props.session.answers[`r${answerBlocks}`] &&
-              props.session.answers[`r${answerBlocks}`].value) ||
-            '',
-        };
-
-        answerBlocks += 1;
-      });
-    }
+    const {model, session} = props;
+    const answers = parseAnswers(session, model);
 
     this.state = {
       session: { ...props.session, answers },
@@ -203,6 +208,18 @@ export class Main extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { config } = this.props.model;
     const { config: nextConfig = {} } = nextProps.model || {};
+
+    const { session } = this.props;
+    const { session: nextSession = {} } = nextProps || {};
+
+    // in case session props changed in parent, we need to catch this and update local state
+    // example: when env is changing in pieoneer
+    if (session && nextSession && !isEqual(session.answers, nextSession.answers)) {
+      this.setState({
+        session: {...nextSession, answers: parseAnswers(nextSession, this.props.model)},
+      });
+    }
+
     // check if the note is the default one for prev language and change to the default one for new language
     // this check is necessary in order to diferanciate between default and authour defined note
     // and only change between languages for default ones
