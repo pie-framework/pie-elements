@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.4.4...@pie-element/complex-rubric@3.4.5) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+* **rubric:** fix validation in rubric PD-4833 ([c5fbc60](https://github.com/pie-framework/pie-elements/commit/c5fbc60c0f2b9322ce27f3aecd48baa2e5163863))
+
+
+
+
+
 ## [3.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.4.3...@pie-element/complex-rubric@3.4.4) (2025-02-19)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.10.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.6...@pie-element/categorize@9.10.7) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+* **categorize:** fix tests PD-4763 ([2a88abb](https://github.com/pie-framework/pie-elements/commit/2a88abb1f62072af281d60060818d13aa3d1ed64))
+* **categorize:** on touch devices on long press do not remove choice PD-4763 ([126c19a](https://github.com/pie-framework/pie-elements/commit/126c19a6e384e29367532e842e5bdcb23890413c))
+
+
+
+
+
 ## [9.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.5...@pie-element/categorize@9.10.6) (2025-02-25)
 
 **Note:** Version bump only for package @pie-element/categorize
