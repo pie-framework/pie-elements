@@ -41,6 +41,9 @@ exports[`freeform editor snapshots renders 1`] = `
             "disabled": false,
             "keypadMode": "miscellaneous",
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": true,
           },
@@ -113,6 +116,9 @@ exports[`freeform editor snapshots renders disabled 1`] = `
             "customKeys": Array [],
             "disabled": false,
             "keypadMode": "miscellaneous",
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": true,
@@ -187,6 +193,9 @@ exports[`freeform editor snapshots renders with complex text and nested annotati
             "disabled": false,
             "keypadMode": "miscellaneous",
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": true,
           },
@@ -259,6 +268,9 @@ exports[`freeform editor snapshots renders with predefined annotations 1`] = `
             "customKeys": Array [],
             "disabled": false,
             "keypadMode": "miscellaneous",
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": true,
@@ -356,6 +368,9 @@ exports[`freeform editor snapshots renders with text and annotations 1`] = `
             "disabled": false,
             "keypadMode": "miscellaneous",
           },
+          "textAlign": Object {
+            "disabled": true,
+          },
           "video": Object {
             "disabled": true,
           },
@@ -428,6 +443,9 @@ exports[`freeform editor snapshots renders with text and comment 1`] = `
             "customKeys": Array [],
             "disabled": false,
             "keypadMode": "miscellaneous",
+          },
+          "textAlign": Object {
+            "disabled": true,
           },
           "video": Object {
             "disabled": true,
