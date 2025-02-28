@@ -199,6 +199,18 @@ Indicates if the audio for the prompt should autoplay
 
 Indicates if the audio should reach the end before the item can be marked as 'complete'
 
+# `customAudioButton` (object)
+
+Indicates if the audio should be replaced with a custom audio button
+  playImage: image url for the play state
+  pauseImage: image url for the pause state
+
+Properties of the `customAudioButton` object:
+
+## `playImage` (string, required)
+
+## `pauseImage` (string, required)
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

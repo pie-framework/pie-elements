@@ -87,6 +87,10 @@ export class MultipleChoice extends React.Component {
     minSelections: PropTypes.number,
     maxSelections: PropTypes.number,
     autoplayAudioEnabled: PropTypes.bool,
+    customAudioButton: {
+      playImage: PropTypes.string,
+      pauseImage: PropTypes.string,
+    }
   };
 
   constructor(props) {
@@ -110,7 +114,7 @@ export class MultipleChoice extends React.Component {
   handleChange = (event) => {
     const { value, checked } = event.target;
     const { maxSelections, onChoiceChanged, session } = this.props;
-    
+
     if (session.value && session.value.length >= maxSelections) {
       // show/hide max selections error when user select/deselect an answer
       this.setState({ maxSelectionsErrorState: checked });
@@ -235,14 +239,13 @@ export class MultipleChoice extends React.Component {
       maxSelections,
       autoplayAudioEnabled,
       session,
+      customAudioButton
     } = this.props;
     const { showCorrect, maxSelectionsErrorState } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
     const selections = (session.value && session.value.length) || 0;
-    // Safari, Firefox, and Edge do not support autoplay audio smoothly in our use case
-    const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
 
     const teacherInstructionsDiv = (
       <PreviewPrompt
@@ -296,7 +299,8 @@ export class MultipleChoice extends React.Component {
             defaultClassName="prompt"
             prompt={prompt}
             tagName={'legend'}
-            autoplayAudioEnabled={addAutoplayAudio}
+            autoplayAudioEnabled={autoplayAudioEnabled}
+            customAudioButton={customAudioButton}
           />
 
           {!alwaysShowCorrect && (
