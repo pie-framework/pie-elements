@@ -93,6 +93,7 @@ export async function model(question, session, env, updateSession) {
     keyboardEventsEnabled: normalizedQuestion.keyboardEventsEnabled,
     autoplayAudioEnabled: normalizedQuestion.autoplayAudioEnabled,
     completeAudioEnabled: normalizedQuestion.completeAudioEnabled,
+    customAudioButton: normalizedQuestion.customAudioButton,
   };
 
   const { role, mode } = env || {};
