@@ -42,7 +42,7 @@ function generateAdditionalKeys(keyData = []) {
 function isChildOfCurrentPieElement(child, parent) {
   let node = child;
   while (node !== null) {
-    if (node === parent) {
+    if (parent && node === parent) {
       return true;
     }
     node = node.parentNode;
@@ -352,14 +352,14 @@ export class Main extends React.Component {
   };
 
   handleKeyDown = (event, id) => {
-    // main layout has as id the actual pie-element id
-    // needed this to know if the event was triggered from the actual pie-element
-    const { config } = this.props.model;
-    const myElement = document.getElementById(config.id);
-    let isTrigerredFromActualPieElement = true;
-    isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, myElement);
 
-    const isAnswerInputFocused = document.activeElement.getAttribute('aria-label') === 'Enter answer.';
+    let isTrigerredFromActualPieElement = true;
+    isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target,this.root);
+
+    // mq static field id, find it in pie-lib
+    const container = document.getElementById('pie-input-mq-static');
+    const isAnswerInputFocused = container && container.contains(document.activeElement);
+
     const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
 
     if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
@@ -770,7 +770,7 @@ export class Main extends React.Component {
         feedback)
     ) {
       return (
-        <UiLayout extraCSSRules={extraCSSRules} id={id}>
+        <UiLayout extraCSSRules={extraCSSRules}>
           <Tooltip
             interactive
             enterTouchDelay={0}
