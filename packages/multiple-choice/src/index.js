@@ -160,10 +160,6 @@ export default class MultipleChoice extends HTMLElement {
   connectedCallback() {
     this._rerender();
 
-    if (this._model && !this._model.autoplayAudioEnabled) {
-      return;
-    }
-
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -173,6 +169,8 @@ export default class MultipleChoice extends HTMLElement {
           const audio = this.querySelector('audio');
           const isInsidePrompt = audio && audio.closest('#preview-prompt');
 
+          if (!this._model) return;
+          if (!this._model.autoplayAudioEnabled) return;
           if (audio && !isInsidePrompt) return;
           if (!audio) return;
 
