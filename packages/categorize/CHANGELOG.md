@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.10.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.7...@pie-element/categorize@9.10.8) (2025-03-03)
+
+
+### Bug Fixes
+
+* prevent autoplay logic when autoplayAudioEnabled is missing or false PD-4847 ([211ae94](https://github.com/pie-framework/pie-elements/commit/211ae940a238950ae603b54cb6c294d7e68cd2cb))
+* update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
+
+
+
+
+
 ## [9.10.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.6...@pie-element/categorize@9.10.7) (2025-02-27)
 
 

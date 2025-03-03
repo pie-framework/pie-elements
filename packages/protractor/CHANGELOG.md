@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@4.0.23...@pie-element/protractor@4.0.24) (2025-03-03)
+
+
+### Bug Fixes
+
+* update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
+
+
+
+
+
 ## [4.0.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@4.0.22...@pie-element/protractor@4.0.23) (2025-02-27)
 
 
