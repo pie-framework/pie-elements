@@ -129,6 +129,17 @@ export interface MultipleChoicePie extends PieModel {
    * Indicates if the audio should reach the end before the item can be marked as 'complete'
    */
   completeAudioEnabled?: boolean;
+
+
+  /**
+   * Indicates if the audio should be replaced with a custom audio button
+   *  playImage: image url for the play state
+   *  pauseImage: image url for the pause state
+   */
+  customAudioButton?: {
+    playImage: string;
+    pauseImage: string;
+  }
 }
 
 interface ConfigureMaxImageDimensionsProp {
