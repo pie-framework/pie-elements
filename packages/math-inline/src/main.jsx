@@ -356,9 +356,7 @@ export class Main extends React.Component {
     let isTrigerredFromActualPieElement = true;
     isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target,this.root);
 
-    // mq static field id, find it in pie-lib
-    const container = document.getElementById('pie-input-mq-static');
-    const isAnswerInputFocused = container && container.contains(document.activeElement);
+    const isAnswerInputFocused = this.mqStatic && this.mqStatic.inputRef?.current.contains(document.activeElement);
 
     const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
 
