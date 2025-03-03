@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.44.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.43.0...@pie-element/pie-models@13.44.0) (2025-03-03)
+
+
+### Features
+
+* **multiple-choice:** add customAudioButton PD-4795 ([98e9bbd](https://github.com/pie-framework/pie-elements/commit/98e9bbd8c0f36aa249aaf689e0fff6796a74222a))
+
+
+
+
+
 # [13.43.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.42.0...@pie-element/pie-models@13.43.0) (2025-02-12)
 
 

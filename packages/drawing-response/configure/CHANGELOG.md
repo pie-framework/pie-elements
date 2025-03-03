@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@8.2.5...@pie-element/drawing-response-configure@8.2.6) (2025-03-03)
+
+
+### Bug Fixes
+
+* update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
+
+
+
+
+
 ## [8.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@8.2.4...@pie-element/drawing-response-configure@8.2.5) (2025-02-27)
 
 
