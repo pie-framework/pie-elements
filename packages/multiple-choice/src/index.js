@@ -261,7 +261,7 @@ export default class MultipleChoice extends HTMLElement {
 
     const choiceIndex = keyToIndex(event.key);
 
-    if (choiceIndex === undefined || choiceIndex >= this._model.choices.length) {
+    if (choiceIndex === undefined || choiceIndex <= -1 || choiceIndex >= this._model.choices?.length) {
       return;
     }
 
