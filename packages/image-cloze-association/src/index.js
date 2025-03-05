@@ -46,7 +46,7 @@ export default class ImageClozeAssociation extends HTMLElement {
   updateAnswer(data) {
     this._session.answers = data;
     this._session.selector = 'Mouse';
-    
+
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
     this._render();
@@ -141,12 +141,28 @@ export default class ImageClozeAssociation extends HTMLElement {
 
           audio.addEventListener('ended', handleEnded);
 
+          // store references to remove later
+          this._audio = audio;
+          this._handlePlaying = handlePlaying;
+          this._handleEnded = handleEnded;
+          this._enableAudio = enableAudio;
+
           observer.disconnect();
         }
       });
     });
 
     observer.observe(this, { childList: true, subtree: true });
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('click', this._enableAudio);
+
+    if (this._audio) {
+      this._audio.removeEventListener('playing', this._handlePlaying);
+      this._audio.removeEventListener('ended', this._handleEnded);
+      this._audio = null;
+    }
   }
 
   _render() {
