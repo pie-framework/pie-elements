@@ -200,7 +200,7 @@ export default class MultipleChoice extends HTMLElement {
           // we need to listen for the playing event to remove the toast in case the audio plays because of re-rendering
           const handlePlaying = () => {
             updateSessionMetadata(this._session, { audioStartTime: new Date().getTime() });
-            
+
             const info = this.querySelector('#play-audio-info');
             if (info) {
               container.removeChild(info);
@@ -221,6 +221,12 @@ export default class MultipleChoice extends HTMLElement {
 
           audio.addEventListener('ended', handleEnded);
 
+          // store references to remove later
+          this._audio = audio;
+          this._handlePlaying = handlePlaying;
+          this._handleEnded = handleEnded;
+          this._enableAudio = enableAudio;
+
           observer.disconnect();
         }
       });
@@ -240,6 +246,14 @@ export default class MultipleChoice extends HTMLElement {
     if (this._keyboardEventsEnabled) {
       window.removeEventListener('keydown', this._boundHandleKeyDown);
       this._keyboardEventsEnabled = false;
+    }
+
+    document.removeEventListener('click', this._enableAudio);
+
+    if (this._audio) {
+      this._audio.removeEventListener('playing', this._handlePlaying);
+      this._audio.removeEventListener('ended', this._handleEnded);
+      this._audio = null;
     }
   }
 
