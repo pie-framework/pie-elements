@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { DragInTheBlank } from '@pie-lib/pie-toolbox/mask-markup';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
@@ -32,11 +32,9 @@ export class Main extends React.Component {
   render() {
     const { showCorrectAnswer } = this.state;
     const { model, onChange, value, classes } = this.props;
-    const { extraCSSRules, prompt, mode, language, fontSizeFactor, autoplayAudioEnabled } = model;
+    const { extraCSSRules, prompt, mode, language, fontSizeFactor, autoplayAudioEnabled, customAudioButton } = model;
     const modelWithValue = { ...model, value };
     const showCorrectAnswerToggle = mode === 'evaluate';
-    // Safari, Firefox, and Edge do not support autoplay audio smoothly in our use case
-    const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
@@ -49,7 +47,14 @@ export class Main extends React.Component {
           </Collapsible>
         )}
 
-        {prompt && <PreviewPrompt className="prompt" prompt={prompt} autoplayAudioEnabled={addAutoplayAudio} />}
+        {prompt && (
+          <PreviewPrompt
+            className="prompt"
+            prompt={prompt}
+            autoplayAudioEnabled={autoplayAudioEnabled}
+            customAudioButton={customAudioButton}
+          />
+        )}
 
         <CorrectAnswerToggle
           show={showCorrectAnswerToggle}
