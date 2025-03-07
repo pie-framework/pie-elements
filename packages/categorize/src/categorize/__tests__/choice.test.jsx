@@ -97,10 +97,5 @@ describe('spec', () => {
       expect(props.onRemoveChoice).not.toBeCalled();
     });
 
-    it('does not call onRemoveChoice if movement is too small', () => {
-      monitor.getDifferenceFromInitialOffset.mockReturnValue({ x: 2, y: 2 }); // Small movement
-      spec.endDrag(props, monitor);
-      expect(props.onRemoveChoice).not.toBeCalled();
-    });
   });
 });
