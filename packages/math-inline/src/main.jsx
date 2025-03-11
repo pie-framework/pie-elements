@@ -339,21 +339,21 @@ export class Main extends React.Component {
     // needed this to know if the event was triggered from the actual pie-element
     const { config } = this.props.model;
     const myElement = document.getElementById(config.id);
-    let isTrigerredFromActualPieElement = true;
-    isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, myElement);
 
+    const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, myElement);
     const isAnswerInputFocused = document.activeElement.getAttribute('aria-label') === 'Enter answer.';
-    const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
+    const { key, type } = event;
+    const isClickOrTouchEvent = type === 'click' || type === 'touchstart';
 
-    if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
+    if (isAnswerInputFocused && (key === 'ArrowDown' || isClickOrTouchEvent)) {
       if (this.state.activeAnswerBlock !== id && isTrigerredFromActualPieElement) {
         this.cleanupKeyDownListener();
-        this.setState({ activeAnswerBlock: id });
-        this.onSubFieldFocus(id);
-      }
-
-      if (event.key === 'ArrowDown') {
-        this.focusFirstKeypadElement();
+        this.setState({ activeAnswerBlock: id }, () => {
+          this.onSubFieldFocus(id);
+          if (key === 'ArrowDown') {
+            this.focusFirstKeypadElement();
+          }
+        });
       }
     } else if (event.key === 'Escape') {
       this.setState({ activeAnswerBlock: '' });
