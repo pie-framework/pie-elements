@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { DragSource } from 'react-dnd';
+import { DragSource, DndProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import { uid } from '@pie-lib/pie-toolbox/drag';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -95,13 +96,33 @@ export class Choice extends React.Component {
     connectDragSource: PropTypes.func.isRequired,
   };
 
+  componentDidMount() {
+    if (this.ref) {
+      this.ref.addEventListener('touchstart', this.handleTouchStart, { passive: false });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.ref) {
+      this.ref.removeEventListener('touchstart', this.handleTouchStart);
+    }
+  }
+
+  handleTouchStart = (e) => {
+    e.preventDefault();
+  };
+
   render() {
     const { connectDragSource, id, content, disabled, isDragging, correct, extraStyle } = this.props;
 
     return connectDragSource(
-      <div style={{ margin: '4px', ...extraStyle }}>
-        <Styled id={id} content={content} disabled={disabled} correct={correct} isDragging={isDragging} />
-      </div>,
+        <div
+            style={{ margin: '4px', ...extraStyle }}
+            ref={(ref) => (this.ref = ref)}
+            draggable={!disabled}
+        >
+          <Styled id={id} content={content} disabled={disabled} correct={correct} isDragging={isDragging} />
+        </div>,
     );
   }
 }
@@ -120,8 +141,6 @@ export const spec = {
     return out;
   },
   endDrag: (props, monitor) => {
-    const delta = monitor.getDifferenceFromInitialOffset();
-    if (delta && (Math.abs(delta.x) > 5 || Math.abs(delta.y) > 5)) {
       if (!monitor.didDrop()) {
         const item = monitor.getItem();
         if (item.categoryId) {
@@ -129,10 +148,7 @@ export const spec = {
           props.onRemoveChoice(item);
         }
       }
-    } else {
-      log('long press on touch devices, not removing item');
     }
-  },
 };
 
 const DraggableChoice = DragSource(
@@ -144,4 +160,10 @@ const DraggableChoice = DragSource(
   }),
 )(Choice);
 
-export default uid.withUid(DraggableChoice);
+const DraggableChoiceWithProvider = (props) => (
+    <DndProvider backend={HTML5Backend}>
+      <DraggableChoice {...props} />
+    </DndProvider>
+);
+
+export default uid.withUid(DraggableChoiceWithProvider);
