@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.45.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.44.0...@pie-element/pie-models@13.45.0) (2025-03-12)
+
+
+### Features
+
+* **categorize:** add customAudioButton PD-4795 ([d712cff](https://github.com/pie-framework/pie-elements/commit/d712cff7b3c0c26219768a12f0419a9d3629daf3))
+* **drag-in-the-blank:** add customAudioButton PD-4795 ([aa5c771](https://github.com/pie-framework/pie-elements/commit/aa5c771b7e9aba6fe5a753637fdcfb61d740c7d4))
+* **hotspot:** add customAudioButton PD-4795 ([16177af](https://github.com/pie-framework/pie-elements/commit/16177afaa11beffcea26798b64a67eebb5c6833b))
+* **image-cloze-association:** add customAudioButton PD-4795 ([47eb042](https://github.com/pie-framework/pie-elements/commit/47eb0428e69bfd058001be83b353dfaa15fabc76))
+
+
+
+
+
 # [13.44.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.43.0...@pie-element/pie-models@13.44.0) (2025-03-03)
 
 
