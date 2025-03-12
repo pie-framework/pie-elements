@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.3.4...@pie-element/hotspot-controller@5.4.0) (2025-03-12)
+
+
+### Features
+
+* **hotspot:** add customAudioButton PD-4795 ([16177af](https://github.com/pie-framework/pie-elements/commit/16177afaa11beffcea26798b64a67eebb5c6833b))
+
+
+
+
+
 ## [5.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.3.3...@pie-element/hotspot-controller@5.3.4) (2025-03-03)
 
 

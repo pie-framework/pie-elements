@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@7.6.4...@pie-element/categorize-controller@7.7.0) (2025-03-12)
+
+
+### Features
+
+* **categorize:** add customAudioButton PD-4795 ([d712cff](https://github.com/pie-framework/pie-elements/commit/d712cff7b3c0c26219768a12f0419a9d3629daf3))
+
+
+
+
+
 ## [7.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@7.6.3...@pie-element/categorize-controller@7.6.4) (2025-03-03)
 
 

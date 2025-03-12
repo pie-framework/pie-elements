@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.8.6...@pie-element/image-cloze-association@6.9.0) (2025-03-12)
+
+
+### Bug Fixes
+
+* **multiple-choice, categorize, ditb, hotspot, ica:** remove audio events listeners on disconnectedCallback PD-4852 ([35937aa](https://github.com/pie-framework/pie-elements/commit/35937aa5a790e24ead17b95561c368056b5a14f8))
+
+
+### Features
+
+* **image-cloze-association:** add customAudioButton PD-4795 ([47eb042](https://github.com/pie-framework/pie-elements/commit/47eb0428e69bfd058001be83b353dfaa15fabc76))
+
+
+
+
+
 ## [6.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.8.5...@pie-element/image-cloze-association@6.8.6) (2025-03-03)
 
 

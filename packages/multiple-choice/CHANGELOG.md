@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.13.0...@pie-element/multiple-choice@9.13.1) (2025-03-12)
+
+
+### Bug Fixes
+
+* **multiple-choice:** fix typeerror issue with Keyboard Events PD-4853 ([9bb46b5](https://github.com/pie-framework/pie-elements/commit/9bb46b59568963e397cbb586204406979ef73607))
+* **multiple-choice:** return if choiceIndex <= -1 PD-4853 ([1fb040a](https://github.com/pie-framework/pie-elements/commit/1fb040aa9a3f3392aea1318b3853599d0839c5b9))
+* **multiple-choice, categorize, ditb, hotspot, ica:** remove audio events listeners on disconnectedCallback PD-4852 ([35937aa](https://github.com/pie-framework/pie-elements/commit/35937aa5a790e24ead17b95561c368056b5a14f8))
+
+
+
+
+
 # [9.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.12.7...@pie-element/multiple-choice@9.13.0) (2025-03-03)
 
 

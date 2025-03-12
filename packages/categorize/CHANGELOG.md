@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.8...@pie-element/categorize@9.11.0) (2025-03-12)
+
+
+### Bug Fixes
+
+* **categorize:** remove test as logic was removed regarding small movement on token PD-4866 ([d8619fa](https://github.com/pie-framework/pie-elements/commit/d8619fa9f23a52e3dd6a4cbef1fd123197c1015b))
+* **multiple-choice, categorize, ditb, hotspot, ica:** remove audio events listeners on disconnectedCallback PD-4852 ([35937aa](https://github.com/pie-framework/pie-elements/commit/35937aa5a790e24ead17b95561c368056b5a14f8))
+
+
+### Features
+
+* **categorize:** add customAudioButton PD-4795 ([d712cff](https://github.com/pie-framework/pie-elements/commit/d712cff7b3c0c26219768a12f0419a9d3629daf3))
+
+
+
+
+
 ## [9.10.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.10.7...@pie-element/categorize@9.10.8) (2025-03-03)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.7.7...@pie-element/drag-in-the-blank@6.8.0) (2025-03-12)
+
+
+### Bug Fixes
+
+* **multiple-choice, categorize, ditb, hotspot, ica:** remove audio events listeners on disconnectedCallback PD-4852 ([35937aa](https://github.com/pie-framework/pie-elements/commit/35937aa5a790e24ead17b95561c368056b5a14f8))
+
+
+### Features
+
+* **drag-in-the-blank:** add customAudioButton PD-4795 ([aa5c771](https://github.com/pie-framework/pie-elements/commit/aa5c771b7e9aba6fe5a753637fdcfb61d740c7d4))
+
+
+
+
+
 ## [6.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.7.6...@pie-element/drag-in-the-blank@6.7.7) (2025-03-03)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.6.7...@pie-element/hotspot@7.7.0) (2025-03-12)
+
+
+### Bug Fixes
+
+* **multiple-choice, categorize, ditb, hotspot, ica:** remove audio events listeners on disconnectedCallback PD-4852 ([35937aa](https://github.com/pie-framework/pie-elements/commit/35937aa5a790e24ead17b95561c368056b5a14f8))
+
+
+### Features
+
+* **hotspot:** add customAudioButton PD-4795 ([16177af](https://github.com/pie-framework/pie-elements/commit/16177afaa11beffcea26798b64a67eebb5c6833b))
+
+
+
+
+
 ## [7.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.6.6...@pie-element/hotspot@7.6.7) (2025-03-03)
 
 
