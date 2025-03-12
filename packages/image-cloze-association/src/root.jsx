@@ -226,6 +226,7 @@ export class ImageClozeAssociationComponent extends React.Component {
         responseContainerPadding,
         imageDropTargetPadding,
         fontSizeFactor,
+        customAudioButton
       },
     } = this.props;
     const {
@@ -269,9 +270,6 @@ export class ImageClozeAssociationComponent extends React.Component {
       answersToShow = [...answersToShow, ...getUnansweredAnswers(answersToShow, validation)];
     }
 
-    // Safari, Firefox, and Edge do not support autoplay audio smoothly in our use case
-    const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
-
     return (
       <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.main} fontSizeFactor={fontSizeFactor}>
         {teacherInstructions && hasText(teacherInstructions) && (
@@ -286,7 +284,12 @@ export class ImageClozeAssociationComponent extends React.Component {
           </Collapsible>
         )}
 
-        <PreviewPrompt className="prompt" prompt={prompt} autoplayAudioEnabled={addAutoplayAudio} />
+        <PreviewPrompt
+          className="prompt"
+          prompt={prompt}
+          autoplayAudioEnabled={autoplayAudioEnabled}
+          customAudioButton={customAudioButton}
+        />
 
         <PreviewPrompt prompt={stimulus} />
 
