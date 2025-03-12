@@ -77,7 +77,8 @@ class HotspotComponent extends React.Component {
         responseCorrect,
         language,
         fontSizeFactor,
-        autoplayAudioEnabled
+        autoplayAudioEnabled,
+        customAudioButton
       },
       onSelectChoice,
       classes,
@@ -85,8 +86,6 @@ class HotspotComponent extends React.Component {
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
-    // Safari, Firefox, and Edge do not support autoplay audio smoothly in our use case
-    const addAutoplayAudio = autoplayAudioEnabled && !(/Safari|Firefox|Edg/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.main} fontSizeFactor={fontSizeFactor}>
@@ -99,7 +98,14 @@ class HotspotComponent extends React.Component {
           </Collapsible>
         )}
 
-        {prompt && <PreviewPrompt className="prompt" prompt={prompt} autoplayAudioEnabled={addAutoplayAudio} />}
+        {prompt && (
+          <PreviewPrompt
+            className="prompt"
+            prompt={prompt}
+            autoplayAudioEnabled={autoplayAudioEnabled}
+            customAudioButton={customAudioButton}
+          />
+        )}
 
         {showCorrectAnswerToggle && (
           <CorrectAnswerToggle

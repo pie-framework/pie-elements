@@ -29,7 +29,8 @@ export function model(question, session, env) {
     language,
     fontSizeFactor,
     autoplayAudioEnabled,
-    completeAudioEnabled
+    completeAudioEnabled,
+    customAudioButton
   } = normalizedQuestion;
   const { rectangles, polygons, circles } = shapes || {};
 
@@ -51,6 +52,7 @@ export function model(question, session, env) {
       fontSizeFactor,
       autoplayAudioEnabled,
       completeAudioEnabled,
+      customAudioButton,
       shapes: {
         ...shapes,
         // eslint-disable-next-line no-unused-vars
@@ -62,11 +64,11 @@ export function model(question, session, env) {
           shouldIncludeCorrectResponse ? { correct, ...polyProps } : {...polyProps }
         ),
         // eslint-disable-next-line no-unused-vars
-        circles: (circles || []).map(({ index, correct, ...circleProps }) => 
-        
+        circles: (circles || []).map(({ index, correct, ...circleProps }) =>
+
           shouldIncludeCorrectResponse ? { correct, ...circleProps } : { ...circleProps }
         ),
-        
+
       },
       responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
       extraCSSRules: normalizedQuestion.extraCSSRules,
