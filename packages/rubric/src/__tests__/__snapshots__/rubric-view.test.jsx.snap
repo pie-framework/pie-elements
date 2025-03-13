@@ -62,11 +62,6 @@ exports[`rubric viewer expanded snapshot renders 1`] = `
       >
         <div
           className="Rubric-root-1 UiLayout-extraCSSRules-4 UiLayout-uiLayoutContainer-5"
-          style={
-            Object {
-              "fontSize": "NaNpx",
-            }
-          }
         >
           <WithStyles(Link)
             href="javascript:;"
@@ -11584,11 +11579,6 @@ exports[`rubric viewer snapshot renders 1`] = `
       >
         <div
           className="Rubric-root-1 UiLayout-extraCSSRules-4 UiLayout-uiLayoutContainer-5"
-          style={
-            Object {
-              "fontSize": "NaNpx",
-            }
-          }
         >
           <WithStyles(Link)
             href="javascript:;"
