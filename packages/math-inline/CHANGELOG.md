@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.6...@pie-element/math-inline@8.4.7) (2025-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4872, PD-4093, PD-4588, PD-4812, PD-4867 ([2386fb5](https://github.com/pie-framework/pie-elements/commit/2386fb5f84cadb42305ab5a0e6248bd2b2279e0a))
+* **math-inline:** avoid using hardcoded ids, use refs PD-4156 ([fba26df](https://github.com/pie-framework/pie-elements/commit/fba26df6641d0d59f42d31b2f779fd5ad2e2c9d0))
+* **math-inline:** Refactor handleKeyDown for improved readability & fix arrow key behavior in math editor PD-4882 ([cf6b3fd](https://github.com/pie-framework/pie-elements/commit/cf6b3fd0aad4cce72068ecb9c0450e5204068090))
+* **math-inline:** update local state based on session PD-4156 ([4836ac4](https://github.com/pie-framework/pie-elements/commit/4836ac4d4a7ac8e03a506631489a3aed44823225))
+* **math-inline:** verify avtive Element by id not by aria label PD-4156 ([96a5197](https://github.com/pie-framework/pie-elements/commit/96a51973b342356c8f25f380f878dae9f98c1891))
+
+
+
+
+
 ## [8.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.5...@pie-element/math-inline@8.4.6) (2025-03-03)
 
 
