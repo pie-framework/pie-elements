@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@3.0.24...@pie-element/match-list-controller@3.0.25) (2025-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4872, PD-4093, PD-4588, PD-4812, PD-4867 ([2386fb5](https://github.com/pie-framework/pie-elements/commit/2386fb5f84cadb42305ab5a0e6248bd2b2279e0a))
+
+
+
+
+
 ## [3.0.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@3.0.23...@pie-element/match-list-controller@3.0.24) (2025-03-03)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@7.7.0...@pie-element/categorize-controller@7.7.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4872, PD-4093, PD-4588, PD-4812, PD-4867 ([2386fb5](https://github.com/pie-framework/pie-elements/commit/2386fb5f84cadb42305ab5a0e6248bd2b2279e0a))
+
+
+
+
+
 # [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@7.6.4...@pie-element/categorize-controller@7.7.0) (2025-03-12)
 
 
