@@ -64,7 +64,7 @@ export default class Categorize extends HTMLElement {
   changeAnswers(answers) {
     this._session.answers = answers;
     this._session.selector = 'Mouse';
-    
+
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
     this.render();
@@ -101,9 +101,6 @@ export default class Categorize extends HTMLElement {
   }
 
   connectedCallback(){
-    if (this._model && !this._model.autoplayAudioEnabled) {
-      return;
-    }
 
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
@@ -114,6 +111,8 @@ export default class Categorize extends HTMLElement {
           const audio = this.querySelector('audio');
           const isInsidePrompt = audio && audio.closest('#preview-prompt');
 
+          if (!this._model) return;
+          if (!this._model.autoplayAudioEnabled) return;
           if (audio && !isInsidePrompt) return;
           if (!audio) return;
 
@@ -144,7 +143,7 @@ export default class Categorize extends HTMLElement {
           const handlePlaying = () => {
             //timestamp when auto-played audio started playing
             this._session.audioStartTime = this._session.audioStartTime || new Date().getTime();
-            
+
             const info = this.querySelector('#play-audio-info');
             if (info) {
               container.removeChild(info);
@@ -159,13 +158,13 @@ export default class Categorize extends HTMLElement {
           const handleEnded = () => {
             //timestamp when auto-played audio completed playing
             this._session.audioEndTime = this._session.audioEndTime || new Date().getTime();
-            
+
             let { audioStartTime, audioEndTime, waitTime } = this._session;
             if(!waitTime && audioStartTime && audioEndTime) {
               // waitTime is elapsed time the user waited for auto-played audio to finish
               this._session.waitTime = (audioEndTime - audioStartTime);
             }
-            
+
             this.audioComplete = true;
             this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
@@ -174,12 +173,28 @@ export default class Categorize extends HTMLElement {
 
           audio.addEventListener('ended', handleEnded);
 
+          // store references to remove later
+          this._audio = audio;
+          this._handlePlaying = handlePlaying;
+          this._handleEnded = handleEnded;
+          this._enableAudio = enableAudio;
+
           observer.disconnect();
         }
       });
     });
 
     observer.observe(this, { childList: true, subtree: true });
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('click', this._enableAudio);
+
+    if (this._audio) {
+      this._audio.removeEventListener('playing', this._handlePlaying);
+      this._audio.removeEventListener('ended', this._handleEnded);
+      this._audio = null;
+    }
   }
 
   render() {

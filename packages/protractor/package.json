@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/protractor",
-  "version": "4.0.22",
+  "version": "4.0.24",
   "publishConfig": {
     "access": "public"
   },
@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/pie-toolbox": "2.9.3",
+    "@pie-lib/pie-toolbox": "2.10.0",
     "classnames": "^2.2.5",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

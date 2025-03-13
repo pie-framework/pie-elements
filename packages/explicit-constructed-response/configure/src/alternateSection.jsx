@@ -13,7 +13,7 @@ import { withStyles } from '@material-ui/core/styles';
 import max from 'lodash/max';
 import classnames from 'classnames';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { stripHtmlTags, getAdjustedLength } from './markupUtils';
+import { stripHtmlTags, getAdjustedLength, decodeHTML } from './markupUtils';
 
 const styles = (theme) => ({
   design: {
@@ -261,9 +261,9 @@ export class AlternateSection extends React.Component {
               <em>{value ? 'Remove selection' : 'Select a response'}</em>
             </MenuItem>
             {selectChoices.map((c, index) => (
-              <MenuItem key={index} value={c?.value}>
-                {c?.label}
-              </MenuItem>
+                <MenuItem key={index} value={c?.value}>
+                  {decodeHTML(c?.label)}
+                </MenuItem>
             ))}
           </Select>
 

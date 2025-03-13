@@ -352,23 +352,20 @@ export class Main extends React.Component {
   };
 
   handleKeyDown = (event, id) => {
-
-    let isTrigerredFromActualPieElement = true;
-    isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target,this.root);
-
+    const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, this.root);
     const isAnswerInputFocused = this.mqStatic && this.mqStatic.inputRef?.current.contains(document.activeElement);
+    const { key, type } = event;
+    const isClickOrTouchEvent = type === 'click' || type === 'touchstart';
 
-    const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
-
-    if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
+    if (isAnswerInputFocused && (key === 'ArrowDown' || isClickOrTouchEvent)) {
       if (this.state.activeAnswerBlock !== id && isTrigerredFromActualPieElement) {
         this.cleanupKeyDownListener();
-        this.setState({ activeAnswerBlock: id });
-        this.onSubFieldFocus(id);
-      }
-
-      if (event.key === 'ArrowDown') {
-        this.focusFirstKeypadElement();
+        this.setState({ activeAnswerBlock: id }, () => {
+          this.onSubFieldFocus(id);
+          if (key === 'ArrowDown') {
+            this.focusFirstKeypadElement();
+          }
+        });
       }
     } else if (event.key === 'Escape') {
       this.setState({ activeAnswerBlock: '' });

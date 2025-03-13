@@ -180,6 +180,9 @@ export class Main extends React.Component {
               table: {
                 disabled: true,
               },
+              textAlign: {
+                disabled: true,
+              }
             }}
             languageCharactersProps={languageCharactersProps}
           />

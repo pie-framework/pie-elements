@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { stripHtmlTags } from './markupUtils';
+import { stripHtmlTags, decodeHTML } from './markupUtils';
 
 const findSlateNode = (key) => {
   return window.document.querySelector('[data-key="' + key + '"]');
@@ -60,7 +60,7 @@ export class ECRToolbar extends React.Component {
 
     onDone = (markup) => {
         const { node, value, onToolbarDone, onChangeResponse } = this.props;
-        const sanitizedMarkup = stripHtmlTags(markup);
+        const sanitizedMarkup = decodeHTML(stripHtmlTags(markup));
         this.setState({ markup: sanitizedMarkup });
 
         const updatedData = { ...node.data.toJSON(), value: sanitizedMarkup };

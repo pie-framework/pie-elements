@@ -103,15 +103,11 @@ export const createCorrectResponseSession = (question, env) => {
 // IMPORTANT! This function is a duplicate of rubric/controller/validate function!
 // If you make any changes to this function, please make sure you also update rubric/controller/validate function!“.
 const validateSimpleRubric = (model) => {
-  const { points, excludeZero } = model;
+  const { points } = model;
   const errors = {};
   const pointsDescriptorsErrors = {};
 
   (points || []).forEach((point, index) => {
-    if (index === 0 && excludeZero) {
-      // if excludeZero is true, the 0 point is not displayed, so it should not be validated
-      return;
-    }
 
     if (!point || point === '<div></div>') {
       pointsDescriptorsErrors[index] = 'Points descriptors cannot be empty.';

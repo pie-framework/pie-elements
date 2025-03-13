@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.2.5...@pie-element/explicit-constructed-response-configure@7.2.6) (2025-03-03)
+
+
+### Bug Fixes
+
+* update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
+
+
+
+
+
+## [7.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.2.4...@pie-element/explicit-constructed-response-configure@7.2.5) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+* **ECR:** revert snapshots PD-4821 ([b3eccf2](https://github.com/pie-framework/pie-elements/commit/b3eccf2b70ff5611b626f720988333014a365c87))
+* **ECR:** show in correct answers HTML reserved characters PD-4821 ([2a72db3](https://github.com/pie-framework/pie-elements/commit/2a72db3fc996b0f39b921a4b2a3594963e27dc9d))
+
+
+
+
+
 ## [7.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.2.3...@pie-element/explicit-constructed-response-configure@7.2.4) (2025-02-19)
 
 

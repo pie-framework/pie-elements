@@ -72,3 +72,8 @@ export const stripHtmlTags = (markup) => {
   }
   return markup.replace(/<\/?[^>]+(>|$)/g, "");
 };
+
+export const decodeHTML = (html) => {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return doc.body.textContent || '';
+};

@@ -160,10 +160,6 @@ export default class MultipleChoice extends HTMLElement {
   connectedCallback() {
     this._rerender();
 
-    if (this._model && !this._model.autoplayAudioEnabled) {
-      return;
-    }
-
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -173,6 +169,8 @@ export default class MultipleChoice extends HTMLElement {
           const audio = this.querySelector('audio');
           const isInsidePrompt = audio && audio.closest('#preview-prompt');
 
+          if (!this._model) return;
+          if (!this._model.autoplayAudioEnabled) return;
           if (audio && !isInsidePrompt) return;
           if (!audio) return;
 
@@ -202,7 +200,7 @@ export default class MultipleChoice extends HTMLElement {
           // we need to listen for the playing event to remove the toast in case the audio plays because of re-rendering
           const handlePlaying = () => {
             updateSessionMetadata(this._session, { audioStartTime: new Date().getTime() });
-            
+
             const info = this.querySelector('#play-audio-info');
             if (info) {
               container.removeChild(info);
@@ -222,6 +220,12 @@ export default class MultipleChoice extends HTMLElement {
           };
 
           audio.addEventListener('ended', handleEnded);
+
+          // store references to remove later
+          this._audio = audio;
+          this._handlePlaying = handlePlaying;
+          this._handleEnded = handleEnded;
+          this._enableAudio = enableAudio;
 
           observer.disconnect();
         }
@@ -243,6 +247,14 @@ export default class MultipleChoice extends HTMLElement {
       window.removeEventListener('keydown', this._boundHandleKeyDown);
       this._keyboardEventsEnabled = false;
     }
+
+    document.removeEventListener('click', this._enableAudio);
+
+    if (this._audio) {
+      this._audio.removeEventListener('playing', this._handlePlaying);
+      this._audio.removeEventListener('ended', this._handleEnded);
+      this._audio = null;
+    }
   }
 
   /**
@@ -263,7 +275,7 @@ export default class MultipleChoice extends HTMLElement {
 
     const choiceIndex = keyToIndex(event.key);
 
-    if (choiceIndex === undefined || choiceIndex >= this._model.choices.length) {
+    if (choiceIndex === undefined || choiceIndex <= -1 || choiceIndex >= this._model.choices?.length) {
       return;
     }
 

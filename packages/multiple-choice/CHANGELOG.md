@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.13.0...@pie-element/multiple-choice@9.13.1) (2025-03-12)
+
+
+### Bug Fixes
+
+* **multiple-choice:** fix typeerror issue with Keyboard Events PD-4853 ([9bb46b5](https://github.com/pie-framework/pie-elements/commit/9bb46b59568963e397cbb586204406979ef73607))
+* **multiple-choice:** return if choiceIndex <= -1 PD-4853 ([1fb040a](https://github.com/pie-framework/pie-elements/commit/1fb040aa9a3f3392aea1318b3853599d0839c5b9))
+* **multiple-choice, categorize, ditb, hotspot, ica:** remove audio events listeners on disconnectedCallback PD-4852 ([35937aa](https://github.com/pie-framework/pie-elements/commit/35937aa5a790e24ead17b95561c368056b5a14f8))
+
+
+
+
+
+# [9.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.12.7...@pie-element/multiple-choice@9.13.0) (2025-03-03)
+
+
+### Bug Fixes
+
+* prevent autoplay logic when autoplayAudioEnabled is missing or false PD-4847 ([211ae94](https://github.com/pie-framework/pie-elements/commit/211ae940a238950ae603b54cb6c294d7e68cd2cb))
+* update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
+
+
+### Features
+
+* **multiple-choice:** add customAudioButton PD-4795 ([98e9bbd](https://github.com/pie-framework/pie-elements/commit/98e9bbd8c0f36aa249aaf689e0fff6796a74222a))
+
+
+
+
+
+## [9.12.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.12.6...@pie-element/multiple-choice@9.12.7) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+
+
+
+
+
 ## [9.12.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.12.5...@pie-element/multiple-choice@9.12.6) (2025-02-25)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

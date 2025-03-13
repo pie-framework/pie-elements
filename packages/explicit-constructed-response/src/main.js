@@ -44,7 +44,6 @@ export class Main extends React.Component {
 
   state = {
     showCorrectAnswer: this.props.alwaysShowCorrect || false,
-    value: this.props.value,
   };
 
   // if for all responses max length is 1, call onChange for each keystroke
@@ -89,13 +88,11 @@ export class Main extends React.Component {
   changeSession = this.getChangeSession(this.props.maxLengthPerChoice);
 
   onChange = (value) => {
-    this.setState({ value });
-
     this.changeSession(value);
   };
 
   render() {
-    const { showCorrectAnswer, value } = this.state;
+    const { showCorrectAnswer } = this.state;
     const {
       alwaysShowCorrect,
       animationsDisabled,
@@ -114,6 +111,7 @@ export class Main extends React.Component {
       teacherInstructions,
       responseAreaInputConfiguration,
       model,
+      value,
     } = this.props;
 
     const { extraCSSRules } = model || {};

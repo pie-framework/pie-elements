@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@7.3.5...@pie-element/match-configure@7.3.6) (2025-03-03)
+
+
+### Bug Fixes
+
+* update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
+
+
+
+
+
+## [7.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@7.3.4...@pie-element/match-configure@7.3.5) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+
+
+
+
+
 ## [7.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@7.3.3...@pie-element/match-configure@7.3.4) (2025-02-19)
 
 

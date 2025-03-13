@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.7.4...@pie-element/multiple-choice-controller@5.8.0) (2025-03-03)
+
+
+### Bug Fixes
+
+* update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
+
+
+### Features
+
+* **multiple-choice:** add customAudioButton PD-4795 ([98e9bbd](https://github.com/pie-framework/pie-elements/commit/98e9bbd8c0f36aa249aaf689e0fff6796a74222a))
+
+
+
+
+
+## [5.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.7.3...@pie-element/multiple-choice-controller@5.7.4) (2025-02-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+
+
+
+
+
 ## [5.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.7.2...@pie-element/multiple-choice-controller@5.7.3) (2025-02-19)
 
 

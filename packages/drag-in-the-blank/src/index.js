@@ -63,7 +63,7 @@ export default class DragInTheBlank extends HTMLElement {
   changeSession = (value) => {
     this.session.value = value;
     this.session.selector = 'Mouse';
-    
+
     this.dispatchChangedEvent();
     this._render();
   };
@@ -97,10 +97,6 @@ export default class DragInTheBlank extends HTMLElement {
   connectedCallback() {
     this._render();
 
-    if (this._model && !this._model.autoplayAudioEnabled) {
-      return;
-    }
-
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -110,6 +106,8 @@ export default class DragInTheBlank extends HTMLElement {
           const audio = this.querySelector('audio');
           const isInsidePrompt = audio && audio.closest('#preview-prompt');
 
+          if (!this._model) return;
+          if (!this._model.autoplayAudioEnabled) return;
           if (audio && !isInsidePrompt) return;
           if (!audio) return;
 
@@ -140,7 +138,7 @@ export default class DragInTheBlank extends HTMLElement {
           const handlePlaying = () => {
             //timestamp when auto-played audio started playing
             this._session.audioStartTime = this._session.audioStartTime || new Date().getTime();
-            
+
             const info = this.querySelector('#play-audio-info');
             if (info) {
               container.removeChild(info);
@@ -155,13 +153,13 @@ export default class DragInTheBlank extends HTMLElement {
           const handleEnded = () => {
             //timestamp when auto-played audio completed playing
             this._session.audioEndTime = this._session.audioEndTime || new Date().getTime();
-            
+
             let { audioStartTime, audioEndTime, waitTime } = this._session;
             if(!waitTime && audioStartTime && audioEndTime) {
               // waitTime is elapsed time the user waited for auto-played audio to finish
               this._session.waitTime = (audioEndTime - audioStartTime);
             }
-            
+
             this.audioComplete = true;
             this.dispatchChangedEvent();
             audio.removeEventListener('ended', handleEnded);
@@ -169,11 +167,27 @@ export default class DragInTheBlank extends HTMLElement {
 
           audio.addEventListener('ended', handleEnded);
 
+          // store references to remove later
+          this._audio = audio;
+          this._handlePlaying = handlePlaying;
+          this._handleEnded = handleEnded;
+          this._enableAudio = enableAudio;
+
           observer.disconnect();
         }
       });
     });
 
     observer.observe(this, { childList: true, subtree: true });
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('click', this._enableAudio);
+
+    if (this._audio) {
+      this._audio.removeEventListener('playing', this._handlePlaying);
+      this._audio.removeEventListener('ended', this._handleEnded);
+      this._audio = null;
+    }
   }
 }
