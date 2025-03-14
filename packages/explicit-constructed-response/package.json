@@ -14,6 +14,7 @@
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/pie-toolbox": "2.10.0",
     "classnames": "^2.2.5",
+    "he": "^1.2.0",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
