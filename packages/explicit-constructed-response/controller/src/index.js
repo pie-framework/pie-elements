@@ -3,7 +3,7 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
-import he from 'he';
+import { decode } from 'he';
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import Translator from '@pie-lib/pie-toolbox/translator';
 import defaults from './defaults';
@@ -257,7 +257,7 @@ const getInnerText = (html) => {
   }
 };
 
-const decodeHTML = (html) => he.decode(html);
+const decodeHTML = (html) => decode(html);
 
 // remove all html tags except img and iframe
 const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
