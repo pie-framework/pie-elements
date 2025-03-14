@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.9.1...@pie-element/image-cloze-association@6.9.2) (2025-03-14)
+
+
+### Bug Fixes
+
+* update Recharts to latest stable version PD-4900 and revert PD-4093 in pie-lib/pie-toolbox ([60b5d7c](https://github.com/pie-framework/pie-elements/commit/60b5d7c799ac4457495a77c4f7d93e3fece1476e))
+
+
+
+
+
 ## [6.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.9.0...@pie-element/image-cloze-association@6.9.1) (2025-03-13)
 
 

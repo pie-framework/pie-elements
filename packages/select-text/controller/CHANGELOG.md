@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@6.1.19...@pie-element/select-text-controller@6.1.20) (2025-03-14)
+
+
+### Bug Fixes
+
+* update Recharts to latest stable version PD-4900 and revert PD-4093 in pie-lib/pie-toolbox ([60b5d7c](https://github.com/pie-framework/pie-elements/commit/60b5d7c799ac4457495a77c4f7d93e3fece1476e))
+
+
+
+
+
 ## [6.1.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@6.1.18...@pie-element/select-text-controller@6.1.19) (2025-03-13)
 
 
