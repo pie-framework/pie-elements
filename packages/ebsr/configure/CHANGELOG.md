@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@10.2.15...@pie-element/ebsr-configure@10.2.16) (2025-03-14)
+
+
+### Bug Fixes
+
+* update Recharts to latest stable version PD-4900 and revert PD-4093 in pie-lib/pie-toolbox ([60b5d7c](https://github.com/pie-framework/pie-elements/commit/60b5d7c799ac4457495a77c4f7d93e3fece1476e))
+
+
+
+
+
 ## [10.2.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@10.2.14...@pie-element/ebsr-configure@10.2.15) (2025-03-13)
 
 

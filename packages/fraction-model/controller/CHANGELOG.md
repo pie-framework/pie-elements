@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.27](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@2.0.26...@pie-element/fraction-model-controller@2.0.27) (2025-03-14)
+
+
+### Bug Fixes
+
+* update Recharts to latest stable version PD-4900 and revert PD-4093 in pie-lib/pie-toolbox ([60b5d7c](https://github.com/pie-framework/pie-elements/commit/60b5d7c799ac4457495a77c4f7d93e3fece1476e))
+
+
+
+
+
 ## [2.0.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@2.0.25...@pie-element/fraction-model-controller@2.0.26) (2025-03-13)
 
 
