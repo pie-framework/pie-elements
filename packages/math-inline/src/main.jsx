@@ -353,7 +353,7 @@ export class Main extends React.Component {
 
   handleKeyDown = (event, id) => {
     const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, this.root);
-    const isAnswerInputFocused = this.mqStatic && this.mqStatic.inputRef?.current.contains(document.activeElement);
+    const isAnswerInputFocused = this.mqStatic ? this.mqStatic.inputRef?.current.contains(document.activeElement) : document.activeElement?.getAttribute('aria-label') === 'Enter answer.';
     const { key, type } = event;
     const isClickOrTouchEvent = type === 'click' || type === 'touchstart';
 
@@ -616,7 +616,9 @@ export class Main extends React.Component {
       <div className={classes.printContainer}>
         <mq.Static
           className={classes.static}
-          ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
+          ref={(mqStatic) => {
+            if (mqStatic) this.mqStatic = mqStatic;
+          }}
           latex={staticLatex}
           onSubFieldChange={this.subFieldChanged}
           getFieldName={this.getFieldName}
@@ -725,7 +727,9 @@ export class Main extends React.Component {
                   >
                     <mq.Static
                       className={classes.static}
-                      ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
+                      ref={(mqStatic) => {
+                        if (mqStatic) this.mqStatic = mqStatic;
+                      }}
                       latex={staticLatex}
                       onSubFieldChange={this.subFieldChanged}
                       getFieldName={this.getFieldName}
