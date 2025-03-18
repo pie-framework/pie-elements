@@ -1,5 +1,4 @@
 import { DragSource, DropTarget } from 'react-dnd';
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -105,6 +104,22 @@ export class Answer extends React.Component {
     correct: PropTypes.bool,
   };
 
+  componentDidMount() {
+    if (this.ref) {
+      this.ref.addEventListener('touchstart', this.handleTouchStart, { passive: false });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.ref) {
+      this.ref.removeEventListener('touchstart', this.handleTouchStart);
+    }
+  }
+
+  handleTouchStart = (e) => {
+    e.preventDefault();
+  };
+
   render() {
     const {
       id,
@@ -128,17 +143,17 @@ export class Answer extends React.Component {
     });
 
     const content = (
-      <div className={name}>
-        <AnswerContent
-          title={title}
-          id={id}
-          isOver={isOver}
-          empty={isEmpty(title)}
-          isDragging={isDragging}
-          disabled={disabled}
-          type={type}
-        />
-      </div>
+        <div className={name} ref={(ref) => (this.ref = ref)}>
+          <AnswerContent
+              title={title}
+              id={id}
+              isOver={isOver}
+              empty={isEmpty(title)}
+              isDragging={isDragging}
+              disabled={disabled}
+              type={type}
+          />
+        </div>
     );
     const droppable = connectDropTarget ? connectDropTarget(content) : content;
 
