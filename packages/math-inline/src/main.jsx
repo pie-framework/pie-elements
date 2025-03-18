@@ -355,8 +355,8 @@ export class Main extends React.Component {
     const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, this.root);
     const isAnswerInputFocused = this.mqStatic && this.mqStatic.inputRef?.current.contains(document.activeElement);
 
-    console.log(this.mqStatic, this.mqStatic.inputRef, "this.mqStatic.inputRef - merge this for testng purpose");
-    
+    console.log(this.mqStatic, "this.mqStatic.inputRef - merge this for testng purpose");
+
     const { key, type } = event;
     const isClickOrTouchEvent = type === 'click' || type === 'touchstart';
 
