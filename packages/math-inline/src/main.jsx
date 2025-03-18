@@ -353,10 +353,7 @@ export class Main extends React.Component {
 
   handleKeyDown = (event, id) => {
     const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, this.root);
-    const isAnswerInputFocused = this.mqStatic && this.mqStatic.inputRef?.current.contains(document.activeElement);
-
-    console.log(this.mqStatic, "this.mqStatic.inputRef - merge this for testng purpose");
-
+    const isAnswerInputFocused = this.mqStatic ? this.mqStatic.inputRef?.current.contains(document.activeElement) : document.activeElement?.getAttribute('aria-label') === 'Enter answer.';
     const { key, type } = event;
     const isClickOrTouchEvent = type === 'click' || type === 'touchstart';
 
