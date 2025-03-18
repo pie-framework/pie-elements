@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.8...@pie-element/math-inline@8.4.9) (2025-03-18)
+
+
+### Bug Fixes
+
+* **math-inline:** Fix input focus detection when mqStatic is undefined PD-4874 ([e9fd963](https://github.com/pie-framework/pie-elements/commit/e9fd963cf7e2d1d3e6e7243d42f0d0640e5951a3))
+* tests ([28eddba](https://github.com/pie-framework/pie-elements/commit/28eddba983ca1c7272af2c88ad40b9339d1510ba))
+* **math-inline:** ensure mqStatic retains last valid reference PD-4874 ([590450f](https://github.com/pie-framework/pie-elements/commit/590450f22e4177714d2371404703f04a8d836fa8))
+
+
+
+
+
 ## [8.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.7...@pie-element/math-inline@8.4.8) (2025-03-14)
 
 

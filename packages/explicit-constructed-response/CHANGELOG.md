@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.3.8...@pie-element/explicit-constructed-response@7.3.9) (2025-03-18)
+
+
+### Bug Fixes
+
+* import only method to reduce bundle size PD-4871 ([dea56b7](https://github.com/pie-framework/pie-elements/commit/dea56b7eada5cf35cc34733580432d441374b1ce))
+* use he for decode html entities PD-4871 ([cc7305f](https://github.com/pie-framework/pie-elements/commit/cc7305f6b4bdd9df0ec1cc391f3708554a01922e))
+
+
+
+
+
 ## [7.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.3.7...@pie-element/explicit-constructed-response@7.3.8) (2025-03-14)
 
 
