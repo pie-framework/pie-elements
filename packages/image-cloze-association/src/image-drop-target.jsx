@@ -14,7 +14,6 @@ class ImageDropTarget extends React.Component {
   }
 
   componentDidMount() {
-    // Prevent default touch behavior (e.g., context menu) on touch devices.
     if (this.dropContainer) {
       this.dropContainer.addEventListener('touchstart', this.handleTouchStart, { passive: false });
     }
@@ -27,7 +26,7 @@ class ImageDropTarget extends React.Component {
   }
 
   handleTouchStart = (e) => {
-    e.preventDefault(); // Prevent the default touch behavior (e.g., context menu or zoom)
+    e.preventDefault();
   };
 
   render() {
