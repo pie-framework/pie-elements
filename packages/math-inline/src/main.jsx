@@ -288,14 +288,14 @@ export class Main extends React.Component {
     setTimeout(() => renderMath(this.root), 100);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) { 
     this.handleAnswerBlockDomUpdate();
 
     const prevResponseType = prevProps.model?.config?.responseType;
     const currentResponseType = this.props.model?.config?.responseType;
 
     if (prevResponseType !== currentResponseType) {
-      this.updateAria();
+        this.updateAria();
     }
   }
 
@@ -353,7 +353,7 @@ export class Main extends React.Component {
 
   handleKeyDown = (event, id) => {
     const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, this.root);
-    const isAnswerInputFocused = this.mqStatic ? this.mqStatic.inputRef?.current.contains(document.activeElement) : document.activeElement?.getAttribute('aria-label') === 'Enter answer.';
+    const isAnswerInputFocused = this.mqStatic && this.mqStatic.inputRef?.current ? this.mqStatic.inputRef?.current.contains(document.activeElement) : document.activeElement?.getAttribute('aria-label') === 'Enter answer.';
     const { key, type } = event;
     const isClickOrTouchEvent = type === 'click' || type === 'touchstart';
 
@@ -361,7 +361,7 @@ export class Main extends React.Component {
       if (this.state.activeAnswerBlock !== id && isTrigerredFromActualPieElement) {
         this.cleanupKeyDownListener();
         this.setState({ activeAnswerBlock: id }, () => {
-          this.onSubFieldFocus(id);
+          this.onSubFieldFocus(id)
           if (key === 'ArrowDown') {
             this.focusFirstKeypadElement();
           }
@@ -373,16 +373,17 @@ export class Main extends React.Component {
   };
 
   onSubFieldFocus = (id) => {
-    const handleEvent = (event) => {
-      this.handleKeyDown(event, id);
-    };
-
-    this.handleEvent = handleEvent;
-
-    document.addEventListener('keydown', handleEvent);
-    document.addEventListener('click', handleEvent);
-    document.addEventListener('touchstart', handleEvent);
+    if (!this.handleEvent) {  // Prevent duplicate event listeners
+      this.handleEvent = (event) => {
+        this.handleKeyDown(event, id);
+      };
+  
+      document.addEventListener('keydown', this.handleEvent);
+      document.addEventListener('click', this.handleEvent);
+      document.addEventListener('touchstart', this.handleEvent);
+    }
   };
+  
 
   cleanupKeyDownListener = () => {
     if (this.handleEvent) {
