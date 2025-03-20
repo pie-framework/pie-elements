@@ -1,5 +1,4 @@
 import { DragSource, DropTarget } from 'react-dnd';
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -18,9 +17,9 @@ const Holder = withStyles((theme) => ({
     color: `rgba(${theme.palette.common.black}, 0.6)`,
   },
 }))(({ classes, type, index, isOver, disabled }) => (
-  <PlaceHolder type={type} isOver={isOver} disabled={disabled}>
-    {type === 'target' && index !== undefined && <div className={classes.number}>{index}</div>}
-  </PlaceHolder>
+    <PlaceHolder type={type} isOver={isOver} disabled={disabled}>
+      {type === 'target' && index !== undefined && <div className={classes.number}>{index}</div>}
+    </PlaceHolder>
 ));
 
 Holder.propTypes = {
@@ -44,9 +43,6 @@ const TileContent = withStyles((theme) => ({
     border: `1px solid ${theme.palette.grey[400]}`,
     backgroundColor: color.background(),
     transition: 'opacity 200ms linear',
-    // Added for touch devices, for image content.
-    // This will prevent the context menu from appearing and not allowing other interactions with the image.
-    // If interactions with the image in the token will be requested we should handle only the context Menu.
     pointerEvents: 'none',
     '&:hover': {
       backgroundColor: color.secondary(),
@@ -82,12 +78,12 @@ const TileContent = withStyles((theme) => ({
     return <Holder type={type} index={guideIndex} isOver={isOver} disabled={disabled} />;
   } else {
     const names = classNames(
-      classes.tileContent,
-      !label ? classes.emptyTile : null,
-      isDragging && !disabled && classes.dragging,
-      isOver && !disabled && classes.over,
-      disabled && classes.disabled,
-      outcome && classes[outcome],
+        classes.tileContent,
+        !label ? classes.emptyTile : null,
+        isDragging && !disabled && classes.dragging,
+        isOver && !disabled && classes.over,
+        disabled && classes.disabled,
+        outcome && classes[outcome],
     );
     return <div className={names} dangerouslySetInnerHTML={{ __html: label }} />;
   }
@@ -108,6 +104,22 @@ export class Tile extends React.Component {
     outcome: PropTypes.string,
     index: PropTypes.number,
     guideIndex: PropTypes.number,
+  };
+
+  componentDidMount() {
+    if (this.ref) {
+      this.ref.addEventListener('touchstart', this.handleTouchStart, { passive: false });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.ref) {
+      this.ref.removeEventListener('touchstart', this.handleTouchStart);
+    }
+  }
+
+  handleTouchStart = (e) => {
+    e.preventDefault(); // Prevent the default touch event behavior
   };
 
   render() {
@@ -136,23 +148,23 @@ export class Tile extends React.Component {
     };
 
     return connectDragSource(
-      connectDropTarget(
-        <div className={name}>
-          <TileContent
-            label={label}
-            id={id}
-            empty={empty}
-            index={index}
-            guideIndex={guideIndex}
-            isOver={isOver}
-            isDragging={isDragging}
-            disabled={disabled}
-            outcome={outcome}
-            type={type}
-          />
-        </div>,
-      ),
-      dragSourceOpts,
+        connectDropTarget(
+            <div className={name} ref={(ref) => (this.ref = ref)}>
+              <TileContent
+                  label={label}
+                  id={id}
+                  empty={empty}
+                  index={index}
+                  guideIndex={guideIndex}
+                  isOver={isOver}
+                  isDragging={isDragging}
+                  disabled={disabled}
+                  outcome={outcome}
+                  type={type}
+              />
+            </div>,
+        ),
+        dragSourceOpts,
     );
   }
 }
