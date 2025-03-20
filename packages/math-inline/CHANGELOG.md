@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.9...@pie-element/math-inline@8.4.10) (2025-03-20)
+
+
+### Bug Fixes
+
+* **math-inline:** Fix duplicate event listeners and improve focus detection PD-4907 ([0104ac2](https://github.com/pie-framework/pie-elements/commit/0104ac284a25f5cd7da7592f635f4a141a6d97fb))
+
+
+
+
+
 ## [8.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.4.8...@pie-element/math-inline@8.4.9) (2025-03-18)
 
 
