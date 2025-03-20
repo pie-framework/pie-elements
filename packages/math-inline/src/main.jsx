@@ -88,7 +88,7 @@ function prepareForStatic(model, state) {
   }
 }
 
-function parseAnswers(session, model){
+function parseAnswers(session, model) {
   const answers = {};
 
   if (model.config && model.config.expression) {
@@ -98,11 +98,11 @@ function parseAnswers(session, model){
     (model.config.expression || '').replace(REGEX, () => {
       answers[`r${answerBlocks}`] = {
         value:
-            (session &&
-                session.answers &&
-                session.answers[`r${answerBlocks}`] &&
-                session.answers[`r${answerBlocks}`].value) ||
-            '',
+          (session &&
+            session.answers &&
+            session.answers[`r${answerBlocks}`] &&
+            session.answers[`r${answerBlocks}`].value) ||
+          '',
       };
 
       answerBlocks += 1;
@@ -121,7 +121,7 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    const {model, session} = props;
+    const { model, session } = props;
     const answers = parseAnswers(session, model);
 
     this.state = {
@@ -216,7 +216,7 @@ export class Main extends React.Component {
     // example: when env is changing in pieoneer
     if (session && nextSession && !isEqual(session.answers, nextSession.answers)) {
       this.setState({
-        session: {...nextSession, answers: parseAnswers(nextSession, this.props.model)},
+        session: { ...nextSession, answers: parseAnswers(nextSession, this.props.model) },
       });
     }
 
@@ -353,7 +353,10 @@ export class Main extends React.Component {
 
   handleKeyDown = (event, id) => {
     const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, this.root);
-    const isAnswerInputFocused = this.mqStatic ? this.mqStatic.inputRef?.current.contains(document.activeElement) : document.activeElement?.getAttribute('aria-label') === 'Enter answer.';
+    const isAnswerInputFocused =
+      this.mqStatic && this.mqStatic.inputRef?.current
+        ? this.mqStatic.inputRef?.current.contains(document.activeElement)
+        : document.activeElement?.getAttribute('aria-label') === 'Enter answer.';
     const { key, type } = event;
     const isClickOrTouchEvent = type === 'click' || type === 'touchstart';
 
@@ -373,15 +376,15 @@ export class Main extends React.Component {
   };
 
   onSubFieldFocus = (id) => {
-    const handleEvent = (event) => {
-      this.handleKeyDown(event, id);
-    };
+    if (!this.handleEvent) {
+      this.handleEvent = (event) => {
+        this.handleKeyDown(event, id);
+      };
 
-    this.handleEvent = handleEvent;
-
-    document.addEventListener('keydown', handleEvent);
-    document.addEventListener('click', handleEvent);
-    document.addEventListener('touchstart', handleEvent);
+      document.addEventListener('keydown', this.handleEvent);
+      document.addEventListener('click', this.handleEvent);
+      document.addEventListener('touchstart', this.handleEvent);
+    }
   };
 
   cleanupKeyDownListener = () => {
