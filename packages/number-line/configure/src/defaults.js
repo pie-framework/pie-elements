@@ -35,6 +35,7 @@ export const configuration = {
     video: { disabled: false },
     image: { disabled: false },
     textAlign: { disabled: true },
+    showParagraphs: { disabled: false },
   },
   instruction: {
     settings: false,

@@ -29,6 +29,7 @@ const multiTraitDefaultConfiguration = {
     video: { disabled: false },
     image: { disabled: false },
     textAlign: { disabled: true },
+    showParagraphs: { disabled: false },
   },
   expandedInput: {
     inputConfiguration: {
@@ -144,6 +145,7 @@ const rubricDefaultConfiguration = {
     video: { disabled: false },
     image: { disabled: false },
     textAlign: { disabled: true },
+    showParagraphs: { disabled: false },
   },
   showExcludeZero: {
     settings: true,
@@ -163,6 +165,7 @@ const rubriclessDefaultConfiguration = {
     video: { disabled: false },
     image: { disabled: false },
     textAlign: { disabled: true },
+    showParagraphs: { disabled: false },
   },
   showExcludeZero: {
     settings: true,

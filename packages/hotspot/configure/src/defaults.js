@@ -24,6 +24,7 @@ export default {
       video: { disabled: false },
       image: { disabled: false },
       textAlign: { disabled: true },
+      showParagraphs: { disabled: false },
     },
     multipleCorrect: {
       settings: true,

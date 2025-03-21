@@ -99,6 +99,7 @@ const defaultConfig = {
     video: { disabled: false },
     image: { disabled: false },
     textAlign: { disabled: true },
+    showParagraphs: { disabled: false },
   },
 };
 
@@ -135,6 +136,7 @@ export default {
       video: { disabled: false },
       image: { disabled: false },
       textAlign: { disabled: true },
+      showParagraphs: { disabled: false },
     },
     partialScoring: {
       label: 'Allow Partial Scoring',
