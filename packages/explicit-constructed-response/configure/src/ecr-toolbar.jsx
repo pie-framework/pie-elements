@@ -60,7 +60,7 @@ export class ECRToolbar extends React.Component {
 
     onDone = (markup) => {
         const { node, value, onToolbarDone, onChangeResponse } = this.props;
-        const sanitizedMarkup = decodeHTML(stripHtmlTags(markup));
+        const sanitizedMarkup = stripHtmlTags(markup);
         this.setState({ markup: sanitizedMarkup });
 
         const updatedData = { ...node.data.toJSON(), value: sanitizedMarkup };
