@@ -19,6 +19,9 @@ exports[`Root snapshot renders 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "showParagraphs": Object {
+              "disabled": false,
+            },
             "textAlign": Object {
               "disabled": true,
             },
@@ -154,6 +157,9 @@ exports[`Root snapshot renders 1`] = `
             "disabled": false,
           },
           "image": Object {
+            "disabled": false,
+          },
+          "showParagraphs": Object {
             "disabled": false,
           },
           "textAlign": Object {

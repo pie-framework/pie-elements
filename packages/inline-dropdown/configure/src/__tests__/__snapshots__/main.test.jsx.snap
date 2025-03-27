@@ -21,6 +21,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "image": Object {
               "disabled": false,
             },
+            "showParagraphs": Object {
+              "disabled": false,
+            },
             "textAlign": Object {
               "disabled": true,
             },
@@ -308,6 +311,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           "image": Object {
             "disabled": false,
           },
+          "showParagraphs": Object {
+            "disabled": false,
+          },
           "textAlign": Object {
             "disabled": true,
           },
@@ -363,6 +369,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "disabled": true,
           },
           "image": Object {
+            "disabled": false,
+          },
+          "showParagraphs": Object {
             "disabled": false,
           },
           "textAlign": Object {
@@ -463,6 +472,9 @@ There should be at most 10 choices defined per response area."
             "disabled": true,
           },
           "image": Object {
+            "disabled": false,
+          },
+          "showParagraphs": Object {
             "disabled": false,
           },
           "textAlign": Object {
@@ -816,6 +828,9 @@ There should be at most 10 choices defined per response area."
           "image": Object {
             "disabled": false,
           },
+          "showParagraphs": Object {
+            "disabled": false,
+          },
           "textAlign": Object {
             "disabled": true,
           },
@@ -857,6 +872,9 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "disabled": true,
             },
             "image": Object {
+              "disabled": false,
+            },
+            "showParagraphs": Object {
               "disabled": false,
             },
             "textAlign": Object {
@@ -1188,6 +1206,9 @@ There should be at most 10 choices defined per response area."
             "disabled": true,
           },
           "image": Object {
+            "disabled": false,
+          },
+          "showParagraphs": Object {
             "disabled": false,
           },
           "textAlign": Object {
