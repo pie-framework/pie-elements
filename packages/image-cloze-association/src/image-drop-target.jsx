@@ -13,6 +13,22 @@ class ImageDropTarget extends React.Component {
     shouldHaveSmallPadding: false,
   }
 
+  componentDidMount() {
+    if (this.dropContainer) {
+      this.dropContainer.addEventListener('touchstart', this.handleTouchStart, { passive: false });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.dropContainer) {
+      this.dropContainer.removeEventListener('touchstart', this.handleTouchStart);
+    }
+  }
+
+  handleTouchStart = (e) => {
+    e.preventDefault();
+  };
+
   render() {
     const {
       answers,
@@ -26,7 +42,6 @@ class ImageDropTarget extends React.Component {
       responseAreaFill,
       responseContainerPadding,
       imageDropTargetPadding,
-      // dnd-related props
       connectDropTarget,
       answerChoiceTransparency,
       maxResponsePerZone,
@@ -47,47 +62,38 @@ class ImageDropTarget extends React.Component {
     };
 
     return connectDropTarget(
-      <div
-        className={containerClasses}
-        style={updatedContainerStyle}
-        ref={ref => {
-          this.dropContainerHeight = ref?.getBoundingClientRect().height;
-
-          // If answers area is higher than the initial established response zone,
-          // then make sure to use a smaller padding.
-          // Only reset the state if needed to prevent maximum callstack exceeded
-          if (this.dropContainerHeight < this.dropContainerResponsesHeight && !shouldHaveSmallPadding) {
-            this.setState({ shouldHaveSmallPadding: true });
-          }
-        }}
-      >
-        {answers.length ? (
-          <div
-            className={classes.answers}
-            ref={ref => {
-              this.dropContainerResponsesHeight = ref?.getBoundingClientRect().height;
-            }}
-          >
-            {answers.map((answer) => (
-              <PossibleResponse
-                key={answer.id}
-                data={answer}
-                canDrag={canDrag}
-                onDragBegin={() => onDragAnswerBegin(answer)}
-                onDragEnd={onDragAnswerEnd}
-                answerChoiceTransparency={answerChoiceTransparency}
-                containerStyle={{
-                  padding: imageDropTargetPadding
-                    ? imageDropTargetPadding
-                    : shouldHaveSmallPadding
-                      ? '2px'
-                      : '6px 10px',
-                }}
-              />
-            ))}
-          </div>
-        ) : null}
-      </div>,
+        <div
+            ref={(ref) => { this.dropContainer = ref; }}
+            className={containerClasses}
+            style={updatedContainerStyle}
+        >
+          {answers.length ? (
+              <div
+                  className={classes.answers}
+                  ref={ref => {
+                    this.dropContainerResponsesHeight = ref?.getBoundingClientRect().height;
+                  }}
+              >
+                {answers.map((answer) => (
+                    <PossibleResponse
+                        key={answer.id}
+                        data={answer}
+                        canDrag={canDrag}
+                        onDragBegin={() => onDragAnswerBegin(answer)}
+                        onDragEnd={onDragAnswerEnd}
+                        answerChoiceTransparency={answerChoiceTransparency}
+                        containerStyle={{
+                          padding: imageDropTargetPadding
+                              ? imageDropTargetPadding
+                              : shouldHaveSmallPadding
+                                  ? '2px'
+                                  : '6px 10px',
+                        }}
+                    />
+                ))}
+              </div>
+          ) : null}
+        </div>,
     );
   }
 }
