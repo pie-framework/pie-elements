@@ -48,6 +48,7 @@ export default {
       h3: { disabled: true },
       blockquote: { disabled: true },
       textAlign: { disabled: true },
+      showParagraphs: { disabled: false },
     },
     dimensions: {
       settings: true,

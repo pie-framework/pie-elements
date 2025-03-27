@@ -50,7 +50,7 @@ export class Main extends React.Component {
   getChangeSession = (maxLengthPerChoice) =>
     maxLengthPerChoice && maxLengthPerChoice.every((val, i, arr) => val === arr[0] && val === 1)
       ? this.props.onChange
-      : debounce(this.props.onChange, 1500, { maxWait: 1500 });
+      : debounce(this.props.onChange, 200, { maxWait: 200 });
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { maxLengthPerChoice, language } = this.props;

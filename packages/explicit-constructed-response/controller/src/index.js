@@ -107,7 +107,7 @@ export function model(question, session, env) {
             (obj, respArea, key) => {
               const chosenValue = value && value[key];
               const val =
-                !isEmpty(chosenValue) && find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue));
+                !isEmpty(chosenValue) && find(respArea, (c) => c.label === prepareVal(chosenValue));
 
               obj[key] = getFeedback(val);
 
@@ -192,7 +192,7 @@ export const getScore = (config, session) => {
     (total, respArea, key) => {
       const chosenValue = value && value[key];
 
-      if (isEmpty(chosenValue) || !find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue))) {
+      if (isEmpty(chosenValue) || !find(respArea, (c) => c.label === prepareVal(chosenValue))) {
         return total;
       }
 
