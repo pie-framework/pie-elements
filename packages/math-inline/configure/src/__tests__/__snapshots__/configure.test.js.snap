@@ -17,6 +17,9 @@ exports[`Configure renders correctly with snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "showParagraphs": Object {
+            "disabled": false,
+          },
           "textAlign": Object {
             "disabled": true,
           },
@@ -265,6 +268,9 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
             "disabled": false,
           },
           "image": Object {
+            "disabled": false,
+          },
+          "showParagraphs": Object {
             "disabled": false,
           },
           "textAlign": Object {

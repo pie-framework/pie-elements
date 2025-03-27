@@ -14,6 +14,9 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "showParagraphs": Object {
+              "disabled": false,
+            },
             "textAlign": Object {
               "disabled": true,
             },
@@ -256,6 +259,9 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "showParagraphs": Object {
+              "disabled": false,
+            },
             "textAlign": Object {
               "disabled": true,
             },
@@ -484,6 +490,9 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
               "disabled": false,
             },
             "image": Object {
+              "disabled": false,
+            },
+            "showParagraphs": Object {
               "disabled": false,
             },
             "textAlign": Object {
@@ -726,6 +735,9 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
               "disabled": false,
             },
             "image": Object {
+              "disabled": false,
+            },
+            "showParagraphs": Object {
               "disabled": false,
             },
             "textAlign": Object {
