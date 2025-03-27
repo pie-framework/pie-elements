@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.5.9...@pie-element/complex-rubric-configure@2.6.0) (2025-03-27)
+
+
+### Features
+
+* updated config so line breaks are enabled in editor [PD-4093] ([2e1978d](https://github.com/pie-framework/pie-elements/commit/2e1978db22d6e39328fff7dce8af3a494f77e2e1))
+
+
+
+
+
 ## [2.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.5.8...@pie-element/complex-rubric-configure@2.5.9) (2025-03-21)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-configure

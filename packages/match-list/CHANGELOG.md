@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.28](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.0.27...@pie-element/match-list@3.0.28) (2025-03-27)
+
+
+### Bug Fixes
+
+* match-list, placement-ordering, ica Tokens cannot be dragged when touch and hold for some time into the response area PD-4888 ([d8cd5a7](https://github.com/pie-framework/pie-elements/commit/d8cd5a75b276abf28c291b1909c2c594bcfb6d3f))
+* update pie-lib/pie-toolbox PD-4895, PD-4093, PD-4888 ([7e6f1c5](https://github.com/pie-framework/pie-elements/commit/7e6f1c5d7bd0832f62ec8f048e04bcdbfe426779))
+
+
+
+
+
 ## [3.0.27](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.0.26...@pie-element/match-list@3.0.27) (2025-03-21)
 
 
