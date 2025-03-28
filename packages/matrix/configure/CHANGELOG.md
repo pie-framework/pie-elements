@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.39.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.38.9...@pie-element/matrix-configure@0.39.0) (2025-03-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4895, PD-4093, PD-4888 ([7e6f1c5](https://github.com/pie-framework/pie-elements/commit/7e6f1c5d7bd0832f62ec8f048e04bcdbfe426779))
+
+
+### Features
+
+* updated config so line breaks are enabled in editor [PD-4093] ([2e1978d](https://github.com/pie-framework/pie-elements/commit/2e1978db22d6e39328fff7dce8af3a494f77e2e1))
+
+
+
+
+
 ## [0.38.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.38.8...@pie-element/matrix-configure@0.38.9) (2025-03-21)
 
 

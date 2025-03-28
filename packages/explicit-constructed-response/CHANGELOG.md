@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.3.10...@pie-element/explicit-constructed-response@7.4.0) (2025-03-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4895, PD-4093, PD-4888 ([7e6f1c5](https://github.com/pie-framework/pie-elements/commit/7e6f1c5d7bd0832f62ec8f048e04bcdbfe426779))
+* **ECR:** Fix correct answer field to treat HTML as literal text PD-4913 ([698e9ed](https://github.com/pie-framework/pie-elements/commit/698e9ed4fe5b31c6daec5fe0a4164bc4c314df06))
+* **ECR:** fix scoring errors PD-4912 ([ffa8987](https://github.com/pie-framework/pie-elements/commit/ffa89870ee0c7e43396927a4658400293aa47246))
+
+
+### Features
+
+* **explicit-constructed-response:** decrease debounce duration to 200ms PD-4827 ([9bcf2c3](https://github.com/pie-framework/pie-elements/commit/9bcf2c39a330c10189583c1389ebe667cb2d182c))
+* updated config so line breaks are enabled in editor [PD-4093] ([2e1978d](https://github.com/pie-framework/pie-elements/commit/2e1978db22d6e39328fff7dce8af3a494f77e2e1))
+
+
+
+
+
 ## [7.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.3.9...@pie-element/explicit-constructed-response@7.3.10) (2025-03-21)
 
 

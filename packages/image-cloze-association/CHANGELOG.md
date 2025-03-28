@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.9.3...@pie-element/image-cloze-association@6.10.0) (2025-03-27)
+
+
+### Bug Fixes
+
+* cleanup PD-4888 ([40407af](https://github.com/pie-framework/pie-elements/commit/40407af153fcfa9d0d8f35dfce6c235ba67482e0))
+* match-list, placement-ordering, ica Tokens cannot be dragged when touch and hold for some time into the response area PD-4888 ([d8cd5a7](https://github.com/pie-framework/pie-elements/commit/d8cd5a75b276abf28c291b1909c2c594bcfb6d3f))
+* update pie-lib/pie-toolbox PD-4895, PD-4093, PD-4888 ([7e6f1c5](https://github.com/pie-framework/pie-elements/commit/7e6f1c5d7bd0832f62ec8f048e04bcdbfe426779))
+
+
+### Features
+
+* updated config so line breaks are enabled in editor [PD-4093] ([2e1978d](https://github.com/pie-framework/pie-elements/commit/2e1978db22d6e39328fff7dce8af3a494f77e2e1))
+
+
+
+
+
 ## [6.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.9.2...@pie-element/image-cloze-association@6.9.3) (2025-03-21)
 
 
