@@ -168,6 +168,21 @@ const limit = (v, min, max) => {
   return v;
 };
 
+/*
+ * Function to get tick interval limits based on min, max and width entered by the user.
+ * @param domain object containing max and min value.
+ * @param width number represents width of number line.
+ * */
+export const getMinorLimits = (domain, width) => {
+  const end = domain.max - domain.min;
+  const min = math.number(math.multiply(10, math.divide(math.fraction(end), width)));
+  const max = math.number(math.multiply(20, min));
+  return {
+    min: min,
+    max: max,
+  };
+};
+
 const isMultiple = (multiple, src) => {
   const mod = math.mod(multiple, src);
   return math.equal(mod, 0);
@@ -229,27 +244,25 @@ const buildTickDataAsFractions = (domain, width, ticks, opts) => {
   return o;
 };
 
-const buildTickData = (domain, width, ticks, opts) => {
-  const result = buildTickDataAsFractions(domain, width, ticks, opts);
-
-  const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
-
-  return out;
-};
-
 /*
- * Function to get tick interval limits based on min, max and width entered by the user.
- * @param domain object containing max and min value.
- * @param width number represents width of number line.
+ * This function will generate tick interval values based on min and max limits of ticks.
+ * @param minorLimits object containing min and max values
+ * @return out object containing three arrays 1. fraction values, 2. decimal values,
  * */
-export const getMinorLimits = (domain, width) => {
-  const end = domain.max - domain.min;
-  const min = math.number(math.multiply(10, math.divide(math.fraction(end), width)));
-  const max = math.number(math.multiply(20, min));
-  return {
-    min: min,
-    max: max,
-  };
+export const generateMinorValues = (minorLimits) => {
+  let out = { fraction: [], decimal: [] };
+  decimalTickValues.forEach((value) => {
+    if (value >= minorLimits.min && value <= minorLimits.max) {
+      out.decimal.push(value);
+    }
+  });
+  fractionTickValues.forEach((value) => {
+    let decimalValue = math.number(math.fraction(value));
+    if (decimalValue >= minorLimits.min && decimalValue <= minorLimits.max) {
+      out.fraction.push(value);
+    }
+  });
+  return out;
 };
 
 /*
@@ -294,23 +307,10 @@ export const generateMajorValuesForMinor = (minor, domain, width) => {
   return out;
 };
 
-/*
- * This function will generate tick interval values based on min and max limits of ticks.
- * @param minorLimits object containing min and max values
- * @return out object containing three arrays 1. fraction values, 2. decimal values,
- * */
-export const generateMinorValues = (minorLimits) => {
-  let out = { fraction: [], decimal: [] };
-  decimalTickValues.forEach((value) => {
-    if (value >= minorLimits.min && value <= minorLimits.max) {
-      out.decimal.push(value);
-    }
-  });
-  fractionTickValues.forEach((value) => {
-    let decimalValue = math.number(math.fraction(value));
-    if (decimalValue >= minorLimits.min && decimalValue <= minorLimits.max) {
-      out.fraction.push(value);
-    }
-  });
+const buildTickData = (domain, width, ticks, opts) => {
+  const result = buildTickDataAsFractions(domain, width, ticks, opts);
+
+  const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
+
   return out;
 };
