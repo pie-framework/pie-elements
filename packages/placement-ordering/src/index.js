@@ -59,6 +59,7 @@ export default class Ordering extends HTMLElement {
     if (this._model && this._session) {
       log('[render] session: ', this._session.value);
       log('[render] model: ', this._model);
+      console.log("Andreea this._session.value", this._session.value);
 
       const element = React.createElement(Main, {
         model: this._model,

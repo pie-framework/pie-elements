@@ -124,6 +124,8 @@ function buildTiles(choices, response, outcomes, opts) {
 export function buildState(choices, response, outcomes, opts) {
   opts = assign({ includeTargets: true }, opts);
 
+  console.log("response1 Andreea", response);
+  console.log("choices Andreea", choices);
   outcomes = outcomes || [];
   response =
     !response || isEmpty(response)
@@ -131,6 +133,9 @@ export function buildState(choices, response, outcomes, opts) {
         ? new Array(choices.length)
         : map(choices, (c) => c.id)
       : response;
+
+  console.log("response Andreea", response);
+
   return {
     choices,
     response,

@@ -12,6 +12,7 @@ import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
 import Translator from '@pie-lib/pie-toolbox/translator';
+import { haveSameValuesButDifferentOrder} from './utils';
 
 const { translator } = Translator;
 
@@ -77,7 +78,7 @@ export class PlacementOrdering extends React.Component {
     renderMath(domNode);
   }
 
-  validateSession = ({ model, session }) => {
+  validateSession = ({ model, session }, areChoicesShuffled=false) => {
     const { config, choices } = model || {};
     const { includeTargets } = config || {};
     let { value } = session || {};
@@ -86,6 +87,9 @@ export class PlacementOrdering extends React.Component {
     const choicesIds = choices.map(c => c.id);
 
     if (!includeTargets) {
+      if(areChoicesShuffled){
+        value = choicesIds;
+      }
       if (!value || !value.length) {
         // if there's no value on session in No Targets Mode, we need to set an initial session
         value = choicesIds;
@@ -125,7 +129,7 @@ export class PlacementOrdering extends React.Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    const { model: nextModel } = nextProps || {};
+    const { model: nextModel = {} } = nextProps || {};
     const { model } = this.props || {};
 
     // check if the note is the default one for prev language and change to the default one for new language
@@ -139,15 +143,22 @@ export class PlacementOrdering extends React.Component {
 
 
     const newState = {};
-    const { correctResponse, config } = nextProps?.model;
+    const { correctResponse, config, choices: nextChoices = [], env } = nextModel;
     const { includeTargets } = config || {};
 
     if (!correctResponse) {
       newState.showingCorrect = false;
     }
 
-    const validatedSession = this.validateSession(nextProps);
+    console.log("Andreea nextChoices", nextModel.choices);
+    console.log("Andreea choices", model.choices);
+
+    const areChoicesShuffled = haveSameValuesButDifferentOrder(nextChoices, model.choices)
+    console.log("Andreea areChoices", areChoicesShuffled);
+    const validatedSession = this.validateSession(nextProps, areChoicesShuffled);
     let { value, needsReset } = validatedSession;
+
+
 
     const newSession = {
       ...nextProps.session,
@@ -162,8 +173,6 @@ export class PlacementOrdering extends React.Component {
     }
 
     this.setState(newState, () => {
-      const { model } = nextProps || {};
-      const { env } = model || {};
       const { mode } = env || {};
 
       if (needsReset && mode === 'gather') {
@@ -203,6 +212,8 @@ export class PlacementOrdering extends React.Component {
       includeTargets: true,
     };
     const { includeTargets } = config;
+
+    console.log("sessionAndreea", session.value);
 
     return showingCorrect
       ? buildState(
