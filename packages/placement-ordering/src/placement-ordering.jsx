@@ -1,18 +1,18 @@
-import { HorizontalTiler, VerticalTiler } from './tiler';
-import { buildState, reducer } from './ordering';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import {HorizontalTiler, VerticalTiler} from './tiler';
+import {buildState, reducer} from './ordering';
+import {Collapsible, color, Feedback, hasText, PreviewPrompt, UiLayout} from '@pie-lib/pie-toolbox/render-ui';
 import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import {renderMath} from '@pie-lib/pie-toolbox/math-rendering';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
 import Translator from '@pie-lib/pie-toolbox/translator';
-import { haveSameValuesButDifferentOrder} from './utils';
+import {haveSameValuesButDifferentOrder} from './utils';
 
 const { translator } = Translator;
 
@@ -81,16 +81,16 @@ export class PlacementOrdering extends React.Component {
   validateSession = ({ model, session }, areChoicesShuffled=false) => {
     const { config, choices } = model || {};
     const { includeTargets } = config || {};
+    const choicesIds = choices.map(c => c.id);
+
     let { value } = session || {};
     let needsReset;
 
-    const choicesIds = choices.map(c => c.id);
-
     if (!includeTargets) {
-      if(areChoicesShuffled){
-        value = choicesIds;
-      }
-      if (!value || !value.length) {
+
+      // Use all choice IDs if choices were shuffled or session is missing/invalid
+      const sessionMissing = !value || !value.length;
+      if (sessionMissing || areChoicesShuffled) {
         // if there's no value on session in No Targets Mode, we need to set an initial session
         value = choicesIds;
       } else {
@@ -107,7 +107,8 @@ export class PlacementOrdering extends React.Component {
       needsReset = !isEqual(session.value, value);
     } else {
       // in Targets Area selected, it's important to check the length of session
-      if (value && choicesIds.length !== value.length) {
+      const sessionIsMismatched = value && value.length !== choicesIds.length;
+      if (sessionIsMismatched) {
         needsReset = true;
 
         // if choices were added, add value in session
@@ -130,41 +131,41 @@ export class PlacementOrdering extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { model: nextModel = {} } = nextProps || {};
-    const { model } = this.props || {};
+    const { model: currentModel = {} } = this.props || {};
+    const { correctResponse, config, choices: nextChoices = [], env } = nextModel;
+    const { includeTargets } = config || {};
+
+    const newState = {};
+
+    const isLanguageChanged = currentModel.language && currentModel.language !== nextModel.language;
+    const isDefaultNote = currentModel.note && currentModel.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: currentModel.language });
 
     // check if the note is the default one for prev language and change to the default one for new language
     // this check is necessary in order to diferanciate between default and authour defined note
     // and only change between languages for default ones
-    if (model.note && model.language && model.language !== nextModel.language &&
-      model.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: model.language })) {
-      console.log('here');
-      model.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
+    if (isLanguageChanged && isDefaultNote) {
+      currentModel.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
     }
 
-
-    const newState = {};
-    const { correctResponse, config, choices: nextChoices = [], env } = nextModel;
-    const { includeTargets } = config || {};
 
     if (!correctResponse) {
       newState.showingCorrect = false;
     }
 
-    console.log("Andreea nextChoices", nextModel.choices);
-    console.log("Andreea choices", model.choices);
+    //PD-4924
+    // show student choices same order as in model when teacher changes student choices order
+    // for cases when student view and instructor view are on same page
+    const areChoicesShuffled = haveSameValuesButDifferentOrder(nextChoices, currentModel.choices)
 
-    const areChoicesShuffled = haveSameValuesButDifferentOrder(nextChoices, model.choices)
-    console.log("Andreea areChoices", areChoicesShuffled);
     const validatedSession = this.validateSession(nextProps, areChoicesShuffled);
     let { value, needsReset } = validatedSession;
-
 
 
     const newSession = {
       ...nextProps.session,
       value
     };
-    const includeTargetsChanged = this.props.model?.config?.includeTargets !== includeTargets;
+    const includeTargetsChanged = currentModel.config?.includeTargets !== includeTargets;
 
     if (includeTargets && includeTargetsChanged) {
       needsReset = true;
@@ -212,8 +213,6 @@ export class PlacementOrdering extends React.Component {
       includeTargets: true,
     };
     const { includeTargets } = config;
-
-    console.log("sessionAndreea", session.value);
 
     return showingCorrect
       ? buildState(

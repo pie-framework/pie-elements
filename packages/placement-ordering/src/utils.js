@@ -1,18 +1,19 @@
-export const  haveSameValuesButDifferentOrder = ( arr1, arr2) => {
+export const haveSameValuesButDifferentOrder = (arr1, arr2) => {
+    if (!Array.isArray(arr1) || !Array.isArray(arr2)) return false;
     if (arr1.length !== arr2.length) return false;
 
-    const normalize = arr =>
-        [...arr]
-            .map(item => JSON.stringify(item))
+    const toSortedJson = (arr) =>
+        arr
+            .map((item) => JSON.stringify(item))
             .sort();
 
-    const sorted1 = normalize(arr1);
-    const sorted2 = normalize(arr2);
+    const sortedArr1 = toSortedJson(arr1);
+    const sortedArr2 = toSortedJson(arr2);
 
-    const sameValues = sorted1.every((val, i) => val === sorted2[i]);
-    const sameOrder = arr1.every((item, i) =>
-        item.id === arr2[i]?.id && item.name === arr2[i]?.name
+    const hasSameValues = sortedArr1.every((val, i) => val === sortedArr2[i]);
+    const hasSameOrder = arr1.every((item, i) =>
+        JSON.stringify(item) === JSON.stringify(arr2[i])
     );
 
-    return sameValues && !sameOrder;
+    return hasSameValues && !hasSameOrder;
 };
