@@ -362,6 +362,27 @@ describe('PlacementOrdering', () => {
 
         expect(onSessionChange).toHaveBeenCalledWith({ value: ['c1', 'c2'] });
       });
+      it('calls initSessionIfNeeded if choicesOrderChanged changes', () => {
+        const initialSession = ['c1', 'c3', 'c4', 'c2'];
+
+        wrapper = mkWrapper(
+            {
+              config: {
+                includeTargets: false
+              }
+            },
+            { value: initialSession }
+        );
+
+        wrapper.setProps({
+          model: {
+            ...model,
+            choices: ['c3', 'c4', 'c1', 'c2'],
+          }
+        });
+
+        expect(onSessionChange).toHaveBeenCalledWith({ value: ['c3', 'c4', 'c1', 'c2'] });
+      });
     });
 
 
