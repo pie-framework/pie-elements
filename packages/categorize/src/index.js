@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { EnableAudioAutoplayImage } from '@pie-lib/pie-toolbox/render-ui';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import CategorizeComponent from './categorize';
 
@@ -87,11 +88,12 @@ export default class Categorize extends HTMLElement {
       justifyContent: 'center',
       alignItems: 'center',
       background: 'white',
-      zIndex: '1000'
+      zIndex: '1000',
+      cursor: 'pointer'
     });
 
     const img = document.createElement('img');
-    img.src = 'https://student.assessment.renaissance.com/ce/quizenginecap/assets/img/playAppsSel.gif';
+    img.src = EnableAudioAutoplayImage;
     img.alt = 'Click anywhere to enable audio autoplay';
     img.width = 500;
     img.height = 300;
