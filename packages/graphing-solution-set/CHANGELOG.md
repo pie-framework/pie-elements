@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@2.1.21...@pie-element/graphing-solution-set@2.2.0) (2025-04-01)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-4938 ([4d89e6e](https://github.com/pie-framework/pie-elements/commit/4d89e6ef28c75b344b6669562f99057359bff794))
+
+
+
+
+
 ## [2.1.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@2.1.20...@pie-element/graphing-solution-set@2.1.21) (2025-03-27)
 
 

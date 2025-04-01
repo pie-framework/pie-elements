@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.9.0...@pie-element/drag-in-the-blank@6.10.0) (2025-04-01)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-4938 ([4d89e6e](https://github.com/pie-framework/pie-elements/commit/4d89e6ef28c75b344b6669562f99057359bff794))
+* use optimized enable autoplay audio image from pie-lib PD-4936 ([b18e1e4](https://github.com/pie-framework/pie-elements/commit/b18e1e422be2f6ea691d2e73f7868ebe6b9c839c))
+
+
+
+
+
 # [6.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.8.3...@pie-element/drag-in-the-blank@6.9.0) (2025-03-27)
 
 
