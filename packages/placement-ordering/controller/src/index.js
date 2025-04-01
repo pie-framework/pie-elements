@@ -64,7 +64,6 @@ export const normalize = (question) => ({
  * @param {*} env
  */
 export function model(question, session, env) {
-
   return new Promise(async (resolve) => {
     const normalizedQuestion = normalize(question);
     const base = {};

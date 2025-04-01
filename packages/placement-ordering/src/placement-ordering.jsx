@@ -1,18 +1,18 @@
-import {HorizontalTiler, VerticalTiler} from './tiler';
-import {buildState, reducer} from './ordering';
-import {Collapsible, color, Feedback, hasText, PreviewPrompt, UiLayout} from '@pie-lib/pie-toolbox/render-ui';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { HorizontalTiler, VerticalTiler } from './tiler';
+import { buildState, reducer } from './ordering';
+import { Collapsible, color, Feedback, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
-import {renderMath} from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
 import Translator from '@pie-lib/pie-toolbox/translator';
-import {haveSameValuesButDifferentOrder} from './utils';
+import { haveSameValuesButDifferentOrder } from './utils';
 
 const { translator } = Translator;
 

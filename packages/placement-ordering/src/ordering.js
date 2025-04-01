@@ -131,7 +131,6 @@ export function buildState(choices, response, outcomes, opts) {
         ? new Array(choices.length)
         : map(choices, (c) => c.id)
       : response;
-
   return {
     choices,
     response,
