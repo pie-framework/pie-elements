@@ -215,6 +215,7 @@ const updateTicks = (model) => {
 
   if (labelStep && typeof labelStep === 'string' && labelStep.match(/^[1-9][0-9]*\/[1-9][0-9]*$/g)) {
     model.graph.fraction = true;
+    ticks.tickIntervalType = 'Fraction';
 
     // update the ticks frequency and label value to match the label step if needed
     const step = math.evaluate(labelStep);
@@ -235,9 +236,9 @@ export function model(question, session, env) {
 
   return new Promise(async (resolve, reject) => {
     const normalizedQuestion = await normalize(question);
-    let { graph } = updateTicks(normalizedQuestion);
+    const normalizedModel = updateTicks(normalizedQuestion);
     // this function is also called in configure, it is a duplicate to maintain consistency and correctness
-    graph = reloadTicksData(graph);
+    const graph = reloadTicksData(normalizedModel.graph);
 
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';
@@ -251,7 +252,7 @@ export function model(question, session, env) {
       let teacherInstructions = null;
 
       if (env.role === 'instructor' && (env.mode === 'view' || evaluateMode)) {
-        teacherInstructions =  normalizedQuestion.teacherInstructions;
+        teacherInstructions = normalizedQuestion.teacherInstructions;
       }
 
       const fb = evaluateMode
