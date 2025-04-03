@@ -282,6 +282,7 @@ const styles = () => ({
   base: {
     position: 'relative',
     width: '100%',
+    overflow: 'scroll',
   },
   stage: {
     left: 0,
