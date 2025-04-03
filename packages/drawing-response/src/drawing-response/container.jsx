@@ -234,7 +234,7 @@ export class Container extends Component {
               this.drawable = drawable;
             }}
             className={classes.drawableHeight}
-            style={{ height: heightToUse, maxHeight: heightToUse, overflow: 'scroll' }}
+            style={{ height: heightToUse, maxHeight: heightToUse }}
           >
             <DrawableMain
               scale={this.state.scale}
