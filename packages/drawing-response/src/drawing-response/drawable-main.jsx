@@ -288,6 +288,7 @@ const styles = () => ({
     position: 'absolute',
     touchAction: 'none',
     top: 0,
+    overflow: 'scroll',
   },
   active: {
     cursor: 'pointer',
