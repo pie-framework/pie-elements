@@ -295,7 +295,7 @@ const styles = () => ({
   undoControls: {
     marginTop: -43,
     marginRight: 10,
-    position: 'absolute',
+    position: 'fixed',
   },
 });
 
