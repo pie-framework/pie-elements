@@ -288,7 +288,6 @@ const styles = () => ({
     position: 'absolute',
     touchAction: 'none',
     top: 0,
-    overflow: 'scroll',
   },
   active: {
     cursor: 'pointer',
@@ -296,6 +295,7 @@ const styles = () => ({
   undoControls: {
     marginTop: -43,
     marginRight: 10,
+    position: 'absolute',
   },
 });
 
