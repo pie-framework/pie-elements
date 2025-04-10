@@ -2,7 +2,6 @@ import * as math from 'mathjs';
 import uniqWith from 'lodash/uniqWith';
 import isObject from 'lodash/isObject';
 import isNumber from 'lodash/isNumber';
-import { tickUtils } from '../../index';
 
 // All these functions are duplicated in  controller/src/tickUtils
 
@@ -55,28 +54,6 @@ export const labelMultiplier = {
   64: [1, 2, 4, 8],
   100: [1, 2, 4, 5, 10],
   1000: [1, 2, 4, 5, 8, 10],
-};
-
-export const fractionSnapTo = (min, max, interval, value) => {
-  value = fmax(fmin(value, max), min);
-  const mod = value.mod(interval);
-  let v;
-
-  const half = interval.div(2);
-  if (math.largerEq(math.abs(mod), half)) {
-    const d = interval.sub(math.abs(mod));
-    const fn = math.largerEq(value, 0) ? 'add' : 'sub';
-    v = value[fn](d);
-  } else {
-    const fn2 = math.largerEq(value, 0) ? 'sub' : 'add';
-    v = value[fn2](math.abs(mod));
-  }
-  return v;
-};
-
-export const snapTo = (min, max, interval, value) => {
-  const out = fractionSnapTo(math.fraction(min), math.fraction(max), math.fraction(interval), math.fraction(value));
-  return math.number(out);
 };
 
 export const fractionRange = (start, end, interval) => {
@@ -305,7 +282,7 @@ export const generateMajorValuesForMinor = (minor, domain, width) => {
       let num = math.number(math.multiply(n, i));
       //Here we check if this major value can plot at least 2 points on number line.
       let ticksData = { minor: minor, major: num };
-      let output = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
+      let output = buildTickData(domain, width, ticksData, { fraction: undefined });
       if (output.filter((x) => x.type === 'major').length > 1) {
         out.fraction.push(num.toString());
         out.decimal.push(num);
@@ -316,7 +293,7 @@ export const generateMajorValuesForMinor = (minor, domain, width) => {
       let num = math.multiply(math.fraction(n, d), labelMultiplier[d][multiplierKey]);
       //Here we check if this major value can plot at least 2 points on number line.
       let ticksData = { minor: minor, major: math.number(num) };
-      let output = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
+      let output = buildTickData(domain, width, ticksData, { fraction: undefined });
       if (output.filter((x) => x.type === 'major').length > 1) {
         if (num.d !== 1) {
           out.fraction.push(num.n + '/' + num.d);
@@ -338,6 +315,28 @@ export const buildTickData = (domain, width, ticks, opts) => {
   return out;
 };
 
+export const fractionSnapTo = (min, max, interval, value) => {
+  value = fmax(fmin(value, max), min);
+  const mod = value.mod(interval);
+  let v;
+
+  const half = interval.div(2);
+  if (math.largerEq(math.abs(mod), half)) {
+    const d = interval.sub(math.abs(mod));
+    const fn = math.largerEq(value, 0) ? 'add' : 'sub';
+    v = value[fn](d);
+  } else {
+    const fn2 = math.largerEq(value, 0) ? 'sub' : 'add';
+    v = value[fn2](math.abs(mod));
+  }
+  return v;
+};
+
+export const snapTo = (min, max, interval, value) => {
+  const out = fractionSnapTo(math.fraction(min), math.fraction(max), math.fraction(interval), math.fraction(value));
+  return math.number(out);
+};
+
 export const snapElements = (domain, ticks, elements) => {
   return elements.map((e) => {
     const size = Number.isFinite(e.size) ? snapTo(0, e.size, ticks.minor, e.size) : undefined;
@@ -350,8 +349,4 @@ export const snapElements = (domain, ticks, elements) => {
 
     return out;
   });
-};
-
-export const testSharedFunction = (param) =>{
-  return 'test' + param;
 };

@@ -31,7 +31,10 @@ const styleSheet = (theme) => ({
   },
   horizontalLayout: {
     [`& .${CLASS_NAME}`]: {
-      paddingRight: theme.spacing.unit,
+      // visually reduce right padding, but maintain accessibility padding for checkbox indicators to be circles
+      // add margin to the top, left and bottom of the checkbox to keep the same spacing as before
+      padding: theme.spacing.unit,
+      margin: `${theme.spacing.unit / 2 }px 0 ${theme.spacing.unit / 2}px ${theme.spacing.unit/ 2}px`,
     },
   },
   belowLayout: {
@@ -235,16 +238,13 @@ export class ChoiceInput extends React.Component {
     });
 
     const choicelabel = (
-      <>
-        {displayKey && !isSelectionButtonBelow ? (
+      <>{displayKey && !isSelectionButtonBelow ? (
           <span className={classes.row}>
             {displayKey}.{'\u00A0'}
             <PreviewPrompt className="label" prompt={label} tagName="span" />
           </span>
         ) : (
-          <PreviewPrompt className="label" prompt={label} tagName="span" />
-        )}
-      </>
+          <PreviewPrompt className="label" prompt={label} tagName="span" />)}</>
     );
 
     return (

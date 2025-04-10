@@ -11,7 +11,6 @@ import {
 import * as defaults from './defaults';
 import * as math from 'mathjs';
 import cloneDeep from 'lodash/cloneDeep';
-import { tickUtils } from '@pie-element/number-line';
 
 // this function is duplicated in controller; at some point, use the same shared function
 const updateTicks = (model) => {
@@ -25,6 +24,7 @@ const updateTicks = (model) => {
 
   if (labelStep && typeof labelStep === 'string' && labelStep.match(/^[1-9][0-9]*\/[1-9][0-9]*$/g)) {
     model.graph.fraction = true;
+    ticks.tickIntervalType = 'Fraction';
 
     // update the ticks frequency and label value to match the label step if needed
     const step = math.evaluate(labelStep);
