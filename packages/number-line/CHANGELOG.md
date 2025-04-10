@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.6.0...@pie-element/number-line@9.6.1) (2025-04-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4765, PD-4947 ([56312ea](https://github.com/pie-framework/pie-elements/commit/56312ea13151cc7e5d026a112fb7d86d320e4799))
+* **number-line:** set tickIntervalType to Fraction when labelStep defined PD-4861 ([ce1d0e8](https://github.com/pie-framework/pie-elements/commit/ce1d0e878f0b360c2f17533d01c8718f0bdebc43))
+
+
+
+
+
 # [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.5.0...@pie-element/number-line@9.6.0) (2025-04-01)
 
 

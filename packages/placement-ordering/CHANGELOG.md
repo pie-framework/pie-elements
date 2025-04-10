@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.6.0...@pie-element/placement-ordering@10.6.1) (2025-04-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4765, PD-4947 ([56312ea](https://github.com/pie-framework/pie-elements/commit/56312ea13151cc7e5d026a112fb7d86d320e4799))
+* **placement-ordering:** delete white spaces PD-4924 ([b0bdb86](https://github.com/pie-framework/pie-elements/commit/b0bdb86938fe90e19531ae04daa3fb19cc1b2a7b))
+* refactor compReceiveProps, write tests PD-4924 ([b2c0832](https://github.com/pie-framework/pie-elements/commit/b2c083268ce9971ce58c0373f5bb3cb1cb9a1a10))
+* **placement-ordering:** compare actual model and next model, set session for shuffled choices PD-4924 ([538a1ae](https://github.com/pie-framework/pie-elements/commit/538a1ae58530452ea915ec8d60ba9c1ccab7ebaf))
+
+
+
+
+
 # [10.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.5.0...@pie-element/placement-ordering@10.6.0) (2025-04-01)
 
 

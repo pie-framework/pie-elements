@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@8.5.0...@pie-element/drawing-response@8.5.1) (2025-04-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4765, PD-4947 ([56312ea](https://github.com/pie-framework/pie-elements/commit/56312ea13151cc7e5d026a112fb7d86d320e4799))
+* **drawing-responnse:** detach undo controls from scrollable canvas area PD-4949 ([ecd9174](https://github.com/pie-framework/pie-elements/commit/ecd9174d89201e072c6e3a9cad41fee51857a8cc))
+* **drawing-responnse:** detach undo controls from scrollable canvas area PD-4949 ([f4c148d](https://github.com/pie-framework/pie-elements/commit/f4c148ddc5297bf416a156699c8bc9a24fefde56))
+* **drawing-responnse:** detach undo controls from scrollable canvas area PD-4949 ([236ce48](https://github.com/pie-framework/pie-elements/commit/236ce486483c276427545c79a592b328a2795706))
+* **drawing-response:** move overflow:scroll to stage container to restore canvas interaction PD-4949 ([438b45c](https://github.com/pie-framework/pie-elements/commit/438b45c16fcc44b7183af1c293ad58948ff5c0d5))
+* **drawing-response:** use ResizeObserver to correctly set canvas dimensions when switching from build to item preview PD-4955 ([baaabf6](https://github.com/pie-framework/pie-elements/commit/baaabf6abbee7736292b044bc3244051b0696499))
+
+
+
+
+
 # [8.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@8.4.0...@pie-element/drawing-response@8.5.0) (2025-04-01)
 
 
