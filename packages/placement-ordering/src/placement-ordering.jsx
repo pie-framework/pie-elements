@@ -1,7 +1,7 @@
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { Collapsible, color, Feedback, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
@@ -12,6 +12,7 @@ import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
 import Translator from '@pie-lib/pie-toolbox/translator';
+import { haveSameValuesButDifferentOrder } from './utils';
 
 const { translator } = Translator;
 
@@ -63,12 +64,12 @@ export class PlacementOrdering extends React.Component {
     if (needsReset && mode === 'gather') {
       this.props.onSessionChange({
         ...props.session,
-        value
+        value,
       });
     }
   }
 
-  toggleCorrect = showingCorrect => this.setState({ showingCorrect });
+  toggleCorrect = (showingCorrect) => this.setState({ showingCorrect });
 
   componentDidUpdate() {
     //eslint-disable-next-line
@@ -77,16 +78,18 @@ export class PlacementOrdering extends React.Component {
     renderMath(domNode);
   }
 
-  validateSession = ({ model, session }) => {
+  validateSession = ({ model, session }, areChoicesShuffled = false) => {
     const { config, choices } = model || {};
     const { includeTargets } = config || {};
+    const choicesIds = choices.map((c) => c.id);
+
     let { value } = session || {};
     let needsReset;
 
-    const choicesIds = choices.map(c => c.id);
-
     if (!includeTargets) {
-      if (!value || !value.length) {
+      // Use all choice IDs if choices were shuffled or session is missing/invalid
+      const sessionMissing = !value || !value.length;
+      if (sessionMissing || areChoicesShuffled) {
         // if there's no value on session in No Targets Mode, we need to set an initial session
         value = choicesIds;
       } else {
@@ -103,7 +106,8 @@ export class PlacementOrdering extends React.Component {
       needsReset = !isEqual(session.value, value);
     } else {
       // in Targets Area selected, it's important to check the length of session
-      if (value && choicesIds.length !== value.length) {
+      const sessionIsMismatched = value && value.length !== choicesIds.length;
+      if (sessionIsMismatched) {
         needsReset = true;
 
         // if choices were added, add value in session
@@ -111,49 +115,56 @@ export class PlacementOrdering extends React.Component {
           value = value.concat(new Array(choicesIds.length - value.length));
         } else {
           // if choices were removed, make sure to remove from session as well
-          value = value.filter(cId => choicesIds.includes(cId));
+          value = value.filter((cId) => choicesIds.includes(cId));
         }
       }
     }
 
     if (needsReset) {
       // eslint-disable-next-line no-console
-      console.warn('This session is not valid anymore. It will be reset.')
+      console.warn('This session is not valid anymore. It will be reset.');
     }
 
     return { value, needsReset };
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    const { model: nextModel } = nextProps || {};
-    const { model } = this.props || {};
+    const { model: nextModel = {} } = nextProps || {};
+    const { model: currentModel = {} } = this.props || {};
+    const { correctResponse, config, choices: nextChoices = [], env } = nextModel;
+    const { includeTargets } = config || {};
+
+    const newState = {};
+
+    const isLanguageChanged = currentModel.language && currentModel.language !== nextModel.language;
+    const isDefaultNote =
+      currentModel.note &&
+      currentModel.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: currentModel.language });
 
     // check if the note is the default one for prev language and change to the default one for new language
     // this check is necessary in order to diferanciate between default and authour defined note
     // and only change between languages for default ones
-    if (model.note && model.language && model.language !== nextModel.language &&
-      model.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: model.language })) {
-      console.log('here');
-      model.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
+    if (isLanguageChanged && isDefaultNote) {
+      currentModel.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
     }
-
-
-    const newState = {};
-    const { correctResponse, config } = nextProps?.model;
-    const { includeTargets } = config || {};
 
     if (!correctResponse) {
       newState.showingCorrect = false;
     }
 
-    const validatedSession = this.validateSession(nextProps);
+    //PD-4924
+    // show student choices same order as in model when teacher changes student choices order
+    // for cases when student view and instructor view are on same page
+    const areChoicesShuffled = haveSameValuesButDifferentOrder(nextChoices, currentModel.choices);
+
+    const validatedSession = this.validateSession(nextProps, areChoicesShuffled);
     let { value, needsReset } = validatedSession;
 
     const newSession = {
       ...nextProps.session,
-      value
+      value,
     };
-    const includeTargetsChanged = this.props.model?.config?.includeTargets !== includeTargets;
+    const includeTargetsChanged = currentModel.config?.includeTargets !== includeTargets;
 
     if (includeTargets && includeTargetsChanged) {
       needsReset = true;
@@ -162,8 +173,6 @@ export class PlacementOrdering extends React.Component {
     }
 
     this.setState(newState, () => {
-      const { model } = nextProps || {};
-      const { env } = model || {};
       const { mode } = env || {};
 
       if (needsReset && mode === 'gather') {
@@ -206,18 +215,18 @@ export class PlacementOrdering extends React.Component {
 
     return showingCorrect
       ? buildState(
-        model.choices,
-        model.correctResponse,
-        model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
-        {
+          model.choices,
+          model.correctResponse,
+          model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
+          {
+            includeTargets,
+            allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
+          },
+        )
+      : buildState(model.choices, session.value, model.outcomes, {
           includeTargets,
           allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
-        },
-      )
-      : buildState(model.choices, session.value, model.outcomes, {
-        includeTargets,
-        allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
-      });
+        });
   };
 
   render() {
@@ -235,7 +244,7 @@ export class PlacementOrdering extends React.Component {
       env,
       disabled,
       teacherInstructions,
-      language
+      language,
     } = model;
     const showToggle = correctResponse && correctResponse.length > 0;
     const { showingCorrect } = this.state;
@@ -258,12 +267,12 @@ export class PlacementOrdering extends React.Component {
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
             className={classes.collapsible}
           >
-            <PreviewPrompt prompt={teacherInstructions}/>
+            <PreviewPrompt prompt={teacherInstructions} />
           </Collapsible>
         )}
 
         <div className={classes.prompt}>
-          <PreviewPrompt prompt={prompt}/>
+          <PreviewPrompt prompt={prompt} />
         </div>
 
         <CorrectAnswerToggle
@@ -289,17 +298,15 @@ export class PlacementOrdering extends React.Component {
           onRemoveChoice={this.onRemoveChoice}
         />
 
-        {displayNote && (
-          <div className={classes.note} dangerouslySetInnerHTML={{ __html: note }}/>
-        )}
+        {displayNote && <div className={classes.note} dangerouslySetInnerHTML={{ __html: note }} />}
 
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
-            <PreviewPrompt prompt={rationale}/>
+            <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
 
-        {!showingCorrect && <Feedback correctness={correctness} feedback={feedback}/>}
+        {!showingCorrect && <Feedback correctness={correctness} feedback={feedback} />}
       </UiLayout>
     );
   }
