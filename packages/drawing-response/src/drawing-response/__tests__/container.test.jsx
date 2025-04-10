@@ -7,6 +7,11 @@ global.MutationObserver = class {
   observe(element, initObject) {}
 };
 
+global.ResizeObserver = class {
+  observe() {}
+  disconnect() {}
+};
+
 import { Container } from '../container';
 
 beforeEach(() => {

@@ -64,9 +64,9 @@ export class Container extends Component {
 
     this.setState({
       fillColorList: [
-        { value: 'transparent', label: translator.t('drawingResponse.noFill', { lng: language }), },
-        { value: 'lightblue', label: translator.t('drawingResponse.lightblue', { lng: language }), },
-        { value: 'lightyellow', label: translator.t('drawingResponse.lightyellow', { lng: language }), },
+        { value: 'transparent', label: translator.t('drawingResponse.noFill', { lng: language }) },
+        { value: 'lightblue', label: translator.t('drawingResponse.lightblue', { lng: language }) },
+        { value: 'lightyellow', label: translator.t('drawingResponse.lightyellow', { lng: language }) },
         ...translatedROGVAIV,
       ],
       paintColor: translator.t('drawingResponse.red', { lng: language }),
@@ -85,6 +85,7 @@ export class Container extends Component {
       try {
         const { height, width } = this.drawable.getBoundingClientRect();
         const effectiveWidth = this.props.session.width || width;
+
         if (height !== 0 && width !== 0) {
           this.setState({
             drawableDimensions: {
@@ -129,6 +130,17 @@ export class Container extends Component {
       });
     });
 
+    // Use ResizeObserver to detect when the drawable container becomes visible
+    // (e.g., after switching from build to item preview in New Item Bank) and trigger dimension calculation.
+    // This helps ensure the canvas is properly sized even when componentDidMount is not re-triggered.
+    this.resizeObserver = new ResizeObserver(() => {
+      this.setDimensions();
+    });
+
+    if (this.drawable) {
+      this.resizeObserver.observe(this.drawable);
+    }
+
     const target = document.getElementById('question-container');
     if (target) {
       this.observer.observe(target, { attributes: true, attributeFilter: ['style'] });
@@ -140,6 +152,7 @@ export class Container extends Component {
 
     TextEntry.removeEventListeners();
     this.observer?.disconnect();
+    this.resizeObserver?.disconnect();
   }
 
   handleMakeToolActive(tool) {
@@ -223,7 +236,7 @@ export class Container extends Component {
                   key={type}
                   disabled={this.checkIfToolIsDisabled(type)}
                   onClick={() => this.handleMakeToolActive(tool)}
-                  label={<Icon path={icon}/>}
+                  label={<Icon path={icon} />}
                 />
               );
             })}
