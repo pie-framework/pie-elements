@@ -64,12 +64,12 @@ export class PlacementOrdering extends React.Component {
     if (needsReset && mode === 'gather') {
       this.props.onSessionChange({
         ...props.session,
-        value
+        value,
       });
     }
   }
 
-  toggleCorrect = showingCorrect => this.setState({ showingCorrect });
+  toggleCorrect = (showingCorrect) => this.setState({ showingCorrect });
 
   componentDidUpdate() {
     //eslint-disable-next-line
@@ -78,16 +78,15 @@ export class PlacementOrdering extends React.Component {
     renderMath(domNode);
   }
 
-  validateSession = ({ model, session }, areChoicesShuffled=false) => {
+  validateSession = ({ model, session }, areChoicesShuffled = false) => {
     const { config, choices } = model || {};
     const { includeTargets } = config || {};
-    const choicesIds = choices.map(c => c.id);
+    const choicesIds = choices.map((c) => c.id);
 
     let { value } = session || {};
     let needsReset;
 
     if (!includeTargets) {
-
       // Use all choice IDs if choices were shuffled or session is missing/invalid
       const sessionMissing = !value || !value.length;
       if (sessionMissing || areChoicesShuffled) {
@@ -116,14 +115,14 @@ export class PlacementOrdering extends React.Component {
           value = value.concat(new Array(choicesIds.length - value.length));
         } else {
           // if choices were removed, make sure to remove from session as well
-          value = value.filter(cId => choicesIds.includes(cId));
+          value = value.filter((cId) => choicesIds.includes(cId));
         }
       }
     }
 
     if (needsReset) {
       // eslint-disable-next-line no-console
-      console.warn('This session is not valid anymore. It will be reset.')
+      console.warn('This session is not valid anymore. It will be reset.');
     }
 
     return { value, needsReset };
@@ -138,7 +137,9 @@ export class PlacementOrdering extends React.Component {
     const newState = {};
 
     const isLanguageChanged = currentModel.language && currentModel.language !== nextModel.language;
-    const isDefaultNote = currentModel.note && currentModel.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: currentModel.language });
+    const isDefaultNote =
+      currentModel.note &&
+      currentModel.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: currentModel.language });
 
     // check if the note is the default one for prev language and change to the default one for new language
     // this check is necessary in order to diferanciate between default and authour defined note
@@ -147,7 +148,6 @@ export class PlacementOrdering extends React.Component {
       currentModel.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
     }
 
-
     if (!correctResponse) {
       newState.showingCorrect = false;
     }
@@ -155,15 +155,14 @@ export class PlacementOrdering extends React.Component {
     //PD-4924
     // show student choices same order as in model when teacher changes student choices order
     // for cases when student view and instructor view are on same page
-    const areChoicesShuffled = haveSameValuesButDifferentOrder(nextChoices, currentModel.choices)
+    const areChoicesShuffled = haveSameValuesButDifferentOrder(nextChoices, currentModel.choices);
 
     const validatedSession = this.validateSession(nextProps, areChoicesShuffled);
     let { value, needsReset } = validatedSession;
 
-
     const newSession = {
       ...nextProps.session,
-      value
+      value,
     };
     const includeTargetsChanged = currentModel.config?.includeTargets !== includeTargets;
 
@@ -216,18 +215,18 @@ export class PlacementOrdering extends React.Component {
 
     return showingCorrect
       ? buildState(
-        model.choices,
-        model.correctResponse,
-        model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
-        {
+          model.choices,
+          model.correctResponse,
+          model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
+          {
+            includeTargets,
+            allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
+          },
+        )
+      : buildState(model.choices, session.value, model.outcomes, {
           includeTargets,
           allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
-        },
-      )
-      : buildState(model.choices, session.value, model.outcomes, {
-        includeTargets,
-        allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
-      });
+        });
   };
 
   render() {
@@ -245,7 +244,7 @@ export class PlacementOrdering extends React.Component {
       env,
       disabled,
       teacherInstructions,
-      language
+      language,
     } = model;
     const showToggle = correctResponse && correctResponse.length > 0;
     const { showingCorrect } = this.state;
@@ -268,12 +267,12 @@ export class PlacementOrdering extends React.Component {
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
             className={classes.collapsible}
           >
-            <PreviewPrompt prompt={teacherInstructions}/>
+            <PreviewPrompt prompt={teacherInstructions} />
           </Collapsible>
         )}
 
         <div className={classes.prompt}>
-          <PreviewPrompt prompt={prompt}/>
+          <PreviewPrompt prompt={prompt} />
         </div>
 
         <CorrectAnswerToggle
@@ -299,17 +298,15 @@ export class PlacementOrdering extends React.Component {
           onRemoveChoice={this.onRemoveChoice}
         />
 
-        {displayNote && (
-          <div className={classes.note} dangerouslySetInnerHTML={{ __html: note }}/>
-        )}
+        {displayNote && <div className={classes.note} dangerouslySetInnerHTML={{ __html: note }} />}
 
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
-            <PreviewPrompt prompt={rationale}/>
+            <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
 
-        {!showingCorrect && <Feedback correctness={correctness} feedback={feedback}/>}
+        {!showingCorrect && <Feedback correctness={correctness} feedback={feedback} />}
       </UiLayout>
     );
   }
