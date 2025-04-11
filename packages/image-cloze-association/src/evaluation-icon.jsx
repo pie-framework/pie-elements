@@ -6,10 +6,10 @@ import Close from '@material-ui/icons/Close';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const getCorrectnessClass = (isCorrect, filled) => {
-  if (filled) {
-    return isCorrect ? 'correctFilled' : 'incorrectFilled';
-  }
-  return isCorrect ? 'correctEmpty' : 'incorrectEmpty';
+  const correctness = isCorrect ? 'correct' : 'incorrect';
+  const fillState = filled ? 'Filled' : 'Empty';
+
+  return `${correctness}${fillState}`;
 };
 
 const EvaluationIcon = ({ classes, containerStyle, isCorrect, filled }) => {
