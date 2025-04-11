@@ -86,18 +86,8 @@ export class ImageClozeAssociationComponent extends React.Component {
     });
   };
 
-  filterPossibleAnswers = (possibleResponses, answer) => {
-    const index = possibleResponses.findIndex((response) => response.value === answer.value);
-
-    if (index >= 0) {
-      return [
-        ...possibleResponses.slice(0, index), // Elements before the found item
-        ...possibleResponses.slice(index + 1), // Elements after the found item
-      ];
-    }
-
-    return possibleResponses;
-  };
+  filterPossibleAnswers = (possibleResponses, answer) =>
+    possibleResponses.filter(response => response.value !== answer.value);
 
   handleOnAnswerSelect = (answer, responseContainerIndex) => {
     const {
@@ -108,10 +98,18 @@ export class ImageClozeAssociationComponent extends React.Component {
     let { possibleResponses } = this.state;
     let answersToStore;
 
-    if (maxResponsePerZone === answers.filter((a) => a.containerIndex === responseContainerIndex).length) {
-      const answersInThisContainer = answers.filter((a) => a.containerIndex === responseContainerIndex);
-      const answersInOtherContainers = answers.filter((b) => b.containerIndex !== responseContainerIndex);
+    const answersInThisContainer = [];
+    const answersInOtherContainers = [];
 
+    answers.forEach((a) => {
+      if (a.containerIndex === responseContainerIndex) {
+        answersInThisContainer.push(a);
+      } else {
+        answersInOtherContainers.push(a);
+      }
+    });
+
+    if (maxResponsePerZone === answersInThisContainer.length) {
       const shiftedItem = answersInThisContainer[0];
       if (maxResponsePerZone === 1) {
         answersInThisContainer.shift(); // FIFO
@@ -270,6 +268,55 @@ export class ImageClozeAssociationComponent extends React.Component {
       answersToShow = [...answersToShow, ...getUnansweredAnswers(answersToShow, validation)];
     }
 
+    const sharedImageProps = {
+      draggingElement,
+      duplicateResponses,
+      image,
+      onAnswerSelect: this.handleOnAnswerSelect,
+      onDragAnswerBegin: this.beginDrag,
+      onDragAnswerEnd: this.handleOnDragEnd,
+      responseContainers,
+      showDashedBorder,
+      responseAreaFill,
+      responseContainerPadding,
+      imageDropTargetPadding,
+      maxResponsePerZone,
+    };
+
+    const renderImage = () => (
+      <Image
+        {...sharedImageProps}
+        canDrag={showCorrect && showToggle ? false : !disabled}
+        answers={showCorrect && showToggle ? correctAnswers : answersToShow}
+        answerChoiceTransparency={
+          !(showCorrect && showToggle) ? answerChoiceTransparency : undefined
+        }
+      />
+    );
+
+   const renderPossibleResponses = () => {
+      if (showCorrect && showToggle) return null;
+
+      return (
+        <React.Fragment>
+          {maxResponsePerZoneWarning && <WarningInfo message={warningMessage} />}
+          <PossibleResponses
+            canDrag={!disabled}
+            data={possibleResponses}
+            onAnswerRemove={this.handleOnAnswerRemove}
+            onDragBegin={this.beginDrag}
+            onDragEnd={this.handleOnDragEnd}
+            answerChoiceTransparency={answerChoiceTransparency}
+            customStyle={{
+              minWidth: isVertical ? '130px' : image?.width || 'fit-content',
+            }}
+            isVertical={isVertical}
+            minHeight={isVertical ? image?.height : undefined}
+          />
+        </React.Fragment>
+      );
+    };
+
     return (
       <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.main} fontSizeFactor={fontSizeFactor}>
         {teacherInstructions && hasText(teacherInstructions) && (
@@ -300,62 +347,13 @@ export class ImageClozeAssociationComponent extends React.Component {
           language={language}
         />
 
-        {showCorrect && showToggle ? (
-          <InteractiveSection responseCorrect={true} uiStyle={uiStyle}>
-            <Image
-              canDrag={false}
-              answers={correctAnswers}
-              draggingElement={draggingElement}
-              duplicateResponses={duplicateResponses}
-              image={image}
-              onAnswerSelect={this.handleOnAnswerSelect}
-              onDragAnswerBegin={this.beginDrag}
-              onDragAnswerEnd={this.handleOnDragEnd}
-              responseContainers={responseContainers}
-              showDashedBorder={showDashedBorder}
-              responseAreaFill={responseAreaFill}
-              responseContainerPadding={responseContainerPadding}
-              imageDropTargetPadding={imageDropTargetPadding}
-              maxResponsePerZone={maxResponsePerZone}
-            />
-          </InteractiveSection>
-        ) : (
-          <InteractiveSection responseCorrect={responseCorrect} uiStyle={uiStyle}>
-            <Image
-              canDrag={!disabled}
-              answers={answersToShow}
-              draggingElement={draggingElement}
-              duplicateResponses={duplicateResponses}
-              image={image}
-              onAnswerSelect={this.handleOnAnswerSelect}
-              onDragAnswerBegin={this.beginDrag}
-              onDragAnswerEnd={this.handleOnDragEnd}
-              responseContainers={responseContainers}
-              showDashedBorder={showDashedBorder}
-              responseAreaFill={responseAreaFill}
-              answerChoiceTransparency={answerChoiceTransparency}
-              responseContainerPadding={responseContainerPadding}
-              imageDropTargetPadding={imageDropTargetPadding}
-              maxResponsePerZone={maxResponsePerZone}
-            />
-
-            {maxResponsePerZoneWarning && <WarningInfo message={warningMessage} />}
-
-            <PossibleResponses
-              canDrag={!disabled}
-              data={possibleResponses}
-              onAnswerRemove={this.handleOnAnswerRemove}
-              onDragBegin={this.beginDrag}
-              onDragEnd={this.handleOnDragEnd}
-              answerChoiceTransparency={answerChoiceTransparency}
-              customStyle={{
-                minWidth: isVertical ? '130px' : image?.width || 'fit-content',
-              }}
-              isVertical={isVertical}
-              minHeight={isVertical ? image?.height : undefined}
-            />
-          </InteractiveSection>
-        )}
+        <InteractiveSection
+          responseCorrect={showCorrect && showToggle ? true : responseCorrect}
+          uiStyle={uiStyle}
+        >
+          {renderImage()}
+          {renderPossibleResponses()}
+        </InteractiveSection>
 
         {rationale && hasText(rationale) && (
           <Collapsible
