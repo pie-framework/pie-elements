@@ -392,17 +392,14 @@ export class Main extends React.Component {
 
             <ExpansionPanelDetails className={classes.panelDetails}>
               {(choices[key] || []).map((choice) => (
-                <React.Fragment>
+                <React.Fragment key={choice.label}>
                   <span
                     className={classes.rationaleLabel}
                     dangerouslySetInnerHTML={{
                       __html: `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`,
                     }}
                   />
-                  <InputContainer
-                    key={choice.label}
-                    className={classes.choiceRationaleHolder}
-                  >
+                  <InputContainer className={classes.choiceRationaleHolder}>
                     <EditableHtml
                       className={classes.prompt}
                       markup={choice.rationale || ''}
