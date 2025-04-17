@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import isUndefined from 'lodash/isUndefined';
@@ -18,6 +19,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Info from '@material-ui/icons/Info';
+
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
 import ResponseAreaComponent from './response-area';
@@ -28,6 +30,11 @@ const styles = (theme) => ({
   promptHolder: {
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+  },
+  choiceRationaleHolder: {
+    width: '100%',
+    paddingTop: theme.spacing.unit / 2,
     marginBottom: theme.spacing.unit * 2,
   },
   markup: {
@@ -47,7 +54,12 @@ const styles = (theme) => ({
   },
   rationaleLabel: {
     display: 'flex',
+    alignItems: 'center',
     whiteSpace: 'break-spaces',
+    color: color.disabled(),
+    padding: 0,
+    fontSize: theme.typography.fontSize - 2,
+    lineHeight: 1,
   },
   rationaleChoices: {
     marginBottom: theme.spacing.unit * 2.5,
@@ -380,30 +392,30 @@ export class Main extends React.Component {
 
             <ExpansionPanelDetails className={classes.panelDetails}>
               {(choices[key] || []).map((choice) => (
-                <InputContainer
-                  key={choice.label}
-                  label={
-                    <span
-                      className={classes.rationaleLabel}
-                      dangerouslySetInnerHTML={{
-                        __html: `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`,
-                      }}
-                    />
-                  }
-                  className={classes.promptHolder}
-                >
-                  <EditableHtml
-                    className={classes.prompt}
-                    markup={choice.rationale || ''}
-                    spellCheck={spellCheckEnabled}
-                    onChange={(c) => this.onChoiceRationaleChanged(key, { ...choice, rationale: c })}
-                    imageSupport={imageSupport}
-                    maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                    maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                    uploadSoundSupport={uploadSoundSupport}
-                    mathMlOptions={mathMlOptions}
+                <React.Fragment>
+                  <span
+                    className={classes.rationaleLabel}
+                    dangerouslySetInnerHTML={{
+                      __html: `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`,
+                    }}
                   />
-                </InputContainer>
+                  <InputContainer
+                    key={choice.label}
+                    className={classes.choiceRationaleHolder}
+                  >
+                    <EditableHtml
+                      className={classes.prompt}
+                      markup={choice.rationale || ''}
+                      spellCheck={spellCheckEnabled}
+                      onChange={(c) => this.onChoiceRationaleChanged(key, { ...choice, rationale: c })}
+                      imageSupport={imageSupport}
+                      maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                      maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                      uploadSoundSupport={uploadSoundSupport}
+                      mathMlOptions={mathMlOptions}
+                    />
+                  </InputContainer>
+                </React.Fragment>
               ))}
             </ExpansionPanelDetails>
           </ExpansionPanel>
