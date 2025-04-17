@@ -512,17 +512,15 @@ There should be at most 10 choices defined per response area."
         </WithStyles(Typography)>
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for cow (correct)",
+            }
+          }
+        />
         <InputContainer
           key="cow"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for cow (correct)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -539,17 +537,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for dog (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="dog"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for dog (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -566,17 +562,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for cat (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="cat"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for cat (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -608,17 +602,15 @@ There should be at most 10 choices defined per response area."
         </WithStyles(Typography)>
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for over (correct)",
+            }
+          }
+        />
         <InputContainer
           key="over"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for over (correct)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -635,17 +627,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for under (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="under"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for under (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -662,17 +652,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for across (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="across"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for across (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -704,17 +692,15 @@ There should be at most 10 choices defined per response area."
         </WithStyles(Typography)>
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for moon (correct)",
+            }
+          }
+        />
         <InputContainer
           key="moon"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for moon (correct)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -731,17 +717,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for sun (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="sun"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for sun (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -758,17 +742,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for house (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="house"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for house (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1246,17 +1228,15 @@ There should be at most 10 choices defined per response area."
         </WithStyles(Typography)>
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for cow (correct)",
+            }
+          }
+        />
         <InputContainer
           key="cow"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for cow (correct)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1273,17 +1253,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for dog (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="dog"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for dog (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1300,17 +1278,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for cat (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="cat"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for cat (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1342,17 +1318,15 @@ There should be at most 10 choices defined per response area."
         </WithStyles(Typography)>
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for over (correct)",
+            }
+          }
+        />
         <InputContainer
           key="over"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for over (correct)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1369,17 +1343,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for under (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="under"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for under (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1396,17 +1368,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for across (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="across"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for across (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1438,17 +1408,15 @@ There should be at most 10 choices defined per response area."
         </WithStyles(Typography)>
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for moon (correct)",
+            }
+          }
+        />
         <InputContainer
           key="moon"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for moon (correct)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1465,17 +1433,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for sun (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="sun"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for sun (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
@@ -1492,17 +1458,15 @@ There should be at most 10 choices defined per response area."
             onDone={[Function]}
           />
         </InputContainer>
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Rationale for house (incorrect)",
+            }
+          }
+        />
         <InputContainer
           key="house"
-          label={
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Rationale for house (incorrect)",
-                }
-              }
-            />
-          }
         >
           <EditableHtml
             allowValidation={false}
