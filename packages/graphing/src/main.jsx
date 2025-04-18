@@ -75,7 +75,7 @@ export class Main extends React.Component {
           <GraphContainer
             className={classes.graph}
             axesSettings={{ includeArrows: arrows }}
-            backgroundMarks={backgroundMarks}
+            backgroundMarks={backgroundMarks.filter((mark) => !mark.building)}
             coordinatesOnHover={coordinatesOnHover}
             disabled={true}
             disabledLabels={true}
@@ -96,7 +96,7 @@ export class Main extends React.Component {
           <GraphContainer
             className={classes.graph}
             axesSettings={{ includeArrows: arrows }}
-            backgroundMarks={backgroundMarks}
+            backgroundMarks={backgroundMarks.filter((mark) => !mark.building)}
             coordinatesOnHover={coordinatesOnHover}
             defaultTool={defaultTool}
             disabled={disabled}

@@ -437,7 +437,7 @@ export class CorrectResponse extends React.Component {
               <Graph
                 className={correctAnswerErrors[key] && classes.graphError}
                 axesSettings={{ includeArrows: arrows }}
-                backgroundMarks={backgroundMarks}
+                backgroundMarks={backgroundMarks.filter((mark) => !mark.building)}
                 coordinatesOnHover={coordinatesOnHover}
                 disabledLabels={true}
                 disabledTitle={true}
