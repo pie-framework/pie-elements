@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.10.2...@pie-element/drag-in-the-blank@6.10.3) (2025-04-18)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4967 ([cf4c095](https://github.com/pie-framework/pie-elements/commit/cf4c095f21a2e9bdf74ce5a419ad5fc8d0d7f6ca))
+
+
+
+
+
 ## [6.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.10.1...@pie-element/drag-in-the-blank@6.10.2) (2025-04-17)
 
 
