@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { DragSource } from '@pie-lib/pie-toolbox/drag';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
-import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 
 import EvaluationIcon from './evaluation-icon';
 import c from './constants';
+import StaticHTMLSpan from './static-html-span';
 
 export class PossibleResponse extends React.Component {
   render() {
@@ -40,11 +40,7 @@ export class PossibleResponse extends React.Component {
 
     return connectDragSource(
       <div className={containerClassNames} style={containerStyle}>
-        <PreviewPrompt
-          defaultClassName={promptClassNames}
-          prompt={data.value}
-          tagName="span"
-        />
+        <StaticHTMLSpan html={data.value} className={promptClassNames} />
         <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
       </div>,
     );
