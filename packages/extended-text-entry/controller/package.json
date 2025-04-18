@@ -6,7 +6,6 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "speech-rule-engine": "4.0.7",
     "@pie-lib/pie-toolbox": "2.14.1"
 
   },

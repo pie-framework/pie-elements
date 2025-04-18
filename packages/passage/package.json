@@ -11,9 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "speech-rule-engine": "4.0.7",
-    "@pie-lib/pie-toolbox": "2.14.1"
-    ,
+    "@pie-lib/pie-toolbox": "2.14.1",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
