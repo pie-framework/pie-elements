@@ -2,9 +2,7 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "speech-rule-engine": "4.0.7",
-    "@pie-lib/pie-toolbox": "2.14.1"
-    ,
+    "@pie-lib/pie-toolbox": "2.14.1",
     "lodash": "^4.17.15"
   },
   "version": "7.8.2",

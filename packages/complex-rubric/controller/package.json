@@ -7,9 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "speech-rule-engine": "4.0.7",
-    "@pie-lib/pie-toolbox": "2.14.1"
-    ,
+    "@pie-lib/pie-toolbox": "2.14.1",
     "lodash": "^4.17.15"
   },
   "author": "",
