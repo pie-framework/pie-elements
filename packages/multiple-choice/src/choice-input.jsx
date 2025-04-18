@@ -52,7 +52,8 @@ const styleSheet = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     '& > span': {
-      paddingLeft: 0,
+      // visually reduce right padding, but maintain accessibility padding for checkbox indicators to be circles
+      marginLeft: `-${theme.spacing.unit}px`,
     },
   },
 });
