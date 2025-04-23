@@ -11,6 +11,9 @@ export default class Categorize extends HTMLElement {
 
     this.eliminateBlindAnswersFromSession();
     this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this.isComplete(), !!this._model));
+    // reset the audioInitialized to false since the model changed, and we might need to reinitialize the audio
+    this._audioInitialized = false;
+
     this.render();
   }
 
@@ -110,6 +113,7 @@ export default class Categorize extends HTMLElement {
     const observer = new MutationObserver((mutationsList, observer) => {
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
+          if (this._audioInitialized) return;
           const audio = this.querySelector('audio');
           const isInsidePrompt = audio && audio.closest('#preview-prompt');
 
@@ -180,6 +184,8 @@ export default class Categorize extends HTMLElement {
           this._handlePlaying = handlePlaying;
           this._handleEnded = handleEnded;
           this._enableAudio = enableAudio;
+          // set to true to prevent multiple initializations
+          this._audioInitialized = true;
 
           observer.disconnect();
         }
