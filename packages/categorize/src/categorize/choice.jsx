@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { DragSource, DndProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import { DragSource } from 'react-dnd';
 import { uid } from '@pie-lib/pie-toolbox/drag';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -160,10 +159,4 @@ const DraggableChoice = DragSource(
   }),
 )(Choice);
 
-const DraggableChoiceWithProvider = (props) => (
-    <DndProvider backend={HTML5Backend}>
-      <DraggableChoice {...props} />
-    </DndProvider>
-);
-
-export default uid.withUid(DraggableChoiceWithProvider);
+export default uid.withUid(DraggableChoice);
