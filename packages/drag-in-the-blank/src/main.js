@@ -29,6 +29,14 @@ export class Main extends React.Component {
     this.setState({ showCorrectAnswer: !this.state.showCorrectAnswer });
   };
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const { model: nextModel } = nextProps;
+
+    if(nextModel && !nextModel.correctResponse && this.state.showCorrectAnswer !== false){
+      this.setState({ showCorrectAnswer: false });
+    }
+  }
+
   render() {
     const { showCorrectAnswer } = this.state;
     const { model, onChange, value, classes } = this.props;
