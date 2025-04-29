@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Configure from './configure';
 import {
-  ModelUpdatedEvent,
   DeleteImageEvent,
+  DeleteSoundEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent,
+  ModelUpdatedEvent,
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
@@ -99,7 +99,10 @@ export default class GraphLinesConfigure extends HTMLElement {
   }
 
   set configuration(c) {
-    this._configuration = c;
+    this._configuration = {
+      ...defaultValues.configuration,
+      ...c,
+    };
 
     this.resetModelAfterConfigurationIsSet();
 
