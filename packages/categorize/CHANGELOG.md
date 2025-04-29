@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.13.3...@pie-element/categorize@9.13.4) (2025-04-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4976, PD-4980, PD-3496 ([a001d12](https://github.com/pie-framework/pie-elements/commit/a001d122ca198b23eeef9596857555eb1a76bb6b))
+* **categorize:** fix multiple dnd backend issue PD-4978 ([4b56c43](https://github.com/pie-framework/pie-elements/commit/4b56c4332eab4b36143e181ae79f61e6330b2fc8))
+* update pie-lib/pie-toolbox PD-4976 ([ccf7412](https://github.com/pie-framework/pie-elements/commit/ccf74123f4581fc45383bdf2c181e699588b989d))
+* **categorize, hotspot, multiple-choice, drag-in-the-blank:** prevent multiple initializations of event listeners for audio autoplay PD-4975 ([de1356f](https://github.com/pie-framework/pie-elements/commit/de1356fcc62490afe0deaca747062e08197e1499))
+
+
+
+
+
 ## [9.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.13.2...@pie-element/categorize@9.13.3) (2025-04-18)
 
 

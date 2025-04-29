@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@6.4.3...@pie-element/graphing-configure@6.4.4) (2025-04-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4976, PD-4980, PD-3496 ([a001d12](https://github.com/pie-framework/pie-elements/commit/a001d122ca198b23eeef9596857555eb1a76bb6b))
+* **graphing:** add spacing ([627840f](https://github.com/pie-framework/pie-elements/commit/627840fc800f68052870ab18649be073afcd4731))
+* **graphing:** merge default config with new config at set PD-3556 ([a4075cf](https://github.com/pie-framework/pie-elements/commit/a4075cf97871f1b893fb75c05e4890194343aa44))
+* update pie-lib/pie-toolbox PD-4976 ([ccf7412](https://github.com/pie-framework/pie-elements/commit/ccf74123f4581fc45383bdf2c181e699588b989d))
+* **graphing:** hide incomplete background marks PD-4911 ([36404cf](https://github.com/pie-framework/pie-elements/commit/36404cf6fab821747ca4efd200de6f2475c3cf36))
+
+
+
+
+
 ## [6.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@6.4.2...@pie-element/graphing-configure@6.4.3) (2025-04-18)
 
 

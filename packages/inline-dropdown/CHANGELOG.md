@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@6.5.3...@pie-element/inline-dropdown@6.5.4) (2025-04-29)
+
+
+### Bug Fixes
+
+* tests ([b54b223](https://github.com/pie-framework/pie-elements/commit/b54b2237876012828e616e14bdd8d8003218e9ac))
+* tests ([cfd4323](https://github.com/pie-framework/pie-elements/commit/cfd432333dac58abcc79cf7f404603d643ed36c2))
+* update pie-lib/pie-toolbox PD-4976 ([ccf7412](https://github.com/pie-framework/pie-elements/commit/ccf74123f4581fc45383bdf2c181e699588b989d))
+* update pie-lib/pie-toolbox PD-4976, PD-4980, PD-3496 ([a001d12](https://github.com/pie-framework/pie-elements/commit/a001d122ca198b23eeef9596857555eb1a76bb6b))
+* **inline-dropdown:** create custom label for choices rationale for better control of layout PD-4926 ([2ac35ec](https://github.com/pie-framework/pie-elements/commit/2ac35ece61b3b40a5cbee797da125bff2baa9f8a))
+* **inline-dropdown:** lint issue PD-4926 ([111a014](https://github.com/pie-framework/pie-elements/commit/111a0149e84b5936fc73363a3d2505684ea03ad7))
+
+
+
+
+
 ## [6.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@6.5.2...@pie-element/inline-dropdown@6.5.3) (2025-04-18)
 
 

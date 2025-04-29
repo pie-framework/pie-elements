@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.11.3...@pie-element/image-cloze-association@6.11.4) (2025-04-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4976 ([ccf7412](https://github.com/pie-framework/pie-elements/commit/ccf74123f4581fc45383bdf2c181e699588b989d))
+* update pie-lib/pie-toolbox PD-4976, PD-4980, PD-3496 ([a001d12](https://github.com/pie-framework/pie-elements/commit/a001d122ca198b23eeef9596857555eb1a76bb6b))
+* **image-cloze-association:** refactor in order to speed up load time of choices when moving them PD-4941 ([132f906](https://github.com/pie-framework/pie-elements/commit/132f9060fcdee87fe09e3f0077ec4b26ba1023e8))
+
+
+
+
+
 ## [6.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.11.2...@pie-element/image-cloze-association@6.11.3) (2025-04-18)
 
 
