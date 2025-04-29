@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.10.3...@pie-element/drag-in-the-blank@6.10.4) (2025-04-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4976, PD-4980, PD-3496 ([a001d12](https://github.com/pie-framework/pie-elements/commit/a001d122ca198b23eeef9596857555eb1a76bb6b))
+* **drag-in-the-blank:** set correctAnswer back to false when correctResponse undefined PD-4979 ([5673c4c](https://github.com/pie-framework/pie-elements/commit/5673c4c0a2ec3107ee7f327519e5ad12e448d1a9))
+* update pie-lib/pie-toolbox PD-4976 ([ccf7412](https://github.com/pie-framework/pie-elements/commit/ccf74123f4581fc45383bdf2c181e699588b989d))
+* **categorize, hotspot, multiple-choice, drag-in-the-blank:** prevent multiple initializations of event listeners for audio autoplay PD-4975 ([de1356f](https://github.com/pie-framework/pie-elements/commit/de1356fcc62490afe0deaca747062e08197e1499))
+
+
+
+
+
 ## [6.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.10.2...@pie-element/drag-in-the-blank@6.10.3) (2025-04-18)
 
 
