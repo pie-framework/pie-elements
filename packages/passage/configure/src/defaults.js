@@ -95,13 +95,18 @@ export default {
       mmlEditing: false,
     },
     language: {
-      settings: false,
+      settings: true,
       label: 'Specify Language',
       enabled: false,
     },
     languageChoices: {
       label: 'Language Choices',
       options: [],
+    },
+    additionalPassage: {
+      settings: true,
+      label: 'Additional Passage',
+      enabled: false,
     },
   },
 };
