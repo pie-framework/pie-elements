@@ -1,37 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles} from '@material-ui/core/styles';
 import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
-export class Passage extends React.Component {
+export class PassageComponent extends React.Component {
     static propTypes = {
+        classes: PropTypes.object,
         onModelChanged: PropTypes.func.isRequired,
         model: PropTypes.object.isRequired,
         configuration: PropTypes.object.isRequired,
         imageSupport: PropTypes.object.isRequired,
+        passageIndex:PropTypes.number.isRequired,
         uploadSoundSupport: PropTypes.object.isRequired,
-        classes: PropTypes.object.isRequired,
+    };
+
+    static defaultProps = {
+        passageIndex: 0,
     };
 
     constructor(props) {
         super(props);
     }
 
-    handleChange = (fieldName, value, index = 0) => {
-        const { model, onModelChanged } = this.props;
+    handleChange = (fieldName, value) => {
+        const { model, onModelChanged, passageIndex } = this.props;
 
-        if (!model || !onModelChanged || !model.passages || index < 0 || index >= model.passages.length) {
+        if (!model || !onModelChanged || !model.passages || passageIndex < 0 || passageIndex >= model.passages.length) {
             return;
         }
 
         const updatedPassages = [...model.passages];
-        updatedPassages[index] = { ...updatedPassages[index], [fieldName]: value };
+        updatedPassages[passageIndex] = { ...updatedPassages[passageIndex], [fieldName]: value };
 
         onModelChanged({ ...model, passages: updatedPassages });
     };
 
     render() {
-        const { model, classes, configuration, imageSupport, uploadSoundSupport } =
+        const { model, classes, configuration, imageSupport, passageIndex, uploadSoundSupport } =
             this.props;
         const {
             maxImageWidth = {},
@@ -43,7 +49,6 @@ export class Passage extends React.Component {
             subtitle = {},
             text = {},
             author = {},
-            additionalPassage = {}
         } = configuration || {};
         const {
             errors = {},
@@ -74,15 +79,13 @@ export class Passage extends React.Component {
             };
         };
 
-        console.log('additionalPassage Andreea', additionalPassage);
-
         return (
             <React.Fragment>
                 {teacherInstructionsEnabled && (
                     <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
                         <EditableHtml
                             activePlugins={ALL_PLUGINS}
-                            markup={passages[0].teacherInstructions || ''}
+                            markup={passages[passageIndex].teacherInstructions || ''}
                             onChange={(value) => this.handleChange('teacherInstructions', value)}
                             nonEmpty={false}
                             error={teacherInstructionsError}
@@ -100,7 +103,7 @@ export class Passage extends React.Component {
                     <InputContainer label={title.label} className={classes.inputContainer}>
                         <EditableHtml
                             activePlugins={ALL_PLUGINS}
-                            markup={passages[0].title || ''}
+                            markup={passages[passageIndex].title || ''}
                             onChange={(value) => this.handleChange('title', value)}
                             nonEmpty={false}
                             error={titleError}
@@ -116,7 +119,7 @@ export class Passage extends React.Component {
                     <InputContainer label={subtitle.label} className={classes.inputContainer}>
                         <EditableHtml
                             activePlugins={ALL_PLUGINS}
-                            markup={passages[0].subtitle || ''}
+                            markup={passages[passageIndex].subtitle || ''}
                             onChange={(value) => this.handleChange('subtitle', value)}
                             nonEmpty={false}
                             error={subtitleError}
@@ -132,7 +135,7 @@ export class Passage extends React.Component {
                     <InputContainer label={author.label} className={classes.inputContainer}>
                         <EditableHtml
                             activePlugins={ALL_PLUGINS}
-                            markup={passages[0].author || ''}
+                            markup={passages[passageIndex].author || ''}
                             onChange={(value) => this.handleChange('author', value)}
                             nonEmpty={false}
                             error={authorError}
@@ -148,7 +151,7 @@ export class Passage extends React.Component {
                     <InputContainer label={text.label} className={classes.inputContainer}>
                         <EditableHtml
                             activePlugins={ALL_PLUGINS}
-                            markup={passages[0].text || ''}
+                            markup={passages[passageIndex].text || ''}
                             onChange={(value) => this.handleChange('text', value)}
                             imageSupport={imageSupport}
                             uploadSoundSupport={uploadSoundSupport}
@@ -167,3 +170,16 @@ export class Passage extends React.Component {
         );
     }
 }
+
+export default withStyles((theme) => ({
+    inputContainer: {
+        paddingTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit * 2,
+        width: '100%',
+    },
+    errorText: {
+        fontSize: theme.typography.fontSize - 2,
+        color: theme.palette.error.main,
+        paddingTop: theme.spacing.unit,
+    },
+}))(PassageComponent);

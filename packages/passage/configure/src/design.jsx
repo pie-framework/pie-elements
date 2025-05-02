@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import { Passage} from './passage';
+import Typography from '@material-ui/core/Typography';
+import Passage from './passage';
 
 const { Panel, toggle, dropdown } = settings;
 
@@ -21,48 +22,69 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { setDimensions: true };
+    this.state = { showAdditionalPassage: false };
   }
 
-  handleChange = (fieldName, value, index = 0) => {
+  toggleAdditionalPassage = () => {
     const { model, onModelChanged } = this.props;
+    const { configuration = {} } = this.props;
+    const { additionalPassage = {} } = configuration;
+    let updatedPassages;
 
-    if (!model || !onModelChanged || !model.passages || index < 0 || index >= model.passages.length) {
+    if (!model || !onModelChanged || !model.passages) {
       return;
     }
-
-    const updatedPassages = [...model.passages];
-    updatedPassages[index] = { ...updatedPassages[index], [fieldName]: value };
+    if (additionalPassage.enabled && this.state.showAdditionalPassage) {
+      updatedPassages = model.passages.length ? [model.passages[0]] : [];
+    } else {
+      updatedPassages = [
+        ...model.passages,
+        {
+          teacherInstructions: '',
+          title: '',
+          subtitle: '',
+          author: '',
+          text: '',
+        },
+      ];
+    }
 
     onModelChanged({ ...model, passages: updatedPassages });
+    this.setState({
+      showAdditionalPassage: !this.state.showAdditionalPassage,
+    });
   };
 
   render() {
-    const { model, classes, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { classes, model, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
       settingsPanelDisabled,
       language = {},
       languageChoices = {},
-      baseInputConfiguration = {},
       teacherInstructions = {},
       title = {},
       subtitle = {},
       text = {},
       author = {},
-      additionalPassage = {}
+      additionalPassage = {},
     } = configuration || {};
-    const {
-      extraCSSRules,
-    } = model || {};
+    const { extraCSSRules, passages } = model || {};
 
+    const { showAdditionalPassage } = this.state;
+    const isAdditionalPassageShown = additionalPassage.enabled && showAdditionalPassage;
+    const additionalPassageButtonLabel = isAdditionalPassageShown
+      ? `Remove ${additionalPassage.label}`
+      : `Add ${additionalPassage.label}`;
+    const morePassages = passages && passages.length > 1;
 
     const panelSettings = {
       titleEnabled: title && title.settings && toggle(title.label),
       subtitleEnabled: subtitle && subtitle.settings && toggle(subtitle.label),
       authorEnabled: author && author.settings && toggle(author.label),
       textEnabled: text && text.settings && toggle(text.label),
-      'additionalPassage.enabled': additionalPassage && additionalPassage.settings && toggle(additionalPassage.label, true)
+      'additionalPassage.enabled':
+        additionalPassage && additionalPassage.settings && toggle(additionalPassage.label, true),
     };
 
     const panelProperties = {
@@ -90,23 +112,47 @@ export class Main extends React.Component {
           />
         }
       >
-       <Passage imageSupport={imageSupport} uploadSoundSupport={uploadSoundSupport} model={model} configuration={configuration} onModelChanged={() => onModelChanged}  classes={classes}/>
-        <Button size="small" variant="outlined" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={() => console.log('Andreea')}>
-          Additional Passage
-        </Button>
+        <Passage
+          imageSupport={imageSupport}
+          uploadSoundSupport={uploadSoundSupport}
+          model={model}
+          configuration={configuration}
+          passageIndex={0}
+          onModelChanged={onModelChanged}
+        />
+        {(isAdditionalPassageShown || morePassages) && (
+          <Typography variant="heading" className={classes.additionalPassageHeading}>
+            {additionalPassage.label}
+          </Typography>
+        )}
+        {(isAdditionalPassageShown || morePassages) && (
+          <Passage
+            imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
+            model={model}
+            configuration={configuration}
+            passageIndex={1}
+            onModelChanged={onModelChanged}
+          />
+        )}
+        {additionalPassage.enabled && (
+          <Button
+            size="small"
+            variant="outlined"
+            color="primary"
+            startIcon={<AddCircleOutlineIcon />}
+            onClick={this.toggleAdditionalPassage}
+          >
+            {additionalPassageButtonLabel}
+          </Button>
+        )}
       </layout.ConfigLayout>
     );
   }
 }
 export default withStyles((theme) => ({
-  inputContainer: {
+  additionalPassageHeading: {
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
   },
 }))(Main);
