@@ -106,7 +106,7 @@ export default {
     additionalPassage: {
       settings: true,
       label: 'Additional Passage',
-      enabled: true,
+      enabled: false,
     },
   },
 };

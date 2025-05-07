@@ -5,57 +5,13 @@ import { settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import Translator from '@pie-lib/pie-toolbox/translator';
 
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Typography from '@material-ui/core/Typography';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 
+import { ConfimationDialog, PassageButton } from './common';
 import Passage from './passage';
-import PassageButton from './passageButton';
 
 const { Panel, toggle, dropdown } = settings;
 const { translator } = Translator;
-
-export const ConfimationDialog = ({ content, cancel, title, ok, open, onOk, onCancel }) => (
-  <Dialog open={open}>
-    <DialogTitle>{title}</DialogTitle>
-
-    <DialogContent>
-      <DialogContentText>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </DialogContentText>
-    </DialogContent>
-
-    <DialogActions>
-      {onOk && (
-        <Button onClick={onOk} color="primary">
-          {ok}
-        </Button>
-      )}
-      {onCancel && (
-        <Button onClick={onCancel} color="primary">
-          {cancel}
-        </Button>
-      )}
-    </DialogActions>
-  </Dialog>
-);
-
-export const IconButton = ({ label, onClick }) => {};
-
-ConfimationDialog.propTypes = {
-  content: PropTypes.string,
-  title: PropTypes.string,
-  cancel: PropTypes.string,
-  ok: PropTypes.string,
-  open: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onOk: PropTypes.func,
-};
 
 export class Main extends React.Component {
   static propTypes = {
@@ -70,7 +26,7 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { showConfirmationDialog: false };
+    this.state = { showConfirmationDialog: false, indexToRemove: -1 };
   }
 
   getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
@@ -82,6 +38,7 @@ export class Main extends React.Component {
 
     this.setState({
       showConfirmationDialog: false,
+      indexToRemove: -1,
     });
   };
 
@@ -100,6 +57,7 @@ export class Main extends React.Component {
     ) {
       this.setState({
         showConfirmationDialog: true,
+        indexToRemove,
       });
     } else {
       this.onDelete(model, indexToRemove, onModelChanged);
@@ -157,7 +115,10 @@ export class Main extends React.Component {
 
     const confirmationDialogContent = translator.t('translation:passage:confirmToDeleteText', {
       lng: model.language,
+      label: additionalPassage.label,
     });
+
+    const { indexToRemove, showConfirmationDialog } = this.state;
 
     return (
       <layout.ConfigLayout
@@ -178,7 +139,7 @@ export class Main extends React.Component {
       >
         {passages.map((passage, passageIndex) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={passageIndex}>
               {passageIndex > 0 && (
                 <Typography variant="h5" className={classes.additionalPassageHeading}>
                   {additionalPassage.label}
@@ -192,50 +153,38 @@ export class Main extends React.Component {
                 passageIndex={passageIndex}
                 onModelChanged={onModelChanged}
               />
-              {passageIndex > 0 && (
-                <Button
-                  size="small"
-                  variant="outlined"
-                  color="primary"
-                  startIcon={<AddCircleOutlineIcon />}
+              {passageIndex > 0 && additionalPassage.enabled && (
+                <PassageButton
+                  type={'remove'}
+                  label={`Remove ${additionalPassage.label}`}
                   onClick={() => this.removeAdditionalPassage(passageIndex)}
-                >
-                  {`Remove ${additionalPassage.label}`}
-                </Button>
+                />
               )}
               {passageIndex === 0 && additionalPassage.enabled && passages.length < 2 && (
-                <Button
-                  size="small"
-                  variant="outlined"
-                  color="primary"
-                  startIcon={<AddCircleOutlineIcon />}
-                  onClick={this.addAdditionalPassage}
-                >
-                  {`Add ${additionalPassage.label}`}
-                </Button>
+                <PassageButton label={`Add ${additionalPassage.label}`} onClick={this.addAdditionalPassage} />
               )}
-              <ConfimationDialog
-                open={this.state.showConfirmationDialog}
-                title={translator.t('common:warning', {
-                  lng: model.language,
-                })}
-                content={confirmationDialogContent}
-                cancel={translator.t('common:cancel', {
-                  lng: model.language,
-                })}
-                ok={translator.t('common:ok', {
-                  lng: model.language,
-                })}
-                onCancel={() =>
-                  this.setState({
-                    showConfirmationDialog: false,
-                  })
-                }
-                onOk={() => this.onDelete(model, passageIndex, onModelChanged)}
-              />
             </React.Fragment>
           );
         })}
+        <ConfimationDialog
+          open={showConfirmationDialog}
+          title={translator.t('common:warning', {
+            lng: model.language,
+          })}
+          content={confirmationDialogContent}
+          cancel={translator.t('common:cancel', {
+            lng: model.language,
+          })}
+          ok={translator.t('common:ok', {
+            lng: model.language,
+          })}
+          onCancel={() =>
+            this.setState({
+              showConfirmationDialog: false,
+            })
+          }
+          onOk={() => this.onDelete(model, indexToRemove, onModelChanged)}
+        />
       </layout.ConfigLayout>
     );
   }
