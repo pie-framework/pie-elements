@@ -17,7 +17,6 @@ import DragIndicator from '@material-ui/icons/DragIndicator';
 import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import debug from 'debug';
-import takeRight from 'lodash/takeRight';
 import PointMenu from './point-menu';
 
 import range from 'lodash/range';
@@ -107,7 +106,7 @@ export const PointConfig = withStyles((theme) => ({
 }))((props) => {
   const { points, content, classes, sampleAnswer, mathMlOptions = {}, error, pluginOpts = {}, excludeZero, imageSupport = {}, } = props;
   const pointsCount = excludeZero ? points + 1 : points;
-  const pointsLabel = `${pointsCount} ${pointsCount <= 1 ? 'pt' : 'pts'}`;
+  const pointsLabel = `${pointsCount} ${pointsCount === 1 ? 'pt' : 'pts'}`;
   const showSampleAnswer = checkSampleAnswer(sampleAnswer);
 
   return (
