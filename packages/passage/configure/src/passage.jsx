@@ -66,7 +66,7 @@ export class PassageComponent extends React.Component {
       subtitle: subtitleError,
       author: authorError,
       text: textError,
-    } = (passagesErrors && passagesErrors[0]) || {}; // only the first passage errors are needed for now
+    } = (passagesErrors && passagesErrors[passageIndex]) || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;

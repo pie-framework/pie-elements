@@ -16,9 +16,9 @@ jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
 jest.mock('../common', () => ({
   ConfimationDialog: (props) => <div className="mockDialog" {...props} />,
   PassageButton: (props) => (
-    <Button className="mockPassageButton" onClick={props.onClick}>
+    <button className="mockPassageButton" onClick={props.onClick}>
       {props.label}
-    </Button>
+    </button>
   ),
 }));
 
