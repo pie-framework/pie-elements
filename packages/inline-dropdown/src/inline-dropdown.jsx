@@ -24,6 +24,7 @@ export class InlineDropdown extends React.Component {
     value: PropTypes.object,
     feedback: PropTypes.object,
     onChange: PropTypes.func,
+    language: PropTypes.string,
   };
 
   static defaultProps = {
@@ -149,7 +150,7 @@ const styles = (theme) => ({
       color: color.correct(),
     },
     '&.incorrect': {
-      color: color.incorrect(),
+      color: color.incorrectWithIcon(),
     },
   },
   srOnly: {
