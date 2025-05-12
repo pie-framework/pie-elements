@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.6.4...@pie-element/rubric@4.7.0) (2025-05-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4977 ([1f864de](https://github.com/pie-framework/pie-elements/commit/1f864de43661adf716578caf4657c4c0a0384556))
+
+
+### Features
+
+* **rubric:** change label associated with 0 point PD-5003 ([56ef850](https://github.com/pie-framework/pie-elements/commit/56ef85093a8d1d9ba2d24e831a880fb8ea3be478))
+
+
+
+
+
 ## [4.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.6.3...@pie-element/rubric@4.6.4) (2025-04-29)
 
 
