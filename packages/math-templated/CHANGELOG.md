@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@3.6.4...@pie-element/math-templated@3.6.5) (2025-05-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4977 ([1f864de](https://github.com/pie-framework/pie-elements/commit/1f864de43661adf716578caf4657c4c0a0384556))
+
+
+
+
+
 ## [3.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@3.6.3...@pie-element/math-templated@3.6.4) (2025-04-29)
 
 
