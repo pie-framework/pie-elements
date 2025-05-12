@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { settings, layout } from '@pie-lib/pie-toolbox/config-ui';
-import Translator from '@pie-lib/pie-toolbox/translator';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -11,7 +10,6 @@ import { ConfimationDialog, PassageButton } from './common';
 import Passage from './passage';
 
 const { Panel, toggle, dropdown } = settings;
-const { translator } = Translator;
 
 export class Main extends React.Component {
   static propTypes = {
@@ -113,10 +111,7 @@ export class Main extends React.Component {
         language && language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
-    const confirmationDialogContent = translator.t('translation:passage:confirmToDeleteText', {
-      lng: model.language,
-      label: additionalPassage.label,
-    });
+    const confirmationDialogContent = `${additionalPassage.label} will be deleted`;
 
     const { indexToRemove, showConfirmationDialog } = this.state;
 
@@ -168,16 +163,10 @@ export class Main extends React.Component {
         })}
         <ConfimationDialog
           open={showConfirmationDialog}
-          title={translator.t('common:warning', {
-            lng: model.language,
-          })}
+          title={'Warning'}
           content={confirmationDialogContent}
-          cancel={translator.t('common:cancel', {
-            lng: model.language,
-          })}
-          ok={translator.t('common:ok', {
-            lng: model.language,
-          })}
+          cancel={'Cancel'}
+          ok={'Ok'}
           onCancel={() =>
             this.setState({
               showConfirmationDialog: false,
