@@ -59,5 +59,8 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "express": "^4.17.1",
     "rollup-plugin-analyzer": "^4.0.0"
+  },
+  "resolutions": {
+    "@types/d3-array": "3.0.3"
   }
 }
