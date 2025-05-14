@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { settings, layout } from '@pie-lib/pie-toolbox/config-ui';
+
 import { withStyles } from '@material-ui/core/styles';
-import { InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
-import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import Typography from '@material-ui/core/Typography';
+
+import { ConfimationDialog, PassageButton } from './common';
+import Passage from './passage';
 
 const { Panel, toggle, dropdown } = settings;
 
@@ -19,67 +24,83 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { setDimensions: true };
+    this.state = { showConfirmationDialog: false, indexToRemove: -1 };
   }
 
-  handleChange = (fieldName, value, index = 0) => {
+  getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+  onDelete = (model, indexToRemove, onModelChanged) => {
+    let updatedPassages = model.passages;
+    updatedPassages.splice(indexToRemove, 1);
+    onModelChanged({ ...model, passages: updatedPassages });
+
+    this.setState({
+      showConfirmationDialog: false,
+      indexToRemove: -1,
+    });
+  };
+
+  removeAdditionalPassage = (indexToRemove) => {
+    const { model = {}, onModelChanged } = this.props;
+    const { passages = [] } = model;
+
+    const { teacherInstructions = '', title = '', subtitle = '', author = '', text = '' } = passages[indexToRemove];
+
+    if (
+      this.getInnerText(teacherInstructions).trim() ||
+      this.getInnerText(title).trim() ||
+      this.getInnerText(subtitle).trim() ||
+      this.getInnerText(author).trim() ||
+      this.getInnerText(text).trim()
+    ) {
+      this.setState({
+        showConfirmationDialog: true,
+        indexToRemove,
+      });
+    } else {
+      this.onDelete(model, indexToRemove, onModelChanged);
+    }
+  };
+
+  addAdditionalPassage = () => {
     const { model, onModelChanged } = this.props;
 
-    if (!model || !onModelChanged || !model.passages || index < 0 || index >= model.passages.length) {
-      return;
-    }
-
-    const updatedPassages = [...model.passages];
-    updatedPassages[index] = { ...updatedPassages[index], [fieldName]: value };
-
+    const updatedPassages = [
+      ...model.passages,
+      {
+        teacherInstructions: '',
+        title: '',
+        subtitle: '',
+        author: '',
+        text: '',
+      },
+    ];
     onModelChanged({ ...model, passages: updatedPassages });
   };
 
   render() {
-    const { model, classes, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { classes, model, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
       settingsPanelDisabled,
       language = {},
       languageChoices = {},
-      maxImageWidth = {},
-      maxImageHeight = {},
-      mathMlOptions = {},
-      baseInputConfiguration = {},
       teacherInstructions = {},
       title = {},
       subtitle = {},
       text = {},
       author = {},
+      additionalPassage = {},
     } = configuration || {};
-    const {
-      errors = {},
-      extraCSSRules,
-      passages = [],
-      teacherInstructionsEnabled,
-      titleEnabled,
-      subtitleEnabled,
-      authorEnabled,
-      textEnabled,
-    } = model || {};
-
-    const { passages: passagesErrors } = errors || {};
-    const {
-      teacherInstructions: teacherInstructionsError,
-      title: titleError,
-      subtitle: subtitleError,
-      author: authorError,
-      text: textError,
-    } = (passagesErrors && passagesErrors[0]) || {}; // only the first passage errors are needed for now
-
-    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
-    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+    const { extraCSSRules, passages } = model || {};
 
     const panelSettings = {
       titleEnabled: title && title.settings && toggle(title.label),
       subtitleEnabled: subtitle && subtitle.settings && toggle(subtitle.label),
       authorEnabled: author && author.settings && toggle(author.label),
       textEnabled: text && text.settings && toggle(text.label),
+      'additionalPassage.enabled':
+        additionalPassage && additionalPassage.settings && toggle(additionalPassage.label, true),
     };
 
     const panelProperties = {
@@ -90,12 +111,9 @@ export class Main extends React.Component {
         language && language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
-    const getPluginProps = (customConfiguration) => {
-      return {
-        ...baseInputConfiguration,
-        ...customConfiguration,
-      };
-    };
+    const confirmationDialogContent = `${additionalPassage.label} will be deleted`;
+
+    const { indexToRemove, showConfirmationDialog } = this.state;
 
     return (
       <layout.ConfigLayout
@@ -114,104 +132,53 @@ export class Main extends React.Component {
           />
         }
       >
-        {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
-            <EditableHtml
-              activePlugins={ALL_PLUGINS}
-              markup={passages[0].teacherInstructions || ''}
-              onChange={(value) => this.handleChange('teacherInstructions', value)}
-              nonEmpty={false}
-              error={teacherInstructionsError}
-              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-              mathMlOptions={mathMlOptions}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
-            />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
-        )}
-
-        {titleEnabled && (
-          <InputContainer label={title.label} className={classes.inputContainer}>
-            <EditableHtml
-              activePlugins={ALL_PLUGINS}
-              markup={passages[0].title || ''}
-              onChange={(value) => this.handleChange('title', value)}
-              nonEmpty={false}
-              error={titleError}
-              mathMlOptions={mathMlOptions}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              pluginProps={getPluginProps(title?.inputConfiguration)}
-            />
-            {titleError && <div className={classes.errorText}>{titleError}</div>}
-          </InputContainer>
-        )}
-
-        {subtitleEnabled && (
-          <InputContainer label={subtitle.label} className={classes.inputContainer}>
-            <EditableHtml
-              activePlugins={ALL_PLUGINS}
-              markup={passages[0].subtitle || ''}
-              onChange={(value) => this.handleChange('subtitle', value)}
-              nonEmpty={false}
-              error={subtitleError}
-              mathMlOptions={mathMlOptions}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              pluginProps={getPluginProps(subtitle?.inputConfiguration)}
-            />
-            {subtitleError && <div className={classes.errorText}>{subtitleError}</div>}
-          </InputContainer>
-        )}
-
-        {authorEnabled && (
-          <InputContainer label={author.label} className={classes.inputContainer}>
-            <EditableHtml
-              activePlugins={ALL_PLUGINS}
-              markup={passages[0].author || ''}
-              onChange={(value) => this.handleChange('author', value)}
-              nonEmpty={false}
-              error={authorError}
-              mathMlOptions={mathMlOptions}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              pluginProps={getPluginProps(author?.inputConfiguration)}
-            />
-            {authorError && <div className={classes.errorText}>{authorError}</div>}
-          </InputContainer>
-        )}
-
-        {textEnabled && (
-          <InputContainer label={text.label} className={classes.inputContainer}>
-            <EditableHtml
-              activePlugins={ALL_PLUGINS}
-              markup={passages[0].text || ''}
-              onChange={(value) => this.handleChange('text', value)}
-              imageSupport={imageSupport}
-              uploadSoundSupport={uploadSoundSupport}
-              nonEmpty={false}
-              error={textError}
-              maxImageWidth={(maxImageWidth && maxImageWidth.text) || defaultImageMaxWidth}
-              maxImageHeight={(maxImageHeight && maxImageHeight.text) || defaultImageMaxHeight}
-              mathMlOptions={mathMlOptions}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              pluginProps={getPluginProps(text?.inputConfiguration)}
-            />
-            {textError && <div className={classes.errorText}>{textError}</div>}
-          </InputContainer>
-        )}
+        {passages.map((passage, passageIndex) =>
+            <React.Fragment key={passageIndex}>
+              {passageIndex > 0 && (
+                <Typography variant="h5" className={classes.additionalPassageHeading}>
+                  {additionalPassage.label}
+                </Typography>
+              )}
+              <Passage
+                imageSupport={imageSupport}
+                uploadSoundSupport={uploadSoundSupport}
+                model={model}
+                configuration={configuration}
+                passageIndex={passageIndex}
+                onModelChanged={onModelChanged}
+              />
+              {passageIndex > 0 && additionalPassage.enabled && (
+                <PassageButton
+                  type={'remove'}
+                  label={`Remove ${additionalPassage.label}`}
+                  onClick={() => this.removeAdditionalPassage(passageIndex)}
+                />
+              )}
+              {passageIndex === 0 && additionalPassage.enabled && passages.length < 2 && (
+                <PassageButton label={`Add ${additionalPassage.label}`} onClick={this.addAdditionalPassage} />
+              )}
+            </React.Fragment>
+          )}
+        <ConfimationDialog
+          open={showConfirmationDialog}
+          title={'Warning'}
+          content={confirmationDialogContent}
+          cancel={'Cancel'}
+          ok={'Ok'}
+          onCancel={() =>
+            this.setState({
+              showConfirmationDialog: false,
+            })
+          }
+          onOk={() => this.onDelete(model, indexToRemove, onModelChanged)}
+        />
       </layout.ConfigLayout>
     );
   }
 }
 export default withStyles((theme) => ({
-  inputContainer: {
+  additionalPassageHeading: {
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
   },
 }))(Main);

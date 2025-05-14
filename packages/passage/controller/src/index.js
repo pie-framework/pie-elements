@@ -57,12 +57,6 @@ export const validate = (model = {}, config = {}) => {
   const passagesErrors = {};
 
   (model.passages || []).forEach((passage, index) => {
-    // validate only the first passage
-    // TODO: remove when authoring is updated to support multiple passages
-    if (index !== 0) {
-      return;
-    }
-
     const err = {};
 
     ['teacherInstructions', 'title', 'subtitle', 'author', 'text'].forEach((field) => {

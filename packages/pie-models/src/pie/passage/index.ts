@@ -5,7 +5,7 @@ import {
   ConfigureMaxImageDimensionsProp,
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
-  EditableHtmlPluginConfigureRequired
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 /**
@@ -57,7 +57,7 @@ export interface PassageConfigure {
    * Indicates if the settings panel is not available
    */
   settingsPanelDisabled?: boolean;
-  
+
   /**
    * Teacher Instructions configuration
    */
@@ -95,4 +95,9 @@ export interface PassageConfigure {
     label: string;
     options: ConfigureLanguageOptionsProp[];
   };
+
+  /**
+   * ability to include a second passage
+   */
+  additionalPassage?: ConfigurePropWithEnabled;
 }
