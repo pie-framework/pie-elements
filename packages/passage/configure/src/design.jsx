@@ -132,8 +132,7 @@ export class Main extends React.Component {
           />
         }
       >
-        {passages.map((passage, passageIndex) => {
-          return (
+        {passages.map((passage, passageIndex) =>
             <React.Fragment key={passageIndex}>
               {passageIndex > 0 && (
                 <Typography variant="h5" className={classes.additionalPassageHeading}>
@@ -159,8 +158,7 @@ export class Main extends React.Component {
                 <PassageButton label={`Add ${additionalPassage.label}`} onClick={this.addAdditionalPassage} />
               )}
             </React.Fragment>
-          );
-        })}
+          )}
         <ConfimationDialog
           open={showConfirmationDialog}
           title={'Warning'}

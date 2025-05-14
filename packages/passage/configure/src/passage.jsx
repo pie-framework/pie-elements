@@ -71,12 +71,7 @@ export class PassageComponent extends React.Component {
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    const getPluginProps = (customConfiguration) => {
-      return {
-        ...baseInputConfiguration,
-        ...customConfiguration,
-      };
-    };
+    const getPluginProps = (customConfiguration) => ({...baseInputConfiguration,...customConfiguration});
 
     return (
       <React.Fragment>

@@ -10,7 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 
-function RemoveAddButton({ classes, label, type = 'add', onClick }) {
+export const RemoveAddButton = ({ classes, label, type = 'add', onClick }) => {
   const Tag = type === 'add' ? AddCircleIcon : RemoveCircleIcon;
   return (
     <Button color="primary" size="small" className={classes.root} onClick={onClick}>
@@ -61,11 +61,11 @@ export const ConfimationDialog = ({ content, cancel, title, ok, open, onOk, onCa
 );
 
 ConfimationDialog.propTypes = {
-  content: PropTypes.string,
-  title: PropTypes.string,
-  cancel: PropTypes.string,
-  ok: PropTypes.string,
-  open: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onOk: PropTypes.func,
+  content: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  cancel: PropTypes.string.isRequired,
+  ok: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onOk: PropTypes.func.isRequired,
 };

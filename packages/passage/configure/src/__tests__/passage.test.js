@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PassageComponent } from '../passage'; // adjust the import path as needed
+import { PassageComponent } from '../passage';
 import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import defaults from '../defaults';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Main } from '../design'; // Adjust path if needed
+import { Main } from '../design';
 
 jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
