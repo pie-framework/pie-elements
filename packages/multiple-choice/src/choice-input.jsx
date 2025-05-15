@@ -34,7 +34,7 @@ const styleSheet = (theme) => ({
       // visually reduce right padding, but maintain accessibility padding for checkbox indicators to be circles
       // add margin to the top, left and bottom of the checkbox to keep the same spacing as before
       padding: theme.spacing.unit,
-      margin: `${theme.spacing.unit / 2 }px 0 ${theme.spacing.unit / 2}px ${theme.spacing.unit/ 2}px`,
+      margin: `${theme.spacing.unit / 2}px 0 ${theme.spacing.unit / 2}px ${theme.spacing.unit / 2}px`,
     },
   },
   belowLayout: {
@@ -55,6 +55,14 @@ const styleSheet = (theme) => ({
       // visually reduce right padding, but maintain accessibility padding for checkbox indicators to be circles
       marginLeft: `-${theme.spacing.unit}px`,
     },
+  },
+  srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
   },
 });
 
@@ -200,6 +208,7 @@ export class ChoiceInput extends React.Component {
     super(props);
     this.onToggleChoice = this.onToggleChoice.bind(this);
     this.choiceId = this.generateChoiceId();
+    this.descId = `${this.choiceId}-desc`;
   }
 
   onToggleChoice(event) {
@@ -239,13 +248,16 @@ export class ChoiceInput extends React.Component {
     });
 
     const choicelabel = (
-      <>{displayKey && !isSelectionButtonBelow ? (
+      <>
+        {displayKey && !isSelectionButtonBelow ? (
           <span className={classes.row}>
             {displayKey}.{'\u00A0'}
             <PreviewPrompt className="label" prompt={label} tagName="span" />
           </span>
         ) : (
-          <PreviewPrompt className="label" prompt={label} tagName="span" />)}</>
+          <PreviewPrompt className="label" prompt={label} tagName="span" />
+        )}
+      </>
     );
 
     return (
@@ -261,10 +273,16 @@ export class ChoiceInput extends React.Component {
                 labelPlacement={'top'}
                 control={
                   <span className={classes.belowSelectionComponent}>
+                    <span id={this.descId} className={classes.srOnly}>
+                      {choiceMode === 'checkbox'
+                        ? 'Checkbox to select the answer below'
+                        : 'Radio button to select the answer below'}
+                    </span>
                     <Tag
                       disabled={disabled}
                       checked={checked}
                       correctness={correctness}
+                      aria-describedby={this.descId}
                       value={value}
                       id={this.choiceId}
                       onChange={this.onToggleChoice}
@@ -280,14 +298,22 @@ export class ChoiceInput extends React.Component {
                 value={value}
                 htmlFor={this.choiceId}
                 control={
-                  <Tag
-                    disabled={disabled}
-                    checked={checked}
-                    correctness={correctness}
-                    value={value}
-                    id={this.choiceId}
-                    onChange={this.onToggleChoice}
-                  />
+                  <>
+                    <span id={this.descId} className={classes.srOnly}>
+                      {choiceMode === 'checkbox'
+                        ? 'Checkbox to select the answer below'
+                        : 'Radio button to select the answer below'}
+                    </span>
+                    <Tag
+                      disabled={disabled}
+                      checked={checked}
+                      correctness={correctness}
+                      aria-describedby={this.descId}
+                      value={value}
+                      id={this.choiceId}
+                      onChange={this.onToggleChoice}
+                    />
+                  </>
                 }
               />
             )}
