@@ -260,63 +260,47 @@ export class ChoiceInput extends React.Component {
       </>
     );
 
+    const screenReaderLabel = (
+      <span id={this.descId} className={classes.srOnly}>
+        {choiceMode === 'checkbox' ? 'Checkbox to select the answer below' : 'Radio button to select the answer below'}
+      </span>
+    );
+
+    const tagProps = {
+      disabled,
+      checked,
+      correctness,
+      value,
+      id: this.choiceId,
+      onChange: this.onToggleChoice,
+      'aria-describedby': this.descId,
+    };
+
+    const control = isSelectionButtonBelow ? (
+      <span className={classes.belowSelectionComponent}>
+        {screenReaderLabel}
+        <Tag {...tagProps} style={{ padding: 0 }} />
+        {displayKey ? `${displayKey}.` : ''}
+      </span>
+    ) : (
+      <>
+        {screenReaderLabel}
+        <Tag {...tagProps} />
+      </>
+    );
+
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
           {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
-            {isSelectionButtonBelow ? (
-              <StyledFormControlLabel
-                label={choicelabel}
-                value={value}
-                htmlFor={this.choiceId}
-                labelPlacement={'top'}
-                control={
-                  <span className={classes.belowSelectionComponent}>
-                    <span id={this.descId} className={classes.srOnly}>
-                      {choiceMode === 'checkbox'
-                        ? 'Checkbox to select the answer below'
-                        : 'Radio button to select the answer below'}
-                    </span>
-                    <Tag
-                      disabled={disabled}
-                      checked={checked}
-                      correctness={correctness}
-                      aria-describedby={this.descId}
-                      value={value}
-                      id={this.choiceId}
-                      onChange={this.onToggleChoice}
-                      style={{ padding: 0 }}
-                    />
-                    {displayKey ? `${displayKey}.` : ''}
-                  </span>
-                }
-              />
-            ) : (
-              <StyledFormControlLabel
-                label={choicelabel}
-                value={value}
-                htmlFor={this.choiceId}
-                control={
-                  <>
-                    <span id={this.descId} className={classes.srOnly}>
-                      {choiceMode === 'checkbox'
-                        ? 'Checkbox to select the answer below'
-                        : 'Radio button to select the answer below'}
-                    </span>
-                    <Tag
-                      disabled={disabled}
-                      checked={checked}
-                      correctness={correctness}
-                      aria-describedby={this.descId}
-                      value={value}
-                      id={this.choiceId}
-                      onChange={this.onToggleChoice}
-                    />
-                  </>
-                }
-              />
-            )}
+            <StyledFormControlLabel
+              label={choicelabel}
+              value={value}
+              htmlFor={this.choiceId}
+              labelPlacement={isSelectionButtonBelow ? 'top' : undefined}
+              control={control}
+            />
           </div>
         </div>
         {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
