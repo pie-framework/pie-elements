@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { buildTickData, isMultiple } from './tick-utils';
+import { buildTickData } from './tick-utils';
 import injectSheet from 'react-jss';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
 
@@ -49,14 +49,30 @@ export class Tick extends React.Component {
   constructor(props) {
     super(props);
     this.wasRendered = false;
+    this.state = {
+      textBox: {
+        width: 0,
+        height: 0,
+        x: 0,
+        y: 0,
+      }
+    };
+  }
+  
+  updateTextBox() {
+    if (this.text) {
+      const { width, height, x, y } = this.text.getBBox();
+      this.setState({ textBox: { width, height, x, y } });
+    }
   }
 
   componentDidMount() {
     //center align the tick text
     if (this.text) {
       const { fraction } = this.props;
-      let { width } = this.text.getBBox();
+      let { width, height, x, y } = this.text.getBBox();
       this.text.setAttribute('x', (width / 2) * -1);
+      this.setState({ textBox: { width, height, x, y } });
 
       if (fraction && !this.wasRendered) {
         // used for rendering the line fraction
@@ -77,7 +93,7 @@ export class Tick extends React.Component {
       height: textHeight = 0,
       x: textX = 0,
       y: textY = 0,
-    } = (this.text && this.text.getBBox()) || {};
+    } = this.state.textBox;
 
     const xText = !fraction ? (
       Number(x.toFixed(3))
