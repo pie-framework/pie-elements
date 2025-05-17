@@ -20,6 +20,7 @@ export default {
       image: { disabled: false },
       textAlign: { disabled: true },
       showParagraphs: { disabled: false },
+      separateParagraphs: { disabled: true },
     },
     prompt: {
       settings: true,

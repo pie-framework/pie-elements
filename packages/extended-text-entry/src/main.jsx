@@ -182,7 +182,8 @@ export class Main extends React.Component {
               },
               textAlign: {
                 disabled: true,
-              }
+              },
+              separateParagraphs: { disabled: false },
             }}
             languageCharactersProps={languageCharactersProps}
           />
