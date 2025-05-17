@@ -41,6 +41,7 @@ export default {
       blockquote: { disabled: true },
       textAlign: { disabled: true },
       showParagraphs: { disabled: false },
+      separateParagraphs: { disabled: true },
     },
     prompt: {
       label: 'Prompt',
