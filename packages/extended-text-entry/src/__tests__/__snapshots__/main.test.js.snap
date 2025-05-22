@@ -28,6 +28,9 @@ exports[`Render Main Component should match snapshot 1`] = `
           "disabled": true,
           "keypadMode": undefined,
         },
+        "separateParagraphs": Object {
+          "disabled": false,
+        },
         "table": Object {
           "disabled": true,
         },
@@ -90,6 +93,9 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
           "customKeys": undefined,
           "disabled": true,
           "keypadMode": undefined,
+        },
+        "separateParagraphs": Object {
+          "disabled": false,
         },
         "table": Object {
           "disabled": true,

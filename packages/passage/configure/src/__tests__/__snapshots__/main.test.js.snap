@@ -36,6 +36,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "separateParagraphs": Object {
+              "disabled": true,
+            },
             "showParagraphs": Object {
               "disabled": false,
             },
@@ -255,6 +258,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
           "showParagraphs": Object {
             "disabled": false,
           },
@@ -332,6 +338,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "disabled": true,
           },
           "image": Object {
+            "disabled": true,
+          },
+          "separateParagraphs": Object {
             "disabled": true,
           },
           "showParagraphs": Object {
@@ -413,6 +422,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "image": Object {
             "disabled": true,
           },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
           "showParagraphs": Object {
             "disabled": false,
           },
@@ -490,6 +502,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "disabled": true,
           },
           "image": Object {
+            "disabled": true,
+          },
+          "separateParagraphs": Object {
             "disabled": true,
           },
           "showParagraphs": Object {
@@ -573,6 +588,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
           },
           "showParagraphs": Object {
             "disabled": false,

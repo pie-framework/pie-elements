@@ -100,6 +100,7 @@ const defaultConfig = {
     image: { disabled: false },
     textAlign: { disabled: true },
     showParagraphs: { disabled: false },
+    separateParagraphs: { disabled: true },
   },
 };
 

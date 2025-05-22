@@ -25,6 +25,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "separateParagraphs": Object {
+              "disabled": true,
+            },
             "showParagraphs": Object {
               "disabled": false,
             },
@@ -308,6 +311,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
           "showParagraphs": Object {
             "disabled": false,
           },
@@ -394,6 +400,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
           },
           "showParagraphs": Object {
             "disabled": false,
