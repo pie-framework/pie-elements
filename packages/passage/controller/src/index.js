@@ -2,7 +2,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import defaults from './defaults';
 
-const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe|source)([^>]+)>)/gi, '');
 
 const checkNullish = (value) => value !== null && value !== undefined;
 
