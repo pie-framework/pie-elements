@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.46.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.45.0...@pie-element/pie-models@13.46.0) (2025-05-22)
+
+
+### Features
+
+* **passage:** add new config property to documentationPD-4040 ([7bc2dda](https://github.com/pie-framework/pie-elements/commit/7bc2ddac12a2938235e9b4c26a7ad09dd9b2a2e2))
+
+
+
+
+
 # [13.45.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.44.0...@pie-element/pie-models@13.45.0) (2025-03-12)
 
 

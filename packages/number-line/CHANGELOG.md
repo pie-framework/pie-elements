@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.6.5...@pie-element/number-line@9.6.6) (2025-05-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4561 ([a7c878c](https://github.com/pie-framework/pie-elements/commit/a7c878cc1c1440bc0f72acb8ca3ef2a023023066))
+* update pie-lib/pie-toolbox PD-5009, PD-5002 ([9d5d7a3](https://github.com/pie-framework/pie-elements/commit/9d5d7a31ea06b568c346008aee2557dfd2e9a796))
+* **number-line:** use state for values from ref, initialise onMounted to ensure that it is defined PD-4923 ([9bd4da9](https://github.com/pie-framework/pie-elements/commit/9bd4da952e63a736a1cfa53b85735567578ba24f))
+
+
+
+
+
 ## [9.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.6.4...@pie-element/number-line@9.6.5) (2025-05-12)
 
 
