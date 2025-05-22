@@ -259,8 +259,8 @@ const getInnerText = (html) => {
 
 const decodeHTML = (html) => decode(html);
 
-// remove all html tags except img and iframe
-const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+// remove all html tags except img, iframe and source tag for audio
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe|source)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
   const { choices, markup } = model;

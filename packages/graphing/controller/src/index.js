@@ -103,7 +103,7 @@ export const getBestAnswer = (question, session, env = {}) => {
 
   // initialize answer if no values
   answer = answer || [];
-  
+
   //filter the incomplete objects for student response - Fix for SC-33160
   answer = answer.filter((mark) => !mark.building);
 
@@ -318,8 +318,8 @@ export const createCorrectResponseSession = (question, env) => {
 // remove all html tags
 const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
 
-// remove all html tags except img and iframe
-const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+// remove all html tags except img, iframe and source tag for audio
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe|source)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
   const { answers, toolbarTools } = model;
