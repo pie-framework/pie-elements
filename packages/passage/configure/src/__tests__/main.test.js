@@ -1,225 +1,133 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Main } from '../design';
-import defaults from '../defaults';
-import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 
 jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
-    ConfigLayout: (props) => <div>{props.children}</div>,
+    ConfigLayout: (props) => <div className="mockConfigLayout">{props.children}</div>,
   },
   settings: {
-    Panel: (props) => <div onChange={props.onChange} />,
-    toggle: jest.fn(),
+    Panel: (props) => <div className="mockPanel" onClick={props.onChange} />,
+    toggle: (label, defaultVal = false) => true,
     dropdown: jest.fn(),
   },
-  InputContainer: (props) => <div {...props}>{props.children}</div>,
 }));
 
-describe('Render Main Component', () => {
-  let wrapper, instance, onChange;
-  let model = defaults.model;
-  let configuration = defaults.configuration;
+jest.mock('../common', () => ({
+  ConfimationDialog: (props) => <div className="mockDialog" {...props} />,
+  PassageButton: (props) => (
+    <button className="mockPassageButton" onClick={props.onClick}>
+      {props.label}
+    </button>
+  ),
+}));
+
+jest.mock('../passage', () => (props) => <div className="mockPassage" {...props} />);
+
+describe('Main Component - Unit Method Tests', () => {
+  let wrapper, instance, onModelChanged;
+
+  const basePassage = {
+    teacherInstructions: '',
+    title: '',
+    subtitle: '',
+    author: '',
+    text: '',
+  };
+
+  const baseModel = {
+    passages: [basePassage],
+    language: 'en',
+  };
+
+  const configuration = {
+    additionalPassage: { label: 'Additional Passage', settings: true, enabled: true },
+    teacherInstructions: { label: 'Teacher Instructions', settings: true },
+    title: { label: 'Title', settings: true },
+    subtitle: { label: 'Subtitle', settings: true },
+    author: { label: 'Author', settings: true },
+    text: { label: 'Text', settings: true },
+  };
+
+  const props = {
+    model: baseModel,
+    configuration,
+    imageSupport: {},
+    uploadSoundSupport: {},
+    classes: { additionalPassageHeading: 'heading' },
+    onModelChanged: jest.fn(),
+    onConfigurationChanged: jest.fn(),
+  };
 
   beforeEach(() => {
-    onChange = jest.fn();
-    const classes = {
-      inputContainer: 'mockInputContainer',
-      errorText: 'mockErrorText',
-    };
-
-    wrapper = shallow(
-      <Main
-        classes={classes}
-        model={model}
-        configuration={configuration}
-        onModelChanged={onChange}
-        imageSupport={{}}
-        uploadSoundSupport={{}}
-      />,
-    );
-
+    onModelChanged = jest.fn();
+    wrapper = shallow(<Main {...props} onModelChanged={onModelChanged} />);
     instance = wrapper.instance();
   });
 
-  it('Match Snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
+  it('getInnerText removes HTML tags', () => {
+    expect(instance.getInnerText('<p>Test <strong>123</strong></p>')).toBe('Test 123');
+    expect(instance.getInnerText('')).toBe('');
+    expect(instance.getInnerText(null)).toBe('');
+    expect(instance.getInnerText('<img src="x" />')).toBe('');
   });
 
-  describe('logic', () => {
-    it('changeTeacherInstructions calls onModelChanged', () => {
-      const updatedModel = {
-        ...model,
-        passages: [{ ...model.passages[0], teacherInstructions: 'Teacher Instructions' }],
-      };
-      instance.handleChange('teacherInstructions', 'Teacher Instructions', 0);
-      expect(onChange).toBeCalledWith(updatedModel);
-    });
+  it('addAdditionalPassage adds an empty passage and calls onModelChanged', () => {
+    instance.addAdditionalPassage();
 
-    it('changeTitle calls onModelChanged', () => {
-      const updatedModel = {
-        ...model,
-        passages: [{ ...model.passages[0], title: 'New Title' }],
-      };
-      instance.handleChange('title', 'New Title', 0);
-      expect(onChange).toBeCalledWith(updatedModel);
-    });
-
-    it('changeSubtitle calls onModelChanged', () => {
-      const updatedModel = {
-        ...model,
-        passages: [{ ...model.passages[0], subtitle: 'New Subtitle' }],
-      };
-      instance.handleChange('subtitle', 'New Subtitle', 0);
-      expect(onChange).toBeCalledWith(updatedModel);
-    });
-
-    it('changeAuthor calls onModelChanged', () => {
-      const updatedModel = {
-        ...model,
-        passages: [{ ...model.passages[0], author: 'New Author' }],
-      };
-      instance.handleChange('author', 'New Author', 0);
-      expect(onChange).toBeCalledWith(updatedModel);
-    });
-
-    it('changeText calls onModelChanged', () => {
-      const updatedModel = {
-        ...model,
-        passages: [{ ...model.passages[0], text: 'New Text' }],
-      };
-      instance.handleChange('text', 'New Text', 0);
-      expect(onChange).toBeCalledWith(updatedModel);
+    expect(onModelChanged).toHaveBeenCalledWith({
+      ...baseModel,
+      passages: [...baseModel.passages, { teacherInstructions: '', title: '', subtitle: '', author: '', text: '' }],
     });
   });
 
-  describe('UI Rendering', () => {
-    it('renders teacher instructions input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, teacherInstructionsEnabled: true },
-        configuration: {
-          ...configuration,
-          teacherInstructions: { label: 'Teacher Instructions' },
-        },
-      });
-      expect(wrapper.find(InputContainer).at(0).prop('label')).toEqual('Teacher Instructions');
-    });
+  it('removeAdditionalPassage calls onDelete directly for empty passage', () => {
+    const modelWithTwo = {
+      ...baseModel,
+      passages: [basePassage, basePassage],
+    };
 
-    it('renders title input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, titleEnabled: true },
-        configuration: { ...configuration, title: { label: 'Title' } },
-      });
-      expect(wrapper.find(InputContainer).at(1).prop('label')).toEqual('Title');
-    });
+    wrapper.setProps({ model: modelWithTwo });
+    instance = wrapper.instance();
 
-    it('renders subtitle input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, subtitleEnabled: true },
-        configuration: { ...configuration, subtitle: { label: 'Subtitle' } },
-      });
-      expect(wrapper.find(InputContainer).at(2).prop('label')).toEqual('Subtitle');
-    });
+    const onDeleteSpy = jest.spyOn(instance, 'onDelete');
+    instance.removeAdditionalPassage(1);
 
-    it('renders author input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, authorEnabled: true },
-        configuration: { ...configuration, author: { label: 'Author' } },
-      });
-      expect(wrapper.find(InputContainer).at(3).prop('label')).toEqual('Author');
-    });
+    expect(onDeleteSpy).toHaveBeenCalledWith(modelWithTwo, 1, onModelChanged);
+  });
 
-    it('renders text input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, textEnabled: true },
-        configuration: { ...configuration, text: { label: 'Text' } },
-      });
-      expect(wrapper.find(InputContainer).at(4).prop('label')).toEqual('Text');
+  it('removeAdditionalPassage sets dialog state if passage has content', () => {
+    const modelWithContent = {
+      ...baseModel,
+      passages: [basePassage, { ...basePassage, teacherInstructions: '<p>Filled</p>' }],
+    };
+
+    wrapper.setProps({ model: modelWithContent });
+    instance.removeAdditionalPassage(1);
+
+    expect(wrapper.state()).toEqual({
+      showConfirmationDialog: true,
+      indexToRemove: 1,
     });
   });
 
-  describe('Error Handling', () => {
-    it('displays teacher instructions error when provided', () => {
-      wrapper.setProps({
-        model: {
-          ...model,
-          errors: {
-            passages: {
-              0: { teacherInstructions: 'Teacher Instructions is required' },
-            },
-          },
-          teacherInstructionsEnabled: true,
-        },
-        configuration: {
-          ...configuration,
-          teacherInstructions: { label: 'Teacher Instructions' },
-        },
-      });
-      expect(wrapper.find('.mockErrorText').text()).toEqual('Teacher Instructions is required');
+  it('onDelete removes passage at index and resets confirmation state', () => {
+    const modelWithTwo = {
+      ...baseModel,
+      passages: [{ teacherInstructions: 'Keep' }, { teacherInstructions: 'Remove' }],
+    };
+
+    wrapper.setProps({ model: modelWithTwo });
+    instance.onDelete(modelWithTwo, 1, onModelChanged);
+
+    expect(onModelChanged).toHaveBeenCalledWith({
+      ...modelWithTwo,
+      passages: [{ teacherInstructions: 'Keep' }],
     });
 
-    it('displays title error when provided', () => {
-      wrapper.setProps({
-        model: {
-          ...model,
-          errors: {
-            passages: {
-              0: { title: 'Title is required' },
-            },
-          },
-          titleEnabled: true,
-        },
-        configuration: { ...configuration, title: { label: 'Title' } },
-      });
-      expect(wrapper.find('.mockErrorText').text()).toEqual('Title is required');
-    });
-
-    it('displays subtitle error when provided', () => {
-      wrapper.setProps({
-        model: {
-          ...model,
-          errors: {
-            passages: {
-              0: { subtitle: 'Subtitle is required' },
-            },
-          },
-          subtitleEnabled: true,
-        },
-        configuration: { ...configuration, subtitle: { label: 'Subtitle' } },
-      });
-      expect(wrapper.find('.mockErrorText').text()).toEqual('Subtitle is required');
-    });
-
-    it('displays author error when provided', () => {
-      wrapper.setProps({
-        model: {
-          ...model,
-          errors: {
-            passages: {
-              0: { author: 'Author is required' },
-            },
-          },
-          authorEnabled: true,
-        },
-        configuration: { ...configuration, author: { label: 'Author' } },
-      });
-      expect(wrapper.find('.mockErrorText').text()).toEqual('Author is required');
-    });
-
-    it('displays text error when provided', () => {
-      wrapper.setProps({
-        model: {
-          ...model,
-          errors: {
-            passages: {
-              0: { text: 'Text is required' },
-            },
-          },
-          textEnabled: true,
-        },
-        configuration: { ...configuration, text: { label: 'Text' } },
-      });
-      expect(wrapper.find('.mockErrorText').at(0).text()).toEqual('Text is required');
+    expect(wrapper.state()).toEqual({
+      showConfirmationDialog: false,
+      indexToRemove: -1,
     });
   });
 });

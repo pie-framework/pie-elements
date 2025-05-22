@@ -104,5 +104,10 @@ export default {
       label: 'Language Choices',
       options: [],
     },
+    additionalPassage: {
+      settings: true,
+      label: 'Additional Passage',
+      enabled: false,
+    },
   },
 };
