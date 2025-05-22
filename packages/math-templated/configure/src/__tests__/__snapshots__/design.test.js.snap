@@ -28,6 +28,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "image": Object {
               "disabled": false,
             },
+            "separateParagraphs": Object {
+              "disabled": true,
+            },
             "showParagraphs": Object {
               "disabled": false,
             },
@@ -234,6 +237,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
           "showParagraphs": Object {
             "disabled": false,
           },
@@ -299,6 +305,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
           },
           "showParagraphs": Object {
             "disabled": false,
@@ -413,6 +422,9 @@ There should be at least 1 and at most 10 response areas defined."
         },
         "image": Object {
           "disabled": false,
+        },
+        "separateParagraphs": Object {
+          "disabled": true,
         },
         "showParagraphs": Object {
           "disabled": false,
@@ -561,6 +573,9 @@ There should be at least 1 and at most 10 response areas defined."
           },
           "math": Object {
             "controlledKeypadMode": false,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
           },
           "showParagraphs": Object {
             "disabled": false,
