@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@6.5.5...@pie-element/inline-dropdown@6.6.0) (2025-05-22)
+
+
+### Bug Fixes
+
+* conflicts ([fce1a12](https://github.com/pie-framework/pie-elements/commit/fce1a12cacfcdc0f7ded44291eb7539dc3567127))
+* tests PD-5009 ([e00ac85](https://github.com/pie-framework/pie-elements/commit/e00ac85428a335d1dd67012b99a89861926594d0))
+* update pie-lib/pie-toolbox PD-4555, PD-4561 ([a7c878c](https://github.com/pie-framework/pie-elements/commit/a7c878cc1c1440bc0f72acb8ca3ef2a023023066))
+* update pie-lib/pie-toolbox PD-5009, PD-5002 ([9d5d7a3](https://github.com/pie-framework/pie-elements/commit/9d5d7a31ea06b568c346008aee2557dfd2e9a796))
+
+
+### Features
+
+* **inline-dropdown:** change incorrect color and fix some warnings PD-5002 ([2666cf7](https://github.com/pie-framework/pie-elements/commit/2666cf7cf5fef83e8515fef19cf25e2e98f2886e))
+
+
+
+
+
 ## [6.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@6.5.4...@pie-element/inline-dropdown@6.5.5) (2025-05-12)
 
 

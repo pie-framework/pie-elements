@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.15.5...@pie-element/multiple-choice@9.16.0) (2025-05-22)
+
+
+### Bug Fixes
+
+* conflicts ([fce1a12](https://github.com/pie-framework/pie-elements/commit/fce1a12cacfcdc0f7ded44291eb7539dc3567127))
+* update pie-lib/pie-toolbox PD-4555, PD-4561 ([a7c878c](https://github.com/pie-framework/pie-elements/commit/a7c878cc1c1440bc0f72acb8ca3ef2a023023066))
+* update pie-lib/pie-toolbox PD-5009, PD-5002 ([9d5d7a3](https://github.com/pie-framework/pie-elements/commit/9d5d7a31ea06b568c346008aee2557dfd2e9a796))
+
+
+### Features
+
+* **multiple-choice:** clarify checkbox and radio purpose for screen readers in ChoiceInput PD-4557 ([8b77d22](https://github.com/pie-framework/pie-elements/commit/8b77d22a28bfbe9369c0834d08bc72e26b61374a))
+
+
+
+
+
 ## [9.15.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.15.4...@pie-element/multiple-choice@9.15.5) (2025-05-12)
 
 

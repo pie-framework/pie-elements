@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.4.6...@pie-element/passage-controller@1.4.7) (2025-05-22)
+
+
+### Bug Fixes
+
+* **passage:** correct failing test, validate all passages PD-4040 ([32d4ef2](https://github.com/pie-framework/pie-elements/commit/32d4ef266f33386a0c1a0fba849a698132115648))
+
+
+
+
+
 ## [1.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.4.5...@pie-element/passage-controller@1.4.6) (2024-11-20)
 
 

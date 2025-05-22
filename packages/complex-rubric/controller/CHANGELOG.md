@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@3.1.5...@pie-element/complex-rubric-controller@3.1.6) (2025-05-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4555, PD-4561 ([a7c878c](https://github.com/pie-framework/pie-elements/commit/a7c878cc1c1440bc0f72acb8ca3ef2a023023066))
+* update pie-lib/pie-toolbox PD-5009, PD-5002 ([9d5d7a3](https://github.com/pie-framework/pie-elements/commit/9d5d7a31ea06b568c346008aee2557dfd2e9a796))
+
+
+
+
+
 ## [3.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@3.1.4...@pie-element/complex-rubric-controller@3.1.5) (2025-05-12)
 
 

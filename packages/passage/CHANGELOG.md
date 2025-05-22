@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@3.5.5...@pie-element/passage@3.6.0) (2025-05-22)
+
+
+### Bug Fixes
+
+* conflicts ([fce1a12](https://github.com/pie-framework/pie-elements/commit/fce1a12cacfcdc0f7ded44291eb7539dc3567127))
+* tests PD-5009 ([e00ac85](https://github.com/pie-framework/pie-elements/commit/e00ac85428a335d1dd67012b99a89861926594d0))
+* update pie-lib/pie-toolbox PD-4555, PD-4561 ([a7c878c](https://github.com/pie-framework/pie-elements/commit/a7c878cc1c1440bc0f72acb8ca3ef2a023023066))
+* update pie-lib/pie-toolbox PD-5009, PD-5002 ([9d5d7a3](https://github.com/pie-framework/pie-elements/commit/9d5d7a31ea06b568c346008aee2557dfd2e9a796))
+* **passage:** code review improvements PD-4040 ([2c9d279](https://github.com/pie-framework/pie-elements/commit/2c9d27985c3c8bf26d09b4b9a4722ee9cdf6f034))
+* **passage:** correct failing test, validate all passages PD-4040 ([32d4ef2](https://github.com/pie-framework/pie-elements/commit/32d4ef266f33386a0c1a0fba849a698132115648))
+* **passage:** fix table styling inside passage to be consistent PD-4594 ([6c373ca](https://github.com/pie-framework/pie-elements/commit/6c373ca20180eeaaa84fe484f5c11edb933ee63f))
+* **passage:** get rid of translator PD-4040 ([c76c422](https://github.com/pie-framework/pie-elements/commit/c76c422b40ce80fb2665cd2851b6fc51cc5d54a6))
+* **passage:** reset defaults values to their initial value PD-4040 ([a0aa8bf](https://github.com/pie-framework/pie-elements/commit/a0aa8bf8d8be22a95a3e5c16b5c16ba4076dc59f))
+
+
+### Features
+
+* **passage:** add logic for addimg an additional passage PD-4040 ([9ff4eb1](https://github.com/pie-framework/pie-elements/commit/9ff4eb10d7b8380bc33b5ee7448712958e3afea7))
+* **passage:** create logic add remove passage, add translator PD-4040 ([393d6fa](https://github.com/pie-framework/pie-elements/commit/393d6faf700c416887beff69a16baa4a2d3dead1))
+* **passage:** handle corner cases, create new file for common components PD-4040 ([5dfb968](https://github.com/pie-framework/pie-elements/commit/5dfb968b5d8040318615ca537c55ddb5b8cdc305))
+* **passage:** rewrite tests as structure was changed and new func added PD-4040 ([b0693a1](https://github.com/pie-framework/pie-elements/commit/b0693a104cb9cb2b2d5e34ee69941e6398008747))
+* **passage:** update authoring for additional passage, create own component for passage component pd-4040 ([ca61920](https://github.com/pie-framework/pie-elements/commit/ca61920fba2a451d37bcfa829a3712191edfd3fb))
+
+
+
+
+
 ## [3.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@3.5.4...@pie-element/passage@3.5.5) (2025-05-12)
 
 
