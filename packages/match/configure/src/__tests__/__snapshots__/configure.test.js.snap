@@ -46,6 +46,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "image": Object {
                 "disabled": false,
               },
+              "separateParagraphs": Object {
+                "disabled": true,
+              },
               "showParagraphs": Object {
                 "disabled": false,
               },
@@ -87,6 +90,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               },
               "image": Object {
                 "disabled": false,
+              },
+              "separateParagraphs": Object {
+                "disabled": true,
               },
               "showParagraphs": Object {
                 "disabled": false,
@@ -130,6 +136,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "image": Object {
                 "disabled": false,
               },
+              "separateParagraphs": Object {
+                "disabled": true,
+              },
               "showParagraphs": Object {
                 "disabled": false,
               },
@@ -156,6 +165,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
           },
           "showParagraphs": Object {
             "disabled": false,
@@ -267,6 +279,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
           "showParagraphs": Object {
             "disabled": false,
           },
@@ -377,6 +392,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
           "image": Object {
             "disabled": false,
           },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
           "showParagraphs": Object {
             "disabled": false,
           },
@@ -486,6 +504,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
           },
           "image": Object {
             "disabled": false,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
           },
           "showParagraphs": Object {
             "disabled": false,

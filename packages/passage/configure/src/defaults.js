@@ -25,6 +25,7 @@ export default {
       blockquote: { disabled: true },
       textAlign: { disabled: true },
       showParagraphs: { disabled: false },
+      separateParagraphs: { disabled: true },
     },
     settingsPanelDisabled: false,
     title: {
@@ -102,6 +103,11 @@ export default {
     languageChoices: {
       label: 'Language Choices',
       options: [],
+    },
+    additionalPassage: {
+      settings: true,
+      label: 'Additional Passage',
+      enabled: false,
     },
   },
 };

@@ -100,6 +100,7 @@ const defaultConfig = {
     image: { disabled: false },
     textAlign: { disabled: true },
     showParagraphs: { disabled: false },
+    separateParagraphs: { disabled: true },
   },
 };
 
@@ -137,6 +138,7 @@ export default {
       image: { disabled: false },
       textAlign: { disabled: true },
       showParagraphs: { disabled: false },
+      separateParagraphs: { disabled: true },
     },
     partialScoring: {
       label: 'Allow Partial Scoring',

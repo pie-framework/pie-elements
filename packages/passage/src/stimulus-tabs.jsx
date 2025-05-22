@@ -11,6 +11,13 @@ const styles = (theme) => ({
     flexGrow: 1,
     backgroundColor: color.background(),
     color: color.text(),
+    '&:not(.MathJax) table': {
+      borderCollapse: 'collapse',
+    },
+    '&:not(.MathJax) table td, &:not(.MathJax) table th': {
+      padding: '.6em 1em',
+      textAlign: 'left',
+    },
   },
   passage: {
     backgroundColor: color.background(),
