@@ -50,6 +50,7 @@ export class ChoicePreview extends React.Component {
 const styles = () => ({
   choicePreview: {
     position: 'relative',
+    overflow: 'auto',
   },
   delete: {
     position: 'absolute',
