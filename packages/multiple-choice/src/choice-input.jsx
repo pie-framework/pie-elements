@@ -111,11 +111,11 @@ const inputStyles = {
     pointerEvents: 'initial !important',
   },
   focusVisibleUnchecked: {
-    outline: `1px solid ${color.focusUncheckedBorder()}`,
+    outline: `2px solid ${color.focusUncheckedBorder()}`,
     backgroundColor: color.focusUnchecked(),
   },
   focusVisibleChecked: {
-    outline: `1px solid ${color.focusCheckedBorder()}`,
+    outline: `2px solid ${color.focusCheckedBorder()}`,
     backgroundColor: color.focusChecked(),
   },
 };
