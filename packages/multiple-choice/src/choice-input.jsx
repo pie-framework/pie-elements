@@ -276,15 +276,25 @@ export class ChoiceInput extends React.Component {
       'aria-describedby': this.descId,
     };
 
+    const hasMathOrImage =
+      typeof label === 'string' &&
+      (label.includes('<math') ||
+        label.includes('\\(') ||
+        label.includes('\\[') ||
+        label.includes('<img') ||
+        label.includes('data-latex') ||
+        label.includes('data-raw') ||
+        label.includes('<mjx-container'));
+
     const control = isSelectionButtonBelow ? (
       <span className={classes.belowSelectionComponent}>
-        {screenReaderLabel}
+        {hasMathOrImage && screenReaderLabel}
         <Tag {...tagProps} style={{ padding: 0 }} />
         {displayKey ? `${displayKey}.` : ''}
       </span>
     ) : (
       <>
-        {screenReaderLabel}
+        {hasMathOrImage && screenReaderLabel}
         <Tag {...tagProps} />
       </>
     );
