@@ -98,6 +98,7 @@ const styles = (theme) => ({
   editor: {
     flex: '1',
     paddingBottom: theme.spacing.unit,
+    maxWidth: '100%',
   },
   iconButtonRoot: {
     width: 'auto',
