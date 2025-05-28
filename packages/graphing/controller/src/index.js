@@ -103,7 +103,7 @@ export const getBestAnswer = (question, session, env = {}) => {
 
   // initialize answer if no values
   answer = answer || [];
-  
+
   //filter the incomplete objects for student response - Fix for SC-33160
   answer = answer.filter((mark) => !mark.building);
 
@@ -188,9 +188,6 @@ export function model(question, session, env) {
     if (session === undefined || session === null) {
       session = {};
     }
-    // ensure removing of invalid answers
-    // need this if undo redo was last operation
-    session.answer = removeInvalidAnswers(session.answer);
     // console.log('normalizedQuestion', normalizedQuestion);
     const { defaultTool, extraCSSRules, prompt, promptEnabled, graph, answers, toolbarTools, ...questionProps } =
       normalizedQuestion || {};

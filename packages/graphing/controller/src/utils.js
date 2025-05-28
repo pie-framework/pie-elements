@@ -352,8 +352,3 @@ const completeMark = {
   sine: completeRootEdge,
   polygon: completePoints,
 };
-
-export const removeInvalidAnswers = (answers) =>
-  answers
-    ? (answers || []).filter(({ type, ...answer }) => (completeMark[type] ? completeMark[type](answer) : false))
-    : [];
