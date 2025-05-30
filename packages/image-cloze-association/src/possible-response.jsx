@@ -4,12 +4,51 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { DragSource } from '@pie-lib/pie-toolbox/drag';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
+import ReactDOM from 'react-dom';
 
 import EvaluationIcon from './evaluation-icon';
 import c from './constants';
 import StaticHTMLSpan from './static-html-span';
 
 export class PossibleResponse extends React.Component {
+  handleTouchEnd = () => {
+    clearTimeout(this.longPressTimer);
+  };
+
+  handleTouchMove = () => {
+    clearTimeout(this.longPressTimer);
+  };
+
+  handleTouchStart = (e) => {
+    e.preventDefault();
+    this.longPressTimer = setTimeout(() => {
+      this.startDrag();
+    }, 500); // start drag after 500ms (touch and hold duration) for chromebooks and other touch devices
+  };
+
+  componentDidMount() {
+    if (this.rootRef) {
+      this.rootRef.addEventListener('touchstart', this.handleTouchStart, { passive: false });
+      this.rootRef.addEventListener('touchend', this.handleTouchEnd);
+      this.rootRef.addEventListener('touchmove', this.handleTouchMove);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.rootRef) {
+      this.rootRef.removeEventListener('touchstart', this.handleTouchStart);
+      this.rootRef.removeEventListener('touchend', this.handleTouchEnd);
+      this.rootRef.removeEventListener('touchmove', this.handleTouchMove);
+    }
+  }
+
+  startDrag = () => {
+    const { connectDragSource, disabled } = this.props;
+    if (!disabled) {
+      connectDragSource(this.rootRef);
+    }
+  };
+
   render() {
     const { classes, connectDragSource, containerStyle, data, answerChoiceTransparency } = this.props;
     const { isCorrect } = data || {};
@@ -39,9 +78,15 @@ export class PossibleResponse extends React.Component {
     ]);
 
     return connectDragSource(
-      <div className={containerClassNames} style={containerStyle}>
-        <StaticHTMLSpan html={data.value} className={promptClassNames} />
-        <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
+      <div
+        className={containerClassNames}
+        style={containerStyle}
+        ref={(ref) => {
+          //eslint-disable-next-line
+          this.rootRef = ReactDOM.findDOMNode(ref);
+        }}>
+        <StaticHTMLSpan html={data.value} className={promptClassNames}/>
+        <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle}/>
       </div>,
     );
   }
