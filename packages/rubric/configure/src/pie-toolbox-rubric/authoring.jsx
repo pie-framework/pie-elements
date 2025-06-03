@@ -193,8 +193,10 @@ export class RawAuthoring extends React.Component {
 
   changeMaxPoints = (maxPoints) => {
     const { value, onChange } = this.props;
+    // excludeZero should be false and disabled when maxPoints is 1
+    const excludeZero = maxPoints === 1 ? false : value.excludeZero ;
 
-    onChange({ ...value, maxPoints });
+    onChange({ ...value, maxPoints, excludeZero });
   };
 
   changeContent = (index, content, type) => {
@@ -287,6 +289,7 @@ export class RawAuthoring extends React.Component {
                   className={classes.customColor}
                   checked={value.excludeZero}
                   onChange={this.excludeZeros}
+                  disabled={maxPointsValue === 1}
               />
             }
             />

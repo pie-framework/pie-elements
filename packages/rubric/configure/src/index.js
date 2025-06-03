@@ -26,12 +26,21 @@ export default class RubricElement extends HTMLElement {
     }
 
     updateModelAccordingToReceivedProps = (nextModel) => {
-        const currentModel = {...this._model};
+        const currentModel = { ...this._model };
+
+        console.log('>> currentModel', currentModel);
+        console.log('>> nextModel', nextModel);
         if (!nextModel) {
             return currentModel;
         }
 
-        const validatedModel = nextModel;
+        const validatedModel = { ...nextModel };
+
+        // excludeZero should be false and disabled when maxPoints is 1
+        if (validatedModel.maxPoints === 1 ) {
+          validatedModel.excludeZero = false;
+        }
+
         const { maxPoints, excludeZero } = validatedModel || {};
 
         validatedModel.points = validatedModel.points ? [...validatedModel.points] : [];
@@ -54,7 +63,7 @@ export default class RubricElement extends HTMLElement {
                     validatedModel.sampleAnswers.push(null);
                 }
             }
-        } 
+        }
         else if (howManyPointsDoesItHave > howManyPointsShouldHave) {
             if (excludeZeroChanged && excludeZero) {
                 validatedModel.points = validatedModel.points.slice(1);
@@ -66,6 +75,7 @@ export default class RubricElement extends HTMLElement {
             }
         }
 
+        console.log('validatedModel', validatedModel);
         return validatedModel;
     }
 
