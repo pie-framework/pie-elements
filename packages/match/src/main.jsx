@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { color, Collapsible, Feedback, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, Feedback, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/pie-toolbox/render-ui';
 import AnswerGrid from './answer-grid';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -109,9 +109,12 @@ export class Main extends React.Component {
     const { correctness = {}, extraCSSRules, language } = model;
     const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
 
+    const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
+    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
-        {model.teacherInstructions && hasText(model.teacherInstructions) && (
+        {showTeacherInstructions && (
           <Collapsible
             labels={{
               hidden: 'Show Teacher Instructions',
@@ -148,7 +151,7 @@ export class Main extends React.Component {
           rows={model.rows}
         />
 
-        {model.rationale && hasText(model.rationale) && (
+        {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
             <PreviewPrompt prompt={model.rationale} />
           </Collapsible>

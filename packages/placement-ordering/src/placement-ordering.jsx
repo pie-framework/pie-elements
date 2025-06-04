@@ -1,6 +1,6 @@
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
-import { Collapsible, color, Feedback, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { Collapsible, color, Feedback, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -259,10 +259,12 @@ export class PlacementOrdering extends React.Component {
 
     const Tiler = vertical ? VerticalTiler : HorizontalTiler;
     const displayNote = (showingCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
+    const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
+    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.placementOrdering}>
-        {teacherInstructions && hasText(teacherInstructions) && (
+        {showTeacherInstructions && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
             className={classes.collapsible}
@@ -300,7 +302,7 @@ export class PlacementOrdering extends React.Component {
 
         {displayNote && <div className={classes.note} dangerouslySetInnerHTML={{ __html: note }} />}
 
-        {rationale && hasText(rationale) && (
+        {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
             <PreviewPrompt prompt={rationale} />
           </Collapsible>

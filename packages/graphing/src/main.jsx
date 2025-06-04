@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer, KeyLegend } from '@pie-lib/pie-toolbox/graphing';
-import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 export class Main extends React.Component {
@@ -51,9 +51,12 @@ export class Main extends React.Component {
     const size = model?.size || model?.graph || {}; // need this for models that are not processed by controller
     const marks = answersCorrected || answer || [];
     const isLabelAvailable = toolbarTools?.includes('label') || false;
+    const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
+    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
-        {teacherInstructions && hasText(teacherInstructions) && (
+        {showTeacherInstructions && (
           <Collapsible
             className={classes.teacherInstructions}
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -117,7 +120,7 @@ export class Main extends React.Component {
           />
         )}
         {showKeyLegend && !showingCorrect && <KeyLegend isLabelAvailable={isLabelAvailable}></KeyLegend>}
-        {rationale && hasText(rationale) && (
+        {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
