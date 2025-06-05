@@ -10,7 +10,7 @@ const { translator } = Translator;
 const log = debug('@pie-element:math-templated:controller');
 
 const getFeedback = value => value ? 'correct' : 'incorrect';
-const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe|source)([^>]+)>)/gi, '');
 
 const getIsAnswerCorrect = (correctResponse, answerItem) => {
   let answerCorrect = false;
