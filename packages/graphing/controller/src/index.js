@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import uniqWith from 'lodash/uniqWith';
 import isEmpty from 'lodash/isEmpty';
 import defaults from './defaults';
-import { equalMarks, sortedAnswers, removeInvalidAnswers } from './utils';
+import { equalMarks, sortedAnswers } from './utils';
 
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
