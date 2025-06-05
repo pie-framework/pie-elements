@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.11.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.11.6...@pie-element/image-cloze-association@6.11.7) (2025-06-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4888, PD-3542, PD-4873, PD-4679 ([9c3bdef](https://github.com/pie-framework/pie-elements/commit/9c3bdef1b68f128ecc6338ef74f25fb74c482aa6))
+* **image-cloze-association:** remove confusing alt text PD-5046 ([40d202c](https://github.com/pie-framework/pie-elements/commit/40d202c250fda457667de2daa9bbd9100e4c0a20))
+* **match:** add has media verid for rationale and teacher instr pie-elements  PD-3756 ([7d1f431](https://github.com/pie-framework/pie-elements/commit/7d1f4310e128ac9312859c96ad5c87300aa336c3))
+* update pie-lib pie-toolbox PD-3756 and revert changes for PD-4810 ([1e3030b](https://github.com/pie-framework/pie-elements/commit/1e3030bfdb13d0cce7b54ce0e9a109446c5ec2a2))
+* update pie-lib-pie-toolbox PD-4810 ([6c81afc](https://github.com/pie-framework/pie-elements/commit/6c81afc6a8ad41e001bafb0bd1563164e9f32a10))
+* update pie-lib-pie-toolbox PD-4810 ([0f9dd82](https://github.com/pie-framework/pie-elements/commit/0f9dd827c474e87770fd3bd146d870dd77d296df))
+* **image-cloze-association:** fix drag gesture on tablet and chromebook to have longer press PD-4888 ([1a39466](https://github.com/pie-framework/pie-elements/commit/1a394663f22261f4fba0c31d81b5a7b628bc096e))
+* add validation for audio content PD-4123 ([f0ce3f1](https://github.com/pie-framework/pie-elements/commit/f0ce3f19a12fd4cfe2d2159ca4af801d866dc8a9))
+
+
+
+
+
 ## [6.11.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.11.5...@pie-element/image-cloze-association@6.11.6) (2025-05-22)
 
 

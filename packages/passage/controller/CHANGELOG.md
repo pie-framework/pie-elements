@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.4.7...@pie-element/passage-controller@1.4.8) (2025-06-05)
+
+
+### Bug Fixes
+
+* add validation for audio content PD-4123 ([f0ce3f1](https://github.com/pie-framework/pie-elements/commit/f0ce3f19a12fd4cfe2d2159ca4af801d866dc8a9))
+
+
+
+
+
 ## [1.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.4.6...@pie-element/passage-controller@1.4.7) (2025-05-22)
 
 

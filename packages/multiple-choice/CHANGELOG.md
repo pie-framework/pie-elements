@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.16.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.16.0...@pie-element/multiple-choice@9.16.1) (2025-06-05)
+
+
+### Bug Fixes
+
+* add validation for audio content PD-4123 ([f0ce3f1](https://github.com/pie-framework/pie-elements/commit/f0ce3f19a12fd4cfe2d2159ca4af801d866dc8a9))
+* update pie-lib pie-toolbox PD-3756 and revert changes for PD-4810 ([1e3030b](https://github.com/pie-framework/pie-elements/commit/1e3030bfdb13d0cce7b54ce0e9a109446c5ec2a2))
+* update pie-lib-pie-toolbox PD-4810 ([6c81afc](https://github.com/pie-framework/pie-elements/commit/6c81afc6a8ad41e001bafb0bd1563164e9f32a10))
+* update pie-lib-pie-toolbox PD-4810 ([0f9dd82](https://github.com/pie-framework/pie-elements/commit/0f9dd827c474e87770fd3bd146d870dd77d296df))
+* update pie-lib/pie-toolbox PD-4888, PD-3542, PD-4873, PD-4679 ([9c3bdef](https://github.com/pie-framework/pie-elements/commit/9c3bdef1b68f128ecc6338ef74f25fb74c482aa6))
+* **multiple-choice:** add  aria label for answers with math, LaTeX, or images PD-4557 ([5193106](https://github.com/pie-framework/pie-elements/commit/5193106ef7d2f81a4c8205e7f45c0bb176f65658))
+* **multiple-choice:** enhance visible focus indicator, improving contrast and user experience PD-4555 ([6f0b556](https://github.com/pie-framework/pie-elements/commit/6f0b556f2dd892312ed30b7093b633f8d20fce3f))
+
+
+
+
+
 # [9.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.15.5...@pie-element/multiple-choice@9.16.0) (2025-05-22)
 
 
