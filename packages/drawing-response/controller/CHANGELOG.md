@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.5.0...@pie-element/drawing-response-controller@3.5.1) (2025-06-05)
+
+
+### Bug Fixes
+
+* add validation for audio content PD-4123 ([f0ce3f1](https://github.com/pie-framework/pie-elements/commit/f0ce3f19a12fd4cfe2d2159ca4af801d866dc8a9))
+
+
+
+
+
 # [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.4.1...@pie-element/drawing-response-controller@3.5.0) (2024-10-29)
 
 
