@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextSelect, Legend } from '@pie-lib/pie-toolbox/text-select';
 import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import {color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout} from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import generateModel from './utils';
 
@@ -55,13 +55,14 @@ export class Main extends React.Component {
 
 
     const selectedTokens = showCorrectAnswer ? this.correctAnswer() : session.selectedTokens;
+    const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
+    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     log('[render] selectedTokens:', selectedTokens);
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
-        {model.teacherInstructions &&
-          hasText(model.teacherInstructions) &&
+        {showTeacherInstructions &&
           (!model.animationsDisabled ? (
             <Collapsible
               labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -114,8 +115,7 @@ export class Main extends React.Component {
         />
         {mode === 'evaluate' && <Legend language={model.language} />}
 
-        {model.rationale &&
-          hasText(model.rationale) &&
+        {showRationale &&
           (!model.animationsDisabled ? (
             <Collapsible
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
