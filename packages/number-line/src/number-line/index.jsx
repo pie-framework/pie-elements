@@ -6,7 +6,7 @@ import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
 import isEqual from 'lodash/isEqual';
 import Translator from '@pie-lib/pie-toolbox/translator';
-import { Collapsible, color, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { Collapsible, color, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Feedback from './feedback';
@@ -199,6 +199,7 @@ export class NumberLine extends React.Component {
     let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
     const { ticks, domain, arrows, maxNumberOfPoints, height = 100, availableTypes, title, fraction } = graph;
     const width = this.getSize('width', minWidth, maxWidth, 600);
+    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     const graphProps = {
       disabled,
@@ -266,7 +267,7 @@ export class NumberLine extends React.Component {
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={containerNames}>
-        {teacherInstructions && hasText(teacherInstructions) && (
+        {showTeacherInstructions && (
           <Collapsible
             labels={{
               hidden: 'Show Teacher Instructions',

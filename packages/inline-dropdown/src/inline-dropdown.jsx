@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { InlineDropdown as DropDown } from '@pie-lib/pie-toolbox/mask-markup';
-import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -58,6 +58,8 @@ export class InlineDropdown extends React.Component {
     const { extraCSSRules } = model || {};
     const showCorrectAnswerToggle = mode === 'evaluate';
     let choiceRationalesHaveText = false;
+    const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
+    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     const choiceRationales = (Object.keys(choices) || []).map((key) =>
       (choices[key] || []).reduce((acc, currentValue) => {
@@ -75,7 +77,7 @@ export class InlineDropdown extends React.Component {
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} style={{ display: `${displayType}` }}>
         {mode === 'gather' && <h2 className={classes.srOnly}>Inline Dropdown Question</h2>}
 
-        {teacherInstructions && hasText(teacherInstructions) && (
+        {showTeacherInstructions && (
           <Collapsible
             className={classes.collapsible}
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -117,7 +119,7 @@ export class InlineDropdown extends React.Component {
           </Collapsible>
         )}
 
-        {rationale && hasText(rationale) && (
+        {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
           </Collapsible>

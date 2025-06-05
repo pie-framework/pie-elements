@@ -6,7 +6,7 @@ import isEmpty from 'lodash/isEmpty';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
-import { color, Collapsible, Readable, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import {color, Collapsible, Readable, hasText, hasMedia, PreviewPrompt, UiLayout} from '@pie-lib/pie-toolbox/render-ui';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import MathQuill from '@pie-framework/mathquill';
 import { Customizable } from '@pie-lib/pie-toolbox/mask-markup';
@@ -399,12 +399,13 @@ export class Main extends React.Component {
   renderTeacherInstructions = () => {
     const { model, classes } = this.props;
     const { teacherInstructions, animationsDisabled } = model || {};
+    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     const teacherInstructionsDiv = (
       <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions}/>
     );
 
-    return teacherInstructions && hasText(teacherInstructions) && (
+    return showTeacherInstructions && (
       <div className={classes.collapsible}>
         {!animationsDisabled ? (
           <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
@@ -421,8 +422,9 @@ export class Main extends React.Component {
     const { model, classes } = this.props;
     const { rationale, animationsDisabled } = model || {};
     const rationaleDiv = <PreviewPrompt prompt={rationale}/>;
+    const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
 
-    return rationale && hasText(rationale) && (
+    return showRationale && (
       <div className={classes.collapsible}>
         {!animationsDisabled ? (
           <Collapsible

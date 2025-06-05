@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
-import { Feedback, Collapsible, Readable, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import {
+  Feedback,
+  Collapsible,
+  Readable,
+  hasText,
+  hasMedia,
+  PreviewPrompt,
+  UiLayout,
+} from '@pie-lib/pie-toolbox/render-ui';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -614,6 +622,8 @@ export class Main extends React.Component {
     const staticLatex = prepareForStatic(model, this.state) || '';
     const viewMode = disabled && !correctness;
     const studentPrintMode = printMode && !alwaysShowCorrect;
+    const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
+    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     const printView = (
       <div className={classes.printContainer}>
@@ -637,8 +647,7 @@ export class Main extends React.Component {
         {mode === 'gather' && <h2 className={classes.srOnly}>Math Equation Response Question</h2>}
 
         {viewMode &&
-          teacherInstructions &&
-          hasText(teacherInstructions) &&
+         showTeacherInstructions &&
           (!animationsDisabled ? (
             <Collapsible
               className={classes.collapsible}
@@ -752,8 +761,7 @@ export class Main extends React.Component {
         )}
 
         {viewMode &&
-          rationale &&
-          hasText(rationale) &&
+          showRationale &&
           (!animationsDisabled ? (
             <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
               <div dangerouslySetInnerHTML={{ __html: rationale }} />
@@ -767,8 +775,8 @@ export class Main extends React.Component {
     if (
       tooltipModeEnabled &&
       (showCorrectAnswerToggle ||
-        (teacherInstructions && hasText(teacherInstructions)) ||
-        (rationale && hasText(rationale)) ||
+       showTeacherInstructions ||
+       showRationale ||
         feedback)
     ) {
       return (
@@ -794,7 +802,7 @@ export class Main extends React.Component {
                   )}
                 </div>
 
-                {teacherInstructions && hasText(teacherInstructions) && (
+                {showTeacherInstructions && (
                   <Collapsible
                     className={classes.collapsible}
                     key="collapsible-teacher-instructions"
@@ -819,7 +827,7 @@ export class Main extends React.Component {
                   </Collapsible>
                 )}
 
-                {rationale && hasText(rationale) && (
+                {showRationale && (
                   <Collapsible
                     className={classes.collapsible}
                     key="collapsible-rationale"

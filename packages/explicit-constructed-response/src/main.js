@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/pie-toolbox/mask-markup';
-import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Translator from '@pie-lib/pie-toolbox/translator';
@@ -129,11 +129,14 @@ export class Main extends React.Component {
 
     const rationaleDiv = <PreviewPrompt prompt={rationale} />;
 
+    const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
+    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
+
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={mainClasses} style={{ display: `${displayType}` }}>
         {mode === 'gather' && <h2 className={classes.srOnly}>Fill in the Blank Question</h2>}
 
-        {teacherInstructions && hasText(teacherInstructions) && (
+        {showTeacherInstructions && (
           <div className={classes.collapsible}>
             {!animationsDisabled ? (
               <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
@@ -169,7 +172,7 @@ export class Main extends React.Component {
 
         {displayNote && <div className={classNames(classes.note, 'note')} dangerouslySetInnerHTML={{ __html: note }} />}
 
-        {rationale && hasText(rationale) && (
+        {showRationale && (
           <div className={classes.collapsible}>
             {!animationsDisabled ? (
               <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>{rationaleDiv}</Collapsible>

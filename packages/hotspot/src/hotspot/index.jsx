@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import {color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia} from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -86,10 +86,12 @@ class HotspotComponent extends React.Component {
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
+    const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
+    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.main} fontSizeFactor={fontSizeFactor}>
-        {teacherInstructions && hasText(teacherInstructions) && (
+        {showTeacherInstructions && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
             className={classes.collapsible}
@@ -136,7 +138,7 @@ class HotspotComponent extends React.Component {
           />
         ) : null}
 
-        {rationale && hasText(rationale) && (
+        {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt className="prompt" prompt={rationale} />
           </Collapsible>

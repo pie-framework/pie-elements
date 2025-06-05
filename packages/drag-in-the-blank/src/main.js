@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { DragInTheBlank } from '@pie-lib/pie-toolbox/mask-markup';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
-import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 const DraggableDragInTheBlank = withDragContext(DragInTheBlank);
@@ -44,9 +44,12 @@ export class Main extends React.Component {
     const modelWithValue = { ...model, value };
     const showCorrectAnswerToggle = mode === 'evaluate';
 
+    const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
+    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+
     return (
       <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
-        {model.teacherInstructions && hasText(model.teacherInstructions) && (
+        {showTeacherInstructions && (
           <Collapsible
             className={classes.collapsible}
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -73,7 +76,7 @@ export class Main extends React.Component {
 
         <DraggableDragInTheBlank {...modelWithValue} onChange={onChange} showCorrectAnswer={showCorrectAnswer} />
 
-        {model.rationale && hasText(model.rationale) && (
+        {showRationale && (
           <Collapsible className={classes.rationale} labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={model.rationale} />
           </Collapsible>
