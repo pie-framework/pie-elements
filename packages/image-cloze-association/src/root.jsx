@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { color, Collapsible, PreviewPrompt, UiLayout, hasText } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, PreviewPrompt, UiLayout, hasText, hasMedia } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
@@ -243,6 +243,8 @@ export class ImageClozeAssociationComponent extends React.Component {
 
     const { validResponse } = validation || {};
     const correctAnswers = [];
+    const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
+    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     if (validResponse) {
       (validResponse.value || []).forEach((container, i) => {
@@ -319,7 +321,7 @@ export class ImageClozeAssociationComponent extends React.Component {
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.main} fontSizeFactor={fontSizeFactor}>
-        {teacherInstructions && hasText(teacherInstructions) && (
+        {showTeacherInstructions && (
           <Collapsible
             className={classes.teacherInstructions}
             labels={{
@@ -355,7 +357,7 @@ export class ImageClozeAssociationComponent extends React.Component {
           {renderPossibleResponses()}
         </InteractiveSection>
 
-        {rationale && hasText(rationale) && (
+        {showRationale && (
           <Collapsible
             className={classes.rationale}
             labels={{

@@ -111,11 +111,11 @@ const inputStyles = {
     pointerEvents: 'initial !important',
   },
   focusVisibleUnchecked: {
-    outline: `1px solid ${color.focusUncheckedBorder()}`,
+    outline: `2px solid ${color.focusUncheckedBorder()}`,
     backgroundColor: color.focusUnchecked(),
   },
   focusVisibleChecked: {
-    outline: `1px solid ${color.focusCheckedBorder()}`,
+    outline: `2px solid ${color.focusCheckedBorder()}`,
     backgroundColor: color.focusChecked(),
   },
 };
@@ -276,15 +276,25 @@ export class ChoiceInput extends React.Component {
       'aria-describedby': this.descId,
     };
 
+    const hasMathOrImage =
+      typeof label === 'string' &&
+      (label.includes('<math') ||
+        label.includes('\\(') ||
+        label.includes('\\[') ||
+        label.includes('<img') ||
+        label.includes('data-latex') ||
+        label.includes('data-raw') ||
+        label.includes('<mjx-container'));
+
     const control = isSelectionButtonBelow ? (
       <span className={classes.belowSelectionComponent}>
-        {screenReaderLabel}
+        {hasMathOrImage && screenReaderLabel}
         <Tag {...tagProps} style={{ padding: 0 }} />
         {displayKey ? `${displayKey}.` : ''}
       </span>
     ) : (
       <>
-        {screenReaderLabel}
+        {hasMathOrImage && screenReaderLabel}
         <Tag {...tagProps} />
       </>
     );

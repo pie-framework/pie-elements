@@ -279,8 +279,8 @@ export const createCorrectResponseSession = (question, env) => {
 // remove all html tags
 const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
 
-// remove all html tags except img and iframe
-const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+// remove all html tags except img, iframe and source tag for audio
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe|source)([^>]+)>)/gi, '');
 
 const validatePart = (model = {}, config = {}) => {
   const { choices } = model;

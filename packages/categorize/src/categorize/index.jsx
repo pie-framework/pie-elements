@@ -6,7 +6,7 @@ import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle'
 import { withStyles } from '@material-ui/core/styles';
 import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/pie-toolbox/categorize';
 import { withDragContext, uid } from '@pie-lib/pie-toolbox/drag';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import debug from 'debug';
 import Translator from '@pie-lib/pie-toolbox/translator';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
@@ -214,9 +214,12 @@ export class Categorize extends React.Component {
       lng: model.language,
     });
 
+    const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
+    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+
     return (
       <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
-        {model.teacherInstructions && hasText(model.teacherInstructions) && (
+        {showTeacherInstructions && (
           <React.Fragment>
             <Collapsible
               labels={{
@@ -265,7 +268,6 @@ export class Categorize extends React.Component {
             onRemoveChoice={this.removeChoice}
           />
         </div>
-
         {displayNote && (
           <div
             className={classes.note}
@@ -275,7 +277,7 @@ export class Categorize extends React.Component {
           />
         )}
 
-        {model.rationale && hasText(model.rationale) && (
+        {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
             <PreviewPrompt prompt={model.rationale} />
           </Collapsible>

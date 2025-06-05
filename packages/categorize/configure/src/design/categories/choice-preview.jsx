@@ -35,6 +35,7 @@ export class ChoicePreview extends React.Component {
             category={category}
             choice={choice}
             choiceIndex={choiceIndex}
+            className={classes.overflowChoice}
             onRemoveChoice={() => this.delete()}
           >
             <HtmlAndMath html={choice?.content} className={`${classes.breakWord}`} />
@@ -50,6 +51,7 @@ export class ChoicePreview extends React.Component {
 const styles = () => ({
   choicePreview: {
     position: 'relative',
+    overflow: 'auto',
   },
   delete: {
     position: 'absolute',
@@ -63,5 +65,8 @@ const styles = () => ({
   customColor: {
     color: `${color.tertiary()} !important`
   },
+  overflowChoice: {
+    overflow: 'auto',
+  }
 });
 export default withStyles(styles)(ChoicePreview);

@@ -104,7 +104,17 @@ export const PointConfig = withStyles((theme) => ({
     paddingTop: theme.spacing.unit,
   },
 }))((props) => {
-  const { points, content, classes, sampleAnswer, mathMlOptions = {}, error, pluginOpts = {}, excludeZero, imageSupport = {}, } = props;
+  const {
+    points,
+    content,
+    classes,
+    sampleAnswer,
+    mathMlOptions = {},
+    error,
+    pluginOpts = {},
+    excludeZero,
+    imageSupport = {},
+  } = props;
   const pointsCount = excludeZero ? points + 1 : points;
   const pointsLabel = `${pointsCount} ${pointsCount === 1 ? 'pt' : 'pts'}`;
   const showSampleAnswer = checkSampleAnswer(sampleAnswer);
@@ -193,8 +203,10 @@ export class RawAuthoring extends React.Component {
 
   changeMaxPoints = (maxPoints) => {
     const { value, onChange } = this.props;
+    // excludeZero should be false and disabled when maxPoints is 1
+    const excludeZero = maxPoints === 1 ? false : value.excludeZero;
 
-    onChange({ ...value, maxPoints });
+    onChange({ ...value, maxPoints, excludeZero });
   };
 
   changeContent = (index, content, type) => {
@@ -283,12 +295,13 @@ export class RawAuthoring extends React.Component {
             <FormControlLabel
               label="Exclude zeros"
               control={
-              <Checkbox
+                <Checkbox
                   className={classes.customColor}
                   checked={value.excludeZero}
                   onChange={this.excludeZeros}
-              />
-            }
+                  disabled={maxPointsValue === 1}
+                />
+              }
             />
           )}
         </FormGroup>
@@ -314,38 +327,36 @@ export class RawAuthoring extends React.Component {
             <Droppable droppableId="droppable">
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
-                  {value.points.map(
-                    (p, index) => {
-                      return                         (
-                          <Draggable key={`${p.points}-${index}`} index={index} draggableId={index.toString()}>
-                            {(provided) => (
-                                <div
-                                    className={classes.configHolder}
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                >
-                                  <PointConfig
-                                      points={value.points.length - 1 - index}
-                                      content={p}
-                                      error={
-                                          pointsDescriptorsErrors && pointsDescriptorsErrors[value.points.length - 1 - index]
-                                      }
-                                      sampleAnswer={value.sampleAnswers && value.sampleAnswers[index]}
-                                      onChange={(content) => this.changeContent(index, content, 'points')}
-                                      onSampleChange={(content) => this.changeContent(index, content, 'sampleAnswers')}
-                                      onMenuChange={(clickedItem) => this.onPointMenuChange(index, clickedItem)}
-                                      mathMlOptions={mathMlOptions}
-                                      pluginOpts={pluginOpts}
-                                      imageSupport={imageSupport}
-                                      excludeZero={value.excludeZero}
-                                  />
-                                </div>
-                            )}
-                          </Draggable>
-                      );
-                    },
-                  )}
+                  {value.points.map((p, index) => {
+                    return (
+                      <Draggable key={`${p.points}-${index}`} index={index} draggableId={index.toString()}>
+                        {(provided) => (
+                          <div
+                            className={classes.configHolder}
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <PointConfig
+                              points={value.points.length - 1 - index}
+                              content={p}
+                              error={
+                                pointsDescriptorsErrors && pointsDescriptorsErrors[value.points.length - 1 - index]
+                              }
+                              sampleAnswer={value.sampleAnswers && value.sampleAnswers[index]}
+                              onChange={(content) => this.changeContent(index, content, 'points')}
+                              onSampleChange={(content) => this.changeContent(index, content, 'sampleAnswers')}
+                              onMenuChange={(clickedItem) => this.onPointMenuChange(index, clickedItem)}
+                              mathMlOptions={mathMlOptions}
+                              pluginOpts={pluginOpts}
+                              imageSupport={imageSupport}
+                              excludeZero={value.excludeZero}
+                            />
+                          </div>
+                        )}
+                      </Draggable>
+                    );
+                  })}
                   {provided.placeholder}
                 </div>
               )}
@@ -383,7 +394,7 @@ const styles = (theme) => ({
     margin: theme.spacing.unit,
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 });
 
