@@ -150,7 +150,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, value, id } = props;
+  const { correctness, classes, checked, onChange, disabled, value, id, tagName } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -169,6 +169,7 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
       disableRipple
       {...miniProps}
       className={CLASS_NAME}
+      name={tagName}
       classes={{
         root: resolved.root,
         checked: resolved.checked,
@@ -235,6 +236,7 @@ export class ChoiceInput extends React.Component {
       choicesLayout,
       value,
       checked,
+      tagName,
       isSelectionButtonBelow,
     } = this.props;
 
@@ -270,6 +272,7 @@ export class ChoiceInput extends React.Component {
       disabled,
       checked,
       correctness,
+      tagName,
       value,
       id: this.choiceId,
       onChange: this.onToggleChoice,
