@@ -293,7 +293,7 @@ export class MultipleChoice extends React.Component {
           </div>
         )}
 
-        <fieldset className={classes.fieldset} role={choiceMode === 'radio' ? 'radiogroup' : 'group'}>
+        <fieldset tabIndex={0} className={classes.fieldset} role={choiceMode === 'radio' ? 'radiogroup' : 'group'}>
           <PreviewPrompt
             className="prompt"
             defaultClassName="prompt"
