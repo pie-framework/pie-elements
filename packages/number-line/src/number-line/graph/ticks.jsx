@@ -58,11 +58,15 @@ export class Tick extends React.Component {
       }
     };
   }
-  
+
   updateTextBox() {
     if (this.text) {
-      const { width, height, x, y } = this.text.getBBox();
-      this.setState({ textBox: { width, height, x, y } });
+      // ensure the DOM is "ready" → layout is done before getting text measurements
+      requestAnimationFrame(() => {
+        const { width, height, x, y } = this.text.getBBox();
+        this.text.setAttribute('x', (width / 2) * -1);
+        this.setState({ textBox: { width, height, x, y } });
+      });
     }
   }
 
@@ -70,10 +74,7 @@ export class Tick extends React.Component {
     //center align the tick text
     if (this.text) {
       const { fraction } = this.props;
-      let { width, height, x, y } = this.text.getBBox();
-      this.text.setAttribute('x', (width / 2) * -1);
-      this.setState({ textBox: { width, height, x, y } });
-
+      this.updateTextBox();
       if (fraction && !this.wasRendered) {
         // used for rendering the line fraction
         this.wasRendered = true;
