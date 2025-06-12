@@ -19,7 +19,11 @@ const styles = (theme) => ({
     '& *': {
       '-webkit-font-smoothing': 'antialiased',
     },
-    position: 'relative'
+    position: 'relative',
+    // remove border from legend tags inside main to override the OT default styles
+    '& legend': {
+      border: 'none !important',
+    },
   },
   partLabel: {
     display: 'block',
