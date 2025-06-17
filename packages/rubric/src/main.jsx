@@ -66,13 +66,13 @@ class Rubric extends React.Component {
               return (
                 <React.Fragment key={index}>
                   <ListItem key={`P${index}`} className={classes.listColumn}>
-                    <h3 className={classes.text} style={{ margin: 0, fontSize: '1em', fontWeight: '700' }}>{pointsLabel === 1 ? `${pointsLabel} PT` : `${pointsLabel} PTS`}</h3>
+                    <h3 className={classes.titleText}>{pointsLabel === 1 ? `${pointsLabel} PT` : `${pointsLabel} PTS`}</h3>
                     <div className={classes.text} dangerouslySetInnerHTML={{ __html: desc }} />
                   </ListItem>
 
                   {sampleAnswers && sampleAnswers[index] && (
                     <ListItem key={`S${index}`} className={classes.listColumn}>
-                      <h4 style={{ margin: 0, fontSize: '1em' }} className={classes.text}>Sample Answer</h4>
+                      <h4 className={classes.titleText} style={{ fontWeight: 'normal' }}>Sample Answer</h4>
                       <div className={classes.text} dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
                     </ListItem>
                   )}
@@ -89,6 +89,7 @@ class Rubric extends React.Component {
           {!animationsDisabled ? (
             <React.Fragment>
               <h2
+                id={'rubric-toggle'}
                 className={classes.rubricToggle}
                 tabIndex={0}
                 role="button"
@@ -134,6 +135,7 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
+    padding: '12px 0px',
   },
   listColumnItem: {
     padding: 0,
@@ -141,18 +143,27 @@ const styles = (theme) => ({
   text: {
     color: color.text(),
   },
+  titleText: {
+    color: color.text(),
+    fontSize: '16px',
+    fontWeight: '700',
+    margin: 0,
+    paddingBottom: '6px',
+  },
   rubricToggle: {
     display: 'flex',
+    alignItems: 'center',
     cursor: 'pointer',
     userSelect: 'none',
-    fontSize: theme.typography.fontSize + 2,
-    fontWeight: 600,
+    fontSize: theme.typography.fontSize,
+    fontWeight: '500',
     color: color.tertiary(),
+    margin: 0
   },
   chevronStyle: {
     display: 'inline-flex',
     transition: 'transform 0.2s',
-    marginLeft: 4,
+    marginLeft: 2,
     alignSelf: 'center',
   },
   hiddenScreenReader: {
