@@ -13,6 +13,7 @@ import { layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 import Scale from './scale';
 import { MultiTraitButton } from './common';
 import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog, InfoDialog } from './modals';
+import { addOrRemoveScaleColumn } from './utils';
 
 const { Panel, toggle } = settings;
 const MIN_WIDTH = '650px';
@@ -138,13 +139,19 @@ export class Main extends React.Component {
 
   onScaleChanged = (scaleIndex, params) => {
     const { model, onModelChanged } = this.props;
-    const scales = cloneDeep((model || {}).scales);
+    let scales = cloneDeep((model || {}).scales);
 
     if (scaleIndex < 0 || scaleIndex >= scales.length || isEmpty(params)) return false;
 
     Object.keys(params).forEach((key) => {
       scales[scaleIndex][key] = params[key];
     });
+
+    if (model.excludeZero && params.maxPoints === 1) {
+      // excludeZero should be false and disabled when maxPoints is 1 for any scale
+      model.excludeZero = false;
+      scales = addOrRemoveScaleColumn(scales, excludeZeroTypes.add0);
+    }
 
     onModelChanged({ ...model, scales });
   };
@@ -230,65 +237,7 @@ export class Main extends React.Component {
     if (!scales || !scales.length) return;
 
     excludeZero = !excludeZero;
-
-    const newScales = scales.reduce((acc, scale) => {
-      let { scorePointsLabels, traits } = scale || {};
-
-      if (scorePointsLabels.length < 1) return acc;
-
-      switch (excludeZeroType) {
-        case excludeZeroTypes.remove0: {
-          // removes column 0
-          scorePointsLabels = scorePointsLabels.slice(1);
-          traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-            ...trait,
-            scorePointsDescriptors: scorePointsDescriptors.slice(1),
-          }));
-
-          break;
-        }
-
-        case excludeZeroTypes.add0: {
-          // adds empty column at start
-          scorePointsLabels = ['', ...scorePointsLabels];
-          traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-            ...trait,
-            scorePointsDescriptors: ['', ...scorePointsDescriptors],
-          }));
-
-          break;
-        }
-
-        case excludeZeroTypes.shiftLeft: {
-          // removes last column
-          scorePointsLabels = scorePointsLabels.slice(0, -1);
-          traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-            ...trait,
-            scorePointsDescriptors: scorePointsDescriptors.slice(0, -1),
-          }));
-
-          break;
-        }
-
-        case excludeZeroTypes.shiftRight: {
-          // adds empty column at end
-          scorePointsLabels = [...scorePointsLabels, ''];
-          traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-            ...trait,
-            scorePointsDescriptors: [...scorePointsDescriptors, ''],
-          }));
-
-          break;
-        }
-
-        default:
-          break;
-      }
-
-      acc.push({ ...scale, scorePointsLabels, traits });
-
-      return acc;
-    }, []);
+    const newScales = addOrRemoveScaleColumn(scales, excludeZeroType);
 
     onModelChanged({ ...model, scales: newScales, excludeZero });
 
@@ -344,11 +293,14 @@ export class Main extends React.Component {
     } = model || {};
     const { showExcludeZeroDialog, showInfoDialog, infoDialogText, adjustedWidth } = this.state || {};
 
+    // excludeZero should be false and disabled when maxPoints is 1 for any scale
+    const disabledExcludeZero = scales?.some((scale) => scale.maxPoints === 1);
+
     const panelSettings = {
       standards: showStandards.settings && toggle(showStandards.label),
       'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
       visibleToStudent: showVisibleToStudent.settings && toggle(showVisibleToStudent.label),
-      excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label),
+      excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label, false, disabledExcludeZero),
       halfScoring: showHalfScoring.settings && toggle(showHalfScoring.label),
       'dragAndDrop.enabled': dragAndDrop.settings && toggle(dragAndDrop.label, true),
     };
