@@ -1,4 +1,3 @@
-import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
 import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
@@ -29,9 +28,9 @@ export function model(question, session, env, updateSession) {
       const { value } = session || {};
 
       for (let i = 0; i < numberOfPossibleResponses; i++) {
-        const result = reduce(
-          allCorrectResponses,
-          (obj, choices, key) => {
+        const result = Object.keys(allCorrectResponses).reduce(
+          (obj, key) => {
+            const choices = allCorrectResponses[key];
             const answer = (value && value[key]) || '';
 
             obj.feedback[key] = choices[i] === answer;
@@ -96,9 +95,9 @@ export const getScore = (config, session) => {
   const { value } = session || {};
 
   for (let i = 0; i < numberOfPossibleResponses; i++) {
-    const result = reduce(
-      allCorrectResponses,
-      (total, choices, key) => {
+    const result = Object.keys(allCorrectResponses).reduce(
+      (total, key) => {
+        const choices = allCorrectResponses[key];
         const answer = (value && value[key]) || '';
 
         if (choices[i] === answer) {

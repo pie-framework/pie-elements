@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import find from 'lodash/find';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
 import Choice from './choice';
 import { choiceIsEmpty } from './markupUtils';
-import { withStyles } from '@material-ui/core/styles';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 
 const styles = (theme) => ({
   design: {
@@ -201,7 +201,7 @@ export class Choices extends React.Component {
     }
 
     // if duplicates not allowed, remove the choices that are used to define the correct response
-    return choices.filter((choice) => !find(correctResponse, (v) => v === choice.id));
+    return choices.filter((choice) => !Object.values(correctResponse).includes(choice.id));
   };
 
   render() {
