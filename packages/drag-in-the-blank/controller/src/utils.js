@@ -1,24 +1,33 @@
 import cloneDeep from 'lodash/cloneDeep';
+import reduce from 'lodash/reduce';
 
 const replaceHtmlRegex = /<(?!img)[^>]*>?/gm;
 
-export const getAllCorrectResponses = ({ correctResponse = {}, alternateResponses = {} }) =>
-  Object.entries(correctResponse).reduce(
-    (acc, [key, val]) => {
-      acc.possibleResponses[key] = [val, ...(alternateResponses[key] ? cloneDeep(alternateResponses[key]) : [])];
+export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) => {
+  return reduce(
+    correctResponse || {},
+    (obj, val, key) => {
+      obj.possibleResponses[key] = [val];
 
-      const length = acc.possibleResponses[key].length;
-      acc.numberOfPossibleResponses = acc.numberOfPossibleResponses === undefined
-        ? length
-        : Math.min(acc.numberOfPossibleResponses, length);
+      if (alternateResponses && alternateResponses[key]) {
+        obj.possibleResponses[key] = [...obj.possibleResponses[key], ...cloneDeep(alternateResponses[key])];
+      }
 
-      return acc;
+      if (
+        obj.numberOfPossibleResponses === undefined ||
+        obj.numberOfPossibleResponses > obj.possibleResponses[key].length
+      ) {
+        obj.numberOfPossibleResponses = obj.possibleResponses[key].length;
+      }
+
+      return obj;
     },
     {
       possibleResponses: {},
       numberOfPossibleResponses: undefined,
     },
   );
+};
 
 export const choiceIsEmpty = (choice) => {
   if (choice) {

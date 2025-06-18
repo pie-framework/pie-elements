@@ -201,7 +201,9 @@ export class Choices extends React.Component {
     }
 
     // if duplicates not allowed, remove the choices that are used to define the correct response
-    return choices.filter((choice) => !Object.values(correctResponse).includes(choice.id));
+    return choices.filter(
+      (choice) => !(correctResponse && Object.values(correctResponse).includes(choice.id))
+    );
   };
 
   render() {
