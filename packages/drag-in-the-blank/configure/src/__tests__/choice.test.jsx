@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import Choice, { BlankContent, tileSource } from '../choice';
+import Choice, { tileSource } from '../choice';
 
 describe('Choice', () => {
   let onClick;

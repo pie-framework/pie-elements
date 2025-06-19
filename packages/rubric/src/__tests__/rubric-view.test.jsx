@@ -1,7 +1,6 @@
-import {shallow, mount} from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import Rubric from '../main';
-import Link from '@material-ui/core/Link';
 
 describe('rubric viewer', () => {
     const wrapper = (extras) => {
@@ -27,7 +26,7 @@ describe('rubric viewer', () => {
     describe('expanded snapshot', () => {
         it('renders', () => {
             const w = wrapper();
-            w.find(Link).simulate('click');
+            w.find('#rubric-toggle').simulate('click');
             expect(w).toMatchSnapshot();
         });
     });
@@ -39,11 +38,11 @@ describe('rubric viewer', () => {
                 points: ['a teeny bit right', 'mostly right', 'bingo'],
                 sampleAnswers: ['just right', 'not left', null]
             });
-            w.find(Link).simulate('click');
+            w.find('#rubric-toggle').simulate('click');
             expect(w.find('li').length).toEqual(5);
 
             w = wrapper({excludeZero: false});
-            w.find(Link).simulate('click');
+            w.find('#rubric-toggle').simulate('click');
             expect(w.find('li').length).toEqual(6);
         });
     });

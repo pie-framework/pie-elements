@@ -3,7 +3,7 @@ import {
   InsertSoundEvent,
   DeleteSoundEvent,
   InsertImageEvent,
-  DeleteImageEvent
+  DeleteImageEvent,
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
@@ -11,6 +11,8 @@ import ReactDOM from 'react-dom';
 
 import Main from './main';
 import defaults from './defaults';
+import { addOrRemoveScaleColumn } from './utils';
+import { excludeZeroTypes } from './modals';
 
 const modelWithDefaults = (m) => ({ ...defaults.model, ...m });
 const configurationWithDefaults = (c) => ({ ...defaults.configuration, ...c });
@@ -23,7 +25,8 @@ export default class MultiTraitRubricElement extends HTMLElement {
   }
 
   updateModelAccordingToReceivedProps = (m) => {
-    const currentModel = {...this._model};
+    const currentModel = { ...this._model };
+
     if (!m) {
       return currentModel;
     }
@@ -31,15 +34,15 @@ export default class MultiTraitRubricElement extends HTMLElement {
     const validatedModel = { ...m };
     const { scales, excludeZero } = validatedModel || {};
 
-    (scales || []).forEach(scale => {
+    (scales || []).forEach((scale) => {
       if (!scale) {
         scale = { scorePointsLabels: [], traits: [] };
       }
 
       const { maxPoints } = scale || {};
 
-      scale.scorePointsLabels = [ ...(scale.scorePointsLabels || []) ];
-      scale.traits = [ ...(scale.traits || []) ];
+      scale.scorePointsLabels = [...(scale.scorePointsLabels || [])];
+      scale.traits = [...(scale.traits || [])];
 
       const howManyScorePointLabelsShouldHave = excludeZero ? maxPoints : maxPoints + 1;
       const howManyScorePointLabelsItHas = scale.scorePointsLabels.length;
@@ -54,12 +57,12 @@ export default class MultiTraitRubricElement extends HTMLElement {
         }
       }
 
-      (scale.traits || []).forEach(trait => {
+      (scale.traits || []).forEach((trait) => {
         if (!trait) {
           trait = { scorePointsDescriptors: [] };
         }
 
-        trait.scorePointsDescriptors = [ ...(trait.scorePointsDescriptors || []) ];
+        trait.scorePointsDescriptors = [...(trait.scorePointsDescriptors || [])];
 
         const howManyScorePointDescriptorsItHas = trait.scorePointsDescriptors.length;
 
@@ -74,6 +77,18 @@ export default class MultiTraitRubricElement extends HTMLElement {
         }
       });
     });
+
+    if (validatedModel.excludeZero) {
+      // check if any scale has maxPoints set to 1
+      const shouldAddColumn0 = validatedModel.scales.some((scale) => scale.maxPoints === 1);
+
+      if (shouldAddColumn0) {
+        // excludeZero should be false and disabled when maxPoints is 1
+        validatedModel.excludeZero = false;
+        // add column 0 for all scales
+        validatedModel.scales = addOrRemoveScaleColumn(scales, excludeZeroTypes.add0);
+      }
+    }
 
     return validatedModel;
   };
@@ -115,7 +130,7 @@ export default class MultiTraitRubricElement extends HTMLElement {
   onDeleteImage(src, done) {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
-  
+
   _render() {
     if (this._model) {
       let element = React.createElement(Main, {

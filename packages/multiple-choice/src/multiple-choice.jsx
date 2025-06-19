@@ -19,7 +19,11 @@ const styles = (theme) => ({
     '& *': {
       '-webkit-font-smoothing': 'antialiased',
     },
-    position: 'relative'
+    position: 'relative',
+    // remove border from legend tags inside main to override the OT default styles
+    '& legend': {
+      border: 'none !important',
+    },
   },
   partLabel: {
     display: 'block',
@@ -293,7 +297,7 @@ export class MultipleChoice extends React.Component {
           </div>
         )}
 
-        <fieldset className={classes.fieldset}>
+        <fieldset tabIndex={0} className={classes.fieldset} role={choiceMode === 'radio' ? 'radiogroup' : 'group'}>
           <PreviewPrompt
             className="prompt"
             defaultClassName="prompt"
@@ -332,6 +336,7 @@ export class MultipleChoice extends React.Component {
                 isEvaluateMode={isEvaluateMode}
                 choiceMode={choiceMode}
                 disabled={disabled}
+                tagName={partLabel ? `group-${partLabel}`: 'group'}
                 onChoiceChanged={this.handleChange}
                 hideTick={choice.hideTick}
                 checked={this.getChecked(choice)}
