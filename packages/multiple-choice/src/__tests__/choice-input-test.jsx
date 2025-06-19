@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { shallow, mount } from 'enzyme';
 import { ChoiceInput } from '../choice-input';
 import toJson from 'enzyme-to-json';
@@ -7,25 +6,24 @@ import toJson from 'enzyme-to-json';
 describe('ChoiceInput', () => {
   let onChange, wrapper;
 
-  const mkWrapper = (opts = {}) => {
-    opts = _.extend(
-      {
-        checked: false,
-        disabled: false,
-        choiceMode: 'checkbox',
-        label: 'label',
-        displayKey: '1',
-        correctness: 'correct',
-        value: 'value',
-        classes: {
-          label: 'label',
-        },
-      },
-      opts,
-    );
-
-    return shallow(<ChoiceInput {...opts} onChange={onChange} />);
+ const mkWrapper = (opts = {}) => {
+  const defaultOpts = {
+    checked: false,
+    disabled: false,
+    choiceMode: 'checkbox',
+    label: 'label',
+    displayKey: '1',
+    correctness: 'correct',
+    value: 'value',
+    classes: {
+      label: 'label',
+    },
   };
+
+  const finalOpts = { ...defaultOpts, ...opts };
+
+  return shallow(<ChoiceInput {...finalOpts} onChange={onChange} />);
+};
 
   beforeEach(() => {
     onChange = jest.fn();
