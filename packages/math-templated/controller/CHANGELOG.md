@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@3.2.7...@pie-element/math-templated-controller@3.3.0) (2025-06-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5076, PD-5063, PD-4832, PD-5059 ([16201a3](https://github.com/pie-framework/pie-elements/commit/16201a35183965fabd033bbf797ef3b438d69a85))
+
+
+### Features
+
+* bump math-validation version PD-4890 ([46d61d3](https://github.com/pie-framework/pie-elements/commit/46d61d3f217926742bcfa368fd0c32cdb446bfc0))
+
+
+
+
+
 ## [3.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@3.2.6...@pie-element/math-templated-controller@3.2.7) (2025-06-05)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.6.7...@pie-element/number-line@9.6.8) (2025-06-19)
+
+
+### Bug Fixes
+
+*  use ResizeObserver to detect when text lement changes height PD-4923 ([9b21ad1](https://github.com/pie-framework/pie-elements/commit/9b21ad1c6be546e81220af8358b8ff458904b1f6))
+* update pie-lib/pie-toolbox PD-5076, PD-5063, PD-4832, PD-5059 ([16201a3](https://github.com/pie-framework/pie-elements/commit/16201a35183965fabd033bbf797ef3b438d69a85))
+* **number-line:** ensure layout done before fraction renders PD-4923 ([e0bc2b5](https://github.com/pie-framework/pie-elements/commit/e0bc2b5aebf521eea7718e3cea0057e99ae2aabc))
+
+
+
+
+
 ## [9.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.6.6...@pie-element/number-line@9.6.7) (2025-06-05)
 
 
