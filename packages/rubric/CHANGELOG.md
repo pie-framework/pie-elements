@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.7.2...@pie-element/rubric@4.8.0) (2025-06-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5076, PD-5063, PD-4832, PD-5059 ([16201a3](https://github.com/pie-framework/pie-elements/commit/16201a35183965fabd033bbf797ef3b438d69a85))
+
+
+### Features
+
+* wrap up rubric redesign based on figma PD-5057 ([b77cd63](https://github.com/pie-framework/pie-elements/commit/b77cd63b3fa3345e866d7744443464f11f640137))
+
+
+
+
+
 ## [4.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.7.1...@pie-element/rubric@4.7.2) (2025-06-05)
 
 

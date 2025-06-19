@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.16.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.16.1...@pie-element/multiple-choice@9.16.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5076, PD-5063, PD-4832, PD-5059 ([16201a3](https://github.com/pie-framework/pie-elements/commit/16201a35183965fabd033bbf797ef3b438d69a85))
+* **ebsr:** add name attribute to radio buttons to correctly group radio buttons and trap arrow navigation PD-4562 ([dc27865](https://github.com/pie-framework/pie-elements/commit/dc278652ede5c5b91569ce7fc112216ed346b0e3))
+* **ebsr:** allow tabbing into second radio group PD-4562 ([21f3bbb](https://github.com/pie-framework/pie-elements/commit/21f3bbb8e67a9247c408c9d1c9aadc0716a4d51a))
+* **multiple-choice:** remove border from legend tags to override styles in OT PD-4963 ([4f82a18](https://github.com/pie-framework/pie-elements/commit/4f82a18f6e18a731c4667e4569245452224d2fd3))
+* fix behavior of radio button groups PD-4562 ([5c5ab97](https://github.com/pie-framework/pie-elements/commit/5c5ab971570e2d3c2b7778cd1615283dfeb38fd2))
+
+
+
+
+
 ## [9.16.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.16.0...@pie-element/multiple-choice@9.16.1) (2025-06-05)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.5.7...@pie-element/multi-trait-rubric@4.5.8) (2025-06-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5076, PD-5063, PD-4832, PD-5059 ([16201a3](https://github.com/pie-framework/pie-elements/commit/16201a35183965fabd033bbf797ef3b438d69a85))
+* **multi-trait-rubric:** disallow use of Exclude Zero when Max Points is 1 PD-4832 ([e7847b6](https://github.com/pie-framework/pie-elements/commit/e7847b65b1780e107de6e4fa50c1a6cc5679f09f))
+
+
+
+
+
 ## [4.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.5.6...@pie-element/multi-trait-rubric@4.5.7) (2025-06-05)
 
 
