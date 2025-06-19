@@ -2,8 +2,6 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
-import ListItemText from '@material-ui/core/ListItemText';
-import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
 import { color, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import PropTypes from 'prop-types';
@@ -63,37 +61,22 @@ class Rubric extends React.Component {
             .reverse()
             .map((desc, index) => {
               index = points.length - index - 1;
-              const pointsLabel = value.excludeZero ? index + 1: index;
+              const pointsLabel = value.excludeZero ? index + 1 : index;
 
               return (
-                  <React.Fragment key={index}>
-                    <ListItem key={`P${index}`}>
-                      <ListItemText
-                          className={classes.rubricCol}
-                          primary={<div className={classes.text}>{pointsLabel === 1 ? `${pointsLabel} PT` : `${pointsLabel} PTS`}</div>}
-                      />
+                <React.Fragment key={index}>
+                  <ListItem key={`P${index}`} className={classes.listColumn}>
+                    <h3 className={classes.titleText}>{pointsLabel === 1 ? `${pointsLabel} PT` : `${pointsLabel} PTS`}</h3>
+                    <div className={classes.text} dangerouslySetInnerHTML={{ __html: desc }} />
+                  </ListItem>
 
-                      <ListItemText
-                          primary={<div className={classes.text} dangerouslySetInnerHTML={{ __html: desc }} />}
-                      />
+                  {sampleAnswers && sampleAnswers[index] && (
+                    <ListItem key={`S${index}`} className={classes.listColumn}>
+                      <h4 className={classes.titleText} style={{ fontWeight: 'normal' }}>Sample Answer</h4>
+                      <div className={classes.text} dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
                     </ListItem>
-
-                    {sampleAnswers && sampleAnswers[index] && (
-                        <ListItem key={`S${index}`}>
-                          <ListItemText
-                              className={classes.rubricCol}
-                              style={{ marginLeft: '20px' }}
-                              primary={<div className={classes.text}>Sample Answer</div>}
-                          />
-
-                          <ListItemText
-                              primary={
-                                <div className={classes.text} dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
-                              }
-                          />
-                        </ListItem>
-                    )}
-                  </React.Fragment>
+                  )}
+                </React.Fragment>
               );
             })}
         </List>
@@ -101,11 +84,33 @@ class Rubric extends React.Component {
 
       return (
         <UiLayout extraCSSRules={extraCSSRules} className={classes.root}>
+          {/* screen reader only heading for navigation as per PD-5057 */}
+          <h2 className={classes.hiddenScreenReader}>Rubric</h2>
           {!animationsDisabled ? (
             <React.Fragment>
-              <Link href={this.dudUrl} onClick={this.toggleRubric}>
+              <h2
+                id={'rubric-toggle'}
+                className={classes.rubricToggle}
+                tabIndex={0}
+                role="button"
+                aria-expanded={this.state.rubricOpen}
+                onClick={this.toggleRubric}
+                onKeyPress={e => {
+                  if (e.key === 'Enter' || e.key === ' ') this.toggleRubric();
+                }}
+              >
                 {this.state.linkPrefix} Rubric
-              </Link>
+                <span
+                  className={classes.chevronStyle}
+                  aria-hidden="true"
+                >
+                  {this.state.rubricOpen ? (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  )}
+                </span>
+              </h2>
               <Collapse in={this.state.rubricOpen} timeout="auto">
                 {rubricList}
               </Collapse>
@@ -121,17 +126,56 @@ class Rubric extends React.Component {
   }
 }
 
-const styles = () => ({
+const styles = (theme) => ({
   root: {
     color: color.text(),
     backgroundColor: color.background(),
   },
-  rubricCol: {
-    flex: '0 1 auto',
-    minWidth: 'fit-content',
+  listColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: '12px 0px',
+  },
+  listColumnItem: {
+    padding: 0,
   },
   text: {
     color: color.text(),
+  },
+  titleText: {
+    color: color.text(),
+    fontSize: '16px',
+    fontWeight: '700',
+    margin: 0,
+    paddingBottom: '6px',
+  },
+  rubricToggle: {
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    userSelect: 'none',
+    fontSize: theme.typography.fontSize,
+    fontWeight: '500',
+    color: color.tertiary(),
+    margin: 0
+  },
+  chevronStyle: {
+    display: 'inline-flex',
+    transition: 'transform 0.2s',
+    marginLeft: 2,
+    alignSelf: 'center',
+  },
+  hiddenScreenReader: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0,0,0,0)',
+    border: 0,
+    whiteSpace: 'nowrap',
   },
 });
 
