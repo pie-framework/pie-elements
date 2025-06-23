@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
@@ -9,16 +8,14 @@ describe('Possible Response', () => {
   let wrapper;
 
   const mkWrapper = (opts = {}) => {
-    opts = _.extend(
-      {
-        canDrag: false,
-        containerStyle: {},
-        data: {},
-        onDragBegin: jest.fn(),
-        onDragEnd: jest.fn(),
-      },
-      opts,
-    );
+    opts = {
+      canDrag: false,
+      containerStyle: {},
+      data: {},
+      onDragBegin: jest.fn(),
+      onDragEnd: jest.fn(),
+      ...opts,
+    };
 
     return shallow(<PossibleResponse {...opts} />);
   };
