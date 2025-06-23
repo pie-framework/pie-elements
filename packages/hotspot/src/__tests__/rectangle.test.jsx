@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Konva from 'konva';
@@ -23,26 +22,22 @@ describe('Rectangle', () => {
   let onClick, wrapper;
 
   const mkWrapper = (opts = {}) => {
-    opts = _.extend(
-      {
-        classes: {
-          base: 'base',
-        },
-        height: 200,
-        hotspotColor: 'rgba(137, 183, 244, 0.65)',
-        id: '1',
-        isCorrect: false,
-        isEvaluateMode: false,
-        evaluateText: null,
-        disabled: false,
-        outlineColor: 'blue',
-        selected: false,
-        width: 300,
-        x: 5,
-        y: 5,
-      },
-      opts,
-    );
+    opts = {
+      classes: { base: 'base' },
+      height: 200,
+      hotspotColor: 'rgba(137, 183, 244, 0.65)',
+      id: '1',
+      isCorrect: false,
+      isEvaluateMode: false,
+      evaluateText: null,
+      disabled: false,
+      outlineColor: 'blue',
+      selected: false,
+      width: 300,
+      x: 5,
+      y: 5,
+      ...opts,
+    };
 
     return shallow(<Rectangle {...opts} onClick={onClick} />);
   };

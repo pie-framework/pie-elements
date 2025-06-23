@@ -1,11 +1,10 @@
 import React from 'react';
-import _ from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Konva from 'konva';
 
 import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 import Container, { Container as ContainerComp } from '../hotspot/container';
 import HotspotComponent from '../hotspot/index';
@@ -129,28 +128,22 @@ describe('Container', () => {
   let onSelectChoice, wrapper;
 
   const mkWrapper = (opts = {}) => {
-    opts = _.extend(
-      {
-        classes: {
-          base: 'base',
-        },
-        dimensions: {
-          height: 0,
-          width: 0,
-        },
-        disabled: false,
-        hotspotColor: 'rgba(137, 183, 244, 0.65)',
-        imageUrl: '',
-        isEvaluateMode: false,
-        outlineColor: 'blue',
-        session: { answers: [] },
-        shapes: {
-          rectangles: [],
-          polygons: [],
-        },
+    opts =
+    {
+      classes: { base: 'base' },
+      dimensions: { height: 0, width: 0, },
+      disabled: false,
+      hotspotColor: 'rgba(137, 183, 244, 0.65)',
+      imageUrl: '',
+      isEvaluateMode: false,
+      outlineColor: 'blue',
+      session: { answers: [] },
+      shapes: {
+        rectangles: [],
+        polygons: [],
       },
-      opts,
-    );
+      ...opts,
+    }
 
     return shallow(<Container {...opts} onSelectChoice={onSelectChoice} />);
   };
