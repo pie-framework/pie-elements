@@ -130,6 +130,14 @@ const styles = (theme) => ({
   root: {
     color: color.text(),
     backgroundColor: color.background(),
+    // apply styles to tables to match the rest of the UI
+    '&:not(.MathJax) table': {
+      borderCollapse: 'collapse',
+    },
+    '&:not(.MathJax) table td, &:not(.MathJax) table th': {
+      padding: '8px 12px',
+      textAlign: 'left',
+    },
   },
   listColumn: {
     display: 'flex',
