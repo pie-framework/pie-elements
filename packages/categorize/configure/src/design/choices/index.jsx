@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Choice from './choice';
 import Header from '../header';
-import every from 'lodash/every';
 import Config from './config';
 import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
 import { removeAllChoices } from '@pie-lib/pie-toolbox/categorize';
@@ -49,7 +48,7 @@ export class Choices extends React.Component {
 
   allChoicesHaveCount = (count) => {
     const { choices } = this.props;
-    return every(choices, (c) => c.categoryCount === count);
+    return Array.isArray(choices) && choices.every((c) => c.categoryCount === count);
   };
 
   addChoice = () => {

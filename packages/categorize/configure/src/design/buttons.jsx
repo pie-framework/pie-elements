@@ -53,11 +53,4 @@ const DeleteButton = withStyles(() => ({
   </Button>
 ));
 
-const Divider = withStyles((theme) => ({
-  divider: {
-    marginTop: 2 * theme.spacing.unit,
-    marginBottom: 2 * theme.spacing.unit,
-  },
-}))(({ classes }) => <MuiDivider className={classes.divider} />);
-
-export { AddButton, DeleteButton, Divider };
+export { AddButton, DeleteButton };

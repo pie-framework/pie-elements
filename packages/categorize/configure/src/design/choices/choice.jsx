@@ -37,8 +37,6 @@ export class Choice extends React.Component {
     choice: PropTypes.object.isRequired,
     connectDropTarget: PropTypes.func,
     deleteFocusedEl: PropTypes.func,
-    defaultImageMaxHeight: PropTypes.number,
-    defaultImageMaxWidth: PropTypes.number,
     focusedEl: PropTypes.number,
     index: PropTypes.number,
     lockChoiceOrder: PropTypes.bool,
