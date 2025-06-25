@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.40.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.40.8...@pie-element/matrix-configure@0.40.9) (2025-06-25)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5059 ([d6f2203](https://github.com/pie-framework/pie-elements/commit/d6f22032dcfb049ce7aeb496f94456fdd06d4139))
+
+
+
+
+
 ## [0.40.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.40.7...@pie-element/matrix-configure@0.40.8) (2025-06-19)
 
 

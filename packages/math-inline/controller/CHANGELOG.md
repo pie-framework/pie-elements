@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@7.3.0...@pie-element/math-inline-controller@7.3.1) (2025-06-25)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5059 ([d6f2203](https://github.com/pie-framework/pie-elements/commit/d6f22032dcfb049ce7aeb496f94456fdd06d4139))
+
+
+
+
+
 # [7.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@7.2.7...@pie-element/math-inline-controller@7.3.0) (2025-06-19)
 
 
