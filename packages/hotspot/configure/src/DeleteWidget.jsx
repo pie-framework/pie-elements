@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Group } from 'react-konva';
 import { faDelete } from './icons';
-import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
+import ImageComponent from './image-konva';
 import { calculate } from './utils';
 
 const DeleteWidget = ({ height, id, width, x, y, points, isCircle, radius, handleWidgetClick }) => {
@@ -26,7 +26,7 @@ const DeleteWidget = ({ height, id, width, x, y, points, isCircle, radius, handl
 
   return (
     <Group onClick={() => handleWidgetClick(id)}>
-      <ImageComponent width={20} height={20} x={positionX} y={positionY} src={faDelete} />
+      <ImageComponent x={positionX} y={positionY} src={faDelete} />
     </Group>
   );
 };
