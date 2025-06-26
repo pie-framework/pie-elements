@@ -121,7 +121,7 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, value, id } = props;
+  const { correctness, classes, checked, onChange, disabled, value, id, onKeyDown } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -136,6 +136,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
     <Checkbox
       id={id}
       aria-checked={checked}
+      onKeyDown={onKeyDown}
       focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
       disableRipple
       {...miniProps}
@@ -193,6 +194,7 @@ export class ChoiceInput extends React.Component {
     value: PropTypes.string.isRequired,
     classes: PropTypes.object,
     className: PropTypes.string,
+    tagName: PropTypes.string,
     hideTick: PropTypes.bool,
     isEvaluateMode: PropTypes.bool,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
@@ -219,6 +221,37 @@ export class ChoiceInput extends React.Component {
   generateChoiceId() {
     return 'choice-' + (Math.random() * 10000).toFixed();
   }
+
+  handleKeyDown = (event) => {
+    const { choiceMode } = this.props;
+
+    if (choiceMode !== 'checkbox') return;
+
+    const isArrowDown = event.key === 'ArrowDown';
+    const isArrowUp = event.key === 'ArrowUp';
+
+    if (!isArrowDown && !isArrowUp) return;
+
+    event.preventDefault();
+
+    const currentEl = document.getElementById(this.choiceId);
+    if (!currentEl) return;
+
+    const fieldset = currentEl.closest('fieldset');
+    if (!fieldset) return;
+
+    const groupCheckboxes = Array.from(fieldset.querySelectorAll('input[type="checkbox"]'));
+
+    const currentIndex = groupCheckboxes.findIndex((el) => el === currentEl);
+    if (currentIndex === -1) return;
+
+    const nextIndex = isArrowDown ? currentIndex + 1 : currentIndex - 1;
+    const nextEl = groupCheckboxes[nextIndex];
+
+    if (nextEl) {
+      nextEl.focus();
+    }
+  };
 
   render() {
     const {
@@ -276,6 +309,7 @@ export class ChoiceInput extends React.Component {
       value,
       id: this.choiceId,
       onChange: this.onToggleChoice,
+      onKeyDown: this.handleKeyDown,
       'aria-describedby': this.descId,
     };
 
