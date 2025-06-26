@@ -94,7 +94,7 @@ export class MultipleChoice extends React.Component {
     customAudioButton: {
       playImage: PropTypes.string,
       pauseImage: PropTypes.string,
-    }
+    },
   };
 
   constructor(props) {
@@ -106,6 +106,7 @@ export class MultipleChoice extends React.Component {
     };
 
     this.onToggle = this.onToggle.bind(this);
+    this.firstInputRef = React.createRef();
   }
 
   isSelected(value) {
@@ -222,6 +223,19 @@ export class MultipleChoice extends React.Component {
     );
   }
 
+  handleGroupFocus = (e) => {
+    const fieldset = e.currentTarget;
+    const activeEl = document.activeElement;
+
+    if (fieldset.contains(activeEl) && activeEl !== fieldset) {
+      return;
+    }
+
+    if (this.firstInputRef?.current) {
+      this.firstInputRef.current.focus();
+    }
+  };
+
   render() {
     const {
       mode,
@@ -243,7 +257,7 @@ export class MultipleChoice extends React.Component {
       maxSelections,
       autoplayAudioEnabled,
       session,
-      customAudioButton
+      customAudioButton,
     } = this.props;
     const { showCorrect, maxSelectionsErrorState } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -264,7 +278,11 @@ export class MultipleChoice extends React.Component {
       if (minSelections && maxSelections) {
         return minSelections === maxSelections
           ? translator.t('translation:multipleChoice:minmaxSelections_equal', { lng: language, minSelections })
-          : translator.t('translation:multipleChoice:minmaxSelections_range', { lng: language, minSelections, maxSelections });
+          : translator.t('translation:multipleChoice:minmaxSelections_range', {
+              lng: language,
+              minSelections,
+              maxSelections,
+            });
       }
 
       if (minSelections) {
@@ -275,7 +293,7 @@ export class MultipleChoice extends React.Component {
     };
 
     return (
-        <div id={'main-container'} className={classNames(classes.main, className, 'multiple-choice')}>
+      <div id={'main-container'} className={classNames(classes.main, className, 'multiple-choice')}>
         {partLabel && <h3 className={classes.partLabel}>{partLabel}</h3>}
 
         {this.renderHeading()}
@@ -297,7 +315,12 @@ export class MultipleChoice extends React.Component {
           </div>
         )}
 
-        <fieldset tabIndex={0} className={classes.fieldset} role={choiceMode === 'radio' ? 'radiogroup' : 'group'}>
+        <fieldset
+          tabIndex={0}
+          className={classes.fieldset}
+          onFocus={this.handleGroupFocus}
+          role={choiceMode === 'radio' ? 'radiogroup' : 'group'}
+        >
           <PreviewPrompt
             className="prompt"
             defaultClassName="prompt"
@@ -325,6 +348,7 @@ export class MultipleChoice extends React.Component {
           >
             {choices.map((choice, index) => (
               <StyledChoice
+                autoFocusRef={index === 0 ? this.firstInputRef : null}
                 choicesLayout={this.props.choicesLayout}
                 selectedAnswerBackgroundColor={this.props.selectedAnswerBackgroundColor}
                 gridColumns={gridColumns}
@@ -336,7 +360,7 @@ export class MultipleChoice extends React.Component {
                 isEvaluateMode={isEvaluateMode}
                 choiceMode={choiceMode}
                 disabled={disabled}
-                tagName={partLabel ? `group-${partLabel}`: 'group'}
+                tagName={partLabel ? `group-${partLabel}` : 'group'}
                 onChoiceChanged={this.handleChange}
                 hideTick={choice.hideTick}
                 checked={this.getChecked(choice)}
@@ -348,10 +372,8 @@ export class MultipleChoice extends React.Component {
           </div>
         </fieldset>
 
-        {choiceMode === 'checkbox' && (selections < minSelections) && (
-          <div className={classes.errorText}>
-            {getMultipleChoiceMinSelectionErrorMessage()}
-          </div>
+        {choiceMode === 'checkbox' && selections < minSelections && (
+          <div className={classes.errorText}>{getMultipleChoiceMinSelectionErrorMessage()}</div>
         )}
         {choiceMode === 'checkbox' && maxSelectionsErrorState && (
           <div className={classes.errorText}>

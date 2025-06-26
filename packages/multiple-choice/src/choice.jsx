@@ -33,6 +33,7 @@ export class Choice extends React.Component {
       gridColumns,
       isSelectionButtonBelow,
       selectedAnswerBackgroundColor,
+      autoFocusRef,
       tagName
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
@@ -65,7 +66,7 @@ export class Choice extends React.Component {
 
     return (
       <div className={choiceClass} key={index} style={{ backgroundColor: choiceBackground }}>
-        <ChoiceInput {...choiceProps} className={names} />
+        <ChoiceInput {...choiceProps} className={names} autoFocusRef={autoFocusRef} />
       </div>
     );
   }
@@ -88,7 +89,8 @@ Choice.propTypes = {
   gridColumns: PropTypes.string,
   selectedAnswerBackgroundColor: PropTypes.string,
   tagName: PropTypes.string,
-  isSelectionButtonBelow: PropTypes.bool
+  isSelectionButtonBelow: PropTypes.bool,
+  autoFocusRef: PropTypes.object,
 };
 
 export default withStyles((theme) => ({

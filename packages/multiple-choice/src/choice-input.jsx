@@ -121,7 +121,7 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, value, id, onKeyDown } = props;
+  const { correctness, classes, checked, onChange, disabled, value, id, onKeyDown, inputRef } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -135,6 +135,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
   return (
     <Checkbox
       id={id}
+      inputRef={inputRef}
       aria-checked={checked}
       onKeyDown={onKeyDown}
       focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
@@ -332,7 +333,7 @@ export class ChoiceInput extends React.Component {
     ) : (
       <>
         {hasMathOrImage && screenReaderLabel}
-        <Tag {...tagProps} />
+        <Tag {...tagProps} inputRef={this.props.autoFocusRef} />
       </>
     );
 
