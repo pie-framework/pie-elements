@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import DeleteWidget from '../DeleteWidget'; // Adjust the import path as needed
-import ImageComponent from '../hotspot/image-konva';
+import ImageComponent from '../image-konva';
 
 describe('DeleteWidget', () => {
     it('computes positionX and positionY correctly without points', () => {
