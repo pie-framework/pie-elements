@@ -215,7 +215,6 @@ export class Design extends React.Component {
       spellCheckEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
-      maxAnswerChoices,
       extraCSSRules,
     } = model || {};
     const {
@@ -428,9 +427,6 @@ export class Design extends React.Component {
                     categories={categoriesList}
                     onModelChanged={this.updateModel}
                     uploadSoundSupport={uploadSoundSupport}
-                    toolbarOpts={toolbarOpts}
-                    defaultImageMaxWidth={defaultImageMaxWidth}
-                    defaultImageMaxHeight={defaultImageMaxHeight}
                     mathMlOptions={mathMlOptions}
                   />
                 </React.Fragment>

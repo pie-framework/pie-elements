@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Rect, Group } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
-import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
+import ImageComponent from './image-konva-tooltip';
 import { faCorrect, faWrong } from './icons';
 
 class RectComponent extends React.Component {

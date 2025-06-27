@@ -130,6 +130,20 @@ const styles = (theme) => ({
   root: {
     color: color.text(),
     backgroundColor: color.background(),
+    // apply styles to tables to match the rest of the UI
+    '&:not(.MathJax) table': {
+      borderCollapse: 'collapse',
+    },
+    '&:not(.MathJax) table td, &:not(.MathJax) table th': {
+      padding: '8px 12px',
+      textAlign: 'left',
+    },
+    // reset paragraph margins and line-height inside lists to override client styles
+    '& ul p, & ol p': {
+      marginBottom: 0,
+      marginTop: 0,
+      lineHeight: 'normal',
+    },
   },
   listColumn: {
     display: 'flex',

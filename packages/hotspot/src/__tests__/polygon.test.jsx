@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Konva from 'konva';
@@ -8,7 +7,7 @@ import { Line } from 'react-konva';
 import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 
 import Polygon from '../hotspot/polygon';
-import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
+import ImageComponent from '../hotspot/image-konva-tooltip';
 import { faCorrect, faWrong } from '../hotspot/icons';
 
 Konva.isBrowser = false;
@@ -17,28 +16,24 @@ describe('Polygon', () => {
   let onClick, wrapper;
 
   const mkWrapper = (opts = {}) => {
-    opts = _.extend(
-      {
-        classes: {
-          base: 'base',
-        },
-        height: 200,
-        hotspotColor: 'rgba(137, 183, 244, 0.65)',
-        id: '1',
-        isCorrect: false,
-        isEvaluateMode: false,
-        evaluateText: null,
-        disabled: false,
-        outlineColor: 'blue',
-        selected: false,
-        points: [
-          { x: 94, y: 4 },
-          { x: 89, y: 4 },
-          { x: 36, y: 40 },
-        ],
-      },
-      opts,
-    );
+    opts = {
+      classes: { base: 'base' },
+      height: 200,
+      hotspotColor: 'rgba(137, 183, 244, 0.65)',
+      id: '1',
+      isCorrect: false,
+      isEvaluateMode: false,
+      evaluateText: null,
+      disabled: false,
+      outlineColor: 'blue',
+      selected: false,
+      points: [
+        { x: 94, y: 4 },
+        { x: 89, y: 4 },
+        { x: 36, y: 40 },
+      ],
+      ...opts,
+    };
 
     return shallow(<Polygon {...opts} onClick={onClick} />);
   };

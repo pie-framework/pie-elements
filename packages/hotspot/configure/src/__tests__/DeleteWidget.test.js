@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import DeleteWidget from '../DeleteWidget'; // Adjust the import path as needed
-import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
+import ImageComponent from '../image-konva';
 
 describe('DeleteWidget', () => {
     it('computes positionX and positionY correctly without points', () => {

@@ -7,13 +7,14 @@ import { withStyles } from '@material-ui/core/styles';
 import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import Translator from '@pie-lib/pie-toolbox/translator';
+import groupBy from 'lodash/groupBy';
+import flatMap from 'lodash/flatMap';
 
 const { translator } = Translator;
 import Image from './image-container';
 import InteractiveSection from './interactive-section';
 import PossibleResponses from './possible-responses';
 import { getUnansweredAnswers, getAnswersCorrectness } from './utils-correctness';
-import _ from 'lodash';
 
 const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
@@ -45,17 +46,15 @@ export class ImageClozeAssociationComponent extends React.Component {
       id: `${index}`,
     }));
 
-    answers = _(answers || [])
-      .groupBy('containerIndex')
-      // keep only last maxResponsePerZone answers for each zone
-      .map((grp) => grp.slice(-(maxResponsePerZone || 1)))
-      .flatMap()
+    let groupedAnswers = groupBy(answers || [], 'containerIndex');
+    // keep only last maxResponsePerZone answers for each zone
+    let limitedAnswers = flatMap(groupedAnswers, (grp) => grp.slice(-(maxResponsePerZone || 1)));
+    answers = limitedAnswers
       // set id for each answer
       .map((answer, index) => ({ ...answer, id: `${index}` }))
       // return only answer which have a valid container index
-      .filter((answer) => answer.containerIndex < responseContainers.length)
-      .value();
-
+      .filter((answer) => answer.containerIndex < responseContainers.length);    
+  
     const possibleResponsesFiltered = possibleResponsesWithIds.filter(
       (response) => !answers.find((answer) => answer.value === response.value),
     );
@@ -188,12 +187,12 @@ export class ImageClozeAssociationComponent extends React.Component {
         duplicateResponses || shouldNotPushInPossibleResponses
           ? possibleResponses
           : [
-              ...possibleResponses,
-              {
-                ...answer,
-                containerIndex: undefined,
-              },
-            ],
+            ...possibleResponses,
+            {
+              ...answer,
+              containerIndex: undefined,
+            },
+          ],
     });
     updateAnswer(answersToStore);
   };
@@ -296,7 +295,7 @@ export class ImageClozeAssociationComponent extends React.Component {
       />
     );
 
-   const renderPossibleResponses = () => {
+    const renderPossibleResponses = () => {
       if (showCorrect && showToggle) return null;
 
       return (
@@ -396,7 +395,7 @@ const WarningInfo = withStyles((theme) => ({
   <TransitionGroup>
     <CSSTransition classNames={'fb'} key="fb" timeout={300}>
       <div key="panel" className={classes.warning}>
-        <NotInterestedIcon color={'secondary'} fontSize={'small'}/>
+        <NotInterestedIcon color={'secondary'} fontSize={'small'} />
         <span className={classes.message} dangerouslySetInnerHTML={{ __html: message }} />
       </div>
     </CSSTransition>
