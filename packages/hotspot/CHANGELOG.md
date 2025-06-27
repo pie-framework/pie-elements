@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.9.9...@pie-element/hotspot@7.10.0) (2025-06-27)
+
+
+### Bug Fixes
+
+* test - update ImageComponent import path in DeleteWidget test ([8fc4dfd](https://github.com/pie-framework/pie-elements/commit/8fc4dfd6e275a258a995150430a91887e2fe588c))
+* tests. Update ImageComponent imports in DeleteWidget, Polygon, and Rectangle tests ([55080fc](https://github.com/pie-framework/pie-elements/commit/55080fc37644785a15710edf856a4a9611a7b888))
+* update pie-lib/pie-toolbox PD-5064 ([f61face](https://github.com/pie-framework/pie-elements/commit/f61face71312f0a4e46a16a646aa616b9d4ed8eb))
+
+
+### Features
+
+* **hotspot:** update ImageComponent imports and create new image-konva component PD-5064 ([2d25656](https://github.com/pie-framework/pie-elements/commit/2d25656ad3d543b2748587f8652f4062d3fdc050))
+
+
+
+
+
 ## [7.9.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.9.8...@pie-element/hotspot@7.9.9) (2025-06-25)
 
 

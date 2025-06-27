@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.16.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.16.3...@pie-element/multiple-choice@9.16.4) (2025-06-27)
+
+
+### Bug Fixes
+
+* revert  demo model with math content for accessibility testing ([c4a37e3](https://github.com/pie-framework/pie-elements/commit/c4a37e3f49c79609dc1d07ba742570776df03caa))
+* update pie-lib/pie-toolbox PD-5064 ([f61face](https://github.com/pie-framework/pie-elements/commit/f61face71312f0a4e46a16a646aa616b9d4ed8eb))
+* use demo model with math content for accessibility testing ([ab529fe](https://github.com/pie-framework/pie-elements/commit/ab529fe21aff6c27e23b1db977c958de85b46eea))
+
+
+
+
+
 ## [9.16.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.16.2...@pie-element/multiple-choice@9.16.3) (2025-06-25)
 
 

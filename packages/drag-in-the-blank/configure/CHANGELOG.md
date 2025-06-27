@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.5.1...@pie-element/drag-in-the-blank-configure@6.5.2) (2025-06-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5064 ([f61face](https://github.com/pie-framework/pie-elements/commit/f61face71312f0a4e46a16a646aa616b9d4ed8eb))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.5.0...@pie-element/drag-in-the-blank-configure@6.5.1) (2025-06-25)
 
 
