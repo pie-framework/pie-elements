@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
-
-import chunk from 'lodash/chunk';
 
 import GridContent from './grid-content';
 import Category, { CategoryType } from './category';
@@ -36,7 +33,11 @@ export class Categories extends React.Component {
 
     // split categories into an array of arrays (inner array),
     // where each inner array represents how many categories should be displayed on one row
-    const chunkedCategories = chunk(categories, categoriesPerRow);
+    const chunkedCategories = [];
+    const cats = categories || [];
+    for (let i = 0; i < cats.length; i += categoriesPerRow) {
+      chunkedCategories.push(cats.slice(i, i + categoriesPerRow));
+    }
 
     const hasNonEmptyString = (array) => {
       let found = false;

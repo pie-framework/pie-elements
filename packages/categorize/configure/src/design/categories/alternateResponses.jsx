@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import Category from './category';
 import { moveChoiceToAlternate, removeChoiceFromAlternate } from '@pie-lib/pie-toolbox/categorize';
-import { RowLabel } from './RowLabel';
+
+import Category from './category';
 import { getMaxCategoryChoices } from '../../utils';
 
 const styles = (theme) => ({
@@ -28,9 +28,6 @@ const styles = (theme) => ({
   rowLabel: {
     gridColumn: '1/3',
   },
-  rowLabelHolder: {
-    width: '100%',
-  },
 });
 
 export class AlternateResponses extends React.Component {
@@ -44,15 +41,12 @@ export class AlternateResponses extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     categories: PropTypes.array,
-    defaultImageMaxHeight: PropTypes.number,
-    defaultImageMaxWidth: PropTypes.number,
     onModelChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
-    toolbarOpts: PropTypes.object,
     spellCheck: PropTypes.bool,
   };
 
@@ -161,14 +155,10 @@ export class AlternateResponses extends React.Component {
       imageSupport,
       spellCheck,
       uploadSoundSupport,
-      toolbarOpts,
-      defaultImageMaxHeight,
-      defaultImageMaxWidth,
       mathMlOptions = {},
     } = this.props;
     const { categoriesPerRow, errors, rowLabels } = model;
     const { duplicateAlternate } = errors || {};
-    const { maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`,
