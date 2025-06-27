@@ -7,7 +7,7 @@ import { Rect } from 'react-konva';
 import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 
 import Rectangle from '../hotspot/rectangle';
-import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
+import ImageComponent from '../hotspot/image-konva-tooltip';
 import { faCorrect, faWrong } from '../hotspot/icons';
 
 global.MutationObserver = class {

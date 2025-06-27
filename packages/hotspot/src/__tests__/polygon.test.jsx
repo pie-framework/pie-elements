@@ -7,7 +7,7 @@ import { Line } from 'react-konva';
 import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 
 import Polygon from '../hotspot/polygon';
-import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
+import ImageComponent from '../hotspot/image-konva-tooltip';
 import { faCorrect, faWrong } from '../hotspot/icons';
 
 Konva.isBrowser = false;
