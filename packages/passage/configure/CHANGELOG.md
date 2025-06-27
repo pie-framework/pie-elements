@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@2.5.2...@pie-element/passage-configure@2.5.3) (2025-06-25)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5059 ([d6f2203](https://github.com/pie-framework/pie-elements/commit/d6f22032dcfb049ce7aeb496f94456fdd06d4139))
+
+
+
+
+
 ## [2.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@2.5.1...@pie-element/passage-configure@2.5.2) (2025-06-19)
 
 

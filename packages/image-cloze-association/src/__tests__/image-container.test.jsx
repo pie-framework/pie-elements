@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { shallow } from 'enzyme';
 
 import ImageContainer from '../image-container';
@@ -24,19 +23,17 @@ describe('Image Container', () => {
   let wrapper;
 
   const mkWrapper = (opts = {}) => {
-    opts = _.extend(
-      {
-        answers: [],
-        canDrag: true,
-        draggingElement: {},
-        image: {},
-        onAnswerSelect: () => {},
-        onDragAnswerBegin: () => {},
-        onDragAnswerEnd: () => {},
-        responseContainers: [],
-      },
-      opts,
-    );
+    opts = {
+      answers: [],
+      canDrag: true,
+      draggingElement: {},
+      image: {},
+      onAnswerSelect: () => {},
+      onDragAnswerBegin: () => {},
+      onDragAnswerEnd: () => {},
+      responseContainers: [],
+      ...opts,
+    };
 
     return shallow(<ImageContainer {...opts} />);
   };

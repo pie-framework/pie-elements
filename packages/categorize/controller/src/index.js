@@ -12,22 +12,6 @@ import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
 
 export { score };
 
-// PD-2960: make sure we don't have alternates in model or possibility to add them (temporary solution)
-// this function is used in configure part, too
-const disableAlternateResponses = (question) => {
-  let { correctResponse } = question || {};
-  correctResponse = correctResponse || [];
-  const mappedCorrectResponse = correctResponse.map((cr) => {
-    const { alternateResponses, ...response } = cr;
-    return response;
-  });
-  return {
-    ...question,
-    correctResponse: mappedCorrectResponse,
-    allowAlternateEnabled: false,
-  };
-};
-
 export const getPartialScore = (correctResponse, builtCategories) => {
   // in the resulted best scenario we make a sum with all the correct responses
   // and all the placements
