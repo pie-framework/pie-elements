@@ -152,7 +152,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, value, id, tagName } = props;
+  const { correctness, classes, checked, onChange, disabled, value, id, tagName, inputRef } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -166,6 +166,7 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
   return (
     <Radio
       id={id}
+      inputRef={inputRef}
       aria-checked={checked}
       focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
       disableRipple
