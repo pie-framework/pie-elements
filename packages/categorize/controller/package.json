@@ -2,7 +2,7 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/pie-toolbox": "2.18.1",
+    "@pie-lib/pie-toolbox": "2.19.0",
     "lodash": "^4.17.15"
   },
   "version": "7.8.9",
