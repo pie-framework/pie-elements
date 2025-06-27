@@ -2276,10 +2276,10 @@
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-player-events/-/pie-player-events-0.1.0.tgz#0150904118fd604559982ab658967811c053ffe3"
   integrity sha512-6H1tlRGmcZ3Wt+8HMqu5KugVcwwyNrMylfI5rIpvOSt0T82QDmjRj+2sPgQG5zos/w6MtwUqn/QZ+8Rq2EXSOA==
 
-"@pie-lib/pie-toolbox@2.18.1":
-  version "2.18.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.18.1.tgz#1d0c9d431cc3e39af999195f251ace8a165caa6b"
-  integrity sha512-AC3WjgKD5PlqUCdg+9wF9Adfnekcv5J27cK5Bul+Gd51zUtxQql7jMbGPIOnW1towAL212HL3e2UNFZhJvuakg==
+"@pie-lib/pie-toolbox@2.19.0":
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.19.0.tgz#d2f60f85aec4a4838272f8cae43da8b766953eb5"
+  integrity sha512-jlvL6wd8PBlOETcw8wH0RuHCYQeMSFAchDN3N3jC6GfvEw7dWoIc7Cfz1xDl1rfeUpRVk33WJnLOOMkelCT1xg==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2309,7 +2309,6 @@
     invariant "^2.2.4"
     jsesc "^2.5.2"
     keycode "^2.2.0"
-    konva "^3.2.4"
     lodash "^4.17.11"
     mathjax-full "3.2.2"
     mathjs "^7.0.1"
@@ -2325,7 +2324,6 @@
     react-draggable "^3.1.1"
     react-input-autosize "^2.2.1"
     react-jss "^8.6.1"
-    react-konva "^16.9.0-0"
     react-measure "^2.2.2"
     react-portal "^4.2.0"
     react-redux "^6.0.0"
