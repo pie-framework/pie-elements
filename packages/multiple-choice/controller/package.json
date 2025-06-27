@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/multiple-choice-controller",
   "private": true,
-  "version": "5.9.9",
+  "version": "5.9.10",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.8.1...@pie-element/rubric@4.8.2) (2025-06-27)
+
+
+### Bug Fixes
+
+* conflicts ([015756c](https://github.com/pie-framework/pie-elements/commit/015756cbd8e78f91df4cb04ff2d553ae990a8c68))
+* update pie-lib/pie-toolbox PD-5064 ([f61face](https://github.com/pie-framework/pie-elements/commit/f61face71312f0a4e46a16a646aa616b9d4ed8eb))
+* **rubric:** enhance table styles for better UI consistency PD-5091 ([fccac14](https://github.com/pie-framework/pie-elements/commit/fccac14614d241f0ec913787ee1be889bf7070b7))
+* **rubric:** reset paragraph margins and line-height for list items in styles PD-5090 ([334343f](https://github.com/pie-framework/pie-elements/commit/334343f39b654e7176ad0bc12e8dba25fa063dff))
+
+
+
+
+
 ## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.8.0...@pie-element/rubric@4.8.1) (2025-06-25)
 
 
