@@ -130,6 +130,12 @@ const styles = (theme) => ({
   root: {
     color: color.text(),
     backgroundColor: color.background(),
+    // reset paragraph margins and line-height inside lists to override client styles
+    '& ul p, & ol p': {
+      marginBottom: 0,
+      marginTop: 0,
+      lineHeight: 'normal',
+    },
   },
   listColumn: {
     display: 'flex',
