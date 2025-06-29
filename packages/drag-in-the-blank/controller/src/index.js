@@ -59,7 +59,7 @@ export function model(question, session, env, updateSession) {
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }
 
-    const shouldIncludeCorrectResponse = env.mode === 'evaluate' || (env.role === 'instructor' && env.mode === 'view');
+    const shouldIncludeCorrectResponse = env.mode === 'evaluate';
 
     const out = {
       ...normalizedQuestion,
@@ -68,7 +68,7 @@ export function model(question, session, env, updateSession) {
       feedback,
       mode: env.mode,
       disabled: env.mode !== 'gather',
-      responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
+      responseCorrect:shouldIncludeCorrectResponse ? getScore(normalizedQuestion, session) === 1 : undefined,
       correctResponse: shouldIncludeCorrectResponse ? normalizedQuestion.correctResponse : undefined,
     };
 

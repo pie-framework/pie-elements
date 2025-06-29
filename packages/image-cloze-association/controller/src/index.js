@@ -15,7 +15,7 @@ export const model = (question, session, env) => {
   const questionCamelized = camelizeKeys(questionNormalized);
 
   return new Promise((resolve) => {
-    const shouldIncludeCorrectResponse = env.mode === 'evaluate' || (env.role === 'instructor' && env.mode === 'view');
+    const shouldIncludeCorrectResponse = env.mode === 'evaluate';
 
     const out = {
       disabled: env.mode !== 'gather',
