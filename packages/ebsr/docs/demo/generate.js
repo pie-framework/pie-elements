@@ -2,7 +2,7 @@ exports.model = (id, element) => ({
   id,
   element,
   partA: {
-    choiceMode: 'radio',
+    choiceMode: 'checkbox',
     choices: [
       {
         value: 'yellow',
@@ -24,7 +24,7 @@ exports.model = (id, element) => ({
     promptEnabled: true,
   },
   partB: {
-    choiceMode: 'radio',
+    choiceMode: 'checkbox',
     choices: [
       {
         value: 'orange',
