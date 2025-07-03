@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.11.2...@pie-element/drag-in-the-blank@6.11.3) (2025-07-03)
+
+
+### Bug Fixes
+
+* **drag-in-the-blank:** add missing spaces PD-5025 ([1817673](https://github.com/pie-framework/pie-elements/commit/1817673c7761c216286aeb7dc6c0644d942158ff))
+* **image-cloze-association:** get rid of correctResponse from model in view mode and instructor PD-5025 ([74555ee](https://github.com/pie-framework/pie-elements/commit/74555ee4b4d1f248cba191c1949c28f6f183d63d))
+
+
+
+
+
 ## [6.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.11.1...@pie-element/drag-in-the-blank@6.11.2) (2025-06-27)
 
 

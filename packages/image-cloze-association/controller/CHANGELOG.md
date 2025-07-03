@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@5.1.10...@pie-element/image-cloze-association-controller@5.1.11) (2025-07-03)
+
+
+### Bug Fixes
+
+* **image-cloze-association:** get rid of correctResponse from model in view mode and instructor PD-5025 ([74555ee](https://github.com/pie-framework/pie-elements/commit/74555ee4b4d1f248cba191c1949c28f6f183d63d))
+
+
+
+
+
 ## [5.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@5.1.9...@pie-element/image-cloze-association-controller@5.1.10) (2025-06-27)
 
 
