@@ -68,7 +68,7 @@ export function model(question, session, env, updateSession) {
       feedback,
       mode: env.mode,
       disabled: env.mode !== 'gather',
-      responseCorrect:shouldIncludeCorrectResponse ? getScore(normalizedQuestion, session) === 1 : undefined,
+      responseCorrect: shouldIncludeCorrectResponse ? getScore(normalizedQuestion, session) === 1 : undefined,
       correctResponse: shouldIncludeCorrectResponse ? normalizedQuestion.correctResponse : undefined,
     };
 
