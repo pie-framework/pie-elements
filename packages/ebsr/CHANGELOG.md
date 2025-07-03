@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.5.10...@pie-element/ebsr@10.5.11) (2025-07-03)
+
+
+### Bug Fixes
+
+* use checkbox choiceMode in ebsr for accessibility testing purpose PD-4562 ([30093a3](https://github.com/pie-framework/pie-elements/commit/30093a34a72f2cecf43197a09cb4778e430142f9))
+
+
+
+
+
 ## [10.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.5.9...@pie-element/ebsr@10.5.10) (2025-06-27)
 
 

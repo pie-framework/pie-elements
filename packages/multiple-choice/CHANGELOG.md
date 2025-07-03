@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.16.4...@pie-element/multiple-choice@9.17.0) (2025-07-03)
+
+
+### Bug Fixes
+
+* focus first choice in radio groups PD-4562 ([f06145e](https://github.com/pie-framework/pie-elements/commit/f06145e03d8445244a44cd8cbe6642c8fae4a5ac))
+* focus first input when tabbing into group PD-4562 ([6bcd947](https://github.com/pie-framework/pie-elements/commit/6bcd94780fb9aea9b2a73614ab1f465353c70b0a))
+
+
+### Features
+
+* **ebsr:** add arrow key navigation for checkbox groups scoped by fieldset PD-4562 ([c83c797](https://github.com/pie-framework/pie-elements/commit/c83c79753ddf2818ae0a4f544dd1f2ceb9ba5887))
+
+
+
+
+
 ## [9.16.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.16.3...@pie-element/multiple-choice@9.16.4) (2025-06-27)
 
 
