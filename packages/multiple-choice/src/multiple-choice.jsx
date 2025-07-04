@@ -231,8 +231,11 @@ export class MultipleChoice extends React.Component {
       return;
     }
 
-    if (this.firstInputRef?.current) {
-      this.firstInputRef.current.focus();
+    // Only focus the first input if user is tabbing forward
+    if (!e.relatedTarget || fieldset.compareDocumentPosition(e.relatedTarget) & Node.DOCUMENT_POSITION_PRECEDING) {
+      if (this.firstInputRef?.current) {
+        this.firstInputRef.current.focus();
+      }
     }
   };
 
