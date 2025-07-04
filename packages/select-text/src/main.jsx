@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextSelect, Legend } from '@pie-lib/pie-toolbox/text-select';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import {color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout} from '@pie-lib/pie-toolbox/render-ui';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import generateModel from './utils';
 
@@ -113,7 +113,7 @@ export class Main extends React.Component {
           maxNoOfSelections={model.maxSelections}
           animationsDisabled={model.animationsDisabled}
         />
-        {mode === 'evaluate' && <Legend language={model.language} />}
+        {mode === 'evaluate' && <Legend language={model.language} showOnlyCorrect={showCorrectAnswer} />}
 
         {showRationale &&
           (!model.animationsDisabled ? (
