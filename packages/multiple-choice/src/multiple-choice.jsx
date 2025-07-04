@@ -217,9 +217,9 @@ export class MultipleChoice extends React.Component {
     }
 
     return choiceMode === 'radio' ? (
-      <h2 className={classes.srOnly}>Multiple Choice Question</h2>
+      <h3 className={classes.srOnly}>Multiple Choice Question</h3>
     ) : (
-      <h2 className={classes.srOnly}>Multiple Select Question</h2>
+      <h3 className={classes.srOnly}>Multiple Select Question</h3>
     );
   }
 
@@ -294,7 +294,7 @@ export class MultipleChoice extends React.Component {
 
     return (
       <div id={'main-container'} className={classNames(classes.main, className, 'multiple-choice')}>
-        {partLabel && <h3 className={classes.partLabel}>{partLabel}</h3>}
+        {partLabel && <h2 className={classes.partLabel}>{partLabel}</h2>}
 
         {this.renderHeading()}
 
