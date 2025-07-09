@@ -69,7 +69,7 @@ function getIsAnswerCorrect(correctResponseItems, answerItem) {
           break;
         }
       } catch (e) {
-        log('Parse failure for value:', acceptedValues[i], e);
+        log('Parse failure when evaluating math', acceptedValues[i], answerItem, e);
         continue;
       }
     }
