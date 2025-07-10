@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/pie-toolbox/render-ui';
-import { Chart, chartTypes } from '@pie-lib/pie-toolbox/charting';
+import { Chart, chartTypes, KeyLegend } from '@pie-lib/pie-toolbox/charting';
 import isEqual from 'lodash/isEqual';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
@@ -61,6 +61,7 @@ export class Main extends React.Component {
       correctAnswer,
       language,
       env,
+      showKeyLegend,
     } = model;
 
     let { correctedAnswer, extraCSSRules } = model;
@@ -145,7 +146,7 @@ export class Main extends React.Component {
             labelsPlaceholders={{}}
           />
         )}
-
+        {!showingCorrect && showKeyLegend && (<KeyLegend></KeyLegend>)}
         {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
