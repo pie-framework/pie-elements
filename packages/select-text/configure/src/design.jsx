@@ -609,7 +609,7 @@ export class Design extends React.Component {
         {/*  )}*/}
         {/*</div>*/}
 
-        <div class={classes.subheader}>
+        <div className={classes.subheader}>
           NEW functionality
           <FormControlLabel
             control={<Switch checked={selectMode} onChange={() => this.setState({ selectMode: !selectMode })} />}
