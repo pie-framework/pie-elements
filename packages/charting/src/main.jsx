@@ -146,7 +146,7 @@ export class Main extends React.Component {
             labelsPlaceholders={{}}
           />
         )}
-        {!showingCorrect && showKeyLegend && (<KeyLegend></KeyLegend>)}
+        {!showingCorrect && showKeyLegend && (<KeyLegend language={language}></KeyLegend>)}
         {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
