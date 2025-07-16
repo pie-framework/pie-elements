@@ -1,4 +1,3 @@
-
 var createElementFromHTML = function createElementFromHTML() {
   var htmlString = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var div = document.createElement('div');
@@ -28,7 +27,7 @@ var prepareText = function prepareText(text) {
   var txtDom = createElementFromHTML(text);
 
   var div = document.createElement('div');
-  div.innerHTML = '<div separator=\'true\'>'.concat(txtDom.innerHTML, '</div>');
+  div.innerHTML = "<div separator='true'>".concat(txtDom.innerHTML, '</div>');
   txtDom = div;
 
   var allDomElements = Array.from(txtDom.querySelectorAll('*'));
@@ -110,4 +109,26 @@ export const generateValidationMessage = (config) => {
   const message = 'Validation requirements:' + tokensMessage + selectionsMessage;
 
   return message;
+};
+
+// also used in extended-text-entry
+export const clearSelection = () => {
+  if (document.getSelection) {
+    // for all new browsers (IE9+, Chrome, Firefox)
+    document.getSelection().removeAllRanges();
+    document.getSelection().addRange(document.createRange());
+  } else if (window.getSelection) {
+    // equals with the document.getSelection (MSDN info)
+    if (window.getSelection().removeAllRanges) {
+      // for all new browsers (IE9+, Chrome, Firefox)
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(document.createRange());
+    } else if (window.getSelection().empty) {
+      // Chrome supports this as well
+      window.getSelection().empty();
+    }
+  } else if (document.selection) {
+    // IE8-
+    document.selection.empty();
+  }
 };
