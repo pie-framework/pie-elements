@@ -11,15 +11,15 @@ import Info from '@material-ui/icons/Info';
 import debug from 'debug';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import Tooltip from '@material-ui/core/Tooltip';
-import { generateValidationMessage } from './utils';
-import {
-  clearSelection,
-  getDOMNodes,
-  getLabelElement,
-  getRangeDetails,
-  isSideLabel,
-  wrapRange,
-} from '@pie-element/extended-text-entry/src/annotation/annotation-utils';
+import { clearSelection, generateValidationMessage } from './utils';
+// import {
+//   clearSelection,
+//   getDOMNodes,
+//   getLabelElement,
+//   getRangeDetails,
+//   isSideLabel,
+//   wrapRange,
+// } from '@pie-element/extended-text-entry/src/annotation/annotation-utils';
 import classNames from 'classnames';
 
 import Switch from '@material-ui/core/Switch';
@@ -184,23 +184,23 @@ export class Design extends React.Component {
     return annotation;
   };
 
-  addAnnotation = (type) => {
-    const { annotations, onChange } = this.props;
-    const annotation = this.createNewAnnotation('', type);
-    const labelElem = getLabelElement(annotation.id);
-
-    annotations.push(annotation);
-
-    this.setState({
-      openedMenu: false,
-      openedEditor: true,
-      annotationIndex: annotations.length - 1,
-      annotation,
-      labelElem,
-    });
-
-    onChange(annotations);
-  };
+  // addAnnotation = (type) => {
+  //   const { annotations, onChange } = this.props;
+  //   const annotation = this.createNewAnnotation('', type);
+  //   const labelElem = getLabelElement(annotation.id);
+  //
+  //   annotations.push(annotation);
+  //
+  //   this.setState({
+  //     openedMenu: false,
+  //     openedEditor: true,
+  //     annotationIndex: annotations.length - 1,
+  //     annotation,
+  //     labelElem,
+  //   });
+  //
+  //   onChange(annotations);
+  // };
 
   // new functionalities
 
@@ -357,9 +357,16 @@ export class Design extends React.Component {
   };
 
   clearTokens = () => {
-    const { text } = this.state;
+    const { model } = this.props;
 
-    this.setState({ tokenizedText: text });
+    const container = document.createElement('div');
+    container.innerHTML = model.text;
+
+    // Remove all children and add new content
+    this.textRef.innerHTML = '';
+    this.textRef.appendChild(container);
+
+    this.setState({ tokenizedText: model.text });
   };
 
   selectWords = () => {
