@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@pie-framework/math-validation": "^1.4.0",
-    "@pie-lib/pie-toolbox": "2.20.0",
+    "@pie-lib/pie-toolbox": "2.21.0",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },
