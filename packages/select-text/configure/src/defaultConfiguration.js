@@ -83,11 +83,6 @@ export default {
     text: {
       settings: true,
       label: 'Content',
-      inputConfiguration: {
-        audio: { disabled: true },
-        video: { disabled: true },
-        image: { disabled: true },
-      },
     },
     tokens: {
       settings: true,
