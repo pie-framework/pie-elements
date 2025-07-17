@@ -1,4 +1,3 @@
-
 var createElementFromHTML = function createElementFromHTML() {
   var htmlString = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var div = document.createElement('div');
@@ -28,7 +27,7 @@ var prepareText = function prepareText(text) {
   var txtDom = createElementFromHTML(text);
 
   var div = document.createElement('div');
-  div.innerHTML = '<div separator=\'true\'>'.concat(txtDom.innerHTML, '</div>');
+  div.innerHTML = "<div separator='true'>".concat(txtDom.innerHTML, '</div>');
   txtDom = div;
 
   var allDomElements = Array.from(txtDom.querySelectorAll('*'));
