@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@7.3.2...@pie-element/math-inline-controller@7.4.0) (2025-07-18)
+
+
+### Bug Fixes
+
+* allow math-inline scoring to continue even if one alternate answer fails parsing ([540e3a9](https://github.com/pie-framework/pie-elements/commit/540e3a902cd02408d22337484bbe3fdbd1abbcc6))
+* bump math-validation PD-4848 ([bd6d706](https://github.com/pie-framework/pie-elements/commit/bd6d706f251ef39b580063100594d81ba2518752))
+* update pie-lib/pie-toolbox PD-363 ([10ce402](https://github.com/pie-framework/pie-elements/commit/10ce402bcb1c0c9c24dfc9ecff2e13c4de14a753))
+
+
+### Features
+
+* update pie-lib/pie toolbox PD-5082, PD-5081, PD-3797, PD-5083, revert PD-363, PD-653 ([9214466](https://github.com/pie-framework/pie-elements/commit/92144667464f18c213c7ab1d769595e43b553dab))
+* update pie-lib/pie-toolbox PD-5082, PD-5081, PD-3797, PD-5083, PD-4885, PD-5097, PD-5100, PD-5131, PD-5080 ([dc67b1c](https://github.com/pie-framework/pie-elements/commit/dc67b1c735b2adb60943e5d145e739ce4e39a428))
+
+
+
+
+
 ## [7.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@7.3.1...@pie-element/math-inline-controller@7.3.2) (2025-06-27)
 
 

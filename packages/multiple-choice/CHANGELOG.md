@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.17.0...@pie-element/multiple-choice@9.18.0) (2025-07-18)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-363 ([10ce402](https://github.com/pie-framework/pie-elements/commit/10ce402bcb1c0c9c24dfc9ecff2e13c4de14a753))
+* **ebsr:** prevent focus override on shift+tab by checking tab direction into group PD-4562 ([eebe9a9](https://github.com/pie-framework/pie-elements/commit/eebe9a924fa509a04c0c2618411d42eb376345a5))
+* **ebsr:** update heading levels for accessibility PD-5112 ([2c42145](https://github.com/pie-framework/pie-elements/commit/2c421458e3c987277127c59fa216a85bc335cf89))
+
+
+### Features
+
+* update pie-lib/pie toolbox PD-5082, PD-5081, PD-3797, PD-5083, revert PD-363, PD-653 ([9214466](https://github.com/pie-framework/pie-elements/commit/92144667464f18c213c7ab1d769595e43b553dab))
+* update pie-lib/pie-toolbox PD-5082, PD-5081, PD-3797, PD-5083, PD-4885, PD-5097, PD-5100, PD-5131, PD-5080 ([dc67b1c](https://github.com/pie-framework/pie-elements/commit/dc67b1c735b2adb60943e5d145e739ce4e39a428))
+
+
+
+
+
 # [9.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.16.4...@pie-element/multiple-choice@9.17.0) (2025-07-03)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@8.4.10...@pie-element/select-text-configure@8.5.0) (2025-07-18)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-363 ([10ce402](https://github.com/pie-framework/pie-elements/commit/10ce402bcb1c0c9c24dfc9ecff2e13c4de14a753))
+
+
+### Features
+
+* update pie-lib/pie toolbox PD-5082, PD-5081, PD-3797, PD-5083, revert PD-363, PD-653 ([9214466](https://github.com/pie-framework/pie-elements/commit/92144667464f18c213c7ab1d769595e43b553dab))
+* update pie-lib/pie-toolbox PD-5082, PD-5081, PD-3797, PD-5083, PD-4885, PD-5097, PD-5100, PD-5131, PD-5080 ([dc67b1c](https://github.com/pie-framework/pie-elements/commit/dc67b1c735b2adb60943e5d145e739ce4e39a428))
+* **select-text:** move tokens into markup and implement custom selection POC PD-363 ([aca8eb3](https://github.com/pie-framework/pie-elements/commit/aca8eb3336a4111db12537b16d8ca0f4595b08ce))
+
+
+
+
+
 ## [8.4.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@8.4.9...@pie-element/select-text-configure@8.4.10) (2025-06-27)
 
 
