@@ -41,39 +41,36 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-function getIsAnswerCorrect(correctResponseItem, answerItem) {
+function getIsAnswerCorrect(correctResponseItems, answerItem) {
   let answerCorrect = false;
 
-  (correctResponseItem || []).forEach((correctResponse) => {
-    let opts = {
+  (correctResponseItems || []).forEach((correctResponse) => {
+    if (answerCorrect) return;
+
+    const opts = {
       mode: correctResponse.validation || defaults.validationDefault,
     };
 
-    if (opts.mode == 'literal') {
+    if (opts.mode === 'literal') {
       opts.literal = {
         allowTrailingZeros: correctResponse.allowTrailingZeros || false,
         ignoreOrder: correctResponse.ignoreOrder || false,
       };
     }
 
-    if (!answerCorrect) {
-      const acceptedValues =
-        [correctResponse.answer].concat(
-          Object.keys(correctResponse.alternates || {}).map((alternateId) => correctResponse.alternates[alternateId]),
-        ) || [];
+    const acceptedValues = [correctResponse.answer].concat(
+      Object.keys(correctResponse.alternates || {}).map((alternateId) => correctResponse.alternates[alternateId]),
+    );
 
+    for (let i = 0; i < acceptedValues.length; i++) {
       try {
-        for (let i = 0; i < acceptedValues.length; i++) {
-          answerCorrect = mv.latexEqual(answerItem, acceptedValues[i], opts);
-
-          if (answerCorrect) {
-            break;
-          }
+        if (mv.latexEqual(answerItem, acceptedValues[i], opts)) {
+          answerCorrect = true;
+          break;
         }
       } catch (e) {
-        log('Parse failure when evaluating math', e, correctResponse, answerItem);
-
-        answerCorrect = false;
+        log('Parse failure when evaluating math', acceptedValues[i], answerItem, e);
+        continue;
       }
     }
   });
