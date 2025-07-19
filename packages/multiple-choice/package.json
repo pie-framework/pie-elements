@@ -1,14 +1,17 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "9.18.0",
+  "version": "9.19.0-beta.0",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "2.22.0",
+    "@pie-lib/correct-answer-toggle": "^2.7.0-beta.0",
+    "@pie-lib/math-rendering": "^3.4.0-beta.0",
+    "@pie-lib/render-ui": "^4.17.0-beta.0",
+    "@pie-lib/translator": "^2.5.0-beta.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "enzyme-to-json": "^3.3.3",
