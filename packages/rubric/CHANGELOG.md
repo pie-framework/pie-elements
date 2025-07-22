@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.9.0...@pie-element/rubric@4.9.1) (2025-07-22)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-4885 ([a6d439e](https://github.com/pie-framework/pie-elements/commit/a6d439e49a0082f3d5e8bf46cc73c69d1d0ae311))
+
+
+
+
+
 # [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.8.2...@pie-element/rubric@4.9.0) (2025-07-18)
 
 
