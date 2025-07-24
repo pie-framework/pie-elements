@@ -82,17 +82,27 @@ export class Categories extends React.Component {
   };
 
   componentDidMount() {
-    // eslint-disable-next-line
-    const domNode = ReactDOM.findDOMNode(this);
+    try {
+      // eslint-disable-next-line react/no-find-dom-node
+      const domNode = ReactDOM.findDOMNode(this);
 
-    renderMath(domNode);
+      renderMath(domNode);
+    } catch (e) {
+      // Added try-catch block to handle "Unable to find node on an unmounted component" error from tests, thrown because of the usage of shallow
+      console.error('DOM not mounted');
+    }
   }
 
   componentDidUpdate() {
-    // eslint-disable-next-line
-    const domNode = ReactDOM.findDOMNode(this);
+    try {
+      // eslint-disable-next-line react/no-find-dom-node
+      const domNode = ReactDOM.findDOMNode(this);
 
-    renderMath(domNode);
+      renderMath(domNode);
+    } catch (e) {
+      // Added try-catch block to handle "Unable to find node on an unmounted component" error from tests, thrown because of the usage of shallow
+      console.error('DOM not mounted');
+    }
   }
 
   add = () => {
