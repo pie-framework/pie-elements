@@ -2276,10 +2276,10 @@
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-player-events/-/pie-player-events-0.1.0.tgz#0150904118fd604559982ab658967811c053ffe3"
   integrity sha512-6H1tlRGmcZ3Wt+8HMqu5KugVcwwyNrMylfI5rIpvOSt0T82QDmjRj+2sPgQG5zos/w6MtwUqn/QZ+8Rq2EXSOA==
 
-"@pie-lib/pie-toolbox@2.22.1":
-  version "2.22.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.22.1.tgz#29e83a757881b22c336ef9d43a4e176888ed7d5a"
-  integrity sha512-BjpEVfSL9u3NKJlhw5HS4YugQ4I8qoca2V8eqvrOby6BIL+ltzU/GEfKCyRHqRF1ImzpmLgCFtN9Agmi6ObtHA==
+"@pie-lib/pie-toolbox@2.22.2":
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.22.2.tgz#694e5ad6eb47752b0bb02b077f7f7aab53170ff1"
+  integrity sha512-cE4KYZT/lz1SPkK+4t/hb0RE8Z9Sdj0DnorA8r+MiC8lbpP8sqSU8th28X8gsTy1H0o9Y2zYlXkuYV74ccokfA==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
