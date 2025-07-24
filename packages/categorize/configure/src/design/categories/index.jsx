@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
@@ -16,6 +17,7 @@ import Category from './category';
 import Header from '../header';
 import { generateValidationMessage, getMaxCategoryChoices } from '../../utils';
 import { RowLabel } from './RowLabel';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 
 const styles = (theme) => ({
   categories: {
@@ -78,6 +80,20 @@ export class Categories extends React.Component {
   state = {
     focusedEl: null,
   };
+
+  componentDidMount() {
+    // eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
+  }
+
+  componentDidUpdate() {
+    // eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
+  }
 
   add = () => {
     const { model, categories: oldCategories } = this.props;
