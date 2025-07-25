@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@8.3.1...@pie-element/placement-ordering-controller@8.3.2) (2025-07-25)
+
+
+### Bug Fixes
+
+* refactor PD-5132, update pie-lib/pie-toolbox PD-3797 ([7434408](https://github.com/pie-framework/pie-elements/commit/7434408416a883fd680eec13fe1109711fd7e6b5))
+* update pie-lib/pie-toolbox PD-4885, PD-5131 ([4b9859c](https://github.com/pie-framework/pie-elements/commit/4b9859c919a1a7cc8e29d6168a91cd1f7d1aafd1))
+
+
+
+
+
 ## [8.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@8.3.0...@pie-element/placement-ordering-controller@8.3.1) (2025-07-22)
 
 
