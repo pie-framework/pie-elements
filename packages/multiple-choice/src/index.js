@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { EnableAudioAutoplayImage } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
+import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { updateSessionValue, updateSessionMetadata } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');

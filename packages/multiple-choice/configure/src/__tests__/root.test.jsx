@@ -3,10 +3,10 @@ import React from 'react';
 
 import { Main } from '../main';
 import defaults from '../defaults';
-import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 import MultipleChoice from '../index';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
     normalizeChoices: jest.fn((model) => model),
