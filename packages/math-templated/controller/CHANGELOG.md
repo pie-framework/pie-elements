@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@3.4.2...@pie-element/math-templated-controller@3.4.3) (2025-07-31)
+
+
+### Bug Fixes
+
+* bump math-validation PD-5052 ([9dcaaa6](https://github.com/pie-framework/pie-elements/commit/9dcaaa6081575b2e666c0f54c804035cdece6e46))
+
+
+
+
+
 ## [3.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@3.4.1...@pie-element/math-templated-controller@3.4.2) (2025-07-25)
 
 
