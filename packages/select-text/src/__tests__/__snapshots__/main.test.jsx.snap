@@ -11,27 +11,9 @@ exports[`main snapshot renders 1`] = `
   />
   <Component
     onChange={[Function]}
-    selectedTokens={
-      Array [
-        Object {
-          "end": 1,
-          "start": 0,
-          "text": "f",
-        },
-      ]
-    }
+    selectedTokens={Array []}
     text="foo"
-    tokens={
-      Array [
-        Object {
-          "end": 1,
-          "oldEnd": 1,
-          "oldStart": 0,
-          "start": 0,
-          "text": "f",
-        },
-      ]
-    }
+    tokens={Array []}
   />
 </WithStyles(UiLayout)>
 `;
@@ -47,27 +29,9 @@ exports[`main snapshot renders rationale 1`] = `
   />
   <Component
     onChange={[Function]}
-    selectedTokens={
-      Array [
-        Object {
-          "end": 1,
-          "start": 0,
-          "text": "f",
-        },
-      ]
-    }
+    selectedTokens={Array []}
     text="foo"
-    tokens={
-      Array [
-        Object {
-          "end": 1,
-          "oldEnd": 1,
-          "oldStart": 0,
-          "start": 0,
-          "text": "f",
-        },
-      ]
-    }
+    tokens={Array []}
   />
 </WithStyles(UiLayout)>
 `;
@@ -85,17 +49,7 @@ exports[`main snapshot renders showCorrect 1`] = `
     onChange={[Function]}
     selectedTokens={Array []}
     text="foo"
-    tokens={
-      Array [
-        Object {
-          "end": 1,
-          "oldEnd": 1,
-          "oldStart": 0,
-          "start": 0,
-          "text": "f",
-        },
-      ]
-    }
+    tokens={Array []}
   />
 </WithStyles(UiLayout)>
 `;
