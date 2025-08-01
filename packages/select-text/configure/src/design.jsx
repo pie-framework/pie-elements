@@ -10,6 +10,7 @@ import Chip from '@material-ui/core/Chip';
 import Info from '@material-ui/icons/Info';
 import debug from 'debug';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import Tooltip from '@material-ui/core/Tooltip';
 import { clearSelection, generateValidationMessage } from './utils';
 // import {
@@ -24,6 +25,7 @@ import classNames from 'classnames';
 
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import ReactDOM from 'react-dom';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
@@ -64,7 +66,8 @@ export class Design extends React.Component {
     if (model && model.text) {
       this.setState({
         text: model.text,
-        tokenizedText: model.text,
+        text: model.text,
+        tokenizedText: model.tokenizedText || model.text,
       });
 
       // model.tokens.forEach((annotation) => {
@@ -84,6 +87,15 @@ export class Design extends React.Component {
       //   }
       // });
     }
+  }
+
+  componentDidUpdate() {
+    // console.log('UPDATED');
+    // console.log('this.state.text', this.state.text);
+    //eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
   }
 
   updateText = debounce((val) => {
@@ -109,6 +121,17 @@ export class Design extends React.Component {
       const max = isFinite(u.maxSelections) ? u.maxSelections : 0;
 
       u.maxSelections = Math.max(max, correctTokenCount);
+    });
+  };
+
+  changeTokenizedText = (text) => {
+    this.apply((u) => {
+      u.tokenizedText = text;
+
+      // const correctTokenCount = tokens.filter((t) => t.correct).length;
+      // const max = isFinite(u.maxSelections) ? u.maxSelections : 0;
+      //
+      // u.maxSelections = Math.max(max, correctTokenCount);
     });
   };
 
@@ -343,6 +366,13 @@ export class Design extends React.Component {
     if (selection && selection.rangeCount > 0) {
       this.wrapSelectionInSpan(selection);
       clearSelection();
+
+      if (this.textRef) {
+        const content = this.textRef.getHTML();
+
+        this.changeTokenizedText(content);
+        // this.setState({ tokenizedText: content });
+      }
     }
   };
 
@@ -359,13 +389,16 @@ export class Design extends React.Component {
   clearTokens = () => {
     const { model } = this.props;
 
-    const container = document.createElement('div');
-    container.innerHTML = model.text;
+    if (this.textRef) {
+      const container = document.createElement('div');
+      container.innerHTML = model.text;
 
-    // Remove all children and add new content
-    this.textRef.innerHTML = '';
-    this.textRef.appendChild(container);
+      // Remove all children and add new content
+      this.textRef.innerHTML = '';
+      this.textRef.appendChild(container);
+    }
 
+    this.changeTokenizedText(model.text);
     this.setState({ tokenizedText: model.text });
   };
 
@@ -376,6 +409,7 @@ export class Design extends React.Component {
 
     console.log('words:', tokenized);
 
+    this.changeTokenizedText(tokenized);
     this.setState({ tokenizedText: tokenized });
   };
 
@@ -390,6 +424,7 @@ export class Design extends React.Component {
 
     const tokenized = container.innerHTML;
     console.log('sentences:', tokenized);
+    this.changeTokenizedText(tokenized);
     // this.setState({ tokenizedText: tokenized });
   };
 
@@ -404,6 +439,7 @@ export class Design extends React.Component {
 
     const tokenized = container.innerHTML;
     console.log('paragraphs:', tokenized);
+    this.changeTokenizedText(tokenized);
     // this.setState({ tokenizedText: tokenized });
   };
 
@@ -619,7 +655,15 @@ export class Design extends React.Component {
         <div className={classes.subheader}>
           NEW functionality
           <FormControlLabel
-            control={<Switch checked={selectMode} onChange={() => this.setState({ selectMode: !selectMode })} />}
+            control={
+              <Switch
+                checked={selectMode}
+                onChange={() => {
+                  this.setState({ selectMode: !selectMode });
+                  // renderMath(this);
+                }}
+              />
+            }
             label="Select tokens"
           />
         </div>
