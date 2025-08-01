@@ -8,6 +8,8 @@ import {
   InsertSoundEvent,
   DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+
 import defaultValues from './defaultConfiguration';
 import { generateModel } from './utils';
 
@@ -57,7 +59,7 @@ export default class SelectTextConfigure extends HTMLElement {
 
       // check if the language is already included in the languageChoices.options array
       // and if not, then add it.
-      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
         this._configuration.languageChoices.options.push({
           value: this._model.language,
           label: this._model.language,
@@ -127,7 +129,9 @@ export default class SelectTextConfigure extends HTMLElement {
         },
       });
 
-      ReactDOM.render(el, this);
+      ReactDOM.render(el, this, () => {
+        renderMath(this);
+      });
     }
   }
 }

@@ -122,6 +122,7 @@ export const model = (question, session, env) => {
         highlightChoices: normalizedQuestion.highlightChoices,
         prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
         text: normalizedQuestion.text,
+        tokenizedText: normalizedQuestion.tokenizedText,
         disabled: env.mode !== 'gather',
         maxSelections: normalizedQuestion.maxSelections,
         correctness,

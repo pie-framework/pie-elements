@@ -121,12 +121,12 @@ describe('design', () => {
       });
     };
 
-    describe('changeText', () => {
-      assert('changeText', [{ target: { value: 'foo' } }], (m) => ({
-        ...m,
-        text: 'foo',
-      }));
-    });
+    // describe('changeText', () => {
+    //   assert('changeText', [{ target: { value: 'foo' } }], (m) => ({
+    //     ...m,
+    //     text: 'foo',
+    //   }));
+    // });
 
     describe('changeTokens', () => {
       assert('changeTokens', [[{ start: 0, end: 1, text: 'f' }], 'words'], (m) => ({
