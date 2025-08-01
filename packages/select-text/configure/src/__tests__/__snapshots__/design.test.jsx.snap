@@ -141,6 +141,17 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "settings": true,
           },
           "text": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
             "label": "Content",
             "settings": true,
           },
@@ -183,68 +194,73 @@ exports[`design snapshot renders all items except feedback 1`] = `
     />
   }
 >
+  <div>
+    NEW functionality
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+        />
+      }
+      label="Select tokens"
+    />
+  </div>
   <Component
     label="Content"
   >
-    <TextField
-      defaultValue=""
-      multiline={true}
-      onChange={[Function]}
-      required={false}
-      select={false}
-      variant="standard"
-    />
-  </Component>
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tooltip)
-      classes={
+    <EditableHtml
+      allowValidation={false}
+      disableUnderline={true}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
         Object {
-          "tooltip": undefined,
+          "mmlEditing": false,
+          "mmlOutput": false,
         }
       }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
-There should be at least 2 tokens defined.
-There should be at least 1 token selected."
-    >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "left": "48px",
-            "position": "absolute",
-            "top": "-3px",
-          }
-        }
-      />
-    </WithStyles(Tooltip)>
-    <WithStyles(Tokenizer)
+      nonEmpty={false}
       onChange={[Function]}
-      tokens={Array []}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
+          "showParagraphs": Object {
+            "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
     />
   </Component>
-  <div>
-    <WithStyles(Chip)
-      label="Mode: None"
-    />
-    <WithStyles(Chip)
-      label="Selections Available: 0"
-    />
-    <WithStyles(Chip)
-      label="Correct Answers: 0"
-    />
-    <Component
-      label="Selection count (0:any)"
-      max={0}
-      min={0}
-      onChange={[Function]}
-    />
-  </div>
 </ConfigLayout>
 `;
 
@@ -389,6 +405,17 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "settings": true,
           },
           "text": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
             "label": "Content",
             "settings": false,
           },
@@ -431,54 +458,16 @@ exports[`design snapshot renders all items except the content input 1`] = `
     />
   }
 >
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tooltip)
-      classes={
-        Object {
-          "tooltip": undefined,
-        }
-      }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
-There should be at least 2 tokens defined.
-There should be at least 1 token selected."
-    >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "left": "48px",
-            "position": "absolute",
-            "top": "-3px",
-          }
-        }
-      />
-    </WithStyles(Tooltip)>
-    <WithStyles(Tokenizer)
-      onChange={[Function]}
-      tokens={Array []}
-    />
-  </Component>
   <div>
-    <WithStyles(Chip)
-      label="Mode: None"
-    />
-    <WithStyles(Chip)
-      label="Selections Available: 0"
-    />
-    <WithStyles(Chip)
-      label="Correct Answers: 0"
-    />
-    <Component
-      label="Selection count (0:any)"
-      max={0}
-      min={0}
-      onChange={[Function]}
+    NEW functionality
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+        />
+      }
+      label="Select tokens"
     />
   </div>
 </ConfigLayout>
@@ -625,6 +614,17 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "settings": true,
           },
           "text": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
             "label": "Content",
             "settings": true,
           },
@@ -667,68 +667,73 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
     />
   }
 >
+  <div>
+    NEW functionality
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+        />
+      }
+      label="Select tokens"
+    />
+  </div>
   <Component
     label="Content"
   >
-    <TextField
-      defaultValue=""
-      multiline={true}
-      onChange={[Function]}
-      required={false}
-      select={false}
-      variant="standard"
-    />
-  </Component>
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tooltip)
-      classes={
+    <EditableHtml
+      allowValidation={false}
+      disableUnderline={true}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
         Object {
-          "tooltip": undefined,
+          "mmlEditing": false,
+          "mmlOutput": false,
         }
       }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
-There should be at least 2 tokens defined.
-There should be at least 1 token selected."
-    >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "left": "48px",
-            "position": "absolute",
-            "top": "-3px",
-          }
-        }
-      />
-    </WithStyles(Tooltip)>
-    <WithStyles(Tokenizer)
+      nonEmpty={false}
       onChange={[Function]}
-      tokens={Array []}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
+          "showParagraphs": Object {
+            "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
     />
   </Component>
-  <div>
-    <WithStyles(Chip)
-      label="Mode: None"
-    />
-    <WithStyles(Chip)
-      label="Selections Available: 0"
-    />
-    <WithStyles(Chip)
-      label="Correct Answers: 0"
-    />
-    <Component
-      label="Selection count (0:any)"
-      max={0}
-      min={0}
-      onChange={[Function]}
-    />
-  </div>
 </ConfigLayout>
 `;
 
@@ -873,6 +878,17 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "settings": true,
           },
           "text": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
             "label": "Content",
             "settings": true,
           },
@@ -916,68 +932,72 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
     />
   }
 >
+  <div>
+    NEW functionality
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+        />
+      }
+      label="Select tokens"
+    />
+  </div>
   <Component
     label="Content"
   >
-    <TextField
-      defaultValue="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
-      multiline={true}
-      onChange={[Function]}
-      required={false}
-      select={false}
-      variant="standard"
-    />
-  </Component>
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tooltip)
-      classes={
+    <EditableHtml
+      allowValidation={false}
+      disableUnderline={true}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
+      mathMlOptions={
         Object {
-          "tooltip": undefined,
+          "mmlEditing": false,
+          "mmlOutput": false,
         }
       }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
-There should be at least 2 tokens defined.
-There should be at least 1 token selected."
-    >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "left": "48px",
-            "position": "absolute",
-            "top": "-3px",
-          }
-        }
-      />
-    </WithStyles(Tooltip)>
-    <WithStyles(Tokenizer)
+      nonEmpty={false}
       onChange={[Function]}
-      text="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
-      tokens={Array []}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "separateParagraphs": Object {
+            "disabled": true,
+          },
+          "showParagraphs": Object {
+            "disabled": false,
+          },
+          "textAlign": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
     />
   </Component>
-  <div>
-    <WithStyles(Chip)
-      label="Mode: None"
-    />
-    <WithStyles(Chip)
-      label="Selections Available: 0"
-    />
-    <WithStyles(Chip)
-      label="Correct Answers: 0"
-    />
-    <Component
-      label="Selection count (0:any)"
-      max={0}
-      min={0}
-      onChange={[Function]}
-    />
-  </div>
 </ConfigLayout>
 `;

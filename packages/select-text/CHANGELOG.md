@@ -3,48 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [9.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@9.6.1...@pie-element/select-text@9.6.2) (2025-07-25)
-
-
-### Bug Fixes
-
-* refactor PD-5132, update pie-lib/pie-toolbox PD-3797 ([7434408](https://github.com/pie-framework/pie-elements/commit/7434408416a883fd680eec13fe1109711fd7e6b5))
-* update pie-lib/pie-toolbox PD-4885, PD-5131 ([4b9859c](https://github.com/pie-framework/pie-elements/commit/4b9859c919a1a7cc8e29d6168a91cd1f7d1aafd1))
-
-
-
-
-
-## [9.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@9.6.0...@pie-element/select-text@9.6.1) (2025-07-22)
-
-
-### Bug Fixes
-
-* update pie-toolbox PD-4885 ([a6d439e](https://github.com/pie-framework/pie-elements/commit/a6d439e49a0082f3d5e8bf46cc73c69d1d0ae311))
-
-
-
-
-
-# [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@9.5.10...@pie-element/select-text@9.6.0) (2025-07-18)
-
-
-### Bug Fixes
-
-* update pie-lib/pie-toolbox PD-363 ([10ce402](https://github.com/pie-framework/pie-elements/commit/10ce402bcb1c0c9c24dfc9ecff2e13c4de14a753))
-
-
-### Features
-
-* update pie-lib/pie toolbox PD-5082, PD-5081, PD-3797, PD-5083, revert PD-363, PD-653 ([9214466](https://github.com/pie-framework/pie-elements/commit/92144667464f18c213c7ab1d769595e43b553dab))
-* update pie-lib/pie-toolbox PD-5082, PD-5081, PD-3797, PD-5083, PD-4885, PD-5097, PD-5100, PD-5131, PD-5080 ([dc67b1c](https://github.com/pie-framework/pie-elements/commit/dc67b1c735b2adb60943e5d145e739ce4e39a428))
-* **select-text:** move tokens into markup and implement custom selection POC PD-363 ([aca8eb3](https://github.com/pie-framework/pie-elements/commit/aca8eb3336a4111db12537b16d8ca0f4595b08ce))
-* **select-text:** update Legend component to show only correct answers in evaluate mode PD-5100 ([592e8d3](https://github.com/pie-framework/pie-elements/commit/592e8d38dda32a4dab1a10b4bd6598977a858bad))
-
-
-
-
-
 ## [9.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@9.5.9...@pie-element/select-text@9.5.10) (2025-06-27)
 
 
