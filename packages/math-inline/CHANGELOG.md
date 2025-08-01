@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.8.2...@pie-element/math-inline@8.8.3) (2025-07-31)
+
+
+### Bug Fixes
+
+* bump math-validation PD-5052 ([9dcaaa6](https://github.com/pie-framework/pie-elements/commit/9dcaaa6081575b2e666c0f54c804035cdece6e46))
+
+
+
+
+
+## [8.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.8.1...@pie-element/math-inline@8.8.2) (2025-07-25)
+
+
+### Bug Fixes
+
+* refactor PD-5132, update pie-lib/pie-toolbox PD-3797 ([7434408](https://github.com/pie-framework/pie-elements/commit/7434408416a883fd680eec13fe1109711fd7e6b5))
+* update pie-lib/pie-toolbox PD-4885, PD-5131 ([4b9859c](https://github.com/pie-framework/pie-elements/commit/4b9859c919a1a7cc8e29d6168a91cd1f7d1aafd1))
+
+
+
+
+
+## [8.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.8.0...@pie-element/math-inline@8.8.1) (2025-07-22)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-4885 ([a6d439e](https://github.com/pie-framework/pie-elements/commit/a6d439e49a0082f3d5e8bf46cc73c69d1d0ae311))
+
+
+
+
+
+# [8.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.7.2...@pie-element/math-inline@8.8.0) (2025-07-18)
+
+
+### Bug Fixes
+
+* allow math-inline scoring to continue even if one alternate answer fails parsing ([540e3a9](https://github.com/pie-framework/pie-elements/commit/540e3a902cd02408d22337484bbe3fdbd1abbcc6))
+* bump math-validation PD-4848 ([bd6d706](https://github.com/pie-framework/pie-elements/commit/bd6d706f251ef39b580063100594d81ba2518752))
+* update pie-lib/pie-toolbox PD-363 ([10ce402](https://github.com/pie-framework/pie-elements/commit/10ce402bcb1c0c9c24dfc9ecff2e13c4de14a753))
+
+
+### Features
+
+* update pie-lib/pie toolbox PD-5082, PD-5081, PD-3797, PD-5083, revert PD-363, PD-653 ([9214466](https://github.com/pie-framework/pie-elements/commit/92144667464f18c213c7ab1d769595e43b553dab))
+* update pie-lib/pie-toolbox PD-5082, PD-5081, PD-3797, PD-5083, PD-4885, PD-5097, PD-5100, PD-5131, PD-5080 ([dc67b1c](https://github.com/pie-framework/pie-elements/commit/dc67b1c735b2adb60943e5d145e739ce4e39a428))
+
+
+
+
+
 ## [8.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.7.1...@pie-element/math-inline@8.7.2) (2025-06-27)
 
 

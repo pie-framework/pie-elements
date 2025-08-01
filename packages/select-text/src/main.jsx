@@ -136,8 +136,8 @@ export class Main extends React.Component {
           className={classes.textSelect}
           disabled={model.disabled}
           text={model.tokenizedText || model.text}
-          tokens={model.tokens}
-          selectedTokens={selectedTokens}
+          tokens={[]}
+          selectedTokens={[]}
           onChange={(selection) => {
             const newSelections = selection.map((select) => {
               const token = model.tokens.find(({ start, end }) => select.start === start && select.end === end);
@@ -156,7 +156,7 @@ export class Main extends React.Component {
           maxNoOfSelections={model.maxSelections}
           animationsDisabled={model.animationsDisabled}
         />
-        {mode === 'evaluate' && <Legend language={model.language} />}
+        {mode === 'evaluate' && <Legend language={model.language} showOnlyCorrect={showCorrectAnswer} />}
 
         {showRationale &&
           (!model.animationsDisabled ? (

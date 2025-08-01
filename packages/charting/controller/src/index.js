@@ -225,6 +225,7 @@ export function model(question, session, env) {
       base.correctAnswer = correctAnswer;
       base.showToggle = !!correctAnswer?.data?.length && scoreObject.score !== 1;
       base.addCategoryEnabled = false;
+      base.showKeyLegend = true;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

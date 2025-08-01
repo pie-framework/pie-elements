@@ -102,7 +102,9 @@ export default class CategorizeConfigure extends HTMLElement {
     this.render();
   }
 
-  connectedCallback() {}
+  connectedCallback() {
+    this.render();
+  }
 
   /**
    *
