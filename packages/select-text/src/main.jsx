@@ -2,9 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextSelect, Legend } from '@pie-lib/pie-toolbox/text-select';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import {
+  color,
+  Feedback,
+  Collapsible,
+  hasText,
+  hasMedia,
+  PreviewPrompt,
+  UiLayout,
+} from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import generateModel from './utils';
+import classNames from 'classnames';
 
 import debug from 'debug';
 
@@ -26,14 +35,27 @@ export class Main extends React.Component {
 
     this.state = {
       showCorrectAnswer: this.props.model.alwaysShowCorrect || false,
-      model: generateModel(props.model),
+      model: {
+        ...generateModel(props.model),
+        tokenizedText: this.initializeTokenizedText(
+          props.model.tokenizedText || props.model.text,
+          this.handleTokenClick,
+        ),
+      },
+      selectedTokens: [],
     };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       showCorrectAnswer: !!nextProps.model.alwaysShowCorrect,
-      model: generateModel(nextProps.model),
+      model: {
+        ...generateModel(nextProps.model),
+        tokenizedText: this.initializeTokenizedText(
+          nextProps.model.tokenizedText || nextProps.model.text,
+          this.handleTokenClick,
+        ),
+      },
     });
   }
 
@@ -47,16 +69,37 @@ export class Main extends React.Component {
     return model.tokens.filter((t) => t.correct);
   };
 
+  initializeTokenizedText = (html, onClick) => {
+    const { classes } = this.props;
+    const container = document.createElement('div');
+    container.innerHTML = html;
+
+    const spans = container.querySelectorAll('span');
+
+    spans.forEach((span) => {
+      span.className = classNames(classes.token);
+      // span.addEventListener('click', (e) => onClick(e));
+    });
+
+    return container.innerHTML;
+  };
+
+  handleTokenClick = (event) => {
+    console.log('event click', event.target.id);
+
+    event.target.classList.toggle('selected');
+  };
+
   render() {
     const { session, onSelectionChange, classes } = this.props;
     const { showCorrectAnswer, model } = this.state;
     const { env, extraCSSRules } = model;
     const { mode } = env || {};
 
-
     const selectedTokens = showCorrectAnswer ? this.correctAnswer() : session.selectedTokens;
     const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
-    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+    const showTeacherInstructions =
+      model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     log('[render] selectedTokens:', selectedTokens);
 
@@ -92,7 +135,7 @@ export class Main extends React.Component {
         <TextSelect
           className={classes.textSelect}
           disabled={model.disabled}
-          text={model.text}
+          text={model.tokenizedText || model.text}
           tokens={model.tokens}
           selectedTokens={selectedTokens}
           onChange={(selection) => {
@@ -113,7 +156,7 @@ export class Main extends React.Component {
           maxNoOfSelections={model.maxSelections}
           animationsDisabled={model.animationsDisabled}
         />
-        {mode === 'evaluate' && <Legend language={model.language} showOnlyCorrect={showCorrectAnswer} />}
+        {mode === 'evaluate' && <Legend language={model.language} />}
 
         {showRationale &&
           (!model.animationsDisabled ? (
@@ -153,6 +196,22 @@ const StyledMain = withStyles((theme) => ({
   },
   collapsible: {
     marginBottom: theme.spacing.unit * 2,
+  },
+  token: {
+    position: 'relative',
+    cursor: 'pointer',
+    border: 'dashed 2px grey',
+    lineHeight: '24px',
+    // backgroundColor: '#fff9c4',
+
+    '&:hover': {
+      backgroundColor: '#9fa8da',
+    },
+
+    '&.selected': {
+      backgroundColor: '#9fa8da',
+      border: 'none',
+    },
   },
 }))(Main);
 
