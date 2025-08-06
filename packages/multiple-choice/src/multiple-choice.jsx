@@ -48,6 +48,9 @@ const styles = (theme) => ({
     padding: '0.01em 0 0 0',
     margin: '0px',
     minWidth: '0px',
+    '&:focus': {
+      outline: 'none',
+    },
   },
   srOnly: {
     position: 'absolute',
