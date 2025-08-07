@@ -10,7 +10,7 @@ const model = (extras) => ({
   ...extras,
 });
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div {...props} />,
   },
@@ -22,15 +22,13 @@ jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
     toggle: jest.fn(),
     radio: jest.fn(),
   },
-}))
+}));
 
-jest.mock('@pie-lib/pie-toolbox/categorize', () => ({
+jest.mock('@pie-lib/categorize', () => ({
   ensureNoExtraChoicesInAlternate: jest.fn(),
   countInAnswer: jest.fn().mockReturnValue(1),
-  ensureNoExtraChoicesInAnswer: jest.fn()
-}))
-
-
+  ensureNoExtraChoicesInAnswer: jest.fn(),
+}));
 
 describe('Design', () => {
   let w;

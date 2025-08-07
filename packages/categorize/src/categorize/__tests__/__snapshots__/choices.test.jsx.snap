@@ -2,7 +2,7 @@
 
 exports[`choices snapshots disabled 1`] = `
 <div>
-  <Wrapped
+  <DropTarget(DroppablePlaceholder)
     choiceBoard={true}
     disabled={true}
     onDropChoice={[MockFunction]}
@@ -18,7 +18,7 @@ exports[`choices snapshots disabled 1`] = `
 
 exports[`choices snapshots empty 1`] = `
 <div>
-  <Wrapped
+  <DropTarget(DroppablePlaceholder)
     choiceBoard={true}
     onDropChoice={[MockFunction]}
     onRemoveChoice={[MockFunction]}
@@ -28,7 +28,7 @@ exports[`choices snapshots empty 1`] = `
       }
     }
   >
-    <Wrapped
+    <DragSource(Choice)
       extraStyle={
         Object {
           "maxWidth": "95%",
@@ -38,13 +38,13 @@ exports[`choices snapshots empty 1`] = `
       key="0"
       label="foo"
     />
-  </Wrapped>
+  </DropTarget(DroppablePlaceholder)>
 </div>
 `;
 
 exports[`choices snapshots empty 2`] = `
 <div>
-  <Wrapped
+  <DropTarget(DroppablePlaceholder)
     choiceBoard={true}
     onDropChoice={[MockFunction]}
     onRemoveChoice={[MockFunction]}
@@ -57,13 +57,13 @@ exports[`choices snapshots empty 2`] = `
     <Blank
       key="0"
     />
-  </Wrapped>
+  </DropTarget(DroppablePlaceholder)>
 </div>
 `;
 
 exports[`choices snapshots renders 1`] = `
 <div>
-  <Wrapped
+  <DropTarget(DroppablePlaceholder)
     choiceBoard={true}
     onDropChoice={[MockFunction]}
     onRemoveChoice={[MockFunction]}

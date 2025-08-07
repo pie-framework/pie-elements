@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { Choice } from '@pie-lib/pie-toolbox/drag';
+import { Choice } from '@pie-lib/drag';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import { HtmlAndMath } from '@pie-lib/pie-toolbox/render-ui';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { HtmlAndMath } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 export class ChoicePreview extends React.Component {
   static propTypes = {
@@ -39,7 +39,11 @@ export class ChoicePreview extends React.Component {
             onRemoveChoice={() => this.delete()}
           >
             <HtmlAndMath html={choice?.content} className={`${classes.breakWord}`} />
-            <IconButton aria-label="delete" className={classNames(classes.delete, classes.customColor)} onClick={this.delete}>
+            <IconButton
+              aria-label="delete"
+              className={classNames(classes.delete, classes.customColor)}
+              onClick={this.delete}
+            >
               <RemoveCircleOutlineIcon />
             </IconButton>
           </Choice>
@@ -63,10 +67,10 @@ const styles = () => ({
     wordBreak: 'break-all',
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
   overflowChoice: {
     overflow: 'auto',
-  }
+  },
 });
 export default withStyles(styles)(ChoicePreview);

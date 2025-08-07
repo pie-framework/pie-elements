@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Choices from './choices';
 import Categories from './categories';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { withStyles } from '@material-ui/core/styles';
-import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/pie-toolbox/categorize';
-import { withDragContext, uid } from '@pie-lib/pie-toolbox/drag';
-import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/categorize';
+import { withDragContext, uid } from '@pie-lib/drag';
+import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import debug from 'debug';
-import Translator from '@pie-lib/pie-toolbox/translator';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import Translator from '@pie-lib/translator';
+import { AlertDialog } from '@pie-lib/config-ui';
 const { translator } = Translator;
 
 const log = debug('@pie-ui:categorize');
@@ -177,7 +177,7 @@ export class Categorize extends React.Component {
       language,
       maxChoicesPerCategory,
       autoplayAudioEnabled,
-      customAudioButton
+      customAudioButton,
     } = model;
     const { mode, role } = env || {};
     const choicePosition = choicesPosition || 'above';
@@ -215,10 +215,16 @@ export class Categorize extends React.Component {
     });
 
     const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
-    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+    const showTeacherInstructions =
+      model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
+      <UiLayout
+        extraCSSRules={extraCSSRules}
+        id={'main-container'}
+        className={classes.mainContainer}
+        fontSizeFactor={fontSizeFactor}
+      >
         {showTeacherInstructions && (
           <React.Fragment>
             <Collapsible
@@ -317,7 +323,7 @@ const styles = (theme) => ({
   mainContainer: {
     color: color.text(),
     backgroundColor: color.background(),
-    position: 'relative'
+    position: 'relative',
   },
   note: {
     marginBottom: theme.spacing.unit * 2,

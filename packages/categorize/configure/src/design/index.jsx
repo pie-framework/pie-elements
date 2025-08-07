@@ -2,14 +2,10 @@ import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
-import {
-  countInAnswer,
-  ensureNoExtraChoicesInAnswer,
-  ensureNoExtraChoicesInAlternate,
-} from '@pie-lib/pie-toolbox/categorize';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { uid, withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
+import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/categorize';
+import EditableHtml from '@pie-lib/editable-html';
+import { uid, withDragContext } from '@pie-lib/drag';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
@@ -17,8 +13,8 @@ import Choices from './choices';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
 import { getMaxCategoryChoices, multiplePlacements } from '../utils';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import { AlertDialog } from '@pie-lib/config-ui';
+import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 const { dropdown, Panel, toggle, radio, numberField } = settings;
@@ -266,11 +262,13 @@ export class Design extends React.Component {
           multiplePlacements.disabled,
           multiplePlacements.perChoice,
         ]),
-      maxAnswerChoices: allowMaxAnswerChoices.settings && numberField(allowMaxAnswerChoices.label, {
-        label: '',
-        min: choices?.length || 0,
-        max: 30,
-      }),
+      maxAnswerChoices:
+        allowMaxAnswerChoices.settings &&
+        numberField(allowMaxAnswerChoices.label, {
+          label: '',
+          min: choices?.length || 0,
+          max: 30,
+        }),
       allowMaxChoicesPerCategory: maxPlacements.settings && toggle(maxPlacements.label),
       maxChoicesPerCategory:
         allowMaxChoicesPerCategory === true &&

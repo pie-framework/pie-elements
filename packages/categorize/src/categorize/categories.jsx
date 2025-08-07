@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 import GridContent from './grid-content';
 import Category, { CategoryType } from './category';
@@ -18,7 +18,7 @@ export class Categories extends React.Component {
     disabled: PropTypes.bool,
     onDropChoice: PropTypes.func.isRequired,
     onRemoveChoice: PropTypes.func.isRequired,
-    rowLabels: PropTypes.array
+    rowLabels: PropTypes.array,
   };
 
   static defaultProps = {
@@ -42,7 +42,7 @@ export class Categories extends React.Component {
     const hasNonEmptyString = (array) => {
       let found = false;
 
-      (array || []).forEach(element => {
+      (array || []).forEach((element) => {
         if (typeof element === 'string' && element.trim() !== '' && element.trim() !== '<div></div>') {
           found = true;
         }
@@ -124,12 +124,12 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     flex: 0.5,
-    marginRight: '12px'
+    marginRight: '12px',
   },
   categoryWrapper: {
     display: 'flex',
     flex: '2',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 });
 export default withStyles(styles)(Categories);
