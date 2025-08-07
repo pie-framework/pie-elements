@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { DragInTheBlank } from '@pie-lib/pie-toolbox/mask-markup';
-import { withDragContext } from '@pie-lib/pie-toolbox/drag';
-import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { DragInTheBlank } from '@pie-lib/mask-markup';
+import { withDragContext } from '@pie-lib/drag';
+import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 const DraggableDragInTheBlank = withDragContext(DragInTheBlank);
@@ -32,7 +32,7 @@ export class Main extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { model: nextModel } = nextProps;
 
-    if(nextModel && !nextModel.correctResponse && this.state.showCorrectAnswer !== false){
+    if (nextModel && !nextModel.correctResponse && this.state.showCorrectAnswer !== false) {
       this.setState({ showCorrectAnswer: false });
     }
   }
@@ -45,10 +45,16 @@ export class Main extends React.Component {
     const showCorrectAnswerToggle = mode === 'evaluate';
 
     const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
-    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+    const showTeacherInstructions =
+      model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
+      <UiLayout
+        extraCSSRules={extraCSSRules}
+        id={'main-container'}
+        className={classes.mainContainer}
+        fontSizeFactor={fontSizeFactor}
+      >
         {showTeacherInstructions && (
           <Collapsible
             className={classes.collapsible}
@@ -93,7 +99,7 @@ const styles = (theme) => ({
     '& tr > td': {
       color: color.text(),
     },
-    position: 'relative'
+    position: 'relative',
   },
   collapsible: {
     marginBottom: theme.spacing.unit * 2,

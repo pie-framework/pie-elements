@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import { EditableHtml } from '@pie-lib/editable-html';
+import { renderMath } from '@pie-lib/math-rendering';
+import { AlertDialog } from '@pie-lib/config-ui';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -50,7 +50,7 @@ export class Choices extends React.Component {
     uploadSoundSupport: PropTypes.object,
     maxImageWidth: PropTypes.number,
     maxImageHeight: PropTypes.number,
-    maxLength: PropTypes.number
+    maxLength: PropTypes.number,
   };
 
   state = { warning: { open: false } };
@@ -201,9 +201,7 @@ export class Choices extends React.Component {
     }
 
     // if duplicates not allowed, remove the choices that are used to define the correct response
-    return choices.filter(
-      (choice) => !(correctResponse && Object.values(correctResponse).includes(choice.id))
-    );
+    return choices.filter((choice) => !(correctResponse && Object.values(correctResponse).includes(choice.id)));
   };
 
   render() {
