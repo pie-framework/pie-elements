@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main snapshot renders 1`] = `
-<Component
+<WithStyles(Design)
   model={
     Object {
       "categories": Array [],
