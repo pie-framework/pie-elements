@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { EditableHtml } from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html';
 import { renderMath } from '@pie-lib/math-rendering';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Button from '@material-ui/core/Button';
