@@ -16,12 +16,12 @@ export const checkLabelsEquality = (givenAnswerLabel, correctAnswerLabel) =>
 export const setCorrectness = (answers, partialScoring) =>
   answers
     ? answers.map((answer) => ({
-        ...answer,
-        correctness: {
-          value: partialScoring ? 'incorrect' : 'correct',
-          label: partialScoring ? 'incorrect' : 'correct',
-        },
-      }))
+      ...answer,
+      correctness: {
+        value: partialScoring ? 'incorrect' : 'correct',
+        label: partialScoring ? 'incorrect' : 'correct',
+      },
+    }))
     : [];
 
 export const normalize = (question) => ({ ...defaults, ...question });
@@ -113,37 +113,31 @@ export const getScore = (question, session, env = {}) => {
 
     result = maxScore ? score / maxScore : 0;
   } else {
-    // if scoring type is "all or nothing"
-    // the length on correct answers and length of given answer have to match
+    // all-or-nothing scoring: overall score is 1 only if lengths and all values/labels match
     result = correctAnswers.length === answers.length ? 1 : 0;
 
-    if (result) {
-      // if there is at least one difference between the correct answer and the given answer
-      // the result will be incorrect
-      correctAnswers.forEach((corrAnswer, index) => {
-        const { value, label } = answers[index];
+    // regardless of overall result, mark each answer individually for user feedback
+    answers = answers.map((answer, index) => {
+      const correctAnswer = correctAnswers[index];
+      const valueIsCorrect = correctAnswer ? answer.value === correctAnswer.value : false;
+      const labelIsCorrect = correctAnswer ? lowerCase(answer.label) === lowerCase(correctAnswer.label) : false;
 
-        const valueIsCorrect = value === corrAnswer.value;
-        const labelIsCorrect = lowerCase(label) === lowerCase(corrAnswer.label);
+      if (!valueIsCorrect || !labelIsCorrect) {
+        result = 0;
+      }
 
-        if (!valueIsCorrect) {
-          result = 0;
-          answers[index].correctness.value = 'incorrect';
-        }
-        if (!labelIsCorrect) {
-          result = 0;
-          answers[index].correctness.label = 'incorrect';
-        }
-        if (valueIsCorrect && labelIsCorrect) {
-          correctResponses.push({ label: label, index: index });
-        }
-      });
-    } else {
-      answers = [
-        ...answers.slice(0, correctAnswers.length),
-        ...setCorrectness(answers.slice(correctAnswers.length), true),
-      ];
-    }
+      if (valueIsCorrect && labelIsCorrect) {
+        correctResponses.push({ label: answer.label, index });
+      }
+
+      return {
+        ...answer,
+        correctness: {
+          value: valueIsCorrect ? 'correct' : 'incorrect',
+          label: labelIsCorrect ? 'correct' : 'incorrect',
+        },
+      };
+    });
   }
 
   const score = {
