@@ -4,8 +4,8 @@ import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import { decode } from 'he';
-import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import { partialScoring } from '@pie-lib/controller-utils';
+import Translator from '@pie-lib/translator';
 import defaults from './defaults';
 
 const { translator } = Translator;
@@ -252,7 +252,7 @@ const getInnerText = (html) => {
   if (typeof html.replaceAll === 'function') {
     return html.replaceAll(/<[^>]*>/g, '');
   } else {
-        // Polyfill for replaceAll using replace and a global regex
+    // Polyfill for replaceAll using replace and a global regex
     return html.replace(/<[^>]*>/g, '');
   }
 };

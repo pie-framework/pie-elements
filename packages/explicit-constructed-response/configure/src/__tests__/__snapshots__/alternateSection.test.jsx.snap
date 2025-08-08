@@ -68,7 +68,6 @@ exports[`Choice snapshot renders 1`] = `
           "languageCharacters",
         ]
       }
-      allowValidation={false}
       autoWidthToolbar={true}
       className=""
       disableUnderline={true}
@@ -82,7 +81,6 @@ exports[`Choice snapshot renders 1`] = `
       markup="cow"
       maxLength={25}
       onChange={[Function]}
-      onDone={[Function]}
       toolbarOpts={
         Object {
           "isHidden": false,
