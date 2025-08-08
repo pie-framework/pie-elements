@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { color, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -29,7 +29,7 @@ class DrawingResponseComponent extends React.Component {
         mode,
         teacherInstructions,
         backgroundImageEnabled,
-        language
+        language,
       },
       session,
       onSessionChange,

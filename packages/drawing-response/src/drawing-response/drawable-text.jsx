@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-konva';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 import Transformer from './drawable-transformer';

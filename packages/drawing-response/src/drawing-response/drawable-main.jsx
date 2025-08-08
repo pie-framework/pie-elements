@@ -6,7 +6,7 @@ import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
 import { Layer, Stage } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 import ImageBackground from './drawable-image';
@@ -188,7 +188,7 @@ export class DrawableMain extends React.Component {
       backgroundImageEnabled = true,
       toolActive: { type },
       scale,
-      language
+      language,
     } = this.props;
     const { isOver, newDrawable } = this.state;
 
@@ -209,7 +209,7 @@ export class DrawableMain extends React.Component {
       stage: this.stage,
       onMouseOverElement: this.onMouseOverElement,
       onMouseOutElement: this.onMouseOutElement,
-      scale
+      scale,
     };
 
     let listeners = {};
@@ -234,8 +234,16 @@ export class DrawableMain extends React.Component {
     return (
       <div className={classes.wrapper}>
         <div className={classes.undoControls}>
-          <Button disabled={disabled} onClick={this.handleUndo} label={translator.t('common:undo', { lng: language })} />
-          <Button disabled={disabled} onClick={this.handleClearAll} label={translator.t('common:clearAll', { lng: language })} />
+          <Button
+            disabled={disabled}
+            onClick={this.handleUndo}
+            label={translator.t('common:undo', { lng: language })}
+          />
+          <Button
+            disabled={disabled}
+            onClick={this.handleClearAll}
+            label={translator.t('common:clearAll', { lng: language })}
+          />
         </div>
         <div className={classes.base}>
           {backgroundImageEnabled && imageUrl && (
