@@ -9,7 +9,7 @@ exports[`drag-in-the-blank renders snapshot 1`] = `
     show={false}
     toggled={false}
   />
-  <Component
+  <DragInTheBlank
     choices={Array []}
     correctResponse={Object {}}
     showCorrectAnswer={false}
@@ -27,7 +27,7 @@ exports[`drag-in-the-blank renders snapshot with rationale 1`] = `
     show={false}
     toggled={false}
   />
-  <Component
+  <DragInTheBlank
     choices={Array []}
     correctResponse={Object {}}
     rationale="This is rationale"
@@ -70,7 +70,7 @@ exports[`drag-in-the-blank renders snapshot with teacherInstructions 1`] = `
     show={false}
     toggled={false}
   />
-  <Component
+  <DragInTheBlank
     choices={Array []}
     correctResponse={Object {}}
     showCorrectAnswer={false}
