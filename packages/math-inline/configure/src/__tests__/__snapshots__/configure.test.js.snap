@@ -240,7 +240,6 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     label="Prompt"
   >
     <EditableHtml
-      allowValidation={false}
       imageSupport={Object {}}
       languageCharactersProps={
         Array [
@@ -263,7 +262,6 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      onDone={[Function]}
       onFocus={[Function]}
       pluginProps={
         Object {

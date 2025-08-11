@@ -1,9 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
+import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import EditableHtml from '@pie-lib/editable-html';
 import GeneralConfigBlock from './general-config-block';
 import { getPluginProps, ResponseTypes } from './utils';
 
