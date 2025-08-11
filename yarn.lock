@@ -2343,10 +2343,10 @@
     trigonometry-calculator "^2.0.0"
     unist-util-inspect "^4.1.3"
 
-"@pie-lib/test-utils@^0.2.33":
-  version "0.2.33"
-  resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.33.tgz#7632be69cbef25754e5f9fafbbcf94d2f0629ac4"
-  integrity sha512-OWbvVHIzY5paEZUV4Fkv+H6kGX2d78uS2AOwBCXM+m9rlr6poMvsLUTcOMRIfKfSWw+ydhZ536V3X82kWRluWQ==
+"@pie-lib/test-utils@^0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.11.1.tgz#68a0ab558c7b7c306fdd8318831f850b57e6d2f2"
+  integrity sha512-rpRJS129JAgC/SHTTIJ9UVHdiYMbJynIYRnKdEX70hfvPr3e5seRXq3Tk2iOzHAKf/bTk3D7uww2yJ9tDLpGRQ==
 
 "@pslb/estree-helper@^4.2.0":
   version "4.2.0"
