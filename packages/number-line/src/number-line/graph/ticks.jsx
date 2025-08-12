@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { buildTickData } from './tick-utils';
 import injectSheet from 'react-jss';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 const style = {
   text: {
@@ -55,7 +55,7 @@ export class Tick extends React.Component {
         height: 0,
         x: 0,
         y: 0,
-      }
+      },
     };
     this.resizeObserver = null;
   }
@@ -69,14 +69,14 @@ export class Tick extends React.Component {
   }
 
   componentDidMount() {
-      // Set up ResizeObserver
-      this.resizeObserver = new ResizeObserver(() => {
-        this.updateTextBox();
-      });
+    // Set up ResizeObserver
+    this.resizeObserver = new ResizeObserver(() => {
+      this.updateTextBox();
+    });
 
-      if(this.text) {
-        this.resizeObserver.observe(this.text);
-      }
+    if (this.text) {
+      this.resizeObserver.observe(this.text);
+    }
   }
 
   componentWillUnmount() {
@@ -91,12 +91,7 @@ export class Tick extends React.Component {
     const displayFraction = fraction && x.n !== x.d && x.n !== 0 && x.d !== 1;
     const labelTick = type === 'major';
     const height = labelTick ? 20 : 10;
-    const {
-      width: textWidth = 0,
-      height: textHeight = 0,
-      x: textX = 0,
-      y: textY = 0,
-    } = this.state.textBox;
+    const { width: textWidth = 0, height: textHeight = 0, x: textX = 0, y: textY = 0 } = this.state.textBox;
 
     const xText = !fraction ? (
       Number(x.toFixed(3))

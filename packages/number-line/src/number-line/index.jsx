@@ -1,12 +1,12 @@
 import React from 'react';
-import Toggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import Toggle from '@pie-lib/correct-answer-toggle';
 import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
 import isEqual from 'lodash/isEqual';
-import Translator from '@pie-lib/pie-toolbox/translator';
-import { Collapsible, color, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import Translator from '@pie-lib/translator';
+import { Collapsible, color, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Feedback from './feedback';
@@ -193,13 +193,14 @@ export class NumberLine extends React.Component {
       feedback,
       colorContrast,
       language,
-      teacherInstructions
+      teacherInstructions,
     } = model;
     let addElement = this.addElement.bind(this);
     let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
     const { ticks, domain, arrows, maxNumberOfPoints, height = 100, availableTypes, title, fraction } = graph;
     const width = this.getSize('width', minWidth, maxWidth, 600);
-    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
+    const showTeacherInstructions =
+      teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     const graphProps = {
       disabled,
@@ -275,7 +276,7 @@ export class NumberLine extends React.Component {
             }}
             className={classes.collapsible}
           >
-            <PreviewPrompt prompt={teacherInstructions}/>
+            <PreviewPrompt prompt={teacherInstructions} />
           </Collapsible>
         )}
 

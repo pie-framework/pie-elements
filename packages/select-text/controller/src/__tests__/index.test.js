@@ -1,7 +1,7 @@
 import { getPartialScore, getCorrectness, model, outcome, createCorrectResponseSession } from '../index';
 import isFunction from 'lodash/isFunction';
 
-jest.mock('@pie-lib/pie-toolbox/text-select', () => ({
+jest.mock('@pie-lib/text-select', () => ({
   prepareText: jest.fn(),
 }));
 

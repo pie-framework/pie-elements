@@ -8,7 +8,11 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/pie-toolbox": "2.22.3",
+    "@pie-lib/icons": "^2.13.1",
+    "@pie-lib/render-ui": "^4.24.1",
+    "@pie-lib/correct-answer-toggle": "^2.14.1",
+    "@pie-lib/translator": "^2.12.1",
+    "@pie-lib/math-rendering": "^3.11.1",
     "classnames": "^2.2.5",
     "d3-scale": "^3.2.1",
     "d3-selection": "^1.4.1",

@@ -1,4 +1,4 @@
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 export const selected = color.primaryDark();
 export const correct = color.correct();
