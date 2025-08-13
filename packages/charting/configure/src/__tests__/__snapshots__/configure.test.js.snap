@@ -310,8 +310,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Teacher Instructions"
   >
-    <EditableHtml
-      allowValidation={false}
+    <Component
       languageCharactersProps={
         Array [
           Object {
@@ -328,7 +327,6 @@ exports[`Configure renders snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -356,8 +354,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Item Stem"
   >
-    <EditableHtml
-      allowValidation={false}
+    <Component
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -375,7 +372,6 @@ exports[`Configure renders snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -703,8 +699,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Rationale"
   >
-    <EditableHtml
-      allowValidation={false}
+    <Component
       languageCharactersProps={
         Array [
           Object {
@@ -720,7 +715,6 @@ exports[`Configure renders snapshot 1`] = `
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {

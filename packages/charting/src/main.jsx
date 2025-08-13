@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/pie-toolbox/render-ui';
-import { Chart, chartTypes, KeyLegend } from '@pie-lib/pie-toolbox/charting';
+import { color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
+import { Chart, chartTypes, KeyLegend } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -74,7 +74,8 @@ export class Main extends React.Component {
     }
 
     const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
-    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+    const showTeacherInstructions =
+      model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
@@ -146,7 +147,7 @@ export class Main extends React.Component {
             labelsPlaceholders={{}}
           />
         )}
-        {!showingCorrect && showKeyLegend && (<KeyLegend language={language}></KeyLegend>)}
+        {!showingCorrect && showKeyLegend && <KeyLegend language={language}></KeyLegend>}
         {showRationale && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
