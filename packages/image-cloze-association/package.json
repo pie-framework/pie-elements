@@ -10,7 +10,7 @@
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.1",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "2.22.4",
+    "@pie-lib/pie-toolbox": "2.23.1",
     "classnames": "^2.2.6",
     "humps": "^2.0.1",
     "prop-types": "^15.6.1",
