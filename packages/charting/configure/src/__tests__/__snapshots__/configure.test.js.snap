@@ -310,7 +310,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Teacher Instructions"
   >
-    <Component
+    <EditableHtml
       languageCharactersProps={
         Array [
           Object {
@@ -354,7 +354,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Item Stem"
   >
-    <Component
+    <EditableHtml
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -699,7 +699,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Rationale"
   >
-    <Component
+    <EditableHtml
       languageCharactersProps={
         Array [
           Object {
