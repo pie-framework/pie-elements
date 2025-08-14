@@ -253,7 +253,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Teacher Instructions"
   >
     <EditableHtml
-      allowValidation={false}
       autoWidthToolbar={true}
       languageCharactersProps={
         Array [
@@ -276,7 +275,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -314,7 +312,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Prompt"
   >
     <EditableHtml
-      allowValidation={false}
       autoWidthToolbar={true}
       disableUnderline={true}
       languageCharactersProps={
@@ -338,7 +335,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -404,33 +400,6 @@ There should be at least 1 and at most 10 response areas defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
-    activePlugins={
-      Array [
-        "bold",
-        "html",
-        "extraCSSRules",
-        "italic",
-        "underline",
-        "strikethrough",
-        "bulleted-list",
-        "numbered-list",
-        "image",
-        "math",
-        "languageCharacters",
-        "text-align",
-        "blockquote",
-        "h3",
-        "table",
-        "video",
-        "audio",
-        "responseArea",
-        "redo",
-        "undo",
-        "superscript",
-        "subscript",
-      ]
-    }
-    allowValidation={false}
     autoWidthToolbar={true}
     disableImageAlignmentButtons={true}
     disabled={false}
@@ -453,7 +422,6 @@ There should be at least 1 and at most 10 response areas defined."
       }
     }
     onChange={[Function]}
-    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {
@@ -609,7 +577,6 @@ There should be at least 1 and at most 10 response areas defined."
     label="Rationale"
   >
     <EditableHtml
-      allowValidation={false}
       autoWidthToolbar={true}
       languageCharactersProps={
         Array [
@@ -631,7 +598,6 @@ There should be at least 1 and at most 10 response areas defined."
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -949,33 +915,6 @@ There should be at least 1 and at most 10 response areas defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
-    activePlugins={
-      Array [
-        "bold",
-        "html",
-        "extraCSSRules",
-        "italic",
-        "underline",
-        "strikethrough",
-        "bulleted-list",
-        "numbered-list",
-        "image",
-        "math",
-        "languageCharacters",
-        "text-align",
-        "blockquote",
-        "h3",
-        "table",
-        "video",
-        "audio",
-        "responseArea",
-        "redo",
-        "undo",
-        "superscript",
-        "subscript",
-      ]
-    }
-    allowValidation={false}
     autoWidthToolbar={true}
     disableImageAlignmentButtons={true}
     disabled={false}
@@ -998,7 +937,6 @@ There should be at least 1 and at most 10 response areas defined."
       }
     }
     onChange={[Function]}
-    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {
