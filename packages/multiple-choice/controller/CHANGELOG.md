@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.10.2...@pie-element/multiple-choice-controller@5.10.3) (2025-08-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5147 ([484432f](https://github.com/pie-framework/pie-elements/commit/484432fd824ebe403e8f4302f6b8cf4d026dacb5))
+
+
+
+
+
 ## [5.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.10.1...@pie-element/multiple-choice-controller@5.10.2) (2025-07-25)
 
 
