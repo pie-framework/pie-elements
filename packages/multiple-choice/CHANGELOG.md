@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.18.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.2...@pie-element/multiple-choice@9.18.3) (2025-08-14)
+
+
+### Bug Fixes
+
+* remove default outline from fieldset on focus PD-4563 ([fe82f79](https://github.com/pie-framework/pie-elements/commit/fe82f7973c82669d3c66def627fbfb91d9de125f))
+* update pie-lib/pie-toolbox PD-5147 ([484432f](https://github.com/pie-framework/pie-elements/commit/484432fd824ebe403e8f4302f6b8cf4d026dacb5))
+
+
+
+
+
 ## [9.18.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.1...@pie-element/multiple-choice@9.18.2) (2025-07-25)
 
 

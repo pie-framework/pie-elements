@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@6.3.2...@pie-element/select-text-controller@6.3.3) (2025-08-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5147 ([484432f](https://github.com/pie-framework/pie-elements/commit/484432fd824ebe403e8f4302f6b8cf4d026dacb5))
+
+
+
+
+
 ## [6.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@6.3.1...@pie-element/select-text-controller@6.3.2) (2025-07-25)
 
 
