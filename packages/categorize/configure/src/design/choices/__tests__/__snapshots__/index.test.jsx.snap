@@ -43,7 +43,7 @@ exports[`choices snapshot renders 1`] = `
       }
     }
   >
-    <Wrapped
+    <DropTarget(DragSource(WithStyles(Choice)))
       choice={
         Object {
           "content": "Choice 0",

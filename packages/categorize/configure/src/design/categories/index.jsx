@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 import classNames from 'classnames';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -11,13 +11,13 @@ import {
   removeCategory,
   removeChoiceFromCategory,
   verifyAllowMultiplePlacements,
-} from '@pie-lib/pie-toolbox/categorize';
+} from '@pie-lib/categorize';
 
 import Category from './category';
 import Header from '../header';
 import { generateValidationMessage, getMaxCategoryChoices } from '../../utils';
 import { RowLabel } from './RowLabel';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/math-rendering';
 
 const styles = (theme) => ({
   categories: {

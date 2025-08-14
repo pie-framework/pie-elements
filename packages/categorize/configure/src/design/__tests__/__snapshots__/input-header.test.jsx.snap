@@ -5,7 +5,6 @@ exports[`InputHeader snapshot renders 1`] = `
   className="inputHeader className"
 >
   <EditableHtml
-    allowValidation={false}
     autoWidthToolbar={true}
     className="editor"
     label="label"

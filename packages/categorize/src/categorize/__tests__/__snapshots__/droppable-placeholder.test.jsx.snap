@@ -9,12 +9,12 @@ exports[`droppable-placeholder snapshot className 1`] = `
     }
   }
 >
-  <WithStyles(PlaceHolder)
+  <PlaceHolder
     className="foo"
     isCategorize={true}
   >
     content
-  </WithStyles(PlaceHolder)>
+  </PlaceHolder>
 </div>
 `;
 
@@ -27,12 +27,12 @@ exports[`droppable-placeholder snapshot disabled 1`] = `
     }
   }
 >
-  <WithStyles(PlaceHolder)
+  <PlaceHolder
     disabled={true}
     isCategorize={true}
   >
     content
-  </WithStyles(PlaceHolder)>
+  </PlaceHolder>
 </div>
 `;
 
@@ -45,7 +45,7 @@ exports[`droppable-placeholder snapshot grid 1`] = `
     }
   }
 >
-  <WithStyles(PlaceHolder)
+  <PlaceHolder
     grid={
       Object {
         "columns": 2,
@@ -54,7 +54,7 @@ exports[`droppable-placeholder snapshot grid 1`] = `
     isCategorize={true}
   >
     content
-  </WithStyles(PlaceHolder)>
+  </PlaceHolder>
 </div>
 `;
 
@@ -67,10 +67,10 @@ exports[`droppable-placeholder snapshot renders 1`] = `
     }
   }
 >
-  <WithStyles(PlaceHolder)
+  <PlaceHolder
     isCategorize={true}
   >
     content
-  </WithStyles(PlaceHolder)>
+  </PlaceHolder>
 </div>
 `;

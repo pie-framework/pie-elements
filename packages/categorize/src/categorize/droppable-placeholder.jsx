@@ -1,8 +1,8 @@
 import React from 'react';
-import { PlaceHolder } from '@pie-lib/pie-toolbox/drag';
+import { PlaceHolder } from '@pie-lib/drag';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
-import { uid } from '@pie-lib/pie-toolbox/drag';
+import { uid } from '@pie-lib/drag';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize:droppable-placeholder');
@@ -19,16 +19,7 @@ export class DroppablePlaceholder extends React.Component {
     minRowHeight: PropTypes.string,
   };
   render() {
-    const {
-      children,
-      connectDropTarget,
-      isOver,
-      className,
-      grid,
-      disabled,
-      choiceBoard,
-      minRowHeight
-    } = this.props;
+    const { children, connectDropTarget, isOver, className, grid, disabled, choiceBoard, minRowHeight } = this.props;
 
     return connectDropTarget(
       <div style={{ flex: 1, minHeight: minRowHeight || '80px' }}>

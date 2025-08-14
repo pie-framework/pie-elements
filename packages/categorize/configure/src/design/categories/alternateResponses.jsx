@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { moveChoiceToAlternate, removeChoiceFromAlternate } from '@pie-lib/pie-toolbox/categorize';
+import { moveChoiceToAlternate, removeChoiceFromAlternate } from '@pie-lib/categorize';
 
 import Category from './category';
 import { getMaxCategoryChoices } from '../../utils';

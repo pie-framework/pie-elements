@@ -5,12 +5,12 @@ import classNames from 'classnames';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import InputHeader from '../input-header';
-import { Checkbox } from '@pie-lib/pie-toolbox/config-ui';
+import { Checkbox } from '@pie-lib/config-ui';
 import { DeleteButton } from '../buttons';
 import DragHandle from '@material-ui/icons/DragHandle';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
-import { uid } from '@pie-lib/pie-toolbox/drag';
+import { uid } from '@pie-lib/drag';
 import { multiplePlacements } from '../../utils';
 import flow from 'lodash/flow';
 
