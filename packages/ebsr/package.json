@@ -9,7 +9,7 @@
   "dependencies": {
     "@pie-element/multiple-choice": "^9.18.3",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "2.22.4",
+    "@pie-lib/pie-toolbox": "2.23.1",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.11"
