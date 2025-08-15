@@ -2,7 +2,7 @@
 import Rubric from '@pie-element/rubric';
 // here it is actually using multi-trait-rubric/src/index.js, instead of using multi-trait-rubric/src/print.js
 import MultiTraitRubric from '@pie-element/multi-trait-rubric';
-import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
+import { RUBRIC_TYPES } from '@pie-lib/rubric';
 
 const RUBRIC_TAG_NAME = 'complex-rubric-simple';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'complex-rubric-multi-trait';
