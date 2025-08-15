@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@8.7.5...@pie-element/charting@8.7.6) (2025-08-15)
+
+
+### Bug Fixes
+
+* **charting:** add correctData prop to component based on showToggle - this was lost ([e7555d1](https://github.com/pie-framework/pie-elements/commit/e7555d1872dfdf537dab6aa5cd2f2d9a2f989ce4))
+
+
+
+
+
 ## [8.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@8.7.4...@pie-element/charting@8.7.5) (2025-08-15)
 
 
