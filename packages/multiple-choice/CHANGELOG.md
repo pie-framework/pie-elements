@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.18.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.4...@pie-element/multiple-choice@9.18.5) (2025-08-15)
+
+
+### Bug Fixes
+
+* PD-5084 ([78bd9ca](https://github.com/pie-framework/pie-elements/commit/78bd9ca1540c3968ddd36e0ff5cc4ac095865250))
+
+
+
+
+
 ## [9.18.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.3...@pie-element/multiple-choice@9.18.4) (2025-08-14)
 
 

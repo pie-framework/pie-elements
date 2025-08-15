@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.8.5...@pie-element/math-inline@8.8.6) (2025-08-15)
+
+
+### Bug Fixes
+
+* PD-5084 ([78bd9ca](https://github.com/pie-framework/pie-elements/commit/78bd9ca1540c3968ddd36e0ff5cc4ac095865250))
+
+
+
+
+
 ## [8.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.8.4...@pie-element/math-inline@8.8.5) (2025-08-14)
 
 
