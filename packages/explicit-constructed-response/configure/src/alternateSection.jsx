@@ -199,8 +199,8 @@ export class AlternateSection extends React.Component {
   onChoiceChanged = (choice, value, index) => {
     const { choiceChanged, lengthChanged, maxLength, choices } = this.props;
 
-    const labelLengthsArr = choices.map((choice) => (choice.label || '').length);
-    labelLengthsArr[index] = value.length;
+    const labelLengthsArr = choices.map((choice) => decodeHTML(choice.label || '').length);
+    labelLengthsArr[index] =  decodeHTML(value).length;
 
     const newLength = Math.max(...labelLengthsArr);
 
@@ -227,7 +227,7 @@ export class AlternateSection extends React.Component {
       return 1;
     }
 
-    const labelLengthsArr = choices.map((choice) => (choice.label || '').length);
+    const labelLengthsArr = choices.map((choice) => decodeHTML(choice.label || '').length);
 
     return Math.max(...labelLengthsArr);
   };

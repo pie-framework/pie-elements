@@ -13,7 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
-import { getAdjustedLength } from './markupUtils';
+import { decodeHTML, getAdjustedLength } from './markupUtils';
 import { generateValidationMessage } from './utils';
 import classnames from 'classnames';
 
@@ -102,7 +102,7 @@ export class Main extends React.Component {
 
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map((choice) => (choice.label || '').length);
+      const labelLengthsArr = choice.map((choice) => decodeHTML(choice.label || '').length);
       const length = Math.max(...labelLengthsArr);
 
       if (
@@ -154,7 +154,7 @@ export class Main extends React.Component {
     const { model, onModelChanged } = this.props;
     const { choices } = model;
     let { maxLengthPerChoice } = model;
-    const newValLength = (newVal || '').length;
+    const newValLength = decodeHTML(newVal || '').length;
 
     if (!choices[index]) {
       choices[index] = [{ label: newVal || '', value: '0' }];
