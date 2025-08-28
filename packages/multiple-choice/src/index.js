@@ -10,11 +10,20 @@ import { updateSessionValue, updateSessionMetadata } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
 
-export const isComplete = (session, model, audioComplete) => {
+export const isComplete = (session, model, audioComplete, elementContext) => {
   const { autoplayAudioEnabled, completeAudioEnabled } = model || {};
 
+  // check audio completion if audio settings are enabled and audio actually exists
   if (autoplayAudioEnabled && completeAudioEnabled && !audioComplete) {
-    return false;
+    if (elementContext) {
+      const audio = elementContext.querySelector('audio');
+      const isInsidePrompt = audio && audio.closest('#preview-prompt');
+      
+      // only require audio completion if audio exists and is inside the prompt
+      if (audio && isInsidePrompt) {
+        return false;
+      }
+    }
   }
 
   if (!session || !session.value) {
@@ -81,7 +90,7 @@ export default class MultipleChoice extends HTMLElement {
 
     this._dispatchResponseChanged = debounce(() => {
       this.dispatchEvent(
-        new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete)),
+        new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete, this)),
       );
     });
 
@@ -90,7 +99,7 @@ export default class MultipleChoice extends HTMLElement {
         this.dispatchEvent(
           new ModelSetEvent(
             this.tagName.toLowerCase(),
-            isComplete(this._session, this._model),
+            isComplete(this._session, this._model, this.audioComplete, this),
             this._model !== undefined,
           ),
         );
