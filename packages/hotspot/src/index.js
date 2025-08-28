@@ -38,7 +38,6 @@ export default class Hotspot extends HTMLElement {
         const audio = elementContext.querySelector('audio');
         const isInsidePrompt = audio && audio.closest('#preview-prompt');
 
-        console.log('isComplete audio', audio, isInsidePrompt);
         // only require audio completion if audio exists and is inside the prompt
         if (audio && isInsidePrompt) {
           return false;
