@@ -12,7 +12,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "2.23.2",
+    "@pie-lib/pie-toolbox": "2.23.3",
     "classnames": "^2.2.5",
     "he": "^1.2.0",
     "lodash": "^4.17.10",
