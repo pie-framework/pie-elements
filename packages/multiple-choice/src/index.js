@@ -285,6 +285,11 @@ export default class MultipleChoice extends HTMLElement {
       return;
     }
 
+    const { mode } = this._model;
+    if (mode !== 'gather') {
+      return;
+    }
+
     const keyToIndex = (key) => {
       const numOffset = key >= '1' && key <= '9' ? key - '1' : key === '0' ? 9 : -1;
       const letterOffset = /^[a-jA-J]$/.test(key) ? key.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0) : -1;
