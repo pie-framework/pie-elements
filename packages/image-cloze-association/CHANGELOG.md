@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.12.5...@pie-element/image-cloze-association@6.13.0) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+* **image-cloze-association:** add maxWidth to images PD-5174 ([ebc3dc2](https://github.com/pie-framework/pie-elements/commit/ebc3dc295a48e21d8591e22626693f81a733cf56))
+
+
+### Features
+
+* update audio completion checks only to be applied if the item has audio PD-5176 ([4c519b0](https://github.com/pie-framework/pie-elements/commit/4c519b08068328635ae2f6e9d5bdf82374a0637e))
+
+
+
+
+
 ## [6.12.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.12.4...@pie-element/image-cloze-association@6.12.5) (2025-08-15)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.11.5...@pie-element/hotspot@7.12.0) (2025-09-02)
+
+
+### Bug Fixes
+
+* remove console log for audio completion check ([9d2b7fb](https://github.com/pie-framework/pie-elements/commit/9d2b7fb73828404b7c6bb2bf552a543e066d1692))
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+
+
+### Features
+
+* update audio completion checks only to be applied if the item has audio PD-5176 ([4c519b0](https://github.com/pie-framework/pie-elements/commit/4c519b08068328635ae2f6e9d5bdf82374a0637e))
+
+
+
+
+
 ## [7.11.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.11.4...@pie-element/hotspot@7.11.5) (2025-08-15)
 
 
