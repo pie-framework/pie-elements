@@ -7,11 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@pie-lib/pie-toolbox": "2.23.2",
-=======
-    "@pie-lib/pie-toolbox": "2.23.3",
->>>>>>> develop
+    "@pie-lib/translator": "^2.12.1",
+    "@pie-lib/controller-utils": "^0.11.1",
     "lodash": "^4.17.15"
   },
   "author": "",

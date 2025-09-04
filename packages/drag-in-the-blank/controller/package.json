@@ -8,11 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "@pie-lib/pie-toolbox": "2.23.2",
-=======
     "@pie-lib/pie-toolbox": "2.23.3",
->>>>>>> develop
     "debug": "^3.1.0",
     "lodash": "^4.17.15",
     "type-of": "^2.0.1"

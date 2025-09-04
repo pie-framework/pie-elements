@@ -2181,6 +2181,27 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@pie-element/multiple-choice@9.18.1-beta.1":
+  version "9.18.1-beta.1"
+  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-9.18.1-beta.1.tgz#901d1adf9144d48790e691a52aeee0b619586edc"
+  integrity sha512-elmZHsllxGrq6fIO436pXL/cv62Vgfq5/hj26tbql0riTadIZOch+ilEqf94wupOQYfIFL9QxJw+F80AnHAHXA==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/correct-answer-toggle" beta
+    "@pie-lib/math-rendering" beta
+    "@pie-lib/render-ui" beta
+    "@pie-lib/translator" beta
+    classnames "^2.2.5"
+    debug "^4.1.1"
+    enzyme-to-json "^3.3.3"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-test-renderer "^16.3.2"
+    react-transition-group "^2.3.1"
+
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.9.tgz#1a06eb0b7c471042eefce3d5f994192c6576d311"
@@ -2276,7 +2297,6 @@
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-player-events/-/pie-player-events-0.1.0.tgz#0150904118fd604559982ab658967811c053ffe3"
   integrity sha512-6H1tlRGmcZ3Wt+8HMqu5KugVcwwyNrMylfI5rIpvOSt0T82QDmjRj+2sPgQG5zos/w6MtwUqn/QZ+8Rq2EXSOA==
 
-<<<<<<< HEAD
 "@pie-lib/charting@^5.24.1":
   version "5.24.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.24.1.tgz#d3e657374f77703e9948c548c9283c6616182d5a"
@@ -2348,6 +2368,20 @@
     prop-types "^15.6.2"
     react-transition-group "^2.5.2"
 
+"@pie-lib/correct-answer-toggle@beta":
+  version "2.6.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.6.0-beta.8.tgz#5950900369578b5ad90515c7309f1236a74b1060"
+  integrity sha512-lsgzkr3eVBPrs9l+wQ9AFOawJFDmmaTM0zv8+KnsESIPpFjOzLHi1UgbsvMZHdI+RB8XMdhDA2iySQEqqh9VLA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/icons" beta
+    "@pie-lib/render-ui" beta
+    "@pie-lib/translator" beta
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-transition-group "^2.5.2"
+
 "@pie-lib/drag@^2.11.1":
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-2.11.1.tgz#eff2efdc4b765d14b16d9c455936e96e11c6c840"
@@ -2413,6 +2447,14 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
+"@pie-lib/icons@beta":
+  version "2.5.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-2.5.0-beta.8.tgz#563d0033ee90282bb20e2513a080ec82ef5228ee"
+  integrity sha512-vKOqCvJzEuquAdxxLgKTka+XgdNqMEi2BALyg0BONFahbmIyNBabtN7nVI4vNY7b1IU3b4ipx4pjSGQoLAlu1A==
+  dependencies:
+    classnames "^2.2.6"
+    prop-types "^15.6.2"
+
 "@pie-lib/mask-markup@^1.22.1":
   version "1.22.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.22.1.tgz#8bd777983fbdbf887ce289b0de03c2942f301e9e"
@@ -2463,6 +2505,17 @@
     mathjax-full "3.2.2"
     react "^16.8.1"
 
+"@pie-lib/math-rendering@beta":
+  version "3.3.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-3.3.0-beta.8.tgz#2cd0a3b37c72fa9801aae3a415f4c41f23c4f543"
+  integrity sha512-+ENWQRg9FoPYydjoddcMNWfuTTKElrFI5jXZsCq3Re6OKBu+FB6NcaL+3aU+/9fe89EbfPjKSK0Zx5xAaD22Gw==
+  dependencies:
+    "@pie-framework/mathml-to-latex" "1.4.4"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    mathjax-full "3.2.2"
+    react "^16.8.1"
+
 "@pie-lib/math-toolbar@^1.20.1":
   version "1.20.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.20.1.tgz#fff4df0cdc42ccc81a5f13689f42db670b57af27"
@@ -2478,16 +2531,10 @@
     lodash "^4.17.11"
     prop-types "^15.7.2"
 
-"@pie-lib/pie-toolbox@2.22.3":
-  version "2.22.3"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.22.3.tgz#653f1ffbedaf74786bd0e4245015158d32af7e84"
-  integrity sha512-1VmwnDe6bo6GoBRP+MwyvoAtb4Udwbcb5ToppR2CsoAb1XSDtQCJBxWytPW3RA0IuHd4jRi02eFUhVQcxpPQkg==
-=======
 "@pie-lib/pie-toolbox@2.23.3":
   version "2.23.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.23.3.tgz#1c995986eb1c574beae586a50e93d8e140cd9b39"
   integrity sha512-bBMomPkGBOBrcE0+2kPvjULPW7qyISgSOkIL/5PQ3L+qUFFGgYgjL79kGGbrUgMt7pQHncex+g8bejFpIseCKQ==
->>>>>>> develop
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2594,6 +2641,21 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
+"@pie-lib/render-ui@beta":
+  version "4.16.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.16.0-beta.8.tgz#1ef8e6b08dc694021a3ec4d937a2da6fd55927b2"
+  integrity sha512-cR9xfIYueqK3ROTPVjF4J82j2EDAzKjqAsqx881ovJCHWRKgjKGaElkr6cTM20IFv1yCD8Q1kVj1gqnBzAJupw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/icons" beta
+    "@pie-lib/math-rendering" beta
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react-transition-group "^2.5.2"
+
 "@pie-lib/style-utils@^0.10.1":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/style-utils/-/style-utils-0.10.1.tgz#82dc43bc25149e9893a9b838b992e27f29497090"
@@ -2630,6 +2692,18 @@
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.12.1.tgz#6a1cff2710e77402c3f220845d715c53c255af84"
   integrity sha512-UF8HW0L2J5sKzH/HG60t3o3HoT8Uyv/IVxquuWqi0/YjeRfUQf/NdxAPobOfUwqrRCi7KDsPI7cm6CB28NcpLA==
+  dependencies:
+    debug "^4.1.1"
+    i18next "^22.5.0"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-dom "^16.9.0"
+
+"@pie-lib/translator@beta":
+  version "2.4.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.4.0-beta.8.tgz#af1fef73dca042923c4b16a232df3c25161f7d68"
+  integrity sha512-3IwJRUAsn+9gcFgj7RP20b/LCpaotZpFA0Ory9OhJZupuU/UftqRU9O47siH+52BVhGVVvZ04itjbU9IgJS9Rw==
   dependencies:
     debug "^4.1.1"
     i18next "^22.5.0"
