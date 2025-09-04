@@ -1,12 +1,16 @@
 {
   "name": "@pie-element/extended-text-entry-controller",
   "private": true,
-  "version": "6.3.2",
+  "version": "6.3.6",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
+<<<<<<< HEAD
     "@pie-lib/pie-toolbox": "2.23.2"
+=======
+    "@pie-lib/pie-toolbox": "2.23.3"
+>>>>>>> develop
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

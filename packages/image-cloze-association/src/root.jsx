@@ -22,7 +22,11 @@ const styles = (theme) => ({
   main: {
     color: color.text(),
     backgroundColor: color.background(),
-    position: 'relative'
+    position: 'relative',
+    '& img': {
+      maxWidth: '100%',
+      height: 'auto',
+    }
   },
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
@@ -53,8 +57,8 @@ export class ImageClozeAssociationComponent extends React.Component {
       // set id for each answer
       .map((answer, index) => ({ ...answer, id: `${index}` }))
       // return only answer which have a valid container index
-      .filter((answer) => answer.containerIndex < responseContainers.length);    
-  
+      .filter((answer) => answer.containerIndex < responseContainers.length);
+
     const possibleResponsesFiltered = possibleResponsesWithIds.filter(
       (response) => !answers.find((answer) => answer.value === response.value),
     );

@@ -145,6 +145,7 @@ export class Main extends React.Component {
             categoryDefaultLabel={studentNewCategoryDefaultLabel}
             language={language}
             labelsPlaceholders={{}}
+            correctData={showToggle ? correctData : undefined}
           />
         )}
         {!showingCorrect && showKeyLegend && <KeyLegend language={language}></KeyLegend>}

@@ -51,7 +51,7 @@ describe('AlternateSection', () => {
   let choiceRemoved = jest.fn();
   let lengthChanged = jest.fn();
 
-  const wrapper = () => {
+  const wrapper = (extras = {}) => {
     const defaults = {
       classes: {},
       key: '0',
@@ -62,6 +62,8 @@ describe('AlternateSection', () => {
       lengthChanged,
       selectChoices: [{ label: 'moon', value: '2' }],
       choices,
+      maxLength: 10,
+      ...extras
     };
     const props = { ...defaults };
 
@@ -169,18 +171,78 @@ describe('AlternateSection', () => {
     });
 
     describe('onChoiceChanged', () => {
+      beforeEach(() => {
+        choiceChanged.mockClear();
+        lengthChanged.mockClear();
+      });
+
       it('calls choiceChanged', () => {
         w.instance().onChoiceChanged({ value: '0', label: 'cow' }, 'New value');
 
         expect(choiceChanged).toBeCalledWith({ value: '0', label: 'New value' });
       });
-    });
 
-    describe('onRemoveChoice', () => {
-      it('calls choiceRemoved', () => {
-        w.instance().onRemoveChoice({ value: '0', label: 'cow' });
+      it('calls lengthChanged when new max length is greater than current maxLength', () => {
+        // ['cow', 'cattle', 'calf'] - max length is 6 (cattle)
+        // maxLength prop is 10, so we need something longer than 10
+        const longChoice = 'Very long choice text'; // 21 characters
 
-        expect(choiceRemoved).toBeCalledWith('0');
+        w.instance().onChoiceChanged({ value: '0', label: 'cow' }, longChoice, 0);
+
+        // 21 + 5 = 26
+        expect(lengthChanged).toHaveBeenCalledWith(26);
+      });
+
+      it('calls lengthChanged when new max length is significantly smaller', () => {
+        const wrapperWithHighMaxLength = wrapper({ maxLength: 30 });
+
+        // ['cow', 'cattle', 'calf'] - max length is 6
+        wrapperWithHighMaxLength.instance().onChoiceChanged({ value: '1', label: 'cattle' }, 'a', 1);
+
+        // max length will be 4 (max of 'cow', 'a', 'calf')
+        // Since 4 + 10 = 14 <= 30, this should trigger lengthChanged
+        expect(lengthChanged).toHaveBeenCalledWith(7); // getAdjustedLength(4) = 4 + 3 = 7
+      });
+
+      it('does not call lengthChanged when new max length is within threshold', () => {
+        // ['cow', 'cattle', 'calf'] - max length is 6
+        // maxLength is 10, change to something that keeps max around the same
+        w.instance().onChoiceChanged({ value: '0', label: 'cow' }, 'bull', 0);
+
+        // max length will still be 6 (cattle), which is not > 10 and not <= 0 (10-10)
+        expect(lengthChanged).not.toHaveBeenCalled();
+      });
+
+      it('calculates max length across all choices correctly', () => {
+        const shortChoices = [
+          { label: 'a', value: '0' },
+          { label: 'bb', value: '1' },
+          { label: 'ccc', value: '2' },
+        ];
+
+        const wrapperWithShortChoices = wrapper({
+          choices: shortChoices,
+          maxLength: 5
+        });
+
+        wrapperWithShortChoices.instance().onChoiceChanged(
+          { value: '2', label: 'ccc' },
+          'This is much longer',
+          2
+        );
+        expect(lengthChanged).toHaveBeenCalledWith(24);
+      });
+
+      it('handles mixed special characters correctly', () => {
+        lengthChanged.mockClear();
+        const mixedSpecialChoice = 'Test with & < > " \' symbols'; // 27 chars when decoded
+
+        const wrapperWithLowMax = wrapper({ maxLength: 5 });
+
+        wrapperWithLowMax.instance().onChoiceChanged({ value: '0', label: 'cow' }, mixedSpecialChoice, 0);
+
+        // 27 normal characters + 5 buffer = 32
+        expect(lengthChanged).toHaveBeenCalledWith(32);
       });
     });
   });

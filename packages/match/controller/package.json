@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/match-controller",
   "private": true,
-  "version": "7.3.2",
+  "version": "7.3.6",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,7 +9,11 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@pie-lib/pie-toolbox": "2.23.2",
+=======
+    "@pie-lib/pie-toolbox": "2.23.3",
+>>>>>>> develop
     "debug": "^3.1.0"
   },
   "devDependencies": {

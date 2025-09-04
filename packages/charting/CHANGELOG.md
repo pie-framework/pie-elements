@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@8.7.6...@pie-element/charting@8.7.7) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+
+
+
+
+
+## [8.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@8.7.5...@pie-element/charting@8.7.6) (2025-08-15)
+
+
+### Bug Fixes
+
+* **charting:** add correctData prop to component based on showToggle - this was lost ([e7555d1](https://github.com/pie-framework/pie-elements/commit/e7555d1872dfdf537dab6aa5cd2f2d9a2f989ce4))
+
+
+
+
+
+## [8.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@8.7.4...@pie-element/charting@8.7.5) (2025-08-15)
+
+
+### Bug Fixes
+
+* PD-5084 ([78bd9ca](https://github.com/pie-framework/pie-elements/commit/78bd9ca1540c3968ddd36e0ff5cc4ac095865250))
+
+
+
+
+
+## [8.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@8.7.3...@pie-element/charting@8.7.4) (2025-08-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboxPD-5147, PD-4579, PD-5084, PD-4918 ([ff9ec92](https://github.com/pie-framework/pie-elements/commit/ff9ec92eb659a1664729aaae54eedf3b87f6a96a))
+
+
+
+
+
+## [8.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@8.7.2...@pie-element/charting@8.7.3) (2025-08-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5147 ([484432f](https://github.com/pie-framework/pie-elements/commit/484432fd824ebe403e8f4302f6b8cf4d026dacb5))
+* **charting:** improve correctness evaluation in scoring logic for user feedback PD-5137 ([5a41647](https://github.com/pie-framework/pie-elements/commit/5a41647050d8409f570a0acce44b5e732781f42a))
+
+
+
+
+
 ## [8.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@8.7.1...@pie-element/charting@8.7.2) (2025-07-25)
 
 

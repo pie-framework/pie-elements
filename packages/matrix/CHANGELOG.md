@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.47.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.47.5...@pie-element/matrix@0.47.6) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+
+
+
+
+
+## [0.47.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.47.4...@pie-element/matrix@0.47.5) (2025-08-15)
+
+
+### Bug Fixes
+
+* PD-5084 ([78bd9ca](https://github.com/pie-framework/pie-elements/commit/78bd9ca1540c3968ddd36e0ff5cc4ac095865250))
+
+
+
+
+
+## [0.47.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.47.3...@pie-element/matrix@0.47.4) (2025-08-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboxPD-5147, PD-4579, PD-5084, PD-4918 ([ff9ec92](https://github.com/pie-framework/pie-elements/commit/ff9ec92eb659a1664729aaae54eedf3b87f6a96a))
+
+
+
+
+
+## [0.47.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.47.2...@pie-element/matrix@0.47.3) (2025-08-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5147 ([484432f](https://github.com/pie-framework/pie-elements/commit/484432fd824ebe403e8f4302f6b8cf4d026dacb5))
+
+
+
+
+
 ## [0.47.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.47.1...@pie-element/matrix@0.47.2) (2025-07-25)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/passage-configure",
   "private": true,
-  "version": "2.6.2",
+  "version": "2.6.6",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -10,7 +10,11 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.3.0",
+<<<<<<< HEAD
     "@pie-lib/pie-toolbox": "2.23.2",
+=======
+    "@pie-lib/pie-toolbox": "2.23.3",
+>>>>>>> develop
     "lodash": "^4.17.15",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
