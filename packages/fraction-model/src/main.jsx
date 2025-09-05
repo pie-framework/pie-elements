@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AnswerFraction from './answer-fraction';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import FractionModelChart from './fraction-model-chart';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
-import { PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { AlertDialog } from '@pie-lib/config-ui';
+import { PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import cloneDeep from 'lodash/cloneDeep';
 
 export class Main extends React.Component {

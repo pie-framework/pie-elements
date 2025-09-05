@@ -10,7 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/math-rendering';
 import cloneDeep from 'lodash/cloneDeep';
 
 const log = debug('pie-elements:graphing:configure');
@@ -87,7 +87,7 @@ export default class GraphLinesConfigure extends HTMLElement {
     // Therefore, in such environments, we will make sure to keep a modelCopy (initialised in set model) and use it to reset
     // the model in set configuration (resetModelAfterConfigurationIsSet) if set configuration is ever called
     const pieAuthors = document.querySelectorAll('pie-author');
-    this.hasPlayerAsParent = Array.from(pieAuthors).some(author => author.contains(this));
+    this.hasPlayerAsParent = Array.from(pieAuthors).some((author) => author.contains(this));
 
     if (this.hasPlayerAsParent) {
       if (this._modelCopy) {
@@ -96,7 +96,7 @@ export default class GraphLinesConfigure extends HTMLElement {
         delete this._modelCopy;
       }
     }
-  }
+  };
 
   set configuration(c) {
     this._configuration = {

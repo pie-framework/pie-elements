@@ -4,17 +4,17 @@ import { Main } from '../main';
 import defaultValues from '../defaults';
 import ModelOptions from '../model-options';
 import CardBar from '../card-bar';
-import { FormSection } from '@pie-lib/pie-toolbox/config-ui';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import { FormSection } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
   FormSection: (props) => <div {...props} />,
 }));
 
-jest.mock('@pie-lib/pie-toolbox/editable-html', () => ({
+jest.mock('@pie-lib/editable-html', () => ({
   EditableHtml: (props) => <div {...props} />,
 }));
 

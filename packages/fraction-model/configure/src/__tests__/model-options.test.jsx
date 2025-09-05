@@ -5,16 +5,16 @@ import { ModelOptions } from '../model-options';
 import CardBar from '../card-bar';
 import { MiniField } from '../number-text-field';
 import Select from '@material-ui/core/Select';
-import { Checkbox } from '@pie-lib/pie-toolbox/config-ui';
+import { Checkbox } from '@pie-lib/config-ui';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   Checkbox: (props) => <div {...props} />,
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
 }));
 
-jest.mock('@pie-lib/pie-toolbox/editable-html', () => ({
+jest.mock('@pie-lib/editable-html', () => ({
   EditableHtml: (props) => <div {...props} />,
 }));
 

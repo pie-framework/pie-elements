@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer, KeyLegend } from '@pie-lib/pie-toolbox/graphing';
-import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { GraphContainer, KeyLegend } from '@pie-lib/graphing';
+import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -52,7 +52,8 @@ export class Main extends React.Component {
     const marks = answersCorrected || answer || [];
     const isLabelAvailable = toolbarTools?.includes('label') || false;
     const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
-    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+    const showTeacherInstructions =
+      model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>

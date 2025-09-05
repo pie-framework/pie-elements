@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import { shallowChild } from '@pie-lib/test-utils';
 import AnswerFraction from '../answer-fraction';
 import { TextField } from '@material-ui/core';
 
