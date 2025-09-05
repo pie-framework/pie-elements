@@ -2181,26 +2181,14 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@pie-element/multiple-choice@9.18.1-beta.1":
-  version "9.18.1-beta.1"
-  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-9.18.1-beta.1.tgz#901d1adf9144d48790e691a52aeee0b619586edc"
-  integrity sha512-elmZHsllxGrq6fIO436pXL/cv62Vgfq5/hj26tbql0riTadIZOch+ilEqf94wupOQYfIFL9QxJw+F80AnHAHXA==
+"@pie-element/rubric@^4.9.6":
+  version "4.9.6"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-4.9.6.tgz#61e6c6c840ee5d51a70ab87df0f6c0552bd14c4a"
+  integrity sha512-+ou7E5NVXaTSgOulHsvyHjM9fRc2vtl6R+cubD+jYadXkWDWqvCVhuOHGOasPeOaj68JQ/PeWg3T5XqI3XHZ6g==
   dependencies:
     "@material-ui/core" "^3.9.2"
-    "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/correct-answer-toggle" beta
-    "@pie-lib/math-rendering" beta
-    "@pie-lib/render-ui" beta
-    "@pie-lib/translator" beta
-    classnames "^2.2.5"
-    debug "^4.1.1"
-    enzyme-to-json "^3.3.3"
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
-    react "^16.8.1"
-    react-dom "^16.8.1"
-    react-test-renderer "^16.3.2"
-    react-transition-group "^2.3.1"
+    "@pie-lib/pie-toolbox" "2.23.3"
+    prop-types "^15.7.2"
 
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
@@ -2368,20 +2356,6 @@
     prop-types "^15.6.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/correct-answer-toggle@beta":
-  version "2.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.6.0-beta.8.tgz#5950900369578b5ad90515c7309f1236a74b1060"
-  integrity sha512-lsgzkr3eVBPrs9l+wQ9AFOawJFDmmaTM0zv8+KnsESIPpFjOzLHi1UgbsvMZHdI+RB8XMdhDA2iySQEqqh9VLA==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@pie-lib/icons" beta
-    "@pie-lib/render-ui" beta
-    "@pie-lib/translator" beta
-    classnames "^2.2.6"
-    lodash "^4.17.11"
-    prop-types "^15.6.2"
-    react-transition-group "^2.5.2"
-
 "@pie-lib/drag@^1.1.52":
   version "1.1.52"
   resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-1.1.52.tgz#0d93d2b5775d2023c487d8fa4af16a60b1798909"
@@ -2458,14 +2432,6 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/icons@beta":
-  version "2.5.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-2.5.0-beta.8.tgz#563d0033ee90282bb20e2513a080ec82ef5228ee"
-  integrity sha512-vKOqCvJzEuquAdxxLgKTka+XgdNqMEi2BALyg0BONFahbmIyNBabtN7nVI4vNY7b1IU3b4ipx4pjSGQoLAlu1A==
-  dependencies:
-    classnames "^2.2.6"
-    prop-types "^15.6.2"
-
 "@pie-lib/mask-markup@^1.22.1":
   version "1.22.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.22.1.tgz#8bd777983fbdbf887ce289b0de03c2942f301e9e"
@@ -2525,17 +2491,6 @@
     lodash "^4.17.11"
     mathjax-full "3.2.2"
     mathml-to-latex "1.2.0"
-
-"@pie-lib/math-rendering@beta":
-  version "3.3.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-3.3.0-beta.8.tgz#2cd0a3b37c72fa9801aae3a415f4c41f23c4f543"
-  integrity sha512-+ENWQRg9FoPYydjoddcMNWfuTTKElrFI5jXZsCq3Re6OKBu+FB6NcaL+3aU+/9fe89EbfPjKSK0Zx5xAaD22Gw==
-  dependencies:
-    "@pie-framework/mathml-to-latex" "1.4.4"
-    debug "^4.1.1"
-    lodash "^4.17.11"
-    mathjax-full "3.2.2"
-    react "^16.8.1"
 
 "@pie-lib/math-toolbar@^1.20.1", "@pie-lib/math-toolbar@^1.9.4":
   version "1.20.1"
@@ -2662,21 +2617,6 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/render-ui@beta":
-  version "4.16.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.16.0-beta.8.tgz#1ef8e6b08dc694021a3ec4d937a2da6fd55927b2"
-  integrity sha512-cR9xfIYueqK3ROTPVjF4J82j2EDAzKjqAsqx881ovJCHWRKgjKGaElkr6cTM20IFv1yCD8Q1kVj1gqnBzAJupw==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@pie-lib/icons" beta
-    "@pie-lib/math-rendering" beta
-    classnames "^2.2.6"
-    debug "^4.1.1"
-    lodash "^4.17.11"
-    prop-types "^15.7.2"
-    react-transition-group "^2.5.2"
-
 "@pie-lib/rubric@^0.17.1":
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.17.1.tgz#5355c3bd3eb8fcd758a1448d222ae0c5fea450f4"
@@ -2730,18 +2670,6 @@
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.12.1.tgz#6a1cff2710e77402c3f220845d715c53c255af84"
   integrity sha512-UF8HW0L2J5sKzH/HG60t3o3HoT8Uyv/IVxquuWqi0/YjeRfUQf/NdxAPobOfUwqrRCi7KDsPI7cm6CB28NcpLA==
-  dependencies:
-    debug "^4.1.1"
-    i18next "^22.5.0"
-    lodash "^4.17.11"
-    prop-types "^15.7.2"
-    react "^16.8.1"
-    react-dom "^16.9.0"
-
-"@pie-lib/translator@beta":
-  version "2.4.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.4.0-beta.8.tgz#af1fef73dca042923c4b16a232df3c25161f7d68"
-  integrity sha512-3IwJRUAsn+9gcFgj7RP20b/LCpaotZpFA0Ory9OhJZupuU/UftqRU9O47siH+52BVhGVVvZ04itjbU9IgJS9Rw==
   dependencies:
     debug "^4.1.1"
     i18next "^22.5.0"
