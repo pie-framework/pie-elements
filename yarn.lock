@@ -2424,6 +2424,43 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-0.13.1.tgz#b85273b81b9cc0e81cc695f692cd29b482207f39"
   integrity sha512-l9qYpIn6jHdWwnPBUQWV9fZHLA8px69A+dTgbH4OzdUjKDN17aCvDSfinwuD8pWD3Hzge2J87QPiwbX6DLAX7w==
 
+"@pie-lib/graphing-solution-set@^2.23.1":
+  version "2.23.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing-solution-set/-/graphing-solution-set-2.23.1.tgz#b33556beeb900997f466b15252bc9aeef9c13f62"
+  integrity sha512-2GS3CJ0+MnPNGvsnD0uLRo29jP14BvAW+kZPCHn20Y8XrxQGQxeQe5mW8wN7XBBHMLIMRugD//xV7JxitU8Amg==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/drag" "^2.11.1"
+    "@pie-lib/editable-html" "^11.10.1"
+    "@pie-lib/graphing-utils" "^1.10.1"
+    "@pie-lib/plot" "^2.16.1"
+    "@pie-lib/render-ui" "^4.24.1"
+    "@pie-lib/tools" "^0.18.1"
+    "@pie-lib/translator" "^2.12.1"
+    "@vx/axis" "^0.0.189"
+    "@vx/clip-path" "^0.0.189"
+    "@vx/curve" "^0.0.189"
+    "@vx/event" "^0.0.189"
+    "@vx/grid" "^0.0.189"
+    "@vx/group" "^0.0.183"
+    "@vx/point" "^0.0.189"
+    "@vx/shape" "^0.0.189"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-dom "^16.9.0"
+    react-draggable "^3.3.0"
+    react-input-autosize "^2.2.1"
+    react-redux "^6.0.0"
+    redux "^4.0.1"
+
 "@pie-lib/graphing-utils@^1.10.1":
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing-utils/-/graphing-utils-1.10.1.tgz#35a5dd80b10ed69468d6c4224a09b30c35301ff9"
@@ -2709,6 +2746,22 @@
     lodash "^4.17.11"
     prop-types "^15.6.2"
     unist-util-inspect "^4.1.3"
+
+"@pie-lib/tools@^0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/tools/-/tools-0.18.1.tgz#cb42357d5b36c99a976fa34f45fa3b2a6a2d6ec2"
+  integrity sha512-Tt+1JtkkBUYq++0Ai4OgDC37xIW9RzkUxOQmz3FFwLkSqyRjQhIk0UKBBzpfOZ+MXqqCz8GJaQW/CQOhvK1IPQ==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@pie-lib/style-utils" "^0.10.1"
+    assert "^1.4.1"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react-portal "^4.2.0"
+    trigonometry-calculator "^2.0.0"
 
 "@pie-lib/translator@^2.12.1":
   version "2.12.1"
@@ -3164,7 +3217,7 @@
   dependencies:
     d3-shape "^1.0.6"
 
-"@vx/curve@0.0.189":
+"@vx/curve@0.0.189", "@vx/curve@^0.0.189":
   version "0.0.189"
   resolved "https://registry.yarnpkg.com/@vx/curve/-/curve-0.0.189.tgz#0d1961a7dca69b65cdc1d5d325c75290e905771f"
   integrity sha512-wD4OhvlcURIDjnWvaGurWqMEseqUoI4Y3vtDXS7c4VmdhkX5O4y6PVQaTkg2I417jMkOz6kU+Xc50AzB0tJoqw==
