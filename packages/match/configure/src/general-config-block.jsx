@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InputContainer, NumberTextField } from '@pie-lib/pie-toolbox/config-ui';
+import { InputContainer, NumberTextField } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -75,7 +75,9 @@ class GeneralConfigBlock extends React.Component {
     return (
       <React.Fragment>
         <div className={classes.flexContainer}>
-          <Typography className={classes.titleText} component={'div'}>Define questions</Typography>
+          <Typography className={classes.titleText} component={'div'}>
+            Define questions
+          </Typography>
           <Tooltip
             classes={{ tooltip: classes.tooltip }}
             disableFocusListener
