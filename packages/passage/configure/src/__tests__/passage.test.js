@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { PassageComponent } from '../passage';
-import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
+import { InputContainer } from '@pie-lib/config-ui';
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   InputContainer: (props) => <div {...props}>{props.children}</div>,
 }));
 

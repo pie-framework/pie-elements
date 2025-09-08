@@ -5,12 +5,12 @@ import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
-import {color, Collapsible, Readable, hasText, hasMedia, PreviewPrompt, UiLayout} from '@pie-lib/pie-toolbox/render-ui';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
+import { color, Collapsible, Readable, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
 import MathQuill from '@pie-framework/mathquill';
-import { Customizable } from '@pie-lib/pie-toolbox/mask-markup';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { Customizable } from '@pie-lib/mask-markup';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import ReactDOM from 'react-dom';
 
 let registered = false;
@@ -44,7 +44,7 @@ function splitByParts(text) {
   // Use the regex pattern to split the text
   const parts = text.split(REGEX);
   // Filter out empty strings that might result from splitting
-  return parts.filter(part => part);
+  return parts.filter((part) => part);
 }
 
 function prepareForStatic(model, state) {
@@ -61,7 +61,6 @@ function prepareForStatic(model, state) {
 
     const splitted = splitByParts(markup);
 
-
     return splitted.reduce((acc, split) => {
       if (split.match(REGEX)) {
         const responseKey = Main.getResponseKey(split);
@@ -72,22 +71,21 @@ function prepareForStatic(model, state) {
 
           return {
             ...acc,
-            [responseKey]: `\\MathQuillMathField[r${responseKey}]{${blankSpace.repeat(3)}}`
+            [responseKey]: `\\MathQuillMathField[r${responseKey}]{${blankSpace.repeat(3)}}`,
           };
         }
 
         if (disabled) {
           return {
             ...acc,
-            [responseKey]: `\\embed{answerBlock}[r${responseKey}]`
+            [responseKey]: `\\embed{answerBlock}[r${responseKey}]`,
           };
         }
 
         return {
           ...acc,
-          [responseKey]: `\\MathQuillMathField[r${responseKey}]{${(answer && answer.value) || ''}}`
+          [responseKey]: `\\MathQuillMathField[r${responseKey}]{${(answer && answer.value) || ''}}`,
         };
-
       }
 
       return acc;
@@ -97,7 +95,7 @@ function prepareForStatic(model, state) {
 
 export class Main extends React.Component {
   // removes {{ and }} and returns only key response. Eg: {{0}} => 0
-  static getResponseKey = response => (response || '').replaceAll('{{', '').replaceAll('}}', '');
+  static getResponseKey = (response) => (response || '').replaceAll('{{', '').replaceAll('}}', '');
 
   static propTypes = {
     classes: PropTypes.object,
@@ -120,7 +118,7 @@ export class Main extends React.Component {
         const responseKey = Main.getResponseKey(response);
         const sessionAnswerForResponse = sessionAnswers && sessionAnswers[`r${responseKey}`];
 
-        answers[`r${responseKey}`] = { value: (sessionAnswerForResponse?.value) || '' };
+        answers[`r${responseKey}`] = { value: sessionAnswerForResponse?.value || '' };
       });
     }
 
@@ -209,13 +207,12 @@ export class Main extends React.Component {
       const newAnswers = {};
       const answers = this.state.session.answers;
 
-      (nextMatches || []).forEach(nextMatch => {
+      (nextMatches || []).forEach((nextMatch) => {
         const responseKey = Main.getResponseKey(nextMatch);
         const sessionAnswerForResponse = answers && answers[`r${responseKey}`];
 
         // build out local state model using responses declared in markup
-        newAnswers[`r${responseKey}`] = { value: (sessionAnswerForResponse?.value) || '' };
-
+        newAnswers[`r${responseKey}`] = { value: sessionAnswerForResponse?.value || '' };
       });
 
       this.setState(
@@ -386,7 +383,7 @@ export class Main extends React.Component {
     // Safari Hack: https://stackoverflow.com/a/42764495/5757635
     setTimeout(() => {
       if (ref && IS_SAFARI) {
-        const div = document.querySelector('[role=\'tooltip\']');
+        const div = document.querySelector("[role='tooltip']");
 
         if (div) {
           const el = div.firstChild;
@@ -399,42 +396,46 @@ export class Main extends React.Component {
   renderTeacherInstructions = () => {
     const { model, classes } = this.props;
     const { teacherInstructions, animationsDisabled } = model || {};
-    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
+    const showTeacherInstructions =
+      teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     const teacherInstructionsDiv = (
-      <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions}/>
+      <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />
     );
 
-    return showTeacherInstructions && (
-      <div className={classes.collapsible}>
-        {!animationsDisabled ? (
-          <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-            {teacherInstructionsDiv}
-          </Collapsible>
-        ) : (
-          teacherInstructionsDiv
-        )}
-      </div>
+    return (
+      showTeacherInstructions && (
+        <div className={classes.collapsible}>
+          {!animationsDisabled ? (
+            <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
+              {teacherInstructionsDiv}
+            </Collapsible>
+          ) : (
+            teacherInstructionsDiv
+          )}
+        </div>
+      )
     );
   };
 
   renderRationale = () => {
     const { model, classes } = this.props;
     const { rationale, animationsDisabled } = model || {};
-    const rationaleDiv = <PreviewPrompt prompt={rationale}/>;
+    const rationaleDiv = <PreviewPrompt prompt={rationale} />;
     const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
 
-    return showRationale && (
-      <div className={classes.collapsible}>
-        {!animationsDisabled ? (
-          <Collapsible
-            labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>{rationaleDiv}</Collapsible>
-        ) : (
-          rationaleDiv
-        )}
-      </div>
+    return (
+      showRationale && (
+        <div className={classes.collapsible}>
+          {!animationsDisabled ? (
+            <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>{rationaleDiv}</Collapsible>
+          ) : (
+            rationaleDiv
+          )}
+        </div>
+      )
     );
-  }
+  };
 
   renderPlayerContent = () => {
     const { model, classes } = this.props;
@@ -457,74 +458,74 @@ export class Main extends React.Component {
     const statics = prepareForStatic(model, this.state) || '';
     const studentPrintMode = printMode && !alwaysShowCorrect;
 
-    return (<div className={classes.inputAndKeypadContainer}>
-      <Customizable
-        disabled={disabled}
-        markup={model.markup}
-        // TODO remove the need of value?
-        value={{}}
-        customMarkMarkupComponent={(id) => {
-          const responseIsCorrect = mode === 'evaluate' && feedback && feedback[id];
+    return (
+      <div className={classes.inputAndKeypadContainer}>
+        <Customizable
+          disabled={disabled}
+          markup={model.markup}
+          // TODO remove the need of value?
+          value={{}}
+          customMarkMarkupComponent={(id) => {
+            const responseIsCorrect = mode === 'evaluate' && feedback && feedback[id];
 
-          const MQStatic = <mq.Static
-            className={classes.static}
-            ref={(mqStatic) => {
-              this.mqStatic = mqStatic || this.mqStatic;
-            }}
-            latex={statics[id]}
-            onSubFieldChange={this.subFieldChanged}
-            getFieldName={this.getFieldName}
-            setInput={this.setInput}
-            onSubFieldFocus={this.onSubFieldFocus}
-            onBlur={this.onBlur}
-          />;
+            const MQStatic = (
+              <mq.Static
+                className={classes.static}
+                ref={(mqStatic) => {
+                  this.mqStatic = mqStatic || this.mqStatic;
+                }}
+                latex={statics[id]}
+                onSubFieldChange={this.subFieldChanged}
+                getFieldName={this.getFieldName}
+                setInput={this.setInput}
+                onSubFieldFocus={this.onSubFieldFocus}
+                onBlur={this.onBlur}
+              />
+            );
 
-          return (
-            <div
-              className={cx(classes.expression, {
-                [classes.incorrect]: !emptyResponse && !responseIsCorrect && !showCorrect,
-                [classes.correct]: !emptyResponse && (responseIsCorrect || showCorrect),
-                [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
-                [classes.correctAnswerShown]: showCorrect,
-              })}
-            >
-              <Tooltip
-                ref={(ref) => this.setTooltipRef(ref)}
-                enterTouchDelay={0}
-                interactive
-                open={activeAnswerBlock === `r${id}`}
-                classes={{ tooltip: classes.keypadTooltip, popper: classes.keypadTooltipPopper }}
-                title={Object.keys(session.answers).map(
-                  (answerId) =>
-                    (answerId === activeAnswerBlock && !(showCorrect || disabled) && (
-                      <div
-                        data-keypad={true}
-                        key={answerId}
-                        className={classes.responseContainer}
-                        style={{ width: getKeyPadWidth(additionalKeys, equationEditor) }}
-                      >
-                        <HorizontalKeypad
-                          additionalKeys={additionalKeys}
-                          mode={equationEditor || DEFAULT_KEYPAD_VARIANT}
-                          onClick={this.onClick}
-                        />
-                      </div>
-                    )) ||
-                    null,
-                )}
+            return (
+              <div
+                className={cx(classes.expression, {
+                  [classes.incorrect]: !emptyResponse && !responseIsCorrect && !showCorrect,
+                  [classes.correct]: !emptyResponse && (responseIsCorrect || showCorrect),
+                  [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
+                  [classes.correctAnswerShown]: showCorrect,
+                })}
               >
-                {studentPrintMode
-                  ? (<div className={classes.printContainer}>
-                    {MQStatic}
-                  </div>)
-                  : MQStatic}
-              </Tooltip>
-            </div>
-          )
-        }}
-      />
-    </div>);
-  }
+                <Tooltip
+                  ref={(ref) => this.setTooltipRef(ref)}
+                  enterTouchDelay={0}
+                  interactive
+                  open={activeAnswerBlock === `r${id}`}
+                  classes={{ tooltip: classes.keypadTooltip, popper: classes.keypadTooltipPopper }}
+                  title={Object.keys(session.answers).map(
+                    (answerId) =>
+                      (answerId === activeAnswerBlock && !(showCorrect || disabled) && (
+                        <div
+                          data-keypad={true}
+                          key={answerId}
+                          className={classes.responseContainer}
+                          style={{ width: getKeyPadWidth(additionalKeys, equationEditor) }}
+                        >
+                          <HorizontalKeypad
+                            additionalKeys={additionalKeys}
+                            mode={equationEditor || DEFAULT_KEYPAD_VARIANT}
+                            onClick={this.onClick}
+                          />
+                        </div>
+                      )) ||
+                      null,
+                  )}
+                >
+                  {studentPrintMode ? <div className={classes.printContainer}>{MQStatic}</div> : MQStatic}
+                </Tooltip>
+              </div>
+            );
+          }}
+        />
+      </div>
+    );
+  };
 
   render() {
     const { model, classes } = this.props;
@@ -544,12 +545,16 @@ export class Main extends React.Component {
     const displayNote = (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} ref={(r) => {
-        // eslint-disable-next-line react/no-find-dom-node
-        const domNode = ReactDOM.findDOMNode(r);
+      <UiLayout
+        extraCSSRules={extraCSSRules}
+        className={classes.mainContainer}
+        ref={(r) => {
+          // eslint-disable-next-line react/no-find-dom-node
+          const domNode = ReactDOM.findDOMNode(r);
 
-        this.root = domNode || this.root;
-      }}>
+          this.root = domNode || this.root;
+        }}
+      >
         <div className={classes.main}>
           {/* what is srOnly ? */}
           {mode === 'gather' && <h2 className={classes.srOnly}>Math Equation Response Question</h2>}
@@ -570,20 +575,13 @@ export class Main extends React.Component {
 
           {prompt && (
             <div className={classes.promptContainer}>
-              <PreviewPrompt prompt={prompt}/>
+              <PreviewPrompt prompt={prompt} />
             </div>
           )}
 
-          <Readable false>
-            {this.renderPlayerContent()}
-          </Readable>
+          <Readable false>{this.renderPlayerContent()}</Readable>
 
-          {displayNote && (
-            <div
-              className={cx(classes.note, 'note')}
-              dangerouslySetInnerHTML={{ __html: note }}
-            />
-          )}
+          {displayNote && <div className={cx(classes.note, 'note')} dangerouslySetInnerHTML={{ __html: note }} />}
 
           {this.renderRationale()}
         </div>
@@ -674,7 +672,7 @@ const styles = (theme) => ({
     '& > div > div': {
       display: 'flex',
       alignItems: 'baseline',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
     },
     '& .mq-overarrow-inner': {
       border: 'none !important',

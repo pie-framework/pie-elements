@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Main } from '../design';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div className="mockConfigLayout">{props.children}</div>,
   },

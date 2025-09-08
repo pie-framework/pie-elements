@@ -9,16 +9,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import cloneDeep from 'lodash/cloneDeep';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import {
-  InputContainer,
-  settings,
-  layout,
-} from '@pie-lib/pie-toolbox/config-ui';
-import {
-  ALL_PLUGINS,
-  EditableHtml,
-} from '@pie-lib/pie-toolbox/editable-html';
-import { dropdown } from '@pie-lib/pie-toolbox/code/config-ui/settings';
+import { InputContainer, settings, layout } from '@pie-lib/config-ui';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import { dropdown } from '@pie-lib//config-ui';
 
 import Response from './response';
 import { processMarkup, createSlateMarkup } from './markupUtils';
@@ -50,10 +43,11 @@ export class Design extends React.Component {
   state = {};
 
   componentDidMount() {
-    const { model: { slateMarkup } } = this.props;
+    const {
+      model: { slateMarkup },
+    } = this.props;
 
     this.setState({ markup: slateMarkup });
-
   }
 
   handleChange = (key, value) => {
@@ -76,7 +70,7 @@ export class Design extends React.Component {
 
     onModelChanged({
       ...model,
-      slateMarkup: createSlateMarkup(model.markup, model.responses)
+      slateMarkup: createSlateMarkup(model.markup, model.responses),
     });
   };
 
@@ -134,7 +128,7 @@ export class Design extends React.Component {
         ...this.props.model,
         slateMarkup: domMarkup.innerHTML,
         responses: newResponses,
-        markup: processedMarkup
+        markup: processedMarkup,
       });
 
     this.setState({ cachedResponses: undefined }, callback);
@@ -223,15 +217,8 @@ export class Design extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      configuration,
-      imageSupport,
-      model,
-      onConfigurationChanged,
-      onModelChanged,
-      uploadSoundSupport,
-    } = this.props;
+    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+      this.props;
 
     const {
       baseInputConfiguration = {},
@@ -322,10 +309,7 @@ export class Design extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer
-            label={teacherInstructions.label}
-            className={classes.promptHolder}
-          >
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
             <EditableHtml
               className={classes.prompt}
               markup={model.teacherInstructions || ''}
@@ -334,37 +318,20 @@ export class Design extends React.Component {
               nonEmpty={false}
               error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
-              pluginProps={getPluginProps(
-                teacherInstructions?.inputConfiguration,
-                baseInputConfiguration
-              )}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
-              maxImageWidth={
-                (maxImageWidth && maxImageWidth.teacherInstructions) ||
-                defaultImageMaxWidth
-              }
-              maxImageHeight={
-                (maxImageHeight && maxImageHeight.teacherInstructions) ||
-                defaultImageMaxHeight
-              }
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[
-                { language: 'spanish' },
-                { language: 'special' },
-              ]}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && (
-              <div className={classes.errorText}>{teacherInstructionsError}</div>
-            )}
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
         {promptEnabled && (
-          <InputContainer
-            label={prompt.label}
-            className={classes.promptHolder}
-          >
+          <InputContainer label={prompt.label} className={classes.promptHolder}>
             <EditableHtml
               className={classes.prompt}
               markup={model.prompt}
@@ -374,27 +341,21 @@ export class Design extends React.Component {
               disableUnderline
               error={promptError}
               toolbarOpts={toolbarOpts}
-              pluginProps={getPluginProps(
-                teacherInstructions?.inputConfiguration,
-                baseInputConfiguration
-              )}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[
-                { language: 'spanish' },
-                { language: 'special' },
-              ]}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {promptError && (
-              <div className={classes.errorText}>{promptError}</div>
-            )}
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
         <div className={classes.tooltipContainer}>
-          <Typography className={classes.title} component={'div'}>Response Template</Typography>
+          <Typography className={classes.title} component={'div'}>
+            Response Template
+          </Typography>
           <Tooltip
             classes={{ tooltip: classes.tooltip }}
             disableFocusListener
@@ -409,10 +370,7 @@ export class Design extends React.Component {
           activePlugins={ALL_PLUGINS}
           toolbarOpts={{ position: 'top' }}
           spellCheck={spellCheckEnabled}
-          pluginProps={getPluginProps(
-            template?.inputConfiguration,
-            baseInputConfiguration
-          )}
+          pluginProps={getPluginProps(template?.inputConfiguration, baseInputConfiguration)}
           responseAreaProps={{
             type: 'math-templated',
             respAreaToolbar: null,
@@ -430,32 +388,20 @@ export class Design extends React.Component {
           highlightShape={false}
           error={responseAreasError}
           uploadSoundSupport={uploadSoundSupport}
-          languageCharactersProps={[
-            { language: 'spanish' },
-            { language: 'special' },
-          ]}
+          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           mathMlOptions={mathMlOptions}
         />
-        {responseAreasError && (
-          <div className={classes.responseAreaError}>{responseAreasError}</div>
-        )}
+        {responseAreasError && <div className={classes.responseAreaError}>{responseAreasError}</div>}
 
         <Typography className={classes.title}>Define Response</Typography>
 
-        <InputContainer
-          label="Response Template Equation Editor"
-          className={classes.selectContainer}
-        >
+        <InputContainer label="Response Template Equation Editor" className={classes.selectContainer}>
           <Select
             className={classes.select}
-            onChange={(event) =>
-              this.handleChange('equationEditor', event.target.value)
-            }
+            onChange={(event) => this.handleChange('equationEditor', event.target.value)}
             value={equationEditor}
           >
-            <MenuItem value="non-negative-integers">
-              Numeric - Non-Negative Integers
-            </MenuItem>
+            <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
             <MenuItem value="integers">Numeric - Integers</MenuItem>
             <MenuItem value="decimals">Numeric - Decimals</MenuItem>
             <MenuItem value="fractions">Numeric - Fractions</MenuItem>
@@ -464,9 +410,7 @@ export class Design extends React.Component {
             <MenuItem value={6}>Grade 6 - 7</MenuItem>
             <MenuItem value={8}>Grade 8 - HS</MenuItem>
             <MenuItem value={'geometry'}>Geometry</MenuItem>
-            <MenuItem value={'advanced-algebra'}>
-              Advanced Algebra
-            </MenuItem>
+            <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
             <MenuItem value={'statistics'}>Statistics</MenuItem>
             <MenuItem value={'item-authoring'}>Item Authoring</MenuItem>
           </Select>
@@ -477,18 +421,18 @@ export class Design extends React.Component {
 
           if (response) {
             return (
-                <Response
-                    key={idx}
-                    responseKey={idx}
-                    mode={equationEditor}
-                    response={response}
-                    onResponseChange={this.onResponseChange}
-                    onResponseDone={this.onResponseDone}
-                    index={idx}
-                    cIgnoreOrder={cIgnoreOrder}
-                    cAllowTrailingZeros={cAllowTrailingZeros}
-                    error={responsesErrors && responsesErrors[idx]}
-                />
+              <Response
+                key={idx}
+                responseKey={idx}
+                mode={equationEditor}
+                response={response}
+                onResponseChange={this.onResponseChange}
+                onResponseDone={this.onResponseDone}
+                index={idx}
+                cIgnoreOrder={cIgnoreOrder}
+                cAllowTrailingZeros={cAllowTrailingZeros}
+                error={responsesErrors && responsesErrors[idx]}
+              />
             );
           }
 
@@ -496,10 +440,7 @@ export class Design extends React.Component {
         })}
 
         {rationaleEnabled && (
-          <InputContainer
-            label={rationale.label}
-            className={classes.promptHolder}
-          >
+          <InputContainer label={rationale.label} className={classes.promptHolder}>
             <EditableHtml
               className={classes.prompt}
               markup={model.rationale || ''}
@@ -515,24 +456,13 @@ export class Design extends React.Component {
                 },
               })}
               spellCheck={spellCheckEnabled}
-              maxImageWidth={
-                (maxImageWidth && maxImageWidth.rationale) ||
-                defaultImageMaxWidth
-              }
-              maxImageHeight={
-                (maxImageHeight && maxImageHeight.rationale) ||
-                defaultImageMaxHeight
-              }
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[
-                { language: 'spanish' },
-                { language: 'special' },
-              ]}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {rationaleError && (
-              <div className={classes.errorText}>{rationaleError}</div>
-            )}
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
           </InputContainer>
         )}
       </layout.ConfigLayout>
