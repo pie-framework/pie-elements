@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/extended-text-entry",
-  "version": "11.8.2",
+  "version": "11.8.7",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -12,7 +12,7 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "2.22.3",
+    "@pie-lib/pie-toolbox": "2.25.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash.throttle": "^4.1.1",

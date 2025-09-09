@@ -58,6 +58,17 @@ const getAdjustedLength = (length) => {
   return length + 5;
 };
 
+// we can't use the dom parser here because it is not available in the node environment
+const decodeHtmlEntities = (str) => {
+  if (!str) return '';
+  return str
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;|&#39;/g, '\'')
+    .replace(/&amp;/g, '&');
+};
+
 export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
@@ -128,7 +139,7 @@ export function model(question, session, env) {
 
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map((choice) => (choice.label || '').length);
+      const labelLengthsArr = (choice || []).map((choice) => decodeHtmlEntities(choice.label || '').length);
       const length = Math.max(...labelLengthsArr);
 
       if (
