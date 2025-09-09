@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { PreviewLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { PreviewLayout } from '@pie-lib/render-ui';
 import MultipleChoice from './multiple-choice';
 
 const styles = () => ({});
