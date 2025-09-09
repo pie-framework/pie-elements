@@ -12,7 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import max from 'lodash/max';
 import classnames from 'classnames';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import EditableHtml from '@pie-lib/editable-html';
 import { stripHtmlTags, getAdjustedLength, decodeHTML } from './markupUtils';
 
 const styles = (theme) => ({
@@ -71,7 +71,7 @@ export class Choice extends React.Component {
     value: PropTypes.string,
     spellCheck: PropTypes.bool,
     showMaxLength: PropTypes.bool,
-    pluginProps: PropTypes.object
+    pluginProps: PropTypes.object,
   };
 
   state = {
@@ -98,36 +98,36 @@ export class Choice extends React.Component {
     const inputProps = showMaxLength ? {} : { maxLength: 25 };
 
     return (
-        <React.Fragment>
-          <div
-              style={{
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-          >
-            <EditableHtml
-                className={classnames(classes.choice, error && classes.inputError)}
-                disableUnderline
-                onChange={this.onChange}
-                markup={value || ''}
-                activePlugins={['languageCharacters']}
-                pluginProps={pluginProps}
-                languageCharactersProps={[{ language: 'spanish' }]}
-                spellCheck={spellCheck}
-                autoWidthToolbar
-                toolbarOpts={{
-                  minWidth: 'auto',
-                  isHidden: !!pluginProps?.characters?.disabled
-                }}
-                {...inputProps}
-            />
-            <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
-              <Delete />
-            </IconButton>
-          </div>
-          {error && <div className={classes.errorText}>{error}</div>}
-        </React.Fragment>
+      <React.Fragment>
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <EditableHtml
+            className={classnames(classes.choice, error && classes.inputError)}
+            disableUnderline
+            onChange={this.onChange}
+            markup={value || ''}
+            activePlugins={['languageCharacters']}
+            pluginProps={pluginProps}
+            languageCharactersProps={[{ language: 'spanish' }]}
+            spellCheck={spellCheck}
+            autoWidthToolbar
+            toolbarOpts={{
+              minWidth: 'auto',
+              isHidden: !!pluginProps?.characters?.disabled,
+            }}
+            {...inputProps}
+          />
+          <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
+            <Delete />
+          </IconButton>
+        </div>
+        {error && <div className={classes.errorText}>{error}</div>}
+      </React.Fragment>
     );
   }
 }
@@ -146,7 +146,7 @@ export class AlternateSection extends React.Component {
     maxLength: PropTypes.number,
     showMaxLength: PropTypes.bool,
     spellCheck: PropTypes.bool,
-    pluginProps: PropTypes.object
+    pluginProps: PropTypes.object,
   };
 
   state = {};
@@ -199,8 +199,8 @@ export class AlternateSection extends React.Component {
   onChoiceChanged = (choice, value, index) => {
     const { choiceChanged, lengthChanged, maxLength, choices } = this.props;
 
-    const labelLengthsArr = choices.map((choice) => (choice.label || '').length);
-    labelLengthsArr[index] = value.length;
+    const labelLengthsArr = choices.map((choice) => decodeHTML(choice.label || '').length);
+    labelLengthsArr[index] =  decodeHTML(value).length;
 
     const newLength = Math.max(...labelLengthsArr);
 
@@ -227,7 +227,7 @@ export class AlternateSection extends React.Component {
       return 1;
     }
 
-    const labelLengthsArr = choices.map((choice) => (choice.label || '').length);
+    const labelLengthsArr = choices.map((choice) => decodeHTML(choice.label || '').length);
 
     return Math.max(...labelLengthsArr);
   };
@@ -261,9 +261,9 @@ export class AlternateSection extends React.Component {
               <em>{value ? 'Remove selection' : 'Select a response'}</em>
             </MenuItem>
             {selectChoices.map((c, index) => (
-                <MenuItem key={index} value={c?.value}>
-                  {decodeHTML(c?.label)}
-                </MenuItem>
+              <MenuItem key={index} value={c?.value}>
+                {decodeHTML(c?.label)}
+              </MenuItem>
             ))}
           </Select>
 

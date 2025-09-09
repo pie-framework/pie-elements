@@ -4,8 +4,8 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
@@ -13,7 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
-import { getAdjustedLength } from './markupUtils';
+import { decodeHTML, getAdjustedLength } from './markupUtils';
 import { generateValidationMessage } from './utils';
 import classnames from 'classnames';
 
@@ -102,7 +102,7 @@ export class Main extends React.Component {
 
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map((choice) => (choice.label || '').length);
+      const labelLengthsArr = choice.map((choice) => decodeHTML(choice.label || '').length);
       const length = Math.max(...labelLengthsArr);
 
       if (
@@ -154,7 +154,7 @@ export class Main extends React.Component {
     const { model, onModelChanged } = this.props;
     const { choices } = model;
     let { maxLengthPerChoice } = model;
-    const newValLength = (newVal || '').length;
+    const newValLength = decodeHTML(newVal || '').length;
 
     if (!choices[index]) {
       choices[index] = [{ label: newVal || '', value: '0' }];
@@ -316,7 +316,8 @@ export class Main extends React.Component {
       maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
       'language.enabled': language.settings && toggle(language.label, true),
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
-      'responseAreaInputConfiguration.inputConfiguration.characters.disabled': spanishButton.settings && toggle(spanishButton.label,true),
+      'responseAreaInputConfiguration.inputConfiguration.characters.disabled':
+        spanishButton.settings && toggle(spanishButton.label, true),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -326,7 +327,6 @@ export class Main extends React.Component {
       playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
       'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
-
     };
 
     const getPluginProps = (props = {}) => ({
