@@ -196,7 +196,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
     label="Teacher Instructions"
   >
     <EditableHtml
-      allowValidation={false}
       imageSupport={Object {}}
       languageCharactersProps={
         Array [
@@ -219,7 +218,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -264,7 +262,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
     label="Prompt"
   >
     <EditableHtml
-      allowValidation={false}
       disableUnderline={true}
       imageSupport={Object {}}
       languageCharactersProps={
@@ -288,7 +285,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -356,33 +352,6 @@ There should be at least 1 and at most 10 response areas defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
-    activePlugins={
-      Array [
-        "bold",
-        "html",
-        "extraCSSRules",
-        "italic",
-        "underline",
-        "strikethrough",
-        "bulleted-list",
-        "numbered-list",
-        "image",
-        "math",
-        "languageCharacters",
-        "text-align",
-        "blockquote",
-        "h3",
-        "table",
-        "video",
-        "audio",
-        "responseArea",
-        "redo",
-        "undo",
-        "superscript",
-        "subscript",
-      ]
-    }
-    allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}
     highlightShape={false}
@@ -405,7 +374,6 @@ There should be at least 1 and at most 10 response areas defined."
     }
     onBlur={[Function]}
     onChange={[Function]}
-    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {
@@ -530,7 +498,6 @@ There should be at least 1 and at most 10 response areas defined."
     label="Rationale"
   >
     <EditableHtml
-      allowValidation={false}
       imageSupport={Object {}}
       languageCharactersProps={
         Array [
@@ -553,7 +520,6 @@ There should be at least 1 and at most 10 response areas defined."
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {

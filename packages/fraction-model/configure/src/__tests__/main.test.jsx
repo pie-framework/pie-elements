@@ -14,10 +14,6 @@ jest.mock('@pie-lib/config-ui', () => ({
   FormSection: (props) => <div {...props} />,
 }));
 
-jest.mock('@pie-lib/editable-html', () => ({
-  EditableHtml: (props) => <div {...props} />,
-}));
-
 jest.mock('lodash/debounce', () => (fn) => fn);
 
 jest.spyOn(Math, 'random').mockReturnValue(0);

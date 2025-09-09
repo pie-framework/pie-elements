@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { Response } from '../response'; // Adjust the import path as necessary
 import { withStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
@@ -23,6 +23,19 @@ const classes = {
   responseBox: 'responseBox',
   alternateBar: 'alternateBar',
 };
+
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: (props) => <div>{props.children}</div>,
+  },
+  settings: {
+    Panel: (props) => <div onChange={props.onChange} />,
+    toggle: jest.fn(),
+    dropdown: jest.fn(),
+  },
+  InputContainer: (props) => <div {...props}>{props.children}</div>,
+  EditableHtml: (props) => <div {...props}>{props.children}</div>,
+}));
 
 const ResponseWithStyles = withStyles(() => classes)(Response);
 

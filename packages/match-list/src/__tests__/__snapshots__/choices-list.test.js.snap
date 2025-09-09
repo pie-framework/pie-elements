@@ -2,7 +2,7 @@
 
 exports[`ChoicesList render renders correctly 1`] = `
 <div>
-  <DropTarget(DroppablePlaceholder)>
+  <div>
     <DragSource(WithStyles(Answer))
       draggable={true}
       id={1}
@@ -51,6 +51,6 @@ exports[`ChoicesList render renders correctly 1`] = `
       title="Answer 6"
       type="choice"
     />
-  </DropTarget(DroppablePlaceholder)>
+  </div>
 </div>
 `;
