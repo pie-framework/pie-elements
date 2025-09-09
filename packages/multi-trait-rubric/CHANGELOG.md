@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.6.6...@pie-element/multi-trait-rubric@4.6.7) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
+
+
+
+
+
 ## [4.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.6.5...@pie-element/multi-trait-rubric@4.6.6) (2025-09-02)
 
 
