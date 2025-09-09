@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@6.3.7...@pie-element/ruler@6.3.8) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
+
+
+
+
+
 ## [6.3.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@6.3.6...@pie-element/ruler@6.3.7) (2025-09-09)
 
 
