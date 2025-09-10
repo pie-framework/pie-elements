@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import Translator from '@pie-lib/translator';
 
 import StyledChoice from './choice';
 
@@ -48,6 +48,9 @@ const styles = (theme) => ({
     padding: '0.01em 0 0 0',
     margin: '0px',
     minWidth: '0px',
+    '&:focus': {
+      outline: 'none',
+    },
   },
   srOnly: {
     position: 'absolute',

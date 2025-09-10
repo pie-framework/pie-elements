@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.19.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.19.0...@pie-element/multiple-choice@9.19.1) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
+
+
+
+
+
+# [9.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.5...@pie-element/multiple-choice@9.19.0) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+* **multiple-choice:** restrict keyboard event handling to 'gather' mode PD-5166 ([b63f3a6](https://github.com/pie-framework/pie-elements/commit/b63f3a6dfb26ff0eea9ea0bd8c1514a6d7504398))
+
+
+### Features
+
+* update audio completion checks only to be applied if the item has audio PD-5176 ([4c519b0](https://github.com/pie-framework/pie-elements/commit/4c519b08068328635ae2f6e9d5bdf82374a0637e))
+
+
+
+
+
+## [9.18.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.4...@pie-element/multiple-choice@9.18.5) (2025-08-15)
+
+
+### Bug Fixes
+
+* PD-5084 ([78bd9ca](https://github.com/pie-framework/pie-elements/commit/78bd9ca1540c3968ddd36e0ff5cc4ac095865250))
+
+
+
+
+
+## [9.18.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.3...@pie-element/multiple-choice@9.18.4) (2025-08-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboxPD-5147, PD-4579, PD-5084, PD-4918 ([ff9ec92](https://github.com/pie-framework/pie-elements/commit/ff9ec92eb659a1664729aaae54eedf3b87f6a96a))
+
+
+
+
+
+## [9.18.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.2...@pie-element/multiple-choice@9.18.3) (2025-08-14)
+
+
+### Bug Fixes
+
+* remove default outline from fieldset on focus PD-4563 ([fe82f79](https://github.com/pie-framework/pie-elements/commit/fe82f7973c82669d3c66def627fbfb91d9de125f))
+* update pie-lib/pie-toolbox PD-5147 ([484432f](https://github.com/pie-framework/pie-elements/commit/484432fd824ebe403e8f4302f6b8cf4d026dacb5))
+
+
+
+
+
 ## [9.18.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.18.1...@pie-element/multiple-choice@9.18.2) (2025-07-25)
 
 

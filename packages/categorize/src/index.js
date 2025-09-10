@@ -19,9 +19,19 @@ export default class Categorize extends HTMLElement {
 
   isComplete() {
     const { autoplayAudioEnabled, completeAudioEnabled } = this._model || {};
+    const elementContext = this;
 
+    // check audio completion if audio settings are enabled and audio actually exists
     if (autoplayAudioEnabled && completeAudioEnabled && !this.audioComplete) {
-      return false;
+      if (elementContext) {
+        const audio = elementContext.querySelector('audio');
+        const isInsidePrompt = audio && audio.closest('#preview-prompt');
+
+        // only require audio completion if audio exists and is inside the prompt
+        if (audio && isInsidePrompt) {
+          return false;
+        }
+      }
     }
 
     if (!this._session || !this._session.answers) {
