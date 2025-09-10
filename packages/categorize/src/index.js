@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { EnableAudioAutoplayImage } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
+import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import CategorizeComponent from './categorize';
 
@@ -18,10 +18,20 @@ export default class Categorize extends HTMLElement {
   }
 
   isComplete() {
-    const { autoplayAudioEnabled, completeAudioEnabled } =this._model || {};
+    const { autoplayAudioEnabled, completeAudioEnabled } = this._model || {};
+    const elementContext = this;
 
+    // check audio completion if audio settings are enabled and audio actually exists
     if (autoplayAudioEnabled && completeAudioEnabled && !this.audioComplete) {
-      return false;
+      if (elementContext) {
+        const audio = elementContext.querySelector('audio');
+        const isInsidePrompt = audio && audio.closest('#preview-prompt');
+
+        // only require audio completion if audio exists and is inside the prompt
+        if (audio && isInsidePrompt) {
+          return false;
+        }
+      }
     }
 
     if (!this._session || !this._session.answers) {
@@ -85,14 +95,14 @@ export default class Categorize extends HTMLElement {
     Object.assign(info.style, {
       position: 'absolute',
       top: 0,
-      width:'100%',
+      width: '100%',
       height: '100%',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       background: 'white',
       zIndex: '1000',
-      cursor: 'pointer'
+      cursor: 'pointer',
     });
 
     const img = document.createElement('img');
@@ -105,8 +115,7 @@ export default class Categorize extends HTMLElement {
     return info;
   }
 
-  connectedCallback(){
-
+  connectedCallback() {
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -166,9 +175,9 @@ export default class Categorize extends HTMLElement {
             this._session.audioEndTime = this._session.audioEndTime || new Date().getTime();
 
             let { audioStartTime, audioEndTime, waitTime } = this._session;
-            if(!waitTime && audioStartTime && audioEndTime) {
+            if (!waitTime && audioStartTime && audioEndTime) {
               // waitTime is elapsed time the user waited for auto-played audio to finish
-              this._session.waitTime = (audioEndTime - audioStartTime);
+              this._session.waitTime = audioEndTime - audioStartTime;
             }
 
             this.audioComplete = true;

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Choice from './choice';
 import PlaceHolder from './droppable-placeholder';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 export const CategoryType = {
   id: PropTypes.string.isRequired,
@@ -25,15 +25,33 @@ export class Category extends React.Component {
   static defaultProps = {};
 
   render() {
-    const { classes, className, choices = [], disabled, onDropChoice, onRemoveChoice, id, correct, minRowHeight } = this.props;
+    const {
+      classes,
+      className,
+      choices = [],
+      disabled,
+      onDropChoice,
+      onRemoveChoice,
+      id,
+      correct,
+      minRowHeight,
+    } = this.props;
 
     const names = classNames(classes.category, className);
-    const placeholderNames = classNames(classes.placeholder, correct === false && classes.incorrect,
-      correct === true && classes.correct);
+    const placeholderNames = classNames(
+      classes.placeholder,
+      correct === false && classes.incorrect,
+      correct === true && classes.correct,
+    );
 
     return (
       <div className={names}>
-        <PlaceHolder onDropChoice={onDropChoice} disabled={disabled} className={placeholderNames} minRowHeight={minRowHeight}>
+        <PlaceHolder
+          onDropChoice={onDropChoice}
+          disabled={disabled}
+          className={placeholderNames}
+          minRowHeight={minRowHeight}
+        >
           {choices.map((c, index) => (
             <Choice
               onRemoveChoice={onRemoveChoice}
@@ -55,7 +73,7 @@ const styles = (theme) => ({
     border: `solid 2px ${color.incorrect()}`,
   },
   correct: {
-    border: `solid 2px ${color.correct()}`
+    border: `solid 2px ${color.correct()}`,
   },
   placeholder: {
     padding: theme.spacing.unit / 2,
@@ -71,7 +89,7 @@ const styles = (theme) => ({
   category: {
     display: 'flex',
     flexDirection: 'column',
-    flex: 2
+    flex: 2,
   },
 });
 

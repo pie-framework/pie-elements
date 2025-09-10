@@ -4,7 +4,7 @@ exports[`DroppablePlaceholder snapshot renders 1`] = `
 <div
   className="className"
 >
-  <WithStyles(PlaceHolder)>
+  <PlaceHolder>
     <Previews
       choices={
         Array [
@@ -16,7 +16,7 @@ exports[`DroppablePlaceholder snapshot renders 1`] = `
       }
       onDeleteChoice={[MockFunction]}
     />
-  </WithStyles(PlaceHolder)>
+  </PlaceHolder>
 </div>
 `;
 
@@ -24,8 +24,8 @@ exports[`DroppablePlaceholder snapshot renders helper 1`] = `
 <div
   className="className"
 >
-  <WithStyles(PlaceHolder)>
+  <PlaceHolder>
     <WithStyles(Component) />
-  </WithStyles(PlaceHolder)>
+  </PlaceHolder>
 </div>
 `;

@@ -4,8 +4,8 @@ import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import { decode } from 'he';
-import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import { partialScoring } from '@pie-lib/controller-utils';
+import Translator from '@pie-lib/translator';
 import defaults from './defaults';
 
 const { translator } = Translator;
@@ -56,6 +56,17 @@ const getAdjustedLength = (length) => {
   }
 
   return length + 5;
+};
+
+// we can't use the dom parser here because it is not available in the node environment
+const decodeHtmlEntities = (str) => {
+  if (!str) return '';
+  return str
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;|&#39;/g, '\'')
+    .replace(/&amp;/g, '&');
 };
 
 export const normalize = (question) => ({ ...defaults, ...question });
@@ -128,7 +139,7 @@ export function model(question, session, env) {
 
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map((choice) => (choice.label || '').length);
+      const labelLengthsArr = (choice || []).map((choice) => decodeHtmlEntities(choice.label || '').length);
       const length = Math.max(...labelLengthsArr);
 
       if (
@@ -252,7 +263,7 @@ const getInnerText = (html) => {
   if (typeof html.replaceAll === 'function') {
     return html.replaceAll(/<[^>]*>/g, '');
   } else {
-        // Polyfill for replaceAll using replace and a global regex
+    // Polyfill for replaceAll using replace and a global regex
     return html.replace(/<[^>]*>/g, '');
   }
 };

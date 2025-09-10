@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 export const normalize = (question) => ({
@@ -95,19 +95,16 @@ export const getScore = (config, session) => {
   const { value } = session || {};
 
   for (let i = 0; i < numberOfPossibleResponses; i++) {
-    const result = Object.keys(allCorrectResponses).reduce(
-      (total, key) => {
-        const choices = allCorrectResponses[key];
-        const answer = (value && value[key]) || '';
+    const result = Object.keys(allCorrectResponses).reduce((total, key) => {
+      const choices = allCorrectResponses[key];
+      const answer = (value && value[key]) || '';
 
-        if (choices[i] === answer) {
-          return total;
-        }
+      if (choices[i] === answer) {
+        return total;
+      }
 
-        return total - 1;
-      },
-      maxScore,
-    );
+      return total - 1;
+    }, maxScore);
 
     if (result > correctCount) {
       correctCount = result;
