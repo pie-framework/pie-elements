@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { EnableAudioAutoplayImage } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
+import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import CategorizeComponent from './categorize';
 
@@ -102,7 +102,7 @@ export default class Categorize extends HTMLElement {
       alignItems: 'center',
       background: 'white',
       zIndex: '1000',
-      cursor: 'pointer'
+      cursor: 'pointer',
     });
 
     const img = document.createElement('img');
@@ -116,7 +116,6 @@ export default class Categorize extends HTMLElement {
   }
 
   connectedCallback() {
-
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -178,7 +177,7 @@ export default class Categorize extends HTMLElement {
             let { audioStartTime, audioEndTime, waitTime } = this._session;
             if (!waitTime && audioStartTime && audioEndTime) {
               // waitTime is elapsed time the user waited for auto-played audio to finish
-              this._session.waitTime = (audioEndTime - audioStartTime);
+              this._session.waitTime = audioEndTime - audioStartTime;
             }
 
             this.audioComplete = true;
