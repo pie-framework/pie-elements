@@ -5,11 +5,19 @@ import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
 
-export const isComplete = (session, model, audioComplete) => {
+export const isComplete = (session, model, audioComplete, elementContext) => {
   const { autoplayAudioEnabled, completeAudioEnabled } = model || {};
 
   if (autoplayAudioEnabled && completeAudioEnabled && !audioComplete) {
-    return false;
+    if (elementContext) {
+      const audio = elementContext.querySelector('audio');
+      const isInsidePrompt = audio && audio.closest('#preview-prompt');
+
+      // only require audio completion if audio exists and is inside the prompt
+      if (audio && isInsidePrompt) {
+        return false;
+      }
+    }
   }
 
   if (!session || !session.value) {
@@ -30,13 +38,7 @@ export default class DragInTheBlank extends HTMLElement {
 
   set model(m) {
     this._model = m;
-    this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        isComplete(this._session, this._model, this.audioComplete),
-        !!this._model,
-      ),
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete, this), !!this._model));
     // reset the audioInitialized to false since the model changed, and we might need to reinitialize the audio
     this._audioInitialized = false;
     this._render();
@@ -66,9 +68,7 @@ export default class DragInTheBlank extends HTMLElement {
   };
 
   dispatchChangedEvent = () => {
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete)),
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete, this)));
   };
 
   changeSession = (value) => {

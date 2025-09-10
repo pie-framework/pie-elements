@@ -16,7 +16,7 @@ export default class Hotspot extends HTMLElement {
     this.audioComplete = false;
   }
 
-    set model(m) {
+  set model(m) {
     this._model = m;
 
     this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this.isComplete(), !!this._model));
@@ -30,8 +30,19 @@ export default class Hotspot extends HTMLElement {
     }
 
     const { autoplayAudioEnabled, completeAudioEnabled } = this._model || {};
+    const elementContext = this;
+
+    // check audio completion if audio settings are enabled and audio actually exists
     if (autoplayAudioEnabled && completeAudioEnabled && !this.audioComplete) {
-      return false;
+      if (elementContext) {
+        const audio = elementContext.querySelector('audio');
+        const isInsidePrompt = audio && audio.closest('#preview-prompt');
+
+        // only require audio completion if audio exists and is inside the prompt
+        if (audio && isInsidePrompt) {
+          return false;
+        }
+      }
     }
 
     if (!Array.isArray(this._session.answers)) {
@@ -69,7 +80,7 @@ export default class Hotspot extends HTMLElement {
     Object.assign(info.style, {
       position: 'absolute',
       top: 0,
-      width:'100%',
+      width: '100%',
       height: '100%',
       display: 'flex',
       justifyContent: 'center',
@@ -151,7 +162,7 @@ export default class Hotspot extends HTMLElement {
             updateSessionMetadata(this._session, { audioEndTime: new Date().getTime() });
 
             let { audioStartTime, audioEndTime, waitTime } = this._session;
-            if(!waitTime && audioStartTime && audioEndTime) {
+            if (!waitTime && audioStartTime && audioEndTime) {
               // waitTime is elapsed time the user waited for auto-played audio to finish
               this._session.waitTime = (audioEndTime - audioStartTime);
             }

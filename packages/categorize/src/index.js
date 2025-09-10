@@ -18,10 +18,20 @@ export default class Categorize extends HTMLElement {
   }
 
   isComplete() {
-    const { autoplayAudioEnabled, completeAudioEnabled } =this._model || {};
+    const { autoplayAudioEnabled, completeAudioEnabled } = this._model || {};
+    const elementContext = this;
 
+    // check audio completion if audio settings are enabled and audio actually exists
     if (autoplayAudioEnabled && completeAudioEnabled && !this.audioComplete) {
-      return false;
+      if (elementContext) {
+        const audio = elementContext.querySelector('audio');
+        const isInsidePrompt = audio && audio.closest('#preview-prompt');
+
+        // only require audio completion if audio exists and is inside the prompt
+        if (audio && isInsidePrompt) {
+          return false;
+        }
+      }
     }
 
     if (!this._session || !this._session.answers) {
@@ -85,7 +95,7 @@ export default class Categorize extends HTMLElement {
     Object.assign(info.style, {
       position: 'absolute',
       top: 0,
-      width:'100%',
+      width: '100%',
       height: '100%',
       display: 'flex',
       justifyContent: 'center',
@@ -105,7 +115,7 @@ export default class Categorize extends HTMLElement {
     return info;
   }
 
-  connectedCallback(){
+  connectedCallback() {
 
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
@@ -166,7 +176,7 @@ export default class Categorize extends HTMLElement {
             this._session.audioEndTime = this._session.audioEndTime || new Date().getTime();
 
             let { audioStartTime, audioEndTime, waitTime } = this._session;
-            if(!waitTime && audioStartTime && audioEndTime) {
+            if (!waitTime && audioStartTime && audioEndTime) {
               // waitTime is elapsed time the user waited for auto-played audio to finish
               this._session.waitTime = (audioEndTime - audioStartTime);
             }

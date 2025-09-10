@@ -4,17 +4,26 @@ import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { EnableAudioAutoplayImage } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
+import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { updateSessionValue, updateSessionMetadata } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
 
-export const isComplete = (session, model, audioComplete) => {
+export const isComplete = (session, model, audioComplete, elementContext) => {
   const { autoplayAudioEnabled, completeAudioEnabled } = model || {};
 
+  // check audio completion if audio settings are enabled and audio actually exists
   if (autoplayAudioEnabled && completeAudioEnabled && !audioComplete) {
-    return false;
+    if (elementContext) {
+      const audio = elementContext.querySelector('audio');
+      const isInsidePrompt = audio && audio.closest('#preview-prompt');
+      
+      // only require audio completion if audio exists and is inside the prompt
+      if (audio && isInsidePrompt) {
+        return false;
+      }
+    }
   }
 
   if (!session || !session.value) {
@@ -81,7 +90,7 @@ export default class MultipleChoice extends HTMLElement {
 
     this._dispatchResponseChanged = debounce(() => {
       this.dispatchEvent(
-        new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete)),
+        new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete, this)),
       );
     });
 
@@ -90,7 +99,7 @@ export default class MultipleChoice extends HTMLElement {
         this.dispatchEvent(
           new ModelSetEvent(
             this.tagName.toLowerCase(),
-            isComplete(this._session, this._model),
+            isComplete(this._session, this._model, this.audioComplete, this),
             this._model !== undefined,
           ),
         );
@@ -273,6 +282,11 @@ export default class MultipleChoice extends HTMLElement {
    */
   handleKeyDown(event) {
     if (!this._model || !this._session) {
+      return;
+    }
+
+    const { mode } = this._model;
+    if (mode !== 'gather') {
       return;
     }
 
