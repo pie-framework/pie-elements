@@ -2338,7 +2338,6 @@
   version "11.10.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-11.10.1.tgz#886d47844826d37344c5f79b8b2f91ca23bb44d6"
   integrity sha512-W6+v6uH84p7jaolZkLBczeI+cWTOMI6Qv4CNfvV6A3zmT6chAl2YM4Bv+3smmVWzyJIpiNW52GEs4VvjdWl/pQ==
-
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2407,7 +2406,6 @@
   version "6.20.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.20.1.tgz#f7878b48f2454a819e19da68448fa0123ec7a26d"
   integrity sha512-BgMG/++Q8GHX64hk3pKW+N7IpNw8qeupeNABByyphEFkbqYQeNOPmCFL7+HK38LXlzAFk4s5hO/Qe4lvGL+Zyg==
-
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2422,7 +2420,6 @@
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-3.11.1.tgz#70cf5a6ab7db764bbb6dd7ea1c06a76273a3f068"
   integrity sha512-awQr/oAC2njSU98c0rALIgw8tDk6htuX4+IiKh8VSOR132fQ9ZjKHbsBLs+lTrBFQGdxfBi7eNyfNp496sybSw==
-
   dependencies:
     "@pie-framework/mathml-to-latex" "1.4.4"
     debug "^4.1.1"
@@ -2439,18 +2436,16 @@
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/math-input" "^6.20.1"
     "@pie-lib/render-ui" "^4.24.1"
-
     classnames "^2.2.6"
     debug "^4.1.1"
     keycode "^2.2.0"
     lodash "^4.17.11"
     prop-types "^15.7.2"
 
-
-"@pie-lib/pie-toolbox@2.25.0":
-  version "2.25.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.25.0.tgz#873643157ebbd47882834cdd96cab6ca0a1df95b"
-  integrity sha512-4A4vS6zApTLpOMPN4gZNAAjSaAgwMIQSX5MQxGGjmeCVxbwSJLPoZ6tvyRdulH3wyIq4TPU8lMeYNSCeFQ7Zyg==
+"@pie-lib/pie-toolbox@2.25.1":
+  version "2.25.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.25.1.tgz#4e99ef41914877221d9a170dec2e061a485f4426"
+  integrity sha512-Dy1a/sQApY5ea6g+YmNk8yyGZ/ZRIduz8+Jz+tpDSxpPmFBncu3BlUaAY84Znflbc/xVaLoL5ARbYyB98rbJCw==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2535,7 +2530,6 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.11.1.tgz#68a0ab558c7b7c306fdd8318831f850b57e6d2f2"
   integrity sha512-rpRJS129JAgC/SHTTIJ9UVHdiYMbJynIYRnKdEX70hfvPr3e5seRXq3Tk2iOzHAKf/bTk3D7uww2yJ9tDLpGRQ==
 
-
 "@pie-lib/test-utils@^0.2.33":
   version "0.2.33"
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.33.tgz#7632be69cbef25754e5f9fafbbcf94d2f0629ac4"
@@ -2545,7 +2539,6 @@
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.12.1.tgz#6a1cff2710e77402c3f220845d715c53c255af84"
   integrity sha512-UF8HW0L2J5sKzH/HG60t3o3HoT8Uyv/IVxquuWqi0/YjeRfUQf/NdxAPobOfUwqrRCi7KDsPI7cm6CB28NcpLA==
-
   dependencies:
     debug "^4.1.1"
     i18next "^22.5.0"
