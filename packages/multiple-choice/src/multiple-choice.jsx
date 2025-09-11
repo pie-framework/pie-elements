@@ -204,7 +204,12 @@ export class MultipleChoice extends React.Component {
   };
 
   getChecked(choice) {
-    if (this.state.showCorrect) {
+    // to determine if we are in evaluate mode or print mode
+    // since both modes have showCorrect but it interferes with "browse mode" in IBX if the print props are set
+    const isEvaluateMode = this.state.showCorrect && this.props.mode === 'evaluate';
+    const isPrintMode = this.props.alwaysShowCorrect && (!this.props.session || !this.props.session.value || this.props.session.value.length === 0);
+
+    if (isEvaluateMode || isPrintMode) {
       return choice.correct || false;
     }
 
@@ -285,10 +290,10 @@ export class MultipleChoice extends React.Component {
         return minSelections === maxSelections
           ? translator.t('translation:multipleChoice:minmaxSelections_equal', { lng: language, minSelections })
           : translator.t('translation:multipleChoice:minmaxSelections_range', {
-              lng: language,
-              minSelections,
-              maxSelections,
-            });
+            lng: language,
+            minSelections,
+            maxSelections,
+          });
       }
 
       if (minSelections) {
