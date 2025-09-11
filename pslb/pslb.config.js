@@ -41,10 +41,17 @@ module.exports = {
     commonJs: {},
   },
   mode: 'development',
-  range: 'exact',
+  range: '^',
   minify: false,
   libs: {
     repository: 'pie-framework/pie-elements',
-    packages: [{ name: '@pie-lib/pie-toolbox-module', version: '8.5.2' }],
+    packages: [
+      { name: '@pie-lib/drag-module', version: '^1.0.0' },
+      { name: '@pie-lib/math-rendering-module', version: '^1.0.0' },
+      { name: '@pie-lib/math-edit-module', version: '^1.0.0' },
+      { name: '@pie-lib/shared-module', version: '^1.1.0' },
+      { name: '@pie-lib/editable-html-module', version: '^1.0.0' },
+      { name: '@pie-lib/config-module', version: '^1.0.0' },
+    ],
   },
 };
