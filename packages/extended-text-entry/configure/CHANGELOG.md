@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.6.8...@pie-element/extended-text-entry-configure@10.6.9) (2025-09-11)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
+
+
+
+
+
 ## [10.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@10.6.7...@pie-element/extended-text-entry-configure@10.6.8) (2025-09-09)
 
 
