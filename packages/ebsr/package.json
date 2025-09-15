@@ -1,25 +1,15 @@
 {
   "name": "@pie-element/ebsr",
-<<<<<<< HEAD
   "version": "10.6.6-beta.1",
-=======
-  "version": "10.6.7",
->>>>>>> develop
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@pie-element/multiple-choice": "9.19.0",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/translator": "^2.12.1",
-=======
-    "@pie-element/multiple-choice": "^9.19.1",
-    "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "2.25.1",
->>>>>>> develop
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.11"

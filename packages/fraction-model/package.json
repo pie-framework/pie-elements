@@ -9,15 +9,11 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-<<<<<<< HEAD
     "@pie-lib/test-utils": "0.11.1",
     "@pie-lib/math-rendering": "^3.11.1",
     "@pie-lib/correct-answer-toggle": "^2.14.1",
     "@pie-lib/render-ui": "^4.24.1",
     "@pie-lib/config-ui": "^11.18.1",
-=======
-    "@pie-lib/pie-toolbox": "2.25.1",
->>>>>>> develop
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
