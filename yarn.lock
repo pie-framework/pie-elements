@@ -2276,7 +2276,6 @@
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-player-events/-/pie-player-events-0.1.0.tgz#0150904118fd604559982ab658967811c053ffe3"
   integrity sha512-6H1tlRGmcZ3Wt+8HMqu5KugVcwwyNrMylfI5rIpvOSt0T82QDmjRj+2sPgQG5zos/w6MtwUqn/QZ+8Rq2EXSOA==
 
-
 "@pie-lib/categorize@^0.17.0":
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/categorize/-/categorize-0.17.0.tgz#766a007b6549bd1a6fd81dd6f3da9c2636145261"
@@ -2303,7 +2302,6 @@
     mathjs "^7.0.1"
     prop-types "^15.6.2"
     react-measure "^2.2.2"
-
 
 "@pie-lib/controller-utils@^0.11.0", "@pie-lib/controller-utils@^0.11.1":
   version "0.11.1"
@@ -2343,7 +2341,6 @@
     react-dnd-html5-backend "^14.0.2"
     react-dnd-multi-backend "^6.0.2"
     react-dnd-touch-backend "^12.0.0"
-
 
 "@pie-lib/editable-html@^11.10.0", "@pie-lib/editable-html@^11.10.1":
   version "11.10.1"
@@ -2432,18 +2429,16 @@
     prop-types "^15.7.2"
     react-portal "^4.2.0"
 
-
 "@pie-lib/math-rendering@^3.11.0", "@pie-lib/math-rendering@^3.11.1":
-  version "3.11.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-3.11.1.tgz#70cf5a6ab7db764bbb6dd7ea1c06a76273a3f068"
-  integrity sha512-awQr/oAC2njSU98c0rALIgw8tDk6htuX4+IiKh8VSOR132fQ9ZjKHbsBLs+lTrBFQGdxfBi7eNyfNp496sybSw==
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-3.12.0.tgz#62bc3774a032f6a9da849342cf4b89f843358dac"
+  integrity sha512-EVIWAqAnV1j3Vz4MyZamv4stvKBD1cNroF7IcKtCDl/YexGFroyaZh6L8MrdMYqJIyxCfW0E/oN/Ylg3EUdCJA==
   dependencies:
     "@pie-framework/mathml-to-latex" "1.4.4"
     debug "^4.1.1"
     lodash "^4.17.11"
     mathjax-full "3.2.2"
     react "^16.8.1"
-
 
 "@pie-lib/math-toolbar@^1.20.1":
   version "1.20.1"
@@ -2459,7 +2454,6 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
     prop-types "^15.7.2"
-
 
 "@pie-lib/pie-toolbox@2.25.1":
   version "2.25.1"
@@ -2528,7 +2522,6 @@
     trigonometry-calculator "^2.0.0"
     unist-util-inspect "^4.1.3"
 
-
 "@pie-lib/render-ui@^4.24.0", "@pie-lib/render-ui@^4.24.1":
   version "4.24.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.24.1.tgz#5b748c9f938d50f89f1b00798fe6fc1460083683"
@@ -2544,7 +2537,6 @@
     lodash "^4.17.11"
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
-
 
 "@pie-lib/test-utils@^0.11.1":
   version "0.11.1"
