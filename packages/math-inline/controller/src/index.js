@@ -1,9 +1,9 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import { getActualFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { getActualFeedbackForCorrectness } from '@pie-lib/feedback';
 
 import { ResponseTypes } from './utils';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 import defaults from './defaults';

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { mq } from '@pie-lib/pie-toolbox/math-input';
-import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
-import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
+import { mq } from '@pie-lib/math-input';
+import { shallowChild } from '@pie-lib/test-utils';
+import { MathToolbar } from '@pie-lib/math-toolbar';
 import SimpleQuestionBlock from '../simple-question-block';
 
 describe('SimpleQuestionBlock', () => {

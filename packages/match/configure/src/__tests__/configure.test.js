@@ -5,8 +5,8 @@ import GeneralConfigBlock from '../general-config-block';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { FeedbackConfig } from '@pie-lib/pie-toolbox/config-ui';
-import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import { FeedbackConfig } from '@pie-lib/config-ui';
+import { shallowChild } from '@pie-lib/test-utils';
 import { shallow } from 'enzyme';
 import { styles } from '../answer-config-block';
 import cloneDeep from 'lodash/cloneDeep';
@@ -17,7 +17,7 @@ jest.mock('@material-ui/core', () => ({
   Button: (props) => <div />,
 }));
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   FeedbackConfig: (props) => <div />,
   InputCheckbox: (props) => <div />,
   layout: {
@@ -29,7 +29,7 @@ jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
     radio: jest.fn(),
   },
 }));
-jest.mock('@pie-lib/pie-toolbox/editable-html', () => (() => <div/>));
+jest.mock('@pie-lib/editable-html', () => () => <div />);
 
 export const defaultProps = {
   model: {

@@ -1,6 +1,6 @@
 import PlacementOrdering from './placement-ordering';
 import React from 'react';
-import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { withDragContext } from '@pie-lib/drag';
 
 import PropTypes from 'prop-types';
 

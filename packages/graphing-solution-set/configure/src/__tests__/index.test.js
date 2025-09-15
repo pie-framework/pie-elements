@@ -1,7 +1,7 @@
 import defaultValues from '../defaults';
 import GraphLinesConfigure from '../index';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   InputContainer: (props) => <div>{props.children}</div>,
   InputCheckbox: (props) => <div>{props.children}</div>,
   FeedbackConfig: (props) => <div>{props.children}</div>,

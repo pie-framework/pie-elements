@@ -1,6 +1,6 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { partialScoring } from '@pie-lib/controller-utils';
 
 import { isResponseCorrect } from './utils';
 
@@ -30,7 +30,7 @@ export function model(question, session, env) {
     fontSizeFactor,
     autoplayAudioEnabled,
     completeAudioEnabled,
-    customAudioButton
+    customAudioButton,
   } = normalizedQuestion;
   const { rectangles, polygons, circles } = shapes || {};
 
@@ -57,18 +57,16 @@ export function model(question, session, env) {
         ...shapes,
         // eslint-disable-next-line no-unused-vars
         rectangles: (rectangles || []).map(({ index, correct, ...rectProps }) =>
-          shouldIncludeCorrectResponse ? { correct, ...rectProps } : { ...rectProps }
+          shouldIncludeCorrectResponse ? { correct, ...rectProps } : { ...rectProps },
         ),
         // eslint-disable-next-line no-unused-vars
         polygons: (polygons || []).map(({ index, correct, ...polyProps }) =>
-          shouldIncludeCorrectResponse ? { correct, ...polyProps } : {...polyProps }
+          shouldIncludeCorrectResponse ? { correct, ...polyProps } : { ...polyProps },
         ),
         // eslint-disable-next-line no-unused-vars
         circles: (circles || []).map(({ index, correct, ...circleProps }) =>
-
-          shouldIncludeCorrectResponse ? { correct, ...circleProps } : { ...circleProps }
+          shouldIncludeCorrectResponse ? { correct, ...circleProps } : { ...circleProps },
         ),
-
       },
       responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
       extraCSSRules: normalizedQuestion.extraCSSRules,

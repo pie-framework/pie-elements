@@ -7,14 +7,14 @@ import {
   pointsToABC,
   pointsToAForAbsolute,
   pointsToABForExponential,
-} from '@pie-lib/pie-toolbox/graphing-utils';
+} from '@pie-lib/graphing-utils';
 
 export const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2
   let equalLabel = true;
 
-  A = {...A};
-  B = {...B};
+  A = { ...A };
+  B = { ...B };
 
   if (A.label || B.label) {
     equalLabel = isEqual(A.label, B.label);
@@ -51,7 +51,7 @@ export const sortedAnswers = (answers) =>
     }, {});
 
 const returnLineEquationCoefficients = (line) => {
-  line = {...line, to: { ...line.to }, from: { ...line.from }};
+  line = { ...line, to: { ...line.to }, from: { ...line.from } };
 
   const xA = line.from.x;
   const yA = line.from.y;
@@ -105,8 +105,8 @@ export const equalLine = (line1, line2) => {
 };
 
 export const equalRay = (ray1, ray2) => {
-  ray1 = {...ray1, to: { ...ray1.to }, from: { ...ray1.from }};
-  ray2 = {...ray2, to: { ...ray2.to }, from: { ...ray2.from }};
+  ray1 = { ...ray1, to: { ...ray1.to }, from: { ...ray1.from } };
+  ray2 = { ...ray2, to: { ...ray2.to }, from: { ...ray2.from } };
 
   // slope: m = (y2-y1)/(x2-x1)
   // slope & x1 = x3 & y1 = y3 & angle between (x1, y1) (x2, y2) is same as angle between (x3, y3) (x4, y4)
@@ -157,8 +157,8 @@ export const equalPolygon = (poly1, poly2) => {
 };
 
 export const equalCircle = (c1, c2) => {
-  c1 = {...c1, root: { ...c1.root }, edge: { ...c1.edge }};
-  c2 = {...c2, root: { ...c2.root }, edge: { ...c2.edge }};
+  c1 = { ...c1, root: { ...c1.root }, edge: { ...c1.edge } };
+  c2 = { ...c2, root: { ...c2.root }, edge: { ...c2.edge } };
   const equalRootAndEdge = isEqual(c2.edge, c1.edge) && isEqual(c2.root, c1.root);
 
   // if both edge and root are the same, it means the shapes are exactly the same
@@ -173,8 +173,8 @@ export const equalCircle = (c1, c2) => {
 
 export const equalSine = (sine1, sine2) => {
   const getPoints = ({ root, edge }) => {
-    root = { ...root};
-    edge = { ...edge};
+    root = { ...root };
+    edge = { ...edge };
 
     const { amplitude, freq } = getAmplitudeAndFreq(root, edge);
     // the height of the sine wave
@@ -246,8 +246,8 @@ export const equalParabola = (p1, p2) => {
   let { root: rootP1 } = p1;
   let { root: rootP2 } = p2;
 
-  rootP1 = {...rootP1};
-  rootP2 = {...rootP2};
+  rootP1 = { ...rootP1 };
+  rootP2 = { ...rootP2 };
 
   const p1edge = edgeP1 || { ...rootP1 };
   const p2edge = edgeP2 || { ...rootP2 };

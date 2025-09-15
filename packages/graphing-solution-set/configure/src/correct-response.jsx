@@ -1,8 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer as Graph } from '@pie-lib/pie-toolbox/graphing-solution-set';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import { GraphContainer as Graph } from '@pie-lib/graphing-solution-set';
+import { AlertDialog } from '@pie-lib/config-ui';
 import { set } from 'lodash';
 import { RadioGroup, Typography } from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';

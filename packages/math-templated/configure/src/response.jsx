@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
-import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
+import { InputContainer } from '@pie-lib/config-ui';
+import { MathToolbar } from '@pie-lib/math-toolbar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -14,7 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 export class Response extends React.Component {
   static propTypes = {
@@ -209,7 +209,7 @@ export class Response extends React.Component {
                 <FormControlLabel
                   label={cAllowTrailingZeros.label}
                   control={
-                  <Checkbox
+                    <Checkbox
                       className={classes.customColor}
                       checked={allowTrailingZeros}
                       onChange={this.onLiteralOptionsChange('allowTrailingZeros')}
@@ -222,10 +222,12 @@ export class Response extends React.Component {
                 <FormControlLabel
                   label={cIgnoreOrder.label}
                   control={
-                  <Checkbox
+                    <Checkbox
                       className={classes.customColor}
                       checked={ignoreOrder}
-                      onChange={this.onLiteralOptionsChange('ignoreOrder')}/>}
+                      onChange={this.onLiteralOptionsChange('ignoreOrder')}
+                    />
+                  }
                 />
               )}
             </div>
@@ -266,11 +268,8 @@ export class Response extends React.Component {
                     onDone={this.onAlternateDone(alternateId)}
                     error={error && error[alternateId]}
                   />
-                  <IconButton
-                    className={classes.removeAlternateButton}
-                    onClick={this.onRemoveAlternate(alternateId)}
-                  >
-                    <Delete/>
+                  <IconButton className={classes.removeAlternateButton} onClick={this.onRemoveAlternate(alternateId)}>
+                    <Delete />
                   </IconButton>
                 </div>
                 {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
@@ -282,7 +281,7 @@ export class Response extends React.Component {
           </Button>
         </CardContent>
       </Card>
-    )
+    );
   }
 }
 
@@ -353,7 +352,7 @@ const styles = (theme) => ({
     alignItems: 'center',
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 });
 

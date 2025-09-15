@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import compact from 'lodash/compact';
 import debug from 'debug';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { renderMath } from '@pie-lib/math-rendering';
+import { withDragContext } from '@pie-lib/drag';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
 import { swap } from './ordering';
@@ -29,8 +29,10 @@ export default class Ordering extends HTMLElement {
   sessionChange = (session) => {
     this._session.value = session.value;
     this.render();
-    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this._session && this.isComplete(this._session.value)))
-  }
+    this.dispatchEvent(
+      new SessionChangedEvent(this.tagName.toLowerCase(), this._session && this.isComplete(this._session.value)),
+    );
+  };
 
   set model(newModel) {
     this._model = newModel;

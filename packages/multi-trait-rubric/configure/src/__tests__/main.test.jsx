@@ -4,7 +4,7 @@ import React from 'react';
 import { Main } from '../main';
 import { excludeZeroTypes } from '../modals';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div {...props} />,
   },

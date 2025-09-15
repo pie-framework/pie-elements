@@ -1,15 +1,13 @@
 import Rubric from '@pie-element/rubric';
 import MultiTraitRubric from '@pie-element/multi-trait-rubric';
-import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
+import { RUBRIC_TYPES } from '@pie-lib/rubric';
 
 const RUBRIC_TAG_NAME = 'complex-rubric-simple';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'complex-rubric-multi-trait';
 
-class ComplexRubricSimple extends Rubric {
-}
+class ComplexRubricSimple extends Rubric {}
 
-class ComplexRubricMultiTrait extends MultiTraitRubric {
-}
+class ComplexRubricMultiTrait extends MultiTraitRubric {}
 
 const defineRubrics = () => {
   if (!customElements.get(RUBRIC_TAG_NAME)) {
@@ -119,12 +117,10 @@ class ComplexRubric extends HTMLElement {
   _render() {
     let rubricTag;
     if (this._type === RUBRIC_TYPES.SIMPLE_RUBRIC) {
-      rubricTag = `<${RUBRIC_TAG_NAME} id="simpleRubric" />`
-    }
-    else if (this._type === RUBRIC_TYPES.RUBRICLESS){
+      rubricTag = `<${RUBRIC_TAG_NAME} id="simpleRubric" />`;
+    } else if (this._type === RUBRIC_TYPES.RUBRICLESS) {
       rubricTag = `<${RUBRIC_TAG_NAME} id="rubricless" />`;
-    }
-    else{
+    } else {
       rubricTag = `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`;
     }
 
@@ -149,7 +145,6 @@ class ComplexRubric extends HTMLElement {
           this.setRubriclessModel(this.rubricless);
         }
         break;
-
     }
   }
 }

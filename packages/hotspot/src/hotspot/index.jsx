@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import {color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia} from '@pie-lib/pie-toolbox/render-ui';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -78,7 +78,7 @@ class HotspotComponent extends React.Component {
         language,
         fontSizeFactor,
         autoplayAudioEnabled,
-        customAudioButton
+        customAudioButton,
       },
       onSelectChoice,
       classes,
@@ -87,10 +87,16 @@ class HotspotComponent extends React.Component {
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
-    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
+    const showTeacherInstructions =
+      teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.main} fontSizeFactor={fontSizeFactor}>
+      <UiLayout
+        extraCSSRules={extraCSSRules}
+        id={'main-container'}
+        className={classes.main}
+        fontSizeFactor={fontSizeFactor}
+      >
         {showTeacherInstructions && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -163,7 +169,7 @@ const styles = (theme) => ({
   main: {
     color: color.text(),
     backgroundColor: color.background(),
-    position: 'relative'
+    position: 'relative',
   },
   collapsible: {
     marginBottom: theme.spacing.unit * 2,
