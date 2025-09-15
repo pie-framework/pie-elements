@@ -18,7 +18,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-konva": "^16.9.0-0"
+    "react-konva": "^19.0.10"
   },
   "license": "ISC"
 }
