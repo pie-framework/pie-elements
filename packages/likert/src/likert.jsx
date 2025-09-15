@@ -11,7 +11,6 @@ const styles = (theme) => ({
     color: color.text(),
     backgroundColor: color.background(),
     '& *': {
-      fontFamily: 'Roboto, Arial, Helvetica, sans-serif',
       '-webkit-font-smoothing': 'antialiased',
     },
   },
