@@ -4,8 +4,8 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
@@ -316,7 +316,8 @@ export class Main extends React.Component {
       maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
       'language.enabled': language.settings && toggle(language.label, true),
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
-      'responseAreaInputConfiguration.inputConfiguration.characters.disabled': spanishButton.settings && toggle(spanishButton.label,true),
+      'responseAreaInputConfiguration.inputConfiguration.characters.disabled':
+        spanishButton.settings && toggle(spanishButton.label, true),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -326,7 +327,6 @@ export class Main extends React.Component {
       playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
       'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
-
     };
 
     const getPluginProps = (props = {}) => ({

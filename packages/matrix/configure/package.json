@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/matrix-configure",
   "private": true,
-  "version": "0.41.6",
+  "version": "0.41.7",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,9 +9,13 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.3.0",
+<<<<<<< HEAD
     "@pie-lib/config-ui": "^11.18.1",
     "@pie-lib/editable-html": "^11.10.1",
     "@pie-lib/render-ui": "^4.24.1",
+=======
+    "@pie-lib/pie-toolbox": "2.25.1",
+>>>>>>> develop
     "debug": "^4.1.1",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",

@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "3.7.6",
+  "version": "3.7.7",
   "publishConfig": {
     "access": "public"
   },
@@ -11,8 +11,12 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
+<<<<<<< HEAD
     "@pie-lib/math-rendering": "^3.11.1",
     "@pie-lib/render-ui": "^4.24.1",
+=======
+    "@pie-lib/pie-toolbox": "2.25.1",
+>>>>>>> develop
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",

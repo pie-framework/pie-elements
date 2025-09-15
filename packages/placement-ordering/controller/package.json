@@ -1,13 +1,17 @@
 {
   "name": "@pie-element/placement-ordering-controller",
-  "version": "8.3.6",
+  "version": "8.3.7",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
+<<<<<<< HEAD
     "@pie-lib/controller-utils": "^0.11.1",
     "@pie-lib/feedback": "^0.13.1",
     "@pie-lib/translator": "^2.12.1",
+=======
+    "@pie-lib/pie-toolbox": "2.25.1",
+>>>>>>> develop
     "debug": "^3.1.0",
     "js-combinatorics": "^0.5.4",
     "lodash": "^4.17.19"

@@ -1,6 +1,10 @@
 {
   "name": "@pie-element/extended-text-entry",
+<<<<<<< HEAD
   "version": "11.8.2-beta.1",
+=======
+  "version": "11.8.7",
+>>>>>>> develop
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -12,10 +16,14 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@pie-framework/pie-player-events": "^0.1.0",
+<<<<<<< HEAD
     "@pie-lib/config-ui": "^11.18.1",
     "@pie-lib/editable-html": "^11.10.1",
     "@pie-lib/math-rendering": "^3.11.1",
     "@pie-lib/render-ui": "^4.24.1",
+=======
+    "@pie-lib/pie-toolbox": "2.25.1",
+>>>>>>> develop
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash.throttle": "^4.1.1",

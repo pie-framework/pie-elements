@@ -13,7 +13,7 @@ exports[`category snapshot renders with default props 1`] = `
       onDelete={[MockFunction]}
     />
   </span>
-  <Wrapped
+  <DropTarget(WithStyles(DroppablePlaceHolder))
     category={
       Object {
         "id": "1",
@@ -45,7 +45,7 @@ exports[`category snapshot renders without some components if no handlers are pr
       onChange={[Function]}
     />
   </span>
-  <Wrapped
+  <DropTarget(WithStyles(DroppablePlaceHolder))
     category={
       Object {
         "id": "1",
