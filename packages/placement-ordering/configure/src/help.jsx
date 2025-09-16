@@ -1,4 +1,4 @@
-import { Help } from '@pie-lib/pie-toolbox/config-ui';
+import { Help } from '@pie-lib/config-ui';
 import React from 'react';
 
 const Comp = () => (

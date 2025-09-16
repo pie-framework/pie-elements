@@ -3,12 +3,12 @@ import React from 'react';
 import { Design } from '../design';
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: (props) => <div oChangeModel={props.onChange}/>,
+    Panel: (props) => <div oChangeModel={props.onChange} />,
     toggle: jest.fn(),
     radio: jest.fn(),
   },
@@ -57,7 +57,7 @@ describe('design', () => {
             className={'foo'}
             onModelChanged={onChange}
             onConfigurationChanged={onChangeConfig}
-          />
+          />,
         ),
       ).toMatchSnapshot();
     });

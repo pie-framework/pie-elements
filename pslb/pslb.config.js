@@ -40,9 +40,9 @@ module.exports = {
   extensions: {
     commonJs: {},
   },
-  mode: 'development',
+  mode: 'production',
   range: '^',
-  minify: false,
+  minify: true,
   libs: {
     repository: 'pie-framework/pie-elements',
     packages: [
