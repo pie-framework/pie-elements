@@ -1,5 +1,5 @@
 import debug from 'debug';
-import { getFeedback } from '@pie-lib/pie-toolbox/feedback';
+import { getFeedback } from '@pie-lib/feedback';
 import defaults from './defaults';
 
 const log = debug('@pie-element:extended-text-entry:controller');
@@ -57,7 +57,7 @@ export async function model(question, session, env) {
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,
-    language:normalizedQuestion.language,
+    language: normalizedQuestion.language,
     mathInput: normalizedQuestion.mathInput,
     spanishInput: normalizedQuestion.spanishInput,
     specialInput: normalizedQuestion.specialInput,
