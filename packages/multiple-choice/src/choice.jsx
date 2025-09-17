@@ -8,6 +8,22 @@ import ChoiceInput from './choice-input';
 export class Choice extends React.Component {
   static propTypes = {};
 
+  state = {
+    isHovered: false,
+  };
+
+  handleMouseEnter = () => {
+    const { disabled, checked } = this.props;
+
+    if (!disabled && !checked) {
+      this.setState({ isHovered: true });
+    }
+  };
+
+  handleMouseLeave = () => {
+    this.setState({ isHovered: false });
+  };
+
   onChange = (choice) => {
     const { disabled, onChoiceChanged } = this.props;
 
@@ -35,9 +51,14 @@ export class Choice extends React.Component {
       selectedAnswerBackgroundColor,
       selectedAnswerStrokeColor,
       selectedAnswerStrokeWidth,
+      hoverAnswerBackgroundColor,
+      hoverAnswerStrokeColor,
+      hoverAnswerStrokeWidth,
       autoFocusRef,
       tagName
     } = this.props;
+    
+    const { isHovered } = this.state;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
     const feedback = !isEvaluateMode || showCorrect ? '' : choice.feedback;
@@ -69,12 +90,37 @@ export class Choice extends React.Component {
       if (/^\d+(\.\d+)?$/.test(trimmed)) {
         return `${trimmed}px`;
       }
-      
+
       return trimmed;
     };
 
-     const strokeStyle = selectedAnswerStrokeColor && selectedAnswerStrokeColor !== 'initial' ? {
-      border: `${normalizeStrokeWidth(selectedAnswerStrokeWidth)} solid ${checked ? selectedAnswerStrokeColor : 'transparent'}`,
+    const hasSelectedStroke = selectedAnswerStrokeColor && selectedAnswerStrokeColor !== 'initial';
+    const hasHoverStroke = hoverAnswerStrokeColor && hoverAnswerStrokeColor !== 'initial';
+    
+    let currentStrokeColor = 'transparent';
+    let currentStrokeWidth = '2px';
+    let currentBackgroundColor = 'initial';
+    
+    if ((hasSelectedStroke || hasHoverStroke)) {
+      if (checked && hasSelectedStroke) {
+        // selected state takes priority when selected stroke is configured
+        currentStrokeColor = selectedAnswerStrokeColor;
+        currentStrokeWidth = selectedAnswerStrokeWidth;
+      } else if (isHovered && !disabled && hasHoverStroke) {
+        // hover state when not selected and not disabled, and hover stroke is configured
+        currentStrokeColor = hoverAnswerStrokeColor;
+        currentStrokeWidth = hoverAnswerStrokeWidth;
+      }
+    }
+    
+    if (checked && selectedAnswerBackgroundColor && selectedAnswerBackgroundColor !== 'initial') {
+      currentBackgroundColor = selectedAnswerBackgroundColor;
+    } else if (isHovered && !disabled && hoverAnswerBackgroundColor && hoverAnswerBackgroundColor !== 'initial') {
+      currentBackgroundColor = hoverAnswerBackgroundColor;
+    }
+
+     const strokeStyle = (hasSelectedStroke || hasHoverStroke) ? {
+      border: `${normalizeStrokeWidth(currentStrokeWidth)} solid ${currentStrokeColor}`,
       borderRadius: '8px',
     } : {};
 
@@ -83,10 +129,16 @@ export class Choice extends React.Component {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
-    const choiceBackground = selectedAnswerBackgroundColor && checked ? selectedAnswerBackgroundColor : 'initial';
+    const choiceBackground = currentBackgroundColor !== 'initial' ? currentBackgroundColor : 'initial';
 
     return (
-      <div className={choiceClass} key={index} style={{ backgroundColor: choiceBackground, ...strokeStyle }}>
+      <div 
+        className={choiceClass} 
+        key={index} 
+        style={{ backgroundColor: choiceBackground, ...strokeStyle }}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <ChoiceInput {...choiceProps} className={names} autoFocusRef={autoFocusRef} />
       </div>
     );
@@ -111,6 +163,9 @@ Choice.propTypes = {
   selectedAnswerBackgroundColor: PropTypes.string,
   selectedAnswerStrokeColor: PropTypes.string,
   selectedAnswerStrokeWidth: PropTypes.string,
+  hoverAnswerBackgroundColor: PropTypes.string,
+  hoverAnswerStrokeColor: PropTypes.string,
+  hoverAnswerStrokeWidth: PropTypes.string,
   tagName: PropTypes.string,
   isSelectionButtonBelow: PropTypes.bool,
   autoFocusRef: PropTypes.object,

@@ -91,6 +91,9 @@ export class MultipleChoice extends React.Component {
     selectedAnswerBackgroundColor: PropTypes.string,
     selectedAnswerStrokeColor: PropTypes.string,
     selectedAnswerStrokeWidth: PropTypes.string,
+    hoverAnswerBackgroundColor: PropTypes.string,
+    hoverAnswerStrokeColor: PropTypes.string,
+    hoverAnswerStrokeWidth: PropTypes.string,
     onShowCorrectToggle: PropTypes.func,
     isSelectionButtonBelow: PropTypes.bool,
     minSelections: PropTypes.number,
@@ -361,6 +364,9 @@ export class MultipleChoice extends React.Component {
                 selectedAnswerBackgroundColor={this.props.selectedAnswerBackgroundColor}
                 selectedAnswerStrokeColor={this.props.selectedAnswerStrokeColor}
                 selectedAnswerStrokeWidth={this.props.selectedAnswerStrokeWidth}
+                hoverAnswerBackgroundColor={this.props.hoverAnswerBackgroundColor}
+                hoverAnswerStrokeColor={this.props.hoverAnswerStrokeColor}
+                hoverAnswerStrokeWidth={this.props.hoverAnswerStrokeWidth}
                 gridColumns={gridColumns}
                 key={`choice-${index}`}
                 choice={choice}

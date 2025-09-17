@@ -130,6 +130,36 @@
       "type": "string",
       "title": "selectedAnswerBackgroundColor"
     },
+    "selectedAnswerStrokeColor": {
+      "description": "Indicates the border color for selected choices",
+      "default": ": 'initial'",
+      "type": "string",
+      "title": "selectedAnswerStrokeColor"
+    },
+    "selectedAnswerStrokeWidth": {
+      "description": "Indicates the border width for selected choices if selectedAnswerBackgroundColor is set",
+      "default": ": '2px'",
+      "type": "string",
+      "title": "selectedAnswerStrokeWidth"
+    },
+    "hoverAnswerBackgroundColor": {
+      "description": "Indicates the background color for choices on hover",
+      "default": ": 'initial'",
+      "type": "string",
+      "title": "hoverAnswerBackgroundColor"
+    },
+    "hoverAnswerStrokeColor": {
+      "description": "Indicates the border color for choices on hover",
+      "default": ": 'initial'",
+      "type": "string",
+      "title": "hoverAnswerStrokeColor"
+    },
+    "hoverAnswerStrokeWidth": {
+      "description": "Indicates the border width for choices on hover if hoverAnswerBackgroundColor is set",
+      "default": ": '2px'",
+      "type": "string",
+      "title": "hoverAnswerStrokeWidth"
+    },
     "lockChoiceOrder": {
       "description": "Indicates the order of choices presented to user\nif true, answer choices will be presented in the order they are defined in the model\nIf false, answer choices may be presented in a random order (depending upon the value of the lockChoiceOrder environment variable)",
       "type": "boolean",

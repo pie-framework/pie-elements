@@ -58,7 +58,4 @@ exports.model = (id, element) => ({
   promptEnabled: true,
   toolbarEditorPosition: 'bottom',
   rubricEnabled: false,
-  selectedAnswerStrokeColor: 'rgb(65, 65, 1)',
-  selectedAnswerBackgroundColor: 'rgb(252,252,11)',
-  selectedAnswerStrokeWidth: '1',
 });

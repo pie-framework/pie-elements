@@ -19,5 +19,8 @@ export default {
   selectedAnswerBackgroundColor: 'initial',
   selectedAnswerStrokeColor: 'initial',
   selectedAnswerStrokeWidth: 'initial',
+  hoverAnswerBackgroundColor: 'initial',
+  hoverAnswerStrokeColor: 'initial',
+  hoverAnswerStrokeWidth: 'initial',
   keyboardEventsEnabled: false,
 };
