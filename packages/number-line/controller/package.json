@@ -14,8 +14,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-lib/feedback": "^0.14.0",
-    "@pie-lib/controller-utils": "^0.12.0",
+    "@pie-lib/feedback": "^0.16.0",
+    "@pie-lib/controller-utils": "^0.14.0",
     "lodash": "^4.17.15",
     "mathjs": "^7.5.1"
   },

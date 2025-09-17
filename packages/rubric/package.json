@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/math-rendering": "^3.12.0",
-    "@pie-lib/render-ui": "^4.25.0",
+    "@pie-lib/math-rendering": "^3.14.0",
+    "@pie-lib/render-ui": "^4.27.0",
     "prop-types": "^15.7.2"
   },
   "author": "pie framework developers",
