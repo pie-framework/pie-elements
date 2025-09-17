@@ -88,6 +88,8 @@ export async function model(question, session, env, updateSession) {
     fontSizeFactor: normalizedQuestion.fontSizeFactor,
     isSelectionButtonBelow: normalizedQuestion.isSelectionButtonBelow,
     selectedAnswerBackgroundColor: normalizedQuestion.selectedAnswerBackgroundColor || 'initial',
+    selectedAnswerStrokeColor: normalizedQuestion.selectedAnswerStrokeColor || 'initial',
+    selectedAnswerStrokeWidth: normalizedQuestion.selectedAnswerStrokeWidth || 'initial',
     minSelections: normalizedQuestion.minSelections,
     maxSelections: normalizedQuestion.maxSelections,
     keyboardEventsEnabled: normalizedQuestion.keyboardEventsEnabled,

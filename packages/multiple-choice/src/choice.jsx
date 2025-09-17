@@ -33,6 +33,8 @@ export class Choice extends React.Component {
       gridColumns,
       isSelectionButtonBelow,
       selectedAnswerBackgroundColor,
+      selectedAnswerStrokeColor,
+      selectedAnswerStrokeWidth,
       autoFocusRef,
       tagName
     } = this.props;
@@ -54,18 +56,37 @@ export class Choice extends React.Component {
       onChange: this.onChange,
       isEvaluateMode,
       isSelectionButtonBelow,
+      selectedAnswerStrokeColor,
+      selectedAnswerStrokeWidth,
       tagName,
     };
 
+    const normalizeStrokeWidth = (width) => {
+      if (!width) return '2px'; // default
+      const trimmed = String(width).trim();
+    
+      // add 'px' if the value is a number
+      if (/^\d+(\.\d+)?$/.test(trimmed)) {
+        return `${trimmed}px`;
+      }
+      
+      return trimmed;
+    };
+
+     const strokeStyle = selectedAnswerStrokeColor && selectedAnswerStrokeColor !== 'initial' ? {
+      border: `${normalizeStrokeWidth(selectedAnswerStrokeWidth)} solid ${checked ? selectedAnswerStrokeColor : 'transparent'}`,
+      borderRadius: '8px',
+    } : {};
+
     const names = classNames(classes.choice, {
-      [classes.noBorder]: index === choicesLength - 1 || choicesLayout !== 'vertical',
+      [classes.noBorder]: index === choicesLength - 1 || choicesLayout !== 'vertical' || strokeStyle,
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
     const choiceBackground = selectedAnswerBackgroundColor && checked ? selectedAnswerBackgroundColor : 'initial';
 
     return (
-      <div className={choiceClass} key={index} style={{ backgroundColor: choiceBackground }}>
+      <div className={choiceClass} key={index} style={{ backgroundColor: choiceBackground, ...strokeStyle }}>
         <ChoiceInput {...choiceProps} className={names} autoFocusRef={autoFocusRef} />
       </div>
     );
@@ -88,6 +109,8 @@ Choice.propTypes = {
   choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
   gridColumns: PropTypes.string,
   selectedAnswerBackgroundColor: PropTypes.string,
+  selectedAnswerStrokeColor: PropTypes.string,
+  selectedAnswerStrokeWidth: PropTypes.string,
   tagName: PropTypes.string,
   isSelectionButtonBelow: PropTypes.bool,
   autoFocusRef: PropTypes.object,

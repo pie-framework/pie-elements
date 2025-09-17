@@ -61,6 +61,16 @@ export interface MultipleChoicePie extends PieModel {
    */
   selectedAnswerBackgroundColor?: string;
 
+  /** Indicates the border color for selected choices
+   * @default: 'initial'
+   */
+  selectedAnswerStrokeColor?: string;
+
+  /** Indicates the border width for selected choices if selectedAnswerBackgroundColor is set
+   * @default: '2px'
+   */
+  
+  selectedAnswerStrokeWidth?: string;
   /**
    * Indicates the order of choices presented to user
    * if true, answer choices will be presented in the order they are defined in the model

@@ -89,6 +89,8 @@ export class MultipleChoice extends React.Component {
     animationsDisabled: PropTypes.bool,
     language: PropTypes.string,
     selectedAnswerBackgroundColor: PropTypes.string,
+    selectedAnswerStrokeColor: PropTypes.string,
+    selectedAnswerStrokeWidth: PropTypes.string,
     onShowCorrectToggle: PropTypes.func,
     isSelectionButtonBelow: PropTypes.bool,
     minSelections: PropTypes.number,
@@ -357,6 +359,8 @@ export class MultipleChoice extends React.Component {
                 autoFocusRef={index === 0 ? this.firstInputRef : null}
                 choicesLayout={this.props.choicesLayout}
                 selectedAnswerBackgroundColor={this.props.selectedAnswerBackgroundColor}
+                selectedAnswerStrokeColor={this.props.selectedAnswerStrokeColor}
+                selectedAnswerStrokeWidth={this.props.selectedAnswerStrokeWidth}
                 gridColumns={gridColumns}
                 key={`choice-${index}`}
                 choice={choice}
