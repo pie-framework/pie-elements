@@ -4,8 +4,8 @@
   "dependencies": {
     "@pie-lib/categorize": "^0.23.0",
     "@pie-lib/controller-utils": "^0.17.0",
-    "@pie-lib/feedback": "^0.19.0",
     "@pie-lib/translator": "^2.18.0",
+    "@pie-lib/feedback": "^0.19.0",
     "lodash": "^4.17.15"
   },
   "version": "7.9.7",
