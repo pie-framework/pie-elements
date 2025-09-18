@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.19.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.19.3...@pie-element/multiple-choice@9.19.4) (2025-09-18)
+
+
+### Bug Fixes
+
+* **multiple-choice:** handle evaluate and print modes correctly PD-5200 ([6f6397e](https://github.com/pie-framework/pie-elements/commit/6f6397ee2de584da70c789c8e1ec1529ec609727))
+
+
+
+
+
 ## [9.19.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.19.2...@pie-element/multiple-choice@9.19.3) (2025-09-11)
 
 
