@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/rubric",
-  "version": "4.9.6-beta.3",
+  "version": "4.9.8-next.74",
   "main": "lib/index.js",
   "module": "src/index.js",
   "description": "Rubric Scoring Interaction",
@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/math-rendering": "^3.14.0",
-    "@pie-lib/render-ui": "^4.27.0",
+    "@pie-lib/math-rendering": "^3.16.0",
+    "@pie-lib/render-ui": "^4.29.0",
     "prop-types": "^15.7.2"
   },
   "author": "pie framework developers",
