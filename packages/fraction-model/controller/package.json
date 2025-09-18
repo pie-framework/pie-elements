@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/text-select": "1.26.0",
+    "@pie-lib/text-select": "1.27.0",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },

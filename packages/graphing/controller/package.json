@@ -9,8 +9,8 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.16.0",
-    "@pie-lib/graphing-utils": "^1.15.0",
+    "@pie-lib/controller-utils": "^0.17.0",
+    "@pie-lib/graphing-utils": "^1.16.0",
     "debug": "^4.1.1"
   },
   "devDependencies": {
