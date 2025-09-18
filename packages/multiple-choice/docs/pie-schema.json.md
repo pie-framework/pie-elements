@@ -115,6 +115,36 @@ Indicates the background color for selected choices
 
 Default: `": 'initial'"`
 
+# `selectedAnswerStrokeColor` (string)
+
+Indicates the border color for selected choices
+
+Default: `": 'initial'"`
+
+# `selectedAnswerStrokeWidth` (string)
+
+Indicates the border width for selected choices if selectedAnswerBackgroundColor is set
+
+Default: `": '2px'"`
+
+# `hoverAnswerBackgroundColor` (string)
+
+Indicates the background color for choices on hover
+
+Default: `": 'initial'"`
+
+# `hoverAnswerStrokeColor` (string)
+
+Indicates the border color for choices on hover
+
+Default: `": 'initial'"`
+
+# `hoverAnswerStrokeWidth` (string)
+
+Indicates the border width for choices on hover if hoverAnswerBackgroundColor is set
+
+Default: `": '2px'"`
+
 # `lockChoiceOrder` (boolean)
 
 Indicates the order of choices presented to user
