@@ -15,7 +15,14 @@ export default class ImageClozeAssociation extends HTMLElement {
   }
 
   isComplete() {
-    const { autoplayAudioEnabled, completeAudioEnabled } = this._model || {};
+    const {
+      autoplayAudioEnabled,
+      completeAudioEnabled,
+      duplicateResponses,
+      maxResponsePerZone,
+      possibleResponses,
+      responseAreasToBeFilled,
+    } = this._model || {};
     const elementContext = this;
 
     // check audio completion if audio settings are enabled and audio actually exists
@@ -35,11 +42,38 @@ export default class ImageClozeAssociation extends HTMLElement {
       return false;
     }
 
-    if (!Array.isArray(this._session.answers)) {
+    const { answers } = this._session;
+
+    if (!Array.isArray(answers)) {
       return false;
     }
 
-    return Array.isArray(this._session.answers) && this._session.answers.length > 0;
+    // filter answers by containerIndex and count the ones with content
+    const filledResponseAreas = [...new Map(answers.map((item) => [item.containerIndex, item])).values()].length;
+    // check if an answer choice was added to at least as many response areas
+    // as the number of populated response areas in the correct answer
+    const areResponseAreasFilled = filledResponseAreas >= responseAreasToBeFilled;
+
+    if (maxResponsePerZone > 1) {
+      // answer choice can be used multiple times
+      if (duplicateResponses) {
+        return areResponseAreasFilled;
+      }
+
+      // // do any correct answer have any unplaced answer choice ?
+      // if (true) {
+      //   return areResponseAreasFilled;
+      // }
+
+      const unplacedResponses = possibleResponses.filter(
+        (response) => !answers.find((answer) => answer.value === response),
+      );
+
+      // check if every answer choice was placed into a response area
+      return unplacedResponses.length === 0;
+    }
+
+    return areResponseAreasFilled;
   }
 
   set session(s) {
@@ -78,7 +112,7 @@ export default class ImageClozeAssociation extends HTMLElement {
       alignItems: 'center',
       background: 'white',
       zIndex: '1000',
-      cursor: 'pointer'
+      cursor: 'pointer',
     });
 
     const img = document.createElement('img');
