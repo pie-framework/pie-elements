@@ -10,6 +10,24 @@ const log = debug('pie-elements:image-cloze-association:controller');
 
 export const normalize = (question) => ({ ...defaults, ...question });
 
+// calculate the minimum number of populated response areas in the correct answer or alternates
+const getFilledResponseAreas = (question) => {
+  const countFilledResponseAreas = (response) => response.value.filter((container) => container.images.length).length;
+
+  const { validResponse, altResponses } = question.validation || {};
+  let responseAreasToBeFilled = countFilledResponseAreas(validResponse);
+
+  (altResponses || []).forEach((altResponse) => {
+    const filledResponseAreas = countFilledResponseAreas(altResponse);
+
+    if (filledResponseAreas < responseAreasToBeFilled) {
+      responseAreasToBeFilled = filledResponseAreas;
+    }
+  });
+
+  return responseAreasToBeFilled;
+};
+
 export const model = (question, session, env) => {
   const questionNormalized = normalize(question);
   const questionCamelized = camelizeKeys(questionNormalized);
@@ -23,6 +41,7 @@ export const model = (question, session, env) => {
       ...questionCamelized,
       responseCorrect: shouldIncludeCorrectResponse ? getScore(questionCamelized, session) === 1 : undefined,
       validation: shouldIncludeCorrectResponse ? questionCamelized.validation : undefined,
+      responseAreasToBeFilled: getFilledResponseAreas(questionCamelized),
     };
 
     if (questionNormalized.shuffle) {

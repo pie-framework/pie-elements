@@ -18,7 +18,7 @@ export default class Categorize extends HTMLElement {
   }
 
   isComplete() {
-    const { autoplayAudioEnabled, completeAudioEnabled } = this._model || {};
+    const { autoplayAudioEnabled, choices, completeAudioEnabled, responseAreasToBeFilled } = this._model || {};
     const elementContext = this;
 
     // check audio completion if audio settings are enabled and audio actually exists
@@ -38,11 +38,35 @@ export default class Categorize extends HTMLElement {
       return false;
     }
 
-    if (!Array.isArray(this._session.answers)) {
+    const { answers } = this._session;
+
+    if (!Array.isArray(answers)) {
       return false;
     }
 
-    return this._session.answers.some((answer) => answer.choices && answer.choices.length > 0);
+    // filter answers by category and count the ones with content
+    const filledResponseAreas = answers.filter((answer) => answer.choices.length).length;
+    // check if an answer choice was added to at least as many response areas
+    // as the number of populated response areas in the correct answer
+    const areResponseAreasFilled = filledResponseAreas >= responseAreasToBeFilled;
+    // check if multiple placements are allowed
+    const duplicatesAllowed = choices.some((choice) => choice.categoryCount === 0);
+
+    // answer choice can be used multiple times
+    if (duplicatesAllowed) {
+      return areResponseAreasFilled;
+    }
+
+    // // do any correct answer have any unplaced answer choice ?
+    // if (true) {
+    //   return areResponseAreasFilled;
+    // }
+
+    // check if every answer choice was placed into a response area
+    const allAnswersIds = answers.map((answer) => answer.choices).flat();
+    const hasUnplacedChoices = choices.some((choice) => !allAnswersIds.find((answerId) => answerId === choice.id));
+
+    return !hasUnplacedChoices;
   }
 
   set session(s) {
@@ -102,7 +126,7 @@ export default class Categorize extends HTMLElement {
       alignItems: 'center',
       background: 'white',
       zIndex: '1000',
-      cursor: 'pointer'
+      cursor: 'pointer',
     });
 
     const img = document.createElement('img');
@@ -116,7 +140,6 @@ export default class Categorize extends HTMLElement {
   }
 
   connectedCallback() {
-
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -178,7 +201,7 @@ export default class Categorize extends HTMLElement {
             let { audioStartTime, audioEndTime, waitTime } = this._session;
             if (!waitTime && audioStartTime && audioEndTime) {
               // waitTime is elapsed time the user waited for auto-played audio to finish
-              this._session.waitTime = (audioEndTime - audioStartTime);
+              this._session.waitTime = audioEndTime - audioStartTime;
             }
 
             this.audioComplete = true;

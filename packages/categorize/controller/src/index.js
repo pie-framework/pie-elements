@@ -99,6 +99,26 @@ export const createDefaultModel = (model = {}) =>
 
 export const normalize = (question) => ({ ...defaults, ...question });
 
+// calculate the minimum number of populated response areas (categories) in the correct answer or alternates
+const getFilledResponseAreas = (correctResponse, alternates) => {
+  let responseAreasToBeFilled = correctResponse.filter((category) => category.choices.length).length;
+
+  if (alternates.length) {
+    const alternatesPerChoice = alternates[0]?.length || 0; // number of alternates
+
+    [...Array(alternatesPerChoice).keys()].forEach((index) => {
+      const alternatesPerResponse = alternates.map((alternate) => alternate[index]);
+      const filledCategories = alternatesPerResponse.filter((category) => category?.length).length;
+
+      if (filledCategories < responseAreasToBeFilled) {
+        responseAreasToBeFilled = filledCategories;
+      }
+    });
+  }
+
+  return responseAreasToBeFilled;
+};
+
 /**
  *
  * @param {*} question
@@ -135,7 +155,7 @@ export const model = (question, session, env, updateSession) =>
       fontSizeFactor,
       autoplayAudioEnabled,
       completeAudioEnabled,
-      customAudioButton
+      customAudioButton,
     } = normalizedQuestion;
     let { choices, note } = normalizedQuestion;
     let fb;
@@ -183,7 +203,11 @@ export const model = (question, session, env, updateSession) =>
       minRowHeight: minRowHeight,
       autoplayAudioEnabled,
       completeAudioEnabled,
-      customAudioButton
+      customAudioButton,
+      responseAreasToBeFilled: getFilledResponseAreas(
+        filteredCorrectResponse,
+        normalizedQuestion.allowAlternateEnabled ? alternates : [],
+      ),
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
