@@ -18,7 +18,8 @@ export default class Categorize extends HTMLElement {
   }
 
   isComplete() {
-    const { autoplayAudioEnabled, choices, completeAudioEnabled, responseAreasToBeFilled } = this._model || {};
+    const { autoplayAudioEnabled, choices, completeAudioEnabled, possibleResponses, responseAreasToBeFilled } =
+      this._model || {};
     const elementContext = this;
 
     // check audio completion if audio settings are enabled and audio actually exists
@@ -52,18 +53,31 @@ export default class Categorize extends HTMLElement {
     // check if multiple placements are allowed
     const duplicatesAllowed = choices.some((choice) => choice.categoryCount === 0);
 
-    // answer choice can be used multiple times
     if (duplicatesAllowed) {
+      // an answer choice can be used multiple times
       return areResponseAreasFilled;
     }
 
-    // // do any correct answer have any unplaced answer choice ?
-    // if (true) {
-    //   return areResponseAreasFilled;
-    // }
+    const allAnswersIds = answers
+      .map((answer) => answer.choices)
+      .flat()
+      .sort();
+
+    // check if any correct answer have any unplaced answer choices
+    const requiredAnswersPlaced = possibleResponses.some((response) => {
+      if (response.length !== allAnswersIds.length) {
+        return false;
+      }
+
+      return response.sort().every((val, index) => val === allAnswersIds[index]);
+    });
+
+    if (!requiredAnswersPlaced) {
+      // correct answer have unplaced answer choices
+      return areResponseAreasFilled;
+    }
 
     // check if every answer choice was placed into a response area
-    const allAnswersIds = answers.map((answer) => answer.choices).flat();
     const hasUnplacedChoices = choices.some((choice) => !allAnswersIds.find((answerId) => answerId === choice.id));
 
     return !hasUnplacedChoices;

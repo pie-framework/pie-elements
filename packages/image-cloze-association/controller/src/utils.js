@@ -41,3 +41,46 @@ export const getAllUniqueCorrectness = (answers, validResponses) => {
   });
   return allCorrectness;
 };
+
+// calculate the minimum number of populated response areas (categories) in the correct answer or alternates
+// and create an array with the possible responses ids
+export const getCompleteResponseDetails = (validation) => {
+  const extractImages = (response) => response.value.map((container) => container.images);
+  const countFilledResponseAreas = (container) => container.filter((images) => images.length).length;
+
+  const { validResponse, altResponses } = validation || {};
+  const imagesPerContainer = extractImages(validResponse);
+  const possibleResponses = [imagesPerContainer.flat()];
+  let responseAreasToBeFilled = countFilledResponseAreas(imagesPerContainer);
+
+  (altResponses || []).forEach((altResponse) => {
+    const altImagesPerContainer = extractImages(altResponse);
+    const filledResponseAreas = countFilledResponseAreas(altImagesPerContainer);
+    possibleResponses.push(altImagesPerContainer.flat());
+
+    if (filledResponseAreas < responseAreasToBeFilled) {
+      responseAreasToBeFilled = filledResponseAreas;
+    }
+  });
+
+  return { responseAreasToBeFilled, possibleResponses };
+  // return responseAreasToBeFilled;
+
+  // const choicesPerCategory = correctResponse.map((category) => category.choices);
+  // const possibleResponses = [choicesPerCategory.flat()];
+  // let responseAreasToBeFilled = choicesPerCategory.filter((choices) => choices.length).length;
+  //
+  // if (alternates.length) {
+  //   const alternatesPerChoice = alternates[0]?.length || 0; // number of alternates
+  //
+  //   [...Array(alternatesPerChoice).keys()].forEach((index) => {
+  //     const alternatesPerResponse = alternates.map((alternate) => alternate[index]);
+  //     const filledCategories = alternatesPerResponse.filter((category) => category?.length).length;
+  //     possibleResponses.push(alternatesPerResponse.flat());
+  //
+  //     if (filledCategories < responseAreasToBeFilled) {
+  //       responseAreasToBeFilled = filledCategories;
+  //     }
+  //   });
+  // }
+};

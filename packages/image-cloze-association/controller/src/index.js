@@ -4,29 +4,11 @@ import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import { cloneDeep, isEmpty, shuffle } from 'lodash';
 
 import defaults from './defaults';
-import { getAllUniqueCorrectness } from './utils';
+import { getAllUniqueCorrectness, getCompleteResponseDetails } from './utils';
 
 const log = debug('pie-elements:image-cloze-association:controller');
 
 export const normalize = (question) => ({ ...defaults, ...question });
-
-// calculate the minimum number of populated response areas in the correct answer or alternates
-const getFilledResponseAreas = (question) => {
-  const countFilledResponseAreas = (response) => response.value.filter((container) => container.images.length).length;
-
-  const { validResponse, altResponses } = question.validation || {};
-  let responseAreasToBeFilled = countFilledResponseAreas(validResponse);
-
-  (altResponses || []).forEach((altResponse) => {
-    const filledResponseAreas = countFilledResponseAreas(altResponse);
-
-    if (filledResponseAreas < responseAreasToBeFilled) {
-      responseAreasToBeFilled = filledResponseAreas;
-    }
-  });
-
-  return responseAreasToBeFilled;
-};
 
 export const model = (question, session, env) => {
   const questionNormalized = normalize(question);
@@ -35,13 +17,18 @@ export const model = (question, session, env) => {
   return new Promise((resolve) => {
     const shouldIncludeCorrectResponse = env.mode === 'evaluate';
 
+    const { responseAreasToBeFilled, possibleResponses: completeResponses } = getCompleteResponseDetails(
+      questionCamelized.validation,
+    );
+
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
       ...questionCamelized,
       responseCorrect: shouldIncludeCorrectResponse ? getScore(questionCamelized, session) === 1 : undefined,
       validation: shouldIncludeCorrectResponse ? questionCamelized.validation : undefined,
-      responseAreasToBeFilled: getFilledResponseAreas(questionCamelized),
+      responseAreasToBeFilled,
+      completeResponses,
     };
 
     if (questionNormalized.shuffle) {

@@ -18,6 +18,7 @@ export default class ImageClozeAssociation extends HTMLElement {
     const {
       autoplayAudioEnabled,
       completeAudioEnabled,
+      completeResponses,
       duplicateResponses,
       maxResponsePerZone,
       possibleResponses,
@@ -55,22 +56,33 @@ export default class ImageClozeAssociation extends HTMLElement {
     const areResponseAreasFilled = filledResponseAreas >= responseAreasToBeFilled;
 
     if (maxResponsePerZone > 1) {
-      // answer choice can be used multiple times
       if (duplicateResponses) {
+        // an answer choice can be used multiple times
         return areResponseAreasFilled;
       }
 
-      // // do any correct answer have any unplaced answer choice ?
-      // if (true) {
-      //   return areResponseAreasFilled;
-      // }
+      const allAnswersValue = answers.map((answer) => answer.value).sort();
 
-      const unplacedResponses = possibleResponses.filter(
-        (response) => !answers.find((answer) => answer.value === response),
-      );
+      // check if any correct answer have any unplaced answer choices
+      const requiredAnswersPlaced = completeResponses.some((response) => {
+        if (response.length !== allAnswersValue.length) {
+          return false;
+        }
+
+        return response.sort().every((val, index) => val === allAnswersValue[index]);
+      });
+
+      if (!requiredAnswersPlaced) {
+        // correct answer have unplaced answer choices
+        return areResponseAreasFilled;
+      }
 
       // check if every answer choice was placed into a response area
-      return unplacedResponses.length === 0;
+      const hasUnplacedResponses = possibleResponses.some(
+        (response) => !allAnswersValue.find((value) => value === response),
+      );
+
+      return !hasUnplacedResponses;
     }
 
     return areResponseAreasFilled;

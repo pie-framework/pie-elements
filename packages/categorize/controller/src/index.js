@@ -6,7 +6,7 @@ import Translator from '@pie-lib/pie-toolbox/translator';
 
 const { translator } = Translator;
 import defaults from './defaults';
-import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
+import { getCompleteResponseDetails, isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
 
 // eslint-disable-next-line no-console
 
@@ -99,26 +99,6 @@ export const createDefaultModel = (model = {}) =>
 
 export const normalize = (question) => ({ ...defaults, ...question });
 
-// calculate the minimum number of populated response areas (categories) in the correct answer or alternates
-const getFilledResponseAreas = (correctResponse, alternates) => {
-  let responseAreasToBeFilled = correctResponse.filter((category) => category.choices.length).length;
-
-  if (alternates.length) {
-    const alternatesPerChoice = alternates[0]?.length || 0; // number of alternates
-
-    [...Array(alternatesPerChoice).keys()].forEach((index) => {
-      const alternatesPerResponse = alternates.map((alternate) => alternate[index]);
-      const filledCategories = alternatesPerResponse.filter((category) => category?.length).length;
-
-      if (filledCategories < responseAreasToBeFilled) {
-        responseAreasToBeFilled = filledCategories;
-      }
-    });
-  }
-
-  return responseAreasToBeFilled;
-};
-
 /**
  *
  * @param {*} question
@@ -180,6 +160,10 @@ export const model = (question, session, env, updateSession) =>
     }
 
     const alternates = getAlternates(filteredCorrectResponse);
+    const { responseAreasToBeFilled, possibleResponses } = getCompleteResponseDetails(
+      filteredCorrectResponse,
+      normalizedQuestion.allowAlternateEnabled ? alternates : [],
+    );
     const out = {
       categories: categories || [],
       categoriesPerRow: categoriesPerRow || 2,
@@ -204,10 +188,8 @@ export const model = (question, session, env, updateSession) =>
       autoplayAudioEnabled,
       completeAudioEnabled,
       customAudioButton,
-      responseAreasToBeFilled: getFilledResponseAreas(
-        filteredCorrectResponse,
-        normalizedQuestion.allowAlternateEnabled ? alternates : [],
-      ),
+      possibleResponses,
+      responseAreasToBeFilled,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
