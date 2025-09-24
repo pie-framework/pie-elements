@@ -15,7 +15,15 @@ export default class ImageClozeAssociation extends HTMLElement {
   }
 
   isComplete() {
-    const { autoplayAudioEnabled, completeAudioEnabled } = this._model || {};
+    const {
+      autoplayAudioEnabled,
+      completeAudioEnabled,
+      completeResponses,
+      duplicateResponses,
+      maxResponsePerZone,
+      possibleResponses,
+      responseAreasToBeFilled,
+    } = this._model || {};
     const elementContext = this;
 
     // check audio completion if audio settings are enabled and audio actually exists
@@ -35,11 +43,49 @@ export default class ImageClozeAssociation extends HTMLElement {
       return false;
     }
 
-    if (!Array.isArray(this._session.answers)) {
+    const { answers } = this._session;
+
+    if (!Array.isArray(answers)) {
       return false;
     }
 
-    return Array.isArray(this._session.answers) && this._session.answers.length > 0;
+    // filter answers by containerIndex and count the ones with content
+    const filledResponseAreas = [...new Map(answers.map((item) => [item.containerIndex, item])).values()].length;
+    // check if an answer choice was added to at least as many response areas
+    // as the number of populated response areas in the correct answer
+    const areResponseAreasFilled = filledResponseAreas >= responseAreasToBeFilled;
+
+    if (maxResponsePerZone > 1) {
+      if (duplicateResponses) {
+        // an answer choice can be used multiple times
+        return areResponseAreasFilled;
+      }
+
+      const allAnswersValue = answers.map((answer) => answer.value).sort();
+
+      // check if any correct answer have any unplaced answer choices
+      const requiredAnswersPlaced = completeResponses.some((response) => {
+        if (response.length !== allAnswersValue.length) {
+          return false;
+        }
+
+        return response.sort().every((val, index) => val === allAnswersValue[index]);
+      });
+
+      if (!requiredAnswersPlaced) {
+        // correct answer have unplaced answer choices
+        return areResponseAreasFilled;
+      }
+
+      // check if every answer choice was placed into a response area
+      const hasUnplacedResponses = possibleResponses.some(
+        (response) => !allAnswersValue.find((value) => value === response),
+      );
+
+      return !hasUnplacedResponses;
+    }
+
+    return areResponseAreasFilled;
   }
 
   set session(s) {
@@ -78,7 +124,7 @@ export default class ImageClozeAssociation extends HTMLElement {
       alignItems: 'center',
       background: 'white',
       zIndex: '1000',
-      cursor: 'pointer'
+      cursor: 'pointer',
     });
 
     const img = document.createElement('img');

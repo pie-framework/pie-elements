@@ -2,33 +2,63 @@
 export const multiplePlacements = { enabled: 'Yes', disabled: 'No', perChoice: 'Set Per Choice' };
 
 // used to validate the config
-export const isCorrectResponseDuplicated = (choices,alternate) => {
-    if (choices.length < 1 || alternate.length < 1){
-        return -1;
-    }
+export const isCorrectResponseDuplicated = (choices, alternate) => {
+  if (choices.length < 1 || alternate.length < 1) {
+    return -1;
+  }
 
-    const stringChoices =  JSON.stringify(choices.sort());
-    const stringAlternate = alternate.reduce((total, current) => current.length > 0 ? [...total, JSON.stringify(current.sort())] : total, []);
-    const foundIndexDuplicate = stringAlternate.findIndex(alternate => alternate.length &&  alternate === stringChoices);
+  const stringChoices = JSON.stringify(choices.sort());
+  const stringAlternate = alternate.reduce(
+    (total, current) => (current.length > 0 ? [...total, JSON.stringify(current.sort())] : total),
+    [],
+  );
+  const foundIndexDuplicate = stringAlternate.findIndex((alternate) => alternate.length && alternate === stringChoices);
 
-    return foundIndexDuplicate;
+  return foundIndexDuplicate;
 };
 
 export const isAlternateDuplicated = (alternate) => {
-    if (alternate.length <= 1){
-        return -1;
-    }
-
-    const elementSet = new Set();
-    const stringAlternate = alternate.reduce((total, current) => current.length > 0 ? [...total, JSON.stringify(current.sort())] : total, []);
-
-    for (let i = 0; i < stringAlternate.length; i++) {
-        if (elementSet.has(stringAlternate[i]) && stringAlternate[i]) {
-            return i;
-        }
-
-        elementSet.add(stringAlternate[i]);
-    }
-
+  if (alternate.length <= 1) {
     return -1;
+  }
+
+  const elementSet = new Set();
+  const stringAlternate = alternate.reduce(
+    (total, current) => (current.length > 0 ? [...total, JSON.stringify(current.sort())] : total),
+    [],
+  );
+
+  for (let i = 0; i < stringAlternate.length; i++) {
+    if (elementSet.has(stringAlternate[i]) && stringAlternate[i]) {
+      return i;
+    }
+
+    elementSet.add(stringAlternate[i]);
+  }
+
+  return -1;
+};
+
+// calculate the minimum number of populated response areas (categories) in the correct answer or alternates
+// and create an array with the possible responses ids
+export const getCompleteResponseDetails = (correctResponse, alternates) => {
+  const choicesPerCategory = correctResponse.map((category) => category.choices);
+  const possibleResponses = [choicesPerCategory.flat()];
+  let responseAreasToBeFilled = choicesPerCategory.filter((choices) => choices.length).length;
+
+  if (alternates.length) {
+    const alternatesPerChoice = alternates[0]?.length || 0; // number of alternates
+
+    [...Array(alternatesPerChoice).keys()].forEach((index) => {
+      const alternatesPerResponse = alternates.map((alternate) => alternate[index]);
+      const filledCategories = alternatesPerResponse.filter((category) => category?.length).length;
+      possibleResponses.push(alternatesPerResponse.flat());
+
+      if (filledCategories < responseAreasToBeFilled) {
+        responseAreasToBeFilled = filledCategories;
+      }
+    });
+  }
+
+  return { responseAreasToBeFilled, possibleResponses };
 };

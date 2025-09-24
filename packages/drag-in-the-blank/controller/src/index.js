@@ -59,6 +59,12 @@ export function model(question, session, env, updateSession) {
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }
 
+    // we don't need to check for fewer areas to be filled in the alternateResponses
+    // because the alternates are an option in the default correct response (for scoring)
+    const responseAreasToBeFilled = Object.values(normalizedQuestion.correctResponse || {}).filter(
+      (value) => !!value,
+    ).length;
+
     const shouldIncludeCorrectResponse = env.mode === 'evaluate';
 
     const out = {
@@ -70,6 +76,7 @@ export function model(question, session, env, updateSession) {
       disabled: env.mode !== 'gather',
       responseCorrect: shouldIncludeCorrectResponse ? getScore(normalizedQuestion, session) === 1 : undefined,
       correctResponse: shouldIncludeCorrectResponse ? normalizedQuestion.correctResponse : undefined,
+      responseAreasToBeFilled,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
@@ -95,19 +102,16 @@ export const getScore = (config, session) => {
   const { value } = session || {};
 
   for (let i = 0; i < numberOfPossibleResponses; i++) {
-    const result = Object.keys(allCorrectResponses).reduce(
-      (total, key) => {
-        const choices = allCorrectResponses[key];
-        const answer = (value && value[key]) || '';
+    const result = Object.keys(allCorrectResponses).reduce((total, key) => {
+      const choices = allCorrectResponses[key];
+      const answer = (value && value[key]) || '';
 
-        if (choices[i] === answer) {
-          return total;
-        }
+      if (choices[i] === answer) {
+        return total;
+      }
 
-        return total - 1;
-      },
-      maxScore,
-    );
+      return total - 1;
+    }, maxScore);
 
     if (result > correctCount) {
       correctCount = result;
