@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/math-templated-configure",
   "private": true,
-  "version": "2.6.7",
+  "version": "2.6.9",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
