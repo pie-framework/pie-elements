@@ -46,12 +46,12 @@ module.exports = {
   libs: {
     repository: 'pie-framework/pie-elements',
     packages: [
-      { name: '@pie-lib/drag-module', version: '^2.7.1' },
-      { name: '@pie-lib/math-rendering-module', version: '^2.6.1' },
-      { name: '@pie-lib/math-edit-module', version: '^2.3.1' },
-      { name: '@pie-lib/shared-module', version: '^1.13.1' },
-      { name: '@pie-lib/editable-html-module', version: '^5.5.1' },
-      { name: '@pie-lib/config-module', version: '^2.18.1' },
+      { name: '@pie-lib/drag-module', version: '^2.8.0' },
+      { name: '@pie-lib/math-rendering-module', version: '^2.7.0' },
+      { name: '@pie-lib/math-edit-module', version: '^2.4.0' },
+      { name: '@pie-lib/shared-module', version: '^1.14.0' },
+      { name: '@pie-lib/editable-html-module', version: '^5.6.0' },
+      { name: '@pie-lib/config-module', version: '^2.19.0' },
     ],
   },
 };
