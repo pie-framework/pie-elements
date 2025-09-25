@@ -2181,6 +2181,16 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@pie-element/rubric@^4.10.0-next.0":
+  version "4.10.0-next.0"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-4.10.0-next.0.tgz#9c36b1de4e3e1737811d02933ecd72b4f7f7dd93"
+  integrity sha512-oz9EM79m5hJb6b+oFQq1ekFaA+d7nQGuGE9n5aDYKKGW1dC4yojip6oMKWLKD+FNaBVshK15SAuHRtaqHjK0Ig==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/math-rendering" "^3.18.0"
+    "@pie-lib/render-ui" "^4.31.0"
+    prop-types "^15.7.2"
+
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.9.tgz#1a06eb0b7c471042eefce3d5f994192c6576d311"
