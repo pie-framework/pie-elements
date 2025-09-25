@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@8.7.9...@pie-element/match@8.8.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* merge develop ([9f997d7](https://github.com/pie-framework/pie-elements/commit/9f997d7a9813bed26b760f14fbf841e373bb0bb8))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox for likert, match, match-list  PD-5158 ([a1bd3d7](https://github.com/pie-framework/pie-elements/commit/a1bd3d75c84f3a60844ffa3c0f386cdf5d186b39))
+
+
+
+
+
 ## [8.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@8.7.8...@pie-element/match@8.7.9) (2025-09-11)
 
 

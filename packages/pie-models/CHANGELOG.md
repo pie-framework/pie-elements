@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.47.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.46.0...@pie-element/pie-models@13.47.0) (2025-09-25)
+
+
+### Features
+
+* **multiple-choice:** add hover style options for choices PD-4768. generated docs ([725e0d4](https://github.com/pie-framework/pie-elements/commit/725e0d44b62b8c9e2a2667270ba826f118b73275))
+* **multiple-choice:** add stroke color and width options for selected answers PD-4768 ([317a4c3](https://github.com/pie-framework/pie-elements/commit/317a4c3f0a926263f4753041b0f3825baa4aa3ef))
+
+
+
+
+
 # [13.46.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.45.0...@pie-element/pie-models@13.46.0) (2025-05-22)
 
 
