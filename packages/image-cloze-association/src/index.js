@@ -21,7 +21,6 @@ export default class ImageClozeAssociation extends HTMLElement {
       completeResponses,
       duplicateResponses,
       maxResponsePerZone,
-      possibleResponses,
       responseAreasToBeFilled,
     } = this._model || {};
     const elementContext = this;
@@ -61,28 +60,20 @@ export default class ImageClozeAssociation extends HTMLElement {
         return areResponseAreasFilled;
       }
 
-      const allAnswersValue = answers.map((answer) => answer.value).sort();
+      const allAnswersValue = answers.map((answer) => answer.value);
 
       // check if any correct answer have any unplaced answer choices
-      const requiredAnswersPlaced = completeResponses.some((response) => {
-        if (response.length !== allAnswersValue.length) {
-          return false;
-        }
-
-        return response.sort().every((val, index) => val === allAnswersValue[index]);
-      });
+      const requiredAnswersPlaced = completeResponses.some((response) =>
+        response.every((val) => allAnswersValue.includes(val)),
+      );
 
       if (!requiredAnswersPlaced) {
         // correct answer have unplaced answer choices
         return areResponseAreasFilled;
       }
 
-      // check if every answer choice was placed into a response area
-      const hasUnplacedResponses = possibleResponses.some(
-        (response) => !allAnswersValue.find((value) => value === response),
-      );
-
-      return !hasUnplacedResponses;
+      // all choices (required for a correct response) were placed into a response area
+      return requiredAnswersPlaced;
     }
 
     return areResponseAreasFilled;

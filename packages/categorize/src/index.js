@@ -58,29 +58,20 @@ export default class Categorize extends HTMLElement {
       return areResponseAreasFilled;
     }
 
-    const allAnswersIds = answers
-      .map((answer) => answer.choices)
-      .flat()
-      .sort();
+    const allAnswersIds = answers.map((answer) => answer.choices).flat();
 
     // check if any correct answer have any unplaced answer choices
-    const requiredAnswersPlaced = possibleResponses.some((response) => {
-      if (response.length !== allAnswersIds.length) {
-        return false;
-      }
-
-      return response.sort().every((val, index) => val === allAnswersIds[index]);
-    });
+    const requiredAnswersPlaced = possibleResponses.some((response) =>
+      response.every((val) => allAnswersIds.includes(val)),
+    );
 
     if (!requiredAnswersPlaced) {
       // correct answer have unplaced answer choices
       return areResponseAreasFilled;
     }
 
-    // check if every answer choice was placed into a response area
-    const hasUnplacedChoices = choices.some((choice) => !allAnswersIds.find((answerId) => answerId === choice.id));
-
-    return !hasUnplacedChoices;
+    // all choices (required for a correct response) were placed into a response area
+    return requiredAnswersPlaced;
   }
 
   set session(s) {
