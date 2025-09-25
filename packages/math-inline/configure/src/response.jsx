@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
-import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
+import { InputContainer } from '@pie-lib/config-ui';
+import { MathToolbar } from '@pie-lib/math-toolbar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -12,7 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 // TODO once we support individual response correctness, we need to remove this constant
 const INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED = false;
@@ -74,7 +74,7 @@ const styles = (theme) => ({
     paddingTop: theme.spacing.unit,
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 });
 
@@ -245,102 +245,104 @@ class Response extends React.Component {
     };
 
     return (
-        <Card className={classes.responseContainer} style={styles}>
-          <CardContent className={classes.cardContent}>
-            <div className={classes.titleBar}>
-              <Typography className={classes.title} component="div">
-                Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}
-              </Typography>
+      <Card className={classes.responseContainer} style={styles}>
+        <CardContent className={classes.cardContent}>
+          <div className={classes.titleBar}>
+            <Typography className={classes.title} component="div">
+              Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}
+            </Typography>
 
-              <InputContainer label="Validation" className={classes.selectContainer}>
-                <Select className={classes.select} onChange={this.onChange('validation')} value={validation || 'literal'}>
-                  <MenuItem value="literal">Literal Validation</MenuItem>
-                  <MenuItem value="symbolic">Symbolic Validation</MenuItem>
-                </Select>
-              </InputContainer>
+            <InputContainer label="Validation" className={classes.selectContainer}>
+              <Select className={classes.select} onChange={this.onChange('validation')} value={validation || 'literal'}>
+                <MenuItem value="literal">Literal Validation</MenuItem>
+                <MenuItem value="symbolic">Symbolic Validation</MenuItem>
+              </Select>
+            </InputContainer>
+          </div>
+
+          {validation === 'literal' && (
+            <div className={classes.flexContainer}>
+              {cAllowTrailingZeros.enabled && (
+                <FormControlLabel
+                  label={cAllowTrailingZeros.label}
+                  control={
+                    <Checkbox
+                      className={classes.customColor}
+                      checked={allowTrailingZeros}
+                      onChange={this.onLiteralOptionsChange('allowTrailingZeros')}
+                    />
+                  }
+                />
+              )}
+
+              {cIgnoreOrder.enabled && (
+                <FormControlLabel
+                  label={cIgnoreOrder.label}
+                  control={
+                    <Checkbox
+                      className={classes.customColor}
+                      checked={ignoreOrder}
+                      onChange={this.onLiteralOptionsChange('ignoreOrder')}
+                    />
+                  }
+                />
+              )}
             </div>
+          )}
 
-            {validation === 'literal' && (
-                <div className={classes.flexContainer}>
-                  {cAllowTrailingZeros.enabled && (
-                      <FormControlLabel
-                          label={cAllowTrailingZeros.label}
-                          control={
-                            <Checkbox
-                                className={classes.customColor}
-                                checked={allowTrailingZeros}
-                                onChange={this.onLiteralOptionsChange('allowTrailingZeros')}
-                            />
-                          }
-                      />
-                  )}
+          <div className={classes.inputContainer}>
+            <InputLabel>Correct Answer</InputLabel>
+            <MathToolbar
+              keypadMode={mode}
+              classNames={classNames}
+              controlledKeypad
+              showKeypad={showKeypad.main}
+              latex={answer || ''}
+              onChange={this.onAnswerChange}
+              onFocus={this.onFocus}
+              onDone={this.onDone}
+              error={error && error.answer}
+            />
+            {error && error.answer ? <div className={classes.errorText}>{error.answer}</div> : null}
+          </div>
 
-                  {cIgnoreOrder.enabled && (
-                      <FormControlLabel
-                          label={cIgnoreOrder.label}
-                          control={
-                        <Checkbox 
-                            className={classes.customColor} 
-                            checked={ignoreOrder} 
-                            onChange={this.onLiteralOptionsChange('ignoreOrder')} />}
-                      />
-                  )}
+          {hasAlternates &&
+            Object.keys(alternates).map((alternateId, altIdx) => (
+              <div className={classes.inputContainer} key={alternateId}>
+                <div className={classes.alternateBar}>
+                  <InputLabel>
+                    Alternate
+                    {Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}
+                  </InputLabel>
+                  <Button
+                    className={classes.removeAlternateButton}
+                    type="secondary"
+                    onClick={this.onRemoveAlternate(alternateId)}
+                  >
+                    Remove
+                  </Button>
                 </div>
-            )}
 
-            <div className={classes.inputContainer}>
-              <InputLabel>Correct Answer</InputLabel>
-              <MathToolbar
-                  keypadMode={mode}
+                <MathToolbar
                   classNames={classNames}
                   controlledKeypad
-                  showKeypad={showKeypad.main}
-                  latex={answer || ''}
-                  onChange={this.onAnswerChange}
-                  onFocus={this.onFocus}
-                  onDone={this.onDone}
-                  error={error && error.answer}
-              />
-              {error && error.answer ? <div className={classes.errorText}>{error.answer}</div> : null}
-            </div>
+                  keypadMode={mode}
+                  showKeypad={showKeypad[alternateId] || false}
+                  latex={alternates[alternateId] || ''}
+                  onChange={this.onAlternateAnswerChange(alternateId)}
+                  onFocus={this.onAlternateFocus(alternateId)}
+                  onDone={this.onAlternateDone(alternateId)}
+                  error={error && error[alternateId]}
+                />
+                {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
+              </div>
+            ))}
 
-            {hasAlternates &&
-                Object.keys(alternates).map((alternateId, altIdx) => (
-                    <div className={classes.inputContainer} key={alternateId}>
-                      <div className={classes.alternateBar}>
-                        <InputLabel>
-                          Alternate
-                          {Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}
-                        </InputLabel>
-                        <Button
-                            className={classes.removeAlternateButton}
-                            type="secondary"
-                            onClick={this.onRemoveAlternate(alternateId)}
-                        >
-                          Remove
-                        </Button>
-                      </div>
-
-                      <MathToolbar
-                          classNames={classNames}
-                          controlledKeypad
-                          keypadMode={mode}
-                          showKeypad={showKeypad[alternateId] || false}
-                          latex={alternates[alternateId] || ''}
-                          onChange={this.onAlternateAnswerChange(alternateId)}
-                          onFocus={this.onAlternateFocus(alternateId)}
-                          onDone={this.onAlternateDone(alternateId)}
-                          error={error && error[alternateId]}
-                      />
-                      {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
-                    </div>
-                ))}
-
-            <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
-              ADD ALTERNATE
-            </Button>
-          </CardContent>
-        </Card>
+          <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
+            ADD ALTERNATE
+          </Button>
+        </CardContent>
+      </Card>
     );
   }
 }

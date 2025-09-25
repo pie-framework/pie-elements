@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DropTarget } from '@pie-lib/pie-toolbox/drag';
+import { DropTarget } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 import cx from 'classnames';
 
 import PossibleResponse from './possible-response';
@@ -11,7 +11,7 @@ import c from './constants';
 class ImageDropTarget extends React.Component {
   state = {
     shouldHaveSmallPadding: false,
-  }
+  };
 
   componentDidMount() {
     if (this.dropContainer) {
@@ -58,42 +58,44 @@ class ImageDropTarget extends React.Component {
     const updatedContainerStyle = {
       padding: maxResponsePerZone === 1 ? '0' : responseContainerPadding,
       ...containerStyle,
-      ...(responseAreaFill && !isDraggingElement && { backgroundColor: responseAreaFill })
+      ...(responseAreaFill && !isDraggingElement && { backgroundColor: responseAreaFill }),
     };
 
     return connectDropTarget(
-        <div
-            ref={(ref) => { this.dropContainer = ref; }}
-            className={containerClasses}
-            style={updatedContainerStyle}
-        >
-          {answers.length ? (
-              <div
-                  className={classes.answers}
-                  ref={ref => {
-                    this.dropContainerResponsesHeight = ref?.getBoundingClientRect().height;
-                  }}
-              >
-                {answers.map((answer) => (
-                    <PossibleResponse
-                        key={answer.id}
-                        data={answer}
-                        canDrag={canDrag}
-                        onDragBegin={() => onDragAnswerBegin(answer)}
-                        onDragEnd={onDragAnswerEnd}
-                        answerChoiceTransparency={answerChoiceTransparency}
-                        containerStyle={{
-                          padding: imageDropTargetPadding
-                              ? imageDropTargetPadding
-                              : shouldHaveSmallPadding
-                                  ? '2px'
-                                  : '6px 10px',
-                        }}
-                    />
-                ))}
-              </div>
-          ) : null}
-        </div>,
+      <div
+        ref={(ref) => {
+          this.dropContainer = ref;
+        }}
+        className={containerClasses}
+        style={updatedContainerStyle}
+      >
+        {answers.length ? (
+          <div
+            className={classes.answers}
+            ref={(ref) => {
+              this.dropContainerResponsesHeight = ref?.getBoundingClientRect().height;
+            }}
+          >
+            {answers.map((answer) => (
+              <PossibleResponse
+                key={answer.id}
+                data={answer}
+                canDrag={canDrag}
+                onDragBegin={() => onDragAnswerBegin(answer)}
+                onDragEnd={onDragAnswerEnd}
+                answerChoiceTransparency={answerChoiceTransparency}
+                containerStyle={{
+                  padding: imageDropTargetPadding
+                    ? imageDropTargetPadding
+                    : shouldHaveSmallPadding
+                    ? '2px'
+                    : '6px 10px',
+                }}
+              />
+            ))}
+          </div>
+        ) : null}
+      </div>,
     );
   }
 }
@@ -136,7 +138,7 @@ const styles = () => ({
   },
   responseContainer: {
     position: 'absolute',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
   },
   responseContainerActive: {
     border: `2px solid ${color.text()}`,
@@ -148,7 +150,7 @@ const styles = () => ({
   isOver: {
     border: '1px solid rgb(158, 158, 158)',
     backgroundColor: 'rgb(224, 224, 224)',
-  }
+  },
 });
 
 const Styled = withStyles(styles)(ImageDropTarget);

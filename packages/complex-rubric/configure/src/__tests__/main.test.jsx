@@ -4,18 +4,18 @@ import { Main } from '../main';
 
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
 }));
-jest.mock('@pie-lib/pie-toolbox/render-ui', () => ({
+jest.mock('@pie-lib/render-ui', () => ({
   color: {
     tertiary: jest.fn(() => '#146EB3'),
   },
 }));
 
-jest.mock('@pie-lib/pie-toolbox/rubric', () => ({
+jest.mock('@pie-lib/rubric', () => ({
   RUBRIC_TYPES: {
     SIMPLE_RUBRIC: 'simpleRubric',
     MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
@@ -85,7 +85,7 @@ describe('Main', () => {
           },
         },
       },
-      canUpdateModel: true
+      canUpdateModel: true,
     };
     const props = { ...defaults };
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { Main } from '../main';
 import { model as defaultModel, configuration as defaultConfig } from '../defaults';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   FormSection: () => <div />,
   FeedbackConfig: () => <div />,
   InputCheckbox: () => <div />,

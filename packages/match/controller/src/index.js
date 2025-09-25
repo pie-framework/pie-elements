@@ -1,8 +1,8 @@
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
-import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match:controller');
@@ -212,7 +212,8 @@ export function model(question, session, env, updateSession) {
         : Promise.resolve(undefined);
 
     fb.then((feedback) => {
-      const { extraCSSRules, feedbackEnabled, promptEnabled, prompt, lockChoiceOrder, ...essentials } = normalizedQuestion;
+      const { extraCSSRules, feedbackEnabled, promptEnabled, prompt, lockChoiceOrder, ...essentials } =
+        normalizedQuestion;
       const out = {
         ...essentials,
         extraCSSRules,

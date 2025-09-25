@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import Main from '../main';
-import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import { shallowChild } from '@pie-lib/test-utils';
 import AnswerFraction from '../answer-fraction';
 
 describe('Main', () => {

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { NumberTextFieldCustom } from '@pie-lib/pie-toolbox/config-ui';
+import { NumberTextFieldCustom } from '@pie-lib/config-ui';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import * as math from 'mathjs';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 // This const will store available tick interval types.
 export const TickIntervals = ['Integer', 'Fraction', 'Decimal'];
@@ -257,7 +257,7 @@ const styles = () => ({
     width: '35%',
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 });
 export default withStyles(styles)(Ticks);

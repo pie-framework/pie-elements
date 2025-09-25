@@ -6,7 +6,7 @@ import { ChartingConfig } from '../charting-config';
 import { CorrectResponse } from '../correct-response';
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   InputContainer: (props) => <div>{props.children}</div>,
   InputCheckbox: (props) => <div>{props.children}</div>,
   FeedbackConfig: (props) => <div>{props.children}</div>,
@@ -21,7 +21,7 @@ jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   },
 }));
 
-jest.mock('@pie-lib/pie-toolbox/charting', () => ({
+jest.mock('@pie-lib/charting', () => ({
   Chart: () => <div />,
   chartTypes: {
     Bar: () => ({

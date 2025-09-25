@@ -2,7 +2,7 @@ import { model, getScore, outcome, prepareVal, createCorrectResponseSession, pre
 
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/pie-toolbox/controller-utils', () => ({
+jest.mock('@pie-lib/controller-utils', () => ({
   getShuffledChoices: (choices, session, updateSession, key) => {
     const currentShuffled = ((session || {}).shuffledValues || []).filter((v) => v);
 

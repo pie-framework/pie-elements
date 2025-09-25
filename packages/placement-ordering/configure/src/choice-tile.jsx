@@ -1,4 +1,4 @@
-import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 import CardActions from '@material-ui/core/CardActions';
 import DragHandle from '@material-ui/icons/DragHandle';
 
@@ -11,7 +11,7 @@ import React from 'react';
 import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
@@ -161,7 +161,7 @@ const Styled = withStyles((theme) => ({
     color: color.disabled(),
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 }))(ChoiceTile);
 

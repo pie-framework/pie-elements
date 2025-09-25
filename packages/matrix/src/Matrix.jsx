@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ChoiceInput from './ChoiceInput';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 
 const MatrixWrapper = styled.div`
   color: ${color.text()};

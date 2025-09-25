@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { settings, layout } from '@pie-lib/pie-toolbox/config-ui';
+import { settings, layout } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 const { Panel, toggle, radio, dropdown } = settings;

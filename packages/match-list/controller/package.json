@@ -9,7 +9,8 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/pie-toolbox": "2.25.2",
+    "@pie-lib/controller-utils": "^0.18.0",
+    "@pie-lib/feedback": "^0.20.0",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },

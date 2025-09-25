@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   settings: {
     Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
     radio: jest.fn(),
   },
 }));
-jest.mock('@pie-lib/pie-toolbox/render-ui', () => ({
+jest.mock('@pie-lib/render-ui', () => ({
   color: {
     tertiary: jest.fn(() => '#146EB3'),
   },
