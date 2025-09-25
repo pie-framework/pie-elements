@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.13.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.13.3...@pie-element/drag-in-the-blank@6.13.0-beta.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* import ([8ffdc56](https://github.com/pie-framework/pie-elements/commit/8ffdc56e56a24da761ea2ad2b36cb9bc09747794))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+* update snapshots ([cac6e30](https://github.com/pie-framework/pie-elements/commit/cac6e30f25033145c3749d04f9ecd56feead74b5))
+
+
+### Features
+
+* split pie-toolbox PD-5126, PD-5152 ([888b486](https://github.com/pie-framework/pie-elements/commit/888b4867728ca1ae8b25a5685fb77a219f7a0fb9))
+
+
+
+
+
 ## [6.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.13.2...@pie-element/drag-in-the-blank@6.13.3) (2025-09-11)
 
 

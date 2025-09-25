@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.11.0-beta.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.10.9...@pie-element/multiple-choice-controller@5.11.0-beta.4) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* initial work for pie-toolbox split in pie-elements [PD-5126] ([b5623f6](https://github.com/pie-framework/pie-elements/commit/b5623f65f7e32c0e06070d4ac27d3b6b9e3680da))
+
+
+### Features
+
+* **multiple-choice:** add hover style options for choices PD-4768. generated docs ([725e0d4](https://github.com/pie-framework/pie-elements/commit/725e0d44b62b8c9e2a2667270ba826f118b73275))
+* **multiple-choice:** add stroke color and width options for selected answers PD-4768 ([317a4c3](https://github.com/pie-framework/pie-elements/commit/317a4c3f0a926263f4753041b0f3825baa4aa3ef))
+
+
+
+
+
 ## [5.10.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.10.8...@pie-element/multiple-choice-controller@5.10.9) (2025-09-11)
 
 

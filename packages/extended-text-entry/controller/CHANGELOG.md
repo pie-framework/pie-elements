@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@6.3.9...@pie-element/extended-text-entry-controller@6.3.10) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+
+
+
 ## [6.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@6.3.8...@pie-element/extended-text-entry-controller@6.3.9) (2025-09-11)
 
 
