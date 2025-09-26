@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@6.8.0-beta.0...@pie-element/inline-dropdown@6.7.10) (2025-09-26)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
 # [6.8.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@6.7.9...@pie-element/inline-dropdown@6.8.0-beta.0) (2025-09-25)
 
 
