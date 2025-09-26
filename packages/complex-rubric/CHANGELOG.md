@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.8.0...@pie-element/complex-rubric@3.8.1) (2025-09-26)
+
+
+### Bug Fixes
+
+* remove hardcoded versions ([39d7de2](https://github.com/pie-framework/pie-elements/commit/39d7de216dbd142f0e971bce237a8416b490a89b))
+
+
+
+
+
 # [3.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.7.9...@pie-element/complex-rubric@3.8.0) (2025-09-25)
 
 
