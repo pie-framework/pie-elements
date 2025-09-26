@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.10.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.11.0-beta.4...@pie-element/multiple-choice-controller@5.10.10) (2025-09-26)
+
+
+### Bug Fixes
+
+* remove hardcoded versions ([39d7de2](https://github.com/pie-framework/pie-elements/commit/39d7de216dbd142f0e971bce237a8416b490a89b))
+
+
+
+
+
 # [5.11.0-beta.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.10.9...@pie-element/multiple-choice-controller@5.11.0-beta.4) (2025-09-25)
 
 
