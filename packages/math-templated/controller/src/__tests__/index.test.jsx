@@ -47,7 +47,7 @@ describe('getResponseCorrectness', () => {
         };
         expect(getCorrectness(question, env2, sessionResponse)).toEqual({
             correctness: 'correct',
-            score: '1.00',
+            score: 1,
             correct: true,
         });
     });
@@ -61,7 +61,7 @@ describe('getResponseCorrectness', () => {
         };
         expect(getCorrectness(question, env2, sessionResponse)).toEqual({
             correctness: 'incorrect',
-            score: '0.50',
+            score: 0.5,
             correct: false,
         });
     });
@@ -112,11 +112,11 @@ describe('outcome', () => {
         });
     };
 
-    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '3' }}}, { score: "1.00" });
+    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '3' }}}, { score: 1 });
     // correct alternate
-    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '4' }}}, { score: "1.00" });
+    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '4' }}}, { score: 1 });
     // partial scoring
-    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '5' }}}, { score: "0.50" });
+    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '5' }}}, { score: 0.5 });
     assertOutcome(true, { answers: { r1: { value: '3' }, r2: { value: '5' }}}, { score: 0 });
     // partial correct but no score as partial scoring is disabled
     assertOutcome(false, { answers: { r1: { value: '2' }, r2: { value: '5' }}}, { score: 0 });
