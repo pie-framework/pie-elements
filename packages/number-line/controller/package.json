@@ -17,7 +17,7 @@
     "@pie-lib/controller-utils": "^0.18.0",
     "@pie-lib/feedback": "^0.20.0",
     "lodash": "^4.17.15",
-    "mathjs": "^7.5.1"
+    "mathjs": "^14.8.1"
   },
   "author": "",
   "license": "ISC"
