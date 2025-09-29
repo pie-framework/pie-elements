@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { DragSource } from 'react-dnd';
-import { uid } from '@pie-lib/pie-toolbox/drag';
+import { uid } from '@pie-lib/drag';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize:choice');
@@ -115,13 +115,9 @@ export class Choice extends React.Component {
     const { connectDragSource, id, content, disabled, isDragging, correct, extraStyle } = this.props;
 
     return connectDragSource(
-        <div
-            style={{ margin: '4px', ...extraStyle }}
-            ref={(ref) => (this.ref = ref)}
-            draggable={!disabled}
-        >
-          <Styled id={id} content={content} disabled={disabled} correct={correct} isDragging={isDragging} />
-        </div>,
+      <div style={{ margin: '4px', ...extraStyle }} ref={(ref) => (this.ref = ref)} draggable={!disabled}>
+        <Styled id={id} content={content} disabled={disabled} correct={correct} isDragging={isDragging} />
+      </div>,
     );
   }
 }
@@ -134,20 +130,20 @@ export const spec = {
       categoryId: props.categoryId,
       choiceIndex: props.choiceIndex,
       value: props.content,
-      itemType: 'categorize'
+      itemType: 'categorize',
     };
     log('[beginDrag] out:', out);
     return out;
   },
   endDrag: (props, monitor) => {
-      if (!monitor.didDrop()) {
-        const item = monitor.getItem();
-        if (item.categoryId) {
-          log('wasnt droppped - what to do?');
-          props.onRemoveChoice(item);
-        }
+    if (!monitor.didDrop()) {
+      const item = monitor.getItem();
+      if (item.categoryId) {
+        log('wasnt droppped - what to do?');
+        props.onRemoveChoice(item);
       }
     }
+  },
 };
 
 const DraggableChoice = DragSource(

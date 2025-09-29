@@ -5,7 +5,7 @@ import { Main } from '../main';
 import sensibleDefaults from '../defaults';
 import { createSlateMarkup, processMarkup } from '../markupUtils';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
   },

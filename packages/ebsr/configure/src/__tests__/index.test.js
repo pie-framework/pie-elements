@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
-import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 import ReactDOM from 'react-dom';
 import defaults from '../defaults';
 import { Main } from '../main';
@@ -21,7 +21,7 @@ jest.mock('@pie-framework/pie-configure-events', () => ({
   },
 }));
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
   },

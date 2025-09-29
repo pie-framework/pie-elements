@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 
 export default class Main extends React.Component {
   static propTypes = {
@@ -20,7 +20,7 @@ export default class Main extends React.Component {
         {model.prompt && (
           <div>
             <p>Boilerplate Item</p>
-            <PreviewPrompt prompt={model.prompt}/>
+            <PreviewPrompt prompt={model.prompt} />
           </div>
         )}
       </UiLayout>

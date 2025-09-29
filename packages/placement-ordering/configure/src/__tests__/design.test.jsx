@@ -6,19 +6,19 @@ import { get, set } from 'nested-property';
 import { Design } from '../design';
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
-  FeedbackConfig: props => (<div/>),
-  FormSection: props => (<div/>),
-  InputContainer: props => (<div/>),
+jest.mock('@pie-lib/config-ui', () => ({
+  FeedbackConfig: (props) => <div />,
+  FormSection: (props) => <div />,
+  InputContainer: (props) => <div />,
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: props => <div onChange={props.onChange} />,
+    Panel: (props) => <div onChange={props.onChange} />,
     toggle: jest.fn(),
     radio: jest.fn(),
     dropdown: jest.fn(),
-  }
+  },
 }));
 
 jest.mock('nested-property', () => ({
@@ -53,7 +53,7 @@ describe('Placement Ordering', () => {
   });
 
   describe('snapshot', () => {
-    it ('renders all default items', () => {
+    it('renders all default items', () => {
       const wrapper = shallow(
         <Design
           model={model}
@@ -62,13 +62,13 @@ describe('Placement Ordering', () => {
           className={'foo'}
           onModelChanged={onModelChanged}
           onConfigurationChanged={onConfigurationChanged}
-        />
+        />,
       );
 
       expect(wrapper).toMatchSnapshot();
     });
 
-    it ('renders custom items', () => {
+    it('renders custom items', () => {
       configuration.prompt.settings = false;
       configuration.removeTilesAfterPlacing.settings = true;
 
@@ -80,7 +80,7 @@ describe('Placement Ordering', () => {
           className={'foo'}
           onModelChanged={onModelChanged}
           onConfigurationChanged={onConfigurationChanged}
-        />
+        />,
       );
 
       expect(wrapper).toMatchSnapshot();
@@ -99,7 +99,7 @@ describe('Placement Ordering', () => {
           onModelChanged,
           onConfigurationChanged,
           model,
-          configuration
+          configuration,
         };
         const props = { ...defaults, ...extras };
 
@@ -113,7 +113,7 @@ describe('Placement Ordering', () => {
       beforeEach(() => {
         modelFn = jest.fn().mockReturnValue({
           ...model,
-          prompt: 'Updated Item Stem'
+          prompt: 'Updated Item Stem',
         });
 
         w.instance().applyUpdate(modelFn);
@@ -122,7 +122,7 @@ describe('Placement Ordering', () => {
       it('calls onModelChanged with updated item stem value', () => {
         expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
-          prompt: 'Updated Item Stem'
+          prompt: 'Updated Item Stem',
         });
       });
     });
@@ -135,7 +135,7 @@ describe('Placement Ordering', () => {
           const onChoiceAreaLabelChange = w.instance().changeHandler(modelPath, valuePath);
 
           onChoiceAreaLabelChange(value);
-        }
+        };
       });
 
       it('calls onModelChanged with updated item stem', () => {
@@ -146,7 +146,7 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
-          [modelPath]: value
+          [modelPath]: value,
         });
       });
 
@@ -158,7 +158,7 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
-          [modelPath]: value
+          [modelPath]: value,
         });
       });
 
@@ -171,7 +171,7 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
-          [modelPath]: value
+          [modelPath]: value,
         });
       });
 
@@ -184,7 +184,7 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
-          [modelPath]: value
+          [modelPath]: value,
         });
       });
 
@@ -196,7 +196,7 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
-          [modelPath]: value
+          [modelPath]: value,
         });
       });
     });
@@ -209,7 +209,7 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...model,
-          prompt: newItemStem
+          prompt: newItemStem,
         });
       });
     });
@@ -222,11 +222,10 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...model,
-          rationale: newRationale
+          rationale: newRationale,
         });
       });
     });
-
 
     describe('onChoiceAreaLabelChange', () => {
       it('calls update model when choice area label changes', () => {
@@ -236,7 +235,7 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...model,
-          choiceLabel: newChoiceAreaLabel
+          choiceLabel: newChoiceAreaLabel,
         });
       });
     });
@@ -249,7 +248,7 @@ describe('Placement Ordering', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...model,
-          targetLabel: newAnswerAreaLabel
+          targetLabel: newAnswerAreaLabel,
         });
       });
     });
@@ -259,23 +258,23 @@ describe('Placement Ordering', () => {
         let newFeedback = {
           correct: {
             type: 'custom',
-            custom: 'CORRECT'
+            custom: 'CORRECT',
           },
           incorrect: {
             type: 'custom',
-            custom: 'INCORRECT'
+            custom: 'INCORRECT',
           },
           partial: {
             type: 'custom',
-            custom: 'PARTIAL'
-          }
+            custom: 'PARTIAL',
+          },
         };
 
         w.instance().onFeedbackChange(newFeedback);
 
         expect(onModelChanged).toBeCalledWith({
           ...model,
-          feedback: newFeedback
+          feedback: newFeedback,
         });
       });
     });
@@ -284,20 +283,17 @@ describe('Placement Ordering', () => {
       it('calls update model when choices array changes', () => {
         let choices = [
           { id: 'c1', label: 'Choice 1' },
-          { id: 'c2', label: 'Choice 2' }
+          { id: 'c2', label: 'Choice 2' },
         ];
-        let correctResponse = [
-          { id: 'c2' },
-          { id: 'c1' }
-        ];
+        let correctResponse = [{ id: 'c2' }, { id: 'c1' }];
 
         w.instance().onChoiceEditorChange(choices, correctResponse);
 
         expect(onModelChanged).toBeCalledWith({
-            ...model,
-            choices,
-            correctResponse,
-          });
+          ...model,
+          choices,
+          correctResponse,
+        });
       });
     });
 
@@ -313,7 +309,6 @@ describe('Placement Ordering', () => {
 
         expect(onConfigurationChanged).toBeCalled();
       });
-
     });
-  })
+  });
 });

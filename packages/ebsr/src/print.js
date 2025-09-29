@@ -5,7 +5,7 @@ import get from 'lodash/get';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 const MC_TAG_NAME = 'ebsr-multiple-choice';
 const SESSION_CHANGED = SessionChangedEvent.TYPE;
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 

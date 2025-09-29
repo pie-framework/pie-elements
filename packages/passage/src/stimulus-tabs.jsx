@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import { Collapsible, color, PreviewPrompt, Purpose, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { Collapsible, color, PreviewPrompt, Purpose, UiLayout } from '@pie-lib/render-ui';
 import classNames from 'classnames';
 
 const styles = (theme) => ({

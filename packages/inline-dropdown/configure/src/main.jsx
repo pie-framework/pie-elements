@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
-import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/config-ui';
+import { renderMath } from '@pie-lib/math-rendering';
+import { color } from '@pie-lib/render-ui';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import isUndefined from 'lodash/isUndefined';
@@ -83,7 +83,7 @@ const styles = (theme) => ({
     fontSize: theme.typography.fontSize - 2,
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
-  }
+  },
 });
 
 const createElementFromHTML = (htmlString) => {
@@ -524,53 +524,53 @@ export class Main extends React.Component {
         </div>
 
         <ResponseAreaComponent
-            responseAreasError={responseAreasError}
-            responseAreaChoicesError={responseAreaChoicesError}
-            editableHtmlProps={{
-              pluginProps: getPluginProps(template?.inputConfiguration),
-              activePlugins: ALL_PLUGINS,
-              toolbarOpts: { position: 'top' },
-              responseAreaProps: {
-                type: 'inline-dropdown',
-                options: {
-                  duplicates: true,
-                },
-                maxResponseAreas: maxResponseAreas,
-                respAreaToolbar: (node, value, onToolbarDone) => {
-                  const { respAreaChoices } = this.state;
-
-                  return () => (
-                      <InlineDropdownToolbar
-                          onAddChoice={this.onAddChoice}
-                          onCheck={this.onCheck}
-                          onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
-                          onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
-                          node={node}
-                          value={value}
-                          onToolbarDone={onToolbarDone}
-                          choices={respAreaChoices[node.data.get('index')]}
-                          spellCheck={spellCheckEnabled}
-                          uploadSoundSupport={uploadSoundSupport}
-                          mathMlOptions={mathMlOptions}
-                          baseInputConfiguration={baseInputConfiguration}
-                          responseAreaInputConfiguration={responseAreaInputConfiguration}
-                      />
-                  );
-                },
+          responseAreasError={responseAreasError}
+          responseAreaChoicesError={responseAreaChoicesError}
+          editableHtmlProps={{
+            pluginProps: getPluginProps(template?.inputConfiguration),
+            activePlugins: ALL_PLUGINS,
+            toolbarOpts: { position: 'top' },
+            responseAreaProps: {
+              type: 'inline-dropdown',
+              options: {
+                duplicates: true,
               },
-              spellCheck: spellCheckEnabled,
-              className: classes.markup,
-              markup: model.slateMarkup || '',
-              onChange: this.onChange,
-              imageSupport: imageSupport,
-              disableImageAlignmentButtons: true,
-              disabled: false,
-              highlightShape: false,
-              error: responseAreasError,
-              uploadSoundSupport: uploadSoundSupport,
-              languageCharactersProps: [{ language: 'spanish' }, { language: 'special' }],
-              mathMlOptions: mathMlOptions,
-            }}
+              maxResponseAreas: maxResponseAreas,
+              respAreaToolbar: (node, value, onToolbarDone) => {
+                const { respAreaChoices } = this.state;
+
+                return () => (
+                  <InlineDropdownToolbar
+                    onAddChoice={this.onAddChoice}
+                    onCheck={this.onCheck}
+                    onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
+                    onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
+                    node={node}
+                    value={value}
+                    onToolbarDone={onToolbarDone}
+                    choices={respAreaChoices[node.data.get('index')]}
+                    spellCheck={spellCheckEnabled}
+                    uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
+                    baseInputConfiguration={baseInputConfiguration}
+                    responseAreaInputConfiguration={responseAreaInputConfiguration}
+                  />
+                );
+              },
+            },
+            spellCheck: spellCheckEnabled,
+            className: classes.markup,
+            markup: model.slateMarkup || '',
+            onChange: this.onChange,
+            imageSupport: imageSupport,
+            disableImageAlignmentButtons: true,
+            disabled: false,
+            highlightShape: false,
+            error: responseAreasError,
+            uploadSoundSupport: uploadSoundSupport,
+            languageCharactersProps: [{ language: 'spanish' }, { language: 'special' }],
+            mathMlOptions: mathMlOptions,
+          }}
         />
 
         {choiceRationaleEnabled && renderChoiceRationale()}

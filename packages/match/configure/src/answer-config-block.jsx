@@ -8,7 +8,7 @@ import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
 import lodash from 'lodash';
-import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 
 const log = debug('pie-elements:match:configure');
 

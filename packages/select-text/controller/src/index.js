@@ -1,7 +1,7 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
-import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 const log = debug('@pie-element:select-text:controller');

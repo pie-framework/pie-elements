@@ -1,6 +1,6 @@
 import React from 'react';
-import { FormSection, layout, AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import { FormSection, layout, AlertDialog } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CardBar from './card-bar';

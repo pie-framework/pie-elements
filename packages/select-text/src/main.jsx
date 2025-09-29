@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextSelect, Legend } from '@pie-lib/pie-toolbox/text-select';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { TextSelect, Legend } from '@pie-lib/text-select';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import generateModel from './utils';
 
@@ -53,10 +53,10 @@ export class Main extends React.Component {
     const { env, extraCSSRules } = model;
     const { mode } = env || {};
 
-
     const selectedTokens = showCorrectAnswer ? this.correctAnswer() : session.selectedTokens;
     const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
-    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+    const showTeacherInstructions =
+      model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     log('[render] selectedTokens:', selectedTokens);
 

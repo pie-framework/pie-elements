@@ -5,7 +5,7 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 import PropTypes from 'prop-types';
 import Button from './button';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 

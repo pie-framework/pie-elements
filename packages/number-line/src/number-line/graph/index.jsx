@@ -1,7 +1,7 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { select, mouse } from 'd3-selection';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 import Point from './elements/point';
 import Line from './elements/line';
 import Ray from './elements/ray';

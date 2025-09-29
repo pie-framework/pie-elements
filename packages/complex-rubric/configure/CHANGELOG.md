@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.7.0...@pie-element/complex-rubric-configure@2.7.1) (2025-09-26)
+
+
+### Bug Fixes
+
+* remove hardcoded versions ([39d7de2](https://github.com/pie-framework/pie-elements/commit/39d7de216dbd142f0e971bce237a8416b490a89b))
+
+
+
+
+
+# [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.6.21...@pie-element/complex-rubric-configure@2.7.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+
+
+### Features
+
+* split pie-toolbox in ebsr, rubric, multi-trait-rubric, complex-rubric PD-5158 ([314604f](https://github.com/pie-framework/pie-elements/commit/314604fcc9bea9632ca78afd01be0e7516937313))
+
+
+
+
+
 ## [2.6.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.6.20...@pie-element/complex-rubric-configure@2.6.21) (2025-09-11)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-configure

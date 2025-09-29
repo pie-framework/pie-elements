@@ -1,17 +1,17 @@
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
-import { Collapsible, color, Feedback, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { Collapsible, color, Feedback, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
 import { withStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/math-rendering';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 import { haveSameValuesButDifferentOrder } from './utils';
 
 const { translator } = Translator;
@@ -260,7 +260,8 @@ export class PlacementOrdering extends React.Component {
     const Tiler = vertical ? VerticalTiler : HorizontalTiler;
     const displayNote = (showingCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
     const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
-    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
+    const showTeacherInstructions =
+      teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.placementOrdering}>

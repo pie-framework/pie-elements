@@ -1,8 +1,8 @@
 import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 
 import _ from 'lodash';
-import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
-import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 import defaults from './defaults';
@@ -10,7 +10,7 @@ import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:placement-ordering:controller');
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 

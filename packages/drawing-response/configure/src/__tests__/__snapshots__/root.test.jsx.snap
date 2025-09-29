@@ -132,7 +132,6 @@ exports[`Root snapshot renders 1`] = `
     label="Item Stem"
   >
     <EditableHtml
-      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -153,7 +152,6 @@ exports[`Root snapshot renders 1`] = `
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
-      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {

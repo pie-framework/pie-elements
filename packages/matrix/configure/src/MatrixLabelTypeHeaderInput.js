@@ -9,7 +9,7 @@ import { ColumnsWrapper, ColumnsHeader } from './HeaderCommon';
 import columnLabelsGenerator from './columnLabelsGenerator';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 const Flex = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const Flex = styled.div`
 
 const styles = (theme) => ({
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 });
 
@@ -94,7 +94,11 @@ const MatrixLabelTypeHeaderInput = ({ model, onChangeModel, classes }) => {
           value={model.labelType}
           onChange={onChangeLabelType}
         >
-          <FormControlLabel value={MATRIX_LABEL_TYPE.custom} control={<Radio className={classes.customColor} />} label="Custom" />
+          <FormControlLabel
+            value={MATRIX_LABEL_TYPE.custom}
+            control={<Radio className={classes.customColor} />}
+            label="Custom"
+          />
         </RadioGroup>
       </Flex>
     </ColumnsWrapper>

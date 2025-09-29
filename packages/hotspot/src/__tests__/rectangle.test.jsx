@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import Konva from 'konva';
 import { Rect } from 'react-konva';
 
-import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import { shallowChild } from '@pie-lib/test-utils';
 
 import Rectangle from '../hotspot/rectangle';
 import ImageComponent from '../hotspot/image-konva-tooltip';

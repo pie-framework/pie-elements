@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isUndefined from 'lodash/isUndefined';
 import find from 'lodash/find';
 import { DragAnswer } from './answer';
-import { MatchDroppablePlaceholder } from '@pie-lib/pie-toolbox/drag';
+import { MatchDroppablePlaceholder } from '@pie-lib/drag';
 
 export class ChoicesList extends React.Component {
   static propTypes = {
