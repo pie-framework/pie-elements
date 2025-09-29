@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import Collapse from '@material-ui/core/Collapse';
-import { color, UiLayout } from '@pie-lib/render-ui';
+import { color, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import PropTypes from 'prop-types';
 
 export const RubricType = PropTypes.shape({
