@@ -310,7 +310,7 @@ Overall appearance is acceptable or better",
       }
     }
   >
-    <WithStyles(Scale)
+    <Component
       classes={Object {}}
       configuration={
         Object {
@@ -758,7 +758,7 @@ Writing is expressive, engaging and has lots of energy",
       showStandards={false}
       width="650px"
     />
-    <WithStyles(Scale)
+    <Component
       classes={Object {}}
       configuration={
         Object {
