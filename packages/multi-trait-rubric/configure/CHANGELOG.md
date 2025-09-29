@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@4.6.0...@pie-element/multi-trait-rubric-configure@4.6.1) (2025-09-29)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([cdad900](https://github.com/pie-framework/pie-elements/commit/cdad90085b34b16d9fedd742346e651d81474dad))
+
+
+
+
+
 # [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@4.5.9...@pie-element/multi-trait-rubric-configure@4.6.0) (2025-09-25)
 
 
