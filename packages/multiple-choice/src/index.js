@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
-import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { EnableAudioAutoplayImage } from '@pie-lib/pie-toolbox/render-ui';
 import { updateSessionValue, updateSessionMetadata } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
@@ -18,7 +18,7 @@ export const isComplete = (session, model, audioComplete, elementContext) => {
     if (elementContext) {
       const audio = elementContext.querySelector('audio');
       const isInsidePrompt = audio && audio.closest('#preview-prompt');
-      
+
       // only require audio completion if audio exists and is inside the prompt
       if (audio && isInsidePrompt) {
         return false;
@@ -90,7 +90,10 @@ export default class MultipleChoice extends HTMLElement {
 
     this._dispatchResponseChanged = debounce(() => {
       this.dispatchEvent(
-        new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete, this)),
+        new SessionChangedEvent(
+          this.tagName.toLowerCase(),
+          isComplete(this._session, this._model, this.audioComplete, this),
+        ),
       );
     });
 
@@ -151,14 +154,14 @@ export default class MultipleChoice extends HTMLElement {
     Object.assign(info.style, {
       position: 'absolute',
       top: 0,
-      width:'100%',
+      width: '100%',
       height: '100%',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       background: 'white',
       zIndex: '1000',
-      cursor: 'pointer'
+      cursor: 'pointer',
     });
 
     const img = document.createElement('img');

@@ -14,7 +14,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import grey from '@material-ui/core/colors/grey';
 import Typography from '@material-ui/core/Typography';
 import DragIndicator from '@material-ui/icons/DragIndicator';
-import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import debug from 'debug';
 import PointMenu from './point-menu';

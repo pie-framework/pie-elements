@@ -2,7 +2,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { isResponseCorrect } from './utils';
 import defaults from './defaults';
-import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
+import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/pie-toolbox/controller-utils';
 
 const prepareChoice = (model, env, defaultFeedback) => (choice) => {
   const { role, mode } = env || {};
