@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.9.10...@pie-element/rubric@4.9.11) (2025-09-29)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([cdad900](https://github.com/pie-framework/pie-elements/commit/cdad90085b34b16d9fedd742346e651d81474dad))
+
+
+
+
+
 ## [4.9.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@4.10.0-next.0...@pie-element/rubric@4.9.10) (2025-09-26)
 
 **Note:** Version bump only for package @pie-element/rubric
