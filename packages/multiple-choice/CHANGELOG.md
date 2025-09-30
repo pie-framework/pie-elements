@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.20.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.20.1...@pie-element/multiple-choice@9.20.2) (2025-09-30)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([48b5b59](https://github.com/pie-framework/pie-elements/commit/48b5b5930ef9ecd0cda426867859d7ab6048bfda))
+
+
+
+
+
 ## [9.20.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.20.0...@pie-element/multiple-choice@9.20.1) (2025-09-26)
 
 
