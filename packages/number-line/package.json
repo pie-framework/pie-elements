@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
+    "@material-ui/core": "^4.12.4",
     "@pie-lib/correct-answer-toggle": "^2.21.0",
     "@pie-lib/icons": "^2.20.0",
     "@pie-lib/math-rendering": "^3.18.0",
