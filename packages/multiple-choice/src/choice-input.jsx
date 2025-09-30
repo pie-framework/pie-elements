@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Feedback, color, PreviewPrompt } from '@pie-lib/render-ui';
+import { Feedback, color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import Radio from '@material-ui/core/Radio';
 import classNames from 'classnames';
 

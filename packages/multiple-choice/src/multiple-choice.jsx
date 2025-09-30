@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
-import Translator from '@pie-lib/translator';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
 import StyledChoice from './choice';
 
@@ -212,7 +212,9 @@ export class MultipleChoice extends React.Component {
     // to determine if we are in evaluate mode or print mode
     // since both modes have showCorrect but it interferes with "browse mode" in IBX if the print props are set
     const isEvaluateMode = this.state.showCorrect && this.props.mode === 'evaluate';
-    const isPrintMode = this.props.alwaysShowCorrect && (!this.props.session || !this.props.session.value || this.props.session.value.length === 0);
+    const isPrintMode =
+      this.props.alwaysShowCorrect &&
+      (!this.props.session || !this.props.session.value || this.props.session.value.length === 0);
 
     if (isEvaluateMode || isPrintMode) {
       return choice.correct || false;
@@ -295,10 +297,10 @@ export class MultipleChoice extends React.Component {
         return minSelections === maxSelections
           ? translator.t('translation:multipleChoice:minmaxSelections_equal', { lng: language, minSelections })
           : translator.t('translation:multipleChoice:minmaxSelections_range', {
-            lng: language,
-            minSelections,
-            maxSelections,
-          });
+              lng: language,
+              minSelections,
+              maxSelections,
+            });
       }
 
       if (minSelections) {
