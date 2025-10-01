@@ -7,7 +7,6 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/pie-toolbox": "2.25.2",
     "lodash": "^4.17.15"
   }
 }

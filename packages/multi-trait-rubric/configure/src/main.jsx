@@ -7,8 +7,8 @@ import debounce from 'lodash/debounce';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { withDragContext } from '@pie-lib/pie-toolbox/drag';
-import { layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import { withDragContext } from '@pie-lib/drag';
+import { layout, settings } from '@pie-lib/config-ui';
 
 import Scale from './scale';
 import { MultiTraitButton } from './common';
