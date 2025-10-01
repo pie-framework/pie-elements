@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.41.0...@pie-element/likert-configure@1.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
 # [0.41.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.40.9...@pie-element/likert-configure@0.41.0) (2025-09-25)
 
 

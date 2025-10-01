@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.7.11...@pie-element/multiple-choice-configure@8.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
 ## [7.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.7.10...@pie-element/multiple-choice-configure@7.7.11) (2025-09-30)
 
 
