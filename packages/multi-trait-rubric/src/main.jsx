@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Scale from './scale';
 import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
-import { color, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, UiLayout } from '@pie-lib/render-ui';
 
 class Main extends React.Component {
   constructor(props) {
