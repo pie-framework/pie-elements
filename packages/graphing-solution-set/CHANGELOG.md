@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@2.4.0...@pie-element/graphing-solution-set@3.0.0) (2025-10-01)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
 # [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@2.3.9...@pie-element/graphing-solution-set@2.4.0) (2025-09-25)
 
 

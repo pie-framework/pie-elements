@@ -7,6 +7,17 @@ jest.mock('react-dom', () => ({
   render: jest.fn(),
 }));
 
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: (props) => <div {...props} />,
+  },
+  settings: {
+    Panel: (props) => <div {...props} />,
+    toggle: jest.fn(),
+    radio: jest.fn(),
+  },
+}));
+
 const model = (extras) => ({
   id: '1',
   element: 'multi-trait-rubric',

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.7.2...@pie-element/ebsr@11.0.0) (2025-10-01)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([eca489a](https://github.com/pie-framework/pie-elements/commit/eca489a3c8927798e0f855a3123cb7b851487c0f))
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
 ## [10.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.7.1...@pie-element/ebsr@10.7.2) (2025-09-30)
 
 **Note:** Version bump only for package @pie-element/ebsr
