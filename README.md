@@ -24,8 +24,9 @@ npm install -g pie
 | Action             | Notes                                                                   |
 | ------------------ | ----------------------------------------------------------------------- |
 | test               | runs all the tests, all tests run from the root of the monorepo         |
-| build              | build the libs (CommonJS, PSLB modules, Webpack IIFE)                   |
-| build:esm          | build ESM bundles for modern browsers/bundlers (see [ESM Build](#esm-support)) |
+| build              | build all formats (CommonJS, PSLB modules, Webpack IIFE, **ESM**) - **DEFAULT** |
+| build:cjs          | build only CommonJS/PSLB/Webpack (legacy formats)                       |
+| build:esm          | build only ESM bundles (see [ESM Build](#esm-support))                 |
 | lint               | runs eslint                                                             |
 | clean              | removes all the lib dirs                                                |
 | release            | cleans, runs tests, builds, then runs lerna publish                     |
@@ -120,9 +121,8 @@ See [ESM-BUILD-IMPLEMENTATION.md](./ESM-BUILD-IMPLEMENTATION.md) for complete do
 ### Standard Release
 
 ```shell
-# 1. Build all formats
+# 1. Build all formats (CommonJS + ESM)
 yarn build
-yarn build:esm
 
 # 2. Publish via lerna
 yarn release
@@ -130,16 +130,15 @@ yarn release
 
 The `release` script runs: clean, test, build, and `lerna publish`.
 
-**Important:** Make sure to run `yarn build:esm` before publishing to include ESM bundles in the published packages.
+**Note:** `yarn build` now builds BOTH CommonJS and ESM by default.
 
 ### Test Release (with custom tag)
 
 To publish a test version without affecting the `latest` tag:
 
 ```shell
-# 1. Build everything
+# 1. Build everything (CommonJS + ESM)
 yarn build
-yarn build:esm
 
 # 2. Version with prerelease tag (e.g., 11.0.1-esm.1)
 yarn lerna version prerelease --preid esm --no-push
@@ -157,8 +156,8 @@ yarn add @pie-element/multiple-choice@esm-test
 ### Canary Release
 
 ```shell
-# Build first
-yarn build && yarn build:esm
+# Build first (CommonJS + ESM)
+yarn build
 
 # Publish canary
 yarn lerna publish --canary --dist-tag $TAG --preid $TAG --force-publish
@@ -186,4 +185,4 @@ tar -tzf pie-element-multiple-choice-*.tgz | grep -E "^package/(lib|module|esm|d
 
 We use circleci - see `.circleci/config.yml`
 
-**Note:** Update CI to run `yarn build:esm` after the main build step.
+**Note:** CI/CD pipelines should use `yarn build` which now includes both CommonJS and ESM builds.

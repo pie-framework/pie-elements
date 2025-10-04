@@ -130,12 +130,14 @@ Add to `package.json` scripts:
 ```json
 {
   "scripts": {
-    "build": "scripts/build build",
-    "build:esm": "node scripts/build-esm.js",
-    "build:all": "yarn build && yarn build:esm"
+    "build": "scripts/build build && node scripts/build-esm.js",
+    "build:cjs": "scripts/build build",
+    "build:esm": "node scripts/build-esm.js"
   }
 }
 ```
+
+**IMPORTANT:** `yarn build` now builds BOTH CommonJS and ESM by default to prevent accidental incomplete publishes.
 
 Or modify `scripts/build` to run ESM build after existing builds.
 
