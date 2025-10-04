@@ -27,5 +27,22 @@
   "license": "ISC",
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js",
+      "default": "./esm/element.js"
+    },
+    "./configure": {
+      "import": "./esm/configure.js",
+      "require": "./configure/lib/index.js",
+      "default": "./esm/configure.js"
+    },
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js",
+      "default": "./esm/controller.js"
+    }
+  }
 }

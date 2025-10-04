@@ -26,5 +26,12 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js",
+      "default": "./esm/controller.js"
+    }
+  }
 }

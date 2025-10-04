@@ -27,7 +27,15 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
+    "./configure": {
+      "import": "./esm/configure.js",
+      "require": "./configure/lib/index.js",
+      "default": "./esm/configure.js"
+    },
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js",
+      "default": "./esm/controller.js"
+    }
   }
 }

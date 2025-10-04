@@ -32,7 +32,10 @@
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js",
+      "default": "./esm/controller.js"
+    }
   }
 }

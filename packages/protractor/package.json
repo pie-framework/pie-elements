@@ -20,5 +20,12 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js",
+      "default": "./esm/element.js"
+    }
+  }
 }
