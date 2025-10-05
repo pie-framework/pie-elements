@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/calculator-configure",
-  "version": "5.0.1",
+  "version": "5.0.2-esmbeta.0",
   "description": "",
   "main": "lib/index.js",
   "private": true,
