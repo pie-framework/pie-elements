@@ -18,7 +18,11 @@ const createConfig = require('../rollup.config.js').default;
 const packagesDir = resolve(__dirname, '../packages');
 
 // Blacklist packages with CommonJS source code (matching PSLB config)
-const BLACKLIST = ['pie-models', 'math-inline', 'protractor', 'ruler', 'calculator', 'select-text', 'hotspot', 'math-templated'];
+// Packages that can't be built as ESM due to CommonJS source or other issues
+const BLACKLIST = [
+  'demo',           // Not a publishable package
+  'pie-toolbox',    // Internal tooling
+];
 
 const packages = readdirSync(packagesDir).filter(dir => {
   const pkgPath = join(packagesDir, dir, 'package.json');

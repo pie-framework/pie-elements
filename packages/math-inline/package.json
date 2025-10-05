@@ -14,11 +14,11 @@
     "@material-ui/core": "^3.9.2",
     "@pie-framework/mathquill": "^1.1.3",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "^2.22.0",
-    "@pie-lib/math-input": "^6.28.0",
+    "@pie-lib/correct-answer-toggle": "^2.22.1",
+    "@pie-lib/math-input": "^6.28.1",
     "@pie-lib/math-rendering": "^3.19.0",
-    "@pie-lib/math-toolbar": "^1.28.0",
-    "@pie-lib/render-ui": "^4.32.0",
+    "@pie-lib/math-toolbar": "^1.28.1",
+    "@pie-lib/render-ui": "^4.32.1",
     "@pie-lib/translator": "^2.20.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
@@ -32,10 +32,25 @@
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "module": "src/index.js",
   "exports": {
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js",
+      "default": "./esm/element.js"
+    },
+    "./configure": {
+      "import": "./esm/configure.js",
+      "require": "./configure/lib/index.js",
+      "default": "./esm/configure.js"
+    },
     "./controller": {
       "import": "./esm/controller.js",
       "require": "./controller/lib/index.js",
       "default": "./esm/controller.js"
+    },
+    "./print": {
+      "import": "./esm/print.js",
+      "require": "./lib/print.js",
+      "default": "./esm/print.js"
     }
   }
 }

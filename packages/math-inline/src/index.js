@@ -4,7 +4,7 @@ import debug from 'debug';
 import _ from 'lodash';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 
-import defaults from '../configure/lib/defaults';
+import defaults from '../configure/src/defaults';
 import Main from './main';
 
 const log = debug('pie-ui:math-inline');

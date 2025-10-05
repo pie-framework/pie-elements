@@ -3,6 +3,9 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint --ext .js --ext .jsx packages",
     "test": "scripts/build test",
+    "test:esm": "node scripts/test-esm-integrity.mjs",
+    "test:esm:runtime": "node scripts/test-esm-runtime.mjs",
+    "test:esm:cdn": "node scripts/test-esm-cdn.mjs",
     "pie-clean": "lerna exec -- pie clean --dir docs/demo",
     "pie-install": "lerna exec --parallel -- pie install --dir docs/demo",
     "pie-pack-clean": "scripts/clean.sh",
@@ -12,6 +15,7 @@
     "release": "scripts/build build release",
     "release:next": "scripts/build build release --next --lernaLogLevel silly",
     "postinstall": "lerna bootstrap && git config --local include.path ../.gitconfig",
+    "prepublishOnly": "yarn build",
     "clean-install": "git clean -xdf . && yarn install && lerna bootstrap && ./scripts/build babel"
   },
   "devDependencies": {
@@ -48,6 +52,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "rimraf": "^2.6.2",
+    "rollup-plugin-postcss": "^4.0.2",
     "semver": "^5.6.0",
     "yarn": "^1.22.0"
   },

@@ -11,7 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-lib/math-rendering": "^3.19.0",
-    "@pie-lib/render-ui": "^4.32.0",
+    "@pie-lib/render-ui": "^4.32.1",
     "prop-types": "^15.7.2"
   },
   "author": "pie framework developers",

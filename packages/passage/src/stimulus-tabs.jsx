@@ -140,7 +140,7 @@ class StimulusTabs extends React.Component {
 
   renderInstructions(teacherInstructions, disabledTabs = false) {
     if (!teacherInstructions) {
-      return;
+      return null;
     }
 
     const teacherInstructionsDiv = (
@@ -229,7 +229,7 @@ class StimulusTabs extends React.Component {
     const { activeTab } = this.state;
 
     if (!tabs?.length) {
-      return;
+      return null;
     }
 
     const { extraCSSRules } = model || {};
