@@ -2,10 +2,10 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/categorize": "^0.25.0",
-    "@pie-lib/controller-utils": "^0.19.0",
-    "@pie-lib/feedback": "^0.21.0",
-    "@pie-lib/translator": "^2.20.0",
+    "@pie-lib/categorize": "^0.25.2",
+    "@pie-lib/controller-utils": "^0.19.2",
+    "@pie-lib/feedback": "^0.21.2",
+    "@pie-lib/translator": "^2.20.2",
     "lodash": "^4.17.15"
   },
   "version": "8.0.2",

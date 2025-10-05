@@ -12,6 +12,7 @@
     "build": "scripts/build build && node scripts/build-esm.js",
     "build:cjs": "scripts/build build",
     "build:esm": "node scripts/build-esm.js",
+    "prepublish-check": "./scripts/prepublish-check.sh",
     "release": "scripts/build build release",
     "release:next": "scripts/build build release --next --lernaLogLevel silly",
     "postinstall": "lerna bootstrap && git config --local include.path ../.gitconfig",
