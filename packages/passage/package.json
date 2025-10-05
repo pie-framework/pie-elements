@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "11.0.4-esm.0",
+  "version": "11.0.5-esm.0",
   "publishConfig": {
     "access": "public"
   },
