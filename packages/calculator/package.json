@@ -32,7 +32,7 @@
     "react-dom": "^16.8.1",
     "react-draggable": "^3.0.5"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "c763d1b6543ed7bd9a2368fd687200c6b8c70be8",
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {

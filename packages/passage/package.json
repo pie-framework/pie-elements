@@ -18,7 +18,7 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "c763d1b6543ed7bd9a2368fd687200c6b8c70be8",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
