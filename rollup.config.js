@@ -1,6 +1,27 @@
 /**
- * Rollup configuration for ESM builds
- * Creates parallel ESM bundles in esm/ directory
+ * Rollup configuration for ESM builds - SIMPLE VERSION
+ * 
+ * Strategy: Bundle EVERYTHING except what's 100% proven safe
+ * 
+ * Safe External (proven to work):
+ * - React (universal, always works)
+ * - @pie-lib/* (our packages, we control the ESM)
+ * - @pie-element/* (other elements, we control the ESM)
+ * - @pie-framework/* (our packages, we control the ESM)
+ * 
+ * Everything Else: BUNDLED
+ * - react-dom (Slate needs it)
+ * - Material-UI (old versions)
+ * - Lodash (works but bundle for safety)
+ * - Slate ecosystem (no ESM)
+ * - konva/react-konva (old versions)
+ * - All third-party deps
+ * 
+ * Benefits:
+ * - Maximum compatibility
+ * - Zero CDN transformation issues
+ * - Predictable behavior
+ * - Optimize later based on real data
  */
 
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
@@ -10,55 +31,17 @@ const postcss = require('rollup-plugin-postcss');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-// All dependencies that should remain external
+// MINIMAL external list - Only 100% proven safe dependencies
 const external = [
-  // React ecosystem
+  // React core - Universal, always works fine external
   'react',
-  'react-dom',
-  'react-dom/server',
-  'prop-types',
-  /^react\//,
-  /^react-dom\//,
   
-  // Material-UI core (keep external, but bundle icons)
-  '@material-ui/core',
-  /^@material-ui\/core\//,
-  '@material-ui/styles',
-  /^@material-ui\/styles\//,
-  // Note: @material-ui/icons are bundled (not external) because old version lacks ESM support
-  
-  // Lodash (keep all sub-paths external)
-  'lodash',
-  /^lodash\//,
-  
-  // Common utilities
-  'classnames',
-  'debug',
-  
-  // Konva (for hotspot, drawing-response)
-  // NOTE: Bundled instead of external due to ESM compatibility:
-  // - konva v3 has no ESM support (no module field, no exports)
-  // - react-konva v16 has no ESM support
-  // - Bundling ensures compatibility (~150KB for canvas drawing library)
-  // 'konva',
-  // 'react-konva',
-  
-  // Math libraries
-  // NOTE: @pie-framework/mathquill bundled due to no ESM support
-  // - MathQuill is a jQuery plugin, no ESM exports
-  // - Bundling ensures compatibility (~100KB for math input)
-  // '@pie-framework/mathquill',
-  
-  // PIE framework
+  // PIE packages - Our own, we control the ESM builds
+  /@pie-lib\/.*/,
+  /@pie-element\/.*/,
   '@pie-framework/pie-player-events',
   '@pie-framework/pie-configure-events',
   /^@pie-framework\//,
-  
-  // All @pie-lib packages (shared libraries)
-  /@pie-lib\/.*/,
-  
-  // All @pie-element packages (other elements)
-  /@pie-element\/.*/,
 ];
 
 const plugins = [
@@ -67,21 +50,22 @@ const plugins = [
     browser: true,
     preferBuiltins: false,
   }),
+  // CommonJS MUST come BEFORE Babel
+  // Convert require() to import FIRST, then transpile
+  commonjs({
+    include: /node_modules/,
+  }),
   postcss({
-    // Extract CSS to separate files (one per entry point)
     extract: true,
-    // Minimize CSS in production
     minimize: isProduction,
-    // Don't inject CSS into JS
     inject: false,
   }),
   babel({
-    babelHelpers: 'bundled',  // Inline helpers for pure ESM
+    babelHelpers: 'bundled',
     exclude: /node_modules/,
-    babelrc: false,  // Don't read .babelrc files
-    configFile: false,  // Don't read babel.config.js
+    babelrc: false,
+    configFile: false,
     assumptions: {
-      // Force pure ESM output (no CommonJS)
       setPublicClassFields: true,
       constantSuper: true,
       noDocumentAll: true,
@@ -94,16 +78,13 @@ const plugins = [
       ['@babel/preset-react'],
       ['@babel/preset-env', {
         targets: {
-          esmodules: true, // Target modern browsers with ESM support
+          esmodules: true,
         },
-        modules: false, // Keep ES modules
-        bugfixes: true,  // Use smaller, modern transforms
+        modules: false,
+        bugfixes: true,
       }],
     ],
     extensions: ['.js', '.jsx'],
-  }),
-  commonjs({
-    include: /node_modules/,
   }),
 ].filter(Boolean);
 
@@ -119,5 +100,5 @@ module.exports.default = function createConfig(input, output) {
     external,
     plugins,
   };
-}
+};
 

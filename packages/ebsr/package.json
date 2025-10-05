@@ -9,7 +9,7 @@
   "dependencies": {
     "@pie-element/multiple-choice": "^11.0.5-esm.1",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/translator": "^2.20.2",
+    "@pie-lib/translator": "^2.20.5-esmbeta.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.11"

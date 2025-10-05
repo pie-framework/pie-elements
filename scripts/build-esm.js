@@ -47,6 +47,13 @@ async function buildEntry(pkgDir, entry, outputName) {
   const esmDir = join(pkgDir, 'esm');
   mkdirSync(esmDir, { recursive: true });
   
+  // Create package.json to mark this directory as ESM
+  // This eliminates Node.js warnings about module type
+  const esmPkgJson = join(esmDir, 'package.json');
+  if (!pathExistsSync(esmPkgJson)) {
+    writeJsonSync(esmPkgJson, { type: 'module' });
+  }
+  
   const output = join(esmDir, outputName);
   
   try {
