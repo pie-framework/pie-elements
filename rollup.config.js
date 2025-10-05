@@ -35,12 +35,19 @@ const external = [
   'classnames',
   'debug',
   
-  // Konva (for hotspot)
-  'konva',
-  'react-konva',
+  // Konva (for hotspot, drawing-response)
+  // NOTE: Bundled instead of external due to ESM compatibility:
+  // - konva v3 has no ESM support (no module field, no exports)
+  // - react-konva v16 has no ESM support
+  // - Bundling ensures compatibility (~150KB for canvas drawing library)
+  // 'konva',
+  // 'react-konva',
   
   // Math libraries
-  '@pie-framework/mathquill',
+  // NOTE: @pie-framework/mathquill bundled due to no ESM support
+  // - MathQuill is a jQuery plugin, no ESM exports
+  // - Bundling ensures compatibility (~100KB for math input)
+  // '@pie-framework/mathquill',
   
   // PIE framework
   '@pie-framework/pie-player-events',
