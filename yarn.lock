@@ -2260,10 +2260,10 @@
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-player-events/-/pie-player-events-0.1.0.tgz#0150904118fd604559982ab658967811c053ffe3"
   integrity sha512-6H1tlRGmcZ3Wt+8HMqu5KugVcwwyNrMylfI5rIpvOSt0T82QDmjRj+2sPgQG5zos/w6MtwUqn/QZ+8Rq2EXSOA==
 
-"@pie-lib/categorize@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/categorize/-/categorize-0.24.0.tgz#d40b863900c8e005266245802537713443716567"
-  integrity sha512-dK6MvdHQ/WsSoPIpNy1++kaHiEtlIfe7qLZ7ote9PGuSeDJUqIP3xCiOcirvU5vR0Nh3pMKlr7NFvfRObjUwXg==
+"@pie-lib/categorize@^0.25.4":
+  version "0.25.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/categorize/-/categorize-0.25.4.tgz#3660bcee6920aca0140c017ed18c5168a113ca7d"
+  integrity sha512-icNIhgTbR7Zn4Uvdx9yq0+lqxPL4fKqz7vV+jWG3QRYGtgzgTkK9ioc7Ud4okLwtgzTcv/PI4jrx9+evWcriMg==
   dependencies:
     debug "^4.1.1"
     lodash "^4.17.11"
