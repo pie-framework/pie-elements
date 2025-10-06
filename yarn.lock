@@ -2323,14 +2323,14 @@
     lodash "^4.17.11"
 
 "@pie-lib/correct-answer-toggle@^2.21.0":
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.21.0.tgz#de797d7e39c455319584dee182164ca69951ee7c"
-  integrity sha512-JJI8lO+ZLIT+40dC5PQ6XVKnCDVtMGTUb85wCIG9I1Cgw7+yw6tD9kR4iqAJq8uIUQwaoY1OqzE5zVPowzKU5g==
+  version "2.22.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.22.5.tgz#8934ce4ed8ce272ea7efa71500745fd7437347b5"
+  integrity sha512-ZAu7s4+Wmg9Dx/Dnflb6SmuRN5m9hp30Xootj8ouKe/5MM4WsM07iQjDU/LBgwGlU0vNsTghBr/NPIMHGGxCdQ==
   dependencies:
     "@material-ui/core" "^3.8.3"
-    "@pie-lib/icons" "^2.20.0"
-    "@pie-lib/render-ui" "^4.31.0"
-    "@pie-lib/translator" "^2.19.0"
+    "@pie-lib/icons" "^2.21.4"
+    "@pie-lib/render-ui" "^4.32.5"
+    "@pie-lib/translator" "^2.20.4"
     classnames "^2.2.6"
     lodash "^4.17.11"
     prop-types "^15.6.2"
@@ -2476,10 +2476,10 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/icons@^2.20.0":
-  version "2.20.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-2.20.0.tgz#c30da726bd37a80801938b3260dc56bac59f2188"
-  integrity sha512-V8c7TPceu//IxwhCVIPLYEpOVp5ywp7ZGHLyoxp5VkRyTrIVmm4P50j0zG/Syy2F2mOla7OONL+nGWyOQ/I8YA==
+"@pie-lib/icons@^2.20.0", "@pie-lib/icons@^2.21.4":
+  version "2.21.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-2.21.4.tgz#9375e0df8be378c4af9fc33e898694ce8e6d1591"
+  integrity sha512-20gbVhNWJFuF7B7e0ryjtnVu20hQsagzwUswFS/OqAHgX7kYvYvsWbDB967X8kMqmN0ZkeB0X2jIeSI37WtD9g==
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.6.2"
@@ -2534,6 +2534,17 @@
     mathjax-full "3.2.2"
     react "^16.8.1"
 
+"@pie-lib/math-rendering@^3.19.4":
+  version "3.19.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-3.19.4.tgz#c8376bf197d8746d4e2826169fb0d937a4f91bfd"
+  integrity sha512-wudhuv0waZxBlUs4NlNlXX2g2V7laczNH9AGoZB6VnlkmC0N+wJjtCIIwbkPoGRf4Fvf/mT7+f//LIr2hCJZfw==
+  dependencies:
+    "@pie-framework/mathml-to-latex" "1.4.4"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    mathjax-full "3.2.2"
+    react "^16.8.1"
+
 "@pie-lib/math-toolbar@^1.27.0":
   version "1.27.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.27.0.tgz#1f3c4f027f82a6091e33fc125ab08a66c7ccdfcf"
@@ -2576,16 +2587,16 @@
     react-redux "^6.0.0"
     redux "^4.0.1"
 
-"@pie-lib/render-ui@^4.31.0":
-  version "4.31.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.31.0.tgz#04443d75a67cc81009f563b6749b7b5e6daa270a"
-  integrity sha512-ya6IfSbQt6o0ff7Bmer6vsqv8+MO77a55vKaTYJmdrRMNSPeCypXc4Tx74sxOUsZG1gotYbGF9O/kqe9+YdT3Q==
+"@pie-lib/render-ui@^4.31.0", "@pie-lib/render-ui@^4.32.5":
+  version "4.32.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.32.5.tgz#f6513877012f33b3c0aa65cca617a718d13beac9"
+  integrity sha512-rP6E7D3bvNYaE1gklKCfInYIAU0oD57RBkmm/DpAO9zvDBLhRV6WsPKTPQoqj0zeofeHAlVWSPaEHnvCqxeM9w==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/icons" "^2.20.0"
-    "@pie-lib/math-rendering" "^3.18.0"
-    "@pie-lib/test-utils" "^0.18.0"
+    "@pie-lib/icons" "^2.21.4"
+    "@pie-lib/math-rendering" "^3.19.4"
+    "@pie-lib/test-utils" "^0.19.5"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2617,6 +2628,11 @@
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.18.0.tgz#2e4c1bbdc70cdb4807fb3d80e826995f134391af"
   integrity sha512-q3HpxlSI5gG9xR9Jc6LIDkfBVSCYPjiKhqoYwgnCHJRrkYT1On9EIbcWb0k94DyFJAn17yc17EcZjftEiR/Evg==
+
+"@pie-lib/test-utils@^0.19.5":
+  version "0.19.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.19.5.tgz#0006d20e0a52f0eb9178055ca4e05bd29760a591"
+  integrity sha512-HYvIA6A865PEzxzKvEbh+CGmXFJg8ra6QVdKAxTa2+ROu1HXLyJqal0l8juzZRwT0cDrwVxPQTtxP2+2QSw6HQ==
 
 "@pie-lib/test-utils@^0.2.33":
   version "0.2.33"
@@ -2656,10 +2672,10 @@
     react-portal "^4.2.0"
     trigonometry-calculator "^2.0.0"
 
-"@pie-lib/translator@^2.19.0":
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.19.0.tgz#04f996c96ad4f1971b1053a179f34e49df432785"
-  integrity sha512-TbUMu//eXcqQPqNjA3GmSEe5ghFtP/rd4ncCiKEKaZ7jgWQh0tIPRLpbdyOFYZO7NjpRI2zGhMo+7K5Llgn2aw==
+"@pie-lib/translator@^2.19.0", "@pie-lib/translator@^2.20.4":
+  version "2.20.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.20.4.tgz#c8215f86bebc748111699303f487ee339372150c"
+  integrity sha512-aV0T8T5M+rtXyQbqbZq6vvYO3YCgjo6c03WP9ZsBq+6Lx7SEEuZpSNtSOeqlXdE7jUE9NeZEW0dakfW/oXrdkA==
   dependencies:
     debug "^4.1.1"
     i18next "^22.5.0"
