@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { NumberTextFieldCustom } from '@pie-lib/pie-toolbox/config-ui';
+import { NumberTextFieldCustom } from '@pie-lib/config-ui';
 
 const Size = (props) => {
   // Setting default value if not passed in configuration properties.

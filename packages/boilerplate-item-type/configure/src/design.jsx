@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
-import { InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { InputContainer, settings, layout } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
 
 const { Panel, toggle } = settings;
 
@@ -34,11 +34,7 @@ export class Design extends React.Component {
   render() {
     const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
-    const {
-      contentDimensions = {},
-      prompt = {},
-      settingsPanelDisabled,
-    } = configuration || {};
+    const { contentDimensions = {}, prompt = {}, settingsPanelDisabled } = configuration || {};
     const { extraCSSRules, promptEnabled } = model || {};
 
     const panelSettings = {};
@@ -87,5 +83,5 @@ export default withStyles((theme) => ({
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
-  }
+  },
 }))(Design);

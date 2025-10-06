@@ -2,7 +2,7 @@ import * as React from 'react';
 import AddRow from '../add-row';
 import Button from '@material-ui/core/Button';
 import AddButton from '@material-ui/icons/Add';
-import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import { shallowChild } from '@pie-lib/test-utils';
 
 describe('AddRow', () => {
   const defaultProps = {

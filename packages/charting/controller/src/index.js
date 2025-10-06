@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import defaults from './defaults';
 
-import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { partialScoring } from '@pie-lib/controller-utils';
 
 const log = debug('@pie-element:graphing:controller');
 

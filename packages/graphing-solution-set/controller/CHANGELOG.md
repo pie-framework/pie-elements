@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@2.4.0...@pie-element/graphing-solution-set-controller@3.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/graphing-solution-set-controller
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@2.4.0...@pie-element/graphing-solution-set-controller@3.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/graphing-solution-set-controller
+
+
+
+
+
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@2.3.9...@pie-element/graphing-solution-set-controller@2.4.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox for graphing-solution-set, hotspot, ica  PD-5158 ([774a216](https://github.com/pie-framework/pie-elements/commit/774a216d02311294a1340aea0f26e2ea46a271d5))
+
+
+
+
+
 ## [2.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@2.3.8...@pie-element/graphing-solution-set-controller@2.3.9) (2025-09-11)
 
 

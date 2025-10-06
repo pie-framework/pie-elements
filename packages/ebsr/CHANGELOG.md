@@ -3,6 +3,89 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.7.2...@pie-element/ebsr@12.0.0) (2025-10-02)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([eca489a](https://github.com/pie-framework/pie-elements/commit/eca489a3c8927798e0f855a3123cb7b851487c0f))
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+# [11.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.7.2...@pie-element/ebsr@11.0.0) (2025-10-01)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([eca489a](https://github.com/pie-framework/pie-elements/commit/eca489a3c8927798e0f855a3123cb7b851487c0f))
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+## [10.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.7.1...@pie-element/ebsr@10.7.2) (2025-09-30)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [10.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.7.0...@pie-element/ebsr@10.7.1) (2025-09-26)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+# [10.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.6.10...@pie-element/ebsr@10.7.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* merge develop ([9f997d7](https://github.com/pie-framework/pie-elements/commit/9f997d7a9813bed26b760f14fbf841e373bb0bb8))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+* rubric imports ([dcfaa45](https://github.com/pie-framework/pie-elements/commit/dcfaa45aa70fe62211c9e22c4f2c448f6de0d9af))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox in ebsr, rubric, multi-trait-rubric, complex-rubric PD-5158 ([314604f](https://github.com/pie-framework/pie-elements/commit/314604fcc9bea9632ca78afd01be0e7516937313))
+
+
+
+
+
 ## [10.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.6.9...@pie-element/ebsr@10.6.10) (2025-09-18)
 
 **Note:** Version bump only for package @pie-element/ebsr

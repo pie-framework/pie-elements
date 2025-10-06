@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/graphing-controller",
   "private": true,
-  "version": "6.3.9",
+  "version": "7.0.1",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,7 +9,8 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/pie-toolbox": "2.25.2",
+    "@pie-lib/controller-utils": "^0.18.0",
+    "@pie-lib/graphing-utils": "^1.17.0",
     "debug": "^4.1.1"
   },
   "devDependencies": {

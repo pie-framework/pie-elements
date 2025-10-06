@@ -10,7 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
-import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';
@@ -110,7 +110,7 @@ export default class MultipleChoice extends HTMLElement {
 
       // check if the language is already included in the languageChoices.options array
       // and if not, then add it.
-      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
         this._configuration.languageChoices.options.push({
           value: this._model.language,
           label: this._model.language,

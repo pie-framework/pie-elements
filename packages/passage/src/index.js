@@ -1,5 +1,5 @@
 import { ModelSetEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/math-rendering';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

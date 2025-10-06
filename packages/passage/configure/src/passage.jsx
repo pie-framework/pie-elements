@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
-import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { InputContainer } from '@pie-lib/config-ui';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 
 export class PassageComponent extends React.Component {
   static propTypes = {
@@ -71,7 +71,7 @@ export class PassageComponent extends React.Component {
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    const getPluginProps = (customConfiguration) => ({...baseInputConfiguration,...customConfiguration});
+    const getPluginProps = (customConfiguration) => ({ ...baseInputConfiguration, ...customConfiguration });
 
     return (
       <React.Fragment>

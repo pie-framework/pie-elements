@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@6.6.0...@pie-element/graphing-configure@7.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@6.6.0...@pie-element/graphing-configure@7.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@6.5.9...@pie-element/graphing-configure@6.6.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox for graphing, fraction-model PD-5158 ([bccef31](https://github.com/pie-framework/pie-elements/commit/bccef31dab6e89d25131670481c62606431f0c25))
+
+
+
+
+
 ## [6.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@6.5.8...@pie-element/graphing-configure@6.5.9) (2025-09-11)
 
 

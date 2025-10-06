@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { settings, layout } from '@pie-lib/pie-toolbox/config-ui';
+import { settings, layout } from '@pie-lib/config-ui';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -132,33 +132,33 @@ export class Main extends React.Component {
           />
         }
       >
-        {passages.map((passage, passageIndex) =>
-            <React.Fragment key={passageIndex}>
-              {passageIndex > 0 && (
-                <Typography variant="h5" className={classes.additionalPassageHeading}>
-                  {additionalPassage.label}
-                </Typography>
-              )}
-              <Passage
-                imageSupport={imageSupport}
-                uploadSoundSupport={uploadSoundSupport}
-                model={model}
-                configuration={configuration}
-                passageIndex={passageIndex}
-                onModelChanged={onModelChanged}
+        {passages.map((passage, passageIndex) => (
+          <React.Fragment key={passageIndex}>
+            {passageIndex > 0 && (
+              <Typography variant="h5" className={classes.additionalPassageHeading}>
+                {additionalPassage.label}
+              </Typography>
+            )}
+            <Passage
+              imageSupport={imageSupport}
+              uploadSoundSupport={uploadSoundSupport}
+              model={model}
+              configuration={configuration}
+              passageIndex={passageIndex}
+              onModelChanged={onModelChanged}
+            />
+            {passageIndex > 0 && additionalPassage.enabled && (
+              <PassageButton
+                type={'remove'}
+                label={`Remove ${additionalPassage.label}`}
+                onClick={() => this.removeAdditionalPassage(passageIndex)}
               />
-              {passageIndex > 0 && additionalPassage.enabled && (
-                <PassageButton
-                  type={'remove'}
-                  label={`Remove ${additionalPassage.label}`}
-                  onClick={() => this.removeAdditionalPassage(passageIndex)}
-                />
-              )}
-              {passageIndex === 0 && additionalPassage.enabled && passages.length < 2 && (
-                <PassageButton label={`Add ${additionalPassage.label}`} onClick={this.addAdditionalPassage} />
-              )}
-            </React.Fragment>
-          )}
+            )}
+            {passageIndex === 0 && additionalPassage.enabled && passages.length < 2 && (
+              <PassageButton label={`Add ${additionalPassage.label}`} onClick={this.addAdditionalPassage} />
+            )}
+          </React.Fragment>
+        ))}
         <ConfimationDialog
           open={showConfirmationDialog}
           title={'Warning'}

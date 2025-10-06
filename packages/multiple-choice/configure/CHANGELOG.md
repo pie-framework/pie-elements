@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.7.11...@pie-element/multiple-choice-configure@8.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.7.11...@pie-element/multiple-choice-configure@8.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+## [7.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.7.10...@pie-element/multiple-choice-configure@7.7.11) (2025-09-30)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([48b5b59](https://github.com/pie-framework/pie-elements/commit/48b5b5930ef9ecd0cda426867859d7ab6048bfda))
+
+
+
+
+
+## [7.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.8.0-beta.4...@pie-element/multiple-choice-configure@7.7.10) (2025-09-26)
+
+
+### Bug Fixes
+
+* remove hardcoded versions ([39d7de2](https://github.com/pie-framework/pie-elements/commit/39d7de216dbd142f0e971bce237a8416b490a89b))
+
+
+
+
+
+# [7.8.0-beta.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.7.9...@pie-element/multiple-choice-configure@7.8.0-beta.4) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* initial work for pie-toolbox split in pie-elements [PD-5126] ([b5623f6](https://github.com/pie-framework/pie-elements/commit/b5623f65f7e32c0e06070d4ac27d3b6b9e3680da))
+
+
+
+
+
 ## [7.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@7.7.8...@pie-element/multiple-choice-configure@7.7.9) (2025-09-11)
 
 

@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.7.0...@pie-element/explicit-constructed-response-configure@8.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.7.0...@pie-element/explicit-constructed-response-configure@8.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.6.3...@pie-element/explicit-constructed-response-configure@7.7.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+
+
+### Features
+
+* split pie-toolbox PD-5157 ([14a65fc](https://github.com/pie-framework/pie-elements/commit/14a65fc8d448a9d3ae3cc1ff3f390729043ba2b5))
+
+
+
+
+
 ## [7.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.6.2...@pie-element/explicit-constructed-response-configure@7.6.3) (2025-09-11)
 
 

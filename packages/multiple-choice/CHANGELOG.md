@@ -3,6 +3,89 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.20.2...@pie-element/multiple-choice@11.0.0) (2025-10-02)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+# [10.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.20.2...@pie-element/multiple-choice@10.0.0) (2025-10-01)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+## [9.20.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.20.1...@pie-element/multiple-choice@9.20.2) (2025-09-30)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([48b5b59](https://github.com/pie-framework/pie-elements/commit/48b5b5930ef9ecd0cda426867859d7ab6048bfda))
+
+
+
+
+
+## [9.20.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.20.0...@pie-element/multiple-choice@9.20.1) (2025-09-26)
+
+
+### Bug Fixes
+
+* remove hardcoded versions ([39d7de2](https://github.com/pie-framework/pie-elements/commit/39d7de216dbd142f0e971bce237a8416b490a89b))
+
+
+
+
+
+# [9.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.19.4...@pie-element/multiple-choice@9.20.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* initial work for pie-toolbox split in pie-elements [PD-5126] ([b5623f6](https://github.com/pie-framework/pie-elements/commit/b5623f65f7e32c0e06070d4ac27d3b6b9e3680da))
+
+
+### Features
+
+* **multiple-choice:** add hover style options for choices PD-4768. generated docs ([725e0d4](https://github.com/pie-framework/pie-elements/commit/725e0d44b62b8c9e2a2667270ba826f118b73275))
+* **multiple-choice:** add stroke color and width options for selected answers PD-4768 ([317a4c3](https://github.com/pie-framework/pie-elements/commit/317a4c3f0a926263f4753041b0f3825baa4aa3ef))
+
+
+
+
+
 ## [9.19.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.19.3...@pie-element/multiple-choice@9.19.4) (2025-09-18)
 
 

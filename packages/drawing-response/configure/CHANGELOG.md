@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@8.6.0...@pie-element/drawing-response-configure@9.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
+# [9.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@8.6.0...@pie-element/drawing-response-configure@9.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
+# [8.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@8.5.9...@pie-element/drawing-response-configure@8.6.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox PD-5156 ([8650ea1](https://github.com/pie-framework/pie-elements/commit/8650ea1f717f59f95f7ca7d20ddb9b1a6d38f50a))
+
+
+
+
+
 ## [8.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@8.5.8...@pie-element/drawing-response-configure@8.5.9) (2025-09-11)
 
 

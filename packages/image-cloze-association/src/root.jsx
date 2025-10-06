@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { withDragContext } from '@pie-lib/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { color, Collapsible, PreviewPrompt, UiLayout, hasText, hasMedia } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, PreviewPrompt, UiLayout, hasText, hasMedia } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import NotInterestedIcon from '@material-ui/icons/NotInterested';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import Translator from '@pie-lib/translator';
 import groupBy from 'lodash/groupBy';
 import flatMap from 'lodash/flatMap';
 
@@ -26,7 +26,7 @@ const styles = (theme) => ({
     '& img': {
       maxWidth: '100%',
       height: 'auto',
-    }
+    },
   },
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
@@ -90,7 +90,7 @@ export class ImageClozeAssociationComponent extends React.Component {
   };
 
   filterPossibleAnswers = (possibleResponses, answer) =>
-    possibleResponses.filter(response => response.value !== answer.value);
+    possibleResponses.filter((response) => response.value !== answer.value);
 
   handleOnAnswerSelect = (answer, responseContainerIndex) => {
     const {
@@ -191,12 +191,12 @@ export class ImageClozeAssociationComponent extends React.Component {
         duplicateResponses || shouldNotPushInPossibleResponses
           ? possibleResponses
           : [
-            ...possibleResponses,
-            {
-              ...answer,
-              containerIndex: undefined,
-            },
-          ],
+              ...possibleResponses,
+              {
+                ...answer,
+                containerIndex: undefined,
+              },
+            ],
     });
     updateAnswer(answersToStore);
   };
@@ -227,7 +227,7 @@ export class ImageClozeAssociationComponent extends React.Component {
         responseContainerPadding,
         imageDropTargetPadding,
         fontSizeFactor,
-        customAudioButton
+        customAudioButton,
       },
     } = this.props;
     const {
@@ -247,7 +247,8 @@ export class ImageClozeAssociationComponent extends React.Component {
     const { validResponse } = validation || {};
     const correctAnswers = [];
     const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
-    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
+    const showTeacherInstructions =
+      teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     if (validResponse) {
       (validResponse.value || []).forEach((container, i) => {
@@ -255,7 +256,7 @@ export class ImageClozeAssociationComponent extends React.Component {
           correctAnswers.push({
             value: v,
             containerIndex: i,
-            isCorrect: true
+            isCorrect: true,
           });
         });
       });
@@ -293,9 +294,7 @@ export class ImageClozeAssociationComponent extends React.Component {
         {...sharedImageProps}
         canDrag={showCorrect && showToggle ? false : !disabled}
         answers={showCorrect && showToggle ? correctAnswers : answersToShow}
-        answerChoiceTransparency={
-          !(showCorrect && showToggle) ? answerChoiceTransparency : undefined
-        }
+        answerChoiceTransparency={!(showCorrect && showToggle) ? answerChoiceTransparency : undefined}
       />
     );
 
@@ -323,7 +322,12 @@ export class ImageClozeAssociationComponent extends React.Component {
     };
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} id={'main-container'} className={classes.main} fontSizeFactor={fontSizeFactor}>
+      <UiLayout
+        extraCSSRules={extraCSSRules}
+        id={'main-container'}
+        className={classes.main}
+        fontSizeFactor={fontSizeFactor}
+      >
         {showTeacherInstructions && (
           <Collapsible
             className={classes.teacherInstructions}
@@ -352,10 +356,7 @@ export class ImageClozeAssociationComponent extends React.Component {
           language={language}
         />
 
-        <InteractiveSection
-          responseCorrect={showCorrect && showToggle ? true : responseCorrect}
-          uiStyle={uiStyle}
-        >
+        <InteractiveSection responseCorrect={showCorrect && showToggle ? true : responseCorrect} uiStyle={uiStyle}>
           {renderImage()}
           {renderPossibleResponses()}
         </InteractiveSection>

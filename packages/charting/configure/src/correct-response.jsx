@@ -1,9 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Chart } from '@pie-lib/pie-toolbox/charting';
+import { Chart } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
-import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
 
 import Typography from '@material-ui/core/Typography';
@@ -101,7 +100,9 @@ const removeCategory = (correctAnswer, data, positionToRemove) => {
 export const getUpdatedCategories = (nextProps, prevProps, prevState) => {
   const nextData = (nextProps && nextProps.model && nextProps.model.data) || [];
   const data = (prevProps && prevProps.model && prevProps.model.data) || [];
-  const nextCorrectAnswerDataCopy = cloneDeep((nextProps && nextProps.model && nextProps.model.correctAnswer && nextProps.model.correctAnswer.data) || []);
+  const nextCorrectAnswerDataCopy = cloneDeep(
+    (nextProps && nextProps.model && nextProps.model.correctAnswer && nextProps.model.correctAnswer.data) || [],
+  );
 
   const categoriesCopy = cloneDeep(prevState ? prevState.categories : []);
 
@@ -196,7 +197,7 @@ export class CorrectResponse extends React.Component {
       studentNewCategoryDefaultLabel,
       correctAnswerErrors,
       mathMlOptions = {},
-      labelsPlaceholders = {}
+      labelsPlaceholders = {},
     } = this.props;
     const { categories } = this.state;
 

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { DragSource } from '@pie-lib/pie-toolbox/drag';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { DragSource } from '@pie-lib/drag';
+import { color } from '@pie-lib/render-ui';
 import ReactDOM from 'react-dom';
 
 import EvaluationIcon from './evaluation-icon';
@@ -72,10 +72,7 @@ export class PossibleResponse extends React.Component {
       },
     ]);
 
-    const promptClassNames = classNames([
-      classes.span,
-      { [classes.hiddenSpan]: data.hidden },
-    ]);
+    const promptClassNames = classNames([classes.span, { [classes.hiddenSpan]: data.hidden }]);
 
     return connectDragSource(
       <div
@@ -84,9 +81,10 @@ export class PossibleResponse extends React.Component {
         ref={(ref) => {
           //eslint-disable-next-line
           this.rootRef = ReactDOM.findDOMNode(ref);
-        }}>
-        <StaticHTMLSpan html={data.value} className={promptClassNames}/>
-        <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle}/>
+        }}
+      >
+        <StaticHTMLSpan html={data.value} className={promptClassNames} />
+        <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
       </div>,
     );
   }
@@ -119,12 +117,12 @@ const styles = () => ({
     justifyContent: 'center',
     minHeight: '28px',
     width: 'fit-content',
-    '& span img':{
+    '& span img': {
       // Added for touch devices, for image content.
       // This will prevent the context menu from appearing and not allowing other interactions with the image.
       // If interactions with the image in the token will be requested we should handle only the context Menu.
       pointerEvents: 'none',
-    }
+    },
   },
   textAnswerChoiceStyle: {
     padding: '0 10px',

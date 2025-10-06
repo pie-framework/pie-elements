@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.8.2...@pie-element/rubric-configure@5.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.8.2...@pie-element/rubric-configure@5.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [4.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.8.1...@pie-element/rubric-configure@4.8.2) (2025-09-30)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([48b5b59](https://github.com/pie-framework/pie-elements/commit/48b5b5930ef9ecd0cda426867859d7ab6048bfda))
+
+
+
+
+
+## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.8.0...@pie-element/rubric-configure@4.8.1) (2025-09-29)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([cdad900](https://github.com/pie-framework/pie-elements/commit/cdad90085b34b16d9fedd742346e651d81474dad))
+
+
+
+
+
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.7.9...@pie-element/rubric-configure@4.8.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* merge develop ([9f997d7](https://github.com/pie-framework/pie-elements/commit/9f997d7a9813bed26b760f14fbf841e373bb0bb8))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+* rubric imports ([dcfaa45](https://github.com/pie-framework/pie-elements/commit/dcfaa45aa70fe62211c9e22c4f2c448f6de0d9af))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox in ebsr, rubric, multi-trait-rubric, complex-rubric PD-5158 ([314604f](https://github.com/pie-framework/pie-elements/commit/314604fcc9bea9632ca78afd01be0e7516937313))
+
+
+
+
+
 ## [4.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.7.8...@pie-element/rubric-configure@4.7.9) (2025-09-11)
 
 

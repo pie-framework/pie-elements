@@ -7,8 +7,8 @@ import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { color, Feedback, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import EditableHtml from '@pie-lib/editable-html';
+import { color, Feedback, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 
 import AnnotationEditor from './annotation/annotation-editor';
 

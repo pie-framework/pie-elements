@@ -6,7 +6,6 @@ exports[`Render Main Component should match snapshot 1`] = `
     Constructed Response Question
   </h2>
   <EditableHtml
-    allowValidation={false}
     autoWidthToolbar={true}
     charactersLimit={50000}
     className="response-area-editor"
@@ -16,7 +15,6 @@ exports[`Render Main Component should match snapshot 1`] = `
     maxHeight="40vh"
     minWidth="100px"
     onChange={[Function]}
-    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {
@@ -72,7 +70,6 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
     </WithStyles(Collapsible)>
   </div>
   <EditableHtml
-    allowValidation={false}
     autoWidthToolbar={true}
     charactersLimit={50000}
     className="response-area-editor"
@@ -82,7 +79,6 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
     maxHeight="40vh"
     minWidth="100px"
     onChange={[Function]}
-    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {

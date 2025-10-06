@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { EnableAudioAutoplayImage } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
+import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import CategorizeComponent from './categorize';
 

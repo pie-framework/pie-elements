@@ -1,17 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
-import {
-  Feedback,
-  Collapsible,
-  Readable,
-  hasText,
-  hasMedia,
-  PreviewPrompt,
-  UiLayout,
-} from '@pie-lib/pie-toolbox/render-ui';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
+import { Feedback, Collapsible, Readable, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import { ResponseTypes } from './utils';
@@ -19,9 +11,9 @@ import isEqual from 'lodash/isEqual';
 import cx from 'classnames';
 import SimpleQuestionBlock from './simple-question-block';
 import MathQuill from '@pie-framework/mathquill';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 import isEmpty from 'lodash/isEmpty';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 import ReactDOM from 'react-dom';
 const { translator } = Translator;
 let registered = false;
@@ -623,7 +615,8 @@ export class Main extends React.Component {
     const viewMode = disabled && !correctness;
     const studentPrintMode = printMode && !alwaysShowCorrect;
     const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
-    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
+    const showTeacherInstructions =
+      teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     const printView = (
       <div className={classes.printContainer}>
@@ -647,7 +640,7 @@ export class Main extends React.Component {
         {mode === 'gather' && <h2 className={classes.srOnly}>Math Equation Response Question</h2>}
 
         {viewMode &&
-         showTeacherInstructions &&
+          showTeacherInstructions &&
           (!animationsDisabled ? (
             <Collapsible
               className={classes.collapsible}
@@ -772,13 +765,7 @@ export class Main extends React.Component {
       </div>
     );
 
-    if (
-      tooltipModeEnabled &&
-      (showCorrectAnswerToggle ||
-       showTeacherInstructions ||
-       showRationale ||
-        feedback)
-    ) {
+    if (tooltipModeEnabled && (showCorrectAnswerToggle || showTeacherInstructions || showRationale || feedback)) {
       return (
         <UiLayout extraCSSRules={extraCSSRules}>
           <Tooltip

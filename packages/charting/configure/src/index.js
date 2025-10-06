@@ -10,7 +10,7 @@ import {
 import debug from 'debug';
 import Configure from './configure';
 import defaultValues from './defaults';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/math-rendering';
 
 const log = debug('pie-elements:graphing:configure');
 
@@ -53,7 +53,7 @@ export default class GraphLinesConfigure extends HTMLElement {
 
       // check if the language is already included in the languageChoices.options array
       // and if not, then add it.
-      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
         this._configuration.languageChoices.options.push({
           value: this._model.language,
           label: this._model.language,

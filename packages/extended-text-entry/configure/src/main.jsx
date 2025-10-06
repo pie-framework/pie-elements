@@ -1,9 +1,9 @@
 import React from 'react';
-import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
+import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 
 const { Panel, toggle, numberFields, dropdown } = settings;
 
@@ -52,7 +52,7 @@ export class Main extends React.Component {
     const { model, classes, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
-      annotations= {},
+      annotations = {},
       contentDimensions = {},
       dimensions = {},
       equationEditor = {},
@@ -112,10 +112,12 @@ export class Main extends React.Component {
         ]),
       spanishInput: spanishInput.settings && toggle(spanishInput.label),
       specialInput: specialInput.settings && toggle(specialInput.label),
-      dimensions: dimensions.settings && numberFields(dimensions.label, {
-        width: { label: 'Width (px)', suffix: 'px', min: 100, max: 1200 },
-        height: { label: 'Height (px)', suffix: 'px', min: 100, max: 500 },
-      }),
+      dimensions:
+        dimensions.settings &&
+        numberFields(dimensions.label, {
+          width: { label: 'Width (px)', suffix: 'px', min: 100, max: 1200 },
+          height: { label: 'Height (px)', suffix: 'px', min: 100, max: 500 },
+        }),
       'multiple.enabled': multiple.settings && toggle(multiple.label, true),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
@@ -131,10 +133,10 @@ export class Main extends React.Component {
 
     const getPluginProps = (props) => {
       return Object.assign(
-          {
-            ...baseInputConfiguration,
-          },
-          props || {},
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
       );
     };
 

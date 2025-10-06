@@ -1,6 +1,6 @@
 import debug from 'debug';
 import { camelizeKeys } from 'humps';
-import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { partialScoring } from '@pie-lib/controller-utils';
 import { cloneDeep, isEmpty, shuffle } from 'lodash';
 
 import defaults from './defaults';
