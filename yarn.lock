@@ -2657,9 +2657,9 @@
     trigonometry-calculator "^2.0.0"
 
 "@pie-lib/translator@^2.19.0":
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.19.0.tgz#04f996c96ad4f1971b1053a179f34e49df432785"
-  integrity sha512-TbUMu//eXcqQPqNjA3GmSEe5ghFtP/rd4ncCiKEKaZ7jgWQh0tIPRLpbdyOFYZO7NjpRI2zGhMo+7K5Llgn2aw==
+  version "2.20.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.20.4.tgz#c8215f86bebc748111699303f487ee339372150c"
+  integrity sha512-aV0T8T5M+rtXyQbqbZq6vvYO3YCgjo6c03WP9ZsBq+6Lx7SEEuZpSNtSOeqlXdE7jUE9NeZEW0dakfW/oXrdkA==
   dependencies:
     debug "^4.1.1"
     i18next "^22.5.0"
