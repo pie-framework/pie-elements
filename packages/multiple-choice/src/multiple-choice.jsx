@@ -90,7 +90,8 @@ export class MultipleChoice extends React.Component {
     customAudioButton: {
       playImage: PropTypes.string,
       pauseImage: PropTypes.string,
-    }
+    },
+    options: PropTypes.object,
   };
 
   constructor(props) {
@@ -196,10 +197,21 @@ export class MultipleChoice extends React.Component {
   };
 
   getChecked(choice) {
-    if (this.state.showCorrect) {
+    // check for print context: options prop is passed from print.js and alwaysShowCorrect is true
+    const isPrintMode = this.props.options && this.props.alwaysShowCorrect;
+    
+    if (isPrintMode) {
       return choice.correct || false;
     }
 
+    // evaluate mode with show correct toggled
+    const isEvaluateMode = this.state.showCorrect && this.props.mode === 'evaluate';
+    
+    if (isEvaluateMode) {
+      return choice.correct || false;
+    }
+
+    // default behavior: show what the user has selected
     return this.isSelected(choice.value);
   }
 

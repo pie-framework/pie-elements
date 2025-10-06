@@ -142,6 +142,9 @@ export default class Ebsr extends HTMLElement {
         partLabel: labels[key]
       };
 
+      // pass options to enable print mode detection in multiple-choice component
+      part.options = this._options;
+
       if (!part._session) {
         // for print, "set session" is not called,
         // but ebsr needs sessions in order to render the elements,
