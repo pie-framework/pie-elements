@@ -3,7 +3,7 @@
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",
-  "version": "9.0.2-esmbeta.0",
+  "version": "9.0.2-esmbeta.1",
   "description": "",
   "scripts": {},
   "author": "pie framework developers",
