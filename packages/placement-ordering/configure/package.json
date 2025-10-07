@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/placement-ordering-configure",
-  "version": "9.0.2-esmbeta.2",
+  "version": "9.0.2-esmbeta.3",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",

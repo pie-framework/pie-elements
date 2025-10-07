@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "5.0.1-esmbeta.2",
+  "version": "5.0.1-esmbeta.3",
   "publishConfig": {
     "access": "public"
   },

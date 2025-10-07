@@ -8,7 +8,7 @@
     "@pie-lib/translator": "^2.20.5-esmbeta.2",
     "lodash": "^4.17.15"
   },
-  "version": "8.0.2-esmbeta.2",
+  "version": "8.0.2-esmbeta.3",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/ruler-configure",
   "private": true,
-  "version": "6.0.2-esmbeta.2",
+  "version": "6.0.2-esmbeta.3",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
