@@ -14,7 +14,8 @@ Just **2 files** for complete ESM support:
 
 Configures ESM bundling with:
 
-- External dependencies (React, MUI, @pie-lib/*, @pie-element/*)
+- External dependencies (React for element/controller/print, @pie-lib/*, @pie-element/*)
+- **Special case:** Configure builds bundle BOTH React AND ReactDOM together (prevents version mismatches)
 - Babel transpilation for JSX
 - Modern browser targets (esmodules: true)
 - Source maps
@@ -63,7 +64,7 @@ These can be converted to ESM source in a future update.
 
 After build, each package will have:
 
-```
+```text
 @pie-element/multiple-choice/
 ├── lib/              # CommonJS (Babel) - EXISTING
 │   └── index.js
@@ -197,35 +198,57 @@ console.log(MultipleChoice);
 
 ## External Dependencies
 
+### Standard Builds (element, controller, print)
+
 The following are kept external (not bundled):
 
-**React Ecosystem:**
+**React Core:**
 
 - react
-- react-dom
-- prop-types
-
-**Material UI:**
-
-- @material-ui/core
-- @material-ui/icons
-
-**Utilities:**
-
-- classnames
-- lodash
-- debug
 
 **PIE Packages:**
 
 - @pie-lib/* (all pie-lib shared libraries)
 - @pie-element/* (other elements)
+- @pie-framework/* (framework packages)
 
-**Why external?**
+**Everything Else is BUNDLED** (for maximum compatibility):
 
-- These will be loaded from esm.sh via import maps
-- Avoids duplication across multiple elements
-- Enables browser caching
+- react-dom (Slate needs it)
+- Material UI (old versions, no reliable ESM)
+- Lodash (works but bundled for safety)
+- Slate ecosystem (no ESM support)
+- All third-party deps
+
+### Configure Builds (authoring UI)
+
+**PIE Packages ONLY:**
+
+- @pie-lib/*
+- @pie-element/*
+- @pie-framework/*
+
+**Everything Else is BUNDLED** (including React + ReactDOM):
+
+- React (bundled to match ReactDOM version)
+- ReactDOM (bundled to match React version)
+- Material UI
+- All third-party deps
+
+**Why bundle React in configure?**
+
+- Configure builds used to have React external but ReactDOM bundled
+- This caused version mismatches (React error #31)
+- Configure components are isolated authoring UIs that don't need to share React instances
+- Bundling both together guarantees version compatibility
+
+### Strategy
+
+#### "Bundle Everything Except Proven Safe"
+
+- Only externalize what's 100% guaranteed to work on CDN
+- Maximize compatibility over bundle size
+- Optimize later based on real-world data
 
 ## Import Maps for PIE Player
 
@@ -234,18 +257,22 @@ When you update PIE Player, generate import maps like:
 ```json
 {
   "imports": {
-    "react": "https://your-cdn.com/esm/react@16.14.0",
-    "react-dom": "https://your-cdn.com/esm/react-dom@16.14.0",
-    "@material-ui/core": "https://your-cdn.com/esm/@material-ui/core@3.9.4",
-    "@pie-element/multiple-choice": "https://your-cdn.com/@pie-element/multiple-choice@11.0.0/esm/element.js"
+    "react": "https://esm.sh/react@16.14.0",
+    "@pie-element/multiple-choice": "https://esm.sh/@pie-element/multiple-choice@11.0.0"
   }
 }
 ```
 
+**Note:** Only React is external for element/controller/print. Configure builds have React/ReactDOM bundled, so they don't appear in the import map.
+
 Then load dynamically:
 
 ```javascript
+// Element (for rendering questions)
 const element = await import('@pie-element/multiple-choice');
+
+// Configure (for authoring UI) - in editor mode
+const configure = await import('@pie-element/multiple-choice/configure');
 ```
 
 ## Rollback
@@ -291,6 +318,28 @@ rm scripts/build-esm.js rollup.config.js
 4. **Integrate with CI/CD:**
    Add `yarn build:esm` to your CI/CD pipeline after the main build
 
+## Troubleshooting
+
+### React Error #31 in Authoring Mode
+
+**Symptom:** React error #31 ("Objects are not valid as a React child") when loading configure components in authoring mode.
+
+**Cause:** Version mismatch between external React and bundled ReactDOM in configure builds.
+
+**Solution:** Configure builds now bundle BOTH React AND ReactDOM together for version compatibility. This is configured automatically in `rollup.config.js` by detecting `/configure.js` output paths.
+
+**Verification:**
+
+```bash
+# Check that React is NOT imported externally in configure.js
+grep "import.*from.*['\"]react['\"]" packages/multiple-choice/esm/configure.js
+# Should return empty (no results)
+
+# Check that React is bundled
+grep -c "React\.__SECRET_INTERNALS" packages/multiple-choice/esm/configure.js
+# Should return 1 (React internals are present)
+```
+
 ## FAQ
 
 **Q: Does this replace PSLB?**
@@ -307,3 +356,6 @@ A: Yes! Node.js 12+ supports conditional exports. `require()` gets CommonJS, `im
 
 **Q: What about TypeScript?**
 A: Can be added later. For now, JSX → ESM works fine.
+
+**Q: Why is configure.js so much larger than element.js?**
+A: Configure builds bundle React + ReactDOM for version compatibility, while element builds keep React external. This is intentional to prevent React error #31.

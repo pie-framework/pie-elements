@@ -4,7 +4,7 @@
  * Strategy: Bundle EVERYTHING except what's 100% proven safe
  * 
  * Safe External (proven to work):
- * - React (universal, always works)
+ * - React (universal, always works) - EXCEPT for configure builds
  * - @pie-lib/* (our packages, we control the ESM)
  * - @pie-element/* (other elements, we control the ESM)
  * - @pie-framework/* (our packages, we control the ESM)
@@ -16,6 +16,11 @@
  * - Slate ecosystem (no ESM)
  * - konva/react-konva (old versions)
  * - All third-party deps
+ * 
+ * SPECIAL CASE: Configure (authoring) builds
+ * - Bundle BOTH React AND ReactDOM together
+ * - Prevents version mismatches between external React and bundled ReactDOM
+ * - Configure components are isolated UIs that don't need shared React instances
  * 
  * Benefits:
  * - Maximum compatibility
@@ -37,6 +42,17 @@ const external = [
   'react',
   
   // PIE packages - Our own, we control the ESM builds
+  /@pie-lib\/.*/,
+  /@pie-element\/.*/,
+  '@pie-framework/pie-player-events',
+  '@pie-framework/pie-configure-events',
+  /^@pie-framework\//,
+];
+
+// Configure builds: Bundle React + ReactDOM together to avoid version mismatches
+// Configure components are isolated authoring UIs that don't share React instances
+const configureExternal = [
+  // PIE packages only - Bundle React/ReactDOM for version safety
   /@pie-lib\/.*/,
   /@pie-element\/.*/,
   '@pie-framework/pie-player-events',
@@ -89,6 +105,10 @@ const plugins = [
 ].filter(Boolean);
 
 module.exports.default = function createConfig(input, output) {
+  // Detect configure builds: bundle React + ReactDOM to avoid version mismatches
+  const isConfigure = output.includes('/configure.js');
+  const externalDeps = isConfigure ? configureExternal : external;
+  
   return {
     input,
     output: {
@@ -97,7 +117,7 @@ module.exports.default = function createConfig(input, output) {
       sourcemap: true,
       exports: 'auto',
     },
-    external,
+    external: externalDeps,
     plugins,
   };
 };
