@@ -8,8 +8,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "^3.19.5-esmbeta.0",
-    "@pie-lib/render-ui": "^4.32.6-esmbeta.0",
+    "@pie-lib/math-rendering": "^3.19.5-esmbeta.2",
+    "@pie-lib/render-ui": "^4.32.6-esmbeta.2",
     "clsx": "^1.1.1",
     "enzyme-to-json": "^3.3.5",
     "prop-types": "^15.6.1",

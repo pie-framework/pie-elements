@@ -2,10 +2,10 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/categorize": "^0.25.5-esmbeta.0",
-    "@pie-lib/controller-utils": "^0.19.5-esmbeta.0",
-    "@pie-lib/feedback": "^0.21.5-esmbeta.0",
-    "@pie-lib/translator": "^2.20.5-esmbeta.0",
+    "@pie-lib/categorize": "^0.25.5-esmbeta.2",
+    "@pie-lib/controller-utils": "^0.19.5-esmbeta.2",
+    "@pie-lib/feedback": "^0.21.5-esmbeta.2",
+    "@pie-lib/translator": "^2.20.5-esmbeta.2",
     "lodash": "^4.17.15"
   },
   "version": "8.0.2-esmbeta.1",

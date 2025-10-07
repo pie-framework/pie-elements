@@ -2421,7 +2421,7 @@
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-player-events/-/pie-player-events-0.1.0.tgz#0150904118fd604559982ab658967811c053ffe3"
   integrity sha512-6H1tlRGmcZ3Wt+8HMqu5KugVcwwyNrMylfI5rIpvOSt0T82QDmjRj+2sPgQG5zos/w6MtwUqn/QZ+8Rq2EXSOA==
 
-"@pie-lib/categorize@0.25.5-esmbeta.0", "@pie-lib/categorize@^0.25.5-esmbeta.0":
+"@pie-lib/categorize@0.25.5-esmbeta.0":
   version "0.25.5-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/categorize/-/categorize-0.25.5-esmbeta.0.tgz#2c23e6978f963359c355b105e658369ca9df2cbd"
   integrity sha512-my9aspwJcWgjf9ueo5cIG5bs3vUjwchBvcWDCEU1Dwx8PuGSRa2sGGVsgpmGxFP4lZfSgj6rJdFHwzZ1US+P8Q==
@@ -2429,7 +2429,15 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@5.32.6-esmbeta.0", "@pie-lib/charting@^5.32.6-esmbeta.0":
+"@pie-lib/categorize@^0.25.5-esmbeta.2":
+  version "0.25.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/categorize/-/categorize-0.25.5-esmbeta.2.tgz#dce05a7d5ead6c9d76f1c337d78980670880a1a2"
+  integrity sha512-DVjr0zAKac5M17mqxHXbA0GzjSNO44jNn8LZC04lIyT21mprqEaVj7nI4+Fzb40U/bSC2/EVYR0BFW6e6dqxcg==
+  dependencies:
+    debug "^4.1.1"
+    lodash "^4.17.11"
+
+"@pie-lib/charting@5.32.6-esmbeta.0":
   version "5.32.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.32.6-esmbeta.0.tgz#f8844dfbb079058c710fb02c43b7c5718baa1b2c"
   integrity sha512-cXcSrGBn4P0GOnfGbLfq6dmbiWvl2935Ij2e67+KZ0B2vsP+sB16ian9eNNTgsh2SwftHaE1GL8TCQj0rs9ARw==
@@ -2456,7 +2464,34 @@
     react-draggable "^3.1.1"
     react-input-autosize "^2.2.1"
 
-"@pie-lib/config-ui@11.26.6-esmbeta.0", "@pie-lib/config-ui@^11.26.6-esmbeta.0":
+"@pie-lib/charting@^5.32.6-esmbeta.2":
+  version "5.32.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.32.6-esmbeta.2.tgz#3c23a90435736078f8a589ea18c5fde7e1bcf87d"
+  integrity sha512-xr/dhgyruP753bpp3odgQG/N8/JBiki3EBLgyz42XJxsVnqk/8UevSWjXJmiwIWo1B6nLza5bZ0M43Xl3Emp6Q==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/plot" "^2.24.6-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
+    "@pie-lib/translator" "^2.20.5-esmbeta.2"
+    "@vx/axis" "^0.0.183"
+    "@vx/event" "^0.0.182"
+    "@vx/grid" "^0.0.183"
+    "@vx/group" "^0.0.183"
+    "@vx/point" "^0.0.182"
+    "@vx/scale" "^0.0.182"
+    "@vx/shape" "^0.0.183"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    react "^16.8.1"
+    react-draggable "^3.1.1"
+    react-input-autosize "^2.2.1"
+
+"@pie-lib/config-ui@11.26.6-esmbeta.0":
   version "11.26.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.26.6-esmbeta.0.tgz#a869939dcdae7b0dc728e0d462729af699d2ca0f"
   integrity sha512-SdS8nbIn8+pYBGtWWqIhXD87HpHUX7Sh/NwuPSwPzpvNs9UQVdKWpVMmLHhknfCGfoe1F7nNbUsU4YBJDO1VJg==
@@ -2494,7 +2529,26 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
-"@pie-lib/controller-utils@0.19.5-esmbeta.0", "@pie-lib/controller-utils@^0.19.5-esmbeta.0":
+"@pie-lib/config-ui@^11.26.6-esmbeta.2":
+  version "11.26.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.26.6-esmbeta.2.tgz#e0bc3235bf4fe7dab4e5ca9d707753516068d5c9"
+  integrity sha512-e04wE8HWdEDZkFNjAhvoDMnM5GxvyjFFsvc6or/BhW7GzWPfgHbl8DMXfj0JYoc6cWOfbCNyhJkEfChnR5StyA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/editable-html" "^11.18.6-esmbeta.2"
+    "@pie-lib/icons" "^2.21.5-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
+    assert "^1.4.1"
+    classnames "^2.2.6"
+    complex.js "2.1.1"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    mathjs "^7.0.1"
+    prop-types "^15.6.2"
+    react-measure "^2.2.2"
+
+"@pie-lib/controller-utils@0.19.5-esmbeta.0":
   version "0.19.5-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.19.5-esmbeta.0.tgz#5468b2956a856e96b6a10ec796a1ba4f5057a7c6"
   integrity sha512-PMIEyeknKz/bRnvjNdBxhTH9T5mD78Xf+nqJU1qA4bmZ9R6HbcFs/XD3/H/wXNhB21q6xqU7a9yZb3KIJW6W3g==
@@ -2502,7 +2556,15 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/correct-answer-toggle@2.22.6-esmbeta.0", "@pie-lib/correct-answer-toggle@^2.22.6-esmbeta.0":
+"@pie-lib/controller-utils@^0.19.5-esmbeta.2":
+  version "0.19.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.19.5-esmbeta.2.tgz#99bc27f1be81654ea1976dee0121ff2929395b56"
+  integrity sha512-JIGTbSChgYeQj6Rzij6a79XAqzBY1MKQASHDYMgJ8VReE2g+oWB5QVwmvRlWZb6msLkku5bDljQoFbRkR+baNg==
+  dependencies:
+    debug "^4.1.1"
+    lodash "^4.17.11"
+
+"@pie-lib/correct-answer-toggle@2.22.6-esmbeta.0":
   version "2.22.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.22.6-esmbeta.0.tgz#17874d92bf8187a3a1d11de97ddb6a220638b010"
   integrity sha512-xOsxdOiRPCx5Qjk8uqQ17wWDzKEtBckhxNWuFwj0F2biU6oa0t19p42i4mOfKXI9D6laL5AV/LtZWXxEUHDqKg==
@@ -2525,6 +2587,20 @@
     "@pie-lib/icons" "^2.21.2"
     "@pie-lib/render-ui" "^4.32.3"
     "@pie-lib/translator" "^2.20.2"
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-transition-group "^2.5.2"
+
+"@pie-lib/correct-answer-toggle@^2.22.6-esmbeta.2":
+  version "2.22.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.22.6-esmbeta.2.tgz#504dbe1e72f044876e51450273b8ebaf2d463656"
+  integrity sha512-U07Jt7MHgnMF4efU8n2YhlWltIADF6rNBU1hvBJSouPj4FvgximMZT4jNtrA3hKFlWXwV85YO602sn31KYiOrw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/icons" "^2.21.5-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
+    "@pie-lib/translator" "^2.20.5-esmbeta.2"
     classnames "^2.2.6"
     lodash "^4.17.11"
     prop-types "^15.6.2"
@@ -2555,6 +2631,23 @@
     "@material-ui/core" "^3.8.3"
     "@pie-lib/math-rendering" "^3.19.4"
     "@pie-lib/render-ui" "^4.32.5"
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-dnd "^14.0.5"
+    react-dnd-html5-backend "^14.0.2"
+    react-dnd-multi-backend "^6.0.2"
+    react-dnd-touch-backend "^12.0.0"
+
+"@pie-lib/drag@^2.19.6-esmbeta.2":
+  version "2.19.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-2.19.6-esmbeta.2.tgz#3eb8e532c6bcd5683077eb884582611c18a8dd2d"
+  integrity sha512-TAWmIHcMzDOpurcTYMId4ZSMFodS3ZKX+lbbNAnMXwgz9mEAAWGit1ybYY/px3LuBejywZ/uhozW3nLuHiRc/Q==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/math-rendering" "^3.19.5-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
     classnames "^2.2.6"
     lodash "^4.17.11"
     prop-types "^15.7.2"
@@ -2634,12 +2727,52 @@
     slate-soft-break "^0.8.1"
     to-style "^1.3.3"
 
-"@pie-lib/feedback@0.21.5-esmbeta.0", "@pie-lib/feedback@^0.21.5-esmbeta.0":
+"@pie-lib/editable-html@^11.18.6-esmbeta.2":
+  version "11.18.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-11.18.6-esmbeta.2.tgz#2e9d307afbe140a6e18d9072b8455869415b32dd"
+  integrity sha512-83vyuRcGAfLqvQrz0q7viqdjnbGXXSnX0nb/W1TsSaiCvwfQVm4snI73LBWyKXeTzdtgCcFfbtmp/uGNMyuNKA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^2.19.6-esmbeta.2"
+    "@pie-lib/math-input" "^6.28.6-esmbeta.2"
+    "@pie-lib/math-rendering" "^3.19.5-esmbeta.2"
+    "@pie-lib/math-toolbar" "^1.28.6-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-plain-serializer "^0.5.26"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
+"@pie-lib/feedback@0.21.5-esmbeta.0":
   version "0.21.5-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-0.21.5-esmbeta.0.tgz#7e6e86f54eb6ef9c559d79499e67ff22564cee94"
   integrity sha512-vVlZd5nZ0raMQ5phbi1drPbtDqC3H8FDyuEKJcM6kiTYFDkQp0/aTYX3ovobMPrXBwuYIaAOKYmU2aE7ffNVzA==
 
-"@pie-lib/graphing-solution-set@2.31.6-esmbeta.0", "@pie-lib/graphing-solution-set@^2.31.6-esmbeta.0":
+"@pie-lib/feedback@^0.21.5-esmbeta.2":
+  version "0.21.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-0.21.5-esmbeta.2.tgz#016bf5f976776a8528684f737f71c111f865eabd"
+  integrity sha512-ZYj7ZWB6CZQ9pfU0kBX8+s9rGVn9ziKPJtVm2MuuFllzpW9eKDeGmw4/sR3ZP7/yJ7OFjXk0yhQzpH17FGVfhQ==
+
+"@pie-lib/graphing-solution-set@2.31.6-esmbeta.0":
   version "2.31.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing-solution-set/-/graphing-solution-set-2.31.6-esmbeta.0.tgz#fbd41af4fa1d82589d25d835bde83160ab5e7d2f"
   integrity sha512-thCsKfrc0e7/Dzo+DrFl75GbfJVO9JRCQNXOqtgOWYLtGlcucczuvnwXOf4iTm9KIbk5L7Me0cBP0hfTmgecAw==
@@ -2677,6 +2810,44 @@
     redux "^4.0.1"
     redux-undo beta
 
+"@pie-lib/graphing-solution-set@^2.31.6-esmbeta.2":
+  version "2.31.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing-solution-set/-/graphing-solution-set-2.31.6-esmbeta.2.tgz#a9970a04b53d779d91b3111623c0c5853443f666"
+  integrity sha512-RUnkJmE8PSK8CQ0RrC3G05YjJrORu0aVN8hFz1TqeGb3O2q1rwEhdnpdlCyCL6yf0g8/3OPMCchZo1f4dE8d2A==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/drag" "^2.19.6-esmbeta.2"
+    "@pie-lib/editable-html" "^11.18.6-esmbeta.2"
+    "@pie-lib/graphing-utils" "^1.18.5-esmbeta.2"
+    "@pie-lib/plot" "^2.24.6-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
+    "@pie-lib/tools" "^0.26.5-esmbeta.2"
+    "@pie-lib/translator" "^2.20.5-esmbeta.2"
+    "@vx/axis" "^0.0.189"
+    "@vx/clip-path" "^0.0.189"
+    "@vx/curve" "^0.0.189"
+    "@vx/event" "^0.0.189"
+    "@vx/grid" "^0.0.189"
+    "@vx/group" "^0.0.183"
+    "@vx/point" "^0.0.189"
+    "@vx/shape" "^0.0.189"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-dom "^16.9.0"
+    react-draggable "^3.3.0"
+    react-input-autosize "^2.2.1"
+    react-redux "^6.0.0"
+    redux "^4.0.1"
+    redux-undo beta
+
 "@pie-lib/graphing-utils@1.18.5-esmbeta.0", "@pie-lib/graphing-utils@^1.18.5-esmbeta.0":
   version "1.18.5-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing-utils/-/graphing-utils-1.18.5-esmbeta.0.tgz#fd9cfb69f2b55b4557dd4c4a6c8667fabf113f0c"
@@ -2686,7 +2857,16 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@2.31.6-esmbeta.0", "@pie-lib/graphing@^2.31.6-esmbeta.0":
+"@pie-lib/graphing-utils@^1.18.5-esmbeta.2":
+  version "1.18.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing-utils/-/graphing-utils-1.18.5-esmbeta.2.tgz#c0bacd67244b46ad83ba0c22ca2715c8ca1677db"
+  integrity sha512-46ZHgMXi8xCVNUbwSHXsyFaYvxLhHtejfoqtl5UaDqRdtdlxwmE+RMg1jE8esUCqS44HWIGMol4RABTgiN2FcQ==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+
+"@pie-lib/graphing@2.31.6-esmbeta.0":
   version "2.31.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.31.6-esmbeta.0.tgz#4ec6a2a4894160699fe8cf0aaf542ca905d44ca6"
   integrity sha512-xF9u0hVc6lap/98ZURiLFIzJWhOMRBgYqPBVknHIJR1I93LfMps7egx2ZPzKgR8lvSGaFegRCb7m/51Y2nrSlg==
@@ -2700,6 +2880,42 @@
     "@pie-lib/plot" "^2.24.6-esmbeta.0"
     "@pie-lib/render-ui" "^4.32.6-esmbeta.0"
     "@pie-lib/translator" "^2.20.5-esmbeta.0"
+    "@vx/axis" "^0.0.189"
+    "@vx/clip-path" "^0.0.189"
+    "@vx/event" "^0.0.189"
+    "@vx/grid" "^0.0.189"
+    "@vx/group" "^0.0.183"
+    "@vx/point" "^0.0.189"
+    "@vx/shape" "^0.0.189"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-dom "^16.9.0"
+    react-draggable "^3.3.0"
+    react-input-autosize "^2.2.1"
+    react-redux "^6.0.0"
+    redux "^4.0.1"
+    redux-undo beta
+
+"@pie-lib/graphing@^2.31.6-esmbeta.2":
+  version "2.31.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.31.6-esmbeta.2.tgz#21f13ac53ae3df4650cb43ac53e6047ed8c29d5f"
+  integrity sha512-VElp905dHWeNqrxLmxnOePTj2MmUEvWIQQb2y5idORNgKvIsoZ9vfRRNQXHdSs4QNuJ+WHk2SnU4MRVsi+VwCw==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/drag" "^2.19.6-esmbeta.2"
+    "@pie-lib/editable-html" "^11.18.6-esmbeta.2"
+    "@pie-lib/graphing-utils" "^1.18.5-esmbeta.2"
+    "@pie-lib/plot" "^2.24.6-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
+    "@pie-lib/translator" "^2.20.5-esmbeta.2"
     "@vx/axis" "^0.0.189"
     "@vx/clip-path" "^0.0.189"
     "@vx/event" "^0.0.189"
@@ -2746,7 +2962,15 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@1.30.6-esmbeta.0", "@pie-lib/mask-markup@^1.30.6-esmbeta.0":
+"@pie-lib/icons@^2.21.5-esmbeta.2":
+  version "2.21.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-2.21.5-esmbeta.2.tgz#9bb0c3efa448bd988d11dddc63ec9534181308e8"
+  integrity sha512-LDcF0K+yYr651+tOVGfOOhhuVspktqdwzwOtUe8p401lrdPpFIQ3CrcFzFc5lccQI4ErUyZHBn6En6XWxaR1DA==
+  dependencies:
+    classnames "^2.2.6"
+    prop-types "^15.6.2"
+
+"@pie-lib/mask-markup@1.30.6-esmbeta.0":
   version "1.30.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.30.6-esmbeta.0.tgz#19171a04fd243bc13e0f6c026eaa60ed0cfbe790"
   integrity sha512-Ap1uOKguLMADj00jkZucf7TmNyLGE3705eGz+1HZdBG0kPu2gPl/LiZDvo64BRdTaa3JqXpXgpb4U/SFYxu6FA==
@@ -2757,6 +2981,31 @@
     "@pie-lib/editable-html" "^11.18.6-esmbeta.0"
     "@pie-lib/math-rendering" "^3.19.5-esmbeta.0"
     "@pie-lib/render-ui" "^4.32.6-esmbeta.0"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-dnd-html5-backend "^14.0.2"
+    react-dom "^16.9.0"
+    slate "^0.36.2"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    to-style "^1.3.3"
+
+"@pie-lib/mask-markup@^1.30.6-esmbeta.2":
+  version "1.30.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.30.6-esmbeta.2.tgz#618d2c441726163f4acdbaf7daa6e4a28c11d392"
+  integrity sha512-fxR0H+slJWZoKGgvURmEcQ172Eyj3WchZbmipP+bqePQx9gNCFRZBOcG7o7NRFOurnpwKHaRAtjCve3aoXDSXg==
+  dependencies:
+    "@material-ui/core" "^3.9.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/drag" "^2.19.6-esmbeta.2"
+    "@pie-lib/editable-html" "^11.18.6-esmbeta.2"
+    "@pie-lib/math-rendering" "^3.19.5-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
     classnames "^2.2.6"
     debug "^4.1.1"
     immutable "^4.0.0-rc.12"
@@ -2799,6 +3048,20 @@
   version "6.28.5"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.28.5.tgz#b19a051ff8d9d5a91998eefeee7502d29f26687f"
   integrity sha512-h9po7CgW0EZzA2B8swZsRXsfx0beDugMDY77JhHcjATwKv4X8HRnAJvcB3mDgtc2q3AdH3S8SS7nkMLlg13klA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-framework/mathquill" "^1.1.3"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react-portal "^4.2.0"
+
+"@pie-lib/math-input@^6.28.6-esmbeta.2":
+  version "6.28.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.28.6-esmbeta.2.tgz#64977c0395b8853006e609b9962d17f26b378003"
+  integrity sha512-ooSWiv5j881VkwqizgtdL2bY2xKZw/g67iFx48Ycr+66OoBDEvbFTbB0Jg1mtXXPuNk5IvPqmmkD67se1+0hKg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2856,6 +3119,17 @@
     mathjax-full "3.2.2"
     react "^16.8.1"
 
+"@pie-lib/math-rendering@^3.19.5-esmbeta.2":
+  version "3.19.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-3.19.5-esmbeta.2.tgz#5369fab40530f8d4d4a7e062ab13e84273eab98c"
+  integrity sha512-zBP3N5A0EJ1lfhBp77bvz4L/YeuX2VOsJtS0p3t1k7hJqDl4SHanmLkb6s2JhPAwDt8DycKL0nozT0ifUGk7Nw==
+  dependencies:
+    "@pie-framework/mathml-to-latex" "1.4.4"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    mathjax-full "3.2.2"
+    react "^16.8.1"
+
 "@pie-lib/math-toolbar@1.28.6-esmbeta.0", "@pie-lib/math-toolbar@^1.28.6-esmbeta.0":
   version "1.28.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.28.6-esmbeta.0.tgz#df654123949d05a591e70bc2d1814c2effffd57d"
@@ -2886,6 +3160,21 @@
     lodash "^4.17.11"
     prop-types "^15.7.2"
 
+"@pie-lib/math-toolbar@^1.28.6-esmbeta.2":
+  version "1.28.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.28.6-esmbeta.2.tgz#16c5bcaeb1ed75e814af8446d5ed52acb61351f8"
+  integrity sha512-ijniYRpSUD2LvaF2kf9hd57ZfdvFPVTv17wZUSgpJglH+BSVix6G3IeKoUoUlM0mgEqWGM44F6APC3Zj4/MjEQ==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-input" "^6.28.6-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+
 "@pie-lib/plot@2.24.6-esmbeta.0", "@pie-lib/plot@^2.24.6-esmbeta.0":
   version "2.24.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-2.24.6-esmbeta.0.tgz#438de4879b5b59dee525c144c620f6075570f29e"
@@ -2895,6 +3184,33 @@
     "@material-ui/core" "^3.8.3"
     "@pie-lib/editable-html" "^11.18.6-esmbeta.0"
     "@pie-lib/render-ui" "^4.32.6-esmbeta.0"
+    "@vx/axis" "^0.0.183"
+    "@vx/event" "^0.0.182"
+    "@vx/grid" "^0.0.183"
+    "@vx/point" "^0.0.182"
+    "@vx/shape" "^0.0.183"
+    assert "^1.4.1"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-draggable "^3.1.1"
+    react-redux "^6.0.0"
+    redux "^4.0.1"
+
+"@pie-lib/plot@^2.24.6-esmbeta.2":
+  version "2.24.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-2.24.6-esmbeta.2.tgz#7db95491a226070722295ece3f707d2e5d5d86b4"
+  integrity sha512-+WzfA987JUkKeQYheje3UHnWQrTG0ecAtTJptSyiFlnAR70c3qSaH7/Kcby7uJs6PhOMAA9KQfAATOaeori+lQ==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/editable-html" "^11.18.6-esmbeta.2"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
     "@vx/axis" "^0.0.183"
     "@vx/event" "^0.0.182"
     "@vx/grid" "^0.0.183"
@@ -2961,7 +3277,23 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@0.25.6-esmbeta.0", "@pie-lib/rubric@^0.25.6-esmbeta.0":
+"@pie-lib/render-ui@^4.32.6-esmbeta.2":
+  version "4.32.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.32.6-esmbeta.2.tgz#8aab81c57e986739121c780521188f2d0427212b"
+  integrity sha512-qObsq9mbQI4F1XEuLXWgJ1RAfXjlBY0PeSB7W+WOKdZsR+2WM+SvH/kb0WYOtMeAbgwCDInMURMY45ZenTuRow==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/icons" "^2.21.5-esmbeta.2"
+    "@pie-lib/math-rendering" "^3.19.5-esmbeta.2"
+    "@pie-lib/test-utils" "^0.19.6-esmbeta.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react-transition-group "^2.5.2"
+
+"@pie-lib/rubric@0.25.6-esmbeta.0":
   version "0.25.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.25.6-esmbeta.0.tgz#2498d108b432d2b86f48b519b5a91a60268c25a6"
   integrity sha512-sHZkObQRcb89s5dm/hYDs4LV1o3TtE4g+UgigBQc1P3kHbF2B8Y2Mfs5BXTp/TxwB9TVyPrkRvrTnyUm8P35yA==
@@ -2969,6 +3301,22 @@
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/editable-html" "^11.18.6-esmbeta.0"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-beautiful-dnd "^11.0.2"
+    react-dom "^16.9.0"
+
+"@pie-lib/rubric@^0.25.6-esmbeta.2":
+  version "0.25.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.25.6-esmbeta.2.tgz#b8166f97fd8c06658fd1d75fc15784a281ba672c"
+  integrity sha512-oBipuT6Ket7/sP8LfGCMt5pf8JMNo1zS10wgTpFatuDpgYoWQGtnliaosG7L2n6S/qJRYk5+I1/7ha6JKm5qcw==
+  dependencies:
+    "@material-ui/core" "^3.9.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/editable-html" "^11.18.6-esmbeta.2"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2995,6 +3343,11 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/style-utils/-/style-utils-0.18.5-esmbeta.0.tgz#ed61a89c76b950cac71dba1573dc8cb26c2d063e"
   integrity sha512-GcFPFhRtl9P9OewrnlUHCNFEcfDjhZKQvxxeenRPIq1J3XYMNqJlaJyVkvX2F69bwLYEGeNnTAuBJDAXWQfOUw==
 
+"@pie-lib/style-utils@^0.18.5-esmbeta.2":
+  version "0.18.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/style-utils/-/style-utils-0.18.5-esmbeta.2.tgz#8f22be64cb3e6fab59363eb330b057c97874a2da"
+  integrity sha512-iqH6C0B3TjfUikyqfzsB/t6dpxQmOmA3U7TKs318FM5Zvc/hg1z8pOETpbe5ussFh8ZZRYglQSqo2EDn3dHomw==
+
 "@pie-lib/test-utils@0.19.6-esmbeta.0", "@pie-lib/test-utils@^0.19.6-esmbeta.0":
   version "0.19.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.19.6-esmbeta.0.tgz#2bf925ca3e6de39d25c1c2b28e20b90bf6861348"
@@ -3010,7 +3363,12 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.19.5.tgz#0006d20e0a52f0eb9178055ca4e05bd29760a591"
   integrity sha512-HYvIA6A865PEzxzKvEbh+CGmXFJg8ra6QVdKAxTa2+ROu1HXLyJqal0l8juzZRwT0cDrwVxPQTtxP2+2QSw6HQ==
 
-"@pie-lib/text-select@1.29.6-esmbeta.0", "@pie-lib/text-select@^1.29.6-esmbeta.0":
+"@pie-lib/test-utils@^0.19.6-esmbeta.2":
+  version "0.19.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.19.6-esmbeta.2.tgz#ccbc0135fa70b743b9a541dc649c4a5a5e99b0a0"
+  integrity sha512-+KAPuR+xrZdNg+jcfjcdEwNfjVde55vjcAxz5CIBAyqavJvInRZzltaa/yabP4F/r98hRTgy2M7Gc5z8a8VsXw==
+
+"@pie-lib/text-select@1.29.6-esmbeta.0":
   version "1.29.6-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.29.6-esmbeta.0.tgz#fc51df7223dbb8586f5a50c2d85f186beeb5adf7"
   integrity sha512-6iXKSnWnp4NVZox2i6/3ey3MURiJS4T5LCQne6E4+/4zO5MIYA44FNRXguqBeNa/gpiRrgA54tHDxZeLahiuxg==
@@ -3027,6 +3385,23 @@
     prop-types "^15.6.2"
     unist-util-inspect "^4.1.3"
 
+"@pie-lib/text-select@^1.29.6-esmbeta.2":
+  version "1.29.6-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.29.6-esmbeta.2.tgz#c8af7be5e20c6496b24f5fe7854516294175c83b"
+  integrity sha512-xacQfJgOMexd0Eu+RpP65rqMCS6OHyghprNLUa7ngajsPccAOiuPh44Y2uvqkuEIVdOJkmX/DEUeOL44Ab9YyQ==
+  dependencies:
+    "@material-ui/icons" "^3.0.2"
+    "@pie-framework/parse-english" "^1.0.0"
+    "@pie-lib/render-ui" "^4.32.6-esmbeta.2"
+    "@pie-lib/style-utils" "^0.18.5-esmbeta.2"
+    "@pie-lib/translator" "^2.20.5-esmbeta.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    unist-util-inspect "^4.1.3"
+
 "@pie-lib/tools@0.26.5-esmbeta.0", "@pie-lib/tools@^0.26.5-esmbeta.0":
   version "0.26.5-esmbeta.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/tools/-/tools-0.26.5-esmbeta.0.tgz#2adae0c0deaaa08456c2238a0df0ca3b7520c874"
@@ -3034,6 +3409,22 @@
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@pie-lib/style-utils" "^0.18.5-esmbeta.0"
+    assert "^1.4.1"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react-portal "^4.2.0"
+    trigonometry-calculator "^2.0.0"
+
+"@pie-lib/tools@^0.26.5-esmbeta.2":
+  version "0.26.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/tools/-/tools-0.26.5-esmbeta.2.tgz#89971bdfc2e1a630a1878b984c8723bea4f1378e"
+  integrity sha512-qvNIUOH8fa1/TwKTW1eNfzgfRQK5hEPULdtrz3WMbHMGP9Nit0xAa+rXv0A/VpQDCBdu2uyK2Tg7HrUg1u4mcw==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@pie-lib/style-utils" "^0.18.5-esmbeta.2"
     assert "^1.4.1"
     classnames "^2.2.6"
     debug "^4.1.1"
@@ -3059,6 +3450,18 @@
   version "2.20.2"
   resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.20.2.tgz#eb5d37ab54dcb0e35b244c305a028281932fcdad"
   integrity sha512-flwlceJ4oNHObg43nILd1KEfxd4I4MUg4dosW0DNd9Q56xQMqUX1mPjnEnHjMPsaLoig7ROO81alkccVz9DPcg==
+  dependencies:
+    debug "^4.1.1"
+    i18next "^22.5.0"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-dom "^16.9.0"
+
+"@pie-lib/translator@^2.20.5-esmbeta.2":
+  version "2.20.5-esmbeta.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.20.5-esmbeta.2.tgz#afc3c14b0080760e965829957ab699585ba8b9e4"
+  integrity sha512-WEszbDMe5OFb7eTkwpxK1XIwJlc+XDUAXp4DWUk9OlnSPQOmQsmr8me0GACjh89fxnohMoRaGnONFTk26voBIA==
   dependencies:
     debug "^4.1.1"
     i18next "^22.5.0"
