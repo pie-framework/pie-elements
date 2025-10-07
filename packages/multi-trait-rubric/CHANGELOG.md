@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@5.0.0...@pie-element/multi-trait-rubric@6.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.7.2...@pie-element/multi-trait-rubric@6.0.0) (2025-10-02)
 
 
