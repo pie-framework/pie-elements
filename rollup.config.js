@@ -49,16 +49,9 @@ const external = [
   /^@pie-framework\//,
 ];
 
-// Configure builds: Bundle React + ReactDOM together to avoid version mismatches
-// Configure components are isolated authoring UIs that don't share React instances
-const configureExternal = [
-  // PIE packages only - Bundle React/ReactDOM for version safety
-  /@pie-lib\/.*/,
-  /@pie-element\/.*/,
-  '@pie-framework/pie-player-events',
-  '@pie-framework/pie-configure-events',
-  /^@pie-framework\//,
-];
+// Configure builds use the SAME externals as element/controller/print
+// No special case needed - configure also uses Slate, so needs bundled react-dom
+const configureExternal = external;
 
 const plugins = [
   nodeResolve({
@@ -66,8 +59,7 @@ const plugins = [
     browser: true,
     preferBuiltins: false,
   }),
-  // CommonJS MUST come BEFORE Babel
-  // Convert require() to import FIRST, then transpile
+  // CommonJS FIRST PASS: Convert node_modules
   commonjs({
     include: /node_modules/,
   }),
@@ -102,6 +94,8 @@ const plugins = [
     ],
     extensions: ['.js', '.jsx'],
   }),
+  // CommonJS SECOND PASS: Clean up any Babel-emitted CommonJS helpers
+  commonjs(),
 ].filter(Boolean);
 
 module.exports.default = function createConfig(input, output) {
