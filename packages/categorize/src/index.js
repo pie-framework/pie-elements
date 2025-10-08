@@ -51,7 +51,7 @@ export default class Categorize extends HTMLElement {
     // as the number of populated response areas in the correct answer
     const areResponseAreasFilled = filledResponseAreas >= responseAreasToBeFilled;
     // check if multiple placements are allowed
-    const duplicatesAllowed = choices.some((choice) => choice.categoryCount === 0);
+    const duplicatesAllowed = (choices || []).some((choice) => choice.categoryCount === 0);
 
     if (duplicatesAllowed) {
       // an answer choice can be used multiple times
@@ -61,7 +61,7 @@ export default class Categorize extends HTMLElement {
     const allAnswersIds = answers.map((answer) => answer.choices).flat();
 
     // check if any correct answer have any unplaced answer choices
-    const requiredAnswersPlaced = possibleResponses.some((response) =>
+    const requiredAnswersPlaced = (possibleResponses || []).some((response) =>
       response.every((val) => allAnswersIds.includes(val)),
     );
 

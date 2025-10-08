@@ -6,7 +6,7 @@ import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-ev
 import Main from './main';
 
 export const isComplete = (session, model, audioComplete, elementContext) => {
-  const { autoplayAudioEnabled, completeAudioEnabled } = model || {};
+  const { autoplayAudioEnabled, completeAudioEnabled, responseAreasToBeFilled } = model || {};
 
   if (autoplayAudioEnabled && completeAudioEnabled && !audioComplete) {
     if (elementContext) {
@@ -26,7 +26,7 @@ export const isComplete = (session, model, audioComplete, elementContext) => {
 
   const filledResponseAreas = Object.values(session.value || {}).filter((val) => !!val).length;
 
-  return filledResponseAreas >= model.responseAreasToBeFilled;
+  return filledResponseAreas >= responseAreasToBeFilled;
 };
 
 export default class DragInTheBlank extends HTMLElement {
