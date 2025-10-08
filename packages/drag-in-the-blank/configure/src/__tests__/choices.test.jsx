@@ -194,16 +194,27 @@ describe('Choices', () => {
 
     describe('onChoiceRemove & onAddChoice', () => {
       it('prevents duplicate IDs when adding choices after removing some', () => {
-        w.instance().onChoiceRemove('1');
+        const initialWrapper = wrapper();
 
-        expect(onChange).toBeCalledWith([
+        initialWrapper.instance().onChoiceRemove('1');
+
+        expect(onChange).toHaveBeenCalledWith([
           { value: '<div>6</div>', id: '0' },
           { value: '<div>12</div>', id: '2' },
         ]);
 
-        w.instance().onAddChoice();
+        const updatedChoices = [
+          { value: '<div>6</div>', id: '0' },
+          { value: '<div>12</div>', id: '2' },
+        ];
+        
+        const wrapperWithUpdatedState = wrapper({
+          model: { ...model, choices: updatedChoices }
+        });
 
-        expect(onChange).toBeCalledWith([
+        wrapperWithUpdatedState.instance().onAddChoice();
+
+        expect(onChange).toHaveBeenLastCalledWith([
           { value: '<div>6</div>', id: '0' },
           { value: '<div>12</div>', id: '2' },
           { id: '3', value: '' }
