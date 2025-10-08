@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import { EnableAudioAutoplayImage } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
+import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 
 import ImageClozeAssociationComponent from './root';
@@ -78,7 +78,7 @@ export default class ImageClozeAssociation extends HTMLElement {
       alignItems: 'center',
       background: 'white',
       zIndex: '1000',
-      cursor: 'pointer'
+      cursor: 'pointer',
     });
 
     const img = document.createElement('img');

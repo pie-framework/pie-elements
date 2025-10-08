@@ -3,6 +3,97 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@8.0.0...@pie-element/explicit-constructed-response-configure@8.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.7.0...@pie-element/explicit-constructed-response-configure@8.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.7.0...@pie-element/explicit-constructed-response-configure@8.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.6.3...@pie-element/explicit-constructed-response-configure@7.7.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+
+
+### Features
+
+* split pie-toolbox PD-5157 ([14a65fc](https://github.com/pie-framework/pie-elements/commit/14a65fc8d448a9d3ae3cc1ff3f390729043ba2b5))
+
+
+
+
+
+## [7.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.6.2...@pie-element/explicit-constructed-response-configure@7.6.3) (2025-09-11)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
+
+
+
+
+
+## [7.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.6.1...@pie-element/explicit-constructed-response-configure@7.6.2) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
+
+
+
+
+
+## [7.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.6.0...@pie-element/explicit-constructed-response-configure@7.6.1) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
+
+
+
+
+
+# [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.5.5...@pie-element/explicit-constructed-response-configure@7.6.0) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+* **explicit-constructed-response:** fix max length logic to work with special characters PD-5168 ([9a37527](https://github.com/pie-framework/pie-elements/commit/9a37527ef21a30bf06d1ca4d2513ba8954a676b7))
+
+
+### Features
+
+* add tests to PD-5168 ([10d9ff1](https://github.com/pie-framework/pie-elements/commit/10d9ff1fc6d42558d5504f107a29b7774becd5c8))
+
+
+
+
+
 ## [7.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.5.4...@pie-element/explicit-constructed-response-configure@7.5.5) (2025-08-15)
 
 

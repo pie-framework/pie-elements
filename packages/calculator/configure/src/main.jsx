@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { layout, TwoChoice } from '@pie-lib/pie-toolbox/config-ui';
+import { layout, TwoChoice } from '@pie-lib/config-ui';
 import { CalculatorLayout } from '@pie-element/calculator';
 import Typography from '@material-ui/core/Typography';
 

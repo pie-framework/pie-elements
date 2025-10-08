@@ -1,6 +1,6 @@
 jest.mock('@pie-element/rubric', () => jest.fn());
 jest.mock('@pie-element/multi-trait-rubric', () => jest.fn());
-jest.mock('@pie-lib/pie-toolbox/rubric', () => ({
+jest.mock('@pie-lib/rubric', () => ({
   RUBRIC_TYPES: {
     SIMPLE_RUBRIC: 'simpleRubric',
     MULTI_TRAIT_RUBRIC: 'multiTraitRubric',

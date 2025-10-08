@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { ConstructedResponse } from '@pie-lib/pie-toolbox/mask-markup';
-import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { ConstructedResponse } from '@pie-lib/mask-markup';
+import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 
@@ -130,7 +130,8 @@ export class Main extends React.Component {
     const rationaleDiv = <PreviewPrompt prompt={rationale} />;
 
     const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
-    const showTeacherInstructions = teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
+    const showTeacherInstructions =
+      teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={mainClasses} style={{ display: `${displayType}` }}>

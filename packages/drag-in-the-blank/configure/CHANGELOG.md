@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@7.0.0...@pie-element/drag-in-the-blank-configure@7.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [7.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.7.0...@pie-element/drag-in-the-blank-configure@7.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.7.0...@pie-element/drag-in-the-blank-configure@7.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.6.9...@pie-element/drag-in-the-blank-configure@6.7.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* import ([8ffdc56](https://github.com/pie-framework/pie-elements/commit/8ffdc56e56a24da761ea2ad2b36cb9bc09747794))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+* update snapshots ([cac6e30](https://github.com/pie-framework/pie-elements/commit/cac6e30f25033145c3749d04f9ecd56feead74b5))
+
+
+### Features
+
+* split pie-toolbox PD-5126, PD-5152 ([888b486](https://github.com/pie-framework/pie-elements/commit/888b4867728ca1ae8b25a5685fb77a219f7a0fb9))
+
+
+
+
+
+## [6.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.6.8...@pie-element/drag-in-the-blank-configure@6.6.9) (2025-09-11)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
+
+
+
+
+
+## [6.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.6.7...@pie-element/drag-in-the-blank-configure@6.6.8) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
+
+
+
+
+
+## [6.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.6.6...@pie-element/drag-in-the-blank-configure@6.6.7) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
+
+
+
+
+
+## [6.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.6.5...@pie-element/drag-in-the-blank-configure@6.6.6) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+
+
+
+
+
 ## [6.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.6.4...@pie-element/drag-in-the-blank-configure@6.6.5) (2025-08-15)
 
 

@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import CardBar from './card-bar';
-import { Checkbox } from '@pie-lib/pie-toolbox/config-ui';
+import { Checkbox } from '@pie-lib/config-ui';
 import cloneDeep from 'lodash/cloneDeep';
 
 export class ModelOptions extends React.Component {

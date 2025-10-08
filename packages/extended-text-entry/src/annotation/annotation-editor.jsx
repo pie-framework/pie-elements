@@ -15,9 +15,8 @@ import {
 } from './annotation-utils';
 import FreeformEditor from './freeform-editor';
 import AnnotationMenu from './annotation-menu';
-
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
+import { InputContainer } from '@pie-lib/config-ui';
 
 const style = (theme) => ({
   textContainer: {
@@ -135,7 +134,7 @@ const style = (theme) => ({
     position: 'absolute',
     padding: theme.spacing.unit / 2,
     borderRadius: '4px',
-    marginLeft: theme.spacing.unit ,
+    marginLeft: theme.spacing.unit,
     width: '180px',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
@@ -581,7 +580,7 @@ class AnnotationEditor extends React.Component {
               },
               textAlign: {
                 disabled: true,
-              }
+              },
             }}
           />
         </InputContainer>

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer } from '@pie-lib/pie-toolbox/graphing-solution-set';
-import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { GraphContainer } from '@pie-lib/graphing-solution-set';
+import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { findSectionsInSolutionSet, pointInsidePolygon, checkIfLinesAreAdded } from './utils';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import { AlertDialog } from '@pie-lib/config-ui';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -226,7 +226,8 @@ export class Main extends React.Component {
     } = model || {};
     const marks = answersCorrected || answer || [];
     const showRationale = model.rationale && (hasText(model.rationale) || hasMedia(model.rationale));
-    const showTeacherInstructions = model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
+    const showTeacherInstructions =
+      model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
         {showTeacherInstructions && (

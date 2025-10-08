@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MultipleChoice, Choice } from '../multiple-choice';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
 describe('Choice', () => {
   let wrapper,
@@ -67,14 +67,14 @@ describe('CorespringChoice', () => {
   let mkWrapper = (opts, clone = true) => {
     opts = clone
       ? {
-        classes: {},
-        choices: [],
-        disabled: false,
-        keyMode: 'letters',
-        onChoiceChanged: jest.fn(),
-        mode: 'gather',
-        ...opts
-      }
+          classes: {},
+          choices: [],
+          disabled: false,
+          keyMode: 'letters',
+          onChoiceChanged: jest.fn(),
+          mode: 'gather',
+          ...opts,
+        }
       : opts;
 
     return shallow(<MultipleChoice {...opts} />);

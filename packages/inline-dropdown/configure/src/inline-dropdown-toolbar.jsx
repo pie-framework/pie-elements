@@ -2,13 +2,13 @@ import { getPluginProps } from './utils';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import EditableHtml from '@pie-lib/editable-html';
+import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import classnames from 'classnames';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
@@ -252,7 +252,7 @@ export class RespAreaToolbar extends React.Component {
 
   onKeyDown = (event) => {
     if (event.key === 'Enter') {
-      this.preventDone = false; 
+      this.preventDone = false;
       this.onAddChoice();
       // Cancelling event
       return false;

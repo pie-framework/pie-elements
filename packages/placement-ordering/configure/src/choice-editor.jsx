@@ -9,8 +9,8 @@ import uniqueId from 'lodash/uniqueId';
 import shuffle from 'lodash/shuffle';
 import isEqual from 'lodash/isEqual';
 import Button from '@material-ui/core/Button';
-import { InputContainer } from '@pie-lib/pie-toolbox/render-ui';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import { InputContainer } from '@pie-lib/render-ui';
+import { AlertDialog } from '@pie-lib/config-ui';
 
 function findFreeChoiceSlot(choices) {
   let slot = 1;
@@ -349,7 +349,7 @@ const styles = (theme) => ({
     gridAutoFlow: 'column',
     display: 'grid',
     gridGap: '10px',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   columnLabel: {
     width: '100%',

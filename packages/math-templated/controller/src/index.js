@@ -1,15 +1,15 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import Translator from '@pie-lib/translator';
 import * as mv from '@pie-framework/math-validation';
 
 import defaults from './defaults';
-import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { partialScoring } from '@pie-lib/controller-utils';
 
 const { translator } = Translator;
 const log = debug('@pie-element:math-templated:controller');
 
-const getFeedback = value => value ? 'correct' : 'incorrect';
+const getFeedback = (value) => (value ? 'correct' : 'incorrect');
 const getContent = (html) => (html || '').replace(/(<(?!img|iframe|source)([^>]+)>)/gi, '');
 
 const getIsAnswerCorrect = (correctResponse, answerItem) => {
@@ -21,15 +21,12 @@ const getIsAnswerCorrect = (correctResponse, answerItem) => {
       literal: {
         allowTrailingZeros: correctResponse.allowTrailingZeros || false,
         ignoreOrder: correctResponse.ignoreOrder || false,
-      }
-    })
+      },
+    }),
   };
 
   if (!answerCorrect) {
-    const acceptedValues = [
-      correctResponse.answer,
-      ...Object.values(correctResponse.alternates || {})
-    ];
+    const acceptedValues = [correctResponse.answer, ...Object.values(correctResponse.alternates || {})];
 
     try {
       for (const value of acceptedValues) {
@@ -78,17 +75,14 @@ const getResponseCorrectness = (question, sessionResponse) => {
     return {
       correctness: getFeedback(fullyCorrect),
       score: correctAnswers > 0 ? score : 0,
-      correct: fullyCorrect
+      correct: fullyCorrect,
     };
   }
 };
 
 export const getCorrectness = (question, env, session) => {
   if (env.mode === 'evaluate') {
-    return getResponseCorrectness(
-      question,
-      session && session.answers
-    );
+    return getResponseCorrectness(question, session && session.answers);
   }
 };
 
@@ -137,15 +131,15 @@ export const createDefaultModel = (model = {}) => {
   return {
     ...defaults.model,
     ...model,
-    responses: updatedResponses
+    responses: updatedResponses,
   };
 };
 
 export const normalizeSession = (s) => ({ ...s });
 
-const getTextFromHTML = html => (html || '').replace(/<\/?[^>]+(>|$)/g, '');
+const getTextFromHTML = (html) => (html || '').replace(/<\/?[^>]+(>|$)/g, '');
 
-export const prepareVal = html => getTextFromHTML(html).trim();
+export const prepareVal = (html) => getTextFromHTML(html).trim();
 
 export const model = (question, session, env) => {
   return new Promise((resolve) => {

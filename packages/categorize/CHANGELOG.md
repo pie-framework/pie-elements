@@ -3,6 +3,123 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@10.0.0...@pie-element/categorize@11.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+# [11.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.16.0...@pie-element/categorize@11.0.0) (2025-10-02)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+# [10.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.16.0...@pie-element/categorize@10.0.0) (2025-10-01)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+# [9.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.15.3...@pie-element/categorize@9.16.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox PD-5126, PD-5155 ([33614fe](https://github.com/pie-framework/pie-elements/commit/33614feec0a20e12b7a379bbe9a3f6829c135aa1))
+
+
+
+
+
+## [9.15.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.15.2...@pie-element/categorize@9.15.3) (2025-09-11)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
+
+
+
+
+
+## [9.15.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.15.1...@pie-element/categorize@9.15.2) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
+
+
+
+
+
+## [9.15.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.15.0...@pie-element/categorize@9.15.1) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
+
+
+
+
+
+# [9.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.14.5...@pie-element/categorize@9.15.0) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+
+
+### Features
+
+* update audio completion checks only to be applied if the item has audio PD-5176 ([4c519b0](https://github.com/pie-framework/pie-elements/commit/4c519b08068328635ae2f6e9d5bdf82374a0637e))
+
+
+
+
+
 ## [9.14.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.14.4...@pie-element/categorize@9.14.5) (2025-08-15)
 
 

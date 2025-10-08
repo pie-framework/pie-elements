@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import EditableHtml from '@pie-lib/editable-html';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { InputContainer, settings, layout, NumberTextField } from '@pie-lib/pie-toolbox/config-ui';
+import { InputContainer, settings, layout, NumberTextField } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import merge from 'lodash/merge';
 import { LIKERT_TYPE, LIKERT_SCALE, LIKERT_ORIENTATION } from './likertEntities';
 import generateChoices from './choiceGenerator';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 const { Panel, toggle, radio } = settings;
 
@@ -71,7 +71,7 @@ const styles = (theme) => ({
     paddingTop: theme.spacing.unit,
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 });
 
@@ -93,8 +93,16 @@ const LikertOrientation = withStyles(styles)((props) => {
         value={model.likertOrientation}
         onChange={onChangeLikertOrientation}
       >
-        <FormControlLabel value={LIKERT_ORIENTATION.horizontal} control={<Radio className={classes.customColor} />} label="Horizontal" />
-        <FormControlLabel value={LIKERT_ORIENTATION.vertical} control={<Radio className={classes.customColor} />} label="Vertical" />
+        <FormControlLabel
+          value={LIKERT_ORIENTATION.horizontal}
+          control={<Radio className={classes.customColor} />}
+          label="Horizontal"
+        />
+        <FormControlLabel
+          value={LIKERT_ORIENTATION.vertical}
+          control={<Radio className={classes.customColor} />}
+          label="Vertical"
+        />
       </RadioGroup>
     </div>
   );
@@ -116,9 +124,21 @@ const LikertScale = withStyles(styles)((props) => {
     <div className={classes.radioButtonsWrapper}>
       <p className={classes.radioButtonsColumnHeader}>Likert Scale</p>
       <RadioGroup aria-label="likertScale" name="likertScale" value={model.likertScale} onChange={onChangeLikertScale}>
-        <FormControlLabel value={LIKERT_SCALE.likert3} control={<Radio className={classes.customColor} />} label="Likert 3" />
-        <FormControlLabel value={LIKERT_SCALE.likert5} control={<Radio className={classes.customColor} />} label="Likert 5" />
-        <FormControlLabel value={LIKERT_SCALE.likert7} control={<Radio className={classes.customColor} />} label="Likert 7" />
+        <FormControlLabel
+          value={LIKERT_SCALE.likert3}
+          control={<Radio className={classes.customColor} />}
+          label="Likert 3"
+        />
+        <FormControlLabel
+          value={LIKERT_SCALE.likert5}
+          control={<Radio className={classes.customColor} />}
+          label="Likert 5"
+        />
+        <FormControlLabel
+          value={LIKERT_SCALE.likert7}
+          control={<Radio className={classes.customColor} />}
+          label="Likert 7"
+        />
       </RadioGroup>
     </div>
   );
@@ -147,9 +167,21 @@ const LikertType = withStyles(styles)((props) => {
           value={model.likertType}
           onChange={onChangeLikertType}
         >
-          <FormControlLabel value={LIKERT_TYPE.agreement} control={<Radio className={classes.customColor} />} label="Agreement" />
-          <FormControlLabel value={LIKERT_TYPE.frequency} control={<Radio className={classes.customColor} />} label="Frequency" />
-          <FormControlLabel value={LIKERT_TYPE.yesNo} control={<Radio className={classes.customColor} />} label="Yes/No" />
+          <FormControlLabel
+            value={LIKERT_TYPE.agreement}
+            control={<Radio className={classes.customColor} />}
+            label="Agreement"
+          />
+          <FormControlLabel
+            value={LIKERT_TYPE.frequency}
+            control={<Radio className={classes.customColor} />}
+            label="Frequency"
+          />
+          <FormControlLabel
+            value={LIKERT_TYPE.yesNo}
+            control={<Radio className={classes.customColor} />}
+            label="Yes/No"
+          />
         </RadioGroup>
 
         <RadioGroup
@@ -158,8 +190,16 @@ const LikertType = withStyles(styles)((props) => {
           value={model.likertType}
           onChange={onChangeLikertType}
         >
-          <FormControlLabel value={LIKERT_TYPE.importance} control={<Radio className={classes.customColor} />} label="Importance" />
-          <FormControlLabel value={LIKERT_TYPE.likelihood} control={<Radio className={classes.customColor} />} label="Likelihood" />
+          <FormControlLabel
+            value={LIKERT_TYPE.importance}
+            control={<Radio className={classes.customColor} />}
+            label="Importance"
+          />
+          <FormControlLabel
+            value={LIKERT_TYPE.likelihood}
+            control={<Radio className={classes.customColor} />}
+            label="Likelihood"
+          />
           <FormControlLabel value={LIKERT_TYPE.like} control={<Radio className={classes.customColor} />} label="Like" />
         </RadioGroup>
       </div>
@@ -214,10 +254,10 @@ const Design = withStyles(styles)((props) => {
 
   const getPluginProps = (props = {}) => {
     return Object.assign(
-        {
-          ...baseInputConfiguration,
-        },
-        props || {},
+      {
+        ...baseInputConfiguration,
+      },
+      props || {},
     );
   };
 

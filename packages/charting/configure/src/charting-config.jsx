@@ -1,10 +1,10 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Chart } from '@pie-lib/pie-toolbox/charting';
-import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import { Chart } from '@pie-lib/charting';
+import { AlertDialog } from '@pie-lib/config-ui';
 import Checkbox from '@material-ui/core/Checkbox';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -21,7 +21,7 @@ const styles = (theme) => ({
     flex: 1,
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 });
 

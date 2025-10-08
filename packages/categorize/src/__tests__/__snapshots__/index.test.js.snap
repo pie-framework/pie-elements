@@ -53,7 +53,7 @@ exports[`categorize renders snapshot 1`] = `
       onRemoveChoice={[Function]}
     />
   </div>
-  <WithStyles(AlertDialog)
+  <Component
     onClose={[Function]}
     onCloseText="Cancel"
     open={false}
@@ -130,7 +130,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
       prompt="This is rationale"
     />
   </WithStyles(Collapsible)>
-  <WithStyles(AlertDialog)
+  <Component
     onClose={[Function]}
     onCloseText="Cancel"
     open={false}
@@ -207,7 +207,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
       onRemoveChoice={[Function]}
     />
   </div>
-  <WithStyles(AlertDialog)
+  <Component
     onClose={[Function]}
     onCloseText="Cancel"
     open={false}

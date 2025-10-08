@@ -1,6 +1,6 @@
-import { Correct, Incorrect, NothingSubmitted, PartiallyCorrect, ShowRationale } from '@pie-lib/pie-toolbox/icons';
+import { Correct, Incorrect, NothingSubmitted, PartiallyCorrect, ShowRationale } from '@pie-lib/icons';
 import PropTypes from 'prop-types';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 
 import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';

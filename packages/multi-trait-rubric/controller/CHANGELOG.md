@@ -3,6 +3,116 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@4.0.0...@pie-element/multi-trait-rubric-controller@4.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-controller
+
+
+
+
+
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.3.2...@pie-element/multi-trait-rubric-controller@4.0.1) (2025-10-02)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-controller
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.3.2...@pie-element/multi-trait-rubric-controller@4.0.0) (2025-10-01)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-controller
+
+
+
+
+
+## [3.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.3.1...@pie-element/multi-trait-rubric-controller@3.3.2) (2025-09-30)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([48b5b59](https://github.com/pie-framework/pie-elements/commit/48b5b5930ef9ecd0cda426867859d7ab6048bfda))
+
+
+
+
+
+## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.3.0...@pie-element/multi-trait-rubric-controller@3.3.1) (2025-09-29)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([cdad900](https://github.com/pie-framework/pie-elements/commit/cdad90085b34b16d9fedd742346e651d81474dad))
+
+
+
+
+
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.2.9...@pie-element/multi-trait-rubric-controller@3.3.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
+* merge develop ([9f997d7](https://github.com/pie-framework/pie-elements/commit/9f997d7a9813bed26b760f14fbf841e373bb0bb8))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox in ebsr, rubric, multi-trait-rubric, complex-rubric PD-5158 ([314604f](https://github.com/pie-framework/pie-elements/commit/314604fcc9bea9632ca78afd01be0e7516937313))
+
+
+
+
+
+## [3.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.2.8...@pie-element/multi-trait-rubric-controller@3.2.9) (2025-09-11)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
+
+
+
+
+
+## [3.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.2.7...@pie-element/multi-trait-rubric-controller@3.2.8) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
+
+
+
+
+
+## [3.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.2.6...@pie-element/multi-trait-rubric-controller@3.2.7) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
+
+
+
+
+
+## [3.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.2.5...@pie-element/multi-trait-rubric-controller@3.2.6) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+
+
+
+
+
 ## [3.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.2.4...@pie-element/multi-trait-rubric-controller@3.2.5) (2025-08-15)
 
 

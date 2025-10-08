@@ -110,7 +110,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
       ]
     }
   />
-  <WithStyles(AlertDialog)
+  <Component
     onConfirmText="OK"
     open={false}
   />

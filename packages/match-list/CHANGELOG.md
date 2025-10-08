@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@4.0.0...@pie-element/match-list@5.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.3.0...@pie-element/match-list@5.0.0) (2025-10-02)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.3.0...@pie-element/match-list@4.0.0) (2025-10-01)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.2.9...@pie-element/match-list@3.3.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* merge develop ([9f997d7](https://github.com/pie-framework/pie-elements/commit/9f997d7a9813bed26b760f14fbf841e373bb0bb8))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox for likert, match, match-list  PD-5158 ([a1bd3d7](https://github.com/pie-framework/pie-elements/commit/a1bd3d75c84f3a60844ffa3c0f386cdf5d186b39))
+
+
+
+
+
+## [3.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.2.8...@pie-element/match-list@3.2.9) (2025-09-11)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
+
+
+
+
+
+## [3.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.2.7...@pie-element/match-list@3.2.8) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
+
+
+
+
+
+## [3.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.2.6...@pie-element/match-list@3.2.7) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
+
+
+
+
+
+## [3.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.2.5...@pie-element/match-list@3.2.6) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+
+
+
+
+
 ## [3.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.2.4...@pie-element/match-list@3.2.5) (2025-08-15)
 
 

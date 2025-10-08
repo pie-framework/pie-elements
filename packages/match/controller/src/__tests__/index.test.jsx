@@ -1,5 +1,5 @@
 import { model, outcome, createCorrectResponseSession } from '../index';
-import { defaults as feedbackDefaults } from '@pie-lib/pie-toolbox/feedback';
+import { defaults as feedbackDefaults } from '@pie-lib/feedback';
 
 const defaultModel = {
   id: '1',

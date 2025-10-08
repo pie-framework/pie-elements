@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
-import { layout } from '@pie-lib/pie-toolbox/config-ui';
+import { RUBRIC_TYPES } from '@pie-lib/rubric';
+import { layout } from '@pie-lib/config-ui';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 import classNames from 'classnames';
 
 const styles = {
@@ -15,11 +15,11 @@ const styles = {
     paddingRight: '24px',
     boxSizing: 'border-box',
     '&:hover': {
-      background: 'var(--pie-secondary-background, rgba(241,241,241,1))'
-    }
+      background: 'var(--pie-secondary-background, rgba(241,241,241,1))',
+    },
   },
   customColor: {
-    color: `${color.tertiary()} !important`
+    color: `${color.tertiary()} !important`,
   },
 };
 const rubricLabels = {
@@ -56,14 +56,21 @@ export class Main extends React.Component {
 
     const { extraCSSRules, rubrics = {} } = model || {};
     let { rubricType } = model;
-    const { contentDimensions = {}, rubricOptions = [], multiTraitRubric, simpleRubric, rubricless, width } = configuration;
+    const {
+      contentDimensions = {},
+      rubricOptions = [],
+      multiTraitRubric,
+      simpleRubric,
+      rubricless,
+      width,
+    } = configuration;
     let rubricTag = '';
 
     if (!rubricType) {
       rubricType = RUBRIC_TYPES.SIMPLE_RUBRIC;
     }
 
-    const isRubricTypeAvailable =  rubricOptions.indexOf(rubricType) > -1;
+    const isRubricTypeAvailable = rubricOptions.indexOf(rubricType) > -1;
 
     if (canUpdateModel) {
       switch (rubricType) {
@@ -76,7 +83,7 @@ export class Main extends React.Component {
               ref={(ref) => {
                 if (ref) {
                   this.simpleRubric = ref;
-                  this.simpleRubric.model = {...rubrics.simpleRubric, errors: model.errors || {}};
+                  this.simpleRubric.model = { ...rubrics.simpleRubric, errors: model.errors || {} };
                   this.simpleRubric.configuration = { ...simpleRubric, width };
                 }
               }}
@@ -93,7 +100,7 @@ export class Main extends React.Component {
                 if (ref) {
                   this.multiTraitRubric = ref;
 
-                  this.multiTraitRubric.model = {...rubrics.multiTraitRubric, errors: model.errors || {} };
+                  this.multiTraitRubric.model = { ...rubrics.multiTraitRubric, errors: model.errors || {} };
                   this.multiTraitRubric.configuration = { ...multiTraitRubric, width: width || multiTraitRubric.width };
                 }
               }}
@@ -103,42 +110,46 @@ export class Main extends React.Component {
 
         case RUBRIC_TYPES.RUBRICLESS:
           rubricTag = (
-              <rubric-configure
-                  id="rubricless"
-                  key="rubricless"
-                  ref={(ref) => {
-                    if (ref) {
-                      this.rubricless = ref;
+            <rubric-configure
+              id="rubricless"
+              key="rubricless"
+              ref={(ref) => {
+                if (ref) {
+                  this.rubricless = ref;
 
-                      this.rubricless.model = rubrics.rubricless;
-                      this.rubricless.configuration = { ...rubricless, width };
-                    }
-                  }}
-              />
+                  this.rubricless.model = rubrics.rubricless;
+                  this.rubricless.configuration = { ...rubricless, width };
+                }
+              }}
+            />
           );
           break;
       }
     }
 
     return (
-      <layout.ConfigLayout extraCSSRules={extraCSSRules} dimensions={contentDimensions} hideSettings={true} settings={null}>
+      <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
+        dimensions={contentDimensions}
+        hideSettings={true}
+        settings={null}
+      >
         <RadioGroup
           aria-label="rubric-type"
           name="rubricType"
           value={model.rubricType}
           onChange={this.onChangeRubricType}
         >
-          {
-            rubricOptions.length > 1 && rubricOptions.map((availableRubric, i)=>
+          {rubricOptions.length > 1 &&
+            rubricOptions.map((availableRubric, i) => (
               <FormControlLabel
                 key={i}
                 value={availableRubric}
                 control={<Radio className={classes.customColor} checked={rubricType === availableRubric} />}
                 label={rubricLabels[availableRubric]}
                 classes={{ root: classes.root }}
-            />
-          )
-          }
+              />
+            ))}
         </RadioGroup>
 
         {isRubricTypeAvailable && rubricTag}

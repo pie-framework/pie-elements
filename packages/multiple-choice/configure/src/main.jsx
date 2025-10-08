@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import EditableHtml from '@pie-lib/editable-html';
 import {
   AlertDialog,
   InputContainer,
@@ -8,8 +8,8 @@ import {
   settings,
   layout,
   choiceUtils as utils,
-} from '@pie-lib/pie-toolbox/config-ui';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+} from '@pie-lib/config-ui';
+import { color } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -259,7 +259,9 @@ const Design = withStyles(styles)((props) => {
       )}
 
       <div className={classes.flexContainer}>
-        <Typography className={classes.titleText} component={'div'}>Choices</Typography>
+        <Typography className={classes.titleText} component={'div'}>
+          Choices
+        </Typography>
         <Tooltip
           classes={{ tooltip: classes.tooltip }}
           disableFocusListener

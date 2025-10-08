@@ -2,13 +2,13 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import EditableHtml from '@pie-lib/editable-html';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/render-ui';
 import grey from '@material-ui/core/colors/grey';
 import { filteredDefaultPlugins } from './utils';
 
@@ -139,7 +139,7 @@ const scorePointsStyles = (theme) => ({
     color: theme.palette.error.main,
     paddingBottom: theme.spacing.unit,
   },
-})
+});
 
 export const ScorePoint = withStyles((theme) => ({
   scorePointBoxWrapper: {
@@ -189,18 +189,19 @@ export const ScorePoint = withStyles((theme) => ({
   },
 }))(
   ({
-     classes, error = '',
-     scorePointsValue,
-     scoreDescriptor,
-     pluginProps,
-     onChange,
-     showScorePointLabels,
-     alignToRight,
-     spellCheck,
-     uploadSoundSupport,
-     imageSupport = {},
-     mathMlOptions = {},
-   }) => {
+    classes,
+    error = '',
+    scorePointsValue,
+    scoreDescriptor,
+    pluginProps,
+    onChange,
+    showScorePointLabels,
+    alignToRight,
+    spellCheck,
+    uploadSoundSupport,
+    imageSupport = {},
+    mathMlOptions = {},
+  }) => {
     const scoreBoxClasses = showScorePointLabels
       ? classes.scorePointBox
       : `${classes.scorePointBox} ${classes.scorePointBoxDisabled}`;
@@ -259,12 +260,12 @@ const inputStyles = (theme) => ({
 
 const BootstrapInput = withStyles(inputStyles)(InputBase);
 
-const createMaxScoreOptions = (maxMaxPoints) => Array.from({ length: maxMaxPoints }, (_, i) => i + 1)
+const createMaxScoreOptions = (maxMaxPoints) => Array.from({ length: maxMaxPoints }, (_, i) => i + 1);
 
 export const MaxPointsPicker = withStyles({})(({ maxPoints, onChange, maxMaxPoints }) => (
   <FormControl>
     <InputLabel>Max Points</InputLabel>
-    <Select value={maxPoints} onChange={onChange} input={<BootstrapInput/>}>
+    <Select value={maxPoints} onChange={onChange} input={<BootstrapInput />}>
       {createMaxScoreOptions(maxMaxPoints).map((maxScore) => (
         <MenuItem key={`menu-item-${maxScore}`} value={maxScore}>
           {maxScore}
@@ -288,26 +289,38 @@ export const SimpleInput = withStyles((theme) => ({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-}))(({ classes, markup, onChange, pluginProps, label, spellCheck, uploadSoundSupport, mathMlOptions = {}, imageSupport={} }) => (
-  <div className={classes.simpleInput}>
-    {label && <div>{label}</div>}
+}))(
+  ({
+    classes,
+    markup,
+    onChange,
+    pluginProps,
+    label,
+    spellCheck,
+    uploadSoundSupport,
+    mathMlOptions = {},
+    imageSupport = {},
+  }) => (
+    <div className={classes.simpleInput}>
+      {label && <div>{label}</div>}
 
-    <EditableHtml
-      className={classes.editableLevel}
-      classes={{ slateEditor: classes.slateEditor }}
-      markup={markup}
-      onChange={onChange}
-      placeholder="Trait Label"
-      pluginProps={pluginProps}
-      activePlugins={filteredDefaultPlugins}
-      spellCheck={spellCheck}
-      uploadSoundSupport={uploadSoundSupport}
-      languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-      mathMlOptions={mathMlOptions}
-      imageSupport={imageSupport}
-    />
-  </div>
-));
+      <EditableHtml
+        className={classes.editableLevel}
+        classes={{ slateEditor: classes.slateEditor }}
+        markup={markup}
+        onChange={onChange}
+        placeholder="Trait Label"
+        pluginProps={pluginProps}
+        activePlugins={filteredDefaultPlugins}
+        spellCheck={spellCheck}
+        uploadSoundSupport={uploadSoundSupport}
+        languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+        mathMlOptions={mathMlOptions}
+        imageSupport={imageSupport}
+      />
+    </div>
+  ),
+);
 
 export const UnderlinedInput = withStyles((theme) => ({
   underlinedInputWrapper: {
@@ -336,18 +349,18 @@ export const UnderlinedInput = withStyles((theme) => ({
   },
 }))(
   ({
-     classes,
-     error,
-     markup,
-     onChange,
-     pluginProps,
-     label,
-     placeholder,
-     spellCheck,
-     uploadSoundSupport,
-     imageSupport = {},
-     mathMlOptions = {},
-   }) => (
+    classes,
+    error,
+    markup,
+    onChange,
+    pluginProps,
+    label,
+    placeholder,
+    spellCheck,
+    uploadSoundSupport,
+    imageSupport = {},
+    mathMlOptions = {},
+  }) => (
     <div className={classes.underlinedInputWrapper}>
       {label && <div>{label}</div>}
 
@@ -383,17 +396,18 @@ export const ExpandedInput = withStyles({
   },
 })(
   ({
-     classes, error,
-     markup,
-     onChange,
-     pluginProps,
-     placeholder,
-     alignToRight,
-     spellCheck,
-     uploadSoundSupport,
-     mathMlOptions = {},
-     imageSupport = {},
-   }) => (
+    classes,
+    error,
+    markup,
+    onChange,
+    pluginProps,
+    placeholder,
+    alignToRight,
+    spellCheck,
+    uploadSoundSupport,
+    mathMlOptions = {},
+    imageSupport = {},
+  }) => (
     <div>
       <EditableHtml
         className={classes.prompt}

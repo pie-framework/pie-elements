@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import Translator from '@pie-lib/pie-toolbox/translator';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import Translator from '@pie-lib/translator';
 
 import StyledChoice from './choice';
 
@@ -89,6 +89,11 @@ export class MultipleChoice extends React.Component {
     animationsDisabled: PropTypes.bool,
     language: PropTypes.string,
     selectedAnswerBackgroundColor: PropTypes.string,
+    selectedAnswerStrokeColor: PropTypes.string,
+    selectedAnswerStrokeWidth: PropTypes.string,
+    hoverAnswerBackgroundColor: PropTypes.string,
+    hoverAnswerStrokeColor: PropTypes.string,
+    hoverAnswerStrokeWidth: PropTypes.string,
     onShowCorrectToggle: PropTypes.func,
     isSelectionButtonBelow: PropTypes.bool,
     minSelections: PropTypes.number,
@@ -204,7 +209,14 @@ export class MultipleChoice extends React.Component {
   };
 
   getChecked(choice) {
-    if (this.state.showCorrect) {
+    // to determine if we are in evaluate mode or print mode
+    // since both modes have showCorrect but it interferes with "browse mode" in IBX if the print props are set
+    const isEvaluateMode = this.state.showCorrect && this.props.mode === 'evaluate';
+    const isPrintMode =
+      this.props.alwaysShowCorrect &&
+      (!this.props.session || !this.props.session.value || this.props.session.value.length === 0);
+
+    if (isEvaluateMode || isPrintMode) {
       return choice.correct || false;
     }
 
@@ -357,6 +369,11 @@ export class MultipleChoice extends React.Component {
                 autoFocusRef={index === 0 ? this.firstInputRef : null}
                 choicesLayout={this.props.choicesLayout}
                 selectedAnswerBackgroundColor={this.props.selectedAnswerBackgroundColor}
+                selectedAnswerStrokeColor={this.props.selectedAnswerStrokeColor}
+                selectedAnswerStrokeWidth={this.props.selectedAnswerStrokeWidth}
+                hoverAnswerBackgroundColor={this.props.hoverAnswerBackgroundColor}
+                hoverAnswerStrokeColor={this.props.hoverAnswerStrokeColor}
+                hoverAnswerStrokeWidth={this.props.hoverAnswerStrokeWidth}
                 gridColumns={gridColumns}
                 key={`choice-${index}`}
                 choice={choice}

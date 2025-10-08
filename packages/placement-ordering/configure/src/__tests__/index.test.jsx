@@ -1,6 +1,6 @@
 import { addWeightToCorrectResponse } from '../index';
 
-jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+jest.mock('@pie-lib/config-ui', () => ({
   FeedbackConfig: (props) => <div />,
   FormSection: (props) => <div />,
   InputContainer: (props) => <div />,

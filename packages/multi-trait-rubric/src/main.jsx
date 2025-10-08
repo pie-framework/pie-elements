@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Scale from './scale';
 import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
-import { color, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { color, UiLayout } from '@pie-lib/render-ui';
 
 class Main extends React.Component {
   constructor(props) {
@@ -24,7 +24,8 @@ class Main extends React.Component {
   render() {
     const { model } = this.props;
     let { animationsDisabled } = this.props;
-    const { extraCSSRules, halfScoring, scales, visible, pointLabels, description, standards, arrowsDisabled } = model || {};
+    const { extraCSSRules, halfScoring, scales, visible, pointLabels, description, standards, arrowsDisabled } =
+      model || {};
     animationsDisabled = animationsDisabled || model.animationsDisabled;
 
     if (!scales || !visible) {
@@ -32,7 +33,10 @@ class Main extends React.Component {
     }
 
     const rubricItem = (
-      <UiLayout extraCSSRules={extraCSSRules} style={{ fontFamily: 'Cerebri Sans', color: color.text(), backgroundColor: color.background() }}>
+      <UiLayout
+        extraCSSRules={extraCSSRules}
+        style={{ fontFamily: 'Cerebri Sans', color: color.text(), backgroundColor: color.background() }}
+      >
         {halfScoring ? (
           <div style={{ marginBottom: '16px' }}>* Half-point or in-between scores are permitted under this rubric.</div>
         ) : null}

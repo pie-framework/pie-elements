@@ -1,4 +1,4 @@
-import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
+import { RUBRIC_TYPES } from '@pie-lib/rubric';
 
 const multiTraitDefaultModel = {
   description: false,

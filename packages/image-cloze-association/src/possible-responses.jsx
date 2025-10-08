@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
-import { ICADroppablePlaceholder } from '@pie-lib/pie-toolbox/drag';
+import { color } from '@pie-lib/render-ui';
+import { ICADroppablePlaceholder } from '@pie-lib/drag';
 
 import PossibleResponse from './possible-response';
 
@@ -16,30 +16,30 @@ const PossibleResponses = ({
   answerChoiceTransparency,
   customStyle,
   isVertical,
-  minHeight
-}) =>
-  (
-    <div className={classes.base} style={customStyle}>
-      <ICADroppablePlaceholder
-        classes={classes.pool}
-        disabled={!canDrag}
-        onRemoveAnswer={onAnswerRemove}
-        isVerticalPool={isVertical}
-        minHeight={minHeight}>
-        {(data || []).map((item) => (
-          <PossibleResponse
-            canDrag={canDrag}
-            key={item.id}
-            data={item}
-            onDragBegin={onDragBegin}
-            onDragEnd={onDragEnd}
-            answerChoiceTransparency={answerChoiceTransparency}
-            containerStyle={{ margin: '4px' }}
-          />
-        ))}
-      </ICADroppablePlaceholder>
-    </div>
-  );
+  minHeight,
+}) => (
+  <div className={classes.base} style={customStyle}>
+    <ICADroppablePlaceholder
+      classes={classes.pool}
+      disabled={!canDrag}
+      onRemoveAnswer={onAnswerRemove}
+      isVerticalPool={isVertical}
+      minHeight={minHeight}
+    >
+      {(data || []).map((item) => (
+        <PossibleResponse
+          canDrag={canDrag}
+          key={item.id}
+          data={item}
+          onDragBegin={onDragBegin}
+          onDragEnd={onDragEnd}
+          answerChoiceTransparency={answerChoiceTransparency}
+          containerStyle={{ margin: '4px' }}
+        />
+      ))}
+    </ICADroppablePlaceholder>
+  </div>
+);
 
 PossibleResponses.propTypes = {
   canDrag: PropTypes.bool.isRequired,
@@ -51,7 +51,7 @@ PossibleResponses.propTypes = {
   answerChoiceTransparency: PropTypes.bool,
   customStyle: PropTypes.object,
   isVertical: PropTypes.bool,
-  minHeight: PropTypes.number
+  minHeight: PropTypes.number,
 };
 
 PossibleResponses.defaultProps = {

@@ -3,6 +3,144 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@5.0.0...@pie-element/multi-trait-rubric@6.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.7.2...@pie-element/multi-trait-rubric@6.0.0) (2025-10-02)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.7.2...@pie-element/multi-trait-rubric@5.0.0) (2025-10-01)
+
+
+### Features
+
+* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
+
+
+### Performance Improvements
+
+* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
+
+
+### BREAKING CHANGES
+
+* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
+
+
+
+
+
+## [4.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.7.1...@pie-element/multi-trait-rubric@4.7.2) (2025-09-30)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([48b5b59](https://github.com/pie-framework/pie-elements/commit/48b5b5930ef9ecd0cda426867859d7ab6048bfda))
+
+
+
+
+
+## [4.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.7.0...@pie-element/multi-trait-rubric@4.7.1) (2025-09-29)
+
+
+### Bug Fixes
+
+* add back pie-toolbox PD-5240 ([cdad900](https://github.com/pie-framework/pie-elements/commit/cdad90085b34b16d9fedd742346e651d81474dad))
+
+
+
+
+
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.6.9...@pie-element/multi-trait-rubric@4.7.0) (2025-09-25)
+
+
+### Bug Fixes
+
+* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+* fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
+* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+* merge develop ([9f997d7](https://github.com/pie-framework/pie-elements/commit/9f997d7a9813bed26b760f14fbf841e373bb0bb8))
+* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
+
+
+### Features
+
+* split pie-toolbox in ebsr, rubric, multi-trait-rubric, complex-rubric PD-5158 ([314604f](https://github.com/pie-framework/pie-elements/commit/314604fcc9bea9632ca78afd01be0e7516937313))
+
+
+
+
+
+## [4.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.6.8...@pie-element/multi-trait-rubric@4.6.9) (2025-09-11)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
+
+
+
+
+
+## [4.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.6.7...@pie-element/multi-trait-rubric@4.6.8) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
+
+
+
+
+
+## [4.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.6.6...@pie-element/multi-trait-rubric@4.6.7) (2025-09-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
+
+
+
+
+
+## [4.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.6.5...@pie-element/multi-trait-rubric@4.6.6) (2025-09-02)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
+
+
+
+
+
 ## [4.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.6.4...@pie-element/multi-trait-rubric@4.6.5) (2025-08-15)
 
 
