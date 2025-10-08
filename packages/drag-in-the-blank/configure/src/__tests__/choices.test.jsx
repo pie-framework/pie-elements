@@ -192,6 +192,25 @@ describe('Choices', () => {
       });
     });
 
+    describe('onChoiceRemove & onAddChoice', () => {
+      it('prevents duplicate IDs when adding choices after removing some', () => {
+        w.instance().onChoiceRemove('1');
+
+        expect(onChange).toBeCalledWith([
+          { value: '<div>6</div>', id: '0' },
+          { value: '<div>12</div>', id: '2' },
+        ]);
+
+        w.instance().onAddChoice();
+
+        expect(onChange).toBeCalledWith([
+          { value: '<div>6</div>', id: '0' },
+          { value: '<div>12</div>', id: '2' },
+          { id: '3', value: '' }
+        ]);
+      });
+    });
+
     describe('getVisibleChoices', () => {
       it('choices are null => returns []', () => {
         const visibleChoices = wrapper({ model: { choices: null } })
