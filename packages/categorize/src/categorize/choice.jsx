@@ -71,7 +71,6 @@ const styles = (theme) => ({
   },
   disabled: {
     cursor: 'not-allowed',
-    opacity: '0.6',
   },
   dragging: {
     cursor: 'move',
