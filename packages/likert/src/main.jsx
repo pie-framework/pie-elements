@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { PreviewLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { PreviewLayout } from '@pie-lib/render-ui';
 import Likert from './likert';
 
 class Main extends React.Component {
