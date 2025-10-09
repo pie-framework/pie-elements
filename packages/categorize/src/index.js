@@ -18,7 +18,8 @@ export default class Categorize extends HTMLElement {
   }
 
   isComplete() {
-    const { autoplayAudioEnabled, completeAudioEnabled } = this._model || {};
+    const { autoplayAudioEnabled, choices, completeAudioEnabled, possibleResponses, responseAreasToBeFilled } =
+      this._model || {};
     const elementContext = this;
 
     // check audio completion if audio settings are enabled and audio actually exists
@@ -38,11 +39,39 @@ export default class Categorize extends HTMLElement {
       return false;
     }
 
-    if (!Array.isArray(this._session.answers)) {
+    const { answers } = this._session;
+
+    if (!Array.isArray(answers)) {
       return false;
     }
 
-    return this._session.answers.some((answer) => answer.choices && answer.choices.length > 0);
+    // filter answers by category and count the ones with content
+    const filledResponseAreas = answers.filter((answer) => answer.choices.length).length;
+    // check if an answer choice was added to at least as many response areas
+    // as the number of populated response areas in the correct answer
+    const areResponseAreasFilled = filledResponseAreas >= responseAreasToBeFilled;
+    // check if multiple placements are allowed
+    const duplicatesAllowed = (choices || []).some((choice) => choice.categoryCount === 0);
+
+    if (duplicatesAllowed) {
+      // an answer choice can be used multiple times
+      return areResponseAreasFilled;
+    }
+
+    const allAnswersIds = answers.map((answer) => answer.choices).flat();
+
+    // check if any correct answer have any unplaced answer choices
+    const requiredAnswersPlaced = (possibleResponses || []).some((response) =>
+      response.every((val) => allAnswersIds.includes(val)),
+    );
+
+    if (!requiredAnswersPlaced) {
+      // correct answer have unplaced answer choices
+      return areResponseAreasFilled;
+    }
+
+    // all choices (required for a correct response) were placed into a response area
+    return requiredAnswersPlaced;
   }
 
   set session(s) {

@@ -4,7 +4,7 @@ import { partialScoring } from '@pie-lib/controller-utils';
 import { cloneDeep, isEmpty, shuffle } from 'lodash';
 
 import defaults from './defaults';
-import { getAllUniqueCorrectness } from './utils';
+import { getAllUniqueCorrectness, getCompleteResponseDetails } from './utils';
 
 const log = debug('pie-elements:image-cloze-association:controller');
 
@@ -17,12 +17,18 @@ export const model = (question, session, env) => {
   return new Promise((resolve) => {
     const shouldIncludeCorrectResponse = env.mode === 'evaluate';
 
+    const { responseAreasToBeFilled, possibleResponses: completeResponses } = getCompleteResponseDetails(
+      questionCamelized.validation,
+    );
+
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
       ...questionCamelized,
       responseCorrect: shouldIncludeCorrectResponse ? getScore(questionCamelized, session) === 1 : undefined,
       validation: shouldIncludeCorrectResponse ? questionCamelized.validation : undefined,
+      responseAreasToBeFilled,
+      completeResponses,
     };
 
     if (questionNormalized.shuffle) {

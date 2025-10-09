@@ -1,10 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { Main } from '../main';
 import DragInTheBlank from '../index';
 
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.spyOn(ReactDOM, 'render').mockImplementation(() => {});
 
 describe('drag-in-the-blank', () => {
   describe('renders', () => {
@@ -53,6 +55,7 @@ describe('drag-in-the-blank', () => {
         const el = new DragInTheBlank();
         el.tagName = 'ditb-el';
         el.session = { value: {} };
+        el.model = { responseAreasToBeFilled: 1 };
         el.changeSession({ 0: '1' });
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ditb-el', true));
       });
@@ -60,6 +63,7 @@ describe('drag-in-the-blank', () => {
       it('dispatches session changed event - remove answer', () => {
         const el = new DragInTheBlank();
         el.tagName = 'ditb-el';
+        el.model = { responseAreasToBeFilled: 1 };
         el.session = { value: { 0: '1' } };
         el.changeSession({ 0: undefined });
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ditb-el', false));
@@ -68,12 +72,13 @@ describe('drag-in-the-blank', () => {
       it('dispatches session changed event - add/remove answer', () => {
         const el = new DragInTheBlank();
         el.tagName = 'ditb-el';
+        el.model = { responseAreasToBeFilled: 2 };
         el.session = { value: { 0: '1' } };
         el.changeSession({ 0: '1', 1: '0' });
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ditb-el', true));
 
         el.changeSession({ 0: '1', 1: undefined });
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ditb-el', true));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ditb-el', false));
 
         el.changeSession({ 0: undefined, 1: undefined });
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ditb-el', false));

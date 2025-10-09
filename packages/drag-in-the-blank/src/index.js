@@ -6,7 +6,7 @@ import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-ev
 import Main from './main';
 
 export const isComplete = (session, model, audioComplete, elementContext) => {
-  const { autoplayAudioEnabled, completeAudioEnabled } = model || {};
+  const { autoplayAudioEnabled, completeAudioEnabled, responseAreasToBeFilled } = model || {};
 
   if (autoplayAudioEnabled && completeAudioEnabled && !audioComplete) {
     if (elementContext) {
@@ -24,7 +24,9 @@ export const isComplete = (session, model, audioComplete, elementContext) => {
     return false;
   }
 
-  return Object.values(session.value || {}).some((value) => !!value);
+  const filledResponseAreas = Object.values(session.value || {}).filter((val) => !!val).length;
+
+  return filledResponseAreas >= responseAreasToBeFilled;
 };
 
 export default class DragInTheBlank extends HTMLElement {
@@ -38,7 +40,13 @@ export default class DragInTheBlank extends HTMLElement {
 
   set model(m) {
     this._model = m;
-    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete, this), !!this._model));
+    this.dispatchEvent(
+      new ModelSetEvent(
+        this.tagName.toLowerCase(),
+        isComplete(this._session, this._model, this.audioComplete, this),
+        !!this._model,
+      ),
+    );
     // reset the audioInitialized to false since the model changed, and we might need to reinitialize the audio
     this._audioInitialized = false;
     this._render();
@@ -68,7 +76,12 @@ export default class DragInTheBlank extends HTMLElement {
   };
 
   dispatchChangedEvent = () => {
-    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model, this.audioComplete, this)));
+    this.dispatchEvent(
+      new SessionChangedEvent(
+        this.tagName.toLowerCase(),
+        isComplete(this._session, this._model, this.audioComplete, this),
+      ),
+    );
   };
 
   changeSession = (value) => {
