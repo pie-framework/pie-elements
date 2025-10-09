@@ -119,13 +119,14 @@ export class Choice extends React.Component {
       currentBackgroundColor = hoverAnswerBackgroundColor;
     }
 
-     const strokeStyle = (hasSelectedStroke || hasHoverStroke) ? {
+    const hasStroke = hasSelectedStroke || hasHoverStroke;
+    const strokeStyle = hasStroke ? {
       border: `${normalizeStrokeWidth(currentStrokeWidth)} solid ${currentStrokeColor}`,
       borderRadius: '8px',
     } : {};
 
     const names = classNames(classes.choice, {
-      [classes.noBorder]: index === choicesLength - 1 || choicesLayout !== 'vertical' || strokeStyle,
+      [classes.noBorder]: index === choicesLength - 1 || choicesLayout !== 'vertical' || hasStroke,
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
