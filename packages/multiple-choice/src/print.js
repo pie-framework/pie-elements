@@ -61,6 +61,7 @@ export default class MultipleChoicePrint extends HTMLElement {
             React.createElement(Main, {
               model: printModel,
               session: {},
+              options: this._options,
             });
 
           ReactDOM.render(element, this, () => {
