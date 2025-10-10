@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@8.0.0...@pie-element/drag-in-the-blank@8.2.0) (2025-10-10)
+
+
+### Bug Fixes
+
+* tests ([a473075](https://github.com/pie-framework/pie-elements/commit/a473075d3942e900b1e7137483ea6064951549c2))
+* **drag-in-the-blank:** prevent duplicate IDs when adding choices after removal PD-5225 ([31c1357](https://github.com/pie-framework/pie-elements/commit/31c13578e73397ae1334b7abd06545f3299cdf28))
+
+
+### Features
+
+* update completion rule for categorize, ditb, and image-cloze PD-5179 ([cd03a6e](https://github.com/pie-framework/pie-elements/commit/cd03a6e56e51cc3778749b3679b87f9122405936))
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
 # [8.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@7.0.0...@pie-element/drag-in-the-blank@8.1.0) (2025-10-07)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

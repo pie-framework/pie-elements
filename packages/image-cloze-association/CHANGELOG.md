@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@8.0.0...@pie-element/image-cloze-association@8.2.0) (2025-10-10)
+
+
+### Features
+
+* update completion rule for categorize, ditb, and image-cloze PD-5179 ([cd03a6e](https://github.com/pie-framework/pie-elements/commit/cd03a6e56e51cc3778749b3679b87f9122405936))
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
 # [8.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@7.0.0...@pie-element/image-cloze-association@8.1.0) (2025-10-07)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association
