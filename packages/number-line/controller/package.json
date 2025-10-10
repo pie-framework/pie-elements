@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/number-line-controller",
   "private": true,
-  "version": "7.1.0",
+  "version": "7.2.0",
   "description": "Controller logic for @pie-ui/number-line",
   "keywords": [
     "pie",

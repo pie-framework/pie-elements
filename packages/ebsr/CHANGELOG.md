@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@12.0.0...@pie-element/ebsr@12.2.0) (2025-10-10)
+
+
+### Bug Fixes
+
+* **multiple-choice/ebsr:** add options prop to component for print context handling PD-5252 ([947142c](https://github.com/pie-framework/pie-elements/commit/947142cdcd2594ed3e5f1299dc2ade43638e4cd5))
+
+
+### Features
+
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
 # [12.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@11.0.0...@pie-element/ebsr@12.1.0) (2025-10-07)
 
 **Note:** Version bump only for package @pie-element/ebsr

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@6.0.0...@pie-element/protractor@6.2.0) (2025-10-10)
+
+
+### Features
+
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
 # [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@5.0.0...@pie-element/protractor@6.1.0) (2025-10-07)
 
 **Note:** Version bump only for package @pie-element/protractor

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@4.0.1...@pie-element/math-templated-controller@4.2.0) (2025-10-10)
+
+
+### Bug Fixes
+
+* tests - update score values to be numeric instead of strings ([affaf5b](https://github.com/pie-framework/pie-elements/commit/affaf5b86c2f4f2496fef79ce3f764f4a91fba55))
+* **math-templated:** ensure score is a number for correct response correctness PD-5235 ([97633e5](https://github.com/pie-framework/pie-elements/commit/97633e5a33103f57fdbf06cb2bff405706de7a15))
+
+
+### Features
+
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@4.0.0...@pie-element/math-templated-controller@4.1.0) (2025-10-07)
 
 **Note:** Version bump only for package @pie-element/math-templated-controller
