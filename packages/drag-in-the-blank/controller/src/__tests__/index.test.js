@@ -119,6 +119,7 @@ describe('controller', () => {
         rationaleEnabled: true,
         teacherInstructionsEnabled: true,
         studentInstructionsEnabled: true,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -139,6 +140,7 @@ describe('controller', () => {
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
         studentInstructionsEnabled: false,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -187,6 +189,7 @@ describe('controller', () => {
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
         studentInstructionsEnabled: false,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -199,6 +202,7 @@ describe('controller', () => {
         rationaleEnabled: true,
         teacherInstructionsEnabled: true,
         studentInstructionsEnabled: true,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -247,6 +251,7 @@ describe('controller', () => {
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
         studentInstructionsEnabled: false,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -261,6 +266,7 @@ describe('controller', () => {
         rationaleEnabled: true,
         teacherInstructionsEnabled: true,
         studentInstructionsEnabled: true,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -300,6 +306,7 @@ describe('controller', () => {
       {
         feedback: { 0: true, 1: true },
         responseCorrect: true,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -310,6 +317,7 @@ describe('controller', () => {
       {
         feedback: { 0: false, 1: true },
         responseCorrect: false,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -320,6 +328,7 @@ describe('controller', () => {
       {
         feedback: { 0: false, 1: true },
         responseCorrect: false,
+        responseAreasToBeFilled: 2,
       },
     );
 
@@ -330,6 +339,7 @@ describe('controller', () => {
       {
         feedback: { 0: false, 1: false },
         responseCorrect: false,
+        responseAreasToBeFilled: 2,
       },
     );
 

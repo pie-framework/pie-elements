@@ -1,10 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Categorize from '../index';
 import { shallow } from 'enzyme';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { Categorize as UnStyledCategorize } from '../categorize/index';
 
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.spyOn(ReactDOM, 'render').mockImplementation(() => {});
 
 describe('categorize', () => {
   describe('renders', () => {
@@ -52,14 +54,25 @@ describe('categorize', () => {
       it('dispatches session changed event - add answer', () => {
         const el = new Categorize();
         el.tagName = 'categorize-el';
+        el.model = {
+          responseAreasToBeFilled: 2,
+        };
         el.session = { answers: [] };
         el.changeAnswers([{ category: 'id-fruits', choices: ['apple'] }]);
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', false));
+        el.changeAnswers([
+          { category: 'id-fruits', choices: ['apple'] },
+          { category: 'id-vegetables', choices: ['carrot'] },
+        ]);
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', true));
       });
 
       it('dispatches session changed event - remove answer', () => {
         const el = new Categorize();
         el.tagName = 'categorize-el';
+        el.model = {
+          responseAreasToBeFilled: 1,
+        };
         el.session = { answers: [{ category: 'id-fruits', choices: ['apple'] }] };
         el.changeAnswers([{ category: 'id-fruits', choices: [] }]);
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', false));
@@ -68,7 +81,15 @@ describe('categorize', () => {
       it('dispatches session changed event - add/remove answer', () => {
         const el = new Categorize();
         el.tagName = 'categorize-el';
-        el.session = { answers: [{ category: 'id-fruits', choices: ['apple'] }] };
+        el.model = {
+          responseAreasToBeFilled: 2,
+        };
+        el.session = {
+          answers: [
+            { category: 'id-fruits', choices: ['apple'] },
+            { category: 'id-vegetables', choices: ['carrot', 'onion'] },
+          ],
+        };
         el.changeAnswers([
           { category: 'id-fruits', choices: ['apple'] },
           { category: 'id-vegetables', choices: ['carrot'] },
@@ -79,7 +100,7 @@ describe('categorize', () => {
           { category: 'id-fruits', choices: ['apple'] },
           { category: 'id-vegetables', choices: [] },
         ]);
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', true));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', false));
 
         el.changeAnswers([
           { category: 'id-fruits', choices: [] },

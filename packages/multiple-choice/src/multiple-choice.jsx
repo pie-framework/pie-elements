@@ -103,6 +103,7 @@ export class MultipleChoice extends React.Component {
       playImage: PropTypes.string,
       pauseImage: PropTypes.string,
     },
+    options: PropTypes.object,
   };
 
   constructor(props) {
@@ -209,17 +210,21 @@ export class MultipleChoice extends React.Component {
   };
 
   getChecked(choice) {
-    // to determine if we are in evaluate mode or print mode
-    // since both modes have showCorrect but it interferes with "browse mode" in IBX if the print props are set
-    const isEvaluateMode = this.state.showCorrect && this.props.mode === 'evaluate';
-    const isPrintMode =
-      this.props.alwaysShowCorrect &&
-      (!this.props.session || !this.props.session.value || this.props.session.value.length === 0);
-
-    if (isEvaluateMode || isPrintMode) {
+    // check for print context: options prop is passed from print.js and alwaysShowCorrect is true
+    const isPrintMode = this.props.options && this.props.alwaysShowCorrect;
+    
+    if (isPrintMode) {
       return choice.correct || false;
     }
 
+    // evaluate mode with show correct toggled
+    const isEvaluateMode = this.state.showCorrect && this.props.mode === 'evaluate';
+    
+    if (isEvaluateMode) {
+      return choice.correct || false;
+    }
+
+    // default behavior: show what the user has selected
     return this.isSelected(choice.value);
   }
 

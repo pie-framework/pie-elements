@@ -53,7 +53,6 @@ const TileContent = withStyles((theme) => ({
     opacity: 0.5,
   },
   disabled: {
-    opacity: 0.6,
     cursor: 'not-allowed',
     '&:hover': {
       backgroundColor: color.background(),

@@ -36,33 +36,33 @@ describe('getResponseCorrectness', () => {
     });
   });
 
-  it('should return "correct" when all responses are correct', () => {
-    const sessionResponse = {
-      answers: {
-        r1: { value: '2' },
-        r2: { value: '3' },
-      },
-    };
-    expect(getCorrectness(question, env2, sessionResponse)).toEqual({
-      correctness: 'correct',
-      score: '1.00',
-      correct: true,
+    it('should return "correct" when all responses are correct', () => {
+        const sessionResponse = {
+            answers: {
+                r1: {value: '2'},
+                r2: {value: '3'}
+            }
+        };
+        expect(getCorrectness(question, env2, sessionResponse)).toEqual({
+            correctness: 'correct',
+            score: 1,
+            correct: true,
+        });
     });
-  });
 
   it('should return "incorrect" with partial score when some responses are correct', () => {
-    const sessionResponse = {
-      answers: {
-        r1: { value: '2' },
-        r2: { value: '8' },
-      },
-    };
-    expect(getCorrectness(question, env2, sessionResponse)).toEqual({
-      correctness: 'incorrect',
-      score: '0.50',
-      correct: false,
+        const sessionResponse = {
+            answers: {
+                r1: {value: '2'},
+                r2: {value: '8'}
+            }
+        };
+        expect(getCorrectness(question, env2, sessionResponse)).toEqual({
+            correctness: 'incorrect',
+            score: 0.5,
+            correct: false,
+        });
     });
-  });
 
   it('should return "incorrect" with score 0 when all responses are incorrect', () => {
     const sessionResponse = {
@@ -110,14 +110,14 @@ describe('outcome', () => {
     });
   };
 
-  assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '3' } } }, { score: '1.00' });
-  // correct alternate
-  assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '4' } } }, { score: '1.00' });
-  // partial scoring
-  assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '5' } } }, { score: '0.50' });
-  assertOutcome(true, { answers: { r1: { value: '3' }, r2: { value: '5' } } }, { score: 0 });
-  // partial correct but no score as partial scoring is disabled
-  assertOutcome(false, { answers: { r1: { value: '2' }, r2: { value: '5' } } }, { score: 0 });
+    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '3' }}}, { score: 1 });
+    // correct alternate
+    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '4' }}}, { score: 1 });
+    // partial scoring
+    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '5' }}}, { score: 0.5 });
+    assertOutcome(true, { answers: { r1: { value: '3' }, r2: { value: '5' }}}, { score: 0 });
+    // partial correct but no score as partial scoring is disabled
+    assertOutcome(false, { answers: { r1: { value: '2' }, r2: { value: '5' }}}, { score: 0 });
 });
 
 describe('createDefaultModel', () => {

@@ -73,7 +73,6 @@ const styles = (theme) => ({
     margin: theme.spacing.unit / 2,
   },
   blockResponse: {
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif !important',
     flex: 2,
     color: 'grey',
     background: theme.palette.grey['A100'],

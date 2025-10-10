@@ -6,7 +6,7 @@ import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 import defaults from './defaults';
-import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
+import { getCompleteResponseDetails, isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
 
 // eslint-disable-next-line no-console
 
@@ -160,6 +160,10 @@ export const model = (question, session, env, updateSession) =>
     }
 
     const alternates = getAlternates(filteredCorrectResponse);
+    const { responseAreasToBeFilled, possibleResponses } = getCompleteResponseDetails(
+      filteredCorrectResponse,
+      normalizedQuestion.allowAlternateEnabled ? alternates : [],
+    );
     const out = {
       categories: categories || [],
       categoriesPerRow: categoriesPerRow || 2,
@@ -184,6 +188,8 @@ export const model = (question, session, env, updateSession) =>
       autoplayAudioEnabled,
       completeAudioEnabled,
       customAudioButton,
+      possibleResponses,
+      responseAreasToBeFilled,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
