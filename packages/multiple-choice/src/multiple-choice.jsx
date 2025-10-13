@@ -98,7 +98,7 @@ export class MultipleChoice extends React.Component {
     super(props);
 
     this.state = {
-      showCorrect: this.props.alwaysShowCorrect || false,
+      showCorrect: (this.props.options && this.props.alwaysShowCorrect) || false,
       maxSelectionsErrorState: false,
     };
 
@@ -148,7 +148,7 @@ export class MultipleChoice extends React.Component {
       });
     }
 
-    if (nextProps.alwaysShowCorrect && this.state.showCorrect !== true) {
+    if (nextProps.options && nextProps.alwaysShowCorrect && this.state.showCorrect !== true) {
       this.setState({ showCorrect: true }, () => {
         if (this.props.onShowCorrectToggle) {
           this.props.onShowCorrectToggle();
@@ -251,7 +251,8 @@ export class MultipleChoice extends React.Component {
       maxSelections,
       autoplayAudioEnabled,
       session,
-      customAudioButton
+      customAudioButton,
+      options,
     } = this.props;
     const { showCorrect, maxSelectionsErrorState } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -315,7 +316,7 @@ export class MultipleChoice extends React.Component {
             customAudioButton={customAudioButton}
           />
 
-          {!alwaysShowCorrect && (
+          {!(options && alwaysShowCorrect) && (
             <CorrectAnswerToggle
               show={showCorrectAnswerToggle}
               toggled={showCorrect}

@@ -11,6 +11,7 @@ class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object,
     session: PropTypes.object,
+    options: PropTypes.object,
     onChoiceChanged: PropTypes.func,
     classes: PropTypes.object.isRequired,
     onShowCorrectToggle: PropTypes.func,
@@ -29,7 +30,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { model, onChoiceChanged, session, onShowCorrectToggle } = this.props;
+    const { model, onChoiceChanged, session, onShowCorrectToggle, options } = this.props;
     const { extraCSSRules, fontSizeFactor } = model;
 
     // model.partLabel is a property used for ebsr
@@ -37,6 +38,7 @@ class Main extends React.Component {
       <PreviewLayout extraCSSRules={extraCSSRules} fontSizeFactor={fontSizeFactor}>
         <MultipleChoice
           {...model}
+          options={options}
           session={session}
           onChoiceChanged={onChoiceChanged}
           onShowCorrectToggle={onShowCorrectToggle}
