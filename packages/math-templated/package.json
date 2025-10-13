@@ -15,8 +15,8 @@
     "@pie-lib/math-rendering": "^3.19.4",
     "@pie-lib/render-ui": "^4.31.1",
     "prop-types": "^15.6.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "author": "",
   "license": "ISC",

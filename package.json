@@ -43,8 +43,8 @@
     "minimist": "^1.2.0",
     "pacote": "^9.5.0",
     "prettier": "^2.2.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "rimraf": "^2.6.2",
     "semver": "^5.6.0",
     "yarn": "^1.22.0"

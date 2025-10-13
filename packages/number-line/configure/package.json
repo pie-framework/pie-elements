@@ -11,7 +11,7 @@
     "@pie-lib/editable-html": "^11.17.1",
     "@pie-lib/render-ui": "^4.31.1",
     "lodash": "^4.17.15",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }
