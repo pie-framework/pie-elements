@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@3.1.1...@pie-element/graphing-solution-set-controller@3.2.0) (2025-10-15)
+
+**Note:** Version bump only for package @pie-element/graphing-solution-set-controller
+
+
+
+
+
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@3.0.1...@pie-element/graphing-solution-set-controller@3.1.1) (2025-10-10)
 
 **Note:** Version bump only for package @pie-element/graphing-solution-set-controller

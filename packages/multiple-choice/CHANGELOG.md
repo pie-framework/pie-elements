@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.2.0...@pie-element/multiple-choice@11.4.0) (2025-10-15)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+### Features
+
+* **multiple-choice:** add options prop for ebsr print mode detection in MultipleChoice component ([592022a](https://github.com/pie-framework/pie-elements/commit/592022ac33611816e7d983169a8a7eda88470835))
+
+
+
+
+
 ## [11.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.3.0...@pie-element/multiple-choice@11.3.1) (2025-10-14)
 
 
