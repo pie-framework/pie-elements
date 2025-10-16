@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@8.2.1...@pie-element/drag-in-the-blank@8.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
 # [8.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@8.2.0...@pie-element/drag-in-the-blank@8.3.0) (2025-10-15)
 
 

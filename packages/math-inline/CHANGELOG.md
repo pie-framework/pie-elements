@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@10.2.1...@pie-element/math-inline@10.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+* remove deprecated ReactDOM.findDOMNode from math-inline ([b6267be](https://github.com/pie-framework/pie-elements/commit/b6267be95153d5f6d9f4b46ed431859d6e99b7d5))
+
+
+
+
+
 # [10.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@10.2.0...@pie-element/math-inline@10.3.0) (2025-10-15)
 
 
