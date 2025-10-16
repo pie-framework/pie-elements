@@ -14,6 +14,7 @@ import MathQuill from '@pie-framework/mathquill';
 import { color } from '@pie-lib/render-ui';
 import isEmpty from 'lodash/isEmpty';
 import Translator from '@pie-lib/translator';
+import ReactDOM from 'react-dom';
 const { translator } = Translator;
 let registered = false;
 
@@ -839,11 +840,19 @@ export class Main extends React.Component {
     }
 
     return (
-      <div id={id} className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
-        <UiLayout extraCSSRules={extraCSSRules}>
-          {midContent}
-        </UiLayout>
-      </div>
+      <UiLayout
+        id={id}
+        extraCSSRules={extraCSSRules}
+        className={classes.mainContainer}
+        ref={(r) => {
+          // eslint-disable-next-line react/no-find-dom-node
+          const domNode = ReactDOM.findDOMNode(r);
+
+          this.root = domNode || this.root;
+        }}
+      >
+        {midContent}
+      </UiLayout>
     );
   }
 }
