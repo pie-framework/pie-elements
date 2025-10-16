@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.3.1...@pie-element/multiple-choice@11.4.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
 # [11.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.2.0...@pie-element/multiple-choice@11.4.0) (2025-10-15)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@7.2.1...@pie-element/inline-dropdown-configure@7.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
 # [7.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@7.2.0...@pie-element/inline-dropdown-configure@7.3.0) (2025-10-15)
 
 
