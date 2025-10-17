@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/graphing-controller",
   "private": true,
-  "version": "7.0.2-esmbeta.3",
+  "version": "7.3.1",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,8 +9,8 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.19.5-esmbeta.2",
-    "@pie-lib/graphing-utils": "^1.18.5-esmbeta.2",
+    "@pie-lib/controller-utils": "^0.22.0",
+    "@pie-lib/graphing-utils": "^1.21.0",
     "debug": "^4.1.1"
   },
   "devDependencies": {

@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@12.2.1...@pie-element/placement-ordering@12.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
+# [12.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@12.2.0...@pie-element/placement-ordering@12.3.0) (2025-10-15)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+## [12.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@12.2.0...@pie-element/placement-ordering@12.2.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+# [12.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@12.0.0...@pie-element/placement-ordering@12.2.0) (2025-10-10)
+
+
+### Bug Fixes
+
+* remove opacity for categorize, match-list and placement-ordering answers PD-5149 ([18a68cc](https://github.com/pie-framework/pie-elements/commit/18a68cc99fdf3e09ad3818d32bb3da1304110c5d))
+
+
+### Features
+
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
+# [12.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@11.0.0...@pie-element/placement-ordering@12.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
 # [12.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.8.0...@pie-element/placement-ordering@12.0.0) (2025-10-02)
 
 

@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@5.2.1...@pie-element/math-templated@5.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@5.2.0...@pie-element/math-templated@5.3.0) (2025-10-15)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@5.2.0...@pie-element/math-templated@5.2.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@5.0.0...@pie-element/math-templated@5.2.0) (2025-10-10)
+
+
+### Bug Fixes
+
+* tests - update score values to be numeric instead of strings ([affaf5b](https://github.com/pie-framework/pie-elements/commit/affaf5b86c2f4f2496fef79ce3f764f4a91fba55))
+* **math-templated:** ensure score is a number for correct response correctness PD-5235 ([97633e5](https://github.com/pie-framework/pie-elements/commit/97633e5a33103f57fdbf06cb2bff405706de7a15))
+
+
+### Features
+
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@4.0.0...@pie-element/math-templated@5.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/math-templated
+
+
+
+
+
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@3.9.0...@pie-element/math-templated@5.0.0) (2025-10-02)
 
 

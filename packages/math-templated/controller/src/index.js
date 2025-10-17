@@ -70,7 +70,7 @@ const getResponseCorrectness = (question, sessionResponse) => {
 
     // partial credit scoring: each correct answer is worth 1 / total answers point
     // dichotomous scoring: for credit to be awarded, a correct answer must be entered for every response area
-    score = (correctAnswers / Object.keys(correctResponses).length).toFixed(2);
+    score = Number((correctAnswers / Object.keys(correctResponses).length).toFixed(2));
 
     return {
       correctness: getFeedback(fullyCorrect),

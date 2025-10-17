@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/extended-text-entry",
-  "version": "13.0.1-esmbeta.3",
+  "version": "13.3.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -12,10 +12,10 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/config-ui": "^11.26.6-esmbeta.2",
-    "@pie-lib/editable-html": "^11.18.6-esmbeta.2",
-    "@pie-lib/math-rendering": "^3.19.5-esmbeta.2",
-    "@pie-lib/render-ui": "^4.32.6-esmbeta.2",
+    "@pie-lib/config-ui": "^11.29.0",
+    "@pie-lib/editable-html": "^11.21.0",
+    "@pie-lib/math-rendering": "^3.22.0",
+    "@pie-lib/render-ui": "^4.35.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash.throttle": "^4.1.1",

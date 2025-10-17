@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@2.2.1...@pie-element/likert@2.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@2.2.0...@pie-element/likert@2.3.0) (2025-10-15)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@2.2.0...@pie-element/likert@2.2.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@2.0.0...@pie-element/likert@2.2.0) (2025-10-10)
+
+
+### Bug Fixes
+
+* **likert:** correct import based on new lib packages modif PD-5199 ([b70c828](https://github.com/pie-framework/pie-elements/commit/b70c8285d066f310d828761ab31a01dfdca10cf0))
+* conclude merge with develop ([8388078](https://github.com/pie-framework/pie-elements/commit/8388078124486bdab0def8dbe5e442117514c05a))
+
+
+### Features
+
+* allow elemnts to use same fontFamily set in common ui container to avoid incons PD-5199 ([8b1742e](https://github.com/pie-framework/pie-elements/commit/8b1742e06c9befe1e81bf6a76c72448c91b2429b))
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@1.0.0...@pie-element/likert@2.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/likert
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.47.0...@pie-element/likert@2.0.0) (2025-10-02)
 
 

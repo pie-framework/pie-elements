@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/graphing-solution-set-controller",
   "private": true,
-  "version": "3.0.2-esmbeta.3",
+  "version": "3.2.1",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",

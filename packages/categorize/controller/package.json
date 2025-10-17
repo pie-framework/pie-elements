@@ -2,13 +2,13 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/categorize": "^0.25.5-esmbeta.2",
-    "@pie-lib/controller-utils": "^0.19.5-esmbeta.2",
-    "@pie-lib/feedback": "^0.21.5-esmbeta.2",
-    "@pie-lib/translator": "^2.20.5-esmbeta.2",
+    "@pie-lib/categorize": "^0.28.0",
+    "@pie-lib/controller-utils": "^0.22.0",
+    "@pie-lib/feedback": "^0.24.0",
+    "@pie-lib/translator": "^2.23.0",
     "lodash": "^4.17.15"
   },
-  "version": "8.0.2-esmbeta.3",
+  "version": "8.3.1",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

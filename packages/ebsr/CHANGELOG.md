@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@12.2.2...@pie-element/ebsr@12.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
+# [12.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@12.2.0...@pie-element/ebsr@12.3.0) (2025-10-15)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+## [12.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@12.2.1...@pie-element/ebsr@12.2.2) (2025-10-14)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+## [12.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@12.2.0...@pie-element/ebsr@12.2.1) (2025-10-13)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+# [12.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@12.0.0...@pie-element/ebsr@12.2.0) (2025-10-10)
+
+
+### Bug Fixes
+
+* **multiple-choice/ebsr:** add options prop to component for print context handling PD-5252 ([947142c](https://github.com/pie-framework/pie-elements/commit/947142cdcd2594ed3e5f1299dc2ade43638e4cd5))
+
+
+### Features
+
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
+# [12.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@11.0.0...@pie-element/ebsr@12.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
 # [12.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@10.7.2...@pie-element/ebsr@12.0.0) (2025-10-02)
 
 

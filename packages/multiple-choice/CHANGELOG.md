@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.3.1...@pie-element/multiple-choice@11.4.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
+# [11.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.2.0...@pie-element/multiple-choice@11.4.0) (2025-10-15)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+### Features
+
+* **multiple-choice:** add options prop for ebsr print mode detection in MultipleChoice component ([592022a](https://github.com/pie-framework/pie-elements/commit/592022ac33611816e7d983169a8a7eda88470835))
+
+
+
+
+
+## [11.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.3.0...@pie-element/multiple-choice@11.3.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+# [11.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.2.0...@pie-element/multiple-choice@11.3.0) (2025-10-13)
+
+
+### Features
+
+* **multiple-choice:** add options prop for ebsr print mode detection in MultipleChoice component ([592022a](https://github.com/pie-framework/pie-elements/commit/592022ac33611816e7d983169a8a7eda88470835))
+
+
+
+
+
+# [11.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.0.0...@pie-element/multiple-choice@11.2.0) (2025-10-10)
+
+
+### Bug Fixes
+
+* conclude merge with develop ([8388078](https://github.com/pie-framework/pie-elements/commit/8388078124486bdab0def8dbe5e442117514c05a))
+* **multiple-choice:**  stroke style condition in Choice component PD-4768 ([19e14e9](https://github.com/pie-framework/pie-elements/commit/19e14e9fca227d06f831653c3183ab40d85ff764))
+* **multiple-choice/ebsr:** add options prop to component for print context handling PD-5252 ([947142c](https://github.com/pie-framework/pie-elements/commit/947142cdcd2594ed3e5f1299dc2ade43638e4cd5))
+
+
+### Features
+
+* allow elemnts to use same fontFamily set in common ui container to avoid incons PD-5199 ([8b1742e](https://github.com/pie-framework/pie-elements/commit/8b1742e06c9befe1e81bf6a76c72448c91b2429b))
+* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
+
+
+
+
+
+# [11.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@10.0.0...@pie-element/multiple-choice@11.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
 # [11.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.20.2...@pie-element/multiple-choice@11.0.0) (2025-10-02)
 
 

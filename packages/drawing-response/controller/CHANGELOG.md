@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@4.1.1...@pie-element/drawing-response-controller@4.2.1) (2025-10-16)
+
+**Note:** Version bump only for package @pie-element/drawing-response-controller
+
+
+
+
+
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@4.1.1...@pie-element/drawing-response-controller@4.2.0) (2025-10-15)
+
+**Note:** Version bump only for package @pie-element/drawing-response-controller
+
+
+
+
+
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@4.0.1...@pie-element/drawing-response-controller@4.1.1) (2025-10-10)
+
+**Note:** Version bump only for package @pie-element/drawing-response-controller
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@4.0.0...@pie-element/drawing-response-controller@4.1.0) (2025-10-07)
+
+**Note:** Version bump only for package @pie-element/drawing-response-controller
+
+
+
+
+
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.5.1...@pie-element/drawing-response-controller@4.0.1) (2025-10-02)
 
 **Note:** Version bump only for package @pie-element/drawing-response-controller

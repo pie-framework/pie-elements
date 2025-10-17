@@ -1,7 +1,11 @@
 {
   "name": "@pie-element/image-cloze-association-controller",
   "private": true,
+<<<<<<< HEAD
   "version": "6.0.2-esmbeta.3",
+=======
+  "version": "6.3.1",
+>>>>>>> develop
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +15,11 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
+<<<<<<< HEAD
     "@pie-lib/controller-utils": "^0.19.5-esmbeta.2",
+=======
+    "@pie-lib/controller-utils": "^0.22.0",
+>>>>>>> develop
     "debug": "^4.1.1",
     "humps": "^2.0.1",
     "lodash": "^4.17.15"

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { PreviewLayout } from '@pie-lib/render-ui';
 import MultipleChoice from './multiple-choice';
 
@@ -11,6 +10,7 @@ class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object,
     session: PropTypes.object,
+    options: PropTypes.object,
     onChoiceChanged: PropTypes.func,
     classes: PropTypes.object.isRequired,
     onShowCorrectToggle: PropTypes.func,
@@ -29,7 +29,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { model, onChoiceChanged, session, onShowCorrectToggle } = this.props;
+    const { model, onChoiceChanged, session, onShowCorrectToggle, options } = this.props;
     const { extraCSSRules, fontSizeFactor } = model;
 
     // model.partLabel is a property used for ebsr
@@ -37,6 +37,7 @@ class Main extends React.Component {
       <PreviewLayout extraCSSRules={extraCSSRules} fontSizeFactor={fontSizeFactor}>
         <MultipleChoice
           {...model}
+          options={options}
           session={session}
           onChoiceChanged={onChoiceChanged}
           onShowCorrectToggle={onShowCorrectToggle}
@@ -48,16 +49,8 @@ class Main extends React.Component {
 
 const Styled = withStyles(styles, { name: 'Main' })(Main);
 
-const theme = createMuiTheme({
-  typography: {
-    useNextVariants: true,
-  },
-});
-
 const Root = (props) => (
-  <MuiThemeProvider theme={theme}>
     <Styled {...props} />
-  </MuiThemeProvider>
 );
 
 export default Root;
