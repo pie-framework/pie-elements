@@ -26,10 +26,27 @@
     "react-dnd": "^14.0.5",
     "react-dom": "^16.8.1"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "c763d1b6543ed7bd9a2368fd687200c6b8c70be8",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js",
+      "default": "./esm/element.js"
+    },
+    "./configure": {
+      "import": "./esm/configure.js",
+      "require": "./configure/lib/index.js",
+      "default": "./esm/configure.js"
+    },
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js",
+      "default": "./esm/controller.js"
+    }
+  }
 }
