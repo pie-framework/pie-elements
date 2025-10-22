@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@10.3.1...@pie-element/drawing-response@10.3.2) (2025-10-22)
+
+
+### Bug Fixes
+
+* bump libs PD-5265 ([184a978](https://github.com/pie-framework/pie-elements/commit/184a978f57a2a84dc6ba87c1eba0b92d5cdd9eae))
+
+
+
+
+
 ## [10.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@10.2.1...@pie-element/drawing-response@10.3.1) (2025-10-16)
 
 
