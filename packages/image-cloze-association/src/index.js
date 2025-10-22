@@ -20,6 +20,7 @@ export default class ImageClozeAssociation extends HTMLElement {
       completeAudioEnabled,
       completeResponses,
       duplicateResponses,
+      hasUnplacedChoices,
       maxResponsePerZone,
       responseAreasToBeFilled,
     } = this._model || {};
@@ -60,19 +61,19 @@ export default class ImageClozeAssociation extends HTMLElement {
         return areResponseAreasFilled;
       }
 
+      // any correct answer have any unplaced answer choices (by the author)
+      if (hasUnplacedChoices) {
+        return areResponseAreasFilled;
+      }
+
       const allAnswersValue = answers.map((answer) => answer.value);
 
-      // check if any correct answer have any unplaced answer choices
+      // check if any correct answer have any unplaced answer choices (by the student)
       const requiredAnswersPlaced = completeResponses.some((response) =>
         response.every((val) => allAnswersValue.includes(val)),
       );
 
-      if (!requiredAnswersPlaced) {
-        // correct answer have unplaced answer choices
-        return areResponseAreasFilled;
-      }
-
-      // all choices (required for a correct response) were placed into a response area
+      // true - all choices (required for a correct response) were placed into a response area
       return requiredAnswersPlaced;
     }
 
