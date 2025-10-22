@@ -17,9 +17,11 @@ export const model = (question, session, env) => {
   return new Promise((resolve) => {
     const shouldIncludeCorrectResponse = env.mode === 'evaluate';
 
-    const { responseAreasToBeFilled, possibleResponses: completeResponses } = getCompleteResponseDetails(
-      questionCamelized.validation,
-    );
+    const {
+      responseAreasToBeFilled,
+      possibleResponses: completeResponses,
+      hasUnplacedChoices,
+    } = getCompleteResponseDetails(questionCamelized.validation, questionCamelized.possibleResponses);
 
     const out = {
       disabled: env.mode !== 'gather',
@@ -29,6 +31,7 @@ export const model = (question, session, env) => {
       validation: shouldIncludeCorrectResponse ? questionCamelized.validation : undefined,
       responseAreasToBeFilled,
       completeResponses,
+      hasUnplacedChoices,
     };
 
     if (questionNormalized.shuffle) {

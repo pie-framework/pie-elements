@@ -56,6 +56,7 @@ describe('categorize', () => {
         el.tagName = 'categorize-el';
         el.model = {
           responseAreasToBeFilled: 2,
+          hasUnplacedChoices: true,
         };
         el.session = { answers: [] };
         el.changeAnswers([{ category: 'id-fruits', choices: ['apple'] }]);
@@ -83,6 +84,7 @@ describe('categorize', () => {
         el.tagName = 'categorize-el';
         el.model = {
           responseAreasToBeFilled: 2,
+          hasUnplacedChoices: true,
         };
         el.session = {
           answers: [
@@ -107,6 +109,34 @@ describe('categorize', () => {
           { category: 'id-vegetables', choices: [] },
         ]);
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', false));
+      });
+
+      it('dispatches session changed event - add/remove answer - no unplaced choices', () => {
+        const el = new Categorize();
+        el.tagName = 'categorize-el';
+        el.model = {
+          responseAreasToBeFilled: 2,
+          hasUnplacedChoices: false,
+          possibleResponses: [['apple', 'carrot', 'onion']],
+        };
+        el.session = {
+          answers: [
+            { category: 'id-fruits', choices: ['apple'] },
+            { category: 'id-vegetables', choices: [] },
+          ],
+        };
+
+        el.changeAnswers([
+          { category: 'id-fruits', choices: ['apple'] },
+          { category: 'id-vegetables', choices: ['carrot'] },
+        ]);
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', false));
+
+        el.changeAnswers([
+          { category: 'id-fruits', choices: ['apple'] },
+          { category: 'id-vegetables', choices: ['carrot', 'onion'] },
+        ]);
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', true));
       });
     });
   });

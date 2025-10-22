@@ -18,8 +18,14 @@ export default class Categorize extends HTMLElement {
   }
 
   isComplete() {
-    const { autoplayAudioEnabled, choices, completeAudioEnabled, possibleResponses, responseAreasToBeFilled } =
-      this._model || {};
+    const {
+      autoplayAudioEnabled,
+      choices,
+      completeAudioEnabled,
+      hasUnplacedChoices,
+      possibleResponses,
+      responseAreasToBeFilled,
+    } = this._model || {};
     const elementContext = this;
 
     // check audio completion if audio settings are enabled and audio actually exists
@@ -58,19 +64,19 @@ export default class Categorize extends HTMLElement {
       return areResponseAreasFilled;
     }
 
+    // any correct answer have any unplaced answer choices (by the author)
+    if (hasUnplacedChoices) {
+      return areResponseAreasFilled;
+    }
+
     const allAnswersIds = answers.map((answer) => answer.choices).flat();
 
-    // check if any correct answer have any unplaced answer choices
+    // check if any correct answer have any unplaced answer choices (by the student)
     const requiredAnswersPlaced = (possibleResponses || []).some((response) =>
       response.every((val) => allAnswersIds.includes(val)),
     );
 
-    if (!requiredAnswersPlaced) {
-      // correct answer have unplaced answer choices
-      return areResponseAreasFilled;
-    }
-
-    // all choices (required for a correct response) were placed into a response area
+    // true - all choices (required for a correct response) were placed into a response area
     return requiredAnswersPlaced;
   }
 
