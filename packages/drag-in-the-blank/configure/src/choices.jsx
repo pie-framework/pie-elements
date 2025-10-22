@@ -60,6 +60,22 @@ export class Choices extends React.Component {
     this.rerenderMath();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    // If we're editing a choice (focusedEl is set), be very conservative about re-rendering
+    // to avoid unmounting the EditableHtml and losing the keypad
+    if (this.state.focusedEl || nextState.focusedEl) {
+      // Only update if focusedEl actually changed or model.choices changed
+      const focusedElChanged = this.state.focusedEl !== nextState.focusedEl;
+      const choicesChanged = this.props.model?.choices !== nextProps.model?.choices;
+      const warningChanged = this.state.warning !== nextState.warning;
+      
+      return focusedElChanged || choicesChanged || warningChanged;
+    }
+    
+    // Normal mode - allow all updates
+    return true;
+  }
+
   componentDidUpdate() {
     this.rerenderMath();
 
