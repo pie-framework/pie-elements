@@ -1,27 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
+import MenuItem from '@mui/material/MenuItem';
 import times from 'lodash/times';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import grey from '@material-ui/core/colors/grey';
-import Typography from '@material-ui/core/Typography';
-import DragIndicator from '@material-ui/icons/DragIndicator';
+import Checkbox from '@mui/material/Checkbox';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Typography from '@mui/material/Typography';
+import DragIndicator from '@mui/icons-material/DragIndicator';
 import EditableHtml from '@pie-lib/editable-html';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import debug from 'debug';
 import PointMenu from './point-menu';
-
 import range from 'lodash/range';
+
 import { InputContainer } from '@pie-lib/config-ui';
 import { color } from '@pie-lib/render-ui';
+import { grey } from '@mui/material/colors';
 
 const log = debug('pie-lib:rubric:authoring');
 

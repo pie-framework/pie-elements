@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import debug from 'debug';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { PlaceHolder } from '@pie-lib/drag';
 import isEmpty from 'lodash/isEmpty';
 import { color } from '@pie-lib/render-ui';

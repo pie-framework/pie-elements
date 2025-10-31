@@ -2,14 +2,14 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { GraphContainer as Graph } from '@pie-lib/graphing';
 import { AlertDialog } from '@pie-lib/config-ui';
 import { renderMath } from '@pie-lib/math-rendering';
-import Delete from '@material-ui/icons/Delete';
+import Delete from '@mui/icons-material/Delete';
 import { set, isEqual } from 'lodash';
-import { MenuItem, Select, Tooltip, Typography } from '@material-ui/core';
-import Info from '@material-ui/icons/Info';
+import { MenuItem, Select, Tooltip, Typography } from '@mui/material';
+import Info from '@mui/icons-material/Info';
 
 const styles = (theme) => ({
   column: {

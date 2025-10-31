@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 
 import { color } from '@pie-lib/render-ui';
-import Radio from '@material-ui/core/Radio';
+import Radio from '@mui/material/Radio';
 
 const radioStyles = {
   root: {

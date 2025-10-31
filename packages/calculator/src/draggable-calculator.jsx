@@ -1,11 +1,11 @@
 import React from 'react';
 import Calculator from '@pie-framework/material-ui-calculator';
 import Draggable from 'react-draggable';
-import Typography from '@material-ui/core/Typography';
-import Close from '@material-ui/icons/Close';
-import IconButton from '@material-ui/core/IconButton';
+import Typography from '@mui/material/Typography';
+import Close from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
 
 const styles = (theme) => {
@@ -62,7 +62,11 @@ class BaseLayout extends React.Component {
           <Typography variant="subheading" className={classes.title}>
             Calculator
           </Typography>
-          <IconButton className={classes.closeIcon} onClick={onClose} aria-label="Delete">
+          <IconButton
+            className={classes.closeIcon}
+            onClick={onClose}
+            aria-label="Delete"
+            size="large">
             <Close />
           </IconButton>
         </div>

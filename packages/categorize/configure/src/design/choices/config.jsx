@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
-import TextField from '@material-ui/core/TextField';
+import TextField from '@mui/material/TextField';
 
 export class Config extends React.Component {
   static propTypes = {

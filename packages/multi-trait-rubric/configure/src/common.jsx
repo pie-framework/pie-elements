@@ -1,16 +1,16 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import EditableHtml from '@pie-lib/editable-html';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputBase from '@material-ui/core/InputBase';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputBase from '@mui/material/InputBase';
 import { color } from '@pie-lib/render-ui';
-import grey from '@material-ui/core/colors/grey';
 import { filteredDefaultPlugins } from './utils';
+import { grey } from '@mui/material/colors';
 
 export const BlockWidth = 200;
 export const PrimaryBlockWidth = 200;

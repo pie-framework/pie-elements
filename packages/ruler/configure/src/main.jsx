@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { layout, TwoChoice, NChoice, NumberTextField } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 
 const metricLabels = [
   { label: 'Millimeters', value: 'mm' },

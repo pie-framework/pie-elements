@@ -7,7 +7,7 @@ import isNumber from 'lodash/isNumber';
 import isEqual from 'lodash/isEqual';
 import Translator from '@pie-lib/translator';
 import { Collapsible, color, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 
 import Feedback from './feedback';
 import Graph from './graph';

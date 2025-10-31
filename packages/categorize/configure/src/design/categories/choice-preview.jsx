@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
 import { Choice } from '@pie-lib/drag';
-import IconButton from '@material-ui/core/IconButton';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import IconButton from '@mui/material/IconButton';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { HtmlAndMath } from '@pie-lib/render-ui';
 import { color } from '@pie-lib/render-ui';
 
@@ -43,7 +43,7 @@ export class ChoicePreview extends React.Component {
               aria-label="delete"
               className={classNames(classes.delete, classes.customColor)}
               onClick={this.delete}
-            >
+              size="large">
               <RemoveCircleOutlineIcon />
             </IconButton>
           </Choice>

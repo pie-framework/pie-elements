@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Rect, Group, Transformer } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles/index';
+import withStyles from '@mui/styles/withStyles';
 import DeleteWidget from './DeleteWidget';
 
 class RectComponent extends React.Component {

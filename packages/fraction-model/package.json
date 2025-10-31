@@ -7,7 +7,10 @@
   "version": "4.2.0",
   "description": "",
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/config-ui": "^11.25.1",
     "@pie-lib/correct-answer-toggle": "^2.21.1",

@@ -1,8 +1,8 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Collapse from '@material-ui/core/Collapse';
+import withStyles from '@mui/styles/withStyles';
+import ListItem from '@mui/material/ListItem';
+import List from '@mui/material/List';
+import Collapse from '@mui/material/Collapse';
 import { color, UiLayout } from '@pie-lib/render-ui';
 import PropTypes from 'prop-types';
 

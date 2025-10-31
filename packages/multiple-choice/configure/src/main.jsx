@@ -10,11 +10,11 @@ import {
   choiceUtils as utils,
 } from '@pie-lib/config-ui';
 import { color } from '@pie-lib/render-ui';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
-import Info from '@material-ui/icons/Info';
+import withStyles from '@mui/styles/withStyles';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import Info from '@mui/icons-material/Info';
 import merge from 'lodash/merge';
 import { generateValidationMessage } from './utils';
 

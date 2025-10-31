@@ -2,13 +2,13 @@ import ChoiceTile from './choice-tile';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
 import uniqueId from 'lodash/uniqueId';
 import shuffle from 'lodash/shuffle';
 import isEqual from 'lodash/isEqual';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import { InputContainer } from '@pie-lib/render-ui';
 import { AlertDialog } from '@pie-lib/config-ui';
 
@@ -263,7 +263,6 @@ class ChoiceEditor extends React.Component {
           <InputContainer label={`Student ${choicesLabel || 'Choices'}`} className={classes.columnLabel} />
           <InputContainer label="Correct Order" className={classes.columnLabel} />
         </div>
-
         <div className={classes.vtiler} style={vTilerStyle}>
           {ordering.tiles.map((choice, index) => (
             <ChoiceTile
@@ -286,17 +285,13 @@ class ChoiceEditor extends React.Component {
             />
           ))}
         </div>
-
         {orderError && <div className={classes.errorText}>{orderError}</div>}
-
         <div className={classes.controls}>
           <Button
             onClick={this.shuffleChoices}
             size="small"
             variant="contained"
-            color="default"
-            classes={{ root: classes.addButtonRoot, label: classes.addButtonLabel }}
-          >
+            classes={{ root: classes.addButtonRoot, label: classes.addButtonLabel }}>
             {`SHUFFLE ${pluralChoiceLabel}`.toUpperCase()}
           </Button>
 
@@ -304,13 +299,10 @@ class ChoiceEditor extends React.Component {
             onClick={this.addChoice}
             size="small"
             variant="contained"
-            color="default"
-            classes={{ root: classes.addButtonRoot, label: classes.addButtonLabel }}
-          >
+            classes={{ root: classes.addButtonRoot, label: classes.addButtonLabel }}>
             {`ADD ${singularChoiceLabel}`.toUpperCase()}
           </Button>
         </div>
-
         <AlertDialog
           open={warning.open}
           title="Warning"

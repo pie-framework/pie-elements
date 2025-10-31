@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import ReactDOM from 'react-dom';
 import { renderMath } from '@pie-lib/math-rendering';
 import isEqual from 'lodash/isEqual';

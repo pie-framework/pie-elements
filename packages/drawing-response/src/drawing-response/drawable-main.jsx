@@ -5,7 +5,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
 import { Layer, Stage } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;

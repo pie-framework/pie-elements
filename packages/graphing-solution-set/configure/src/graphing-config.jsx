@@ -2,8 +2,8 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { GraphContainer, GridSetup } from '@pie-lib/graphing-solution-set';
 import { AlertDialog } from '@pie-lib/config-ui';
-import { MenuItem, Select, Typography, OutlinedInput } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { MenuItem, Select, Typography, OutlinedInput } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 import { applyConstraints, filterPlotableMarks, getGridValues, getLabelValues } from './utils';
 import { isEqual, cloneDeep } from 'lodash';
 

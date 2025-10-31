@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
-import Check from '@material-ui/icons/Check';
-import Close from '@material-ui/icons/Close';
+import withStyles from '@mui/styles/withStyles';
+import Check from '@mui/icons-material/Check';
+import Close from '@mui/icons-material/Close';
 import { color } from '@pie-lib/render-ui';
 
 const getCorrectnessClass = (isCorrect, filled) => {

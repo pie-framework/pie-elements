@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layer, Stage } from 'react-konva';
 import cloneDeep from 'lodash/cloneDeep';
-import { withStyles } from '@material-ui/core/styles/index';
+import withStyles from '@mui/styles/withStyles';
 
 import Rectangle from './hotspot-rectangle';
 import Polygon from './hotspot-polygon';

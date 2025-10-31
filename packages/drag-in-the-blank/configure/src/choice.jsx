@@ -1,8 +1,8 @@
 import React from 'react';
-import MoreVert from '@material-ui/icons/MoreVert';
-import Delete from '@material-ui/icons/Delete';
+import MoreVert from '@mui/icons-material/MoreVert';
+import Delete from '@mui/icons-material/Delete';
 import { DragSource } from 'react-dnd';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { choiceIsEmpty } from './markupUtils';
 import PropTypes from 'prop-types';
 

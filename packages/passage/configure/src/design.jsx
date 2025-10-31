@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { settings, layout } from '@pie-lib/config-ui';
 
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import withStyles from '@mui/styles/withStyles';
+import Typography from '@mui/material/Typography';
 
 import { ConfimationDialog, PassageButton } from './common';
 import Passage from './passage';

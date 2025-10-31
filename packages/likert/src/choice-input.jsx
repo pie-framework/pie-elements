@@ -1,10 +1,10 @@
 import React from 'react';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 
 import { color } from '@pie-lib/render-ui';
-import Radio from '@material-ui/core/Radio';
+import Radio from '@mui/material/Radio';
 import { LIKERT_ORIENTATION } from './likertEntities';
 
 const radioStyles = {

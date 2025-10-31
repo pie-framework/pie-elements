@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Bar, BarChart, Cell, LabelList, Pie, PieChart, YAxis } from 'recharts';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 
 const styles = (theme) => ({
   pieChartParentDiv: {

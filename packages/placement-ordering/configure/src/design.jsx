@@ -1,9 +1,9 @@
 import { FeedbackConfig, FormSection, InputContainer, settings, layout } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { withDragContext } from '@pie-lib/drag';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 
 import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';

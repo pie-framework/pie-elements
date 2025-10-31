@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import FreeformEditor from '../freeform-editor';
-import { unwrap } from "@material-ui/core/test-utils";
+import { unwrap } from "@mui/material/test-utils";
 
 const Editor = unwrap(FreeformEditor);
 

@@ -2,18 +2,18 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { InputContainer } from '@pie-lib/config-ui';
 import { MathToolbar } from '@pie-lib/math-toolbar';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Typography from '@material-ui/core/Typography';
-import InputLabel from '@material-ui/core/InputLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import Delete from '@material-ui/icons/Delete';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import withStyles from '@mui/styles/withStyles';
+import IconButton from '@mui/material/IconButton';
+import Delete from '@mui/icons-material/Delete';
 import { color } from '@pie-lib/render-ui';
 
 export class Response extends React.Component {
@@ -268,7 +268,10 @@ export class Response extends React.Component {
                     onDone={this.onAlternateDone(alternateId)}
                     error={error && error[alternateId]}
                   />
-                  <IconButton className={classes.removeAlternateButton} onClick={this.onRemoveAlternate(alternateId)}>
+                  <IconButton
+                    className={classes.removeAlternateButton}
+                    onClick={this.onRemoveAlternate(alternateId)}
+                    size="large">
                     <Delete />
                   </IconButton>
                 </div>

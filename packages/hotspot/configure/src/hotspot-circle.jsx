@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Circle, Group, Rect, Transformer } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import DeleteWidget from './DeleteWidget';
 
 class CircleComponent extends React.Component {

@@ -2,12 +2,12 @@ import React from 'react';
 import { FormSection, layout, AlertDialog } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import CardBar from './card-bar';
 import ModelOptions from './model-options';
 import { FractionModelChart } from '@pie-element/fraction-model';
-import Tooltip from '@material-ui/core/Tooltip';
-import Info from '@material-ui/icons/Info';
+import Tooltip from '@mui/material/Tooltip';
+import Info from '@mui/icons-material/Info';
 
 const styles = (theme) => ({
   label: {

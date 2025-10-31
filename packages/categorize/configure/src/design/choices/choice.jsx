@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
 import InputHeader from '../input-header';
 import { Checkbox } from '@pie-lib/config-ui';
 import { DeleteButton } from '../buttons';
-import DragHandle from '@material-ui/icons/DragHandle';
+import DragHandle from '@mui/icons-material/DragHandle';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
 import { uid } from '@pie-lib/drag';

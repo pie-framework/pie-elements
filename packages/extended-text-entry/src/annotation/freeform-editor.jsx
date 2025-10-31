@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Popover, TextField } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Popover, TextField } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 
 const styles = theme =>({
   wrapper: {
@@ -168,7 +168,7 @@ class FreeformEditor extends React.Component {
             autoFocus
             multiline
             rows={1}
-            rowsMax={4}
+            maxRows={4}
             value={value}
             onChange={this.onValueChange}
             InputProps={{ disableUnderline: true }}

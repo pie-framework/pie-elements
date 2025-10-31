@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DraggableCalculator from './draggable-calculator';
 import CalculatorIcon from './calculator-icon';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
 
 const styles = (theme) => ({

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import AnswerFraction from './answer-fraction';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import FractionModelChart from './fraction-model-chart';

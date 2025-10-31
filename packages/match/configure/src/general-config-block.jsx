@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { InputContainer, NumberTextField } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import withStyles from '@mui/styles/withStyles';
+import Typography from '@mui/material/Typography';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 
 import { generateValidationMessage } from '../utils';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import { mq } from '@pie-lib/math-input';
 import cx from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
 import { color } from '@pie-lib/render-ui';
 

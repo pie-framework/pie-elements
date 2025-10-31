@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Button from '@material-ui/core/Button';
-import Delete from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Button from '@mui/material/Button';
+import Delete from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import withStyles from '@mui/styles/withStyles';
 import max from 'lodash/max';
 import classnames from 'classnames';
 import EditableHtml from '@pie-lib/editable-html';
@@ -122,7 +122,11 @@ export class Choice extends React.Component {
             }}
             {...inputProps}
           />
-          <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
+          <IconButton
+            aria-label="delete"
+            className={classes.deleteBtn}
+            onClick={onDelete}
+            size="large">
             <Delete />
           </IconButton>
         </div>

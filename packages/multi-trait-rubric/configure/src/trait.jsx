@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import { DragSource, DropTarget } from 'react-dnd';
 
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { color } from '@pie-lib/render-ui';
 
 import { Block, BlockWidth, ExpandedInput, PrimaryBlock, Row, SecondaryBlock, UnderlinedInput } from './common';
 
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
+import IconButton from '@mui/material/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 const log = debug('@pie-element:placement-ordering:configure:trait-tile');
 
@@ -145,7 +145,7 @@ export class TraitTile extends React.Component {
                   aria-controls="long-menu"
                   aria-haspopup="true"
                   onClick={this.handleClick}
-                >
+                  size="large">
                   <MoreVertIcon />
                 </IconButton>
 

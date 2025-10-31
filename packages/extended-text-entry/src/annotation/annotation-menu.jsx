@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Popover } from '@material-ui/core';
+import withStyles from '@mui/styles/withStyles';
+import { Popover } from '@mui/material';
 
 const styles = (theme) => ({
   mainWrapper: {

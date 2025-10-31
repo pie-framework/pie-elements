@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { InputContainer } from '@pie-lib/config-ui';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 

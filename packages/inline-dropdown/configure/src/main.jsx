@@ -11,14 +11,14 @@ import isUndefined from 'lodash/isUndefined';
 import isEmpty from 'lodash/isEmpty';
 import reduce from 'lodash/reduce';
 import max from 'lodash/max';
-import { withStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Info from '@material-ui/icons/Info';
+import withStyles from '@mui/styles/withStyles';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Info from '@mui/icons-material/Info';
 
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
@@ -385,12 +385,12 @@ export class Main extends React.Component {
     const renderChoiceRationale = () =>
       (Object.keys(choices) || []).map((key, index) => (
         <div key={key} className={classes.rationaleChoices}>
-          <ExpansionPanel>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.text}>{`Rationale for response area #${index + 1}`}</Typography>
-            </ExpansionPanelSummary>
+            </AccordionSummary>
 
-            <ExpansionPanelDetails className={classes.panelDetails}>
+            <AccordionDetails className={classes.panelDetails}>
               {(choices[key] || []).map((choice) => (
                 <React.Fragment key={choice.label}>
                   <span
@@ -414,8 +414,8 @@ export class Main extends React.Component {
                   </InputContainer>
                 </React.Fragment>
               ))}
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
+            </AccordionDetails>
+          </Accordion>
         </div>
       ));
 

@@ -1,10 +1,10 @@
-import { withStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import HelpIcon from '@material-ui/icons/HelpOutline';
-import IconButton from '@material-ui/core/IconButton';
+import withStyles from '@mui/styles/withStyles';
+import Tooltip from '@mui/material/Tooltip';
+import HelpIcon from '@mui/icons-material/HelpOutline';
+import IconButton from '@mui/material/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
 const CardBar = (props) => {
   const { classes, header, children, mini, info } = props;
@@ -15,10 +15,9 @@ const CardBar = (props) => {
         <Typography variant={mini ? 'subheading' : 'h5'}>{header}</Typography>
         {info}
       </div>
-
       {children && (
         <Tooltip title={children} classes={{ tooltip: classes.tooltip }}>
-          <IconButton aria-label="Delete" className={classes.button}>
+          <IconButton aria-label="Delete" className={classes.button} size="large">
             <HelpIcon />
           </IconButton>
         </Tooltip>

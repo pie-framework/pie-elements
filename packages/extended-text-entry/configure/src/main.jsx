@@ -1,8 +1,8 @@
 import React from 'react';
 import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography from '@mui/material/Typography';
+import withStyles from '@mui/styles/withStyles';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 
 const { Panel, toggle, numberFields, dropdown } = settings;

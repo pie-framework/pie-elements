@@ -1,7 +1,7 @@
 import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';

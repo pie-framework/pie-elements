@@ -1,7 +1,7 @@
 import { NumberTextField as NTF } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import cn from 'classnames';
 
 export class NumberTextField extends React.Component {

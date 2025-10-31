@@ -1,8 +1,8 @@
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import IconButton from '@material-ui/core/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import IconButton from '@mui/material/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -40,7 +40,7 @@ export class IconMenu extends React.Component {
     return (
       <div>
         <div onClick={this.handleClick}>
-          <IconButton className={classes.icon}>
+          <IconButton className={classes.icon} size="large">
             {open ? <MoreVertIcon color={iconColor} /> : <MoreHorizIcon color={iconColor} />}
           </IconButton>
         </div>

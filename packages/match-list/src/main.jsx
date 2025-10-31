@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withDragContext, swap } from '@pie-lib/drag';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Feedback, PreviewPrompt } from '@pie-lib/render-ui';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import uniqueId from 'lodash/uniqueId';
 import isUndefined from 'lodash/isUndefined';
 import findKey from 'lodash/findKey';

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RUBRIC_TYPES } from '@pie-lib/rubric';
 import { layout } from '@pie-lib/config-ui';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { withStyles } from '@material-ui/core/styles';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import withStyles from '@mui/styles/withStyles';
 import { color } from '@pie-lib/render-ui';
 import classNames from 'classnames';
 

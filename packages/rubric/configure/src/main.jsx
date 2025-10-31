@@ -1,6 +1,6 @@
 import React from 'react';
 import { Authoring } from './pie-toolbox-rubric/index';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { layout, settings } from '@pie-lib/config-ui';
 
 const { Panel, toggle } = settings;

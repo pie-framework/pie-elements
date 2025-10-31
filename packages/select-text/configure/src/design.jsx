@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
+import TextField from '@mui/material/TextField';
+import withStyles from '@mui/styles/withStyles';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
 import { Tokenizer } from '@pie-lib/text-select';
 import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } from '@pie-lib/config-ui';
-import Chip from '@material-ui/core/Chip';
-import Info from '@material-ui/icons/Info';
+import Chip from '@mui/material/Chip';
+import Info from '@mui/icons-material/Info';
 import debug from 'debug';
 import EditableHtml from '@pie-lib/editable-html';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import { generateValidationMessage } from './utils';
 
 const { Panel, toggle, radio, dropdown } = settings;

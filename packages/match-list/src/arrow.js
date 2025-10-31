@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import ArrowHead from '@material-ui/icons/ArrowDropDown';
-import { withStyles } from '@material-ui/core/styles';
+import ArrowHead from '@mui/icons-material/ArrowDropDown';
+import withStyles from '@mui/styles/withStyles';
 
 export class Arrow extends React.Component {
   static propTypes = {

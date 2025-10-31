@@ -1,16 +1,16 @@
 import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import CardActions from '@material-ui/core/CardActions';
-import DragHandle from '@material-ui/icons/DragHandle';
+import CardActions from '@mui/material/CardActions';
+import DragHandle from '@mui/icons-material/DragHandle';
 
 import { DragSource, DropTarget } from 'react-dnd';
 import classNames from 'classnames';
 
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@mui/material/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
-import RemoveCircle from '@material-ui/icons/RemoveCircle';
+import RemoveCircle from '@mui/icons-material/RemoveCircle';
 import debug from 'debug';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
@@ -107,7 +107,7 @@ export class ChoiceTile extends React.Component {
 
           {editable && (
             <div className={classes.controls}>
-              <IconButton className={classes.customColor} onClick={onDelete}>
+              <IconButton className={classes.customColor} onClick={onDelete} size="large">
                 <RemoveCircle classes={{ root: classes.removeCircle }} />
               </IconButton>
             </div>

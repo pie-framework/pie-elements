@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
-import Card from '@material-ui/core/Card';
+import Card from '@mui/material/Card';
 import InputHeader from '../input-header';
-import CardActions from '@material-ui/core/CardActions';
+import CardActions from '@mui/material/CardActions';
 import { DeleteButton } from '../buttons';
 
 import PlaceHolder from './droppable-placeholder';

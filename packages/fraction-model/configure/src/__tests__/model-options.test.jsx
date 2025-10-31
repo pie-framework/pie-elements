@@ -4,7 +4,7 @@ import defaultValues from '../defaults';
 import { ModelOptions } from '../model-options';
 import CardBar from '../card-bar';
 import { MiniField } from '../number-text-field';
-import Select from '@material-ui/core/Select';
+import Select from '@mui/material/Select';
 import { Checkbox } from '@pie-lib/config-ui';
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -18,7 +18,7 @@ jest.mock('@pie-lib/editable-html', () => ({
   EditableHtml: (props) => <div {...props} />,
 }));
 
-jest.mock('@material-ui/core', () => ({
+jest.mock('@mui/material', () => ({
   Select: (props) => <div {...props} />,
 }));
 

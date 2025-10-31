@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import AddButton from '@material-ui/icons/Add';
+import Button from '@mui/material/Button';
+import withStyles from '@mui/styles/withStyles';
+import AddButton from '@mui/icons-material/Add';
 
 export class AddRowButton extends React.Component {
   static propTypes = {

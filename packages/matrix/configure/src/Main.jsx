@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer, settings, layout } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import MatrixColumnsSizeHeaderInput from './MatrixColumnsSizeHeaderInput';
 import MatrixRowsSizeHeaderInput from './MatrixRowsSizeHeaderInput';
 import MatrixLabelTypeHeaderInput from './MatrixLabelTypeHeaderInput';

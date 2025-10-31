@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import AnnotationEditor from '../annotation-editor';
-import { unwrap } from "@material-ui/core/test-utils";
+import { unwrap } from "@mui/material/test-utils";
 import * as utils from '../annotation-utils';
 
 const Editor = unwrap(AnnotationEditor);

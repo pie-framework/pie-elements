@@ -5,7 +5,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import debounce from 'lodash/debounce';
 
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 
 import { withDragContext } from '@pie-lib/drag';
 import { layout, settings } from '@pie-lib/config-ui';

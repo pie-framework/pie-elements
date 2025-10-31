@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Group, Line, Circle } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles/index';
+import withStyles from '@mui/styles/withStyles';
 import { Rect } from 'react-konva/lib/ReactKonvaCore';
 import DeleteWidget from './DeleteWidget';
 

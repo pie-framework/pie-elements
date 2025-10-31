@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MiniField } from './number-text-field';
-import { withStyles } from '@material-ui/core/styles';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import withStyles from '@mui/styles/withStyles';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import CardBar from './card-bar';
 import { Checkbox } from '@pie-lib/config-ui';
 import cloneDeep from 'lodash/cloneDeep';

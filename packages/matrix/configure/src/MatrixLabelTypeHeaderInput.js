@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { MATRIX_LABEL_TYPE } from './matrixEntities';
 import { ColumnsWrapper, ColumnsHeader } from './HeaderCommon';
 import columnLabelsGenerator from './columnLabelsGenerator';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { color } from '@pie-lib/render-ui';
 
 const Flex = styled.div`

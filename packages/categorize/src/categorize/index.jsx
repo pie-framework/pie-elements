@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Choices from './choices';
 import Categories from './categories';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/categorize';
 import { withDragContext, uid } from '@pie-lib/drag';
 import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';

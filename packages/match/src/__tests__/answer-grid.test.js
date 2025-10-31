@@ -1,9 +1,9 @@
 import * as React from 'react';
 import AnswerGrid from '../answer-grid';
 import { shallowChild } from '@pie-lib/test-utils';
-import Radio from '@material-ui/core/Radio';
-import Checkbox from '@material-ui/core/Checkbox';
-import Typography from '@material-ui/core/Typography';
+import Radio from '@mui/material/Radio';
+import Checkbox from '@mui/material/Checkbox';
+import Typography from '@mui/material/Typography';
 
 describe('AnswerGrid', () => {
   const defaultProps = {

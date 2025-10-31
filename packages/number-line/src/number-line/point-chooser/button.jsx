@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 
 const RawButton = ({ classes, className, label, onClick, disabled, title }) => (
   <Button
@@ -11,9 +11,7 @@ const RawButton = ({ classes, className, label, onClick, disabled, title }) => (
     disabled={disabled}
     className={classNames(classes.addButton, className)}
     size="small"
-    variant="contained"
-    color="default"
-  >
+    variant="contained">
     {label}
   </Button>
 );

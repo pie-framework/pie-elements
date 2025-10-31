@@ -1,6 +1,6 @@
 import { getPluginProps } from './utils';
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { FeedbackConfig, settings, layout, InputContainer, AlertDialog } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import { withDragContext } from '@pie-lib/drag';

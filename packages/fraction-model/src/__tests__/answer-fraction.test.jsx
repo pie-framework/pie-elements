@@ -2,9 +2,9 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { shallowChild } from '@pie-lib/test-utils';
 import AnswerFraction from '../answer-fraction';
-import { TextField } from '@material-ui/core';
+import { TextField } from '@mui/material';
 
-jest.mock('@material-ui/core', () => ({
+jest.mock('@mui/material', () => ({
   TextField: (props) => <div {...props} />,
 }));
 

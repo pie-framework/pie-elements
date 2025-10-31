@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import { renderMath } from '@pie-lib/math-rendering';
 import { AlertDialog } from '@pie-lib/config-ui';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
+import Button from '@mui/material/Button';
+import withStyles from '@mui/styles/withStyles';
 
 import Choice from './choice';
 import { choiceIsEmpty } from './markupUtils';

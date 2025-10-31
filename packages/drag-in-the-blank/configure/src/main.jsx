@@ -5,10 +5,10 @@ import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
 import { renderMath } from '@pie-lib/math-rendering';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import withStyles from '@mui/styles/withStyles';
+import Typography from '@mui/material/Typography';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 
 import Choices from './choices';
 import { createSlateMarkup } from './markupUtils';

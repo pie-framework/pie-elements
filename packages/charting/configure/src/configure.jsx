@@ -1,10 +1,10 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { chartTypes, ConfigureChartPanel } from '@pie-lib/charting';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import EditableHtml from '@pie-lib/editable-html';
 
 import ChartingConfig from './charting-config';

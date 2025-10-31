@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import withStyles from '@mui/styles/withStyles';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import isEqual from 'lodash/isEqual';
 import { ResponseTypes, generateValidationMessage, getPluginProps } from './utils';
 import MathQuill from '@pie-framework/mathquill';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 
 let registered = false;
 

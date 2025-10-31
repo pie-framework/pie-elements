@@ -9,7 +9,10 @@
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/categorize": "^0.25.4",
     "@pie-lib/config-ui": "^11.25.1",

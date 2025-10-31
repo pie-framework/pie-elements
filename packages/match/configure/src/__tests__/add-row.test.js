@@ -1,7 +1,7 @@
 import * as React from 'react';
 import AddRow from '../add-row';
-import Button from '@material-ui/core/Button';
-import AddButton from '@material-ui/icons/Add';
+import Button from '@mui/material/Button';
+import AddButton from '@mui/icons-material/Add';
 import { shallowChild } from '@pie-lib/test-utils';
 
 describe('AddRow', () => {

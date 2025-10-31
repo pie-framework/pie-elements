@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Collapsible, Feedback, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
 import AnswerGrid from './answer-grid';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 
 export class Main extends React.Component {
   static propTypes = {

@@ -36,7 +36,7 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
 }));
 
-jest.mock('@pie-element/multiple-choice/configure/lib', () => class MockConfigure {});
+jest.mock('@pie-element/multiple-choice/configure/lib', () => (class MockConfigure {}));
 
 const PART_A = 'partA';
 const PART_B = 'partB';

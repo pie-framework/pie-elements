@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import withStyles from '@mui/styles/withStyles';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { color } from '@pie-lib/render-ui';
 
 import {
@@ -140,7 +140,12 @@ export class TraitsHeaderTile extends React.Component {
             )}
 
             <div>
-              <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
+              <IconButton
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                onClick={this.handleClick}
+                size="large">
                 <MoreVertIcon />
               </IconButton>
               <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={!!anchorEl} onClose={this.handleClose}>
@@ -153,7 +158,6 @@ export class TraitsHeaderTile extends React.Component {
             </div>
           </ScaleSettings>
         </PrimaryBlock>
-
         <SecondaryBlock
           setRef={(ref) => {
             if (ref) {

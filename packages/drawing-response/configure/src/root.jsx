@@ -2,8 +2,8 @@ import React from 'react';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography from '@mui/material/Typography';
+import withStyles from '@mui/styles/withStyles';
 
 import ImageContainer from './image-container';
 import cloneDeep from 'lodash/cloneDeep';

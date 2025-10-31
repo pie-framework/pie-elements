@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChoiceInput from './choice-input';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { LIKERT_ORIENTATION } from './likertEntities';
 import classNames from 'classnames';

@@ -4,8 +4,8 @@ import { Design } from '../design';
 import defaults from '../defaults';
 import { InputContainer } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
-import Select from '@material-ui/core/Select';
-import Tooltip from '@material-ui/core/Tooltip';
+import Select from '@mui/material/Select';
+import Tooltip from '@mui/material/Tooltip';
 
 jest.mock('@pie-lib/config-ui', () => ({
   layout: {

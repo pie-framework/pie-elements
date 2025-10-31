@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import classNames from 'classnames';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 import {
   moveChoiceToCategory,
   removeCategory,

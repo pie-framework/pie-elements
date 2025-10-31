@@ -1,13 +1,13 @@
 import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
 import { AlertDialog, Checkbox } from '@pie-lib/config-ui';
-import DragHandle from '@material-ui/icons/DragHandle';
-import Radio from '@material-ui/core/Radio';
-import IconButton from '@material-ui/core/IconButton';
-import Delete from '@material-ui/icons/Delete';
+import DragHandle from '@mui/icons-material/DragHandle';
+import Radio from '@mui/material/Radio';
+import IconButton from '@mui/material/IconButton';
+import Delete from '@mui/icons-material/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
 import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
@@ -182,7 +182,7 @@ export class Row extends React.Component {
           ))}
 
           <div className={classes.deleteIcon}>
-            <IconButton onClick={this.onDeleteRow(idx)} aria-label="Delete">
+            <IconButton onClick={this.onDeleteRow(idx)} aria-label="Delete" size="large">
               <Delete />
             </IconButton>
           </div>

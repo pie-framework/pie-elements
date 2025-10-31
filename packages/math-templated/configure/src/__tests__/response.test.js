@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Response } from '../response'; // Adjust the import path as necessary
-import { withStyles } from '@material-ui/core/styles';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import withStyles from '@mui/styles/withStyles';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 
 const classes = {

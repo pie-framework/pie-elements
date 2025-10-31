@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
-import Button from '@material-ui/core/Button';
-import MuiDivider from '@material-ui/core/Divider';
+import Button from '@mui/material/Button';
+import MuiDivider from '@mui/material/Divider';
 
 export class RawAddButton extends React.Component {
   static propTypes = {

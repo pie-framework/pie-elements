@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import Icon from './icon';
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@mui/material/IconButton';
 import classNames from 'classnames';
 
 const iconStyles = (theme) => ({
@@ -29,7 +29,7 @@ const iconStyles = (theme) => ({
 });
 
 const RawToggle = ({ active, onToggle, classes }) => (
-  <IconButton onClick={onToggle}>
+  <IconButton onClick={onToggle} size="large">
     <Icon className={classNames(classes.icon, active && classes.active)} />
   </IconButton>
 );

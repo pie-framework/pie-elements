@@ -4,8 +4,8 @@ import classnames from 'classnames';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
 
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography from '@mui/material/Typography';
+import withStyles from '@mui/styles/withStyles';
 
 import EditableHtml from '@pie-lib/editable-html';
 import { color, Feedback, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';

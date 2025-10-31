@@ -1,4 +1,4 @@
-import { withStyles } from '@material-ui/core/styles/index';
+import withStyles from '@mui/styles/withStyles';
 import classNames from 'classnames';
 import { SUPPORTED_SHAPES } from './shapes';
 import PropTypes from 'prop-types';

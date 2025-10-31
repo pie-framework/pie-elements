@@ -1,7 +1,7 @@
 import { MiniField } from './number-text-field';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 
 const DOMAIN_BEGIN = 'domainBegin';
 const DOMAIN_END = 'domainEnd';
