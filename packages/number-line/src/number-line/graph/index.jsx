@@ -177,6 +177,7 @@ export class NumberLineGraph extends React.Component {
               onToggleSelect={toggleElement}
               position={el.position}
               empty={empty}
+              key={index}
             />
           );
         } else if (el.type === 'point') {
@@ -193,6 +194,7 @@ export class NumberLineGraph extends React.Component {
               bounds={bounds}
               onClick={toggleElement}
               onMove={moveElement}
+              key={index}
             />
           );
         } else if (el.type === 'ray') {
@@ -206,6 +208,7 @@ export class NumberLineGraph extends React.Component {
               onToggleSelect={toggleElement}
               width={width}
               empty={el.pointType === 'empty'}
+              key={index}
             />
           );
         }
