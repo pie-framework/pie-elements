@@ -5,9 +5,9 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.19.4",
-    "@pie-lib/feedback": "^0.21.4",
-    "@pie-lib/translator": "^2.20.4",
+    "@pie-lib/controller-utils": "0.22.0-mui-update.0",
+    "@pie-lib/feedback": "0.24.0-mui-update.0",
+    "@pie-lib/translator": "2.24.0-mui-update.0",
     "debug": "^3.1.0",
     "js-combinatorics": "^0.5.4",
     "lodash": "^4.17.19"
