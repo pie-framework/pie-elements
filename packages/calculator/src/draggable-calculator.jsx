@@ -1,5 +1,5 @@
 import React from 'react';
-import Calculator from '@pie-framework/material-ui-calculator';
+// import Calculator from '@pie-framework/material-ui-calculator';
 import Draggable from 'react-draggable';
 import Typography from '@mui/material/Typography';
 import Close from '@mui/icons-material/Close';
@@ -70,7 +70,7 @@ class BaseLayout extends React.Component {
             <Close />
           </IconButton>
         </div>
-        <Calculator mode={mode} />
+        {/* <Calculator mode={mode} /> */}
       </div>
     );
   }

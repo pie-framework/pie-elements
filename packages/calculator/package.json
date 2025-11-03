@@ -27,7 +27,6 @@
     "@emotion/style": "^0.8.0",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
-    "@pie-framework/material-ui-calculator": "^3.1.5",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
