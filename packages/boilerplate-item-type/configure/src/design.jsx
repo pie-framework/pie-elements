@@ -11,7 +11,6 @@ const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
   width: '100%',
   paddingTop: theme.spacing(2),
   marginBottom: theme.spacing(2),
-  background: 'red'
 }));
 
 export class Design extends React.Component {
