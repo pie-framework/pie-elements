@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import cloneDeep from 'lodash/cloneDeep';
-import { InputContainer, settings, layout } from '@pie-lib/config-ui';
+import { settings, layout } from '@pie-lib/config-ui';
+import { InputContainer } from '@pie-lib/render-ui'
 import EditableHtml from '@pie-lib/editable-html';
 
 const { Panel, toggle } = settings;
 
 const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
   width: '100%',
-  paddingTop: theme.spacing(2),
+  paddingTop: theme.spacing(1),
   marginBottom: theme.spacing(2),
+  marginTop: theme.spacing(2),
 }));
 
 export class Design extends React.Component {
