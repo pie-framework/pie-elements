@@ -6,8 +6,8 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/controller-utils": "0.22.0-mui-update.0",
-    "@pie-lib/feedback": "0.24.0-mui-update.0",
+    "@pie-lib/controller-utils": "0.23.0-mui-update.0",
+    "@pie-lib/feedback": "0.25.0-mui-update.0",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },
