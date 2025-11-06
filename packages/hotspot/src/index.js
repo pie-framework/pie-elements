@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { renderMath } from '@pie-lib/math-rendering';
 import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
@@ -14,6 +14,7 @@ export default class Hotspot extends HTMLElement {
     this._session = null;
     this._audioInitialized = false;
     this.audioComplete = false;
+    this._root = null;
   }
 
   set model(m) {
@@ -191,16 +192,6 @@ export default class Hotspot extends HTMLElement {
     observer.observe(this, { childList: true, subtree: true });
   }
 
-  disconnectedCallback() {
-    document.removeEventListener('click', this._enableAudio);
-
-    if (this._audio) {
-      this._audio.removeEventListener('playing', this._handlePlaying);
-      this._audio.removeEventListener('ended', this._handleEnded);
-      this._audio = null;
-    }
-  }
-
   _render() {
     if (this._model && this._session) {
       const el = React.createElement(HotspotComponent, {
@@ -209,9 +200,27 @@ export default class Hotspot extends HTMLElement {
         onSelectChoice: this.onSelectChoice.bind(this),
       });
 
-      ReactDOM.render(el, this, () => {
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+      queueMicrotask(() => {
         renderMath(this);
       });
+    }
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('click', this._enableAudio);
+
+    if (this._audio) {
+      this._audio.removeEventListener('playing', this._handlePlaying);
+      this._audio.removeEventListener('ended', this._handleEnded);
+      this._audio = null;
+    }
+
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

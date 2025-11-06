@@ -1,12 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Categorize from '../index';
 import { shallow } from 'enzyme';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { Categorize as UnStyledCategorize } from '../categorize/index';
 
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
-jest.spyOn(ReactDOM, 'render').mockImplementation(() => {});
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: mockRender,
+    unmount: mockUnmount,
+  })),
+}));
 
 describe('categorize', () => {
   describe('renders', () => {

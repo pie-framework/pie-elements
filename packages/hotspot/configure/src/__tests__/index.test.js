@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
@@ -12,8 +12,13 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
 }));
 
-jest.mock('react-dom', () => ({
-  render: jest.fn(),
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: mockRender,
+    unmount: mockUnmount,
+  })),
 }));
 
 const model = () => ({
@@ -61,8 +66,9 @@ describe('index', () => {
   });
 
   describe('set model', () => {
-    it('calls ReactDOM.render', () => {
-      expect(ReactDOM.render).toHaveBeenCalled();
+    it('calls createRoot and render', () => {
+      expect(createRoot).toHaveBeenCalled();
+      expect(mockRender).toHaveBeenCalled();
     });
   });
 

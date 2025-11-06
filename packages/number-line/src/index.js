@@ -7,7 +7,7 @@ import { lineIsSwitched, switchGraphLine, toGraphFormat, toSessionFormat } from 
 import Graph from './number-line/graph';
 import NumberLineComponent from './number-line';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import RootComponent from './number-line';
 import cloneDeep from 'lodash/cloneDeep';
 import { renderMath } from '@pie-lib/math-rendering';
@@ -17,6 +17,7 @@ export { Graph, NumberLineComponent, tickUtils, dataConverter, pointChooser };
 export default class NumberLine extends HTMLElement {
   constructor() {
     super();
+    this._root = null;
   }
 
   set model(m) {
@@ -148,12 +149,22 @@ export default class NumberLine extends HTMLElement {
 
         let el = React.createElement(RootComponent, props);
 
-        ReactDOM.render(el, this, () => {
+        if (!this._root) {
+          this._root = createRoot(this);
+        }
+        this._root.render(el);
+        queueMicrotask(() => {
           renderMath(this);
         });
       }
     } catch (e) {
       throw e;
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

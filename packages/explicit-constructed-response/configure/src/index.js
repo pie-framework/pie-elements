@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import debug from 'debug';
 import defaults from 'lodash/defaults';
 import isArray from 'lodash/isArray';
@@ -53,6 +53,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = ExplicitConstructedResponse.prepareModel();
     this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
@@ -167,6 +168,15 @@ export default class ExplicitConstructedResponse extends HTMLElement {
       },
     });
 
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

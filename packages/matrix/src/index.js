@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
 import Main from './Main';
@@ -14,6 +14,7 @@ export const isComplete = (session) => {
 export default class Matrix extends HTMLElement {
   constructor() {
     super();
+    this._root = null;
   }
 
   set model(m) {
@@ -61,8 +62,18 @@ export default class Matrix extends HTMLElement {
       onSessionChange: this.sessionChanged.bind(this),
     });
 
-    ReactDOM.render(el, this, () => {
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(el);
+    queueMicrotask(() => {
       renderMath(this);
     });
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

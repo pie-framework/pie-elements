@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import debounce from 'lodash/debounce';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
@@ -41,6 +41,7 @@ export default class SelectTextPrint extends HTMLElement {
     this._model = null;
     this._session = {};
     this._session.selectedTokens = [];
+    this._root = null;
     this._rerender = debounce(
       () => {
         if (this._model && this._session) {
@@ -54,7 +55,11 @@ export default class SelectTextPrint extends HTMLElement {
               onSelectionChange: () => {},
             });
 
-          ReactDOM.render(element, this, () => {
+          if (!this._root) {
+            this._root = createRoot(this);
+          }
+          this._root.render(element);
+          queueMicrotask(() => {
             log('render complete - render math');
             renderMath(this);
           });
@@ -76,4 +81,10 @@ export default class SelectTextPrint extends HTMLElement {
   }
 
   connectedCallback() {}
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
+  }
 }

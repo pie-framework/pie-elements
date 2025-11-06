@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Configure from './configure';
 import isEmpty from 'lodash/isEmpty';
 import {
@@ -32,6 +32,7 @@ export default class MathInlineConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = MathInlineConfigure.createDefaultModel();
     this._configuration = defaults.configuration;
   }
@@ -134,7 +135,16 @@ export default class MathInlineConfigure extends HTMLElement {
         },
       });
 
-      ReactDOM.render(el, this);
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

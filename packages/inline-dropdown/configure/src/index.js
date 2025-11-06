@@ -7,7 +7,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Main from './main';
 import debug from 'debug';
 import defaults from 'lodash/defaults';
@@ -36,6 +36,7 @@ export default class InlineDropdown extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = InlineDropdown.prepareModel();
     this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
@@ -136,6 +137,15 @@ export default class InlineDropdown extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

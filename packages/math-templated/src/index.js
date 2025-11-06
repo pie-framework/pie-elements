@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import {SessionChangedEvent, ModelSetEvent} from '@pie-framework/pie-player-events';
 import Main from './main';
 import _ from 'lodash';
@@ -7,6 +7,7 @@ import _ from 'lodash';
 export default class MathTemplated extends HTMLElement {
     constructor() {
         super();
+        this._root = null;
         this.sessionChangedEventCaller = _.debounce(() => {
             this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), true));
         }, 1000);
@@ -66,7 +67,16 @@ export default class MathTemplated extends HTMLElement {
                 onSessionChange: this.onSessionChange.bind(this),
             });
 
-            ReactDOM.render(el, this);
+            if (!this._root) {
+                this._root = createRoot(this);
+            }
+            this._root.render(el);
+        }
+    }
+
+    disconnectedCallback() {
+        if (this._root) {
+            this._root.unmount();
         }
     }
 }

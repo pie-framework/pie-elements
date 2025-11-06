@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import compact from 'lodash/compact';
 import debug from 'debug';
 import { renderMath } from '@pie-lib/math-rendering';
@@ -24,6 +24,11 @@ export const isValidSession = ({ model, session }) => {
 };
 
 export default class Ordering extends HTMLElement {
+  constructor() {
+    super();
+    this._root = null;
+  }
+
   isComplete = (value) => value && compact(value).length === this._model.completeLength;
 
   sessionChange = (session) => {
@@ -68,9 +73,19 @@ export default class Ordering extends HTMLElement {
         onSessionChange: this.sessionChange,
       });
 
-      ReactDOM.render(element, this, () => {
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(element);
+      queueMicrotask(() => {
         renderMath(this);
       });
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

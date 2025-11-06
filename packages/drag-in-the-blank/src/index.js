@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { renderMath } from '@pie-lib/math-rendering';
 import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
@@ -36,6 +36,7 @@ export default class DragInTheBlank extends HTMLElement {
     this._session = null;
     this._audioInitialized = false;
     this.audioComplete = false;
+    this._root = null;
   }
 
   set model(m) {
@@ -69,7 +70,11 @@ export default class DragInTheBlank extends HTMLElement {
         onChange: this.changeSession,
       });
 
-      ReactDOM.render(elem, this, () => {
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(elem);
+      queueMicrotask(() => {
         renderMath(this);
       });
     }
@@ -216,6 +221,10 @@ export default class DragInTheBlank extends HTMLElement {
       this._audio.removeEventListener('playing', this._handlePlaying);
       this._audio.removeEventListener('ended', this._handleEnded);
       this._audio = null;
+    }
+
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

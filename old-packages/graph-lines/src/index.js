@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Component } from '@pie-ui/graph-lines';
 import debug from 'debug';
 import * as mapper from './mapper';
@@ -9,6 +9,7 @@ const log = debug('pie-elements:graph-lines');
 export default class GraphLines extends HTMLElement {
   constructor() {
     super();
+    this._root = null;
   }
 
   set model(m) {
@@ -43,6 +44,15 @@ export default class GraphLines extends HTMLElement {
 
     const el = React.createElement(Component, props);
 
-    ReactDOM.render(el, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(el);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

@@ -1,12 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { shallow } from 'enzyme';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import ImageClozeAssociation from '../index';
 import { ImageClozeAssociationComponent } from '../root';
 
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
-jest.spyOn(ReactDOM, 'render').mockImplementation(() => {});
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: mockRender,
+    unmount: mockUnmount,
+  })),
+}));
 
 describe('image-cloze-association', () => {
   describe('renders', () => {

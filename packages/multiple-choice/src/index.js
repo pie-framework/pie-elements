@@ -1,6 +1,6 @@
 import Main from './main';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
@@ -53,6 +53,7 @@ export default class MultipleChoice extends HTMLElement {
     this._boundHandleKeyDown = this.handleKeyDown.bind(this);
     this._keyboardEventsEnabled = false;
     this._audioInitialized = false;
+    this._root = null;
 
     this._rerender = debounce(
       () => {
@@ -72,7 +73,11 @@ export default class MultipleChoice extends HTMLElement {
           this.setAttribute('role', 'region');
           this.setLangAttribute();
 
-          ReactDOM.render(element, this, () => {
+          if (!this._root) {
+            this._root = createRoot(this);
+          }
+          this._root.render(element);
+          queueMicrotask(() => {
             log('render complete - render math');
             renderMath(this);
           });
@@ -275,6 +280,10 @@ export default class MultipleChoice extends HTMLElement {
       this._audio.removeEventListener('playing', this._handlePlaying);
       this._audio.removeEventListener('ended', this._handleEnded);
       this._audio = null;
+    }
+
+    if (this._root) {
+      this._root.unmount();
     }
   }
 
