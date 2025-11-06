@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { Chart } from '@pie-lib/charting';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Checkbox from '@mui/material/Checkbox';
@@ -8,21 +8,22 @@ import { color } from '@pie-lib/render-ui';
 
 import Typography from '@mui/material/Typography';
 
-const styles = (theme) => ({
-  container: {
-    marginBottom: theme.spacing.unit * 2.5,
-    display: 'flex',
-    flex: 1,
-  },
-  title: {
-    marginBottom: theme.spacing.unit,
-  },
-  column: {
-    flex: 1,
-  },
-  customColor: {
-    color: `${color.tertiary()} !important`,
-  },
+const Container = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2.5),
+  display: 'flex',
+  flex: 1,
+}));
+
+const Title = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(1),
+}));
+
+const Column = styled('div')({
+  flex: 1,
+});
+
+const CustomColorCheckbox = styled(Checkbox)({
+  color: `${color.tertiary()} !important`,
 });
 
 const restoreCorrectAnswer = (correctAnswer, data) => {
@@ -53,7 +54,6 @@ const restoreCorrectAnswer = (correctAnswer, data) => {
 
 export class ChartingConfig extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     charts: PropTypes.array,
@@ -123,7 +123,6 @@ export class ChartingConfig extends React.Component {
 
   render() {
     const {
-      classes,
       model,
       charts,
       labelsPlaceholders,
@@ -139,9 +138,9 @@ export class ChartingConfig extends React.Component {
 
     return (
       <div>
-        <div className={classes.title}>Define Initial Chart Attributes</div>
-        <div className={classes.container}>
-          <div className={classes.column} key="graph">
+        <Title>Define Initial Chart Attributes</Title>
+        <Container>
+          <Column key="graph">
             <Typography component="div" type="body1">
               <span>Use the tools below to set up the chart as it will initially appear to students.</span>
             </Typography>
@@ -176,8 +175,7 @@ export class ChartingConfig extends React.Component {
             />
             {model.changeAddCategoryEnabled && (
               <div>
-                <Checkbox
-                  className={classes.customColor}
+                <CustomColorCheckbox
                   checked={model.addCategoryEnabled}
                   onChange={(e) => {
                     this.changeAddRemoveEnabled(e.target.checked);
@@ -193,11 +191,11 @@ export class ChartingConfig extends React.Component {
               onClose={dialog.onClose}
               onConfirm={dialog.onConfirm}
             />
-          </div>
-        </div>
+          </Column>
+        </Container>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(ChartingConfig);
+export default ChartingConfig;

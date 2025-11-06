@@ -1,20 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
 import { Chart, chartTypes, KeyLegend } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
+const StyledUiLayout = styled(UiLayout)({
+  color: color.text(),
+  backgroundColor: color.background(),
+  overflowX: 'scroll',
+  overflowY: 'hidden',
+});
+
+const StyledChart = styled(Chart)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     model: PropTypes.object.isRequired,
     onAnswersChange: PropTypes.func,
     categories: PropTypes.array,
   };
-
-  static defaultProps = { classes: {} };
 
   constructor(props) {
     super(props);
@@ -45,7 +58,7 @@ export class Main extends React.Component {
 
   render() {
     const { categories, showingCorrect } = this.state;
-    const { model, classes } = this.props;
+    const { model } = this.props;
     const {
       teacherInstructions,
       prompt,
@@ -78,17 +91,16 @@ export class Main extends React.Component {
       model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
+      <StyledUiLayout extraCSSRules={extraCSSRules}>
         {showTeacherInstructions && (
-          <Collapsible
-            className={classes.collapsible}
+          <StyledCollapsible
             labels={{
               hidden: 'Show Teacher Instructions',
               visible: 'Hide Teacher Instructions',
             }}
           >
             <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {prompt && <PreviewPrompt className="prompt" prompt={prompt} />}
@@ -101,8 +113,7 @@ export class Main extends React.Component {
         />
 
         {showingCorrect && showToggle ? (
-          <Chart
-            className={classes.chart}
+          <StyledChart
             chartType={chartType}
             size={size}
             domain={domain}
@@ -124,8 +135,7 @@ export class Main extends React.Component {
             labelsPlaceholders={{}}
           />
         ) : (
-          <Chart
-            className={classes.chart}
+          <StyledChart
             chartType={chartType}
             size={size}
             domain={domain}
@@ -154,25 +164,9 @@ export class Main extends React.Component {
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
-      </UiLayout>
+      </StyledUiLayout>
     );
   }
 }
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    overflowX: 'scroll',
-    overflowY: 'hidden',
-  },
-  chart: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-});
-
-export default withStyles(styles)(Main);
+export default Main;

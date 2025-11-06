@@ -1,41 +1,44 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { Chart } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
 import cloneDeep from 'lodash/cloneDeep';
 
 import Typography from '@mui/material/Typography';
 
-const styles = (theme) => ({
-  container: {
-    marginBottom: theme.spacing.unit * 2.5,
-    display: 'flex',
-    flex: 1,
-  },
-  button: {
-    marginTop: theme.spacing.unit * 3,
-    cursor: 'pointer',
-    background: theme.palette.grey[200],
-    padding: theme.spacing.unit * 2,
-    width: 'fit-content',
-    borderRadius: '4px',
-  },
-  column: {
-    flex: 1,
-  },
-  chartError: {
-    border: `2px solid ${theme.palette.error.main}`,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-  title: {
-    marginBottom: theme.spacing.unit,
-  },
+const Container = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2.5),
+  display: 'flex',
+  flex: 1,
+}));
+
+const Button = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(3),
+  cursor: 'pointer',
+  background: theme.palette.grey[200],
+  padding: theme.spacing(2),
+  width: 'fit-content',
+  borderRadius: '4px',
+}));
+
+const Column = styled('div')({
+  flex: 1,
 });
+
+const ChartError = styled('div')(({ theme }) => ({
+  border: `2px solid ${theme.palette.error.main}`,
+}));
+
+const ErrorText = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
+const Title = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(1),
+}));
 
 const addCategoryProps = (correctAnswer, data) =>
   correctAnswer.map((correct, index) => ({
@@ -140,7 +143,6 @@ export const getUpdatedCategories = (nextProps, prevProps, prevState) => {
 
 export class CorrectResponse extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     correctAnswerErrors: PropTypes.object,
     studentNewCategoryDefaultLabel: PropTypes.string,
     model: PropTypes.object.isRequired,
@@ -190,7 +192,6 @@ export class CorrectResponse extends React.Component {
 
   render() {
     const {
-      classes,
       model,
       charts,
       error,
@@ -206,44 +207,61 @@ export class CorrectResponse extends React.Component {
 
     return (
       <div>
-        <div className={classes.title}>Define Correct Response</div>
-        <div className={classes.container}>
-          <div className={classes.column} key="graph">
+        <Title>Define Correct Response</Title>
+        <Container>
+          <Column key="graph">
             <Typography component="div" type="body1">
               <span>Use the tools below to define the correct answer.</span>
             </Typography>
 
-            <div
-              key={`correct-response-graph-${model.correctAnswer.name}`}
-              className={identicalError || categoriesError ? classes.chartError : ''}
-            >
-              <Chart
-                chartType={model.chartType}
-                size={model.graph}
-                domain={domain}
-                range={range}
-                charts={charts}
-                data={categories}
-                title={model.title}
-                onDataChange={this.changeData}
-                addCategoryEnabled={model.addCategoryEnabled}
-                categoryDefaultLabel={studentNewCategoryDefaultLabel}
-                error={error}
-                mathMlOptions={mathMlOptions}
-                labelsPlaceholders={labelsPlaceholders}
-              />
-            </div>
+            {(identicalError || categoriesError) ? (
+              <ChartError key={`correct-response-graph-${model.correctAnswer.name}`}>
+                <Chart
+                  chartType={model.chartType}
+                  size={model.graph}
+                  domain={domain}
+                  range={range}
+                  charts={charts}
+                  data={categories}
+                  title={model.title}
+                  onDataChange={this.changeData}
+                  addCategoryEnabled={model.addCategoryEnabled}
+                  categoryDefaultLabel={studentNewCategoryDefaultLabel}
+                  error={error}
+                  mathMlOptions={mathMlOptions}
+                  labelsPlaceholders={labelsPlaceholders}
+                />
+              </ChartError>
+            ) : (
+              <div key={`correct-response-graph-${model.correctAnswer.name}`}>
+                <Chart
+                  chartType={model.chartType}
+                  size={model.graph}
+                  domain={domain}
+                  range={range}
+                  charts={charts}
+                  data={categories}
+                  title={model.title}
+                  onDataChange={this.changeData}
+                  addCategoryEnabled={model.addCategoryEnabled}
+                  categoryDefaultLabel={studentNewCategoryDefaultLabel}
+                  error={error}
+                  mathMlOptions={mathMlOptions}
+                  labelsPlaceholders={labelsPlaceholders}
+                />
+              </div>
+            )}
 
             {(identicalError || categoriesError) && (
-              <Typography component="div" type="body1" className={classes.errorText}>
+              <ErrorText component="div" type="body1">
                 <span>{identicalError || categoriesError}</span>
-              </Typography>
+              </ErrorText>
             )}
-          </div>
-        </div>
+          </Column>
+        </Container>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(CorrectResponse);
+export default CorrectResponse;
