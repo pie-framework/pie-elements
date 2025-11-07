@@ -63,9 +63,13 @@ describe('inline-dropdown', () => {
       env = { mode: 'gather' };
       const updateSession = jest.fn().mockResolvedValue();
       await model(question, session, env, updateSession);
-      expect(updateSession).toHaveBeenCalledWith('1', 'inline-dropdown-element', {
-        shuffledValues: expect.arrayContaining(['9719395', '9719396', '9719397', '9719398']),
-      });
+      expect(updateSession).toHaveBeenCalledWith(
+        '1',
+        'inline-dropdown-element',
+        expect.objectContaining({
+          shuffledValues: { 0: expect.arrayContaining(['9719395', '9719396', '9719397', '9719398']) },
+        }),
+      );
     });
   });
 });
