@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
@@ -37,6 +37,7 @@ export default class CategorizeConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = CategorizeConfigure.createDefaultModel();
     this._configuration = defaults.configuration;
   }
@@ -142,8 +143,18 @@ export default class CategorizeConfigure extends HTMLElement {
       },
     });
 
-    ReactDOM.render(el, this, () => {
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(el);
+    queueMicrotask(() => {
       renderMath(this);
     });
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

@@ -2,13 +2,18 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import defaults from '../defaults';
 import { Main } from '../main';
 import EbsrConfigure from '../index';
 
-jest.mock('react-dom', () => ({
-  render: jest.fn(),
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: mockRender,
+    unmount: mockUnmount,
+  })),
 }));
 
 jest.mock('@pie-framework/pie-configure-events', () => ({
@@ -176,7 +181,8 @@ describe('index', () => {
       el.model = model;
 
       expect(el._model).toEqual(model);
-      expect(ReactDOM.render).toHaveBeenCalled();
+      expect(createRoot).toHaveBeenCalled();
+      expect(mockRender).toHaveBeenCalled();
     });
 
     it('should have set the model for partA and partB', () => {
@@ -189,7 +195,8 @@ describe('index', () => {
     it('calls ReactDOM.render', () => {
       el.configuration = defaults.configuration;
 
-      expect(ReactDOM.render).toHaveBeenCalled();
+      expect(createRoot).toHaveBeenCalled();
+      expect(mockRender).toHaveBeenCalled();
     });
 
     it('should have set the configuration for partA and partB', () => {
@@ -217,7 +224,8 @@ describe('index', () => {
         },
       });
 
-      expect(ReactDOM.render).toBeCalled();
+      expect(createRoot).toBeCalled();
+      expect(mockRender).toBeCalled();
       expect(el._model[`part${key}`]).toEqual(expected);
     });
   };
@@ -245,7 +253,8 @@ describe('index', () => {
       main.instance()[key].onModelChanged(updatedModel);
 
       expect(el._model[key]).toEqual(updatedModel);
-      expect(ReactDOM.render).toBeCalled();
+      expect(createRoot).toBeCalled();
+      expect(mockRender).toBeCalled();
     });
   };
 

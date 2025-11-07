@@ -1,7 +1,7 @@
 import { ModelSetEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import StimulusTabs from './stimulus-tabs';
 
@@ -12,6 +12,7 @@ export default class PiePassage extends HTMLElement {
       passages: [],
     };
     this._session = null;
+    this._root = null;
   }
 
   setLangAttribute() {
@@ -51,7 +52,19 @@ export default class PiePassage extends HTMLElement {
         tabs: passagesTabs,
       });
 
-      ReactDOM.render(elem, this, () => renderMath(this));
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(elem);
+      queueMicrotask(() => {
+        renderMath(this);
+      });
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

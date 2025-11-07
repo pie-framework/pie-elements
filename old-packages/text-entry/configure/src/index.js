@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Configure from './configure';
 import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
@@ -16,6 +16,7 @@ export default class TextEntryConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = TextEntryConfigure.createDefaultModel();
     this._configuration = defaults.configuration;
   }
@@ -61,7 +62,16 @@ export default class TextEntryConfigure extends HTMLElement {
         model: this._model,
         configuration: this._configuration,
       });
-      ReactDOM.render(el, this);
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
 
@@ -40,6 +40,7 @@ export default class PassagePrint extends HTMLElement {
     this._model = null;
     this._options = null;
     this._session = [];
+    this._root = null;
 
     this._rerender = debounce(
       () => {
@@ -52,7 +53,10 @@ export default class PassagePrint extends HTMLElement {
               tabs: printPassage,
             });
 
-            ReactDOM.render(element, this);
+            if (!this._root) {
+              this._root = createRoot(this);
+            }
+            this._root.render(element);
           }
         } else {
           log('skip');
@@ -73,4 +77,10 @@ export default class PassagePrint extends HTMLElement {
   }
 
   connectedCallback() {}
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import isEmpty from 'lodash/isEmpty';
 import { renderMath } from '@pie-lib/math-rendering';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
@@ -7,6 +7,11 @@ import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-ev
 import DrawingResponseComponent from './drawing-response';
 
 export default class DrawingResponse extends HTMLElement {
+  constructor() {
+    super();
+    this._root = null;
+  }
+
   set model(m) {
     this._model = m;
 
@@ -49,9 +54,19 @@ export default class DrawingResponse extends HTMLElement {
         onSessionChange: this.sessionChanged,
       });
 
-      ReactDOM.render(el, this, () => {
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+      queueMicrotask(() => {
         renderMath(this);
       });
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

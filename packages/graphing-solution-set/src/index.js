@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
 import { findSectionsInSolutionSet, removeInvalidAnswers } from './utils';
@@ -11,6 +11,7 @@ export { Main as Component };
 export default class Graphing extends HTMLElement {
   constructor() {
     super();
+    this._root = null;
   }
 
   /*
@@ -132,8 +133,18 @@ export default class Graphing extends HTMLElement {
       onAnswersChange: this.changeAnswers,
       setGssData: this.setGssData,
     });
-    ReactDOM.render(el, this, () => {
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(el);
+    queueMicrotask(() => {
       renderMath(this);
     });
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

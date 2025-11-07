@@ -1,7 +1,7 @@
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Root from './root';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
@@ -16,6 +16,7 @@ export default class InlineChoice extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = InlineChoice.createDefaultModel();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
@@ -39,6 +40,15 @@ export default class InlineChoice extends HTMLElement {
       model: this._model,
       onModelChanged: this.onModelChanged,
     });
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

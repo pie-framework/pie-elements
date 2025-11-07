@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Configure from './configure';
 import {
   DeleteImageEvent,
@@ -24,6 +24,7 @@ export default class GraphLinesConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = GraphLinesConfigure.createDefaultModel();
     this._configuration = defaultValues.configuration;
   }
@@ -82,7 +83,16 @@ export default class GraphLinesConfigure extends HTMLElement {
           delete: this.onDeleteSound.bind(this),
         },
       });
-      ReactDOM.render(el, this);
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

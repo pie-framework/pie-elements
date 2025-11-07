@@ -1,6 +1,6 @@
 import { ModelUpdatedEvent, InsertImageEvent, DeleteImageEvent } from '@pie-framework/pie-configure-events';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import debug from 'debug';
 
 import Main from './main';
@@ -13,6 +13,7 @@ const configurationWithDefaults = (c) => ({ ...defaults.configuration, ...c });
 export default class RubricElement extends HTMLElement {
   constructor() {
     super();
+    this._root = null;
     debug.log('constructor called');
     this._model = modelWithDefaults();
     this._configuration = configurationWithDefaults();
@@ -123,7 +124,16 @@ export default class RubricElement extends HTMLElement {
         },
       });
 
-      ReactDOM.render(element, this);
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(element);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

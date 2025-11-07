@@ -1,12 +1,17 @@
 import { shallow } from 'enzyme';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import * as React from 'react';
 import defaultValues from '../defaults';
 import { Root } from '../root';
 
-jest.mock('react-dom', () => ({
-  render: jest.fn(),
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: mockRender,
+    unmount: mockUnmount,
+  })),
 }));
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -77,7 +82,8 @@ describe('index', () => {
 
   describe('set model', () => {
     it('calls ReactDOM.render', () => {
-      expect(ReactDOM.render).toHaveBeenCalled();
+      expect(createRoot).toHaveBeenCalled();
+      expect(mockRender).toHaveBeenCalled();
     });
   });
 });

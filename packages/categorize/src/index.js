@@ -1,11 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { renderMath } from '@pie-lib/math-rendering';
 import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import CategorizeComponent from './categorize';
 
 export default class Categorize extends HTMLElement {
+  constructor() {
+    super();
+    this._root = null;
+  }
+
   set model(m) {
     this._model = m;
 
@@ -241,6 +246,10 @@ export default class Categorize extends HTMLElement {
       this._audio.removeEventListener('ended', this._handleEnded);
       this._audio = null;
     }
+
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 
   render() {
@@ -252,7 +261,11 @@ export default class Categorize extends HTMLElement {
         onShowCorrectToggle: this.onShowCorrectToggle.bind(this),
       });
 
-      ReactDOM.render(el, this, () => {
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+      queueMicrotask(() => {
         renderMath(this);
       });
     }
