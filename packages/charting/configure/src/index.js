@@ -128,8 +128,55 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
+/**
+ * Custom transition component that works with Web Components
+ * Bypasses MUI's Grow component useTimeout hook which causes crashes in Web Components
+ * Uses CSS transitions instead of JS-based animation hooks
+ */
+const WebComponentSafeTransition = React.forwardRef(({ children, in: inProp }, ref) => {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    if (inProp) {
+      // Use RAF to ensure the element is mounted before applying the visible class
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setMounted(true);
+        });
+      });
+    } else {
+      setMounted(false);
+    }
+  }, [inProp]);
+
+  if (!inProp && !mounted) {
+    return null;
+  }
+
+  const style = {
+    opacity: mounted ? 1 : 0,
+    transform: mounted ? 'scale(1) translateY(0)' : 'scale(0.75) translateY(-16px)',
+    transition: 'opacity 300ms cubic-bezier(0.34, 1.56, 0.64, 1), transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+    transformOrigin: 'top center',
+  };
+
+  return (
+    <div ref={ref} style={style}>
+      {children}
+    </div>
+  );
+});
+
 const StyledFormControl = styled(FormControl)({
   width: '160px',
+});
+
+// Wrapper to ensure proper positioning context for the dropdown
+const Wrapper = styled('div')({
+  position: 'relative',
+  zIndex: 1,
+  // Ensure the wrapper can accommodate the dropdown
+  minHeight: '56px',
 });
 
 export default class GraphLinesConfigure extends HTMLElement {
@@ -140,6 +187,10 @@ export default class GraphLinesConfigure extends HTMLElement {
 
     this.state = { chartType: '' };
 
+    // Ensure the Web Component itself doesn't clip dropdown
+    this.style.overflow = 'visible';
+    this.style.display = 'block';
+
     this._render();
   }
 
@@ -147,21 +198,33 @@ export default class GraphLinesConfigure extends HTMLElement {
     const { chartType } = this.state;
 
     this._root.render(
-      <StyledFormControl variant="outlined">
-        <InputLabel id="simple-select-label">Chart Type</InputLabel>
-        <Select
-          labelId="simple-select-label"
-          value={chartType}
-          onChange={(e) => {
-            this.state.chartType = e.target.value;
-            this._render();
-          }}
-        >
-          <MenuItem value="histogram">Histogram</MenuItem>
-          <MenuItem value="bar">Bar</MenuItem>
-          <MenuItem value="line">Line</MenuItem>
-        </Select>
-      </StyledFormControl>
+      <Wrapper>
+        <StyledFormControl variant="outlined">
+          <InputLabel id="simple-select-label">Chart Type</InputLabel>
+          <Select
+            labelId="simple-select-label"
+            value={chartType}
+            onChange={(e) => {
+              this.state.chartType = e.target.value;
+              this._render();
+            }}
+            MenuProps={{
+              disablePortal: true,
+              TransitionComponent: WebComponentSafeTransition,
+              PaperProps: {
+                style: {
+                  maxHeight: '300px',
+                  marginTop: '8px',
+                }
+              }
+            }}
+          >
+            <MenuItem value="histogram">Histogram</MenuItem>
+            <MenuItem value="bar">Bar</MenuItem>
+            <MenuItem value="line">Line</MenuItem>
+          </Select>
+        </StyledFormControl>
+      </Wrapper>
     );
   }
 }
