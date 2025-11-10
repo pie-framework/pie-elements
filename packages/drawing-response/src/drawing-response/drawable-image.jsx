@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
-const DrawableImage = ({ classes, url, dimensions: { height, width } }) => (
-  <div className={classes.imageContainer}>
-    <img
+const ImageContainer = styled('div')({
+  position: 'relative',
+  width: 'fit-content',
+});
+
+const Image = styled('img')({
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+const DrawableImage = ({ url, dimensions: { height, width } }) => (
+  <ImageContainer>
+    <Image
       alt="drawing-response-image"
-      className={classes.image}
       src={url}
       style={{
         height,
@@ -15,25 +25,12 @@ const DrawableImage = ({ classes, url, dimensions: { height, width } }) => (
         width,
       }}
     />
-  </div>
+  </ImageContainer>
 );
 
-const styles = () => ({
-  image: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  imageContainer: {
-    position: 'relative',
-    width: 'fit-content',
-  },
-});
-
 DrawableImage.propTypes = {
-  classes: PropTypes.object.isRequired,
   dimensions: PropTypes.object.isRequired,
   url: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(DrawableImage);
+export default DrawableImage;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import Translator from '@pie-lib/translator';
 
 import constants from './constants';
@@ -13,6 +13,34 @@ import Icon from './icon';
 const { tools: TOOLS } = constants;
 const { translator } = Translator;
 
+const BaseContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+}));
+
+const Box = styled('div')(({ theme }) => ({
+  border: '1px solid #E0E1E6',
+  borderRadius: '5px',
+  marginTop: theme.spacing(2),
+  backgroundColor: '#ECEDF1',
+}));
+
+const DrawableHeight = styled('div')({
+  minHeight: 350,
+  backgroundColor: '#fff',
+});
+
+const Toolbar = styled('div')(({ theme }) => ({
+  borderBottom: '1px solid #E0E1E6',
+  borderTopLeftRadius: '5px',
+  borderTopRightRadius: '5px',
+  padding: '12px 8px 4px',
+  boxSizing: 'border-box',
+  maxWidth: 'calc(100% - 163px)', // 163px is the width set on undoControls
+  '& button': {
+    marginBottom: theme.spacing(1),
+  },
+}));
+
 const ROGVAIV = ['red', 'orange', 'yellow', 'violet', 'blue', 'green', 'white', 'black'].map((c) => ({
   value: c,
   label: c,
@@ -20,7 +48,6 @@ const ROGVAIV = ['red', 'orange', 'yellow', 'violet', 'blue', 'green', 'white', 
 
 export class Container extends Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     disabled: PropTypes.bool,
     session: PropTypes.object.isRequired,
     onSessionChange: PropTypes.func.isRequired,
@@ -192,7 +219,7 @@ export class Container extends Component {
   }
 
   render() {
-    const { classes, disabled, imageUrl, imageDimensions, onSessionChange, session, backgroundImageEnabled, language } =
+    const { disabled, imageUrl, imageDimensions, onSessionChange, session, backgroundImageEnabled, language } =
       this.props;
     const {
       drawableDimensions,
@@ -209,7 +236,7 @@ export class Container extends Component {
     const heightToUse = drawableDimensions.height * this.state.scale;
 
     return (
-      <div className={classes.base}>
+      <BaseContainer>
         {!disabled && (
           <DrawablePalette
             fillColor={fillColor}
@@ -225,8 +252,8 @@ export class Container extends Component {
           />
         )}
 
-        <div className={classes.box}>
-          <div className={classes.toolbar}>
+        <Box>
+          <Toolbar>
             {TOOLS.map((tool) => {
               const { type, label, icon } = tool;
 
@@ -240,13 +267,12 @@ export class Container extends Component {
                 />
               );
             })}
-          </div>
+          </Toolbar>
 
-          <div
+          <DrawableHeight
             ref={(drawable) => {
               this.drawable = drawable;
             }}
-            className={classes.drawableHeight}
             style={{ height: heightToUse, maxHeight: heightToUse, overflow: 'scroll' }}
           >
             <DrawableMain
@@ -265,38 +291,11 @@ export class Container extends Component {
               backgroundImageEnabled={backgroundImageEnabled}
               language={language}
             />
-          </div>
-        </div>
-      </div>
+          </DrawableHeight>
+        </Box>
+      </BaseContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  base: {
-    marginTop: theme.spacing.unit * 2,
-  },
-  box: {
-    border: '1px solid #E0E1E6',
-    borderRadius: '5px',
-    marginTop: theme.spacing.unit * 2,
-    backgroundColor: '#ECEDF1',
-  },
-  drawableHeight: {
-    minHeight: 350,
-    backgroundColor: '#fff',
-  },
-  toolbar: {
-    borderBottom: '1px solid #E0E1E6',
-    borderTopLeftRadius: '5px',
-    borderTopRightRadius: '5px',
-    padding: '12px 8px 4px',
-    boxSizing: 'border-box',
-    maxWidth: 'calc(100% - 163px)', // 163px is the width set on undoControls
-    '& button': {
-      marginBottom: theme.spacing.unit,
-    },
-  },
-});
-
-export default withStyles(styles)(Container);
+export default Container;

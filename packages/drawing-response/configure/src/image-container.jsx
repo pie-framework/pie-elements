@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 import Button from './button';
 
@@ -8,6 +8,61 @@ const isImage = (file) => {
   const imageType = /image.*/;
   return file.type.match(imageType);
 };
+
+const BaseContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(1),
+}));
+
+const Box = styled('div')(({ active }) => ({
+  border: active ? '1px solid #0032C2' : '1px solid #E0E1E6',
+  borderRadius: '5px',
+}));
+
+const CenteredDiv = styled('div')({
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+});
+
+const DrawableHeight = styled('div')({
+  minHeight: 350,
+});
+
+const Image = styled('img')({
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+const StyledImageContainer = styled('div')({
+  position: 'relative',
+  width: 'fit-content',
+});
+
+const ResizeHandle = styled('div')({
+  borderBottom: '1px solid #727272',
+  borderRight: '1px solid #727272',
+  bottom: '-10px',
+  cursor: 'se-resize',
+  height: '10px',
+  position: 'absolute',
+  right: '-10px',
+  width: '10px',
+});
+
+const HiddenInput = styled('input')({
+  display: 'none',
+});
+
+const Toolbar = styled('div')({
+  backgroundColor: '#ECEDF1',
+  borderBottom: '1px solid #E0E1E6',
+  borderTopLeftRadius: '5px',
+  borderTopRightRadius: '5px',
+  display: 'flex',
+  padding: '12px 8px',
+});
 
 export class ImageContainer extends Component {
 
@@ -176,14 +231,11 @@ export class ImageContainer extends Component {
   };
 
   renderUploadControl(label) {
-    const { classes } = this.props;
-
     return (
       <div>
         <Button label={label} onClick={this.handleInputClick} />
-        <input
+        <HiddenInput
           accept="image/*"
-          className={classes.input}
           onChange={this.handleUploadImage}
           ref={(ref) => {
             this.input = ref;
@@ -195,13 +247,13 @@ export class ImageContainer extends Component {
   }
 
   render() {
-    const { classes, imageUrl, imageDimensions } = this.props;
+    const { imageUrl, imageDimensions } = this.props;
     const { dropzoneActive, dragEnabled, maxImageHeight, maxImageWidth } = this.state;
 
     return (
-      <div className={classes.base}>
-        <div
-          className={`${classes.box} ${dropzoneActive ? classes.boxActive : ''}`}
+      <BaseContainer>
+        <Box
+          active={dropzoneActive}
           {...(dragEnabled
             ? {
                 onDragExit: this.handleOnDragExit,
@@ -211,18 +263,16 @@ export class ImageContainer extends Component {
               }
             : {})}
         >
-          <div className={classes.toolbar}>{this.renderUploadControl(imageUrl ? 'Replace Image' : 'Upload Image')}</div>
+          <Toolbar>{this.renderUploadControl(imageUrl ? 'Replace Image' : 'Upload Image')}</Toolbar>
 
-          <div
+          <DrawableHeight
             ref={(ref) => {
               this.imageSection = ref;
             }}
-            className={classes.drawableHeight}
           >
             {imageUrl ? (
-              <div className={classes.imageContainer}>
-                <img
-                  className={classes.image}
+              <StyledImageContainer>
+                <Image
                   height="auto"
                   onLoad={this.handleOnImageLoad}
                   ref={(ref) => {
@@ -236,85 +286,31 @@ export class ImageContainer extends Component {
                   }}
                   alt=""
                 />
-                <div
+                <ResizeHandle
                   ref={(ref) => {
                     this.resize = ref;
                   }}
-                  className={classes.resize}
                 />
-              </div>
+              </StyledImageContainer>
             ) : (
-              <div className={`${classes.drawableHeight} ${classes.centered}`}>
+              <DrawableHeight as={CenteredDiv}>
                 <label>Drag and drop or upload image from computer</label>
                 <br />
                 {this.renderUploadControl('Upload Image')}
-              </div>
+              </DrawableHeight>
             )}
-          </div>
-        </div>
-      </div>
+          </DrawableHeight>
+        </Box>
+      </BaseContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  base: {
-    marginTop: theme.spacing.unit,
-  },
-  box: {
-    border: '1px solid #E0E1E6',
-    borderRadius: '5px',
-  },
-  boxActive: {
-    border: '1px solid #0032C2',
-  },
-  centered: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  drawableHeight: {
-    minHeight: 350,
-  },
-  image: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  imageContainer: {
-    position: 'relative',
-    width: 'fit-content',
-  },
-  resize: {
-    borderBottom: '1px solid #727272',
-    borderRight: '1px solid #727272',
-    bottom: '-10px',
-    cursor: 'se-resize',
-    height: '10px',
-    position: 'absolute',
-    right: '-10px',
-    width: '10px',
-  },
-  input: {
-    display: 'none',
-  },
-  toolbar: {
-    backgroundColor: '#ECEDF1',
-    borderBottom: '1px solid #E0E1E6',
-    borderTopLeftRadius: '5px',
-    borderTopRightRadius: '5px',
-    display: 'flex',
-    padding: '12px 8px',
-  },
-});
-
 ImageContainer.propTypes = {
-  classes: PropTypes.object.isRequired,
   imageUrl: PropTypes.string.isRequired,
   onImageUpload: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
   insertImage: PropTypes.func,
 };
 
-export default withStyles(styles)(ImageContainer);
+export default ImageContainer;

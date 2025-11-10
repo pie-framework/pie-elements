@@ -3,12 +3,25 @@ import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import Typography from '@mui/material/Typography';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 import ImageContainer from './image-container';
 import cloneDeep from 'lodash/cloneDeep';
 
 const { Panel, toggle, dropdown } = settings;
+
+const PromptHolder = styled(InputContainer)(({ theme }) => ({
+  paddingTop: theme.spacing(1),
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(1),
+  width: '100%',
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 export class Root extends React.Component {
   onPromptChanged = (prompt) => {
@@ -37,7 +50,7 @@ export class Root extends React.Component {
   };
 
   render() {
-    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
       baseInputConfiguration = {},
@@ -109,7 +122,7 @@ export class Root extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <PromptHolder label={teacherInstructions.label}>
             <EditableHtml
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChanged}
@@ -125,12 +138,12 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </PromptHolder>
         )}
 
         {promptEnabled && (
-          <InputContainer label="Item Stem" className={classes.promptHolder}>
+          <PromptHolder label="Item Stem">
             <EditableHtml
               markup={model.prompt}
               onChange={this.onPromptChanged}
@@ -145,13 +158,13 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </PromptHolder>
         )}
 
         {backgroundImageEnabled && (
           <React.Fragment>
-            <Typography variant="subheading">Define Background Image</Typography>
+            <Typography variant="h6">Define Background Image</Typography>
 
             <ImageContainer
               imageUrl={model.imageUrl}
@@ -167,21 +180,7 @@ export class Root extends React.Component {
   }
 }
 
-const styles = (theme) => ({
-  promptHolder: {
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
-
 Root.propTypes = {
-  classes: PropTypes.object.isRequired,
   configuration: PropTypes.object,
   model: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
@@ -196,4 +195,4 @@ Root.propTypes = {
   onConfigurationChanged: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Root);
+export default Root;

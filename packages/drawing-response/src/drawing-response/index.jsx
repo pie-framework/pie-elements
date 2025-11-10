@@ -1,9 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { color, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 import Container from './container';
+
+const StyledUiLayout = styled(UiLayout)({
+  color: color.text(),
+  backgroundColor: color.background(),
+});
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const ErrorDiv = styled('div')({
+  color: color.text(),
+  backgroundColor: color.background(),
+});
 
 class DrawingResponseComponent extends React.Component {
   constructor(props) {
@@ -33,25 +47,23 @@ class DrawingResponseComponent extends React.Component {
       },
       session,
       onSessionChange,
-      classes,
     } = this.props;
     const { hasError, errorMessage } = this.state;
     const isEvaluateMode = mode === 'evaluate';
 
     return hasError ? (
-      <div className={classes.main}>An error occured: {errorMessage}</div>
+      <ErrorDiv>An error occured: {errorMessage}</ErrorDiv>
     ) : (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.main}>
+      <StyledUiLayout extraCSSRules={extraCSSRules}>
         {teacherInstructions && (
-          <Collapsible
-            className={classes.collapsible}
+          <StyledCollapsible
             labels={{
               hidden: 'Show Teacher Instructions',
               visible: 'Hide Teacher Instructions',
             }}
           >
             <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {prompt && <PreviewPrompt tagName="span" prompt={prompt} />}
@@ -66,26 +78,15 @@ class DrawingResponseComponent extends React.Component {
           disabled={disabled}
           language={language}
         />
-      </UiLayout>
+      </StyledUiLayout>
     );
   }
 }
 
 DrawingResponseComponent.propTypes = {
-  classes: PropTypes.object,
   model: PropTypes.object.isRequired,
   onSessionChange: PropTypes.func.isRequired,
   session: PropTypes.object.isRequired,
 };
 
-const styles = (theme) => ({
-  main: {
-    color: color.text(),
-    backgroundColor: color.background(),
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-});
-
-export default withStyles(styles)(DrawingResponseComponent);
+export default DrawingResponseComponent;

@@ -19,12 +19,12 @@
     "@pie-lib/translator": "2.25.0-mui-update.0",
     "classnames": "^2.2.6",
     "enzyme-to-json": "^3.3.5",
-    "konva": "^3.4.1",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-konva": "^16.10.1-0"
+    "react-konva": "18.1.0",
+    "konva": "8.3.0"
   },
   "author": "pie framework developers",
   "license": "ISC",
