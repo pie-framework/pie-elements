@@ -13,8 +13,8 @@
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/tools": "^0.29.1",
     "prop-types": "^15.6.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {

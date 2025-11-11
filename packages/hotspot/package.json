@@ -15,8 +15,8 @@
     "@pie-lib/test-utils": "^0.22.1",
     "konva": "^3.2.5",
     "prop-types": "^15.6.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-konva": "^16.9.0-0"
   },
   "author": "pie framework developers",

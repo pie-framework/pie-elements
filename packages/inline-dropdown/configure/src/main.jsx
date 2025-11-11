@@ -447,7 +447,18 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
-        extraCSSRules={extraCSSRules}
+        extraCSSRules={{
+          names: ['red', 'blue'],
+          rules: `
+      .red {
+        color: red !important;
+      }
+
+      .blue {
+        color: blue !important;
+      }
+    `,
+        }}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
@@ -530,25 +541,37 @@ export class Main extends React.Component {
             pluginProps: getPluginProps(template?.inputConfiguration),
             activePlugins: ALL_PLUGINS,
             toolbarOpts: { position: 'top' },
+            extraCSSRules: {
+              names: ['red', 'blue'],
+              rules: `
+      .red {
+        color: red !important;
+      }
+
+      .blue {
+        color: blue !important;
+      }
+    `,
+            },
             responseAreaProps: {
               type: 'inline-dropdown',
               options: {
                 duplicates: true,
               },
               maxResponseAreas: maxResponseAreas,
-              respAreaToolbar: (node, value, onToolbarDone) => {
+              respAreaToolbar: (node, editor, onToolbarDone) => {
                 const { respAreaChoices } = this.state;
 
                 return () => (
                   <InlineDropdownToolbar
                     onAddChoice={this.onAddChoice}
                     onCheck={this.onCheck}
-                    onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
-                    onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
+                    onRemoveChoice={(index) => this.onRemoveChoice(node.attrs.index, index)}
+                    onSelectChoice={(index) => this.onSelectChoice(node.attrs.index, index)}
                     node={node}
-                    value={value}
+                    editor={editor}
                     onToolbarDone={onToolbarDone}
-                    choices={respAreaChoices[node.data.get('index')]}
+                    choices={respAreaChoices[node.attrs.index]}
                     spellCheck={spellCheckEnabled}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}

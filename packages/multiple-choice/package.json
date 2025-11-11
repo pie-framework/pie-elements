@@ -17,8 +17,8 @@
     "enzyme-to-json": "^3.3.3",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-test-renderer": "^16.3.2",
     "react-transition-group": "^2.3.1"
   },

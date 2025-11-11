@@ -12,7 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import max from 'lodash/max';
 import classnames from 'classnames';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { stripHtmlTags, getAdjustedLength, decodeHTML } from './markupUtils';
 
 const styles = (theme) => ({

@@ -75,7 +75,18 @@ export class InlineDropdown extends React.Component {
     );
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} style={{ display: `${displayType}` }}>
+      <UiLayout extraCSSRules={{
+        names: ['red', 'blue'],
+        rules: `
+      .red {
+        color: red !important;
+      }
+
+      .blue {
+        color: blue !important;
+      }
+    `,
+      }} className={classes.mainContainer} style={{ display: `${displayType}` }}>
         {mode === 'gather' && <h2 className={classes.srOnly}>Inline Dropdown Question</h2>}
 
         {showTeacherInstructions && (

@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -424,14 +424,14 @@ export class Main extends React.Component {
               duplicates: true,
             },
             maxResponseAreas: maxResponseAreas,
-            respAreaToolbar: (node, value, onToolbarDone) => {
+            respAreaToolbar: (node, editor, onToolbarDone) => {
               const { model } = this.props;
-              const correctChoice = (model.choices[node.data.get('index')] || [])[0];
+              const correctChoice = (model.choices[node.attrs.index] || [])[0];
               return () => (
                 <ECRToolbar
-                  onChangeResponse={(newVal) => this.onChangeResponse(node.data.get('index'), newVal)}
+                  onChangeResponse={(newVal) => this.onChangeResponse(node.attrs.index, newVal)}
                   node={node}
-                  value={value}
+                  editor={editor}
                   onToolbarDone={onToolbarDone}
                   correctChoice={correctChoice}
                   maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}

@@ -143,12 +143,7 @@ export class RespAreaToolbar extends React.Component {
     onRemoveChoice: PropTypes.func.isRequired,
     onSelectChoice: PropTypes.func.isRequired,
     onToolbarDone: PropTypes.func.isRequired,
-    value: PropTypes.shape({
-      change: PropTypes.func.isRequired,
-      document: PropTypes.shape({
-        getNextText: PropTypes.func.isRequired,
-      }),
-    }),
+    editor: PropTypes.object,
     spellCheck: PropTypes.bool,
   };
   clickedInside = false;
@@ -160,22 +155,22 @@ export class RespAreaToolbar extends React.Component {
   };
 
   componentDidMount() {
-    const { node } = this.props;
+    const { editor } = this.props;
 
-    const domNode = findSlateNode(node.key);
+    const domNode = editor.view.nodeDOM(editor.state.selection.from);
 
-    if (domNode) {
+    if (domNode?.nodeType === 1) {
       //eslint-disable-next-line
       const domNodeRect = domNode.getBoundingClientRect();
-      const editor = domNode.closest('[data-slate-editor]');
-      const editorRect = editor.getBoundingClientRect();
+      const editorNode = domNode.closest('.tiptap');
+      const editorRect = editorNode.getBoundingClientRect();
       const top = domNodeRect.top - editorRect.top;
       const left = domNodeRect.left - editorRect.left;
 
       this.setState({
         toolbarStyle: {
           position: 'absolute',
-          top: `${top + domNodeRect.height + 60}px`,
+          top: `${top + domNodeRect.height + 40}px`,
           left: `${left + 25}px`,
         },
       });
@@ -200,46 +195,41 @@ export class RespAreaToolbar extends React.Component {
   };
 
   onDone = (val) => {
-    const { choices, node, value, onAddChoice, onToolbarDone } = this.props;
+    const { choices, node, editor, onAddChoice, onToolbarDone } = this.props;
     const { editedChoiceIndex } = this.state;
     const onlyText = createElementFromHTML(val).textContent.trim();
 
     if (editedChoiceIndex >= 0 && choices?.[editedChoiceIndex]?.correct) {
-      const update = { ...node.data.toJSON(), value: val };
-      const change = value.change().setNodeByKey(node.key, { data: update });
-
-      onToolbarDone(change, false);
+      editor.commands.updateAttributes('inline_dropdown', { value: val });
+      onToolbarDone(false);
     }
 
     if (!isEmpty(onlyText)) {
-      onAddChoice(node.data.get('index'), val, editedChoiceIndex);
+      onAddChoice(node.attrs.index, val, editedChoiceIndex);
     }
 
     this.setState({ editedChoiceIndex: -1 });
   };
 
   onSelectChoice = (newValue, index) => {
-    const { node, value, onToolbarDone, onSelectChoice } = this.props;
-    const update = { ...node.data.toJSON(), value: newValue };
-    const change = value.change().setNodeByKey(node.key, { data: update });
+    const { node, editor, onToolbarDone, onSelectChoice } = this.props;
 
-    const nextText = value.document.getNextText(node.key);
+    editor.commands.updateAttributes('inline_dropdown', { value: newValue });
 
-    change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
+    // const nextText = value.document.getNextText(node.key);
+    //
+    // change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
 
-    onToolbarDone(change, false);
-
+    onToolbarDone(false);
     onSelectChoice(index);
   };
 
   onRemoveChoice = (val, index) => {
-    const { node, value, onToolbarDone, onRemoveChoice } = this.props;
+    const { node, editor, onToolbarDone, onRemoveChoice } = this.props;
 
-    if (isEqual(val, node.data.get('value'))) {
-      const update = { ...node.data.toJSON(), value: null };
-      const change = value.change().setNodeByKey(node.key, { data: update });
-
-      onToolbarDone(change, false);
+    if (isEqual(val, node.attrs.value)) {
+      editor.commands.updateAttributes('explicit_constructed_response', { value: null });
+      onToolbarDone(false);
     }
 
     onRemoveChoice(index);
@@ -265,16 +255,17 @@ export class RespAreaToolbar extends React.Component {
       return;
     }
 
-    const { node, choices, onCheck, onToolbarDone, value } = this.props;
+    const { node, choices, onCheck, onToolbarDone, editor } = this.props;
     const correctResponse = (choices || []).find((choice) => choice.correct);
 
     this.onAddChoice();
     if (!choices || (choices && choices.length < 2) || !correctResponse) {
       onCheck(() => {
-        const change = value.change();
+        const { tr } = editor.state;
 
-        change.removeNodeByKey(node.get('key'));
-        onToolbarDone(change, false);
+        tr.deleteSelection();
+        editor.view.dispatch(tr);
+        onToolbarDone(false);
       });
     }
   };

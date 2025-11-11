@@ -20,8 +20,8 @@
     "@pie-lib/render-ui": "^4.35.1",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "author": "",
   "license": "ISC",
