@@ -1,9 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 
 import ChoiceInput from './choice-input';
+
+const ChoiceContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'noBorder' && prop !== 'horizontalLayout',
+})(({ theme, noBorder, horizontalLayout }) => ({
+  paddingTop: theme.spacing(2.5),
+  paddingBottom: theme.spacing(1) + 2,
+  paddingLeft: theme.spacing(1) + 2,
+  paddingRight: theme.spacing(1) + 2,
+  borderBottom: noBorder ? 'none' : `1px solid ${theme.palette.grey[300]}`,
+  ...(horizontalLayout && {
+    paddingRight: theme.spacing(2.5),
+    '& label': {
+      marginRight: theme.spacing(1),
+    },
+  }),
+}));
 
 export class Choice extends React.Component {
   static propTypes = {};
@@ -44,7 +60,6 @@ export class Choice extends React.Component {
       checked,
       correctness,
       displayKey,
-      classes,
       choicesLayout,
       gridColumns,
       isSelectionButtonBelow,
@@ -125,10 +140,8 @@ export class Choice extends React.Component {
       borderRadius: '8px',
     } : {};
 
-    const names = classNames(classes.choice, {
-      [classes.noBorder]: index === choicesLength - 1 || choicesLayout !== 'vertical' || hasStroke,
-      [classes.horizontalLayout]: choicesLayout === 'horizontal',
-    });
+    const noBorder = index === choicesLength - 1 || choicesLayout !== 'vertical' || hasStroke;
+    const horizontalLayout = choicesLayout === 'horizontal';
 
     const choiceBackground = currentBackgroundColor !== 'initial' ? currentBackgroundColor : 'initial';
 
@@ -140,7 +153,13 @@ export class Choice extends React.Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <ChoiceInput {...choiceProps} className={names} autoFocusRef={autoFocusRef} />
+        <ChoiceContainer 
+          component="div"
+          noBorder={noBorder}
+          horizontalLayout={horizontalLayout}
+        >
+          <ChoiceInput {...choiceProps} autoFocusRef={autoFocusRef} />
+        </ChoiceContainer>
       </div>
     );
   }
@@ -151,7 +170,6 @@ Choice.propTypes = {
   choice: PropTypes.object,
   disabled: PropTypes.bool.isRequired,
   onChoiceChanged: PropTypes.func,
-  classes: PropTypes.object.isRequired,
   index: PropTypes.number,
   choicesLength: PropTypes.number,
   showCorrect: PropTypes.bool,
@@ -172,24 +190,4 @@ Choice.propTypes = {
   autoFocusRef: PropTypes.object,
 };
 
-export default withStyles((theme) => ({
-  choice: {
-    paddingTop: theme.spacing.unit * 2.5,
-    paddingBottom: theme.spacing.unit + 2,
-    paddingLeft: theme.spacing.unit + 2,
-    paddingRight: theme.spacing.unit + 2,
-    borderBottom: `1px solid ${theme.palette.grey[300]}`,
-  },
-  noBorder: {
-    borderBottom: 'none',
-  },
-  horizontalLayout: {
-    paddingRight: theme.spacing.unit * 2.5,
-    '& label': {
-      marginRight: theme.spacing.unit,
-      // '& span:first-child': {
-      //   paddingRight: 0
-      // }
-    },
-  },
-}))(Choice);
+export default Choice;
