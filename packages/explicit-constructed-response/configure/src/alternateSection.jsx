@@ -2,68 +2,87 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import Button from '@mui/material/Button';
 import Delete from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import max from 'lodash/max';
-import classnames from 'classnames';
 import EditableHtml from '@pie-lib/editable-html';
 import { stripHtmlTags, getAdjustedLength, decodeHTML } from './markupUtils';
 
-const styles = (theme) => ({
-  design: {
-    marginBottom: theme.spacing.unit / 2,
-  },
-  altChoices: {
-    alignItems: 'flex-start',
-    flexDirection: 'column',
-    display: 'flex',
-    paddingTop: theme.spacing.unit * 2.5,
-    '& > *': {
-      marginBottom: theme.spacing.unit * 2.5,
-      width: '100%',
-    },
-  },
-  choice: {
-    flex: '1',
-    marginRight: theme.spacing.unit * 2.5,
-  },
-  deleteBtn: {
-    fill: theme.palette.grey[600],
-  },
-  selectContainer: {
-    alignItems: 'flex-end',
-    display: 'flex',
-    justifyContent: 'space-between',
+const DesignContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(0.5),
+}));
+
+const AltChoices = styled('div')(({ theme }) => ({
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  display: 'flex',
+  paddingTop: theme.spacing(2.5),
+  '& > *': {
+    marginBottom: theme.spacing(2.5),
     width: '100%',
   },
-  rightContainer: {
-    alignItems: 'center',
-    display: 'flex',
-  },
-  lengthField: {
-    width: '230px',
-    marginRight: theme.spacing.unit * 2.5,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit / 2,
-  },
-  inputError: {
+}));
+
+const StyledEditableHtml = styled(EditableHtml)(({ theme, hasError }) => ({
+  flex: '1',
+  marginRight: theme.spacing(2.5),
+  ...(hasError && {
     border: `2px solid ${theme.palette.error.main}`,
     borderRadius: '6px',
+  }),
+}));
+
+const StyledDeleteButton = styled(IconButton)(({ theme }) => ({
+  '& svg': {
+    fill: theme.palette.grey[600],
   },
+}));
+
+const SelectContainer = styled('div')({
+  alignItems: 'flex-end',
+  display: 'flex',
+  justifyContent: 'space-between',
+  width: '100%',
+});
+
+const RightContainer = styled('div')({
+  alignItems: 'center',
+  display: 'flex',
+});
+
+const LengthField = styled(TextField)(({ theme }) => ({
+  width: '230px',
+  marginRight: theme.spacing(2.5),
+  '& .MuiInput-underline:before': {
+    borderBottomColor: theme.palette.divider,
+  },
+  '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+    borderBottomColor: theme.palette.text.primary,
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: theme.palette.primary.main,
+  },
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(0.5),
+}));
+
+const ChoiceWrapper = styled('div')({
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'space-between',
 });
 
 export class Choice extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     error: PropTypes.string,
     markup: PropTypes.string,
     onChange: PropTypes.func.isRequired,
@@ -94,20 +113,14 @@ export class Choice extends React.Component {
 
   render() {
     const { value } = this.state;
-    const { classes, onDelete, spellCheck, error, showMaxLength, pluginProps } = this.props;
+    const { onDelete, spellCheck, error, showMaxLength, pluginProps } = this.props;
     const inputProps = showMaxLength ? {} : { maxLength: 25 };
 
     return (
       <React.Fragment>
-        <div
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
-          <EditableHtml
-            className={classnames(classes.choice, error && classes.inputError)}
+        <ChoiceWrapper>
+          <StyledEditableHtml
+            hasError={!!error}
             disableUnderline
             onChange={this.onChange}
             markup={value || ''}
@@ -122,15 +135,14 @@ export class Choice extends React.Component {
             }}
             {...inputProps}
           />
-          <IconButton
+          <StyledDeleteButton
             aria-label="delete"
-            className={classes.deleteBtn}
             onClick={onDelete}
             size="large">
             <Delete />
-          </IconButton>
-        </div>
-        {error && <div className={classes.errorText}>{error}</div>}
+          </StyledDeleteButton>
+        </ChoiceWrapper>
+        {error && <ErrorText>{error}</ErrorText>}
       </React.Fragment>
     );
   }
@@ -140,7 +152,6 @@ export class AlternateSection extends React.Component {
   static propTypes = {
     choices: PropTypes.array,
     selectChoices: PropTypes.array.isRequired,
-    classes: PropTypes.object.isRequired,
     errors: PropTypes.object,
     onSelect: PropTypes.func.isRequired,
     choiceChanged: PropTypes.func.isRequired,
@@ -247,19 +258,22 @@ export class AlternateSection extends React.Component {
   };
 
   render() {
-    const { classes, selectChoices, maxLength, showMaxLength, value, spellCheck, errors, pluginProps } = this.props;
+    const { selectChoices, maxLength, showMaxLength, value, spellCheck, errors, pluginProps } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
 
     return (
-      <div className={classes.design}>
-        <div className={classes.selectContainer}>
+      <DesignContainer>
+        <SelectContainer>
           <Select
-            className={classes.select}
+            variant="standard"
             displayEmpty
             onChange={this.handleSelect}
             value={value || ''}
             readOnly={showMaxLength}
+            MenuProps={{
+              transitionDuration: { enter: 225, exit: 195 }
+            }}
           >
             <MenuItem value="">
               <em>{value ? 'Remove selection' : 'Select a response'}</em>
@@ -272,10 +286,10 @@ export class AlternateSection extends React.Component {
           </Select>
 
           {choices && choices.length > 0 && (
-            <div className={classes.rightContainer}>
+            <RightContainer>
               {maxLength && showMaxLength && (
-                <TextField
-                  className={classes.lengthField}
+                <LengthField
+                  variant="standard"
                   label="Maximum length (characters)"
                   type="number"
                   inputProps={{
@@ -286,22 +300,21 @@ export class AlternateSection extends React.Component {
                   onChange={this.changeLength}
                 />
               )}
-              <Button className={classes.addButton} variant="contained" color="primary" onClick={this.onAddChoice}>
+              <Button variant="contained" color="primary" onClick={this.onAddChoice}>
                 Add
               </Button>
-            </div>
+            </RightContainer>
           )}
-        </div>
-        {errors && errors[0] && <div className={classes.errorText}>{errors[0]}</div>}
+        </SelectContainer>
+        {errors && errors[0] && <ErrorText>{errors[0]}</ErrorText>}
 
-        <div className={classes.altChoices}>
+        <AltChoices>
           {choices &&
             choices.map(
               (c, index) =>
                 index > 0 && (
                   <Choice
                     key={index}
-                    classes={classes}
                     markup={c.label}
                     onChange={(val) => this.onChoiceChanged(c, val, index)}
                     onDelete={() => this.onRemoveChoice(c)}
@@ -312,12 +325,10 @@ export class AlternateSection extends React.Component {
                   />
                 ),
             )}
-        </div>
-      </div>
+        </AltChoices>
+      </DesignContainer>
     );
   }
 }
 
-const Styled = withStyles(styles)(AlternateSection);
-
-export default Styled;
+export default AlternateSection;

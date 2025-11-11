@@ -6,17 +6,42 @@ import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
-import withStyles from '@mui/styles/withStyles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
+
+const MainContainer = styled(UiLayout)(({ theme, alwaysShowCorrect }) => ({
+  color: color.text(),
+  backgroundColor: color.background(),
+  ...(alwaysShowCorrect && {
+    '& *': {
+      borderColor: `${color.text()} !important`,
+    },
+  }),
+}));
+
+const NoteContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const CollapsibleContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const SrOnly = styled('h2')({
+  position: 'absolute',
+  left: '-10000px',
+  top: 'auto',
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+});
 
 export class Main extends React.Component {
   static propTypes = {
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
-    classes: PropTypes.object.isRequired,
     disabled: PropTypes.bool,
     displayType: PropTypes.string,
     feedback: PropTypes.object,
@@ -96,7 +121,6 @@ export class Main extends React.Component {
     const {
       alwaysShowCorrect,
       animationsDisabled,
-      classes,
       mode,
       displayType,
       role,
@@ -116,12 +140,6 @@ export class Main extends React.Component {
 
     const { extraCSSRules } = model || {};
     const displayNote = (showCorrectAnswer || (mode === 'view' && role === 'instructor')) && showNote && note;
-    const mainClasses = classNames([
-      classes.mainContainer,
-      {
-        [classes.noBorderColor]: alwaysShowCorrect,
-      },
-    ]);
 
     const teacherInstructionsDiv = (
       <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />
@@ -134,11 +152,15 @@ export class Main extends React.Component {
       teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={mainClasses} style={{ display: `${displayType}` }}>
-        {mode === 'gather' && <h2 className={classes.srOnly}>Fill in the Blank Question</h2>}
+      <MainContainer 
+        extraCSSRules={extraCSSRules} 
+        alwaysShowCorrect={alwaysShowCorrect}
+        style={{ display: `${displayType}` }}
+      >
+        {mode === 'gather' && <SrOnly>Fill in the Blank Question</SrOnly>}
 
         {showTeacherInstructions && (
-          <div className={classes.collapsible}>
+          <CollapsibleContainer>
             {!animationsDisabled ? (
               <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
                 {teacherInstructionsDiv}
@@ -146,7 +168,7 @@ export class Main extends React.Component {
             ) : (
               teacherInstructionsDiv
             )}
-          </div>
+          </CollapsibleContainer>
         )}
 
         {prompt && <PreviewPrompt prompt={prompt} />}
@@ -171,52 +193,20 @@ export class Main extends React.Component {
           pluginProps={responseAreaInputConfiguration}
         />
 
-        {displayNote && <div className={classNames(classes.note, 'note')} dangerouslySetInnerHTML={{ __html: note }} />}
+        {displayNote && <NoteContainer className="note" dangerouslySetInnerHTML={{ __html: note }} />}
 
         {showRationale && (
-          <div className={classes.collapsible}>
+          <CollapsibleContainer>
             {!animationsDisabled ? (
               <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>{rationaleDiv}</Collapsible>
             ) : (
               rationaleDiv
             )}
-          </div>
+          </CollapsibleContainer>
         )}
-      </UiLayout>
+      </MainContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-  },
-  inlineDisplay: {
-    display: 'inline-block',
-  },
-  blockDisplay: {
-    display: 'block',
-  },
-  note: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  noBorderColor: {
-    '& *': {
-      borderColor: `${color.text()} !important`,
-    },
-  },
-  srOnly: {
-    position: 'absolute',
-    left: '-10000px',
-    top: 'auto',
-    width: '1px',
-    height: '1px',
-    overflow: 'hidden',
-  },
-});
-
-export default withStyles(styles)(Main);
+export default Main;
