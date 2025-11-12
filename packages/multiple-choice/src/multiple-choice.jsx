@@ -2,70 +2,76 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import classNames from 'classnames';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import Translator from '@pie-lib/translator';
 
-import StyledChoice from './choice';
+import Choice from './choice';
 
 // MultipleChoice
 
 const { translator } = Translator;
 
-const styles = (theme) => ({
-  main: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    '& *': {
-      '-webkit-font-smoothing': 'antialiased',
-    },
-    position: 'relative',
-    // remove border from legend tags inside main to override the OT default styles
-    '& legend': {
-      border: 'none !important',
-    },
+const MainContainer = styled(Box)({
+  color: color.text(),
+  backgroundColor: color.background(),
+  '& *': {
+    '-webkit-font-smoothing': 'antialiased',
   },
-  partLabel: {
-    display: 'block',
-    fontSize: 'inherit',
-    margin: '0',
-    fontWeight: 'normal',
-    paddingBottom: theme.spacing.unit * 2,
-  },
-  teacherInstructions: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  horizontalLayout: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  gridLayout: {
-    display: 'grid',
-  },
-  fieldset: {
-    border: '0px',
-    padding: '0.01em 0 0 0',
-    margin: '0px',
-    minWidth: '0px',
-    '&:focus': {
-      outline: 'none',
-    },
-  },
-  srOnly: {
-    position: 'absolute',
-    left: '-10000px',
-    top: 'auto',
-    width: '1px',
-    height: '1px',
-    overflow: 'hidden',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
+  position: 'relative',
+  // remove border from legend tags inside main to override the OT default styles
+  '& legend': {
+    border: 'none !important',
   },
 });
+
+const PartLabel = styled('h2')(({ theme }) => ({
+  display: 'block',
+  fontSize: 'inherit',
+  margin: '0',
+  fontWeight: 'normal',
+  paddingBottom: theme.spacing(2),
+}));
+
+const TeacherInstructions = styled(Box)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const HorizontalLayout = styled(Box)({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+});
+
+const GridLayout = styled(Box)({
+  display: 'grid',
+});
+
+const StyledFieldset = styled('fieldset')({
+  border: '0px',
+  padding: '0.01em 0 0 0',
+  margin: '0px',
+  minWidth: '0px',
+  '&:focus': {
+    outline: 'none',
+  },
+});
+
+const SrOnly = styled('h3')({
+  position: 'absolute',
+  left: '-10000px',
+  top: 'auto',
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+});
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 export class MultipleChoice extends React.Component {
   static propTypes = {
@@ -81,7 +87,6 @@ export class MultipleChoice extends React.Component {
     disabled: PropTypes.bool,
     onChoiceChanged: PropTypes.func,
     responseCorrect: PropTypes.bool,
-    classes: PropTypes.object.isRequired,
     correctResponse: PropTypes.array,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
     gridColumns: PropTypes.string,
@@ -230,16 +235,16 @@ export class MultipleChoice extends React.Component {
 
   // renderHeading function was added for accessibility.
   renderHeading() {
-    const { mode, choiceMode, classes } = this.props;
+    const { mode, choiceMode } = this.props;
 
     if (mode !== 'gather') {
       return null;
     }
 
     return choiceMode === 'radio' ? (
-      <h3 className={classes.srOnly}>Multiple Choice Question</h3>
+      <SrOnly>Multiple Choice Question</SrOnly>
     ) : (
-      <h3 className={classes.srOnly}>Multiple Select Question</h3>
+      <SrOnly>Multiple Select Question</SrOnly>
     );
   }
 
@@ -271,7 +276,6 @@ export class MultipleChoice extends React.Component {
       prompt,
       responseCorrect,
       teacherInstructions,
-      classes,
       alwaysShowCorrect,
       animationsDisabled,
       language,
@@ -315,14 +319,20 @@ export class MultipleChoice extends React.Component {
       return '';
     };
 
+    const LayoutComponent = this.props.choicesLayout === 'grid' 
+      ? GridLayout 
+      : this.props.choicesLayout === 'horizontal' 
+        ? HorizontalLayout 
+        : Box;
+
     return (
-      <div id={'main-container'} className={classNames(classes.main, className, 'multiple-choice')}>
-        {partLabel && <h2 className={classes.partLabel}>{partLabel}</h2>}
+      <MainContainer id={'main-container'} className={classNames(className, 'multiple-choice')}>
+        {partLabel && <PartLabel>{partLabel}</PartLabel>}
 
         {this.renderHeading()}
 
         {teacherInstructions && (
-          <div className={classes.teacherInstructions}>
+          <TeacherInstructions>
             {!animationsDisabled ? (
               <Collapsible
                 labels={{
@@ -335,12 +345,11 @@ export class MultipleChoice extends React.Component {
             ) : (
               teacherInstructionsDiv
             )}
-          </div>
+          </TeacherInstructions>
         )}
 
-        <fieldset
+        <StyledFieldset
           tabIndex={0}
-          className={classes.fieldset}
           onFocus={this.handleGroupFocus}
           role={choiceMode === 'radio' ? 'radiogroup' : 'group'}
         >
@@ -362,15 +371,9 @@ export class MultipleChoice extends React.Component {
             />
           )}
 
-          <div
-            className={classNames({
-              [classes.gridLayout]: this.props.choicesLayout === 'grid',
-              [classes.horizontalLayout]: this.props.choicesLayout === 'horizontal',
-            })}
-            style={columnsStyle}
-          >
+          <LayoutComponent style={columnsStyle}>
             {choices.map((choice, index) => (
-              <StyledChoice
+              <Choice
                 autoFocusRef={index === 0 ? this.firstInputRef : null}
                 choicesLayout={this.props.choicesLayout}
                 selectedAnswerBackgroundColor={this.props.selectedAnswerBackgroundColor}
@@ -397,21 +400,21 @@ export class MultipleChoice extends React.Component {
                 isSelectionButtonBelow={isSelectionButtonBelow}
               />
             ))}
-          </div>
-        </fieldset>
+          </LayoutComponent>
+        </StyledFieldset>
 
         {choiceMode === 'checkbox' && selections < minSelections && (
-          <div className={classes.errorText}>{getMultipleChoiceMinSelectionErrorMessage()}</div>
+          <ErrorText>{getMultipleChoiceMinSelectionErrorMessage()}</ErrorText>
         )}
         {choiceMode === 'checkbox' && maxSelectionsErrorState && (
-          <div className={classes.errorText}>
+          <ErrorText>
             {translator.t(`translation:multipleChoice:maxSelections_${maxSelections === 1 ? 'one' : 'other'}`, {
               lng: language,
               maxSelections,
             })}
-          </div>
+          </ErrorText>
         )}
-      </div>
+      </MainContainer>
     );
   }
 }
@@ -422,4 +425,4 @@ MultipleChoice.defaultProps = {
   },
 };
 
-export default withStyles(styles)(MultipleChoice);
+export default MultipleChoice;
