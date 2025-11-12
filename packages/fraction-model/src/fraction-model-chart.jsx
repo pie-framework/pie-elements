@@ -1,22 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Bar, BarChart, Cell, LabelList, Pie, PieChart, YAxis } from 'recharts';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
-const styles = (theme) => ({
-  pieChartParentDiv: {
-    display: 'grid',
-    gridTemplateColumns: '200px 200px 200px',
-    gap: '10px',
-    padding: '5px 0',
-  },
-  barChartParentDiv: {
-    display: 'grid',
-    gridTemplateColumns: '200px 200px 200px',
-    gap: '20px',
-    padding: '10px 0',
-  },
-  sectorOutline: {
-    outline: 'none',
+const PieChartParentDiv = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: '200px 200px 200px',
+  gap: '10px',
+  padding: '5px 0',
+});
+
+const BarChartParentDiv = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: '200px 200px 200px',
+  gap: '20px',
+  padding: '10px 0',
+});
+
+const StyledPieChart = styled(PieChart)({
+  '& .recharts-pie-sector': {
+    outline: 'none !important',
+    '&:focus': {
+      outline: 'none !important',
+    },
   },
 });
 
@@ -123,7 +128,6 @@ const FractionModelChart = (props) => {
   };
 
   const {
-    classes,
     value = [],
     modelType = 'bar',
     noOfModels = 0,
@@ -175,7 +179,7 @@ const FractionModelChart = (props) => {
         </BarChart>,
       );
     });
-    return <div className={classes.barChartParentDiv}>{barItems}</div>;
+    return <BarChartParentDiv>{barItems}</BarChartParentDiv>;
   };
 
   const pieChartRef = useRef(null);
@@ -196,7 +200,7 @@ const FractionModelChart = (props) => {
     let pieItems = [];
     parentData.forEach((data, chartIndex) => {
       pieItems.push(
-        <PieChart width={200} height={200} key={`pie-chart-${chartIndex}`}>
+        <StyledPieChart width={200} height={200} key={`pie-chart-${chartIndex}`}>
           <Pie
             data={data}
             key={`pie-${chartIndex + 1}`}
@@ -211,19 +215,19 @@ const FractionModelChart = (props) => {
           >
             {data.map((entry, sectorIndex) => (
               <Cell
-                className={classes.sectorOutline}
                 key={`${chartIndex + 1}-${sectorIndex + 1}`}
                 onClick={disabled ? null : () => handleChartClick(chartIndex + 1, sectorIndex + 1)}
                 onMouseEnter={disabled ? null : () => handleChartMouseEnter(chartIndex + 1, sectorIndex + 1)}
                 onMouseLeave={disabled ? null : () => handleChartMouseLeave(chartIndex + 1, sectorIndex + 1)}
                 fill={getSectorFill(hoveredIndex, `${chartIndex + 1}-${sectorIndex + 1}`)}
+                style={{ outline: 'none', cursor: disabled ? 'default' : 'pointer' }}
               />
             ))}
           </Pie>
-        </PieChart>,
+        </StyledPieChart>,
       );
     });
-    return <div ref={pieChartRef} className={classes.pieChartParentDiv}>{pieItems}</div>;
+    return <PieChartParentDiv ref={pieChartRef}>{pieItems}</PieChartParentDiv>;
   };
 
   //Render bar or pie models as per model type
@@ -246,4 +250,4 @@ const FractionModelChart = (props) => {
   }
 };
 
-export default withStyles(styles)(FractionModelChart);
+export default FractionModelChart;

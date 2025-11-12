@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import AnswerFraction from './answer-fraction';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import FractionModelChart from './fraction-model-chart';
 import { AlertDialog } from '@pie-lib/config-ui';
 import { PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import cloneDeep from 'lodash/cloneDeep';
+
+const ModelPreview = styled('div')({
+  padding: '16px',
+});
+
+const TitleContainer = styled('div')({
+  textAlign: 'center',
+  fontSize: '20px',
+});
 
 export class Main extends React.Component {
   static propTypes = {
@@ -120,7 +129,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, classes } = this.props;
+    const { model } = this.props;
     const { showCorrect, session, answerChangeDialog } = this.state;
     const { prompt, title, correctness = {}, extraCSSRules, language } = model;
     const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
@@ -128,10 +137,10 @@ export class Main extends React.Component {
 
     return (
       <UiLayout extraCSSRules={extraCSSRules}>
-        <div className={classes.modelPreview}>
-          <div className={classes.titleContainer}>
+        <ModelPreview>
+          <TitleContainer>
             <PreviewPrompt className="prompt" prompt={title} tagName="h3" />
-          </div>
+          </TitleContainer>
           <PreviewPrompt className="prompt" prompt={prompt} tagName="p" />
 
           <CorrectAnswerToggle
@@ -199,25 +208,10 @@ export class Main extends React.Component {
             onConfirmText={'OK'}
             onCloseText={'Cancel'}
           />
-        </div>
+        </ModelPreview>
       </UiLayout>
     );
   }
 }
 
-const styles = () => ({
-  previewHeading: {
-    fontWeight: '400',
-    fontSize: '24px',
-    margin: '14px 0',
-  },
-  modelPreview: {
-    padding: '16px',
-  },
-  titleContainer: {
-    textAlign: 'center',
-    fontSize: '20px',
-  },
-});
-
-export default withStyles(styles)(Main);
+export default Main;
