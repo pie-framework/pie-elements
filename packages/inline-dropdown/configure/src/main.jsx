@@ -591,6 +591,9 @@ export class Main extends React.Component {
           text={warning.text}
           onClose={warning.onClose}
           onConfirm={warning.onConfirm}
+          disableAutoFocus={true}
+          disableEnforceFocus={true}
+          disableRestoreFocus={true}
         />
       </layout.ConfigLayout>
     );
