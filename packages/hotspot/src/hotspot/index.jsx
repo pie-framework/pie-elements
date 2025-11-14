@@ -2,9 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 import Container from './container';
+
+const StyledUiLayout = styled(UiLayout)({
+  color: color.text(),
+  backgroundColor: color.background(),
+  position: 'relative',
+});
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
 
 class HotspotComponent extends React.Component {
   constructor(props) {
@@ -81,7 +91,6 @@ class HotspotComponent extends React.Component {
         customAudioButton,
       },
       onSelectChoice,
-      classes,
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -91,19 +100,17 @@ class HotspotComponent extends React.Component {
       teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
-      <UiLayout
+      <StyledUiLayout
         extraCSSRules={extraCSSRules}
         id={'main-container'}
-        className={classes.main}
         fontSizeFactor={fontSizeFactor}
       >
         {showTeacherInstructions && (
-          <Collapsible
+          <StyledCollapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-            className={classes.collapsible}
           >
             <PreviewPrompt className="prompt" prompt={teacherInstructions} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {prompt && (
@@ -149,34 +156,15 @@ class HotspotComponent extends React.Component {
             <PreviewPrompt className="prompt" prompt={rationale} />
           </Collapsible>
         )}
-      </UiLayout>
+      </StyledUiLayout>
     );
   }
 }
 
 HotspotComponent.propTypes = {
-  classes: PropTypes.object,
   model: PropTypes.object.isRequired,
   onSelectChoice: PropTypes.func.isRequired,
   session: PropTypes.object.isRequired,
 };
 
-HotspotComponent.defaultProps = {
-  classes: {},
-};
-
-const styles = (theme) => ({
-  main: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    position: 'relative',
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  prompt: {
-    fontSize: 'inherit',
-  },
-});
-
-export default withStyles(styles)(HotspotComponent);
+export default HotspotComponent;

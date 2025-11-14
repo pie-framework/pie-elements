@@ -1,12 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Layer, Stage } from 'react-konva';
-import withStyles from '@mui/styles/withStyles';
-import { color } from '@pie-lib/render-ui';
+import { styled } from '@mui/material/styles';
 
 import Rectangle from './rectangle';
 import Polygon from './polygon';
 import Circle from './circle';
+
+const BaseContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  position: 'relative',
+  background: theme.palette.common.white,
+  border: `${theme.spacing(1)} solid ${theme.palette.common.white}`,
+  width: 'fit-content',
+}));
+
+const ImageContainer = styled('div')({
+  position: 'relative',
+  width: 'fit-content',
+});
+
+const Image = styled('img')({
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+const StyledStage = styled(Stage)({
+  left: 0,
+  top: 0,
+  position: 'absolute',
+});
 
 export class Container extends React.Component {
   isSelected(shape) {
@@ -34,7 +59,6 @@ export class Container extends React.Component {
 
   render() {
     const {
-      classes,
       dimensions: { width: withProp, height: heightProp },
       disabled,
       hotspotColor,
@@ -54,21 +78,19 @@ export class Container extends React.Component {
     const height = heightProp * SCALE;
 
     return (
-      <div className={classes.base} style={{ padding: strokeWidth / 2 }}>
+      <BaseContainer style={{ padding: strokeWidth / 2 }}>
         {imageUrl ? (
-          <div className={classes.imageContainer}>
-            <img
+          <ImageContainer>
+            <Image
               alt="hotspot-image"
-              className={classes.image}
               height="auto"
               src={imageUrl}
               style={{ width, height, maxWidth: width, maxHeight: height }}
             />
-          </div>
+          </ImageContainer>
         ) : null}
 
-        <Stage
-          className={classes.stage}
+        <StyledStage
           height={height + strokeWidth}
           width={width + strokeWidth}
           x={strokeWidth / 2}
@@ -111,6 +133,8 @@ export class Container extends React.Component {
               const isCorrect = isEvaluateMode ? this.correctness(polygon.correct, selected) : undefined;
               const evaluateText = isEvaluateMode ? this.getEvaluateText(polygon.correct, selected) : null;
               const markAsCorrect = !!(isEvaluateMode && showCorrect && polygon.correct);
+              console.log('polygon', polygon);
+              console.log('markAsCorrect', markAsCorrect);
 
               return (
                 <Polygon
@@ -142,7 +166,6 @@ export class Container extends React.Component {
 
               return (
                 <Circle
-                  classes={classes}
                   scale={SCALE}
                   isEvaluateMode={isEvaluateMode}
                   isCorrect={isCorrect}
@@ -166,49 +189,13 @@ export class Container extends React.Component {
               );
             })}
           </Layer>
-        </Stage>
-      </div>
+        </StyledStage>
+      </BaseContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  base: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    position: 'relative',
-    background: theme.palette.common.white,
-    border: `${theme.spacing.unit}px solid ${theme.palette.common.white}`,
-    width: 'fit-content',
-  },
-  image: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  imageContainer: {
-    position: 'relative',
-    width: 'fit-content',
-  },
-  stage: {
-    left: 0,
-    top: 0,
-    position: 'absolute',
-  },
-  resize: {
-    borderBottom: `1px solid ${color.disabled()}`,
-    borderRight: `1px solid ${color.disabled()}`,
-    bottom: '-10px',
-    cursor: 'se-resize',
-    height: '10px',
-    position: 'absolute',
-    right: '-10px',
-    width: '10px',
-  },
-});
-
 Container.propTypes = {
-  classes: PropTypes.object.isRequired,
   dimensions: PropTypes.object.isRequired,
   disabled: PropTypes.bool.isRequired,
   hotspotColor: PropTypes.string.isRequired,
@@ -229,4 +216,4 @@ Container.defaultProps = {
   scale: 1,
 };
 
-export default withStyles(styles)(Container);
+export default Container;

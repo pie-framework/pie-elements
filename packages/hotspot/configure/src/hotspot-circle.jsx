@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Circle, Group, Rect, Transformer } from 'react-konva';
-import withStyles from '@mui/styles/withStyles';
+import { Circle, Group, Transformer } from 'react-konva';
 import DeleteWidget from './DeleteWidget';
 
 class CircleComponent extends React.Component {
@@ -77,7 +76,6 @@ class CircleComponent extends React.Component {
 
   render() {
     const {
-      classes,
       correct,
       radius,
       hotspotColor,
@@ -95,9 +93,8 @@ class CircleComponent extends React.Component {
     const validRadius = isNaN(radius) || radius <= 0 ? 5 : radius;
 
     return (
-      <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
+      <Group onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter} padding={12}>
         <Circle
-          classes={classes.base}
           ref={this.shapeRef}
           radius={validRadius}
           fill={correct && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
@@ -112,6 +109,8 @@ class CircleComponent extends React.Component {
           onTransformEnd={this.onResizeEnd}
           x={x}
           y={y}
+          opacity={0.5}
+          cursor="pointer"
         />
 
         {!isDragging && hovered && (
@@ -158,19 +157,7 @@ class CircleComponent extends React.Component {
   }
 }
 
-const styles = () => ({
-  base: {
-    cursor: 'pointer',
-    opacity: 0.5,
-  },
-
-  group: {
-    padding: '12px',
-  },
-});
-
 CircleComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
   correct: PropTypes.bool,
   isDrawing: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
@@ -191,4 +178,4 @@ CircleComponent.defaultProps = {
   correct: false,
 };
 
-export default withStyles(styles)(CircleComponent);
+export default CircleComponent;

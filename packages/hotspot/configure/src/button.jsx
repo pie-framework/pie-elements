@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
-const RawButton = ({ classes, className, label, onClick, disabled }) => (
-  <Button
+const StyledButton = styled(Button)(({ theme }) => ({
+  marginLeft: theme.spacing(1),
+}));
+
+const RawButton = ({ className, label, onClick, disabled }) => (
+  <StyledButton
     onClick={onClick}
     disabled={disabled}
-    className={classNames(classes.addButton, className)}
+    className={className}
     size="small"
     variant="contained">
     {label}
-  </Button>
+  </StyledButton>
 );
 
 RawButton.propTypes = {
-  classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.string,
@@ -30,12 +32,4 @@ RawButton.defaultProps = {
   onClick: () => {},
 };
 
-const styles = (theme) => ({
-  addButton: {
-    marginLeft: theme.spacing.unit,
-  },
-});
-
-const ButtonStyled = withStyles(styles)(RawButton);
-
-export default ButtonStyled;
+export default RawButton;
