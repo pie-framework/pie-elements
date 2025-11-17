@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { GraphContainer as Graph } from '@pie-lib/graphing-solution-set';
 import { AlertDialog } from '@pie-lib/config-ui';
 import { set } from 'lodash';
@@ -9,114 +9,131 @@ import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { findSectionsInSolutionSet, pointInsidePolygon, checkIfLinesAreAdded } from './utils';
 
-const styles = (theme) => ({
-  column: {
-    flex: 1,
-  },
-  graphingTools: {
-    color: theme.palette.grey['A200'],
-  },
-  availableTool: {
-    cursor: 'pointer',
-    margin: theme.spacing.unit,
-    padding: theme.spacing.unit,
-    border: `2px solid ${theme.palette.common.white}`,
-    textTransform: 'capitalize',
-    '&:hover': {
-      color: theme.palette.grey[800],
-    },
-  },
-  selectedTool: {
-    background: theme.palette.grey['A100'],
-    border: `2px solid ${theme.palette.grey['A200']}`,
-  },
-  container: {
-    border: `2px solid ${theme.palette.grey['A200']}`,
-    borderRadius: '4px',
-    padding: `0 ${theme.spacing.unit * 4}px ${theme.spacing.unit * 2}px`,
-    background: theme.palette.grey[50],
-  },
-  button: {
-    margin: `${theme.spacing.unit * 2.5}px 0`,
-    cursor: 'pointer',
-    background: theme.palette.grey[200],
-    padding: theme.spacing.unit * 1.5,
-    width: 'fit-content',
-    borderRadius: '4px',
-    '&:hover': {
-      background: theme.palette.grey['A100'],
-    },
-  },
-  responseTitle: {
-    display: 'flex',
-    alignItems: 'center',
-    marginTop: theme.spacing.unit * 2.5,
-  },
-  iconButton: {
-    marginLeft: '6px',
-    color: theme.palette.grey[600],
-    '&:hover': {
-      cursor: 'pointer',
-      color: theme.palette.common.black,
-    },
-  },
-  name: {
-    marginBottom: theme.spacing.unit / 2,
-  },
-  tooltip: {
-    fontSize: theme.typography.fontSize - 2,
-    whiteSpace: 'pre',
-    maxWidth: '500px',
-  },
-  subtitleText: {
-    marginTop: theme.spacing.unit * 1.5,
-    marginBottom: theme.spacing.unit,
-  },
-  toolsHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  defaultTool: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '300px',
-  },
-  defaultToolSelect: {
-    marginLeft: theme.spacing.unit,
-    textTransform: 'uppercase',
+const Column = styled('div')({
+  flex: 1,
+});
+
+const GraphingTools = styled('div')(({ theme }) => ({
+  color: theme.palette.grey['A200'],
+}));
+
+const AvailableTool = styled('div')(({ theme }) => ({
+  cursor: 'pointer',
+  margin: theme.spacing(1),
+  padding: theme.spacing(1),
+  border: `2px solid ${theme.palette.common.white}`,
+  textTransform: 'capitalize',
+  '&:hover': {
     color: theme.palette.grey[800],
   },
-  menuItem: {
-    textTransform: 'uppercase',
+}));
+
+const SelectedTool = styled(AvailableTool)(({ theme }) => ({
+  background: theme.palette.grey['A100'],
+  border: `2px solid ${theme.palette.grey['A200']}`,
+}));
+
+const Container = styled('div')(({ theme }) => ({
+  border: `2px solid ${theme.palette.grey['A200']}`,
+  borderRadius: '4px',
+  padding: `0 ${theme.spacing(4)} ${theme.spacing(2)}`,
+  background: theme.palette.grey[50],
+}));
+
+const Button = styled('div')(({ theme }) => ({
+  margin: `${theme.spacing(2.5)} 0`,
+  cursor: 'pointer',
+  background: theme.palette.grey[200],
+  padding: theme.spacing(1.5),
+  width: 'fit-content',
+  borderRadius: '4px',
+  '&:hover': {
+    background: theme.palette.grey['A100'],
   },
-  noDefaultTool: {
-    padding: theme.spacing.unit / 2,
+}));
+
+const ResponseTitle = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  marginTop: theme.spacing(2.5),
+}));
+
+const IconButton = styled('div')(({ theme }) => ({
+  marginLeft: '6px',
+  color: theme.palette.grey[600],
+  '&:hover': {
+    cursor: 'pointer',
+    color: theme.palette.common.black,
   },
-  error: {
-    color: theme.palette.error.main,
-  },
-  errorMessage: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    marginTop: theme.spacing.unit,
-  },
-  graphError: {
-    border: `2px solid ${theme.palette.error.main}`,
-  },
-  radioButtonClass: {
-    height: '20px',
-    width: 'fit-content',
-    padding: '.5rem 0',
-  },
-  radioButton: {
-    color: '#000000 !important',
-  },
+}));
+
+const Name = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(0.5),
+}));
+
+const Tooltip = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  whiteSpace: 'pre',
+  maxWidth: '500px',
+}));
+
+const SubtitleText = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(1.5),
+  marginBottom: theme.spacing(1),
+}));
+
+const ToolsHeader = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+});
+
+const DefaultTool = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  width: '300px',
+}));
+
+const DefaultToolSelect = styled('div')(({ theme }) => ({
+  marginLeft: theme.spacing(1),
+  textTransform: 'uppercase',
+  color: theme.palette.grey[800],
+}));
+
+const MenuItem = styled('div')({
+  textTransform: 'uppercase',
+});
+
+const NoDefaultTool = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0.5),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  color: theme.palette.error.main,
+}));
+
+const ErrorMessage = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  marginTop: theme.spacing(1),
+}));
+
+const GraphError = styled('div')(({ theme }) => ({
+  border: `2px solid ${theme.palette.error.main}`,
+}));
+
+const RadioButtonClass = styled(FormControlLabel)(({ theme }) => ({
+  height: '20px',
+  width: 'fit-content',
+  padding: '.5rem 0',
+}));
+
+const StyledRadio = styled(Radio)({
+  color: '#000000 !important',
 });
 
 export class CorrectResponse extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     errors: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -392,7 +409,7 @@ export class CorrectResponse extends React.Component {
    * Render the component
    * */
   render() {
-    const { classes, errors, model, mathMlOptions = {} } = this.props;
+    const { errors, model, mathMlOptions = {} } = this.props;
     const { dialog } = this.state;
     //get the default values to GssLineData
     const {
@@ -418,32 +435,30 @@ export class CorrectResponse extends React.Component {
     const { correctAnswerErrors = '' } = errors || {};
     return (
       <div>
-        <Typography component="div" variant="subheading">
+        <Typography component="div" variant="h6">
           Define Line Type(s) and Correct Response
         </Typography>
-        <Typography component="div" variant="body1" className={classes.subtitleText}>
+        <SubtitleText component="div" variant="body1">
           Use this interface to choose how many lines students will be able to draw, and to define the correct answer.
-        </Typography>
-        <Typography component="div" variant="body1" className={classes.subtitleText}>
+        </SubtitleText>
+        <SubtitleText component="div" variant="body1">
           Choose Number of Lines
-        </Typography>
+        </SubtitleText>
         <RadioGroup name="numberOfLines" value={gssLineData.numberOfLines} onChange={this.changeNumberOfLines}>
-          <FormControlLabel
-            className={classes.radioButtonClass}
+          <RadioButtonClass
             value="1"
-            control={<Radio checked={gssLineData.numberOfLines === 1} className={classes.radioButton} />}
+            control={<StyledRadio checked={gssLineData.numberOfLines === 1} />}
             label="One"
           />
-          <FormControlLabel
-            className={classes.radioButtonClass}
+          <RadioButtonClass
             value="2"
-            control={<Radio checked={gssLineData.numberOfLines === 2} className={classes.radioButton} />}
+            control={<StyledRadio checked={gssLineData.numberOfLines === 2} />}
             label="Two"
           />
         </RadioGroup>
         <React.Fragment>
           <Graph
-            className={correctAnswerErrors['correctAnswer'] && classes.graphError}
+            style={correctAnswerErrors['correctAnswer'] && { border: '2px solid red' }}
             axesSettings={{ includeArrows: arrows }}
             backgroundMarks={[]}
             coordinatesOnHover={coordinatesOnHover}
@@ -467,7 +482,7 @@ export class CorrectResponse extends React.Component {
             mathMlOptions={mathMlOptions}
           />
           {correctAnswerErrors['correctAnswer'] && (
-            <div className={classes.errorMessage}>{correctAnswerErrors['correctAnswer']}</div>
+            <ErrorMessage>{correctAnswerErrors['correctAnswer']}</ErrorMessage>
           )}
         </React.Fragment>
         <AlertDialog
@@ -483,4 +498,4 @@ export class CorrectResponse extends React.Component {
   }
 }
 
-export default withStyles(styles)(CorrectResponse);
+export default CorrectResponse;

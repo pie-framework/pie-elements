@@ -1,22 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { GraphContainer } from '@pie-lib/graphing-solution-set';
 import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { findSectionsInSolutionSet, pointInsidePolygon, checkIfLinesAreAdded } from './utils';
 import { AlertDialog } from '@pie-lib/config-ui';
 
+const MainContainer = styled(UiLayout)(({ theme }) => ({
+  color: color.text(),
+  backgroundColor: color.background(),
+}));
+
+const TeacherInstructions = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const Graph = styled(GraphContainer)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     model: PropTypes.object.isRequired,
     session: PropTypes.object.isRequired,
     onAnswersChange: PropTypes.func,
-  };
-
-  static defaultProps = {
-    classes: {},
   };
 
   state = {
@@ -198,7 +207,7 @@ export class Main extends React.Component {
    * Render the component
    * */
   render() {
-    const { model, classes, onAnswersChange, session } = this.props;
+    const { model, onAnswersChange, session } = this.props;
     const { showingCorrect, dialog } = this.state;
     const { answer } = session || {};
     const {
@@ -229,14 +238,13 @@ export class Main extends React.Component {
     const showTeacherInstructions =
       model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
+      <MainContainer extraCSSRules={extraCSSRules}>
         {showTeacherInstructions && (
-          <Collapsible
-            className={classes.teacherInstructions}
+          <TeacherInstructions
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
           >
             <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
+          </TeacherInstructions>
         )}
         {prompt && <PreviewPrompt className="prompt" prompt={prompt} />}
         <CorrectAnswerToggle
@@ -246,8 +254,7 @@ export class Main extends React.Component {
           language={language}
         />
         {showingCorrect && showToggle ? (
-          <GraphContainer
-            className={classes.graph}
+          <Graph
             axesSettings={{ includeArrows: arrows }}
             coordinatesOnHover={coordinatesOnHover}
             disabled={true}
@@ -269,8 +276,7 @@ export class Main extends React.Component {
             toolbarTools={['line', 'polygon']}
           />
         ) : (
-          <GraphContainer
-            className={classes.graph}
+          <Graph
             axesSettings={{ includeArrows: arrows }}
             coordinatesOnHover={coordinatesOnHover}
             defaultTool={defaultTool}
@@ -307,23 +313,9 @@ export class Main extends React.Component {
           onConfirm={dialog.onConfirm}
           onConfirmText={dialog.onConfirmText ? dialog.onConfirmText : 'OK'}
         />
-      </UiLayout>
+      </MainContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-  },
-  teacherInstructions: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  graph: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-});
-
-export default withStyles(styles)(Main);
+export default Main;

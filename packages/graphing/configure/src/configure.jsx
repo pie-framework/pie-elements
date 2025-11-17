@@ -13,13 +13,6 @@ import intersection from 'lodash/intersection';
 const { Panel, toggle, radio, checkboxes, textField, dropdown } = settings;
 const log = debug('@pie-element:graphing:configure');
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
-  fontSize: '1.1rem',
-  display: 'block',
-  marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(1),
-}));
-
 const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
   width: '100%',
   paddingTop: theme.spacing(2),
