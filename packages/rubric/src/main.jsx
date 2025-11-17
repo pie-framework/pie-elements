@@ -1,10 +1,86 @@
 import React from 'react';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import ListItem from '@mui/material/ListItem';
 import List from '@mui/material/List';
 import Collapse from '@mui/material/Collapse';
 import { color, UiLayout } from '@pie-lib/render-ui';
 import PropTypes from 'prop-types';
+
+const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
+  color: color.text(),
+  backgroundColor: color.background(),
+  // apply styles to tables to match the rest of the UI
+  '&:not(.MathJax) table': {
+    borderCollapse: 'collapse',
+  },
+  '&:not(.MathJax) table td, &:not(.MathJax) table th': {
+    padding: '8px 12px',
+    textAlign: 'left',
+  },
+  // reset paragraph margins and line-height inside lists to override client styles
+  '& ul p, & ol p': {
+    marginBottom: 0,
+    marginTop: 0,
+    lineHeight: 'normal',
+  },
+}));
+
+const StyledListItem = styled(ListItem)({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  padding: '12px 0px',
+});
+
+const Text = styled('div')({
+  color: color.text(),
+});
+
+const TitleText = styled('h3')({
+  color: color.text(),
+  fontSize: '16px',
+  fontWeight: '700',
+  margin: 0,
+  paddingBottom: '6px',
+});
+
+const SampleTitleText = styled('h4')({
+  color: color.text(),
+  fontSize: '16px',
+  fontWeight: 'normal',
+  margin: 0,
+  paddingBottom: '6px',
+});
+
+const RubricToggle = styled('h2')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  cursor: 'pointer',
+  userSelect: 'none',
+  fontSize: theme.typography.fontSize,
+  fontWeight: '500',
+  color: color.tertiary(),
+  margin: 0,
+}));
+
+const ChevronStyle = styled('span')({
+  display: 'inline-flex',
+  transition: 'transform 0.2s',
+  marginLeft: 2,
+  alignSelf: 'center',
+});
+
+const HiddenScreenReader = styled('h2')({
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0,0,0,0)',
+  border: 0,
+  whiteSpace: 'nowrap',
+});
 
 export const RubricType = PropTypes.shape({
   excludeZero: PropTypes.bool,
@@ -26,7 +102,6 @@ class Rubric extends React.Component {
   }
 
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     animationsDisabled: PropTypes.bool,
     value: RubricType,
@@ -46,7 +121,7 @@ class Rubric extends React.Component {
   };
 
   render() {
-    const { model, value, classes } = this.props;
+    const { model, value } = this.props;
     let { animationsDisabled } = this.props;
     animationsDisabled = animationsDisabled || value.animationsDisabled;
 
@@ -65,20 +140,20 @@ class Rubric extends React.Component {
 
               return (
                 <React.Fragment key={index}>
-                  <ListItem key={`P${index}`} className={classes.listColumn}>
-                    <h3 className={classes.titleText}>
+                  <StyledListItem key={`P${index}`}>
+                    <TitleText>
                       {pointsLabel === 1 ? `${pointsLabel} PT` : `${pointsLabel} PTS`}
-                    </h3>
-                    <div className={classes.text} dangerouslySetInnerHTML={{ __html: desc }} />
-                  </ListItem>
+                    </TitleText>
+                    <Text dangerouslySetInnerHTML={{ __html: desc }} />
+                  </StyledListItem>
 
                   {sampleAnswers && sampleAnswers[index] && (
-                    <ListItem key={`S${index}`} className={classes.listColumn}>
-                      <h4 className={classes.titleText} style={{ fontWeight: 'normal' }}>
+                    <StyledListItem key={`S${index}`}>
+                      <SampleTitleText>
                         Sample Answer
-                      </h4>
-                      <div className={classes.text} dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
-                    </ListItem>
+                      </SampleTitleText>
+                      <Text dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
+                    </StyledListItem>
                   )}
                 </React.Fragment>
               );
@@ -87,14 +162,13 @@ class Rubric extends React.Component {
       );
 
       return (
-        <UiLayout extraCSSRules={extraCSSRules} className={classes.root}>
+        <StyledUiLayout extraCSSRules={extraCSSRules}>
           {/* screen reader only heading for navigation as per PD-5057 */}
-          <h2 className={classes.hiddenScreenReader}>Rubric</h2>
+          <HiddenScreenReader>Rubric</HiddenScreenReader>
           {!animationsDisabled ? (
             <React.Fragment>
-              <h2
+              <RubricToggle
                 id={'rubric-toggle'}
-                className={classes.rubricToggle}
                 tabIndex={0}
                 role="button"
                 aria-expanded={this.state.rubricOpen}
@@ -104,7 +178,7 @@ class Rubric extends React.Component {
                 }}
               >
                 {this.state.linkPrefix} Rubric
-                <span className={classes.chevronStyle} aria-hidden="true">
+                <ChevronStyle aria-hidden="true">
                   {this.state.rubricOpen ? (
                     <svg
                       width="20"
@@ -132,16 +206,16 @@ class Rubric extends React.Component {
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                   )}
-                </span>
-              </h2>
-              <Collapse in={this.state.rubricOpen} timeout="auto">
+                </ChevronStyle>
+              </RubricToggle>
+              <Collapse in={this.state.rubricOpen} timeout={{ enter: 225, exit: 195 }}>
                 {rubricList}
               </Collapse>
             </React.Fragment>
           ) : (
             rubricList
           )}
-        </UiLayout>
+        </StyledUiLayout>
       );
     } else {
       return null;
@@ -149,71 +223,4 @@ class Rubric extends React.Component {
   }
 }
 
-const styles = (theme) => ({
-  root: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    // apply styles to tables to match the rest of the UI
-    '&:not(.MathJax) table': {
-      borderCollapse: 'collapse',
-    },
-    '&:not(.MathJax) table td, &:not(.MathJax) table th': {
-      padding: '8px 12px',
-      textAlign: 'left',
-    },
-    // reset paragraph margins and line-height inside lists to override client styles
-    '& ul p, & ol p': {
-      marginBottom: 0,
-      marginTop: 0,
-      lineHeight: 'normal',
-    },
-  },
-  listColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    padding: '12px 0px',
-  },
-  listColumnItem: {
-    padding: 0,
-  },
-  text: {
-    color: color.text(),
-  },
-  titleText: {
-    color: color.text(),
-    fontSize: '16px',
-    fontWeight: '700',
-    margin: 0,
-    paddingBottom: '6px',
-  },
-  rubricToggle: {
-    display: 'flex',
-    alignItems: 'center',
-    cursor: 'pointer',
-    userSelect: 'none',
-    fontSize: theme.typography.fontSize,
-    fontWeight: '500',
-    color: color.tertiary(),
-    margin: 0,
-  },
-  chevronStyle: {
-    display: 'inline-flex',
-    transition: 'transform 0.2s',
-    marginLeft: 2,
-    alignSelf: 'center',
-  },
-  hiddenScreenReader: {
-    position: 'absolute',
-    width: '1px',
-    height: '1px',
-    padding: 0,
-    margin: '-1px',
-    overflow: 'hidden',
-    clip: 'rect(0,0,0,0)',
-    border: 0,
-    whiteSpace: 'nowrap',
-  },
-});
-
-export default withStyles(styles)(Rubric);
+export default Rubric;

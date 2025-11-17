@@ -28,7 +28,7 @@ export default class RubricRender extends HTMLElement {
 
   _render() {
     if (this._model) {
-      const el = <Rubric value={this._model} />;
+      const el = React.createElement(Rubric, { value: this._model });
 
       if (!this._root) {
         this._root = createRoot(this);
