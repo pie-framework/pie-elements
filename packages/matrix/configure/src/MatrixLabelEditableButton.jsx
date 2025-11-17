@@ -180,7 +180,12 @@ const MatrixLabelEditableButton = (props) => {
         <IconWrapper>
           <KeyboardArrowDownIcon fontSize="inherit" />
         </IconWrapper>
-        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          transitionDuration={{ enter: 225, exit: 195 }}
+        >
           <MenuItem key="item1" selected={false} onClick={onClearScores}>
             Clear Scores
           </MenuItem>

@@ -3,29 +3,25 @@ import PropTypes from 'prop-types';
 import withStyles from '@mui/styles/withStyles';
 import { color } from '@pie-lib/render-ui';
 
-const styles = () => ({
-  trait: {
-    '&$traitName': {
-      color: color.primaryDark(),
-      verticalAlign: 'middle',
-    },
-  },
-  noDescription: {
-    color: color.secondaryBackground(),
-    textAlign: 'center',
-  },
-  traitName: {},
+const TraitName = styled('td')({
+  color: color.primaryDark(),
+  verticalAlign: 'middle',
+});
+
+const NoDescription = styled('div')({
+  color: color.secondaryBackground(),
+  textAlign: 'center',
 });
 
 const Trait = (props) => {
-  const { trait, traitIndex, scaleIndex, showStandards, showDescription, scorePointsValues, classes } = props;
+  const { trait, traitIndex, scaleIndex, showStandards, showDescription, scorePointsValues } = props;
   const { name, standards, scorePointsDescriptors, description } = trait || {};
 
   return (
     <tr key={`scale-${scaleIndex}-trait-${traitIndex}`}>
-      <td className={`${classes.trait} ${classes.traitName}`}>
+      <TraitName>
         <div dangerouslySetInnerHTML={{ __html: name }} />
-      </td>
+      </TraitName>
 
       {showStandards ? (
         <td>
@@ -51,10 +47,11 @@ const Trait = (props) => {
 
           return (
             <td key={`table-cell-${index}`}>
-              <div
-                className={!scoreDescriptor ? classes.noDescription : ''}
-                dangerouslySetInnerHTML={{ __html: scoreDescriptor || 'No Description' }}
-              />
+              {!scoreDescriptor ? (
+                <NoDescription dangerouslySetInnerHTML={{ __html: 'No Description' }} />
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: scoreDescriptor }} />
+              )}
             </td>
           );
         })}
@@ -63,7 +60,6 @@ const Trait = (props) => {
 };
 
 Trait.propTypes = {
-  classes: PropTypes.object,
   showStandards: PropTypes.bool,
   showDescription: PropTypes.bool,
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
@@ -77,4 +73,4 @@ Trait.propTypes = {
   }),
 };
 
-export default withStyles(styles)(Trait);
+export default Trait;

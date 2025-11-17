@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 import { color } from '@pie-lib/render-ui';
 import Radio from '@mui/material/Radio';
 
-const radioStyles = {
-  root: {
+const StyledRadio = styled(Radio)({
+  '&.MuiRadio-root': {
     color: `var(--choice-input-color, ${color.text()})`,
   },
-  checked: {
+  '&.MuiRadio-root.Mui-checked': {
     color: `var(--choice-input-selected-color, ${color.text()})`,
   },
-};
+});
 
-const ChoiceInput = withStyles(radioStyles)((props) => {
-  const { disabled, checked, matrixKey, matrixValue, classes, onChange } = props;
+const ChoiceInput = (props) => {
+  const { disabled, checked, matrixKey, matrixValue, onChange } = props;
 
   const onChangeWrapper = () => {
     if (disabled) {
@@ -28,24 +28,19 @@ const ChoiceInput = withStyles(radioStyles)((props) => {
   };
 
   return (
-    <Radio
+    <StyledRadio
       checked={checked}
       onChange={onChangeWrapper}
       disabled={disabled}
-      classes={{
-        root: classes.root,
-        checked: classes.checked,
-      }}
     />
   );
-});
+};
 
 ChoiceInput.propTypes = {
   checked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
   matrixValue: PropTypes.number.isRequired,
   matrixKey: PropTypes.string.isRequired,
-  classes: PropTypes.object,
   onChange: PropTypes.func.isRequired,
 };
 

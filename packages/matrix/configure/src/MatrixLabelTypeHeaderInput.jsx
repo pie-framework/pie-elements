@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -8,20 +8,19 @@ import { MATRIX_LABEL_TYPE } from './matrixEntities';
 import { ColumnsWrapper, ColumnsHeader } from './HeaderCommon';
 import columnLabelsGenerator from './columnLabelsGenerator';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
 import { color } from '@pie-lib/render-ui';
 
-const Flex = styled.div`
-  display: flex;
-`;
+const Flex = styled('div')({
+  display: 'flex',
+});
 
-const styles = (theme) => ({
-  customColor: {
+const StyledRadio = styled(Radio)({
+  '&.MuiRadio-root': {
     color: `${color.tertiary()} !important`,
   },
 });
 
-const MatrixLabelTypeHeaderInput = ({ model, onChangeModel, classes }) => {
+const MatrixLabelTypeHeaderInput = ({ model, onChangeModel }) => {
   const onChangeLabelType = (e) => {
     const labelType = e.target.value;
     const modelNew = { ...model, labelType };
@@ -45,19 +44,19 @@ const MatrixLabelTypeHeaderInput = ({ model, onChangeModel, classes }) => {
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.agreement}
-            control={<Radio className={classes.customColor} />}
+            control={<StyledRadio />}
             label="Agreement"
           />
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.frequency}
-            control={<Radio className={classes.customColor} />}
+            control={<StyledRadio />}
             label="Frequency"
           />
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.yesNo}
-            control={<Radio className={classes.customColor} />}
+            control={<StyledRadio />}
             label="Yes/No"
           />
         </RadioGroup>
@@ -71,19 +70,19 @@ const MatrixLabelTypeHeaderInput = ({ model, onChangeModel, classes }) => {
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.importance}
-            control={<Radio className={classes.customColor} />}
+            control={<StyledRadio />}
             label="Importance"
           />
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.likelihood}
-            control={<Radio className={classes.customColor} />}
+            control={<StyledRadio />}
             label="Likelihood"
           />
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.like}
-            control={<Radio className={classes.customColor} />}
+            control={<StyledRadio />}
             label="Like"
           />
         </RadioGroup>
@@ -96,7 +95,7 @@ const MatrixLabelTypeHeaderInput = ({ model, onChangeModel, classes }) => {
         >
           <FormControlLabel
             value={MATRIX_LABEL_TYPE.custom}
-            control={<Radio className={classes.customColor} />}
+            control={<StyledRadio />}
             label="Custom"
           />
         </RadioGroup>
@@ -110,4 +109,4 @@ MatrixLabelTypeHeaderInput.propTypes = {
   onChangeModel: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(MatrixLabelTypeHeaderInput);
+export default MatrixLabelTypeHeaderInput;
