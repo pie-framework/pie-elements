@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
 import { PreviewLayout } from '@pie-lib/render-ui';
 import Likert from './likert';
 
@@ -9,7 +8,6 @@ class Main extends React.Component {
     model: PropTypes.object,
     session: PropTypes.object,
     onSessionChange: PropTypes.func,
-    classes: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -29,10 +27,4 @@ class Main extends React.Component {
   }
 }
 
-const Styled = withStyles({}, { name: 'Main' })(Main);
-
-const Root = (props) => (
-    <Styled {...props} />
-);
-
-export default Root;
+export default Main;

@@ -1,30 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChoiceInput from './choice-input';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { LIKERT_ORIENTATION } from './likertEntities';
-import classNames from 'classnames';
 
-const styles = (theme) => ({
-  main: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    '& *': {
-      '-webkit-font-smoothing': 'antialiased',
-    },
+const Main = styled('div')({
+  color: color.text(),
+  backgroundColor: color.background(),
+  '& *': {
+    '-webkit-font-smoothing': 'antialiased',
   },
-  teacherInstructions: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  prompt: {
-    verticalAlign: 'middle',
-    color: 'var(--pie-primary-text, var(--pie-text, #000000))',
-    paddingBottom: theme.spacing.unit * 2,
-  },
-  choicesWrapper: {
-    display: 'flex',
-  },
+});
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const Prompt = styled('div')(({ theme }) => ({
+  verticalAlign: 'middle',
+  color: 'var(--pie-primary-text, var(--pie-text, #000000))',
+  paddingBottom: theme.spacing(2),
+}));
+
+const ChoicesWrapper = styled('div')({
+  display: 'flex',
 });
 
 export class Likert extends React.Component {
@@ -37,7 +37,6 @@ export class Likert extends React.Component {
     disabled: PropTypes.bool.isRequired,
     onSessionChange: PropTypes.func.isRequired,
     likertOrientation: PropTypes.string.isRequired,
-    classes: PropTypes.object.isRequired,
   };
 
   UNSAFE_componentWillReceiveProps() {}
@@ -53,7 +52,6 @@ export class Likert extends React.Component {
       prompt,
       onSessionChange,
       teacherInstructions,
-      classes,
       className,
       likertOrientation,
     } = this.props;
@@ -61,26 +59,25 @@ export class Likert extends React.Component {
     const flexDirection = likertOrientation === LIKERT_ORIENTATION.vertical ? 'column' : 'row';
 
     return (
-      <div className={classNames(classes.main, className)}>
+      <Main className={className}>
         {teacherInstructions && (
-          <Collapsible
-            className={classes.teacherInstructions}
+          <StyledCollapsible
             labels={{
               hidden: 'Show Teacher Instructions',
               visible: 'Hide Teacher Instructions',
             }}
           >
             <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {prompt && (
-          <div className={classes.prompt}>
+          <Prompt>
             <PreviewPrompt prompt={prompt} />
-          </div>
+          </Prompt>
         )}
 
-        <div className={classes.choicesWrapper} style={{ flexDirection }}>
+        <ChoicesWrapper style={{ flexDirection }}>
           {choices.map((choice, index) => (
             <ChoiceInput
               key={`choice-${index}`}
@@ -93,8 +90,8 @@ export class Likert extends React.Component {
               checked={this.isSelected(choice.value)}
             />
           ))}
-        </div>
-      </div>
+        </ChoicesWrapper>
+      </Main>
     );
   }
 }
@@ -105,4 +102,4 @@ Likert.defaultProps = {
   },
 };
 
-export default withStyles(styles)(Likert);
+export default Likert;
