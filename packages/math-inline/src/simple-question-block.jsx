@@ -94,7 +94,7 @@ export class SimpleQuestionBlock extends React.Component {
   };
 
   render() {
-    const { model, showCorrect, session, emptyResponse, onSimpleResponseChange, showKeypad } = this.props;
+    const { model, showCorrect, session, emptyResponse,onSimpleResponseChange, showKeypad } = this.props;
     const { config, disabled, correctness } = model || {};
 
     if (!config) {

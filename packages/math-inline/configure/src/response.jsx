@@ -37,9 +37,13 @@ const Title = styled(Typography)({
   flex: 3,
 });
 
-const SelectContainer = styled(InputContainer)({
+const SelectContainer = styled(InputContainer)(({ theme }) =>
+({
   flex: 2,
-});
+  '& > *:not(label)': {
+    marginTop: theme.spacing(1),
+  },
+}));
 
 const InputContainerWrapper = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(2),
@@ -72,12 +76,13 @@ const CustomColorCheckbox = styled(Checkbox)({
 });
 
 const AlternateButton = styled(Button)(({ theme }) => ({
-  border: `1px solid ${theme.palette.grey['A100']}`,
+  border: `1px solid ${theme.palette.grey['A400']}`,
+  color: color.text(),
 }));
 
 const RemoveAlternateButton = styled(Button)(({ theme }) => ({
   marginLeft: theme.spacing(2),
-  border: `1px solid ${theme.palette.grey['A100']}`,
+  border: `1px solid ${theme.palette.grey['A400']}`,
   color: 'gray',
   fontSize: '0.8rem',
 }));

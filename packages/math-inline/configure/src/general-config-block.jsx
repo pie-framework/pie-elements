@@ -53,6 +53,9 @@ const SelectContainer = styled(InputContainer)(({ theme }) => ({
   width: '40%',
   marginTop: theme.spacing(2),
   marginBottom: theme.spacing(2),
+  '& > *:not(label)': {
+    marginTop: theme.spacing(1),
+  },
 }));
 
 const ResponseTemplate = styled('div')({
