@@ -2,9 +2,9 @@ import React from 'react';
 import debug from 'debug';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import { DragSource, DropTarget } from 'react-dnd';
+import { useDraggable, useDroppable } from '@dnd-kit/core';
 
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { color } from '@pie-lib/render-ui';
 
 import { Block, BlockWidth, ExpandedInput, PrimaryBlock, Row, SecondaryBlock, UnderlinedInput } from './common';
@@ -17,248 +17,247 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 const log = debug('@pie-element:placement-ordering:configure:trait-tile');
 
-const styles = (theme) => ({
-  actions: {
-    color: color.text(),
-  },
-  primaryBlock: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginBottom: theme.spacing.unit * 5,
-  },
-  controls: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    cursor: 'pointer',
-  },
-  options: {
-    marginLeft: 'auto',
-  },
-  dragHandle: {},
-  removeLabel: {
-    display: 'flex',
-    whiteSpace: 'break-spaces',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingBottom: theme.spacing.unit,
-  },
+const ActionsIcon = styled(DragIndicatorIcon)({
+  color: color.text(),
 });
 
-export class TraitTile extends React.Component {
-  static propTypes = {
-    spellCheck: PropTypes.bool,
-    uploadSoundSupport: PropTypes.object,
-  };
+const StyledPrimaryBlock = styled(PrimaryBlock)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  marginBottom: theme.spacing(5),
+}));
 
-  state = {};
+const Controls = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  width: '100%',
+  cursor: 'pointer',
+});
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.currentPosition !== this.props.currentPosition ||
-      (this.secondaryBlock && this.secondaryBlock.scrollLeft !== nextProps.currentPosition)
-    ) {
-      this.scrollToPosition(nextProps.currentPosition);
+const Options = styled(IconButton)({
+  marginLeft: 'auto',
+});
+
+const RemoveLabel = styled('div')({
+  display: 'flex',
+  whiteSpace: 'break-spaces',
+});
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingBottom: theme.spacing(1),
+}));
+
+function TraitTile({
+  error,
+  trait: { name, standards, description, scorePointsDescriptors },
+  traitLabel,
+  scorePointsValues,
+  showStandards,
+  showDescription,
+  enableDragAndDrop,
+  currentPosition,
+  secondaryBlockWidth,
+  spellCheck,
+  maxPoints,
+  uploadSoundSupport,
+  mathMlOptions = {},
+  expandedPluginProps = {},
+  labelPluginProps = {},
+  imageSupport = {},
+  index,
+  onTraitChanged,
+  onTraitRemoved,
+  onTraitDropped,
+}) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const secondaryBlockRef = React.useRef(null);
+
+  const { attributes, listeners, setNodeRef: setDragRef, transform, isDragging } = useDraggable({
+    id: `trait-${index}`,
+    data: {
+      type: 'trait',
+      index,
+      name,
+    },
+  });
+
+  const { setNodeRef: setDropRef } = useDroppable({
+    id: `trait-drop-${index}`,
+    data: {
+      type: 'trait',
+      index,
+    },
+  });
+
+  React.useEffect(() => {
+    if (currentPosition !== undefined && secondaryBlockRef.current && secondaryBlockRef.current.scrollLeft !== currentPosition) {
+      scrollToPosition(currentPosition);
     }
-  }
+  }, [currentPosition]);
 
-  onTraitChanged = (params) => {
-    const { trait, onTraitChanged } = this.props;
-
+  const onTraitChangedHandler = (params) => {
     if (isEmpty(params)) return;
 
-    Object.keys(params).forEach((key) => {
-      trait[key] = params[key];
-    });
-
-    onTraitChanged(trait);
+    const updatedTrait = { ...{ name, standards, description, scorePointsDescriptors }, ...params };
+    onTraitChanged(updatedTrait);
   };
 
-  onScorePointDescriptorChange = ({ descriptor, value }) => {
-    const {
-      trait: { scorePointsDescriptors },
-    } = this.props;
-
+  const onScorePointDescriptorChange = ({ descriptor, value }) => {
     if (value < 0 || value >= scorePointsDescriptors.length) return;
 
-    scorePointsDescriptors[value] = descriptor;
+    const newDescriptors = [...scorePointsDescriptors];
+    newDescriptors[value] = descriptor;
 
-    this.onTraitChanged({ scorePointsDescriptors });
+    onTraitChangedHandler({ scorePointsDescriptors: newDescriptors });
   };
 
-  handleClick = (event) => this.setState({ anchorEl: event.currentTarget });
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
 
-  handleClose = () => this.setState({ anchorEl: null });
+  const handleClose = () => setAnchorEl(null);
 
-  scrollToPosition = (position) => this.secondaryBlock.scrollTo({ left: position });
+  const scrollToPosition = (position) => secondaryBlockRef.current?.scrollTo({ left: position });
 
-  openMenu = () => {
-    this.props.onTraitRemoved();
-    this.handleClose();
+  const openMenu = () => {
+    onTraitRemoved();
+    handleClose();
   };
 
-  render() {
-    const {
-      classes,
-      connectDragSource,
-      connectDropTarget,
-      connectDragPreview,
-      error,
-      trait: { name, standards, description, scorePointsDescriptors },
-      traitLabel,
-      scorePointsValues,
-      showStandards,
-      showDescription,
-      enableDragAndDrop,
-      currentPosition,
-      secondaryBlockWidth,
-      spellCheck,
-      maxPoints,
-      uploadSoundSupport,
-      mathMlOptions = {},
-      expandedPluginProps = {},
-      labelPluginProps = {},
-      imageSupport = {},
-    } = this.props;
-    const { anchorEl } = this.state;
+  const dragStyle = transform ? {
+    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+    opacity: isDragging ? 0.5 : 1,
+  } : {};
 
-    return connectDragPreview(
-      connectDropTarget(
-        <div>
-          <Row>
-            <PrimaryBlock className={classes.primaryBlock}>
-              <div className={classes.controls}>
-                {enableDragAndDrop
-                  ? connectDragSource(
-                      <span className={classes.dragHandle}>
-                        <DragIndicatorIcon className={classes.actions} />
-                      </span>,
-                    )
-                  : null}
+  return (
+    <div ref={setDropRef} style={dragStyle}>
+      <Row>
+        <StyledPrimaryBlock>
+          <Controls>
+            {enableDragAndDrop && (
+              <span ref={setDragRef} {...attributes} {...listeners}>
+                <ActionsIcon />
+              </span>
+            )}
 
-                <IconButton
-                  className={classes.options}
-                  aria-label="more"
-                  aria-controls="long-menu"
-                  aria-haspopup="true"
-                  onClick={this.handleClick}
-                  size="large">
-                  <MoreVertIcon />
-                </IconButton>
+            <Options
+              aria-label="more"
+              aria-controls="long-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+              size="large">
+              <MoreVertIcon />
+            </Options>
 
-                <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={!!anchorEl} onClose={this.handleClose}>
-                  <MenuItem onClick={this.openMenu}>
-                    <div
-                      className={classes.removeLabel}
-                      dangerouslySetInnerHTML={{ __html: `Remove ${name || traitLabel}` }}
-                    />
-                  </MenuItem>
-                </Menu>
-              </div>
+            <Menu
+              id="long-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={!!anchorEl}
+              onClose={handleClose}
+              transitionDuration={{ enter: 225, exit: 195 }}
+            >
+              <MenuItem onClick={openMenu}>
+                <RemoveLabel
+                  dangerouslySetInnerHTML={{ __html: `Remove ${name || traitLabel}` }}
+                />
+              </MenuItem>
+            </Menu>
+          </Controls>
 
-              <UnderlinedInput
-                markup={name}
-                error={error?.name || ''}
-                onChange={(name) => this.onTraitChanged({ name })}
-                pluginProps={labelPluginProps}
-                placeholder={`Enter ${traitLabel}`}
+          <UnderlinedInput
+            markup={name}
+            error={error?.name || ''}
+            onChange={(name) => onTraitChangedHandler({ name })}
+            pluginProps={labelPluginProps}
+            placeholder={`Enter ${traitLabel}`}
+            spellCheck={spellCheck}
+            uploadSoundSupport={uploadSoundSupport}
+            mathMlOptions={mathMlOptions}
+            imageSupport={imageSupport}
+          />
+          {error && <ErrorText>{error.name || ''}</ErrorText>}
+        </StyledPrimaryBlock>
+
+        <SecondaryBlock
+          setRef={(ref) => {
+            secondaryBlockRef.current = ref;
+          }}
+          width={`${secondaryBlockWidth}px`}
+        >
+          {showStandards && standards && (
+            <Block>
+              <ExpandedInput
+                placeholder="Standards"
+                markup={standards.join(',')}
+                onChange={(standards) => onTraitChangedHandler({ standards: standards.split(',') })}
+                pluginProps={expandedPluginProps}
                 spellCheck={spellCheck}
                 uploadSoundSupport={uploadSoundSupport}
                 mathMlOptions={mathMlOptions}
                 imageSupport={imageSupport}
               />
-              {error && <div className={classes.errorText}>{error.name || ''}</div>}
-            </PrimaryBlock>
+            </Block>
+          )}
 
-            <SecondaryBlock
-              setRef={(ref) => {
-                this.secondaryBlock = ref;
-              }}
-              width={`${secondaryBlockWidth}px`}
-            >
-              {showStandards && standards && (
-                <Block>
-                  <ExpandedInput
-                    placeholder="Standards"
-                    markup={standards.join(',')}
-                    onChange={(standards) => this.onTraitChanged({ standards: standards.split(',') })}
-                    pluginProps={expandedPluginProps}
-                    spellCheck={spellCheck}
-                    uploadSoundSupport={uploadSoundSupport}
-                    mathMlOptions={mathMlOptions}
-                    imageSupport={imageSupport}
-                  />
-                </Block>
-              )}
+          {showDescription && (
+            <Block>
+              <ExpandedInput
+                placeholder="Enter Description"
+                markup={description}
+                error={error?.description || ''}
+                onChange={(description) => onTraitChangedHandler({ description })}
+                pluginProps={expandedPluginProps}
+                spellCheck={spellCheck}
+                uploadSoundSupport={uploadSoundSupport}
+                mathMlOptions={mathMlOptions}
+                imageSupport={imageSupport}
+              />
+              {error && <ErrorText>{error.description || ''}</ErrorText>}
+            </Block>
+          )}
 
-              {showDescription && (
-                <Block>
-                  <ExpandedInput
-                    placeholder="Enter Description"
-                    markup={description}
-                    error={error?.description || ''}
-                    onChange={(description) => this.onTraitChanged({ description })}
-                    pluginProps={expandedPluginProps}
-                    spellCheck={spellCheck}
-                    uploadSoundSupport={uploadSoundSupport}
-                    mathMlOptions={mathMlOptions}
-                    imageSupport={imageSupport}
-                  />
-                  {error && <div className={classes.errorText}>{error.description || ''}</div>}
-                </Block>
-              )}
+          {(scorePointsValues || []).map((scorePointsValue, scoreIndex) => {
+            const adjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
+            const remainingSpace = secondaryBlockWidth - adjustedBlockWidth * scoreIndex + currentPosition - 98;
+            const value = scorePointsValues.length - scoreIndex - 1;
+            let scoreDescriptor;
 
-              {(scorePointsValues || []).map((scorePointsValue, index) => {
-                const adjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
-                const remainingSpace = secondaryBlockWidth - adjustedBlockWidth * index + currentPosition - 98;
-                const value = scorePointsValues.length - index - 1;
-                let scoreDescriptor;
+            try {
+              scoreDescriptor = scorePointsDescriptors[value] || '';
+            } catch (e) {
+              scoreDescriptor = '';
+            }
 
-                try {
-                  scoreDescriptor = scorePointsDescriptors[value] || '';
-                } catch (e) {
-                  scoreDescriptor = '';
-                }
-
-                return (
-                  <Block key={`key-key-${index}`}>
-                    <ExpandedInput
-                      placeholder="Enter Descriptor"
-                      markup={scoreDescriptor}
-                      onChange={(descriptor) => this.onScorePointDescriptorChange({ descriptor, value })}
-                      pluginProps={expandedPluginProps}
-                      alignToRight={remainingSpace < 296 && scorePointsValue < maxPoints} // 296 is the space required for the toolbar
-                      spellCheck={spellCheck}
-                      uploadSoundSupport={uploadSoundSupport}
-                      mathMlOptions={mathMlOptions}
-                      imageSupport={imageSupport}
-                    />
-                  </Block>
-                );
-              })}
-            </SecondaryBlock>
-          </Row>
-        </div>,
-      ),
-    );
-  }
+            return (
+              <Block key={`key-key-${scoreIndex}`}>
+                <ExpandedInput
+                  placeholder="Enter Descriptor"
+                  markup={scoreDescriptor}
+                  onChange={(descriptor) => onScorePointDescriptorChange({ descriptor, value })}
+                  pluginProps={expandedPluginProps}
+                  alignToRight={remainingSpace < 296 && scorePointsValue < maxPoints} // 296 is the space required for the toolbar
+                  spellCheck={spellCheck}
+                  uploadSoundSupport={uploadSoundSupport}
+                  mathMlOptions={mathMlOptions}
+                  imageSupport={imageSupport}
+                />
+              </Block>
+            );
+          })}
+        </SecondaryBlock>
+      </Row>
+    </div>
+  );
 }
 
 TraitTile.propTypes = {
-  connectDragSource: PropTypes.func.isRequired,
-  connectDropTarget: PropTypes.func.isRequired,
-  connectDragPreview: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
   error: PropTypes.object,
-  isDragging: PropTypes.bool.isRequired,
-  id: PropTypes.any,
-  isOver: PropTypes.bool,
-  index: PropTypes.number,
+  index: PropTypes.number.isRequired,
   onTraitChanged: PropTypes.func.isRequired,
   onTraitRemoved: PropTypes.func.isRequired,
+  onTraitDropped: PropTypes.func,
   trait: PropTypes.shape({
     name: PropTypes.string,
     standards: PropTypes.arrayOf(PropTypes.string),
@@ -273,6 +272,9 @@ TraitTile.propTypes = {
   enableDragAndDrop: PropTypes.bool,
   currentPosition: PropTypes.number,
   secondaryBlockWidth: PropTypes.number,
+  spellCheck: PropTypes.bool,
+  uploadSoundSupport: PropTypes.object,
+  mathMlOptions: PropTypes.object,
   expandedPluginProps: PropTypes.object,
   labelPluginProps: PropTypes.object,
   imageSupport: PropTypes.shape({
@@ -281,40 +283,4 @@ TraitTile.propTypes = {
   }),
 };
 
-export const StyledTrait = withStyles(styles)(TraitTile);
-
-const NAME = 'trait-config';
-
-const traitSource = {
-  beginDrag(props) {
-    return {
-      name: props.trait.name,
-      index: props.index,
-    };
-  },
-};
-
-const StyledSource = DragSource(NAME, traitSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  connectDragPreview: connect.dragPreview(),
-  isDragging: monitor.isDragging(),
-}))(StyledTrait);
-
-const traitTarget = {
-  hover() {
-    log('[hover]');
-  },
-  drop(props, monitor) {
-    const item = monitor.getItem();
-    log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
-
-    props.onTraitDropped(item, props.index);
-  },
-};
-
-const StyledSourceAndTarget = DropTarget(NAME, traitTarget, (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget(),
-  isOver: monitor.isOver(),
-}))(StyledSource);
-
-export default StyledSourceAndTarget;
+export default TraitTile;

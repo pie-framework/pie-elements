@@ -1,65 +1,68 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { color } from '@pie-lib/render-ui';
 import Trait from './trait';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const styles = (theme) => ({
-  wrapper: {
-    display: 'flex',
-    position: 'relative',
-  },
-  tableWrapper: {
-    width: '100%',
-    overflow: 'auto',
-  },
-  table: {
-    borderSpacing: 0,
-    marginBottom: theme.spacing.unit * 2,
-    borderRadius: '4px',
-    color: color.text(),
-    fontSize: theme.typography.fontSize,
-    lineHeight: '16px',
-    overflow: 'unset',
+const Wrapper = styled('div')({
+  display: 'flex',
+  position: 'relative',
+});
 
-    '& ul, ol': {
-      marginBlockStart: 0,
-      paddingInlineStart: theme.spacing.unit * 2,
-    },
+const TableWrapper = styled('div')({
+  width: '100%',
+  overflow: 'auto',
+});
 
-    '& th': {
-      padding: theme.spacing.unit * 2,
-      textAlign: 'left',
-      backgroundColor: color.secondaryBackground(),
-      verticalAlign: 'bottom',
-    },
+const Table = styled('table')(({ theme }) => ({
+  borderSpacing: 0,
+  marginBottom: theme.spacing(2),
+  borderRadius: '4px',
+  color: color.text(),
+  fontSize: theme.typography.fontSize,
+  lineHeight: '16px',
+  overflow: 'unset',
 
-    '& th div': {
-      width: '200px',
-    },
+  '& ul, ol': {
+    marginBlockStart: 0,
+    paddingInlineStart: theme.spacing(2),
+  },
 
-    '& td': {
-      width: '200px',
-      padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit}px`,
-      verticalAlign: 'top',
-    },
+  '& th': {
+    padding: theme.spacing(2),
+    textAlign: 'left',
+    backgroundColor: color.secondaryBackground(),
+    verticalAlign: 'bottom',
   },
-  scorePointHeader: {
-    '& td': {
-      border: 0,
-      padding: 0,
-      textAlign: 'center',
-      minWidth: '200px',
-    },
+
+  '& th div': {
+    width: '200px',
   },
-  pointLabel: {
-    marginBottom: '4px',
+
+  '& td': {
+    width: '200px',
+    padding: `${theme.spacing(2)} ${theme.spacing(1)}`,
+    verticalAlign: 'top',
   },
-  scorePointValue: {
-    fontWeight: 'normal',
+}));
+
+const ScorePointHeaderTable = styled('table')({
+  '& td': {
+    border: 0,
+    padding: 0,
+    textAlign: 'center',
+    minWidth: '200px',
   },
+});
+
+const PointLabel = styled('div')({
+  marginBottom: '4px',
+});
+
+const ScorePointValue = styled('td')({
+  fontWeight: 'normal',
 });
 
 const ArrowContainer = ({ show, onClick, extraStyles, children }) => (
@@ -123,7 +126,7 @@ class Scale extends React.Component {
 
   render() {
     const { showRight, showLeft } = this.state;
-    const { classes, scale, scaleIndex, showDescription, showPointsLabels, showStandards, arrowsDisabled } = this.props;
+    const { scale, scaleIndex, showDescription, showPointsLabels, showStandards, arrowsDisabled } = this.props;
     const { excludeZero, maxPoints, traitLabel, traits, scorePointsLabels } = scale || {};
 
     let scorePointsValues = [];
@@ -158,7 +161,7 @@ class Scale extends React.Component {
     }
 
     return (
-      <div className={classes.wrapper}>
+      <Wrapper>
         <ArrowContainer
           show={showLeft && !arrowsDisabled}
           onClick={this.scrollLeft}
@@ -170,8 +173,7 @@ class Scale extends React.Component {
           <ArrowBackIosIcon />
         </ArrowContainer>
 
-        <div
-          className={classes.tableWrapper}
+        <TableWrapper
           ref={(ref) => {
             this.tableWrapper = ref;
           }}
@@ -187,7 +189,7 @@ class Scale extends React.Component {
           }}
         >
           {arrowsDisabled && (showRight || showLeft) ? <div>The item is too large to fit in print mode.</div> : null}
-          <table key={`scale-${scaleIndex}`} className={classes.table}>
+          <Table key={`scale-${scaleIndex}`}>
             <thead>
               <tr>
                 <th>
@@ -219,25 +221,24 @@ class Scale extends React.Component {
 
                     return (
                       <th key={`table-header-${index}`}>
-                        <table className={classes.scorePointHeader}>
+                        <ScorePointHeaderTable>
                           <thead>
                             {pointsLabels ? (
                               <tr>
                                 <td>
-                                  <div
-                                    className={classes.pointLabel}
+                                  <PointLabel
                                     dangerouslySetInnerHTML={{ __html: pointLabel }}
                                   />
                                 </td>
                               </tr>
                             ) : null}
                             <tr>
-                              <td className={classes.scorePointValue}>
+                              <ScorePointValue>
                                 {scorePointValue === 1 ? `${scorePointValue} point` : `${scorePointValue} points`}
-                              </td>
+                              </ScorePointValue>
                             </tr>
                           </thead>
-                        </table>
+                        </ScorePointHeaderTable>
                       </th>
                     );
                   })}
@@ -259,8 +260,8 @@ class Scale extends React.Component {
                   />
                 ))}
             </tbody>
-          </table>
-        </div>
+          </Table>
+        </TableWrapper>
 
         <ArrowContainer
           show={showRight && !arrowsDisabled}
@@ -272,13 +273,12 @@ class Scale extends React.Component {
         >
           <ArrowForwardIosIcon />
         </ArrowContainer>
-      </div>
+      </Wrapper>
     );
   }
 }
 
 Scale.propTypes = {
-  classes: PropTypes.object,
   scaleIndex: PropTypes.number,
   scale: PropTypes.shape({
     excludeZero: PropTypes.bool,
@@ -300,4 +300,4 @@ Scale.propTypes = {
   arrowsDisabled: PropTypes.bool,
 };
 
-export default withStyles(styles)(Scale);
+export default Scale;

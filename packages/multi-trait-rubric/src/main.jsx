@@ -64,7 +64,7 @@ class Main extends React.Component {
         <Link style={{ backgroundColor: color.background() }} href={this.dudUrl} onClick={this.toggleRubric}>
           {this.state.linkPrefix} Rubric
         </Link>
-        <Collapse style={{ marginTop: '16px' }} in={this.state.rubricOpen} timeout="auto">
+        <Collapse style={{ marginTop: '16px' }} in={this.state.rubricOpen} timeout={{ enter: 225, exit: 195 }}>
           {rubricItem}
         </Collapse>
       </UiLayout>
