@@ -8,7 +8,6 @@ import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import { ResponseTypes } from './utils';
 import isEqual from 'lodash/isEqual';
-import cx from 'classnames';
 import SimpleQuestionBlock from './simple-question-block';
 import MathQuill from '@pie-framework/mathquill';
 import { color } from '@pie-lib/render-ui';
@@ -348,6 +347,7 @@ export class Main extends React.Component {
   };
 
   handleKeyDown = (event, id) => {
+    console.log('handleKeyDown Andreea', event, id);
     const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, this.root);
     const isAnswerInputFocused =
       this.mqStatic && this.mqStatic.inputRef?.current
@@ -679,16 +679,23 @@ export class Main extends React.Component {
                   correctAnswerShown={showCorrect}
                   printCorrect={printMode && alwaysShowCorrect}
                 >
-                  <KeypadTooltip
+                  <Tooltip
                     ref={(ref) => this.setTooltipRef(ref)}
                     enterTouchDelay={0}
-                    disablePortal={true}
                     interactive
-                    open={!!activeAnswerBlock}
+                    open={!!activeAnswerBlock}            
                     slotProps={{
                       popper: {
                         container: tooltipContainerRef?.current || undefined,
                         placement: 'bottom-start',
+                        sx: {
+                          backgroundColor: 'transparent',
+                          width: '650px',
+                          opacity: 1,
+                          '& .MuiTooltip-arrow': {
+                            display: 'none',
+                          },
+                        },
                         modifiers: {
                           preventOverflow: {
                             enabled: true,
@@ -697,6 +704,16 @@ export class Main extends React.Component {
                           flip: {
                             enabled: false,
                           },
+                        },
+                      },
+                      tooltip: {
+                        sx: {
+                          fontSize: 'initial',
+                          backgroundColor: 'transparent',
+                          width: '600px',
+                          marginTop: 0,
+                          paddingTop: 0,
+                          boxShadow: 'none',
                         },
                       },
                     }}
@@ -735,7 +752,7 @@ export class Main extends React.Component {
                         onBlur={this.onBlur}
                       />
                     </div>
-                  </KeypadTooltip>
+                  </Tooltip>
                 </Expression>
               )}
             </InputAndKeypadContainer>
@@ -764,6 +781,36 @@ export class Main extends React.Component {
           <StyledTooltip
             interactive
             enterTouchDelay={0}
+            placement="bottom-start"
+            slotProps={{
+              tooltip: {
+                sx: (theme) => ({
+                  background: `${color.primaryLight()} !important`,
+                  color: color.text(),
+                  padding: theme.spacing(2),
+                  border: `1px solid ${color.secondary()}`,
+                  fontSize: '16px',
+                  '& :not(.MathJax) > table tr': {
+                    '&:nth-child(2n)': {
+                      backgroundColor: 'unset !important',
+                    },
+                  },
+                }),
+              },
+              popper: {
+                sx: {
+                  opacity: 1,
+                },
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 2],
+                    },
+                  },
+                ],
+              },
+            }}
             title={
               <div>
                 <MainContent>
@@ -911,41 +958,8 @@ const MainContainer = styled('div')({
   display: 'inline-block',
 });
 
-const StyledTooltip = styled(Tooltip)(({ theme }) => ({
-  '& .MuiTooltip-tooltip': {
-    background: `${color.primaryLight()} !important`,
-    color: color.text(),
-    padding: theme.spacing(2),
-    border: `1px solid ${color.secondary()}`,
-    fontSize: '16px',
-    '& :not(.MathJax) > table tr': {
-      '&:nth-child(2n)': {
-        backgroundColor: 'unset !important',
-      },
-    },
-  },
-  '& .MuiTooltip-popper': {
-    opacity: 1,
-  },
-}));
-
-const KeypadTooltip = styled(Tooltip)({
-  '& .MuiTooltip-tooltip': {
-    fontSize: 'initial',
-    backgroundColor: 'transparent !important',
-    width: '600px',
-    marginTop: 0,
-    paddingTop: 0,
-    boxShadow: 'none',
-  },
-  '& .MuiTooltip-popper': {
-    backgroundColor: 'transparent',
-    width: '650px',
-    opacity: 1,
-  },
-  '& .MuiTooltip-arrow': {
-    display: 'none',
-  },
+const StyledTooltip = styled(Tooltip)({
+  // Styles applied via slotProps.sx below
 });
 
 const PromptContainer = styled('div')(({ theme }) => ({
