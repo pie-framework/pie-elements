@@ -9,8 +9,8 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "0.24.0-mui-update.0",
-    "@pie-lib/feedback": "0.26.0-mui-update.0",
+    "@pie-lib/controller-utils": "0.26.0-mui-update.0",
+    "@pie-lib/feedback": "0.28.0-mui-update.0",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },
