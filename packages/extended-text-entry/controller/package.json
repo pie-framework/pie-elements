@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/feedback": "0.28.0-mui-update.0"
+    "@pie-lib/feedback": "0.31.1-mui-update.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
