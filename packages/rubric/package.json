@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/rubric",
-  "version": "6.2.0-mui-update.0",
+  "version": "6.2.0-mui-update.1",
   "main": "lib/index.js",
   "module": "src/index.js",
   "description": "Rubric Scoring Interaction",
@@ -25,7 +25,6 @@
   },
   "exports": {
     ".": "./src/index.js",
-    "./print": "./src/print.js",
-    "./configure/lib": "./configure/lib/index.js"
+    "./print": "./src/print.js"
   }
 }
