@@ -975,13 +975,6 @@ const MainContent = styled('div')({
   color: color.text(),
 });
 
-const Title = styled('h2')(({ theme }) => ({
-  fontSize: '1.1rem',
-  display: 'block',
-  marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(1),
-}));
-
 const Note = styled('div')(({ theme }) => ({
   paddingBottom: theme.spacing(2),
 }));

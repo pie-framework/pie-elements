@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
 import { color, Collapsible, Readable, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
@@ -12,6 +11,189 @@ import MathQuill from '@pie-framework/mathquill';
 import { Customizable } from '@pie-lib/mask-markup';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import ReactDOM from 'react-dom';
+
+const StyledUiLayout = styled(UiLayout)({
+  color: color.text(),
+  backgroundColor: color.background(),
+  display: 'inline-block',
+});
+
+const MainContainer = styled('div')({
+  width: '100%',
+  position: 'relative',
+  backgroundColor: color.background(),
+  color: color.text(),
+});
+
+const PromptContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const CollapsibleContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const InputAndKeypadContainer = styled('div')({
+  position: 'relative',
+  '& > div > div': {
+    display: 'flex',
+    alignItems: 'baseline',
+    flexWrap: 'wrap',
+  },
+  '& .mq-overarrow-inner': {
+    border: 'none !important',
+    padding: '0 !important',
+  },
+  '& .mq-overarrow-inner-right': {
+    display: 'none !important',
+  },
+  '& .mq-overarrow-inner-left': {
+    display: 'none !important',
+  },
+  '& .mq-overarrow.mq-arrow-both': {
+    minWidth: '1.23em',
+    '& *': {
+      lineHeight: '1 !important',
+    },
+    '&:before': {
+      top: '-0.4em',
+      left: '-1px',
+    },
+    '&:after': {
+      top: '-2.4em',
+      right: '-1px',
+    },
+    '&.mq-empty:after': {
+      top: '-0.45em',
+    },
+  },
+  '& .mq-overarrow.mq-arrow-right': {
+    '&:before': {
+      top: '-0.4em',
+      right: '-1px',
+    },
+  },
+  '& .mq-longdiv-inner': {
+    borderTop: '1px solid !important',
+    paddingTop: '1.5px !important',
+  },
+  '& .mq-parallelogram': {
+    lineHeight: 0.85,
+  },
+});
+
+const Expression = styled('div')(({ theme, $incorrect, $correct, $showCorrectness, $correctAnswerShown }) => ({
+  maxWidth: 'fit-content',
+  ...($incorrect && {
+    borderColor: `${color.incorrect()} !important`,
+  }),
+  ...($correct && {
+    borderColor: `${color.correct()} !important`,
+  }),
+  ...($showCorrectness && {
+    border: '2px solid',
+  }),
+  ...($correctAnswerShown && {
+    padding: theme.spacing(1),
+    letterSpacing: '0.5px',
+  }),
+  '& > .mq-math-mode': {
+    '& > .mq-root-block': {
+      '& > .mq-editable-field': {
+        minWidth: '10px',
+        padding: theme.spacing(0.25),
+      },
+    },
+    '& sup': {
+      top: 0,
+    },
+  },
+}));
+
+const StyledStatic = styled(mq.Static)({
+  '& > .mq-root-block': {
+    '& > .mq-editable-field': {
+      borderColor: color.text(),
+    },
+  },
+});
+
+// Tooltip styling is handled via slotProps, no need for styled component
+
+const ResponseContainer = styled('div')(({ theme }) => ({
+  zIndex: 10,
+  minWidth: '400px',
+  marginTop: theme.spacing(2),
+}));
+
+const PrintContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(1),
+  pointerEvents: 'none',
+}));
+
+const SrOnly = styled('h2')({
+  position: 'absolute',
+  left: '-10000px',
+  top: 'auto',
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+});
+
+const Note = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledToggle = styled(CorrectAnswerToggle)(({ theme }) => ({
+  color: color.text(),
+  marginBottom: theme.spacing(2),
+}));
+
+// CSS for classes used in HTML strings and classList operations
+if (typeof document !== 'undefined') {
+  const styleId = 'math-templated-main-styles';
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      .block-container {
+        margin: 8px !important;
+        display: inline-flex;
+        border: 2px solid grey !important;
+      }
+      .block-response {
+        flex: 2;
+        color: grey;
+        background: rgba(0, 0, 0, 0.04);
+        font-size: 0.8rem !important;
+        padding: 4px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 2px solid #bdbdbd !important;
+      }
+      .block-math {
+        color: ${color.text()};
+        background-color: ${color.background()};
+        padding: 4px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 8;
+      }
+      .block-math > .mq-math-mode > .mq-hasCursor > .mq-cursor {
+        display: none;
+      }
+      .correct {
+        border-color: ${color.correct()} !important;
+      }
+      .incorrect {
+        border-color: ${color.incorrect()} !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
 
 let registered = false;
 
@@ -98,7 +280,6 @@ export class Main extends React.Component {
   static getResponseKey = (response) => (response || '').replaceAll('{{', '').replaceAll('}}', '');
 
   static propTypes = {
-    classes: PropTypes.object,
     session: PropTypes.object.isRequired,
     onSessionChange: PropTypes.func,
     model: PropTypes.object.isRequired,
@@ -126,20 +307,19 @@ export class Main extends React.Component {
       session: { ...props.session, answers },
       activeAnswerBlock: '',
       showCorrect: alwaysShowCorrect || false,
+      tooltipContainerRef: React.createRef(),
     };
   }
 
   UNSAFE_componentWillMount() {
-    const { classes } = this.props;
-
     if (typeof window !== 'undefined') {
       let MQ = MathQuill.getInterface(2);
 
       if (!registered) {
         MQ.registerEmbed('answerBlock', (data) => ({
-          htmlString: `<div class="${classes.blockContainer}">
-              <div class="${classes.blockResponse}" id="${data}Index">R</div>
-              <div class="${classes.blockMath}">
+          htmlString: `<div class="block-container">
+              <div class="block-response" id="${data}Index">R</div>
+              <div class="block-math">
                 <span id="${data}"></span>
               </div>
             </div>`,
@@ -153,7 +333,7 @@ export class Main extends React.Component {
   }
 
   handleAnswerBlockDomUpdate = () => {
-    const { model, classes } = this.props;
+    const { model } = this.props;
     const { session, showCorrect } = this.state;
     const answers = session.answers;
 
@@ -169,8 +349,8 @@ export class Main extends React.Component {
           el.textContent = (answer && answer.value) || '';
 
           if (model.view) {
-            el.parentElement.parentElement.classList.remove(classes.correct);
-            el.parentElement.parentElement.classList.remove(classes.incorrect);
+            el.parentElement.parentElement.classList.remove('correct');
+            el.parentElement.parentElement.classList.remove('incorrect');
           }
 
           MQ.StaticMath(el);
@@ -394,7 +574,7 @@ export class Main extends React.Component {
   }
 
   renderTeacherInstructions = () => {
-    const { model, classes } = this.props;
+    const { model } = this.props;
     const { teacherInstructions, animationsDisabled } = model || {};
     const showTeacherInstructions =
       teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
@@ -405,7 +585,7 @@ export class Main extends React.Component {
 
     return (
       showTeacherInstructions && (
-        <div className={classes.collapsible}>
+        <CollapsibleContainer>
           {!animationsDisabled ? (
             <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
               {teacherInstructionsDiv}
@@ -413,33 +593,33 @@ export class Main extends React.Component {
           ) : (
             teacherInstructionsDiv
           )}
-        </div>
+        </CollapsibleContainer>
       )
     );
   };
 
   renderRationale = () => {
-    const { model, classes } = this.props;
+    const { model } = this.props;
     const { rationale, animationsDisabled } = model || {};
     const rationaleDiv = <PreviewPrompt prompt={rationale} />;
     const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
 
     return (
       showRationale && (
-        <div className={classes.collapsible}>
+        <CollapsibleContainer>
           {!animationsDisabled ? (
             <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>{rationaleDiv}</Collapsible>
           ) : (
             rationaleDiv
           )}
-        </div>
+        </CollapsibleContainer>
       )
     );
   };
 
   renderPlayerContent = () => {
-    const { model, classes } = this.props;
-    const { activeAnswerBlock, showCorrect, session } = this.state;
+    const { model } = this.props;
+    const { activeAnswerBlock, showCorrect, session, tooltipContainerRef } = this.state;
     const {
       correctness,
       disabled,
@@ -459,7 +639,7 @@ export class Main extends React.Component {
     const studentPrintMode = printMode && !alwaysShowCorrect;
 
     return (
-      <div className={classes.inputAndKeypadContainer}>
+      <InputAndKeypadContainer>
         <Customizable
           disabled={disabled}
           markup={model.markup}
@@ -469,8 +649,7 @@ export class Main extends React.Component {
             const responseIsCorrect = mode === 'evaluate' && feedback && feedback[id];
 
             const MQStatic = (
-              <mq.Static
-                className={classes.static}
+              <StyledStatic
                 ref={(mqStatic) => {
                   this.mqStatic = mqStatic || this.mqStatic;
                 }}
@@ -484,27 +663,56 @@ export class Main extends React.Component {
             );
 
             return (
-              <div
-                className={cx(classes.expression, {
-                  [classes.incorrect]: !emptyResponse && !responseIsCorrect && !showCorrect,
-                  [classes.correct]: !emptyResponse && (responseIsCorrect || showCorrect),
-                  [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
-                  [classes.correctAnswerShown]: showCorrect,
-                })}
+              <Expression ref={tooltipContainerRef}
+                $incorrect={!emptyResponse && !responseIsCorrect && !showCorrect}
+                $correct={!emptyResponse && (responseIsCorrect || showCorrect)}
+                $showCorrectness={!emptyResponse && disabled && correctness && !view}
+                $correctAnswerShown={showCorrect}
               >
                 <Tooltip
                   ref={(ref) => this.setTooltipRef(ref)}
                   enterTouchDelay={0}
                   interactive
                   open={activeAnswerBlock === `r${id}`}
-                  classes={{ tooltip: classes.keypadTooltip, popper: classes.keypadTooltipPopper }}
+                  slotProps={{
+                    popper: {
+                      container: tooltipContainerRef?.current || undefined,
+                      placement: 'bottom-end',
+                      sx: {
+                        backgroundColor: 'transparent',
+                        width: '650px',
+                        opacity: 1,
+                        '& .MuiTooltip-arrow': {
+                          display: 'none',
+                        },
+                      },
+                      modifiers: {
+                        preventOverflow: {
+                          enabled: true,
+                          boundariesElement: 'body',
+                        },
+                        flip: {
+                          enabled: false,
+                        },
+                      },
+                    },
+                    tooltip: {
+                      sx: {
+                        fontSize: 'initial',
+                        backgroundColor: 'transparent',
+                        width: '600px',
+                        marginTop: 0,
+                        paddingTop: 0,
+                        boxShadow: 'none',
+                      },
+                    },
+                  }}
                   title={Object.keys(session.answers).map(
                     (answerId) =>
                       (answerId === activeAnswerBlock && !(showCorrect || disabled) && (
-                        <div
+                        <ResponseContainer
                           data-keypad={true}
                           key={answerId}
-                          className={classes.responseContainer}
                           style={{ width: getKeyPadWidth(additionalKeys, equationEditor) }}
                         >
                           <HorizontalKeypad
@@ -512,23 +720,29 @@ export class Main extends React.Component {
                             mode={equationEditor || DEFAULT_KEYPAD_VARIANT}
                             onClick={this.onClick}
                           />
-                        </div>
+                        </ResponseContainer>
                       )) ||
                       null,
                   )}
                 >
-                  {studentPrintMode ? <div className={classes.printContainer}>{MQStatic}</div> : MQStatic}
+                  {studentPrintMode ? (
+                    <PrintContainer>{MQStatic}</PrintContainer>
+                  ) : (
+                    <div>
+                      {MQStatic}
+                    </div>
+                  )}
                 </Tooltip>
-              </div>
+              </Expression>
             );
           }}
         />
-      </div>
+      </InputAndKeypadContainer>
     );
   };
 
   render() {
-    const { model, classes } = this.props;
+    const { model } = this.props;
     const { showCorrect } = this.state;
     const {
       prompt,
@@ -545,9 +759,8 @@ export class Main extends React.Component {
     const displayNote = (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
 
     return (
-      <UiLayout
+      <StyledUiLayout
         extraCSSRules={extraCSSRules}
-        className={classes.mainContainer}
         ref={(r) => {
           // eslint-disable-next-line react/no-find-dom-node
           const domNode = ReactDOM.findDOMNode(r);
@@ -555,230 +768,38 @@ export class Main extends React.Component {
           this.root = domNode || this.root;
         }}
       >
-        <div className={classes.main}>
+        <MainContainer>
           {/* what is srOnly ? */}
-          {mode === 'gather' && <h2 className={classes.srOnly}>Math Equation Response Question</h2>}
+          {mode === 'gather' && <SrOnly>Math Equation Response Question</SrOnly>}
 
-          <div className={classes.main}>
+          <MainContainer>
             {showCorrectAnswerToggle && (
-              <CorrectAnswerToggle
+              <StyledToggle
                 language={language}
-                className={classes.toggle}
                 show
                 toggled={showCorrect}
                 onToggle={this.toggleShowCorrect}
               />
             )}
-          </div>
+          </MainContainer>
 
           {this.renderTeacherInstructions()}
 
           {prompt && (
-            <div className={classes.promptContainer}>
+            <PromptContainer>
               <PreviewPrompt prompt={prompt} />
-            </div>
+            </PromptContainer>
           )}
 
           <Readable false>{this.renderPlayerContent()}</Readable>
 
-          {displayNote && <div className={cx(classes.note, 'note')} dangerouslySetInnerHTML={{ __html: note }} />}
+          {displayNote && <Note className="note" dangerouslySetInnerHTML={{ __html: note }} />}
 
           {this.renderRationale()}
-        </div>
-      </UiLayout>
+        </MainContainer>
+      </StyledUiLayout>
     );
   }
 }
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    display: 'inline-block',
-  },
-  tooltip: {
-    background: `${color.primaryLight()} !important`,
-    color: color.text(),
-    padding: theme.spacing.unit * 2,
-    border: `1px solid ${color.secondary()}`,
-    fontSize: '16px',
-    '& :not(.MathJax) > table tr': {
-      '&:nth-child(2n)': {
-        backgroundColor: 'unset !important',
-      },
-    },
-  },
-  tooltipPopper: {
-    opacity: 1,
-  },
-  keypadTooltip: {
-    fontSize: 'initial',
-    background: 'transparent',
-    width: '600px',
-    marginTop: 0,
-    paddingTop: 0,
-  },
-  keypadTooltipPopper: {
-    background: 'transparent',
-    width: '650px',
-    opacity: 1,
-  },
-  promptContainer: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  main: {
-    width: '100%',
-    position: 'relative',
-    backgroundColor: color.background(),
-    color: color.text(),
-  },
-  title: {
-    fontSize: '1.1rem',
-    display: 'block',
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  responseContainer: {
-    zIndex: 10,
-    minWidth: '400px',
-    marginTop: theme.spacing.unit * 2,
-  },
-  expression: {
-    maxWidth: 'fit-content',
-    '& > .mq-math-mode': {
-      '& > .mq-root-block': {
-        '& > .mq-editable-field': {
-          minWidth: '10px',
-          padding: theme.spacing.unit / 4,
-        },
-      },
-      '& sup': {
-        top: 0,
-      },
-    },
-  },
-  static: {
-    '& > .mq-root-block': {
-      '& > .mq-editable-field': {
-        borderColor: color.text(),
-      },
-    },
-  },
-  inputAndKeypadContainer: {
-    position: 'relative',
-    '& > div > div': {
-      display: 'flex',
-      alignItems: 'baseline',
-      flexWrap: 'wrap',
-    },
-    '& .mq-overarrow-inner': {
-      border: 'none !important',
-      padding: '0 !important',
-    },
-    '& .mq-overarrow-inner-right': {
-      display: 'none !important',
-    },
-    '& .mq-overarrow-inner-left': {
-      display: 'none !important',
-    },
-    '& .mq-overarrow.mq-arrow-both': {
-      minWidth: '1.23em',
-      '& *': {
-        lineHeight: '1 !important',
-      },
-      '&:before': {
-        top: '-0.4em',
-        left: '-1px',
-      },
-      '&:after': {
-        top: '-2.4em',
-        right: '-1px',
-      },
-      '&.mq-empty:after': {
-        top: '-0.45em',
-      },
-    },
-    '& .mq-overarrow.mq-arrow-right': {
-      '&:before': {
-        top: '-0.4em',
-        right: '-1px',
-      },
-    },
-    '& .mq-longdiv-inner': {
-      borderTop: '1px solid !important',
-      paddingTop: '1.5px !important',
-    },
-    '& .mq-parallelogram': {
-      lineHeight: 0.85,
-    },
-  },
-  showCorrectness: {
-    border: '2px solid',
-  },
-  correctAnswerShown: {
-    padding: theme.spacing.unit,
-    letterSpacing: '0.5px',
-  },
-  correct: {
-    borderColor: `${color.correct()} !important`,
-  },
-  incorrect: {
-    borderColor: `${color.incorrect()} !important`,
-  },
-  blockContainer: {
-    margin: `${theme.spacing.unit}px !important`,
-    display: 'inline-flex',
-    border: '2px solid grey !important',
-  },
-  blockResponse: {
-    flex: 2,
-    color: 'grey',
-    background: theme.palette.grey['A100'],
-    fontSize: '0.8rem !important',
-    padding: `${theme.spacing.unit / 2}px !important`,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRight: `2px solid ${color.disabled()} !important`,
-  },
-  toggle: {
-    color: color.text(),
-    marginBottom: theme.spacing.unit * 2,
-  },
-  blockMath: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    padding: `${theme.spacing.unit / 2}px !important`,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 8,
-    '& > .mq-math-mode': {
-      '& > .mq-hasCursor': {
-        '& > .mq-cursor': {
-          display: 'none',
-        },
-      },
-    },
-  },
-  printContainer: {
-    marginBottom: theme.spacing.unit,
-    pointerEvents: 'none',
-  },
-  srOnly: {
-    position: 'absolute',
-    left: '-10000px',
-    top: 'auto',
-    width: '1px',
-    height: '1px',
-    overflow: 'hidden',
-  },
-  note: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-});
-
-export default withStyles(styles)(Main);
+export default Main;
