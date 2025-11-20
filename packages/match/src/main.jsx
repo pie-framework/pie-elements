@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { color, Collapsible, Feedback, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
+import { Collapsible, Feedback, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
 import AnswerGrid from './answer-grid';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
+
+const StyledPrompt = styled('div')({
+  verticalAlign: 'middle',
+});
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
 
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     session: PropTypes.object.isRequired,
     onSessionChange: PropTypes.func,
     model: PropTypes.object.isRequired,
@@ -104,7 +111,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, classes } = this.props;
+    const { model } = this.props;
     const { showCorrect, session } = this.state;
     const { correctness = {}, extraCSSRules, language } = model;
     const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
@@ -114,23 +121,22 @@ export class Main extends React.Component {
       model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
+      <UiLayout extraCSSRules={extraCSSRules}>
         {showTeacherInstructions && (
-          <Collapsible
+          <StyledCollapsible
             labels={{
               hidden: 'Show Teacher Instructions',
               visible: 'Hide Teacher Instructions',
             }}
-            className={classes.collapsible}
           >
             <PreviewPrompt prompt={model.teacherInstructions} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {model.prompt && (
-          <div className={classes.prompt}>
+          <StyledPrompt>
             <PreviewPrompt prompt={model.prompt} />
-          </div>
+          </StyledPrompt>
         )}
 
         <CorrectAnswerToggle
@@ -153,7 +159,7 @@ export class Main extends React.Component {
         />
 
         {showRationale && (
-          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
+          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={model.rationale} />
           </Collapsible>
         )}
@@ -164,20 +170,21 @@ export class Main extends React.Component {
   }
 }
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-  },
-  main: {
-    width: '100%',
-  },
-  prompt: {
-    verticalAlign: 'middle',
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-});
+// const styles = (theme) => ({
+//   mainContainer: {
+//     color: color.text(),
+//     backgroundColor: color.background(),
+//   },
+//   main: {
+//     width: '100%',
+//   },
+//   prompt: {
+//     verticalAlign: 'middle',
+//   },
+//   collapsible: {
+//     marginBottom: theme.spacing.unit * 2,
+//   },
+// });
 
-export default withStyles(styles)(Main);
+
+export default Main;

@@ -3,89 +3,108 @@ import * as React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
 import lodash from 'lodash';
 import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import { DragProvider } from '@pie-lib/drag';
 
 const log = debug('pie-elements:match:configure');
 
-const styles = (theme) => ({
-  container: {
-    marginBottom: theme.spacing.unit * 2.5,
-    display: 'flex',
-    flexDirection: 'column',
+const Container = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2.5),
+  display: 'flex',
+  flexDirection: 'column',
+}));
+
+const RowContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  flex: 1,
+  width: '100%',
+  borderBottom: `2px solid ${theme.palette.grey['A100']}`,
+  paddingBottom: theme.spacing(2),
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(1),
+}));
+
+const RowItem = styled('div')(({ theme }) => ({
+  flex: 1,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  '&> div': {
+    width: '120px',
+    padding: `0 ${theme.spacing(1)}`,
+    textAlign: 'center',
   },
-  rowContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    flex: 1,
+}));
+
+const DeleteIcon = styled('div')(({ theme }) => ({
+  flex: 0.5,
+  minWidth: '45px',
+  padding: `0 ${theme.spacing(1)}`,
+}));
+
+const QuestionText = styled('div')(({ theme }) => ({
+  flex: 2,
+  display: 'flex',
+  justifyContent: 'flex-start',
+  marginRight: theme.spacing(1),
+  '&> div': {
     width: '100%',
-    borderBottom: `2px solid ${theme.palette.grey['A100']}`,
-    paddingBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
+    padding: 0,
+    maxWidth: 'unset',
+    textAlign: 'left',
+    minWidth: '200px',
   },
-  rowItem: {
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    '&> div': {
-      width: '120px',
-      padding: `0 ${theme.spacing.unit}px`,
-      textAlign: 'center',
-    },
-  },
-  deleteIcon: {
-    flex: 0.5,
-    minWidth: '45px',
-    padding: `0 ${theme.spacing.unit}px`,
-  },
-  questionText: {
-    flex: 2,
-    display: 'flex',
-    justifyContent: 'flex-start',
-    marginRight: theme.spacing.unit,
-    '&> div': {
-      width: '100%',
-      padding: 0,
-      maxWidth: 'unset',
-      textAlign: 'left',
-      minWidth: '200px',
-    },
-  },
-  rowTable: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  headerInput: {
-    '&> div': {
-      fontWeight: 'bold',
-    },
-  },
-  marginBottom: {
-    marginBottom: theme.typography.fontSize - 2 + theme.spacing.unit,
-  },
-  columnErrorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: `${theme.spacing.unit}px !important`,
-    width: 'fit-content !important',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingBottom: theme.spacing.unit,
+}));
+
+const RowTable = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const HeaderInput = styled('div')({
+  '&> div': {
+    fontWeight: 'bold',
   },
 });
 
+const MarginBottom = styled('div')(({ theme }) => ({
+  marginBottom: theme.typography.fontSize - 2 + theme.spacing(1),
+}));
+
+const ColumnErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: `${theme.spacing(1)} !important`,
+  width: 'fit-content !important',
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingBottom: theme.spacing(1),
+}));
+
+// Global styles for EditableHtml components
+const GlobalStyles = styled('div')(({ theme }) => ({
+  '& .marginBottom': {
+    marginBottom: theme.typography.fontSize - 2 + theme.spacing(1),
+  },
+  '& .headerInput': {
+    '& > div': {
+      fontWeight: 'bold',
+    },
+  },
+}));
+
 class AnswerConfigBlock extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -103,50 +122,62 @@ class AnswerConfigBlock extends React.Component {
     spellCheck: PropTypes.bool,
   };
 
-  moveRow = (from, to) => {
-    const { model, onChange } = this.props;
-    const newModel = { ...model };
-    const rows = newModel.rows || [];
+  moveRow = (event) => {
+    const { active, over } = event;
 
-    log('[moveRow]: ', from, to);
+    if (!over || !active) return;
 
-    const { movedRow, remainingRows } = rows.reduce(
-      (acc, item, index) => {
-        if (index === from) {
-          acc.movedRow = item;
-        } else {
-          acc.remainingRows.push(item);
-        }
+    const activeData = active.data.current;
+    const overData = over.data.current;
 
-        return acc;
-      },
-      { movedRow: null, remainingRows: [] },
-    );
+    if (activeData?.type === 'row' && overData?.type === 'row') {
+      const from = activeData.index;
+      const to = overData.index;
+      
+      const { model, onChange } = this.props;
+      const newModel = { ...model };
+      const rows = newModel.rows || [];
 
-    const update = [...remainingRows.slice(0, to), movedRow, ...remainingRows.slice(to)];
+      log('[moveRow]: ', from, to);
 
-    log('update: ', update);
+      const { movedRow, remainingRows } = rows.reduce(
+        (acc, item, index) => {
+          if (index === from) {
+            acc.movedRow = item;
+          } else {
+            acc.remainingRows.push(item);
+          }
 
-    newModel.rows = update;
+          return acc;
+        },
+        { movedRow: null, remainingRows: [] },
+      );
 
-    onChange(newModel);
+      const update = [...remainingRows.slice(0, to), movedRow, ...remainingRows.slice(to)];
+
+      log('update: ', update);
+
+      newModel.rows = update;
+
+      onChange(newModel);
+    }
   };
 
   onChange =
     (name, isBoolean) =>
-    ({ target }) => {
-      const { model, onChange } = this.props;
-      let value;
+      ({ target }) => {
+        const { model, onChange } = this.props;
+        let value;
 
-      if (isBoolean) {
-        value = target.checked;
-      } else {
-        value = target.value;
-      }
+        if (isBoolean) {
+          value = target.checked;
+        } else {
+          value = target.value;
+        }
 
-      lodash.set(model, name, value);
-      onChange(model, name);
-    };
+        lodash.set(model, name, value);
+        onChange(model, name);
+      };
 
   onHeaderChange = (headerIndex) => (value) => {
     const { model, onChange } = this.props;
@@ -164,7 +195,7 @@ class AnswerConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
+    const { model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
       this.props;
     const {
       baseInputConfiguration = {},
@@ -186,76 +217,91 @@ class AnswerConfigBlock extends React.Component {
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     return (
-      <div className={classes.container}>
-        <Typography type="body1" component="div">
-          Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
-        </Typography>
+      <GlobalStyles>
+        <DragProvider onDragEnd={this.moveRow}>
+          <Container>
+            <Typography type="body1" component="div">
+              Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
+            </Typography>
 
-        <div
-          className={classes.rowTable}
-          style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}
-        >
-          <div className={classes.rowContainer}>
-            {headers.settings &&
-              (model.headers || []).map((header, idx) => (
-                <div
+            <RowTable
+              style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}
+            >
+              <RowContainer>
+                {headers.settings &&
+                  (model.headers || []).map((header, idx) => (
+                    <RowItem
+                      key={idx}
+                      className={cx({
+                        questionText: idx === 0,
+                      })}
+                      sx={idx === 0 ? {
+                        flex: 2,
+                        display: 'flex',
+                        justifyContent: 'flex-start',
+                        marginRight: 1,
+                        '&> div': {
+                          width: '100%',
+                          padding: 0,
+                          maxWidth: 'unset',
+                          textAlign: 'left',
+                          minWidth: '200px',
+                        },
+                      } : {}}
+                    >
+                      <EditableHtml
+                        onChange={this.onHeaderChange(idx)}
+                        markup={header}
+                        className={columnsErrors && !columnsErrors[idx] ? 'marginBottom' : 'headerInput'}
+                        label={'column label'}
+                        activePlugins={filteredDefaultPlugins}
+                        pluginProps={getPluginProps(headers?.inputConfiguration, baseInputConfiguration)}
+                        autoWidthToolbar
+                        spellCheck={spellCheck}
+                        uploadSoundSupport={uploadSoundSupport}
+                        languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                        error={columnsErrors && columnsErrors[idx]}
+                      />
+                      {columnsErrors && columnsErrors[idx] && (
+                        <ColumnErrorText>{columnsErrors[idx]}</ColumnErrorText>
+                      )}
+                    </RowItem>
+                  ))}
+                <DeleteIcon />
+              </RowContainer>
+
+              {model.rows.map((row, idx) => (
+                <Row
                   key={idx}
-                  className={cx(classes.rowItem, {
-                    [classes.questionText]: idx === 0,
-                  })}
-                >
-                  <EditableHtml
-                    onChange={this.onHeaderChange(idx)}
-                    markup={header}
-                    className={columnsErrors && !columnsErrors[idx] ? classes.marginBottom : classes.headerInput}
-                    label={'column label'}
-                    activePlugins={filteredDefaultPlugins}
-                    pluginProps={getPluginProps(headers?.inputConfiguration, baseInputConfiguration)}
-                    autoWidthToolbar
-                    spellCheck={spellCheck}
-                    uploadSoundSupport={uploadSoundSupport}
-                    languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                    error={columnsErrors && columnsErrors[idx]}
-                  />
-                  {columnsErrors && columnsErrors[idx] && (
-                    <div className={classes.columnErrorText}>{columnsErrors[idx]}</div>
-                  )}
-                </div>
+                  model={model}
+                  row={row}
+                  idx={idx}
+                  onDeleteRow={this.props.onDeleteRow}
+                  onChange={this.props.onChange}
+                  imageSupport={imageSupport}
+                  toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheck}
+                  error={rowsErrors?.[row.id]}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.rowTitles) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
+                  mathMlOptions={mathMlOptions}
+                  minQuestions={minQuestions}
+                  inputConfiguration={getPluginProps(rows?.inputConfiguration, baseInputConfiguration)}
+                />
               ))}
-            <div className={classes.deleteIcon} />
-          </div>
 
-          {model.rows.map((row, idx) => (
-            <Row
-              key={idx}
-              model={model}
-              row={row}
-              idx={idx}
-              onDeleteRow={this.props.onDeleteRow}
-              onChange={this.props.onChange}
-              onMoveRow={this.moveRow}
-              imageSupport={imageSupport}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheck}
-              error={rowsErrors?.[row.id]}
-              maxImageWidth={(maxImageWidth && maxImageWidth.rowTitles) || defaultImageMaxWidth}
-              maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
-              uploadSoundSupport={uploadSoundSupport}
-              mathMlOptions={mathMlOptions}
-              minQuestions={minQuestions}
-              inputConfiguration={getPluginProps(rows?.inputConfiguration, baseInputConfiguration)}
-            />
-          ))}
+              {correctResponseError && <ErrorText>{correctResponseError}</ErrorText>}
+              {noOfRowsError && <ErrorText>{noOfRowsError}</ErrorText>}
+              {columnsLengthError && <ErrorText>{columnsLengthError}</ErrorText>}
 
-          {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
-          {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
-          {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
-
-          <AddRow onAddClick={onAddRow} />
-        </div>
-      </div>
+              <AddRow onAddClick={onAddRow} />
+            </RowTable>
+          </Container>
+        </DragProvider>
+      </GlobalStyles>
     );
   }
 }
 
-export default withStyles(styles)(AnswerConfigBlock);
+export default AnswerConfigBlock;
