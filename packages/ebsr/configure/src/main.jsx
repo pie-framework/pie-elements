@@ -1,23 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { settings, layout } from '@pie-lib/config-ui';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
-const styles = (theme) => ({
-  partLabel: {
-    paddingBottom: theme.spacing.unit * 2,
-  },
-  divider: {
-    flex: 1,
-    height: theme.spacing.unit * 2.5,
-  },
-});
+const PartLabel = styled('div')(({ theme }) => ({
+  paddingBottom: theme.spacing(2),
+}));
+
+const Divider = styled('div')(({ theme }) => ({
+  flex: 1,
+  height: theme.spacing(2.5),
+}));
 
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     configuration: PropTypes.object,
     model: PropTypes.object,
     onModelChanged: PropTypes.func,
@@ -61,7 +59,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration, onConfigurationChanged } = this.props;
+    const { model, configuration, onConfigurationChanged } = this.props;
     const { partLabelType, partA: modelPartA, partB: modelPartB, extraCSSRules } = model;
     const {
       contentDimensions = {},
@@ -188,7 +186,7 @@ export class Main extends React.Component {
           />
         }
       >
-        {model.partLabels && <div className={classes.partLabel}>{firstPart}</div>}
+        {model.partLabels && <PartLabel>{firstPart}</PartLabel>}
         <ebsr-multiple-choice-configure
           id="A"
           key="partA"
@@ -208,9 +206,9 @@ export class Main extends React.Component {
           }}
         />
 
-        <div className={classes.divider} />
+        <Divider />
 
-        {model.partLabels && <div className={classes.partLabel}>{secondPart}</div>}
+        {model.partLabels && <PartLabel>{secondPart}</PartLabel>}
         <ebsr-multiple-choice-configure
           id="B"
           key="partB"
@@ -234,6 +232,4 @@ export class Main extends React.Component {
   }
 }
 
-const Styled = withStyles(styles)(Main);
-
-export default Styled;
+export default Main;

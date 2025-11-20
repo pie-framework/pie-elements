@@ -5,12 +5,11 @@ import { layout } from '@pie-lib/config-ui';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { color } from '@pie-lib/render-ui';
-import classNames from 'classnames';
 
-const styles = {
-  root: {
+const StyledFormControlLabel = styled(FormControlLabel)({
+  '&.MuiFormControlLabel-root': {
     width: 'fit-content',
     paddingRight: '24px',
     boxSizing: 'border-box',
@@ -18,10 +17,14 @@ const styles = {
       background: 'var(--pie-secondary-background, rgba(241,241,241,1))',
     },
   },
-  customColor: {
+});
+
+const StyledRadio = styled(Radio)({
+  '&.MuiRadio-root': {
     color: `${color.tertiary()} !important`,
   },
-};
+});
+
 const rubricLabels = {
   [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: 'Multi Trait Rubric',
   [RUBRIC_TYPES.SIMPLE_RUBRIC]: 'Simple Rubric',
@@ -30,7 +33,6 @@ const rubricLabels = {
 
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     canUpdateModel: PropTypes.bool,
     configuration: PropTypes.object,
     model: PropTypes.object,
@@ -52,7 +54,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, configuration, canUpdateModel, classes } = this.props;
+    const { model, configuration, canUpdateModel } = this.props;
 
     const { extraCSSRules, rubrics = {} } = model || {};
     let { rubricType } = model;
@@ -142,12 +144,11 @@ export class Main extends React.Component {
         >
           {rubricOptions.length > 1 &&
             rubricOptions.map((availableRubric, i) => (
-              <FormControlLabel
+              <StyledFormControlLabel
                 key={i}
                 value={availableRubric}
-                control={<Radio className={classes.customColor} checked={rubricType === availableRubric} />}
+                control={<StyledRadio checked={rubricType === availableRubric} />}
                 label={rubricLabels[availableRubric]}
-                classes={{ root: classes.root }}
               />
             ))}
         </RadioGroup>
@@ -158,4 +159,4 @@ export class Main extends React.Component {
   }
 }
 
-export default withStyles(styles)(Main);
+export default Main;

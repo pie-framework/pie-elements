@@ -33,6 +33,7 @@
   "module": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./print": "./src/print.js"
+    "./print": "./src/print.js",
+    "./configure/lib": "./configure/lib/index.js"
   }
 }
