@@ -22,8 +22,8 @@
     "lodash": "^4.17.15",
     "prop-types": "^15.6.2",
     "react": "18.2.0",
-    "react-dnd": "^14.0.5",
     "react-dom": "18.2.0",
+    "@dnd-kit/core": "6.1.0",
     "react-swipeable-views": "^0.12.17"
   },
   "license": "ISC"
