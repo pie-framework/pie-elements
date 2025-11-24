@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 
 import { settings, layout } from '@pie-lib/config-ui';
 
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
 import { ConfimationDialog, PassageButton } from './common';
 import Passage from './passage';
 
 const { Panel, toggle, dropdown } = settings;
+
+const AdditionalPassageHeading = styled(Typography)(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
 
 export class Main extends React.Component {
   static propTypes = {
@@ -79,7 +84,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { model, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
       settingsPanelDisabled,
@@ -135,9 +140,9 @@ export class Main extends React.Component {
         {passages.map((passage, passageIndex) => (
           <React.Fragment key={passageIndex}>
             {passageIndex > 0 && (
-              <Typography variant="h5" className={classes.additionalPassageHeading}>
+              <AdditionalPassageHeading variant="h5">
                 {additionalPassage.label}
-              </Typography>
+              </AdditionalPassageHeading>
             )}
             <Passage
               imageSupport={imageSupport}
@@ -176,9 +181,5 @@ export class Main extends React.Component {
     );
   }
 }
-export default withStyles((theme) => ({
-  additionalPassageHeading: {
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-}))(Main);
+
+export default Main;

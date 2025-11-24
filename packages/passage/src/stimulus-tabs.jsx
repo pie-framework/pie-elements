@@ -2,55 +2,47 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { Collapsible, color, PreviewPrompt, Purpose, UiLayout } from '@pie-lib/render-ui';
-import classNames from 'classnames';
 
-const styles = (theme) => ({
-  passages: {
-    flexGrow: 1,
-    backgroundColor: color.background(),
-    color: color.text(),
-    '&:not(.MathJax) table': {
-      borderCollapse: 'collapse',
-    },
-    '&:not(.MathJax) table td, &:not(.MathJax) table th': {
-      padding: '.6em 1em',
-      textAlign: 'left',
-    },
+const PassagesContainer = styled('div')(({ theme }) => ({
+  flexGrow: 1,
+  backgroundColor: color.background(),
+  color: color.text(),
+  '&:not(.MathJax) table': {
+    borderCollapse: 'collapse',
   },
-  passage: {
-    backgroundColor: color.background(),
-    color: color.text(),
-    padding: theme.spacing.unit * 2,
+  '&:not(.MathJax) table td, &:not(.MathJax) table th': {
+    padding: '.6em 1em',
+    textAlign: 'left',
   },
-  passageTitle: {
-    fontSize: '1.75rem',
-  },
-  passageSubtitle: {
-    fontSize: '1.5rem',
-  },
-  passageAuthor: {
-    fontSize: '1.25rem',
-  },
-  passageText: {},
-  stickyTabs: {
-    background: color.background(),
-    position: 'sticky',
-    top: 0,
-  },
-  tab: {
-    background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
-    fontSize: 'inherit',
-    color: theme.palette.common.black, // remove when PD-2801 is DONE
-  },
-  tabButton: {
-    background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
-  },
-  teacherInstructions: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-});
+}));
+
+const Passage = styled('div')(({ theme }) => ({
+  backgroundColor: color.background(),
+  color: color.text(),
+  padding: theme.spacing(2),
+}));
+
+const PassageTitle = styled('div')(({ theme }) => ({
+  fontSize: '1.75rem',
+}));
+
+const PassageSubtitle = styled('div')(({ theme }) => ({
+  fontSize: '1.5rem',
+}));
+
+const PassageAuthor = styled('div')(({ theme }) => ({
+  fontSize: '1.25rem',
+}));
+
+const PassageText = styled('div')(({ theme }) => ({}));
+
+const TabStyled = styled(Tab)(({ theme }) => ({
+  background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
+  fontSize: 'inherit',
+  color: theme.palette.common.black, // remove when PD-2801 is DONE
+}));
 
 class StimulusTabs extends React.Component {
   state = {
@@ -169,32 +161,21 @@ class StimulusTabs extends React.Component {
   }
 
   renderTab(tab, disabledTabs) {
-    const { classes } = this.props;
-
     return (
-      <div
-        className={classNames(classes.passage, 'passage')}
-        key={tab.id}
-        id={`tabpanel-${tab.id}`}
-        role="tabpanel"
-        aria-labelledby={`button-${tab.id}`}
-      >
+      <Passage key={tab.id} id={`tabpanel-${tab.id}`} role="tabpanel" aria-labelledby={`button-${tab.id}`}>
         {this.renderInstructions(tab.teacherInstructions, disabledTabs)}
 
         {(tab.title || tab.subtitle) && (
           <h2>
             {tab.title && (
               <Purpose purpose="passage-title">
-                <div
-                  className={classNames(classes.passageTitle, 'title')}
-                  dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
-                />
+                <PassageTitle className="title" dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />
               </Purpose>
             )}
             {tab.subtitle && (
               <Purpose purpose="passage-subtitle">
-                <div
-                  className={classNames(classes.passageSubtitle, 'subtitle')}
+                <PassageSubtitle
+                  className="subtitle"
                   dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
                 />
               </Purpose>
@@ -204,28 +185,25 @@ class StimulusTabs extends React.Component {
 
         {tab.author && (
           <Purpose purpose="passage-author">
-            <div
-              className={classNames(classes.passageAuthor, 'author')}
-              dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}
-            />
+            <PassageAuthor className="author" dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }} />
           </Purpose>
         )}
 
         {tab.text && (
           <Purpose purpose="passage-text">
-            <div
+            <PassageText
               key={tab.id}
-              className={classNames(classes.passageText, 'text')}
+              className="text"
               dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
             />
           </Purpose>
         )}
-      </div>
+      </Passage>
     );
   }
 
   render() {
-    const { classes, model, tabs, disabledTabs } = this.props;
+    const { model, tabs, disabledTabs } = this.props;
     const { activeTab } = this.state;
 
     if (!tabs?.length) {
@@ -236,48 +214,45 @@ class StimulusTabs extends React.Component {
     const selectedTab = (tabs || []).find((tab) => tab.id === activeTab);
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classNames(classes.passages, 'passages')}>
-        {disabledTabs || tabs.length === 1 ? (
-          tabs.map((tab) => this.renderTab(tab, disabledTabs))
-        ) : (
-          <>
-            <Tabs
-              classes={{
-                root: classes.stickyTabs,
-                flexContainer: classes.tabButton,
-              }}
-              value={activeTab}
-              onChange={this.handleChange}
-            >
-              {tabs.map((tab) => (
-                <Tab
-                  className={classes.tab}
-                  key={tab.id}
-                  id={`button-${tab.id}`}
-                  label={
-                    <Purpose purpose="passage-label">
-                      <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }} />
-                    </Purpose>
-                  }
-                  value={tab.id}
-                  tabIndex={activeTab === tab.id ? 0 : -1}
-                  aria-controls={`tabpanel-${tab.id}`}
-                  aria-selected={activeTab === tab.id}
-                  onFocus={() => this.handleChange(null, tab.id)}
-                  onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
-                />
-              ))}
-            </Tabs>
-            {selectedTab ? this.renderTab(selectedTab, disabledTabs) : null}
-          </>
-        )}
+      <UiLayout extraCSSRules={extraCSSRules}>
+        <PassagesContainer className="passages">
+          {disabledTabs || tabs.length === 1 ? (
+            tabs.map((tab) => this.renderTab(tab, disabledTabs))
+          ) : (
+            <>
+              <Tabs
+                sx={{ position: 'sticky', top: 0, background: color.background(), color: color.text() }}
+                value={activeTab}
+                onChange={this.handleChange}
+              >
+                {tabs.map((tab) => (
+                  <TabStyled
+                    key={tab.id}
+                    id={`button-${tab.id}`}
+                    label={
+                      <Purpose purpose="passage-label">
+                        <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }} />
+                      </Purpose>
+                    }
+                    value={tab.id}
+                    tabIndex={activeTab === tab.id ? 0 : -1}
+                    aria-controls={`tabpanel-${tab.id}`}
+                    aria-selected={activeTab === tab.id}
+                    onFocus={() => this.handleChange(null, tab.id)}
+                    onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
+                  />
+                ))}
+              </Tabs>
+              {selectedTab ? this.renderTab(selectedTab, disabledTabs) : null}
+            </>
+          )}
+        </PassagesContainer>
       </UiLayout>
     );
   }
 }
 
 StimulusTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -290,6 +265,7 @@ StimulusTabs.propTypes = {
     }).isRequired,
   ).isRequired,
   disabledTabs: PropTypes.bool,
+  model: PropTypes.object,
 };
 
-export default withStyles(styles)(StimulusTabs);
+export default StimulusTabs;
