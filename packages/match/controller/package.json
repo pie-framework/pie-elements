@@ -11,7 +11,7 @@
   "dependencies": {
     "@pie-lib/controller-utils": "^0.22.1",
     "@pie-lib/feedback": "^0.24.1",
-    "debug": "^3.1.0"
+    "debug": "^4.4.3"
   },
   "devDependencies": {
     "babel-jest": "^22.4.0",

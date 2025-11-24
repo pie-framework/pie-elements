@@ -12,7 +12,7 @@
     "@pie-lib/drag": "^2.22.1",
     "@pie-lib/editable-html": "^11.21.1",
     "@pie-lib/render-ui": "^4.35.1",
-    "debug": "^3.1.0",
+    "debug": "^4.4.3",
     "lodash": "^4.17.15",
     "nested-property": "^0.0.7",
     "pluralize": "^8.0.0",
