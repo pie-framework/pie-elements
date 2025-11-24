@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@mui/material/TextField';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
 import { Tokenizer } from '@pie-lib/text-select';
@@ -15,13 +15,77 @@ import { generateValidationMessage } from './utils';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledEditableHtml = styled(EditableHtml)({
+  width: '100%',
+});
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
+const StyledTextField = styled(TextField)({
+  width: '100%',
+});
+
+const TokenizerContainer = styled(InputContainer)(({ theme }) => ({
+  paddingRight: 0,
+  marginRight: 0,
+  position: 'relative',
+  '&:after': {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '1px',
+    content: '""',
+    backgroundColor: theme.palette.primary.main,
+  },
+  marginBottom: theme.spacing(1),
+}));
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+}));
+
+const StyledTokenizer = styled(Tokenizer)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+}));
+
+const StyledChip = styled(Chip)(({ theme }) => ({
+  marginTop: theme.spacing(0.5),
+  marginRight: theme.spacing(2),
+}));
+
+const TokensDetails = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  marginBottom: theme.spacing(2.5),
+}));
+
+const StyledNumberTextField = styled(NumberTextField)(({ theme }) => ({
+  width: '180px',
+  margin: `${theme.spacing(0.5)}px auto 0`,
+}));
+
 const log = debug('@pie-element:select-text:configure');
 
 export class Design extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
@@ -122,7 +186,7 @@ export class Design extends React.Component {
 
   render() {
     const { text: textValue } = this.state;
-    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
       baseInputConfiguration = {},
@@ -224,9 +288,8 @@ export class Design extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
+          <StyledInputContainer label={teacherInstructions.label}>
+            <StyledEditableHtml
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
@@ -241,14 +304,13 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
+          <StyledInputContainer label={prompt.label || ''}>
+            <StyledEditableHtml
               markup={model.prompt}
               onChange={this.onPromptChanged}
               imageSupport={imageSupport}
@@ -262,77 +324,72 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {text.settings && (
-          <InputContainer label={text.label || ''} className={classes.promptHolder}>
-            <TextField
-              className={classes.input}
+          <StyledInputContainer label={text.label || ''}>
+            <StyledTextField
+              variant="standard"
               multiline
               defaultValue={textValue}
               onChange={this.changeText}
               spellCheck={spellCheckEnabled}
             />
-          </InputContainer>
+          </StyledInputContainer>
         )}
 
         {tokens.settings && (
-          <InputContainer label={tokens.label || ''} className={classes.tokenizerContainer}>
-            <Tooltip
-              classes={{ tooltip: classes.tooltip }}
+          <TokenizerContainer label={tokens.label || ''}>
+            <StyledTooltip
               disableFocusListener
               disableTouchListener
               placement={'right'}
               title={validationMessage}
             >
               <Info fontSize={'small'} color={'primary'} style={{ position: 'absolute', left: '48px', top: '-3px' }} />
-            </Tooltip>
+            </StyledTooltip>
 
-            <Tokenizer
-              className={classes.tokenizer}
+            <StyledTokenizer
               text={model.text}
               tokens={tokensModel}
               onChange={this.changeTokens}
             />
-          </InputContainer>
+          </TokenizerContainer>
         )}
-        {tokensError && <div className={classes.errorText}>{tokensError}</div>}
-        {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
+        {tokensError && <ErrorText>{tokensError}</ErrorText>}
+        {selectionsError && <ErrorText>{selectionsError}</ErrorText>}
 
-        <div className={classes.tokensDetails}>
+        <TokensDetails>
           {mode.settings && (
-            <Chip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} className={classes.chip} />
+            <StyledChip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} />
           )}
 
           {selections.settings && (
-            <Chip label={`${selections.label}: ${tokensModel.length}`} className={classes.chip} />
+            <StyledChip label={`${selections.label}: ${tokensModel.length}`} />
           )}
 
           {correctAnswer.settings && (
-            <Chip
+            <StyledChip
               label={`${correctAnswer.label}: ${tokensModel.filter((t) => t.correct).length}`}
-              className={classes.chip}
             />
           )}
 
           {selectionCount.settings && (
-            <NumberTextField
+            <StyledNumberTextField
               min={tokensModel.filter((t) => t.correct).length || 0}
               label={`${selectionCount.label} (0:any)`}
               max={tokensModel.length}
               value={model.maxSelections}
               onChange={this.changeMaxSelections}
-              className={classes.numberField}
             />
           )}
-        </div>
+        </TokensDetails>
 
         {rationaleEnabled && (
-          <InputContainer label={rationale.label || ''} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
+          <StyledInputContainer label={rationale.label || ''}>
+            <StyledEditableHtml
               markup={model.rationale || ''}
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
@@ -346,8 +403,8 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
-          </InputContainer>
+            {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {feedbackEnabled && (
@@ -358,60 +415,4 @@ export class Design extends React.Component {
   }
 }
 
-export default withStyles((theme) => ({
-  tokenizerContainer: {
-    paddingRight: 0,
-    marginRight: 0,
-    '&:after': {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: '1px',
-      content: '""',
-      backgroundColor: theme.palette.primary.main,
-    },
-    marginBottom: theme.spacing.unit,
-  },
-  chip: {
-    marginTop: theme.spacing.unit / 2,
-    marginRight: theme.spacing.unit * 2,
-  },
-  input: {
-    width: '100%',
-  },
-  tokenizer: {
-    marginTop: theme.spacing.unit * 2,
-  },
-  mainOpts: {
-    width: '100%',
-    justifyContent: 'space-between',
-    display: 'flex',
-    alignItems: 'baseline',
-  },
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  tokensDetails: {
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  numberField: {
-    width: '180px',
-    margin: `${theme.spacing.unit / 2}px auto 0`,
-  },
-  tooltip: {
-    fontSize: theme.typography.fontSize - 2,
-    whiteSpace: 'pre',
-    maxWidth: '500px',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-}))(Design);
+export default Design;
