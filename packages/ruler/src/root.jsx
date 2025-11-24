@@ -1,20 +1,17 @@
 import React from 'react';
 import { Ruler } from '@pie-lib/tools';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import Toggle from './toggle';
 
-const styles = {
-  ruler: {
-    position: 'absolute',
-    left: '200px',
-    zIndex: '101',
-  },
-};
+const StyledRuler = styled(Ruler)({
+  position: 'absolute',
+  left: '200px',
+  zIndex: '101',
+});
 
 export class Root extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
   };
 
@@ -27,15 +24,14 @@ export class Root extends React.Component {
 
   render() {
     const { show } = this.state;
-    const { classes, model } = this.props;
+    const { model } = this.props;
 
     return (
       <div>
         <Toggle active={show} onToggle={this.onToggle} />
 
         {show && (
-          <Ruler
-            className={classes.ruler}
+          <StyledRuler
             measure={model.measure}
             units={model.units}
             width={model.width}
@@ -48,4 +44,5 @@ export class Root extends React.Component {
     );
   }
 }
-export default withStyles(styles)(Root);
+
+export default Root;

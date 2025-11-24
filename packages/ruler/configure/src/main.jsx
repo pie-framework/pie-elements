@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { layout, TwoChoice, NChoice, NumberTextField } from '@pie-lib/config-ui';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 const metricLabels = [
   { label: 'Millimeters', value: 'mm' },
@@ -23,11 +23,22 @@ const imperialTickOpts = [
   { label: '4', value: '4' },
 ];
 
+const StyledNChoice = styled(NChoice)({
+  display: 'flex',
+});
+
+const StyledNumberTextField = styled(NumberTextField)({
+  width: '100px',
+});
+
+const Row = styled('div')({
+  display: 'flex',
+});
+
 export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
   };
 
   measureChange = (measure) => {
@@ -69,7 +80,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, classes } = this.props;
+    const { model } = this.props;
     const { extraCSSRules, imperialTicks, label, measure, units, width } = model || {};
 
     const pixelsPerUnit = width / units;
@@ -96,46 +107,29 @@ export class Main extends React.Component {
           )}
         </div>
 
-        <NChoice className={classes.opt} header="Label" value={label} onChange={this.labelChange} opts={labelOpts} />
+        <StyledNChoice header="Label" value={label} onChange={this.labelChange} opts={labelOpts} />
 
-        <div className={classes.row}>
-          <NumberTextField
+        <Row>
+          <StyledNumberTextField
             label={'Length'}
-            className={classes.length}
             value={units}
             max={30}
             min={5}
             onChange={this.unitsChange}
           />
 
-          <NumberTextField
+          <StyledNumberTextField
             label={'Pixels per unit'}
-            className={classes.pixelsPerUnit}
             value={pixelsPerUnit}
             max={100}
             min={25}
             onChange={this.pixelsPerUnitChange}
           />
-        </div>
+        </Row>
       </layout.ConfigLayout>
     );
   }
 }
-
-const Styled = withStyles(() => ({
-  opt: {
-    display: 'flex',
-  },
-  pixelsPerUnit: {
-    width: '100px',
-  },
-  length: {
-    width: '100px',
-  },
-  row: {
-    display: 'flex',
-  },
-}))(Main);
 
 export default class Stateful extends React.Component {
   static propTypes = {
@@ -157,6 +151,6 @@ export default class Stateful extends React.Component {
   };
 
   render() {
-    return <Styled model={this.state.model} onChange={this.onChange} />;
+    return <Main model={this.state.model} onChange={this.onChange} />;
   }
 }

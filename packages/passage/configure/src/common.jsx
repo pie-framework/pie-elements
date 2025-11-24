@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { Button } from '@mui/material';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -10,32 +10,25 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 
-export const RemoveAddButton = ({ classes, label, type = 'add', onClick }) => {
+export const RemoveAddButton = ({ className, label, type = 'add', onClick }) => {
   const Tag = type === 'add' ? AddCircleIcon : RemoveCircleIcon;
   return (
-    <Button color="primary" size="small" className={classes.root} onClick={onClick}>
-      <Tag fontSize={'small'} color={'primary'} className={classes.icon} />
+    <Button color="primary" size="small" className={className} onClick={onClick}>
+      <Tag fontSize="small" color="primary" style={{ marginRight: 4 }} />
       {label}
     </Button>
   );
-}
+};
 
-export const PassageButton = withStyles((theme) => ({
-  root: {
+export const PassageButton = styled(RemoveAddButton)(({ theme }) => ({
+  textDecoration: 'underline',
+  '&:hover': {
     textDecoration: 'underline',
-    '&:hover': {
-      textDecoration: 'underline',
-      backgroundColor: 'transparent',
-    },
+    backgroundColor: 'transparent',
   },
-  label: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  icon: {
-    marginRight: theme.spacing.unit / 2,
-  },
-}))(RemoveAddButton);
+  display: 'flex',
+  alignItems: 'center',
+}));
 
 export const ConfimationDialog = ({ content, cancel, title, ok, open, onOk, onCancel }) => (
   <Dialog open={open}>

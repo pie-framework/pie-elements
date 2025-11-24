@@ -1,43 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import Icon from './icon';
 import IconButton from '@mui/material/IconButton';
-import classNames from 'classnames';
 
-const iconStyles = (theme) => ({
-  icon: {
-    '& polygon': {
-      transition: 'fill 200ms',
-      fill: theme.palette.grey[600],
-    },
+const StyledIcon = styled(Icon)(({ theme, active }) => ({
+  '& polygon': {
     transition: 'fill 200ms',
-    '&:hover': {
-      '& polygon': {
-        fill: theme.palette.common.black,
-      },
-    },
-    cursor: 'pointer',
-    verticalAlign: 'middle',
-    fill: theme.palette.grey[600],
+    fill: active ? theme.palette.common.black : theme.palette.grey[600],
   },
-  active: {
+  transition: 'fill 200ms',
+  '&:hover': {
     '& polygon': {
       fill: theme.palette.common.black,
     },
   },
-});
+  cursor: 'pointer',
+  verticalAlign: 'middle',
+  fill: theme.palette.grey[600],
+}));
 
-const RawToggle = ({ active, onToggle, classes }) => (
+const Toggle = ({ active, onToggle }) => (
   <IconButton onClick={onToggle} size="large">
-    <Icon className={classNames(classes.icon, active && classes.active)} />
+    <StyledIcon active={active} />
   </IconButton>
 );
 
-RawToggle.propTypes = {
+Toggle.propTypes = {
   active: PropTypes.bool,
   onToggle: PropTypes.func,
-  classes: PropTypes.object,
 };
-const Toggle = withStyles(iconStyles)(RawToggle);
+
 export default Toggle;
