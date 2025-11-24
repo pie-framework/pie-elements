@@ -1,21 +1,17 @@
 import React from 'react';
 import { Protractor } from '@pie-lib/tools';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import Toggle from './toggle';
 
-const styles = {
-  protractor: {
-    position: 'absolute',
-    left: '200px',
-    zIndex: '101',
-  },
-};
+const StyledProtractor = styled(Protractor)({
+  position: 'absolute',
+  left: '200px',
+  zIndex: '101',
+});
 
 class Main extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
@@ -26,15 +22,15 @@ class Main extends React.Component {
 
   render() {
     const { show } = this.state;
-    const { classes } = this.props;
 
     return (
       <div>
         <Toggle active={show} onToggle={this.onToggle} />
 
-        {show && <Protractor className={classes.protractor} startPosition={{ left: 100, top: 100 }} />}
+        {show && <StyledProtractor startPosition={{ left: 100, top: 100 }} />}
       </div>
     );
   }
 }
-export default withStyles(styles)(Main);
+
+export default Main;
