@@ -7,11 +7,14 @@ import Radio from '@material-ui/core/Radio';
 
 const radioStyles = {
   root: {
-    color: `var(--choice-input-color, ${color.text()})`,
+    color: `var(--choice-input-color, ${color.text()}) !important`,
   },
   checked: {
-    color: `var(--choice-input-selected-color, ${color.text()})`,
+    color: `var(--choice-input-selected-color, ${color.primary()}) !important`,
   },
+  disabled: {
+    color: `var(--choice-input-disabled-color, ${color.defaults.DISABLED}) !important`,
+  }
 };
 
 const ChoiceInput = withStyles(radioStyles)((props) => {
@@ -35,6 +38,7 @@ const ChoiceInput = withStyles(radioStyles)((props) => {
       classes={{
         root: classes.root,
         checked: classes.checked,
+        disabled: classes.disabled,
       }}
     />
   );

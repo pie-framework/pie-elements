@@ -9,11 +9,14 @@ import { LIKERT_ORIENTATION } from './likertEntities';
 
 const radioStyles = {
   root: {
-    color: `var(--choice-input-color, ${color.text()})`,
+    color: `var(--choice-input-color, ${color.text()}) !important`,
   },
   checked: {
-    color: `var(--choice-input-selected-color, ${color.text()})`,
+    color: `var(--choice-input-selected-color, ${color.primary()}) !important`,
   },
+  disabled: {
+    color: `var(--choice-input-disabled-color, ${color.defaults.DISABLED}) !important`,
+  }
 };
 
 export const RadioStyled = withStyles(radioStyles)((props) => {
@@ -27,6 +30,7 @@ export const RadioStyled = withStyles(radioStyles)((props) => {
       classes={{
         root: classes.root,
         checked: classes.checked,
+        disabled: classes.disabled,
       }}
     />
   );
