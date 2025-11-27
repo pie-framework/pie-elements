@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@2.3.2...@pie-element/likert@2.3.3) (2025-11-27)
+
+
+### Bug Fixes
+
+* bump libs PD-5274, PD-5211, PD-5248 ([7610b25](https://github.com/pie-framework/pie-elements/commit/7610b25423956b6492f33322513b3430051fca77))
+* **likert, matrix:** handle disabled color, add important for radio states colors PD-5274 ([8685fe6](https://github.com/pie-framework/pie-elements/commit/8685fe63194de27f213f5debcdf43452e405afeb))
+
+
+
+
+
 ## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@2.3.1...@pie-element/likert@2.3.2) (2025-10-22)
 
 
