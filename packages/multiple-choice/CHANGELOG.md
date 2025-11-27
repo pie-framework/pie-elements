@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.4.2...@pie-element/multiple-choice@11.4.3) (2025-11-27)
+
+
+### Bug Fixes
+
+* bump libs PD-5274, PD-5211, PD-5248 ([7610b25](https://github.com/pie-framework/pie-elements/commit/7610b25423956b6492f33322513b3430051fca77))
+
+
+
+
+
 ## [11.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@11.4.1...@pie-element/multiple-choice@11.4.2) (2025-10-22)
 
 
