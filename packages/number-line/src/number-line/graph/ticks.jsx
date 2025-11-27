@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
 import { buildTickData } from './tick-utils';
-import injectSheet from 'react-jss';
 import { color } from '@pie-lib/render-ui';
 
-const style = {
-  text: {
-    userSelect: 'none',
-    textAlign: 'center',
-    fill: color.primary(),
-  },
-  line: {
-    stroke: color.primary(),
-  },
-};
+const StyledText = styled('text')({
+  userSelect: 'none',
+  textAlign: 'center',
+  fill: color.primary(),
+});
+
+const StyledLine = styled('line')({
+  stroke: color.primary(),
+});
 
 export const TickValidator = PropTypes.shape({
   /** the number of major ticks (including min + max)
@@ -33,7 +32,6 @@ export const TickValidator = PropTypes.shape({
 
 export class Tick extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     y: PropTypes.number.isRequired,
     x: PropTypes.number.isRequired,
     major: PropTypes.bool,
@@ -87,7 +85,7 @@ export class Tick extends React.Component {
 
   render() {
     //the domain value
-    let { x, y, type, classes, xScale, fraction } = this.props;
+    let { x, y, type, xScale, fraction } = this.props;
     const displayFraction = fraction && x.n !== x.d && x.n !== 0 && x.d !== 1;
     const labelTick = type === 'major';
     const height = labelTick ? 20 : 10;
@@ -110,11 +108,10 @@ export class Tick extends React.Component {
 
     return (
       <g opacity="1" transform={`translate(${xScale(x)}, ${y})`}>
-        <line className={classes.line} y1={(height / 2) * -1} y2={height / 2} x1="0.5" x2="0.5" />
+        <StyledLine y1={(height / 2) * -1} y2={height / 2} x1="0.5" x2="0.5" />
 
         {displayFraction && (
-          <line
-            className={classes.line}
+          <StyledLine
             x1={textX}
             x2={textX + textWidth}
             y1={textY + textHeight / 2}
@@ -123,16 +120,15 @@ export class Tick extends React.Component {
         )}
 
         {labelTick && (
-          <text
+          <StyledText
             ref={(text) => (this.text = text)}
-            className={classes.text}
             y="14"
             width="10"
             dy="0.71em"
             textAnchor={displayFraction && 'middle'}
           >
             {xText}
-          </text>
+          </StyledText>
         )}
       </g>
     );
@@ -145,7 +141,6 @@ export class Ticks extends React.Component {
   };
 
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     domain: PropTypes.shape({
       min: PropTypes.number.isRequired,
       max: PropTypes.number.isRequired,
@@ -157,7 +152,7 @@ export class Ticks extends React.Component {
   };
 
   render() {
-    let { domain, width, ticks, y, classes, fraction } = this.props;
+    let { domain, width, ticks, y, fraction } = this.props;
     let { xScale } = this.context;
 
     const tickData = buildTickData(domain, width, ticks, { fraction });
@@ -167,7 +162,6 @@ export class Ticks extends React.Component {
         {tickData.map(({ x, type }) => {
           return (
             <Tick
-              classes={classes}
               fraction={fraction}
               x={x}
               y={y}
@@ -182,4 +176,4 @@ export class Ticks extends React.Component {
   }
 }
 
-export default injectSheet(style)(Ticks);
+export default Ticks;

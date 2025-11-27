@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import { styled } from '@mui/material/styles';
 import isEqual from 'lodash/isEqual';
 import isNumber from 'lodash/isNumber';
 import { color } from '@pie-lib/render-ui';
@@ -12,46 +11,44 @@ import { basePropTypes } from './base';
 
 const duration = '150ms';
 
-const style = {
-  line: {
+const StyledLineGroup = styled('g')(({ $selected, $disabled, $correct }) => ({
+  '& .line-handle': {
+    stroke: color.primary(),
+    cursor: 'pointer',
+    strokeWidth: '5px',
+    transition: `opacity ${duration} linear, 
+    stroke-width ${duration} linear,
+    stroke ${duration} linear`,
+  },
+  '&.react-draggable-dragging': {
+    opacity: 0.6,
     '& .line-handle': {
-      stroke: color.primary(),
-      cursor: 'pointer',
-      strokeWidth: '5px',
-      transition: `opacity ${duration} linear, 
-      stroke-width ${duration} linear,
-      stroke ${duration} linear`,
-    },
-    '&.react-draggable-dragging': {
-      opacity: 0.6,
-      '& .line-handle': {
-        opacity: 1.0,
-        strokeWidth: '12px',
-      },
+      opacity: 1.0,
+      strokeWidth: '12px',
     },
   },
-  disabled: {
+  ...($disabled && {
     cursor: 'not-allowed',
     opacity: 0.8,
-  },
-  selected: {
+  }),
+  ...($selected && {
     '& .line-handle': {
       stroke: color.primaryDark(),
     },
-  },
-  correct: {
+  }),
+  ...($correct === true && {
     '& .line-handle': {
       cursor: 'inherit',
       stroke: color.correct(),
     },
-  },
-  incorrect: {
+  }),
+  ...($correct === false && {
     '& .line-handle': {
       cursor: 'inherit',
       stroke: color.incorrect(),
     },
-  },
-};
+  }),
+}));
 
 export class Line extends React.Component {
   static propTypes = {
@@ -118,7 +115,7 @@ export class Line extends React.Component {
   }
 
   render() {
-    const { interval, empty, position, domain, y, selected, disabled, correct, classes } = this.props;
+    const { interval, empty, position, domain, y, selected, disabled, correct } = this.props;
 
     const { xScale } = this.context;
 
@@ -171,13 +168,6 @@ export class Line extends React.Component {
       right: ((domain.max - position.right) / interval) * is,
     };
 
-    var lineClass = classNames(classes.line, {
-      [classes.disabled]: disabled,
-      [classes.selected]: selected,
-      [classes.correct]: correct === true,
-      [classes.incorrect]: correct === false,
-    });
-
     const common = {
       interval,
       selected,
@@ -196,7 +186,7 @@ export class Line extends React.Component {
         onStop={onLineDragStop}
         onMouseDown={onMouseDown}
       >
-        <g className={lineClass}>
+        <StyledLineGroup $selected={selected} $disabled={disabled} $correct={correct}>
           <g transform={`translate(0, ${y})`}>
             <rect
               x={xScale(left)}
@@ -208,9 +198,7 @@ export class Line extends React.Component {
               onClick={onRectClick}
             />
             <line
-              className={classNames('line-handle', classes.handle, {
-                [classes.selected]: selected,
-              })}
+              className="line-handle"
               x1={xScale(left)}
               x2={xScale(right)}
               onClick={onLineClick}
@@ -240,10 +228,10 @@ export class Line extends React.Component {
               onClick={onRectClick}
             />
           </g>
-        </g>
+        </StyledLineGroup>
       </Draggable>
     );
   }
 }
 
-export default injectSheet(style)(Line);
+export default Line;

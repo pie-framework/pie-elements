@@ -1,52 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import { styled } from '@mui/material/styles';
 import { color } from '@pie-lib/render-ui';
 
 import Draggable from '../../../draggable';
 
 const duration = '150ms';
 
-const style = {
-  point: {
-    cursor: 'pointer',
-    transition: `r ${duration} linear,  
-    opacity ${duration} linear, 
-    fill ${duration} linear,
-    stroke ${duration} linear`,
-
-    stroke: color.primary(),
-    fill: color.primary(),
-    '&.react-draggable-dragging': {
-      opacity: 0.25,
-      r: '10px',
-    },
-    '&:hover': {
-      stroke: color.primaryDark(),
-    },
+const StyledCircle = styled('circle')(({ $selected, $disabled, $correct, $empty }) => ({
+  cursor: 'pointer',
+  transition: `r ${duration} linear,  
+  opacity ${duration} linear, 
+  fill ${duration} linear,
+  stroke ${duration} linear`,
+  stroke: color.primary(),
+  fill: color.primary(),
+  '&.react-draggable-dragging': {
+    opacity: 0.25,
+    r: '10px',
   },
-  selected: {
+  '&:hover': {
     stroke: color.primaryDark(),
   },
-  disabled: {
+  ...($selected && {
+    stroke: color.primaryDark(),
+  }),
+  ...($disabled && {
     cursor: 'not-allowed',
     opacity: 0.8,
-  },
-  correct: {
+  }),
+  ...($correct === true && {
     cursor: 'inherit',
     stroke: color.correct(),
     fill: color.correct(),
-  },
-  incorrect: {
+  }),
+  ...($correct === false && {
     cursor: 'inherit',
     stroke: color.incorrect(),
     fill: color.incorrect(),
-  },
-  empty: {
+  }),
+  ...($empty && {
     fill: 'white',
-  },
-};
+  }),
+}));
 
 export class Point extends React.Component {
   static defaultProps = {
@@ -74,7 +70,6 @@ export class Point extends React.Component {
     onDrag: PropTypes.func,
     onDragStop: PropTypes.func,
     onDragStart: PropTypes.func,
-    classes: PropTypes.object.isRequired,
   };
 
   static contextTypes = {
@@ -97,10 +92,11 @@ export class Point extends React.Component {
       disabled,
       correct,
       empty,
-      classes,
     } = this.props;
 
     const { snapValue, xScale } = this.context;
+
+    const is = xScale(interval) - xScale(0);
 
     const dragPosition = (x) => {
       const normalized = x + xScale(0);
@@ -138,7 +134,6 @@ export class Point extends React.Component {
     //prevent the text select icon from rendering.
     const onMouseDown = (e) => e.nativeEvent.preventDefault();
 
-    const is = xScale(interval) - xScale(0);
     const scaledBounds = {
       left: (bounds.left / interval) * is,
       right: (bounds.right / interval) * is,
@@ -150,14 +145,6 @@ export class Point extends React.Component {
         onDragCallback(p);
       }
     };
-
-    const circleClass = classNames(classes.point, {
-      [classes.disabled]: disabled,
-      [classes.selected]: selected,
-      [classes.correct]: correct === true,
-      [classes.incorrect]: correct === false,
-      [classes.empty]: empty === true,
-    });
 
     return (
       <Draggable
@@ -179,11 +166,20 @@ export class Point extends React.Component {
             cy={y}
             stroke={selected ? color.primaryDark() : 'none'}
           />
-          <circle r="5" strokeWidth="3" className={circleClass} cx={xScale(position)} cy={y} />
+          <StyledCircle
+            r="5"
+            strokeWidth="3"
+            cx={xScale(position)}
+            cy={y}
+            $selected={selected}
+            $disabled={disabled}
+            $correct={correct}
+            $empty={empty}
+          />
         </g>
       </Draggable>
     );
   }
 }
 
-export default injectSheet(style)(Point);
+export default Point;

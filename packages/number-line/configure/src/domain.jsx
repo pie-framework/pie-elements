@@ -1,10 +1,21 @@
 import { MiniField } from './number-text-field';
 import PropTypes from 'prop-types';
 import React from 'react';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 const DOMAIN_BEGIN = 'domainBegin';
 const DOMAIN_END = 'domainEnd';
+
+const DisplayFlex = styled('div')({
+  display: 'flex',
+  gap: '20px',
+});
+
+const FlexRow = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+});
 
 const sort = (domain) => {
   if (domain.min <= domain.max) {
@@ -34,36 +45,25 @@ export class Domain extends React.Component {
   }
 
   render() {
-    const { classes, domain } = this.props;
+    const { domain } = this.props;
 
     return (
-      <div className={classes.displayFlex}>
-        <div className={classes.flexRow}>
+      <DisplayFlex>
+        <FlexRow>
           <label>Min Value</label>
           <MiniField min={-100000} max={99999} value={domain.min} name={DOMAIN_BEGIN} onChange={this.changeMin} />
-        </div>
-        <div className={classes.flexRow}>
+        </FlexRow>
+        <FlexRow>
           <label>Max Value</label>
           <MiniField min={-99999} max={100000} value={domain.max} name={DOMAIN_END} onChange={this.changeMax} />
-        </div>
-      </div>
+        </FlexRow>
+      </DisplayFlex>
     );
   }
 }
 Domain.propTypes = {
-  classes: PropTypes.object.isRequired,
   domain: PropTypes.shape({ min: PropTypes.number, max: PropTypes.number }),
   onChange: PropTypes.func.isRequired,
 };
-const styles = (theme) => ({
-  displayFlex: {
-    display: 'flex',
-    gap: '20px',
-  },
-  flexRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-  },
-});
-export default withStyles(styles)(Domain);
+
+export default Domain;

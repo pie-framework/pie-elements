@@ -1,24 +1,21 @@
 import Button from '@mui/material/Button';
 import React from 'react';
 import { pointChooser } from '@pie-element/number-line';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 const { Point } = pointChooser;
 
-const styles = (theme) => ({
-  displayToggles: {
-    paddingTop: theme.spacing.unit * 2.5,
-    '& > :first-child': {
-      marginRight: theme.spacing.unit,
-    },
+const DisplayToggles = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(2.5),
+  '& > :first-child': {
+    marginRight: theme.spacing(1),
   },
-});
+}));
 
 class PointConfig extends React.Component {
   static propTypes = {
     onSelectionChange: PropTypes.func,
     selection: PropTypes.object,
-    classes: PropTypes.object,
     availableTools: PropTypes.array,
     hideButtons: PropTypes.bool,
   };
@@ -52,7 +49,7 @@ class PointConfig extends React.Component {
 
   render() {
     // Setting default value if not passed in configuration properties.
-    const { classes, availableTools, hideButtons = false } = this.props;
+    const { availableTools, hideButtons = false } = this.props;
 
     const icons = (availableTools || []).map((point) => {
       return (
@@ -68,14 +65,14 @@ class PointConfig extends React.Component {
     return (
       <div>
         <div>{icons}</div>
-        <div className={classes.displayToggles} hidden={hideButtons}>
+        <DisplayToggles hidden={hideButtons}>
           <Button variant="outlined" size="small" onClick={this.toggleAll.bind(this, true)}>
             Select All
           </Button>
           <Button variant="outlined" size="small" onClick={this.toggleAll.bind(this, false)}>
             None
           </Button>
-        </div>
+        </DisplayToggles>
       </div>
     );
   }
@@ -83,4 +80,4 @@ class PointConfig extends React.Component {
 
 PointConfig.types = ['PF', 'LFF', 'LEF', 'LFE', 'LEE', 'RFN', 'RFP', 'REN', 'REP'];
 
-export default withStyles(styles, { name: 'PointConfig' })(PointConfig);
+export default PointConfig;

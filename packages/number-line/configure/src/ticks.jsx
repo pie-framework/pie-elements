@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { NumberTextFieldCustom } from '@pie-lib/config-ui';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -8,11 +8,55 @@ import Radio from '@mui/material/Radio';
 import * as math from 'mathjs';
 import { color } from '@pie-lib/render-ui';
 
+const DisplayFlex = styled('div')({
+  display: 'flex',
+});
+
+const FlexCol1 = styled('div')({
+  display: 'flex',
+  flexFlow: 'column',
+  gap: '10px',
+  width: '65%',
+});
+
+const FlexCol2 = styled('div')({
+  display: 'flex',
+  flexFlow: 'column',
+  gap: '10px',
+});
+
+const RadioInputs = styled('tr')({
+  display: 'flex',
+  alignItems: 'center',
+  paddingTop: '5px',
+  paddingBottom: '5px',
+});
+
+const TableFixed = styled('table')({
+  tableLayout: 'fixed',
+  width: '100%',
+});
+
+const LabelWidth = styled('td')({
+  width: '35%',
+});
+
+const CustomColorRadio = styled(Radio)({
+  color: `${color.tertiary()} !important`,
+});
+
+const StyledNumberTextFieldCustom = styled(NumberTextFieldCustom)({
+  '& input': {
+    maxWidth: '145px',
+    cursor: 'default',
+  },
+});
+
 // This const will store available tick interval types.
 export const TickIntervals = ['Integer', 'Fraction', 'Decimal'];
 
 export const Ticks = (props) => {
-  const { classes, ticks, onChange, minorLimits, minorValues, majorValues } = props;
+  const { ticks, onChange, minorLimits, minorValues, majorValues } = props;
 
   //Format decimal value of label interval to fraction
   const fractionMajor = math.fraction(math.number(ticks.major));
@@ -103,8 +147,8 @@ export const Ticks = (props) => {
   };
 
   return (
-    <div className={classes.displayFlex}>
-      <div className={classes.flexCol1}>
+    <DisplayFlex>
+      <FlexCol1>
         <label>Tick Interval</label>
         <RadioGroup
           aria-label="tick-interval-type"
@@ -112,26 +156,24 @@ export const Ticks = (props) => {
           value={ticks.tickIntervalType}
           onChange={changeTickIntervalType}
         >
-          <table className={classes.tableFixed}>
+          <TableFixed>
             <tbody>
-              <tr className={classes.radioInputs}>
-                <td className={classes.labelWidth}>
+              <RadioInputs>
+                <LabelWidth>
                   <FormControlLabel
                     value="Integer"
-                    control={<Radio className={classes.customColor} checked={ticks.tickIntervalType === 'Integer'} />}
+                    control={<CustomColorRadio checked={ticks.tickIntervalType === 'Integer'} />}
                     label="Integer"
                     disabled={minorLimits.max < 1}
                   />
-                </td>
+                </LabelWidth>
                 <td>
-                  <NumberTextFieldCustom
+                  <StyledNumberTextFieldCustom
                     value={ticks.integerTick}
                     min={math.number(math.ceil(minorLimits.min))}
                     max={math.number(math.floor(minorLimits.max))}
                     step={1}
                     onlyIntegersAllowed={true}
-                    className={classes.nl}
-                    inputClassName={classes.numberTextField}
                     onChange={changeIntegerTick}
                     variant={'outlined'}
                     type={'number'}
@@ -141,22 +183,20 @@ export const Ticks = (props) => {
                     }
                   />
                 </td>
-              </tr>
-              <tr className={classes.radioInputs}>
-                <td className={classes.labelWidth}>
+              </RadioInputs>
+              <RadioInputs>
+                <LabelWidth>
                   <FormControlLabel
                     value="Fraction"
-                    control={<Radio className={classes.customColor} checked={ticks.tickIntervalType === 'Fraction'} />}
+                    control={<CustomColorRadio checked={ticks.tickIntervalType === 'Fraction'} />}
                     label="Unit Fraction"
                     disabled={minorValues.fraction.length === 0}
                   />
-                </td>
+                </LabelWidth>
                 <td>
-                  <NumberTextFieldCustom
+                  <StyledNumberTextFieldCustom
                     value={ticks.fractionTick}
                     customValues={minorValues.fraction}
-                    className={classes.nl}
-                    inputClassName={classes.numberTextField}
                     onChange={changeFractionTick}
                     variant={'outlined'}
                     type={'text'}
@@ -168,22 +208,20 @@ export const Ticks = (props) => {
                     }
                   />
                 </td>
-              </tr>
-              <tr className={classes.radioInputs}>
-                <td className={classes.labelWidth}>
+              </RadioInputs>
+              <RadioInputs>
+                <LabelWidth>
                   <FormControlLabel
                     value="Decimal"
-                    control={<Radio className={classes.customColor} checked={ticks.tickIntervalType === 'Decimal'} />}
+                    control={<CustomColorRadio checked={ticks.tickIntervalType === 'Decimal'} />}
                     label="Decimal"
                     disabled={minorValues.decimal.length === 0}
                   />
-                </td>
+                </LabelWidth>
                 <td>
-                  <NumberTextFieldCustom
+                  <StyledNumberTextFieldCustom
                     value={ticks.decimalTick}
                     customValues={minorValues.decimal}
-                    className={classes.nl}
-                    inputClassName={classes.numberTextField}
                     onChange={changeDecimalTick}
                     variant={'outlined'}
                     type={'number'}
@@ -195,28 +233,25 @@ export const Ticks = (props) => {
                     }
                   />
                 </td>
-              </tr>
+              </RadioInputs>
             </tbody>
-          </table>
+          </TableFixed>
         </RadioGroup>
-      </div>
-      <div className={classes.flexCol2}>
+      </FlexCol1>
+      <FlexCol2>
         <label>Label Interval</label>
-        <NumberTextFieldCustom
+        <StyledNumberTextFieldCustom
           value={ticks.tickIntervalType === 'Fraction' ? fractionMajorString : ticks.major}
-          className={classes.nl}
-          inputClassName={classes.numberTextField}
           variant={'outlined'}
           customValues={ticks.tickIntervalType === 'Fraction' ? majorValues.fraction : majorValues.decimal}
           type={ticks.tickIntervalType === 'Fraction' ? 'text' : 'number'}
           onChange={ticks.tickIntervalType === 'Fraction' ? changeFractionLabel : changeDecimalLabel}
         />
-      </div>
-    </div>
+      </FlexCol2>
+    </DisplayFlex>
   );
 };
 Ticks.propTypes = {
-  classes: PropTypes.object.isRequired,
   onChange: PropTypes.func,
   ticks: PropTypes.object,
   minorLimits: PropTypes.object,
@@ -224,40 +259,4 @@ Ticks.propTypes = {
   majorValues: PropTypes.object,
 };
 
-const styles = () => ({
-  displayFlex: {
-    display: 'flex',
-  },
-  flexCol1: {
-    display: 'flex',
-    'flex-flow': 'column',
-    gap: '10px',
-    width: '65%',
-  },
-  flexCol2: {
-    display: 'flex',
-    'flex-flow': 'column',
-    gap: '10px',
-  },
-  radioInputs: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingTop: '5px',
-    paddingBottom: '5px',
-  },
-  numberTextField: {
-    maxWidth: '145px',
-    cursor: 'default',
-  },
-  tableFixed: {
-    'table-layout': 'fixed',
-    width: '100%',
-  },
-  labelWidth: {
-    width: '35%',
-  },
-  customColor: {
-    color: `${color.tertiary()} !important`,
-  },
-});
-export default withStyles(styles)(Ticks);
+export default Ticks;

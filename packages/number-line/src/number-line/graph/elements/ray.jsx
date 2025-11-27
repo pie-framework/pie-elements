@@ -2,51 +2,68 @@ import * as colors from '../../colors';
 import { color } from '@pie-lib/render-ui';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
 import Arrow from '../arrow';
 import Point from './point';
 import { basePropTypes } from './base';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
 import isNumber from 'lodash/isNumber';
 
-const rayColor = (rayColor) => ({
+const StyledRayGroup = styled('g')(({ $selected, $correct }) => ({
   '& line': {
-    stroke: rayColor,
+    cursor: 'pointer',
+    strokeWidth: '5px',
+    stroke: color.primary(),
   },
-  '& .arrow': {
-    fill: rayColor,
-    strokeWidth: '1px',
-    stroke: rayColor,
+  '& line, & .arrow': {
+    transition: 'stroke 150ms linear, fill 150ms linear',
   },
-});
-
-const style = {
-  ray: {
+  ...($selected && {
     '& line': {
-      cursor: 'pointer',
-      strokeWidth: '5px',
-      stroke: color.primary(),
+      stroke: colors.selected,
     },
-    '& line, & .arrow': {
-      transition: 'stroke 150ms linear, fill 150ms linear',
+    '& .arrow': {
+      fill: colors.selected,
+      strokeWidth: '1px',
+      stroke: colors.selected,
     },
-  },
-  selected: rayColor(colors.selected),
-  correct: rayColor(colors.correct),
-  incorrect: rayColor(colors.incorrect),
-  arrowCorrect: {
+  }),
+  ...($correct === true && {
+    '& line': {
+      stroke: colors.correct,
+    },
+    '& .arrow': {
+      fill: colors.correct,
+      strokeWidth: '1px',
+      stroke: colors.correct,
+    },
+  }),
+  ...($correct === false && {
+    '& line': {
+      stroke: colors.incorrect,
+    },
+    '& .arrow': {
+      fill: colors.incorrect,
+      strokeWidth: '1px',
+      stroke: colors.incorrect,
+    },
+  }),
+}));
+
+const StyledArrow = styled(Arrow)(({ $correct, $selected }) => ({
+  fill: color.primary(),
+  ...($correct === true && {
     fill: colors.correct,
     '--arrow-color': colors.correct,
-  },
-  arrowIncorrect: {
+  }),
+  ...($correct === false && {
     fill: colors.incorrect,
     '--arrow-color': colors.incorrect,
-  },
-  arrowSelected: {
+  }),
+  ...($selected && {
     fill: colors.selected,
     '--arrow-color': colors.selected,
-  },
-};
+  }),
+}));
 
 export class Ray extends React.Component {
   static propTypes = {
@@ -94,7 +111,7 @@ export class Ray extends React.Component {
 
   render() {
     /* eslint-disable */
-    const { interval, empty, position, direction, domain, y, selected, disabled, width, correct, classes } = this.props;
+    const { interval, empty, position, direction, domain, y, selected, disabled, width, correct } = this.props;
     /* eslint-enable */
     const { xScale } = this.context;
 
@@ -102,12 +119,6 @@ export class Ray extends React.Component {
     const stopDrag = this.stopDrag.bind(this);
 
     const finalPosition = isNumber(this.state.dragPosition) ? this.state.dragPosition : position;
-
-    const className = classNames(classes.ray, {
-      [classes.selected]: selected,
-      [classes.correct]: correct === true,
-      [classes.incorrect]: correct === false,
-    });
 
     const positive = direction === 'positive';
     const left = positive ? finalPosition : domain.min;
@@ -122,14 +133,8 @@ export class Ray extends React.Component {
 
     const noop = () => {};
 
-    const arrowClassNames = classNames({
-      [classes.arrowCorrect]: correct === true,
-      [classes.arrowIncorrect]: correct === false,
-      [classes.arrowSelected]: selected,
-    });
-
     return (
-      <g className={className} transform={`translate(0, ${y})`}>
+      <StyledRayGroup $selected={selected} $correct={correct} transform={`translate(0, ${y})`}>
         <line onClick={disabled ? noop : this.props.onToggleSelect} className="line-handle" x1={x1} x2={x2} />
         <Point
           disabled={disabled}
@@ -144,10 +149,10 @@ export class Ray extends React.Component {
           onMove={this.props.onMove}
           onClick={this.props.onToggleSelect}
         />
-        <Arrow x={arrowX} className={arrowClassNames} direction={arrowDirection} />
-      </g>
+        <StyledArrow x={arrowX} $correct={correct} $selected={selected} direction={arrowDirection} />
+      </StyledRayGroup>
     );
   }
 }
 
-export default injectSheet(style)(Ray);
+export default Ray;

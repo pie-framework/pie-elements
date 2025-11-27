@@ -1,13 +1,12 @@
 import React from 'react';
 import Toggle from '@pie-lib/correct-answer-toggle';
-import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
 import isEqual from 'lodash/isEqual';
 import Translator from '@pie-lib/translator';
 import { Collapsible, color, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 import Feedback from './feedback';
 import Graph from './graph';
@@ -19,26 +18,18 @@ const { translator } = Translator;
 
 export { Graph };
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-  },
-  graphTitle: {
-    textAlign: 'center',
-    pointerEvents: 'none',
-    userSelect: 'none',
-  },
-  numberLine: {
-    boxSizing: 'unset',
-  },
-  toggle: {
-    marginBottom: '16px',
-  },
-  black_on_rose: {
+const MainContainer = styled('div')({
+  color: color.text(),
+  backgroundColor: color.background(),
+});
+
+const StyledUiLayout = styled(UiLayout)(({ $colorContrast }) => ({
+  color: color.text(),
+  backgroundColor: color.background(),
+  ...($colorContrast === 'black_on_rose' && {
     backgroundColor: 'mistyrose',
-  },
-  white_on_black: {
+  }),
+  ...($colorContrast === 'white_on_black' && {
     backgroundColor: 'black',
     '--correct-answer-toggle-label-color': 'white',
     '--tick-color': 'white',
@@ -46,15 +37,45 @@ const styles = (theme) => ({
     '--arrow-color': 'white',
     '--point-stroke': 'white',
     '--point-fill': 'black',
-  },
-  prompt: {
-    verticalAlign: 'middle',
-    marginBottom: '16px',
-  },
-  collapsible: {
-    paddingBottom: theme.spacing.unit * 2,
-  },
+  }),
+}));
+
+const NumberLineContainer = styled('div')(({ $colorContrast }) => ({
+  boxSizing: 'unset',
+  color: color.text(),
+  backgroundColor: color.background(),
+  ...($colorContrast === 'black_on_rose' && {
+    backgroundColor: 'mistyrose',
+  }),
+  ...($colorContrast === 'white_on_black' && {
+    backgroundColor: 'black',
+    '--correct-answer-toggle-label-color': 'white',
+    '--tick-color': 'white',
+    '--line-stroke': 'white',
+    '--arrow-color': 'white',
+    '--point-stroke': 'white',
+    '--point-fill': 'black',
+  }),
+}));
+
+const GraphTitle = styled('div')({
+  textAlign: 'center',
+  pointerEvents: 'none',
+  userSelect: 'none',
 });
+
+const ToggleContainer = styled('div')({
+  marginBottom: '16px',
+});
+
+const PromptContainer = styled('div')({
+  verticalAlign: 'middle',
+  marginBottom: '16px',
+});
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  paddingBottom: theme.spacing(2),
+}));
 
 export class NumberLine extends React.Component {
   static propTypes = {
@@ -65,7 +86,6 @@ export class NumberLine extends React.Component {
     onClearElements: PropTypes.func.isRequired,
     model: PropTypes.object.isRequired,
     answer: PropTypes.array,
-    classes: PropTypes.object.isRequired,
   };
 
   constructor(props, context) {
@@ -180,7 +200,7 @@ export class NumberLine extends React.Component {
   }
 
   render() {
-    let { model, classes, onDeleteElements, onMoveElement, minWidth = 400, maxWidth = 1600, maxHeight } = this.props;
+    let { model, onDeleteElements, onMoveElement, minWidth = 400, maxWidth = 1600, maxHeight } = this.props;
     let { showCorrectAnswer, answers, selectedElements, showMaxPointsWarning, elementType } = this.state;
     let {
       corrected = { correct: [], incorrect: [] },
@@ -263,31 +283,27 @@ export class NumberLine extends React.Component {
 
     let adjustedWidth = graphProps.width - 20;
 
-    const containerNames = classNames(classes.mainContainer, classes[colorContrast]);
-    const numberLineContainerNames = classNames(classes.numberLine, classes.mainContainer, classes[colorContrast]);
-
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={containerNames}>
+      <StyledUiLayout extraCSSRules={extraCSSRules} $colorContrast={colorContrast}>
         {showTeacherInstructions && (
-          <Collapsible
+          <StyledCollapsible
             labels={{
               hidden: 'Show Teacher Instructions',
               visible: 'Hide Teacher Instructions',
             }}
-            className={classes.collapsible}
           >
             <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {prompt && (
-          <div className={classes.prompt}>
+          <PromptContainer>
             <PreviewPrompt prompt={prompt} />
-          </div>
+          </PromptContainer>
         )}
 
-        <div className={numberLineContainerNames} style={{ width }}>
-          <div style={{ width: adjustedWidth }} className={classes.toggle}>
+        <NumberLineContainer $colorContrast={colorContrast} style={{ width }}>
+          <ToggleContainer style={{ width: adjustedWidth }}>
             <Toggle
               show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
               toggled={showCorrectAnswer}
@@ -295,7 +311,7 @@ export class NumberLine extends React.Component {
               initialValue={false}
               language={language}
             />
-          </div>
+          </ToggleContainer>
 
           {!disabled && (
             <PointChooser
@@ -319,14 +335,14 @@ export class NumberLine extends React.Component {
             onDeselectElements={this.deselectElements.bind(this)}
             debug={false}
           />
-          {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }} />}
+          {title && <GraphTitle dangerouslySetInnerHTML={{ __html: title }} />}
 
           {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()} />}
           {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth} />}
-        </div>
-      </UiLayout>
+        </NumberLineContainer>
+      </StyledUiLayout>
     );
   }
 }
 
-export default withStyles(styles)(NumberLine);
+export default NumberLine;

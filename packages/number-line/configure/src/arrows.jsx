@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import cn from 'classnames';
+import { styled } from '@mui/material/styles';
 import { InputCheckbox } from '@pie-lib/config-ui';
+
+const FlexRow = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+});
+
+const ArrowsContainer = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+}));
 
 export class Arrows extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool }).isRequired,
     onChange: PropTypes.func,
@@ -27,32 +35,22 @@ export class Arrows extends React.Component {
   }
 
   render() {
-    const { classes, className, arrows } = this.props;
+    const { className, arrows } = this.props;
     return (
-      <div className={classes.flexRow}>
+      <FlexRow>
         <label>Arrows</label>
-        <div className={cn(classes.arrows, className)}>
-          <InputCheckbox className={classes.checkbox} label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
+        <ArrowsContainer className={className}>
+          <InputCheckbox label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
           &nbsp;
           <InputCheckbox
-            className={classes.checkbox}
             label={'Right'}
             checked={arrows.right}
             onChange={this.changeRight}
           />
-        </div>
-      </div>
+        </ArrowsContainer>
+      </FlexRow>
     );
   }
 }
-const styles = (theme) => ({
-  arrows: {
-    paddingTop: theme.spacing.unit * 2,
-  },
-  flexRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-  },
-});
-export default withStyles(styles)(Arrows);
+
+export default Arrows;
