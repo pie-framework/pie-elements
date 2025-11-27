@@ -26,6 +26,9 @@ exports[`Render Main Component should match snapshot 1`] = `
           "disabled": true,
           "keypadMode": undefined,
         },
+        "ol_list": Object {
+          "disabled": true,
+        },
         "separateParagraphs": Object {
           "disabled": false,
         },
@@ -33,6 +36,9 @@ exports[`Render Main Component should match snapshot 1`] = `
           "disabled": true,
         },
         "textAlign": Object {
+          "disabled": true,
+        },
+        "ul_list": Object {
           "disabled": true,
         },
         "video": Object {
@@ -90,6 +96,9 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
           "disabled": true,
           "keypadMode": undefined,
         },
+        "ol_list": Object {
+          "disabled": true,
+        },
         "separateParagraphs": Object {
           "disabled": false,
         },
@@ -97,6 +106,9 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
           "disabled": true,
         },
         "textAlign": Object {
+          "disabled": true,
+        },
+        "ul_list": Object {
           "disabled": true,
         },
         "video": Object {
