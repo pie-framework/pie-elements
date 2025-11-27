@@ -61,6 +61,21 @@
     "rollup-plugin-analyzer": "^4.0.0"
   },
   "resolutions": {
-    "@types/d3-array": "3.0.3"
+    "@types/d3-array": "3.0.3",
+    "@pie-lib/charting": "5.36.2",
+    "@pie-lib/config-ui": "11.30.2",
+    "@pie-lib/controller-utils": "0.22.2",
+    "@pie-lib/correct-answer-toggle": "2.25.2",
+    "@pie-lib/drag": "2.22.2",
+    "@pie-lib/editable-html": "11.21.2",
+    "@pie-lib/graphing-solution-set": "2.34.2",
+    "@pie-lib/graphing": "2.34.2",
+    "@pie-lib/mask-markup": "1.33.2",
+    "@pie-lib/math-toolbar": "1.31.2",
+    "@pie-lib/plot": "2.27.2",
+    "@pie-lib/render-ui": "4.35.2",
+    "@pie-lib/rubric": "0.28.2",
+    "@pie-lib/scoring-config": "3.26.2",
+    "@pie-lib/text-select": "1.32.2"
   }
 }
