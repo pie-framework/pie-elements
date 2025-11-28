@@ -4,14 +4,14 @@ import { styled } from '@mui/material/styles';
 import isEqual from 'lodash/isEqual';
 import isNumber from 'lodash/isNumber';
 import { color } from '@pie-lib/render-ui';
+import { Draggable } from '../../../draggable';
 
-import Draggable from '../../../draggable';
 import Point from './point';
 import { basePropTypes } from './base';
 
 const duration = '150ms';
 
-const StyledLineGroup = styled('g')(({ $selected, $disabled, $correct }) => ({
+const StyledLineGroup = styled('g')(({ $disabled, $selected, $correct }) => ({
   '& .line-handle': {
     stroke: color.primary(),
     cursor: 'pointer',
@@ -20,7 +20,8 @@ const StyledLineGroup = styled('g')(({ $selected, $disabled, $correct }) => ({
     stroke-width ${duration} linear,
     stroke ${duration} linear`,
   },
-  '&.react-draggable-dragging': {
+  // was ".react-draggable-dragging" in the old version
+  '&.dnd-kit-dragging': {
     opacity: 0.6,
     '& .line-handle': {
       opacity: 1.0,
@@ -115,7 +116,16 @@ export class Line extends React.Component {
   }
 
   render() {
-    const { interval, empty, position, domain, y, selected, disabled, correct } = this.props;
+    const {
+      interval,
+      empty,
+      position,
+      domain,
+      y,
+      selected,
+      disabled,
+      correct,
+    } = this.props;
 
     const { xScale } = this.context;
 
@@ -131,28 +141,27 @@ export class Line extends React.Component {
     const is = xScale(interval) - xScale(0);
 
     const onMouseDown = (e) => e.nativeEvent.preventDefault();
-    const onLineDragStart = (e) => this.setState({ startX: e.clientX });
 
     const onLineClick = () => {
-      const { startX, endX } = this.state;
-      if (!startX || !endX) {
-        return;
-      }
-
-      const deltaX = Math.abs(endX - startX);
-      if (deltaX < is / 10) {
-        this.props.onToggleSelect();
-        this.setState({ startX: null, endX: null });
-      }
+      // click on the line toggles selection
+      this.props.onToggleSelect();
     };
 
     const onRectClick = () => {
       this.props.onToggleSelect();
     };
 
-    const onLineDragStop = (e, dd) => {
-      this.setState({ endX: e.clientX });
-      const invertedX = xScale.invert(dd.lastX + xScale(0));
+    // dnd-kit drag stop handler (receives pixel deltaX from LocalDraggableDndKit)
+    const onLineDragStop = (deltaX) => {
+      // small movement -> treat as click (same threshold as before: is / 10)
+      const deltaAbs = Math.abs(deltaX);
+      if (deltaAbs < is / 10) {
+        this.props.onToggleSelect();
+        return;
+      }
+
+      // convert pixel delta to domain delta (same math as before)
+      const invertedX = xScale.invert(deltaX + xScale(0));
       const newPosition = {
         left: position.left + invertedX,
         right: position.right + invertedX,
@@ -175,60 +184,80 @@ export class Line extends React.Component {
       correct,
     };
 
+    // unique-ish id for this line; if you already have an id prop, use that instead
+    const draggableId = `line-${position.left}-${position.right}-${y}`;
+
     return (
       <Draggable
+        id={draggableId}
         disabled={disabled}
-        axis="x"
-        handle=".line-handle"
         grid={[is]}
         bounds={scaledLineBounds}
-        onStart={onLineDragStart}
-        onStop={onLineDragStop}
         onMouseDown={onMouseDown}
+        onDragEnd={onLineDragStop}
       >
-        <StyledLineGroup $selected={selected} $disabled={disabled} $correct={correct}>
-          <g transform={`translate(0, ${y})`}>
-            <rect
-              x={xScale(left)}
-              width={Math.abs(xScale(right) - xScale(left))}
-              fill="red"
-              fillOpacity="0.0"
-              y="-8"
-              height={16}
-              onClick={onRectClick}
-            />
-            <line
-              className="line-handle"
-              x1={xScale(left)}
-              x2={xScale(right)}
-              onClick={onLineClick}
-            />
-            <Point
-              {...common}
-              empty={empty.left}
-              bounds={{
-                left: domain.min - position.left,
-                right: domain.max - position.left,
-              }}
-              position={position.left}
-              onDrag={onDragLeft}
-              onMove={onMoveLeft}
-              onClick={onRectClick}
-            />
-            <Point
-              {...common}
-              empty={empty.right}
-              bounds={{
-                left: domain.min - position.right,
-                right: domain.max - position.right,
-              }}
-              position={position.right}
-              onDrag={onDragRight}
-              onMove={onMoveRight}
-              onClick={onRectClick}
-            />
-          </g>
-        </StyledLineGroup>
+        {({
+          setNodeRef,
+          attributes,
+          listeners,
+          translateX,
+          isDragging,
+          onMouseDown: handleMouseDown,
+        }) => (
+          <StyledLineGroup
+            ref={setNodeRef}
+            $disabled={disabled}
+            $selected={selected}
+            $correct={correct}
+            className={isDragging ? 'dnd-kit-dragging' : undefined}
+            onMouseDown={handleMouseDown}
+            {...attributes}
+          >
+            <g transform={`translate(${translateX}, ${y})`}>
+              <rect
+                x={xScale(left)}
+                width={Math.abs(xScale(right) - xScale(left))}
+                fill="red"
+                fillOpacity="0.0"
+                y="-8"
+                height={16}
+                onClick={onRectClick}
+              />
+              <line
+                className="line-handle"
+                x1={xScale(left)}
+                x2={xScale(right)}
+                onClick={onLineClick}
+                // this is your "handle": only dragging when grabbing this line
+                {...listeners}
+              />
+              <Point
+                {...common}
+                empty={empty.left}
+                bounds={{
+                  left: domain.min - position.left,
+                  right: domain.max - position.left,
+                }}
+                position={position.left}
+                onDrag={onDragLeft}
+                onMove={onMoveLeft}
+                onClick={onRectClick}
+              />
+              <Point
+                {...common}
+                empty={empty.right}
+                bounds={{
+                  left: domain.min - position.right,
+                  right: domain.max - position.right,
+                }}
+                position={position.right}
+                onDrag={onDragRight}
+                onMove={onMoveRight}
+                onClick={onRectClick}
+              />
+            </g>
+          </StyledLineGroup>
+        )}
       </Draggable>
     );
   }

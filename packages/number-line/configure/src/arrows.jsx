@@ -11,6 +11,29 @@ const FlexRow = styled('div')({
 
 const ArrowsContainer = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(2),
+  display: 'flex',
+  gap: theme.spacing(2),
+  alignItems: 'center',
+  '& > *': {
+    flexShrink: 0,
+  },
+  '& label': {
+    whiteSpace: 'nowrap',
+    overflow: 'visible',
+    textOverflow: 'clip',
+  },
+  '& .MuiFormControlLabel-root': {
+    margin: 0,
+    marginRight: 0,
+  },
+  '& .MuiFormControlLabel-label': {
+    whiteSpace: 'nowrap',
+    overflow: 'visible',
+    textOverflow: 'clip',
+    maxWidth: 'none',
+    width: 'auto',
+    flexShrink: 0,
+  },
 }));
 
 export class Arrows extends React.Component {
@@ -41,7 +64,6 @@ export class Arrows extends React.Component {
         <label>Arrows</label>
         <ArrowsContainer className={className}>
           <InputCheckbox label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
-          &nbsp;
           <InputCheckbox
             label={'Right'}
             checked={arrows.right}
