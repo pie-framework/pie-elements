@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Choices from './choices';
-import Categories from './categories';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import withStyles from '@mui/styles/withStyles';
-import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/categorize';
-import { withDragContext, uid } from '@pie-lib/drag';
-import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import debug from 'debug';
+import { styled } from '@mui/material/styles';
+import { DragOverlay } from '@dnd-kit/core';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/categorize';
+import { DragProvider, uid } from '@pie-lib/drag';
+import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import Translator from '@pie-lib/translator';
 import { AlertDialog } from '@pie-lib/config-ui';
-const { translator } = Translator;
+import Choices from './choices';
+import Choice from './choice';
+import Categories from './categories';
 
+const { translator } = Translator;
 const log = debug('@pie-ui:categorize');
 
 export class Categorize extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object,
     session: PropTypes.shape({
       answers: PropTypes.arrayOf(
@@ -85,12 +86,12 @@ export class Categorize extends React.Component {
     ) {
       newAnswers = draggedChoice.categoryId
         ? moveChoiceToCategory(
-            draggedChoice.id,
-            draggedChoice.categoryId,
-            draggedChoice.categoryId,
-            draggedChoice.choiceIndex,
-            answers,
-          )
+          draggedChoice.id,
+          draggedChoice.categoryId,
+          draggedChoice.categoryId,
+          draggedChoice.choiceIndex,
+          answers,
+        )
         : removeChoiceFromCategory(draggedChoice.id, draggedChoice.categoryId, draggedChoice.choiceIndex, answers);
       this.setState({ showMaxChoiceAlert: true });
     }
@@ -102,12 +103,12 @@ export class Categorize extends React.Component {
     } else {
       newAnswers = draggedChoice
         ? moveChoiceToCategory(
-            draggedChoice.id,
-            draggedChoice.categoryId,
-            categoryId,
-            draggedChoice.choiceIndex,
-            answers,
-          )
+          draggedChoice.id,
+          draggedChoice.categoryId,
+          categoryId,
+          draggedChoice.choiceIndex,
+          answers,
+        )
         : this.removeChoice(categoryId);
     }
 
@@ -166,7 +167,7 @@ export class Categorize extends React.Component {
     correctResponse?.some((correctRes) => correctRes.alternateResponses?.length > 0);
 
   render() {
-    const { classes, model, session } = this.props;
+    const { model, session } = this.props;
     const { showCorrect, showMaxChoiceAlert } = this.state;
     const {
       choicesPosition,
@@ -219,23 +220,21 @@ export class Categorize extends React.Component {
       model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
-      <UiLayout
+      <StyledUiLayout
         extraCSSRules={extraCSSRules}
         id={'main-container'}
-        className={classes.mainContainer}
         fontSizeFactor={fontSizeFactor}
       >
         {showTeacherInstructions && (
           <React.Fragment>
-            <Collapsible
+            <StyledCollapsible
               labels={{
                 hidden: 'Show Teacher Instructions',
                 visible: 'Hide Teacher Instructions',
               }}
-              className={classes.collapsible}
             >
               <PreviewPrompt prompt={model.teacherInstructions} />
-            </Collapsible>
+            </StyledCollapsible>
           </React.Fragment>
         )}
 
@@ -254,7 +253,7 @@ export class Categorize extends React.Component {
           language={language}
         />
 
-        <div className={classes.categorize} style={style}>
+        <StyledCategorize style={style}>
           <div style={{ display: 'flex', flex: 1 }}>
             <Categories
               model={model}
@@ -273,10 +272,9 @@ export class Categorize extends React.Component {
             onDropChoice={this.dropChoice}
             onRemoveChoice={this.removeChoice}
           />
-        </div>
+        </StyledCategorize>
         {displayNote && (
-          <div
-            className={classes.note}
+          <StyledNote
             dangerouslySetInnerHTML={{
               __html: note,
             }}
@@ -284,9 +282,9 @@ export class Categorize extends React.Component {
         )}
 
         {showRationale && (
-          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
+          <StyledCollapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={model.rationale} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {model.correctness && model.feedback && !showCorrect && (
@@ -299,7 +297,7 @@ export class Categorize extends React.Component {
           onCloseText={onCloseText}
           onClose={() => this.setState({ showMaxChoiceAlert: false })}
         ></AlertDialog>
-      </UiLayout>
+      </StyledUiLayout>
     );
   }
 }
@@ -308,34 +306,116 @@ class CategorizeProvider extends React.Component {
   constructor(props) {
     super(props);
     this.uid = uid.generateId();
+    this.state = {
+      activeDragItem: null,
+    };
   }
+
+  onDragStart = (event) => {
+    console.log('Drag Started:', event);
+    const { active } = event;
+    
+    if (active?.data?.current) {
+      this.setState({
+        activeDragItem: active.data.current,
+      });
+    }
+  };
+
+  onDragEnd = (event) => {
+    console.log('Drag Ended Result:', event);
+    const { active, over } = event;
+
+    this.setState({ activeDragItem: null });
+
+    if (!over || !active) {
+      console.log('Missing over or active:', { over, active });
+      return;
+    }
+
+    const draggedItem = active.data.current;
+
+    if (draggedItem && draggedItem.type === 'choice') {
+
+      const choiceData = {
+        id: draggedItem.id,
+        categoryId: draggedItem.categoryId,
+        choiceIndex: draggedItem.choiceIndex,
+        value: draggedItem.value,
+        itemType: draggedItem.itemType,
+      };
+
+      if (over.id === 'choices-board') {
+        if (this.categorizeRef && this.categorizeRef.removeChoice && draggedItem.categoryId) {
+          this.categorizeRef.removeChoice(choiceData);
+        }
+      } else {
+        const categoryId = over.id;
+
+        if (this.categorizeRef && this.categorizeRef.dropChoice) {
+          this.categorizeRef.dropChoice(categoryId, choiceData);
+        }
+      }
+    }
+  };
+
+  renderDragOverlay = () => {
+    const { activeDragItem } = this.state;
+    const { model } = this.props;
+    
+    if (!activeDragItem) return null;
+
+    if (activeDragItem.type === 'choice') {
+      const choice = model.choices?.find(c => c.id === activeDragItem.id);
+      if (choice) {
+        return (
+          <Choice
+            key={choice.id}
+            id={choice.id}
+            {...choice}
+          />
+        );
+      }
+    }
+
+    return null;
+  };
 
   render() {
     return (
-      <uid.Provider value={this.uid}>
-        <Categorize {...this.props} />
-      </uid.Provider>
+      <DragProvider
+        onDragStart={this.onDragStart}
+        onDragEnd={this.onDragEnd}
+      >
+        <uid.Provider value={this.uid}>
+          <Categorize ref={(ref) => this.categorizeRef = ref} {...this.props} />
+          <DragOverlay>
+            {this.renderDragOverlay()}
+          </DragOverlay>
+        </uid.Provider>
+      </DragProvider>
     );
   }
 }
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    position: 'relative',
-  },
-  note: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  categorize: {
-    marginBottom: theme.spacing.unit,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  collapsible: {
-    paddingBottom: theme.spacing.unit * 2,
-  },
-});
+const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
+  color: color.text(),
+  backgroundColor: color.background(),
+  position: 'relative',
+}));
 
-export default withDragContext(withStyles(styles)(CategorizeProvider));
+const StyledNote = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledCategorize = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(1),
+  display: 'flex',
+  flexDirection: 'column',
+}));
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  paddingBottom: theme.spacing(2),
+}));
+
+export default CategorizeProvider;
