@@ -44,7 +44,7 @@ export const getAllUniqueCorrectness = (answers, validResponses) => {
 
 // calculate the minimum number of populated response areas (categories) in the correct answer or alternates
 // and create an array with the possible responses ids
-export const getCompleteResponseDetails = (validation) => {
+export const getCompleteResponseDetails = (validation, allChoices) => {
   const extractImages = (response) => (response?.value || []).map((container) => container.images);
   const countFilledResponseAreas = (container) => (container || []).filter((images) => images.length).length;
 
@@ -63,5 +63,10 @@ export const getCompleteResponseDetails = (validation) => {
     }
   });
 
-  return { responseAreasToBeFilled, possibleResponses };
+  // check if any correct answer have any unplaced answer choices
+  const hasUnplacedChoices = possibleResponses.some(
+    (response) => !allChoices.every((val) => response.includes(val)),
+  );
+
+  return { responseAreasToBeFilled, possibleResponses, hasUnplacedChoices };
 };

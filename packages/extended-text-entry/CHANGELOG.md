@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.3.2...@pie-element/extended-text-entry@13.4.0) (2025-11-27)
+
+
+### Bug Fixes
+
+* bump libs PD-5274, PD-5211, PD-5248 ([7610b25](https://github.com/pie-framework/pie-elements/commit/7610b25423956b6492f33322513b3430051fca77))
+* tests ([4648663](https://github.com/pie-framework/pie-elements/commit/464866307e8f8dc10cd7983cc3f4429ce82c4a47))
+
+
+### Features
+
+* remove list tools from extended-text-entry player view PD-5266 ([bc282d1](https://github.com/pie-framework/pie-elements/commit/bc282d1ea47c26115a6890fa72da3bab2206580d))
+
+
+
+
+
+## [13.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.3.1...@pie-element/extended-text-entry@13.3.2) (2025-10-22)
+
+
+### Bug Fixes
+
+* bump libs PD-5265 ([184a978](https://github.com/pie-framework/pie-elements/commit/184a978f57a2a84dc6ba87c1eba0b92d5cdd9eae))
+
+
+
+
+
+## [13.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.2.1...@pie-element/extended-text-entry@13.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
+# [13.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.2.0...@pie-element/extended-text-entry@13.3.0) (2025-10-15)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+## [13.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.2.0...@pie-element/extended-text-entry@13.2.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
 # [13.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.0.0...@pie-element/extended-text-entry@13.2.0) (2025-10-10)
 
 

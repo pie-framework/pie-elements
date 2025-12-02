@@ -41,7 +41,7 @@ export const isAlternateDuplicated = (alternate) => {
 
 // calculate the minimum number of populated response areas (categories) in the correct answer or alternates
 // and create an array with the possible responses ids
-export const getCompleteResponseDetails = (correctResponse, alternates) => {
+export const getCompleteResponseDetails = (correctResponse, alternates, allChoices) => {
   const choicesPerCategory = correctResponse.map((category) => category.choices);
   const possibleResponses = [choicesPerCategory.flat()];
   let responseAreasToBeFilled = choicesPerCategory.filter((choices) => choices.length).length;
@@ -60,5 +60,10 @@ export const getCompleteResponseDetails = (correctResponse, alternates) => {
     });
   }
 
-  return { responseAreasToBeFilled, possibleResponses };
+  // check if any correct answer have any unplaced answer choices
+  const hasUnplacedChoices = possibleResponses.some(
+    (response) => !allChoices.every((val) => response.includes(val?.id)),
+  );
+
+  return { responseAreasToBeFilled, possibleResponses, hasUnplacedChoices };
 };

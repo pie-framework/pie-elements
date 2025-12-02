@@ -10,7 +10,10 @@ const StyledRadio = styled(Radio)({
     color: `var(--choice-input-color, ${color.text()})`,
   },
   '&.MuiRadio-root.Mui-checked': {
-    color: `var(--choice-input-selected-color, ${color.text()})`,
+    color: `var(--choice-input-selected-color, ${color.primary()})`,
+  },
+  '&.MuiRadio-root.Mui-disabled': {
+    color: `var(--choice-input-disabled-color, ${color.defaults.DISABLED})`,
   },
 });
 

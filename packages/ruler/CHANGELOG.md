@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@8.3.2...@pie-element/ruler@8.3.3) (2025-11-27)
+
+
+### Bug Fixes
+
+* bump libs PD-5274, PD-5211, PD-5248 ([7610b25](https://github.com/pie-framework/pie-elements/commit/7610b25423956b6492f33322513b3430051fca77))
+
+
+
+
+
+## [8.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@8.3.1...@pie-element/ruler@8.3.2) (2025-10-22)
+
+
+### Bug Fixes
+
+* bump libs PD-5265 ([184a978](https://github.com/pie-framework/pie-elements/commit/184a978f57a2a84dc6ba87c1eba0b92d5cdd9eae))
+
+
+
+
+
+## [8.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@8.2.1...@pie-element/ruler@8.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
+# [8.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@8.2.0...@pie-element/ruler@8.3.0) (2025-10-15)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
+## [8.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@8.2.0...@pie-element/ruler@8.2.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
+
+
+
+
+
 # [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@8.0.0...@pie-element/ruler@8.2.0) (2025-10-10)
 
 
