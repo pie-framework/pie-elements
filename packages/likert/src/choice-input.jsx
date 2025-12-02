@@ -10,7 +10,10 @@ import { LIKERT_ORIENTATION } from './likertEntities';
 export const RadioStyled = styled(Radio)({
   color: `var(--choice-input-color, ${color.text()})`,
   '&.Mui-checked': {
-    color: `var(--choice-input-selected-color, ${color.text()})`,
+    color: `var(--choice-input-selected-color, ${color.primary()})`,
+  },
+  '&.Mui-disabled': {
+    color: `var(--choice-input-disabled-color, ${color.defaults.DISABLED})`,
   },
 });
 
@@ -61,7 +64,7 @@ export class ChoiceInput extends React.Component {
       <CheckboxHolderRoot style={{ flexDirection }}>
         <StyledFormControlLabel
           disabled={disabled}
-          control={<RadioStyled checked={checked} onChange={this.onToggleChoice} />}
+          control={<RadioStyled checked={checked} onChange={this.onToggleChoice} disabled={disabled} />}
         />
         <LabelRoot onClick={this.onToggleChoice} dangerouslySetInnerHTML={{ __html: label }} />
       </CheckboxHolderRoot>

@@ -49,6 +49,7 @@ export default class MultipleChoice extends HTMLElement {
     super();
     this._model = null;
     this._session = null;
+    this._options = null; // added for ebsr print mode detection
     this.audioComplete = false;
     this._boundHandleKeyDown = this.handleKeyDown.bind(this);
     this._keyboardEventsEnabled = false;
@@ -61,6 +62,7 @@ export default class MultipleChoice extends HTMLElement {
           var element = React.createElement(Main, {
             model: this._model,
             session: this._session,
+            options: this._options,
             onChoiceChanged: this._onChange.bind(this),
             onShowCorrectToggle: this.onShowCorrectToggle.bind(this),
           });
@@ -137,6 +139,15 @@ export default class MultipleChoice extends HTMLElement {
 
   get session() {
     return this._session;
+  }
+
+  get options() {
+    return this._options;
+  }
+
+  set options(o) {
+    this._options = o;
+    this._rerender();
   }
 
   set session(s) {

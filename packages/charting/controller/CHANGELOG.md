@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@6.3.2...@pie-element/charting-controller@6.3.3) (2025-11-27)
+
+
+### Bug Fixes
+
+* bump libs PD-5274, PD-5211, PD-5248 ([7610b25](https://github.com/pie-framework/pie-elements/commit/7610b25423956b6492f33322513b3430051fca77))
+
+
+
+
+
+## [6.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@6.3.1...@pie-element/charting-controller@6.3.2) (2025-10-22)
+
+
+### Bug Fixes
+
+* bump libs PD-5265 ([184a978](https://github.com/pie-framework/pie-elements/commit/184a978f57a2a84dc6ba87c1eba0b92d5cdd9eae))
+
+
+
+
+
+## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@6.2.0...@pie-element/charting-controller@6.3.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
+
+
+
+
+
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@6.2.0...@pie-element/charting-controller@6.3.0) (2025-10-15)
+
+**Note:** Version bump only for package @pie-element/charting-controller
+
+
+
+
+
 # [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@6.0.1...@pie-element/charting-controller@6.2.0) (2025-10-10)
 
 

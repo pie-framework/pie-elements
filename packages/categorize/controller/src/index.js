@@ -160,9 +160,10 @@ export const model = (question, session, env, updateSession) =>
     }
 
     const alternates = getAlternates(filteredCorrectResponse);
-    const { responseAreasToBeFilled, possibleResponses } = getCompleteResponseDetails(
+    const { responseAreasToBeFilled, possibleResponses, hasUnplacedChoices } = getCompleteResponseDetails(
       filteredCorrectResponse,
       normalizedQuestion.allowAlternateEnabled ? alternates : [],
+      normalizedQuestion.choices,
     );
     const out = {
       categories: categories || [],
@@ -190,6 +191,7 @@ export const model = (question, session, env, updateSession) =>
       customAudioButton,
       possibleResponses,
       responseAreasToBeFilled,
+      hasUnplacedChoices,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
