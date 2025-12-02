@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
 import Design from './design';
 
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     configuration: PropTypes.object,
     className: PropTypes.string,
     onConfigurationChanged: PropTypes.func,
@@ -34,6 +32,5 @@ export class Main extends React.Component {
     );
   }
 }
-const styles = () => ({});
 
-export default withStyles(styles)(Main);
+export default Main;
