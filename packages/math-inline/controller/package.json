@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@pie-framework/math-validation": "^1.4.2",
-    "@pie-lib/feedback": "0.31.0-mui-update.0",
-    "@pie-lib/translator": "2.31.0-mui-update.0",
+    "@pie-lib/feedback": "0.33.0-mui-update.0",
+    "@pie-lib/translator": "2.33.0-mui-update.0",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },
