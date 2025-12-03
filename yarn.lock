@@ -2631,7 +2631,7 @@
     mathjax-full "3.2.2"
     react "^16.8.1"
 
-"@pie-lib/math-toolbar@1.31.2-beta.1", "@pie-lib/math-toolbar@^1.31.2-beta.1":
+"@pie-lib/math-toolbar@1.31.2-beta.1":
   version "1.31.2-beta.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.31.2-beta.1.tgz#9dcc3b12a9c6581728964996fd441d3c7700fd41"
   integrity sha512-elaoSSUJdhHCTTXXEAdki/aULI2PoeZJhNZQpKzIfHNvBzOrgmLIj/Ho4zu6ZTgSJNTHECrm3uCHEF8nEPfiIw==
