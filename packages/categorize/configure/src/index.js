@@ -7,7 +7,6 @@ import {
   InsertSoundEvent,
   DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
-import { renderMath } from '@pie-lib/math-rendering';
 
 import Main from './main';
 
@@ -144,12 +143,14 @@ export default class CategorizeConfigure extends HTMLElement {
     });
 
     if (!this._root) {
+      console.log('[MATH-DEBUG][categorize-configure] createRoot() - creating new root');
       this._root = createRoot(this);
     }
+
+    console.log('[MATH-DEBUG][categorize-configure] root.render() - starting React render');
     this._root.render(el);
-    queueMicrotask(() => {
-      renderMath(this);
-    });
+    console.log('[MATH-DEBUG][categorize-configure] root.render() - render call completed (async)');
+    console.log('[MATH-DEBUG][categorize-configure] NOTE: renderMath now called from React componentDidMount/Update');
   }
 
   disconnectedCallback() {

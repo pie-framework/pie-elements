@@ -39,6 +39,7 @@ export default class RootExtendedTextEntry extends HTMLElement {
     this._model = null;
     this._session = null;
     this._root = null;
+    console.log('[MATH-DEBUG][extended-text-entry] constructor called');
   }
 
   setLangAttribute() {
@@ -88,6 +89,7 @@ export default class RootExtendedTextEntry extends HTMLElement {
   }
 
   connectedCallback() {
+    console.log('[MATH-DEBUG][extended-text-entry] connectedCallback called');
     this.setAttribute('aria-label', 'Written Response Question');
     this.setAttribute('role', 'region');
 
@@ -96,6 +98,8 @@ export default class RootExtendedTextEntry extends HTMLElement {
 
   render() {
     if (this._model && this._session) {
+      console.log('[MATH-DEBUG][extended-text-entry] render() called');
+
       let elem = React.createElement(Main, {
         model: this._model,
         session: this._session,
@@ -107,11 +111,30 @@ export default class RootExtendedTextEntry extends HTMLElement {
       this.setLangAttribute();
 
       if (!this._root) {
+        console.log('[MATH-DEBUG][extended-text-entry] createRoot() - creating new root');
         this._root = createRoot(this);
       }
+
+      console.log('[MATH-DEBUG][extended-text-entry] root.render() - starting React render');
+      const mathNodesBefore = this.querySelectorAll('[data-latex], mjx-container, math').length;
+      console.log('[MATH-DEBUG][extended-text-entry] Math nodes before render:', mathNodesBefore);
+
       this._root.render(elem);
+
+      console.log('[MATH-DEBUG][extended-text-entry] root.render() - render call completed (async)');
+
       queueMicrotask(() => {
+        const mathNodesAfter = this.querySelectorAll('[data-latex], mjx-container, math').length;
+        console.log('[MATH-DEBUG][extended-text-entry] queueMicrotask() - before renderMath');
+        console.log('[MATH-DEBUG][extended-text-entry] Math nodes in microtask:', mathNodesAfter);
+        console.log('[MATH-DEBUG][extended-text-entry] [data-latex] nodes:', this.querySelectorAll('[data-latex]').length);
+        console.log('[MATH-DEBUG][extended-text-entry] mjx-container nodes:', this.querySelectorAll('mjx-container').length);
+
         renderMath(this);
+
+        const mathNodesRendered = this.querySelectorAll('mjx-container').length;
+        console.log('[MATH-DEBUG][extended-text-entry] renderMath() completed');
+        console.log('[MATH-DEBUG][extended-text-entry] mjx-container nodes after renderMath:', mathNodesRendered);
       });
     }
   }

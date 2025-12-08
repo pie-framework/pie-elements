@@ -1,6 +1,5 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { renderMath } from '@pie-lib/math-rendering';
 import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import CategorizeComponent from './categorize';
@@ -9,6 +8,7 @@ export default class Categorize extends HTMLElement {
   constructor() {
     super();
     this._root = null;
+    console.log('[MATH-DEBUG][categorize] constructor called');
   }
 
   set model(m) {
@@ -125,7 +125,9 @@ export default class Categorize extends HTMLElement {
   }
 
   onShowCorrectToggle() {
-    renderMath(this);
+    // renderMath is now handled by React's componentDidUpdate
+    // when showCorrect state changes
+    console.log('[MATH-DEBUG][categorize] onShowCorrectToggle - renderMath handled by React');
   }
 
   _createAudioInfoToast() {
@@ -156,6 +158,7 @@ export default class Categorize extends HTMLElement {
   }
 
   connectedCallback() {
+    console.log('[MATH-DEBUG][categorize] connectedCallback called');
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -260,6 +263,8 @@ export default class Categorize extends HTMLElement {
 
   render() {
     if (this._model && this._session) {
+      console.log('[MATH-DEBUG][categorize] render() called');
+
       const el = React.createElement(CategorizeComponent, {
         model: this._model,
         session: this._session,
@@ -268,12 +273,14 @@ export default class Categorize extends HTMLElement {
       });
 
       if (!this._root) {
+        console.log('[MATH-DEBUG][categorize] createRoot() - creating new root');
         this._root = createRoot(this);
       }
+
+      console.log('[MATH-DEBUG][categorize] root.render() - starting React render');
       this._root.render(el);
-      queueMicrotask(() => {
-        renderMath(this);
-      });
+      console.log('[MATH-DEBUG][categorize] root.render() - render call completed (async)');
+      console.log('[MATH-DEBUG][categorize] NOTE: renderMath now called from React componentDidMount/Update');
     }
   }
 }

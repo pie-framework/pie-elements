@@ -6,6 +6,7 @@ import Header from '../header';
 import Config from './config';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import { removeAllChoices } from '@pie-lib/categorize';
+import { renderMath } from '@pie-lib/math-rendering';
 
 const ChoicesContainer = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(2.5),
@@ -51,6 +52,32 @@ export class Choices extends React.Component {
   state = {
     focusedEl: null,
   };
+
+  componentDidMount() {
+    console.log('[MATH-DEBUG][Choices Configure] componentDidMount - calling renderMath');
+    this.callRenderMath();
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log('[MATH-DEBUG][Choices Configure] componentDidUpdate - checking if renderMath needed');
+
+    // Re-render math when choices change
+    if (prevProps.choices !== this.props.choices) {
+      console.log('[MATH-DEBUG][Choices Configure] Choices changed - calling renderMath');
+      this.callRenderMath();
+    }
+  }
+
+  callRenderMath() {
+    // Find the web component directly by tag name
+    const webComponent = document.querySelector('categorize-configure');
+    console.log('[MATH-DEBUG][Choices Configure] webComponent found:', webComponent);
+
+    if (webComponent) {
+      renderMath(webComponent);
+      console.log('[MATH-DEBUG][Choices Configure] renderMath called');
+    }
+  }
 
   changeChoice = (choice) => {
     const { choices, onModelChanged } = this.props;

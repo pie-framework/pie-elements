@@ -16,6 +16,7 @@ import {
 } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
 import { DragProvider, uid } from '@pie-lib/drag';
+import { renderMath } from '@pie-lib/math-rendering';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
@@ -72,6 +73,35 @@ export class Design extends React.Component {
     this.state = {
       activeDragItem: null,
     };
+  }
+
+  componentDidMount() {
+    console.log('[MATH-DEBUG][Design Configure] componentDidMount - calling renderMath');
+    this.callRenderMath();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('[MATH-DEBUG][Design Configure] componentDidUpdate - checking if renderMath needed');
+
+    // Re-render math when model changes or when drag state changes
+    if (
+      prevProps.model !== this.props.model ||
+      prevState.activeDragItem !== this.state.activeDragItem
+    ) {
+      console.log('[MATH-DEBUG][Design Configure] Model or drag state changed - calling renderMath');
+      this.callRenderMath();
+    }
+  }
+
+  callRenderMath() {
+    // Find the web component directly by tag name
+    const webComponent = document.querySelector('categorize-configure');
+    console.log('[MATH-DEBUG][Design Configure] webComponent found:', webComponent);
+
+    if (webComponent) {
+      renderMath(webComponent);
+      console.log('[MATH-DEBUG][Design Configure] renderMath called');
+    }
   }
 
   updateModel = (props) => {
@@ -202,16 +232,42 @@ export class Design extends React.Component {
   };
 
   onDragStart = (event) => {
+    console.log('[MATH-DEBUG][Design Configure] Drag Started:', event);
     const { active } = event;
     const draggedItem = active.data.current;
 
     this.setState({
       activeDragItem: draggedItem,
+    }, () => {
+      // Render math in drag overlay after state update
+      // Use multiple timeouts to catch the DragOverlay portal rendering
+      setTimeout(() => {
+        console.log('[MATH-DEBUG][Design Configure] Calling renderMath after drag start (first attempt)');
+        this.callRenderMath();
+      }, 0);
+
+      setTimeout(() => {
+        console.log('[MATH-DEBUG][Design Configure] Calling renderMath after drag start (second attempt)');
+        this.callRenderMath();
+      }, 50);
+
+      setTimeout(() => {
+        console.log('[MATH-DEBUG][Design Configure] Calling renderMath after drag start (third attempt)');
+        this.callRenderMath();
+      }, 100);
     });
   };
 
   onDragEnd = (event) => {
     const { active, over } = event;
+
+    // Clear active drag item and render math after DOM updates
+    this.setState({ activeDragItem: null }, () => {
+      setTimeout(() => {
+        console.log('[MATH-DEBUG][Design Configure] Calling renderMath after drag end');
+        this.callRenderMath();
+      }, 0);
+    });
 
     if (!over || !active) {
       console.log('Missing over or active:', { over, active });
@@ -411,22 +467,23 @@ export class Design extends React.Component {
           configuration={configuration}
         />
       );
-    } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex === undefined) {
+    } else if (activeDragItem.type === 'choice-preview') {
       const choice = model.choices?.find(c => c.id === activeDragItem.id);
       if (!choice) return null;
+
+      // For drag overlay, render the choice content directly without DraggableChoice wrapper
+      // This ensures math renders properly in the portal
       return (
-        <ChoicePreview
-          choice={choice}
-        />
-      );
-    } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex !== undefined) {
-      const choice = model.choices?.find(c => c.id === activeDragItem.id);
-      if (!choice) return null;
-      return (
-        <ChoicePreview
-          choice={choice}
-          alternateResponseIndex={activeDragItem.alternateResponseIndex}
-        />
+        <div style={{
+          padding: '8px',
+          backgroundColor: 'white',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+          minWidth: '100px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+        }}>
+          <div dangerouslySetInnerHTML={{ __html: choice.content }} />
+        </div>
       );
     }
 

@@ -7,6 +7,7 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/categorize';
 import { DragProvider, uid } from '@pie-lib/drag';
 import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
 import Translator from '@pie-lib/translator';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Choices from './choices';
@@ -42,6 +43,46 @@ export class Categorize extends React.Component {
       showCorrect: false,
       showMaxChoiceAlert: false,
     };
+  }
+
+  componentDidMount() {
+    console.log('[MATH-DEBUG][Categorize React] componentDidMount - calling renderMath');
+
+    // Use getElementById since we know the container has id="main-container"
+    const mainContainer = document.getElementById('main-container');
+    console.log('[MATH-DEBUG][Categorize React] mainContainer:', mainContainer);
+
+    if (mainContainer) {
+      // Find the web component parent
+      const webComponent = mainContainer.closest('categorize-element');
+      console.log('[MATH-DEBUG][Categorize React] webComponent found:', webComponent);
+
+      if (webComponent) {
+        renderMath(webComponent);
+        console.log('[MATH-DEBUG][Categorize React] renderMath called from componentDidMount');
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('[MATH-DEBUG][Categorize React] componentDidUpdate - calling renderMath');
+    // Re-render math when model, session, or showCorrect changes
+    if (
+      prevProps.model !== this.props.model ||
+      prevProps.session !== this.props.session ||
+      prevState.showCorrect !== this.state.showCorrect
+    ) {
+      // Use getElementById since we know the container has id="main-container"
+      const mainContainer = document.getElementById('main-container');
+
+      if (mainContainer) {
+        const webComponent = mainContainer.closest('categorize-element');
+        if (webComponent) {
+          renderMath(webComponent);
+          console.log('[MATH-DEBUG][Categorize React] renderMath called from componentDidUpdate');
+        }
+      }
+    }
   }
 
   removeChoice = (c) => {
@@ -314,10 +355,37 @@ class CategorizeProvider extends React.Component {
   onDragStart = (event) => {
     console.log('Drag Started:', event);
     const { active } = event;
-    
+
     if (active?.data?.current) {
       this.setState({
         activeDragItem: active.data.current,
+      }, () => {
+        // Render math in drag overlay after state update
+        // Use multiple timeouts to catch the DragOverlay portal rendering
+        const callRenderMath = () => {
+          const mainContainer = document.getElementById('main-container');
+          if (mainContainer) {
+            const webComponent = mainContainer.closest('categorize-element');
+            if (webComponent) {
+              renderMath(webComponent);
+            }
+          }
+        };
+
+        setTimeout(() => {
+          console.log('[MATH-DEBUG][Categorize React] renderMath called after drag start (first attempt)');
+          callRenderMath();
+        }, 0);
+
+        setTimeout(() => {
+          console.log('[MATH-DEBUG][Categorize React] renderMath called after drag start (second attempt)');
+          callRenderMath();
+        }, 50);
+
+        setTimeout(() => {
+          console.log('[MATH-DEBUG][Categorize React] renderMath called after drag start (third attempt)');
+          callRenderMath();
+        }, 100);
       });
     }
   };
@@ -326,7 +394,19 @@ class CategorizeProvider extends React.Component {
     console.log('Drag Ended Result:', event);
     const { active, over } = event;
 
-    this.setState({ activeDragItem: null });
+    this.setState({ activeDragItem: null }, () => {
+      // Render math after drag ends and DOM updates
+      setTimeout(() => {
+        const mainContainer = document.getElementById('main-container');
+        if (mainContainer) {
+          const webComponent = mainContainer.closest('categorize-element');
+          if (webComponent) {
+            renderMath(webComponent);
+            console.log('[MATH-DEBUG][Categorize React] renderMath called after drag end');
+          }
+        }
+      }, 0);
+    });
 
     if (!over || !active) {
       console.log('Missing over or active:', { over, active });

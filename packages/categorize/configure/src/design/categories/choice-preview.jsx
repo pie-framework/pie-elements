@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { HtmlAndMath } from '@pie-lib/render-ui';
 import { color } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
 
 const ChoicePreviewContainer = styled('div')({
   position: 'relative',
@@ -29,6 +30,51 @@ export class ChoicePreview extends React.Component {
     onDelete: PropTypes.func.isRequired,
   };
   static defaultProps = {};
+
+  componentDidMount() {
+    console.log('[MATH-DEBUG][ChoicePreview] componentDidMount - calling renderMath');
+    this.callRenderMath();
+  }
+
+  componentDidUpdate() {
+    console.log('[MATH-DEBUG][ChoicePreview] componentDidUpdate - calling renderMath');
+    this.callRenderMath();
+  }
+
+  callRenderMath() {
+    // Use multiple attempts with delays to catch portal rendering
+    setTimeout(() => {
+      const webComponent = document.querySelector('categorize-configure');
+      if (webComponent) {
+        renderMath(webComponent);
+        console.log('[MATH-DEBUG][ChoicePreview] renderMath called (first attempt)');
+      }
+    }, 0);
+
+    setTimeout(() => {
+      const webComponent = document.querySelector('categorize-configure');
+      if (webComponent) {
+        renderMath(webComponent);
+        console.log('[MATH-DEBUG][ChoicePreview] renderMath called (second attempt)');
+      }
+    }, 50);
+
+    setTimeout(() => {
+      const webComponent = document.querySelector('categorize-configure');
+      if (webComponent) {
+        renderMath(webComponent);
+        console.log('[MATH-DEBUG][ChoicePreview] renderMath called (third attempt)');
+      }
+    }, 100);
+
+    setTimeout(() => {
+      const webComponent = document.querySelector('categorize-configure');
+      if (webComponent) {
+        renderMath(webComponent);
+        console.log('[MATH-DEBUG][ChoicePreview] renderMath called (fourth attempt)');
+      }
+    }, 200);
+  }
 
   delete = () => {
     const { onDelete, choice } = this.props;

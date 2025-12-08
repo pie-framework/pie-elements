@@ -37,6 +37,7 @@ export default class DragInTheBlank extends HTMLElement {
     this._audioInitialized = false;
     this.audioComplete = false;
     this._root = null;
+    console.log('[MATH-DEBUG][drag-in-the-blank] constructor called');
   }
 
   set model(m) {
@@ -64,6 +65,8 @@ export default class DragInTheBlank extends HTMLElement {
 
   _render = () => {
     if (this._model && this._session) {
+      console.log('[MATH-DEBUG][drag-in-the-blank] _render() called');
+
       let elem = React.createElement(Main, {
         model: this._model,
         value: this._session.value,
@@ -71,11 +74,30 @@ export default class DragInTheBlank extends HTMLElement {
       });
 
       if (!this._root) {
+        console.log('[MATH-DEBUG][drag-in-the-blank] createRoot() - creating new root');
         this._root = createRoot(this);
       }
+
+      console.log('[MATH-DEBUG][drag-in-the-blank] root.render() - starting React render');
+      const mathNodesBefore = this.querySelectorAll('[data-latex], mjx-container, math').length;
+      console.log('[MATH-DEBUG][drag-in-the-blank] Math nodes before render:', mathNodesBefore);
+
       this._root.render(elem);
+
+      console.log('[MATH-DEBUG][drag-in-the-blank] root.render() - render call completed (async)');
+
       queueMicrotask(() => {
+        const mathNodesAfter = this.querySelectorAll('[data-latex], mjx-container, math').length;
+        console.log('[MATH-DEBUG][drag-in-the-blank] queueMicrotask() - before renderMath');
+        console.log('[MATH-DEBUG][drag-in-the-blank] Math nodes in microtask:', mathNodesAfter);
+        console.log('[MATH-DEBUG][drag-in-the-blank] [data-latex] nodes:', this.querySelectorAll('[data-latex]').length);
+        console.log('[MATH-DEBUG][drag-in-the-blank] mjx-container nodes:', this.querySelectorAll('mjx-container').length);
+
         renderMath(this);
+
+        const mathNodesRendered = this.querySelectorAll('mjx-container').length;
+        console.log('[MATH-DEBUG][drag-in-the-blank] renderMath() completed');
+        console.log('[MATH-DEBUG][drag-in-the-blank] mjx-container nodes after renderMath:', mathNodesRendered);
       });
     }
   };
@@ -125,6 +147,7 @@ export default class DragInTheBlank extends HTMLElement {
   }
 
   connectedCallback() {
+    console.log('[MATH-DEBUG][drag-in-the-blank] connectedCallback called');
     this._render();
 
     // Observation:  audio in Chrome will have the autoplay attribute,

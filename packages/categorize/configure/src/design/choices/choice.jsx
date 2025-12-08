@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -11,6 +11,7 @@ import { useDraggable, useDroppable } from '@dnd-kit/core';
 import debug from 'debug';
 import { uid } from '@pie-lib/drag';
 import { multiplePlacements } from '../../utils';
+import { renderMath } from '@pie-lib/math-rendering';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -69,7 +70,15 @@ const Choice = ({
   maxImageHeight,
   uploadSoundSupport,
 }) => {
+  const cardRef = useRef(null);
   const draggable = canDrag({ choice, correctResponseCount, lockChoiceOrder });
+  
+  // Render math after component mounts and when choice content changes
+  useEffect(() => {
+    if (cardRef.current) {
+      setTimeout(() => renderMath(cardRef.current), 0);
+    }
+  }, [choice.content]);
   
   const {
     attributes: dragAttributes,
@@ -116,8 +125,9 @@ const Choice = ({
 
   const showRemoveAfterPlacing = isCheckboxShown(allowMultiplePlacements);
 
-  // Combine refs for both drag and drop
+  // Combine refs for drag, drop, and math rendering
   const setNodeRef = (element) => {
+    cardRef.current = element;
     setDragNodeRef(element);
     setDropNodeRef(element);
   };
