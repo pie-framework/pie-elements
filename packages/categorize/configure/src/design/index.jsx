@@ -33,37 +33,18 @@ const { translator } = Translator;
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
 
-// Styled container for drag preview
-const DragPreviewChoiceStyled = styled('div')(({ theme }) => ({
-  padding: theme.spacing(1),
-  backgroundColor: '#fff',
-  border: '1px solid #ccc',
-  borderRadius: '4px',
-  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-  minWidth: '100px',
-}));
-
-// Drag preview component that ensures math is rendered in portal context
-class DragPreviewChoice extends React.Component {
+// Simple wrapper to render math in DragOverlay portal
+class DragPreviewWrapper extends React.Component {
   containerRef = React.createRef();
 
   componentDidMount() {
-    // Render math after component mounts in the portal
-    // setTimeout ensures HtmlAndMath has finished rendering its content
-    setTimeout(() => {
-      if (this.containerRef.current) {
-        renderMath(this.containerRef.current);
-      }
-    }, 0);
+    if (this.containerRef.current) {
+      setTimeout(() => renderMath(this.containerRef.current), 0);
+    }
   }
 
   render() {
-    return (
-      <DragPreviewChoiceStyled 
-        ref={this.containerRef}
-        dangerouslySetInnerHTML={{ __html: this.props.content }}
-      />
-    );
+    return <div ref={this.containerRef}>{this.props.children}</div>;
   }
 }
 
@@ -248,8 +229,11 @@ export class Design extends React.Component {
   onDragEnd = (event) => {
     const { active, over } = event;
 
+    // Always clear activeDragItem when drag ends
+    this.setState({ activeDragItem: null });
+    
     if (!over || !active) {
-      console.log('Missing over or active:', { over, active });
+      console.log('[Design] Drag cancelled - no drop target');
       return;
     }
 
@@ -258,30 +242,23 @@ export class Design extends React.Component {
     const activeData = active.data.current;
     const overData = over.data.current;
 
-    // moving a choice between categories (correct response)
     if (activeData.type === 'choice-preview' && overData.type === 'category') {
       this.moveChoice(activeData.id, activeData.categoryId, overData.id, 0);
     }
 
-    // placing a choice into a category (correct response)
     if (activeData.type === 'choice' && overData.type === 'category') {
       this.addChoiceToCategory({ id: activeData.id }, overData.id);
     }
 
-    // moving a choice between categories (alternate response)
     if (activeData.type === 'choice-preview' && overData.type === 'category-alternate') {
-      const fromAlternateIndex = activeData.alternateResponseIndex;
       const toAlternateIndex = overData.alternateResponseIndex;
       this.moveChoiceInAlternate(activeData.id, activeData.categoryId, overData.id, 0, toAlternateIndex);
     }
 
-    // placing a choice into a category (alternate response)
     if (allowAlternateEnabled && activeData.type === 'choice' && overData.type === 'category-alternate') {
-      console.log('Placing choice into alternate category');
       const choiceId = activeData.id;
       const categoryId = overData.id;
       const toAlternateResponseIndex = overData.alternateResponseIndex;
-      console.log('Placing choice into alternate category:', { choiceId, categoryId, toAlternateResponseIndex });
       this.addChoiceToAlternateCategory({ id: choiceId }, categoryId, toAlternateResponseIndex);
     }
   };
@@ -432,17 +409,40 @@ export class Design extends React.Component {
 
   renderDragOverlay = () => {
     const { activeDragItem } = this.state;
-    const { model } = this.props;
+    const { model, configuration } = this.props;
 
     if (!activeDragItem) return null;
 
-    const choice = model.choices?.find(c => c.id === activeDragItem.id);
-    if (!choice) return null;
+    if (activeDragItem.type === 'choice') {
+      const choice = model.choices?.find(c => c.id === activeDragItem.id);
+      if (!choice) return null;
 
-    // Use DragPreviewChoice which renders math after mounting in portal
-    return (
-      <DragPreviewChoice content={choice.content} />
-    );
+      return (
+        <Choice
+          choice={choice}
+          configuration={configuration}
+        />
+      );
+    } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex === undefined) {
+      const choice = model.choices?.find(c => c.id === activeDragItem.id);
+      if (!choice) return null;
+      return (
+        <ChoicePreview
+          choice={choice}
+        />
+      );
+    } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex !== undefined) {
+      const choice = model.choices?.find(c => c.id === activeDragItem.id);
+      if (!choice) return null;
+      return (
+        <ChoicePreview
+          choice={choice}
+          alternateResponseIndex={activeDragItem.alternateResponseIndex}
+        />
+      );
+    }
+
+    return null;
   };
 
   render() {
@@ -728,7 +728,9 @@ export class Design extends React.Component {
             )}
           </layout.ConfigLayout>
           <DragOverlay>
-            {this.renderDragOverlay()}
+            <DragPreviewWrapper>
+              {this.renderDragOverlay()}
+            </DragPreviewWrapper>
           </DragOverlay>
         </IdProvider>
       </DragProvider>

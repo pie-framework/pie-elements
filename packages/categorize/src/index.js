@@ -13,28 +13,43 @@ export default class Categorize extends HTMLElement {
     this._mathRenderPending = false;
   }
 
-  // Debounced renderMath to avoid excessive calls during rapid DOM changes
   _scheduleMathRender = () => {
     if (this._mathRenderPending) return;
+
     this._mathRenderPending = true;
-    
+
     requestAnimationFrame(() => {
+      if (this._mathObserver && !this._mathObserverPaused) {
+        this._mathObserver.disconnect();
+      }
+
       renderMath(this);
+
       this._mathRenderPending = false;
+
+      setTimeout(() => {
+        if (this._mathObserver && !this._mathObserverPaused) {
+          this._mathObserver.observe(this, {
+            childList: true,
+            subtree: true,
+            characterData: false,
+          });
+        }
+      }, 50);
     });
   };
 
   _initMathObserver() {
     if (this._mathObserver) return;
-    
+
     this._mathObserver = new MutationObserver(() => {
       this._scheduleMathRender();
     });
-    
+
     this._mathObserver.observe(this, {
       childList: true,
       subtree: true,
-      characterData: true,
+      characterData: false,
     });
   }
 
@@ -44,6 +59,27 @@ export default class Categorize extends HTMLElement {
       this._mathObserver = null;
     }
   }
+
+  pauseMathObserver = () => {
+    if (this._mathObserver) {
+      this._mathObserver.disconnect();
+      this._mathObserverPaused = true;
+    }
+  };
+
+  resumeMathObserver = () => {
+    if (this._mathObserverPaused) {
+      this._mathObserverPaused = false;
+
+      if (this._mathObserver) {
+        this._mathObserver.observe(this, {
+          childList: true,
+          subtree: true,
+          characterData: false,
+        });
+      }
+    }
+  };
 
   set model(m) {
     this._model = m;
@@ -190,7 +226,6 @@ export default class Categorize extends HTMLElement {
   }
 
   connectedCallback() {
-    // Initialize math observer for rendering math when DOM changes
     this._initMathObserver();
     
     // Observation:  audio in Chrome will have the autoplay attribute,
@@ -282,7 +317,6 @@ export default class Categorize extends HTMLElement {
   }
 
   disconnectedCallback() {
-    // Clean up math observer
     this._disconnectMathObserver();
     
     document.removeEventListener('click', this._enableAudio);
@@ -305,13 +339,14 @@ export default class Categorize extends HTMLElement {
         session: this._session,
         onAnswersChange: this.changeAnswers.bind(this),
         onShowCorrectToggle: this.onShowCorrectToggle.bind(this),
+        onDragStart: this.pauseMathObserver,
+        onDragEnd: this.resumeMathObserver,
       });
 
       if (!this._root) {
         this._root = createRoot(this);
       }
       this._root.render(el);
-      // MutationObserver will automatically trigger renderMath when DOM changes
     }
   }
 }

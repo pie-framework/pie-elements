@@ -147,8 +147,10 @@ export default class CategorizeConfigure extends HTMLElement {
       this._root = createRoot(this);
     }
     this._root.render(el);
-// ✅ setTimeout - runs in next event loop, after React commits
-    setTimeout(() => renderMath(this), 0);
+
+    setTimeout(() => {
+      renderMath(this);
+    }, 0);
   }
 
   disconnectedCallback() {

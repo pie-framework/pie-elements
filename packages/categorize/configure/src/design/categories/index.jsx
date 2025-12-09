@@ -13,7 +13,6 @@ import Category from './category';
 import Header from '../header';
 import { generateValidationMessage } from '../../utils';
 import { RowLabel } from './RowLabel';
-import { renderMath } from '@pie-lib/math-rendering';
 
 const CategoriesContainer = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(3),
@@ -63,20 +62,6 @@ export class Categories extends React.Component {
   state = {
     focusedEl: null,
   };
-
-  containerRef = React.createRef();
-
-  componentDidMount() {
-    if (this.containerRef.current) {
-      setTimeout(() => renderMath(this.containerRef.current), 0);
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.containerRef.current) {
-      setTimeout(() => renderMath(this.containerRef.current), 0);
-    }
-  }
 
   add = () => {
     const { model, categories: oldCategories } = this.props;
@@ -185,7 +170,7 @@ export class Categories extends React.Component {
     const validationMessage = generateValidationMessage(configuration);
 
     return (
-      <CategoriesContainer className={className} ref={this.containerRef}>
+      <CategoriesContainer className={className}>
         <Header
           label="Categories"
           buttonLabel="ADD A CATEGORY"

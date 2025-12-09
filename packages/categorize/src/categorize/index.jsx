@@ -7,6 +7,7 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/categorize';
 import { DragProvider, uid } from '@pie-lib/drag';
 import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
 import Translator from '@pie-lib/translator';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Choices from './choices';
@@ -15,6 +16,20 @@ import Categories from './categories';
 
 const { translator } = Translator;
 const log = debug('@pie-ui:categorize');
+
+class DragPreviewWrapper extends React.Component {
+  containerRef = React.createRef();
+
+  componentDidMount() {
+    if (this.containerRef.current) {
+      renderMath(this.containerRef.current);
+    }
+  }
+
+  render() {
+    return <div ref={this.containerRef}>{this.props.children}</div>;
+  }
+}
 
 export class Categorize extends React.Component {
   static propTypes = {
@@ -29,6 +44,8 @@ export class Categorize extends React.Component {
     }),
     onAnswersChange: PropTypes.func.isRequired,
     onShowCorrectToggle: PropTypes.func.isRequired,
+    onDragStart: PropTypes.func,
+    onDragEnd: PropTypes.func
   };
 
   static defaultProps = {
@@ -312,9 +329,13 @@ class CategorizeProvider extends React.Component {
   }
 
   onDragStart = (event) => {
-    console.log('Drag Started:', event);
     const { active } = event;
-    
+    const { onDragStart } = this.props;
+
+    if (onDragStart) {
+      onDragStart();
+    }
+
     if (active?.data?.current) {
       this.setState({
         activeDragItem: active.data.current,
@@ -323,13 +344,16 @@ class CategorizeProvider extends React.Component {
   };
 
   onDragEnd = (event) => {
-    console.log('Drag Ended Result:', event);
     const { active, over } = event;
+    const { onDragEnd } = this.props;
 
     this.setState({ activeDragItem: null });
 
+    if (onDragEnd) {
+      onDragEnd();
+    }
+
     if (!over || !active) {
-      console.log('Missing over or active:', { over, active });
       return;
     }
 
@@ -390,7 +414,9 @@ class CategorizeProvider extends React.Component {
         <uid.Provider value={this.uid}>
           <Categorize ref={(ref) => this.categorizeRef = ref} {...this.props} />
           <DragOverlay>
-            {this.renderDragOverlay()}
+            <DragPreviewWrapper>
+              {this.renderDragOverlay()}
+            </DragPreviewWrapper>
           </DragOverlay>
         </uid.Provider>
       </DragProvider>
