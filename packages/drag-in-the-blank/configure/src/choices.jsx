@@ -241,7 +241,6 @@ export class Choices extends React.Component {
         <StyledAltChoices>
           {visibleChoices.map((choice, index) => {
             if (!choice || !choice.id) {
-              console.warn('Invalid choice encountered:', choice);
               return null;
             }
 
