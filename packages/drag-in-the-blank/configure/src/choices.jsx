@@ -5,37 +5,38 @@ import EditableHtml from '@pie-lib/editable-html';
 import { renderMath } from '@pie-lib/math-rendering';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Button from '@mui/material/Button';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 import Choice from './choice';
 import { choiceIsEmpty } from './markupUtils';
 
-const styles = (theme) => ({
-  design: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: theme.spacing.unit * 1.5,
-  },
-  addButton: {
-    marginLeft: 'auto',
-  },
-  altChoices: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
-    marginTop: theme.spacing.unit,
+const StyledDesign = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  marginBottom: theme.spacing(1.5),
+}));
 
-    '& > *': {
-      margin: theme.spacing.unit,
-    },
+const StyledAddButton = styled(Button)(({ theme }) => ({
+  marginLeft: 'auto',
+}));
+
+const StyledAltChoices = styled('div')(({ theme }) => ({
+  alignItems: 'flex-start',
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-evenly',
+  marginTop: theme.spacing(1),
+
+  '& > *': {
+    margin: theme.spacing(1),
   },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingBottom: theme.spacing.unit * 2,
-  },
-});
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingBottom: theme.spacing(2),
+}));
 
 export class Choices extends React.Component {
   static propTypes = {
@@ -43,7 +44,6 @@ export class Choices extends React.Component {
     error: PropTypes.string,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
     toolbarOpts: PropTypes.object,
     pluginProps: PropTypes.object,
     maxChoices: PropTypes.number,
@@ -213,7 +213,6 @@ export class Choices extends React.Component {
   render() {
     const { focusedEl, warning } = this.state;
     const {
-      classes,
       duplicates,
       error,
       mathMlOptions = {},
@@ -229,20 +228,24 @@ export class Choices extends React.Component {
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
     return (
-      <div className={classes.design}>
-        <Button
-          className={classes.addButton}
+      <StyledDesign>
+        <StyledAddButton
           variant="contained"
           color="primary"
           onClick={this.onAddChoice}
           disabled={maxChoices && choices && maxChoices === choices.length}
         >
           Add Choice
-        </Button>
+        </StyledAddButton>
 
-        <div className={classes.altChoices}>
-          {visibleChoices.map((choice, index) =>
-            focusedEl === choice.id ? (
+        <StyledAltChoices>
+          {visibleChoices.map((choice, index) => {
+            if (!choice || !choice.id) {
+              console.warn('Invalid choice encountered:', choice);
+              return null;
+            }
+
+            return focusedEl === choice.id ? (
               <div
                 key={index}
                 style={{
@@ -252,7 +255,6 @@ export class Choices extends React.Component {
               >
                 <EditableHtml
                   ref={(ref) => (this.focusedNodeRef = ref)}
-                  className={classes.prompt}
                   imageSupport={imageSupport}
                   markup={choice.value}
                   pluginProps={pluginProps}
@@ -291,16 +293,15 @@ export class Choices extends React.Component {
               <Choice
                 key={index}
                 duplicates={duplicates}
-                targetId="0"
                 choice={choice}
                 error={error}
                 onClick={() => this.onChoiceFocus(choice.id)}
                 onRemoveChoice={() => this.onChoiceRemove(choice.id)}
               />
-            ),
-          )}
-        </div>
-        {error && <div className={classes.errorText}>{error}</div>}
+            );
+          })}
+        </StyledAltChoices>
+        {error && <ErrorText>{error}</ErrorText>}
 
         <AlertDialog
           open={warning.open}
@@ -308,11 +309,9 @@ export class Choices extends React.Component {
           text={warning.text}
           onConfirm={() => this.setState({ warning: { open: false } })}
         />
-      </div>
+      </StyledDesign>
     );
   }
 }
 
-const Styled = withStyles(styles)(Choices);
-
-export default Styled;
+export default Choices;

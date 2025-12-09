@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MoreVert from '@mui/icons-material/MoreVert';
 import Delete from '@mui/icons-material/Delete';
-import { DragSource } from 'react-dnd';
-import withStyles from '@mui/styles/withStyles';
+import { useDraggable } from '@dnd-kit/core';
+import { styled } from '@mui/material/styles';
 import { choiceIsEmpty } from './markupUtils';
-import PropTypes from 'prop-types';
 
 const GripIcon = ({ style }) => {
   return (
@@ -19,42 +19,84 @@ GripIcon.propTypes = {
   style: PropTypes.object,
 };
 
-export const BlankContent = withStyles((theme) => ({
-  choice: {
-    display: 'inline-flex',
-    minWidth: '178px',
-    minHeight: '36px',
-    background: theme.palette.common.white,
-    boxSizing: 'border-box',
-    borderRadius: '3px',
-    overflow: 'hidden',
-    position: 'relative',
-    padding: '8px 35px 8px 35px',
-    cursor: 'grab',
-    '& img': {
-        display: 'flex'
-    },
-    '& mjx-frac': {
-        fontSize: '120% !important',
-    },
+const StyledChoice = styled('div', {
+  shouldForwardProp: (prop) => !['error', 'isDragging'].includes(prop),
+})(({ theme, error, isDragging }) => ({
+  display: 'inline-flex',
+  minWidth: '178px',
+  minHeight: '36px',
+  background: theme.palette.common.white,
+  boxSizing: 'border-box',
+  borderRadius: '3px',
+  overflow: 'hidden',
+  position: 'relative',
+  padding: '8px 35px 8px 35px',
+  cursor: 'grab',
+  border: `1px solid ${error ? '#f44336' : '#C0C3CF'}`,
+  // opacity: isDragging ? 0.5 : 1,
+  '& img': {
+    display: 'flex'
   },
-  deleteIcon: {
-    position: 'absolute',
-    top: '6px',
-    right: '0',
-    color: theme.palette.grey[500],
-    zIndex: 2,
-
-    '& :hover': {
-      cursor: 'pointer',
-      color: theme.palette.common.black,
-    },
+  '& mjx-frac': {
+    fontSize: '120% !important',
   },
-}))((props) => {
-  const { classes, connectDragSource, choice, onClick, onRemoveChoice, error } = props;
+}));
 
-  return connectDragSource(
-    <div className={classes.choice} style={{ border: `1px solid ${error ? '#f44336' : '#C0C3CF'}` }} onClick={onClick}>
+const StyledDeleteIcon = styled(Delete)(({ theme }) => ({
+  position: 'absolute',
+  top: '6px',
+  right: '0',
+  color: theme.palette.grey[500],
+  zIndex: 2,
+  '&:hover': {
+    cursor: 'pointer',
+    color: theme.palette.common.black,
+  },
+}));
+
+export const BlankContent = (props) => {
+  const { choice, onClick, onRemoveChoice, error, instanceId, disabled } = props;
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    isDragging,
+  } = useDraggable({
+    id: `choice-${choice.id}-${instanceId || 'default'}`,
+    data: {
+      type: 'drag-in-the-blank-choice',
+      id: choice.id,
+      value: choice,
+      instanceId: instanceId,
+    },
+    disabled: disabled || choiceIsEmpty(choice),
+
+  });
+
+  const style = transform ? {
+    // transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+  } : undefined;
+
+  const handleDragStart = (e) => {
+    if (choiceIsEmpty(choice)) {
+      e.preventDefault();
+      alert('You need to define a value for an answer choice before it can be associated with a response area.');
+      return;
+    }
+  };
+
+  return (
+    <StyledChoice
+      ref={setNodeRef}
+      style={style}
+      error={error}
+      isDragging={isDragging}
+      onClick={onClick}
+      {...attributes}
+      {...listeners}
+      onDragStart={handleDragStart}
+    >
       <GripIcon
         style={{
           position: 'absolute',
@@ -67,8 +109,7 @@ export const BlankContent = withStyles((theme) => ({
 
       <span dangerouslySetInnerHTML={{ __html: choice.value }} />
 
-      <Delete
-        className={classes.deleteIcon}
+      <StyledDeleteIcon
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -76,29 +117,17 @@ export const BlankContent = withStyles((theme) => ({
           onRemoveChoice(e);
         }}
       />
-    </div>,
+    </StyledChoice>
   );
-});
-
-export const tileSource = {
-  canDrag(props) {
-    if (choiceIsEmpty(props.choice)) {
-      alert('You need to define a value for an answer choice before it can be associated with a response area.');
-      return false;
-    }
-
-    return !props.disabled;
-  },
-  beginDrag(props) {
-    return {
-      id: props.targetId,
-      value: props.choice,
-      instanceId: props.instanceId,
-    };
-  },
 };
 
-export default DragSource('drag-in-the-blank-choice', tileSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging(),
-}))(BlankContent);
+BlankContent.propTypes = {
+  choice: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
+  onRemoveChoice: PropTypes.func.isRequired,
+  error: PropTypes.bool,
+  instanceId: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+export default BlankContent;
