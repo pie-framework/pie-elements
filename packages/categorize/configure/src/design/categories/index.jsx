@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
@@ -65,27 +64,17 @@ export class Categories extends React.Component {
     focusedEl: null,
   };
 
-  componentDidMount() {
-    try {
-      // eslint-disable-next-line react/no-find-dom-node
-      const domNode = ReactDOM.findDOMNode(this);
+  containerRef = React.createRef();
 
-      renderMath(domNode);
-    } catch (e) {
-      // Added try-catch block to handle "Unable to find node on an unmounted component" error from tests, thrown because of the usage of shallow
-      console.error('DOM not mounted');
+  componentDidMount() {
+    if (this.containerRef.current) {
+      setTimeout(() => renderMath(this.containerRef.current), 0);
     }
   }
 
   componentDidUpdate() {
-    try {
-      // eslint-disable-next-line react/no-find-dom-node
-      const domNode = ReactDOM.findDOMNode(this);
-
-      renderMath(domNode);
-    } catch (e) {
-      // Added try-catch block to handle "Unable to find node on an unmounted component" error from tests, thrown because of the usage of shallow
-      console.error('DOM not mounted');
+    if (this.containerRef.current) {
+      setTimeout(() => renderMath(this.containerRef.current), 0);
     }
   }
 
@@ -196,7 +185,7 @@ export class Categories extends React.Component {
     const validationMessage = generateValidationMessage(configuration);
 
     return (
-      <CategoriesContainer className={className}>
+      <CategoriesContainer className={className} ref={this.containerRef}>
         <Header
           label="Categories"
           buttonLabel="ADD A CATEGORY"

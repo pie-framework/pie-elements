@@ -9,6 +9,40 @@ export default class Categorize extends HTMLElement {
   constructor() {
     super();
     this._root = null;
+    this._mathObserver = null;
+    this._mathRenderPending = false;
+  }
+
+  // Debounced renderMath to avoid excessive calls during rapid DOM changes
+  _scheduleMathRender = () => {
+    if (this._mathRenderPending) return;
+    this._mathRenderPending = true;
+    
+    requestAnimationFrame(() => {
+      renderMath(this);
+      this._mathRenderPending = false;
+    });
+  };
+
+  _initMathObserver() {
+    if (this._mathObserver) return;
+    
+    this._mathObserver = new MutationObserver(() => {
+      this._scheduleMathRender();
+    });
+    
+    this._mathObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+  }
+
+  _disconnectMathObserver() {
+    if (this._mathObserver) {
+      this._mathObserver.disconnect();
+      this._mathObserver = null;
+    }
   }
 
   set model(m) {
@@ -156,6 +190,9 @@ export default class Categorize extends HTMLElement {
   }
 
   connectedCallback() {
+    // Initialize math observer for rendering math when DOM changes
+    this._initMathObserver();
+    
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -245,6 +282,9 @@ export default class Categorize extends HTMLElement {
   }
 
   disconnectedCallback() {
+    // Clean up math observer
+    this._disconnectMathObserver();
+    
     document.removeEventListener('click', this._enableAudio);
 
     if (this._audio) {
@@ -271,9 +311,7 @@ export default class Categorize extends HTMLElement {
         this._root = createRoot(this);
       }
       this._root.render(el);
-      queueMicrotask(() => {
-        renderMath(this);
-      });
+      // MutationObserver will automatically trigger renderMath when DOM changes
     }
   }
 }

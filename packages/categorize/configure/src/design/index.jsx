@@ -16,6 +16,7 @@ import {
 } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
 import { DragProvider, uid } from '@pie-lib/drag';
+import { renderMath } from '@pie-lib/math-rendering';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
@@ -31,6 +32,40 @@ import Translator from '@pie-lib/translator';
 const { translator } = Translator;
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
+
+// Styled container for drag preview
+const DragPreviewChoiceStyled = styled('div')(({ theme }) => ({
+  padding: theme.spacing(1),
+  backgroundColor: '#fff',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
+  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+  minWidth: '100px',
+}));
+
+// Drag preview component that ensures math is rendered in portal context
+class DragPreviewChoice extends React.Component {
+  containerRef = React.createRef();
+
+  componentDidMount() {
+    // Render math after component mounts in the portal
+    // setTimeout ensures HtmlAndMath has finished rendering its content
+    setTimeout(() => {
+      if (this.containerRef.current) {
+        renderMath(this.containerRef.current);
+      }
+    }, 0);
+  }
+
+  render() {
+    return (
+      <DragPreviewChoiceStyled 
+        ref={this.containerRef}
+        dangerouslySetInnerHTML={{ __html: this.props.content }}
+      />
+    );
+  }
+}
 
 const StyledHeader = styled(Header)(({ theme }) => ({
   marginBottom: theme.spacing(2),
@@ -397,40 +432,17 @@ export class Design extends React.Component {
 
   renderDragOverlay = () => {
     const { activeDragItem } = this.state;
-    const { model, configuration } = this.props;
+    const { model } = this.props;
 
     if (!activeDragItem) return null;
 
-    if (activeDragItem.type === 'choice') {
-      const choice = model.choices?.find(c => c.id === activeDragItem.id);
-      if (!choice) return null;
+    const choice = model.choices?.find(c => c.id === activeDragItem.id);
+    if (!choice) return null;
 
-      return (
-        <Choice
-          choice={choice}
-          configuration={configuration}
-        />
-      );
-    } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex === undefined) {
-      const choice = model.choices?.find(c => c.id === activeDragItem.id);
-      if (!choice) return null;
-      return (
-        <ChoicePreview
-          choice={choice}
-        />
-      );
-    } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex !== undefined) {
-      const choice = model.choices?.find(c => c.id === activeDragItem.id);
-      if (!choice) return null;
-      return (
-        <ChoicePreview
-          choice={choice}
-          alternateResponseIndex={activeDragItem.alternateResponseIndex}
-        />
-      );
-    }
-
-    return null;
+    // Use DragPreviewChoice which renders math after mounting in portal
+    return (
+      <DragPreviewChoice content={choice.content} />
+    );
   };
 
   render() {

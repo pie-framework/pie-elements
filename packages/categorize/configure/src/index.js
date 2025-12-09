@@ -147,9 +147,8 @@ export default class CategorizeConfigure extends HTMLElement {
       this._root = createRoot(this);
     }
     this._root.render(el);
-    queueMicrotask(() => {
-      renderMath(this);
-    });
+// ✅ setTimeout - runs in next event loop, after React commits
+    setTimeout(() => renderMath(this), 0);
   }
 
   disconnectedCallback() {
