@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
+
+const ConfigContainer = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(1),
+  marginBottom: theme.spacing(1),
+}));
+
+const StyledTextField = styled(TextField)({
+  width: '100%',
+});
 
 export class Config extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     config: PropTypes.object,
     onModelChanged: PropTypes.func,
@@ -14,18 +21,17 @@ export class Config extends React.Component {
   };
 
   static defaultProps = {};
-
+  
   changeLabel = ({ target }) => {
     this.props.onModelChanged({ choicesLabel: target.value });
   };
 
   render() {
-    const { classes, className, config, spellCheck } = this.props;
+    const { className, config, spellCheck } = this.props;
 
     return (
-      <div className={classNames(classes.config, className)}>
-        <TextField
-          className={classes.label}
+      <ConfigContainer className={className}>
+        <StyledTextField
           InputLabelProps={{
             shrink: true,
           }}
@@ -35,19 +41,9 @@ export class Config extends React.Component {
           onChange={this.changeLabel}
           spellCheck={spellCheck}
         />
-      </div>
+      </ConfigContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  config: {
-    paddingTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit,
-  },
-  label: {
-    width: '100%',
-  },
-});
-
-export default withStyles(styles)(Config);
+export default Config;

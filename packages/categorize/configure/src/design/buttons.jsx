@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import MuiDivider from '@mui/material/Divider';
+
+const StyledAddButton = styled(Button)(({ theme }) => ({
+  height: theme.spacing(4),
+}));
 
 export class RawAddButton extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     label: PropTypes.string,
     onClick: PropTypes.func,
@@ -19,38 +20,33 @@ export class RawAddButton extends React.Component {
   };
 
   render() {
-    const { classes, className, label, onClick, disabled } = this.props;
+    const { className, label, onClick, disabled } = this.props;
     return (
-      <Button
+      <StyledAddButton
         onClick={onClick}
         disabled={disabled}
-        className={classNames(classes.addButton, className)}
+        className={className}
         size="small"
         variant="contained"
         color="primary"
       >
         {label}
-      </Button>
+      </StyledAddButton>
     );
   }
 }
-const styles = (theme) => ({
-  addButton: {
-    height: theme.spacing.unit * 4,
-  },
+
+const AddButton = RawAddButton;
+
+const StyledDeleteButton = styled(Button)({
+  margin: 0,
+  padding: 0,
 });
 
-const AddButton = withStyles(styles)(RawAddButton);
-
-const DeleteButton = withStyles(() => ({
-  deleteButton: {
-    margin: 0,
-    padding: 0,
-  },
-}))(({ classes, label, onClick, disabled }) => (
-  <Button className={classes.deleteButton} onClick={onClick} size="small" color="primary" disabled={disabled}>
+const DeleteButton = ({ label, onClick, disabled }) => (
+  <StyledDeleteButton onClick={onClick} size="small" color="primary" disabled={disabled}>
     {label}
-  </Button>
-));
+  </StyledDeleteButton>
+);
 
 export { AddButton, DeleteButton };

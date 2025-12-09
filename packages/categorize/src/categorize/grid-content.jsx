@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 
 export class GridContent extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
     columns: PropTypes.number,
@@ -18,7 +16,7 @@ export class GridContent extends React.Component {
   };
 
   render() {
-    const { classes, className, children, columns, extraStyle, rows } = this.props;
+    const { className, children, columns, extraStyle, rows } = this.props;
     const style = {
       gridTemplateColumns: `repeat(${columns}, 1fr)`,
       gridTemplateRows: rows === 2 ? 'auto 1fr' : `repeat(${rows}, auto)`,
@@ -26,22 +24,20 @@ export class GridContent extends React.Component {
     };
 
     return (
-      <div style={style} className={classNames(classes.gridContent, className)}>
+      <StyledDiv style={style} className={className}>
         {children}
-      </div>
+      </StyledDiv>
     );
   }
 }
 
-const styles = (theme) => ({
-  gridContent: {
-    display: 'grid',
-    columnGap: `${theme.spacing.unit}px`,
-    gridColumnGap: `${theme.spacing.unit}px`,
-    rowGap: `${theme.spacing.unit}px`,
-    gridRowGap: `${theme.spacing.unit}px`,
-    gridAutoRows: '1fr',
-  },
-});
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: 'grid',
+  columnGap: theme.spacing(1),
+  gridColumnGap: theme.spacing(1),
+  rowGap: theme.spacing(1),
+  gridRowGap: theme.spacing(1),
+  gridAutoRows: '1fr',
+}));
 
-export default withStyles(styles)(GridContent);
+export default GridContent;

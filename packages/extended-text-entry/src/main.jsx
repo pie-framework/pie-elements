@@ -182,6 +182,8 @@ export class Main extends React.Component {
                 disabled: true,
               },
               separateParagraphs: { disabled: false },
+              ul_list: { disabled: true },
+              ol_list: { disabled: true },
             }}
             languageCharactersProps={languageCharactersProps}
           />

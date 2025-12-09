@@ -1,13 +1,22 @@
 import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import EditableHtml from '@pie-lib/editable-html';
+
+const StyledEditableHtml = styled(EditableHtml)(({ theme }) => ({
+  flex: '1',
+  paddingBottom: theme.spacing(1),
+  maxWidth: '100%',
+}));
+
+const InputHeaderContainer = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+});
 
 export class InputHeader extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     configuration: PropTypes.object.isRequired,
     deleteFocusedEl: PropTypes.func,
@@ -50,7 +59,6 @@ export class InputHeader extends React.Component {
       onChange,
       configuration,
       label,
-      classes,
       className,
       deleteFocusedEl,
       disabled,
@@ -67,8 +75,8 @@ export class InputHeader extends React.Component {
     const { headers, baseInputConfiguration } = configuration;
 
     return (
-      <div className={classNames(classes.inputHeader, className)}>
-        <EditableHtml
+      <InputHeaderContainer className={className}>
+        <StyledEditableHtml
           imageSupport={imageSupport}
           disabled={disabled}
           ref={(ref) => (this.inputRef = ref)}
@@ -76,7 +84,6 @@ export class InputHeader extends React.Component {
           label={'label'}
           markup={label}
           onChange={onChange}
-          className={classes.editor}
           pluginProps={getPluginProps(headers?.inputConfiguration, baseInputConfiguration)}
           toolbarOpts={toolbarOpts}
           spellCheck={spellCheck}
@@ -90,23 +97,9 @@ export class InputHeader extends React.Component {
           }}
           mathMlOptions={mathMlOptions}
         />
-      </div>
+      </InputHeaderContainer>
     );
   }
 }
-const styles = (theme) => ({
-  editor: {
-    flex: '1',
-    paddingBottom: theme.spacing.unit,
-    maxWidth: '100%',
-  },
-  iconButtonRoot: {
-    width: 'auto',
-    height: 'auto',
-  },
-  inputHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-});
-export default withStyles(styles)(InputHeader);
+
+export default InputHeader;

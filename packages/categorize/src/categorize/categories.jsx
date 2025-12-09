@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { color } from '@pie-lib/render-ui';
 
 import GridContent from './grid-content';
@@ -10,7 +10,6 @@ export { CategoryType };
 
 export class Categories extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     categories: PropTypes.arrayOf(PropTypes.shape(CategoryType)),
     model: PropTypes.shape({
       categoriesPerRow: PropTypes.number,
@@ -28,7 +27,7 @@ export class Categories extends React.Component {
   };
 
   render() {
-    const { classes, categories, model, disabled, onDropChoice, onRemoveChoice, rowLabels } = this.props;
+    const { categories, model, disabled, onDropChoice, onRemoveChoice, rowLabels } = this.props;
     const { categoriesPerRow, minRowHeight } = model;
 
     // split categories into an array of arrays (inner array),
@@ -54,8 +53,8 @@ export class Categories extends React.Component {
     return (
       <GridContent
         columns={categoriesPerRow}
-        className={classes.categories}
         rows={Math.ceil(categories.length / categoriesPerRow) * 2}
+        extraStyle={{ flex: 1 }}
       >
         {chunkedCategories.map((cat, rowIndex) => {
           let items = [];
@@ -66,17 +65,15 @@ export class Categories extends React.Component {
             items.push(
               <div style={{ display: 'flex' }}>
                 {columnIndex === 0 && hasNonEmptyString(rowLabels) ? (
-                  <div
+                  <StyledRowLabel
                     key={rowIndex}
-                    className={classes.rowLabel}
                     dangerouslySetInnerHTML={{
                       __html: rowLabels[rowIndex] || '',
                     }}
                   />
                 ) : null}
-                <div className={classes.categoryWrapper}>
-                  <div
-                    className={classes.label}
+                <StyledCategoryWrapper>
+                  <StyledLabel
                     key={`category-label-${rowIndex}-${columnIndex}`}
                     dangerouslySetInnerHTML={{ __html: c.label }}
                   />
@@ -86,11 +83,10 @@ export class Categories extends React.Component {
                     onDropChoice={(h) => onDropChoice(c.id, h)}
                     onRemoveChoice={onRemoveChoice}
                     disabled={disabled}
-                    className={classes.category}
                     key={`category-element-${rowIndex}-${columnIndex}`}
                     {...c}
                   />
-                </div>
+                </StyledCategoryWrapper>
               </div>,
             );
           });
@@ -109,27 +105,25 @@ export class Categories extends React.Component {
   }
 }
 
-const styles = (theme) => ({
-  categories: {
-    flex: 1,
-  },
-  label: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    textAlign: 'center',
-    paddingTop: theme.spacing.unit,
-  },
-  rowLabel: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    flex: 0.5,
-    marginRight: '12px',
-  },
-  categoryWrapper: {
-    display: 'flex',
-    flex: '2',
-    flexDirection: 'column',
-  },
-});
-export default withStyles(styles)(Categories);
+const StyledLabel = styled('div')(({ theme }) => ({
+  color: color.text(),
+  backgroundColor: color.background(),
+  textAlign: 'center',
+  paddingTop: theme.spacing(1),
+}));
+
+const StyledRowLabel = styled('div')(({ theme }) => ({
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+  flex: 0.5,
+  marginRight: '12px',
+}));
+
+const StyledCategoryWrapper = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flex: '2',
+  flexDirection: 'column',
+}));
+
+export default Categories;

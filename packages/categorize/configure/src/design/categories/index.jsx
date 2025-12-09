@@ -1,59 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
-import classNames from 'classnames';
 import Info from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
 import {
-  moveChoiceToCategory,
   removeCategory,
   removeChoiceFromCategory,
-  verifyAllowMultiplePlacements,
 } from '@pie-lib/categorize';
 
 import Category from './category';
 import Header from '../header';
-import { generateValidationMessage, getMaxCategoryChoices } from '../../utils';
+import { generateValidationMessage } from '../../utils';
 import { RowLabel } from './RowLabel';
 import { renderMath } from '@pie-lib/math-rendering';
 
-const styles = (theme) => ({
-  categories: {
-    marginBottom: theme.spacing.unit * 3,
-  },
-  categoriesHolder: {
-    display: 'grid',
-    gridRowGap: `${theme.spacing.unit}px`,
-    gridColumnGap: `${theme.spacing.unit}px`,
-  },
-  row: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridColumnGap: `${theme.spacing.unit}px`,
-    alignItems: 'baseline',
-    width: '100%',
-    marginTop: theme.spacing.unit,
-    marginBottom: 2 * theme.spacing.unit,
-  },
-  rowLabel: {
-    gridColumn: '1/3',
-  },
-  rowLabelHolder: {
-    width: '100%',
-  },
-  tooltip: {
+const CategoriesContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(3),
+}));
+
+const CategoriesHolder = styled('div')(({ theme }) => ({
+  display: 'grid',
+  gridRowGap: `${theme.spacing(1)}px`,
+  gridColumnGap: `${theme.spacing(1)}px`,
+}));
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
     fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit / 2,
-  },
-});
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(0.5),
+}));
 
 export class Categories extends React.Component {
   static propTypes = {
@@ -67,7 +52,6 @@ export class Categories extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
-    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     categories: PropTypes.array,
     onModelChanged: PropTypes.func,
@@ -164,55 +148,11 @@ export class Categories extends React.Component {
     }
   };
 
-  addChoiceToCategory = (addedChoice, categoryId) => {
-    const { model, onModelChanged } = this.props;
-    let { choices = [], correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
-    const choice = (choices || []).find((choice) => choice.id === addedChoice.id);
-    correctResponse = moveChoiceToCategory(addedChoice.id, undefined, categoryId, 0, model.correctResponse);
-    // if multiplePlacements not allowed, ensure the consistency in the other categories
-    if (choice.categoryCount !== 0) {
-      correctResponse = verifyAllowMultiplePlacements(addedChoice, categoryId, correctResponse);
-    }
-    const maxCategoryChoices = getMaxCategoryChoices(model);
-    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
-    onModelChanged({
-      correctResponse,
-      maxChoicesPerCategory:
-        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
-          ? maxChoicesPerCategory + 1
-          : maxChoicesPerCategory,
-    });
-  };
-
   deleteChoiceFromCategory = (category, choice, choiceIndex) => {
     const { model, onModelChanged } = this.props;
     const correctResponse = removeChoiceFromCategory(choice.id, category.id, choiceIndex, model.correctResponse);
 
     onModelChanged({ correctResponse });
-  };
-
-  moveChoice = (choiceId, from, to, choiceIndex) => {
-    const { model, onModelChanged } = this.props;
-    let { choices, correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
-    const choice = (choices || []).find((choice) => choice.id === choiceId);
-    if (to === from || !choice) {
-      return;
-    }
-    if (choice.categoryCount !== 0) {
-      correctResponse = moveChoiceToCategory(choice.id, from, to, choiceIndex, correctResponse);
-      correctResponse = verifyAllowMultiplePlacements(choice, to, correctResponse);
-    } else if (choice.categoryCount === 0) {
-      correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, correctResponse);
-    }
-    const maxCategoryChoices = getMaxCategoryChoices(model);
-    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
-    onModelChanged({
-      correctResponse,
-      maxChoicesPerCategory:
-        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
-          ? maxChoicesPerCategory + 1
-          : maxChoicesPerCategory,
-    });
   };
 
   changeRowLabel = (val, index) => {
@@ -234,7 +174,6 @@ export class Categories extends React.Component {
   render() {
     const {
       model,
-      classes,
       className,
       categories,
       imageSupport,
@@ -257,26 +196,25 @@ export class Categories extends React.Component {
     const validationMessage = generateValidationMessage(configuration);
 
     return (
-      <div className={classNames(classes.categories, className)}>
+      <CategoriesContainer className={className}>
         <Header
           label="Categories"
           buttonLabel="ADD A CATEGORY"
           onAdd={this.add}
           info={
-            <Tooltip
-              classes={{ tooltip: classes.tooltip }}
+            <StyledTooltip
               disableFocusListener
               disableTouchListener
               placement={'right'}
               title={validationMessage}
             >
               <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
-            </Tooltip>
+            </StyledTooltip>
           }
           buttonDisabled={maxCategories && categories && maxCategories === categories.length}
         />
 
-        <div className={classes.categoriesHolder} style={holderStyle}>
+        <CategoriesHolder style={holderStyle}>
           {categories.map((category, index) => {
             const hasRowLabel = index % categoriesPerRow === 0;
             const rowIndex = index / categoriesPerRow;
@@ -310,8 +248,6 @@ export class Categories extends React.Component {
                   error={categoriesErrors && categoriesErrors[category.id]}
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
-                  onAddChoice={this.addChoiceToCategory}
-                  onMoveChoice={(choiceId, from, to, choiceIndex) => this.moveChoice(choiceId, from, to, choiceIndex)}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheck}
                   onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}
@@ -319,17 +255,18 @@ export class Categories extends React.Component {
                   maxImageHeight={(maxImageHeight && maxImageHeight.categoryLabel) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   configuration={configuration}
+                  alternateResponseIndex={undefined}
                 />
               </React.Fragment>
             );
           })}
-        </div>
+        </CategoriesHolder>
 
-        {associationError && <div className={classes.errorText}>{associationError}</div>}
-        {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
-      </div>
+        {associationError && <ErrorText>{associationError}</ErrorText>}
+        {categoriesError && <ErrorText>{categoriesError}</ErrorText>}
+      </CategoriesContainer>
     );
   }
 }
 
-export default withStyles(styles)(Categories);
+export default Categories;

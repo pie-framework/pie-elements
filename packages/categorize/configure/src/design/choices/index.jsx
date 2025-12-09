@@ -1,19 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import Choice from './choice';
 import Header from '../header';
 import Config from './config';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import { removeAllChoices } from '@pie-lib/categorize';
-import { rearrangeChoices } from '@pie-lib/categorize';
+
+const ChoicesContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2.5),
+}));
+
+const ChoiceHolder = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(1),
+  display: 'grid',
+  gridRowGap: `${theme.spacing(1)}px`,
+  gridColumnGap: `${theme.spacing(1)}px`,
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(0.5),
+}));
 
 export class Choices extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choices: PropTypes.array.isRequired,
     defaultImageMaxWidth: PropTypes.number,
@@ -91,17 +106,9 @@ export class Choices extends React.Component {
     }
   };
 
-  rearrangeChoices = (indexFrom, indexTo) => {
-    const { model, onModelChanged } = this.props || {};
-    let { choices } = model || [];
-    choices = rearrangeChoices(choices, indexFrom, indexTo);
-    onModelChanged({ choices });
-  };
-
   render() {
     const { focusedEl } = this.state;
     const {
-      classes,
       className,
       choices,
       model,
@@ -124,7 +131,7 @@ export class Choices extends React.Component {
       maxAnswerChoices && choices?.length >= maxAnswerChoices ? `Only ${maxAnswerChoices} allowed maximum` : '';
 
     return (
-      <div className={classNames(classes.choices, className)}>
+      <ChoicesContainer className={className}>
         <Header
           label="Choices"
           buttonLabel="ADD A CHOICE"
@@ -135,10 +142,11 @@ export class Choices extends React.Component {
 
         <Config config={model} onModelChanged={onModelChanged} spellCheck={spellCheck} />
 
-        <div className={classes.choiceHolder} style={choiceHolderStyle}>
+        <ChoiceHolder style={choiceHolderStyle}>
           {choices.map((h, index) => {
             return (
               <Choice
+                key={h.id}
                 choice={h}
                 focusedEl={focusedEl}
                 deleteFocusedEl={this.deleteFocusedEl}
@@ -146,11 +154,9 @@ export class Choices extends React.Component {
                 allowMultiplePlacements={allowMultiplePlacementsEnabled}
                 lockChoiceOrder={lockChoiceOrder}
                 index={index}
-                key={index}
                 imageSupport={imageSupport}
                 onChange={this.changeChoice}
                 onDelete={() => this.deleteChoice(h)}
-                rearrangeChoices={(indexFrom, indexTo) => this.rearrangeChoices(indexFrom, indexTo)}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheck}
                 error={choicesErrors && choicesErrors[h.id]}
@@ -161,29 +167,11 @@ export class Choices extends React.Component {
               />
             );
           })}
-        </div>
-        {choicesError && <div className={classes.errorText}>{choicesError}</div>}
-      </div>
+        </ChoiceHolder>
+        {choicesError && <ErrorText>{choicesError}</ErrorText>}
+      </ChoicesContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  choiceHolder: {
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    display: 'grid',
-    gridRowGap: `${theme.spacing.unit}px`,
-    gridColumnGap: `${theme.spacing.unit}px`,
-  },
-  choices: {
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit / 2,
-  },
-});
-
-export default withStyles(styles)(Choices);
+export default Choices;
