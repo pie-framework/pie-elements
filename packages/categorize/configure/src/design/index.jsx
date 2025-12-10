@@ -16,6 +16,7 @@ import {
 } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
 import { DragProvider, uid } from '@pie-lib/drag';
+import { renderMath } from '@pie-lib/math-rendering';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
@@ -31,6 +32,21 @@ import Translator from '@pie-lib/translator';
 const { translator } = Translator;
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
+
+// Simple wrapper to render math in DragOverlay portal
+class DragPreviewWrapper extends React.Component {
+  containerRef = React.createRef();
+
+  componentDidMount() {
+    if (this.containerRef.current) {
+      setTimeout(() => renderMath(this.containerRef.current), 0);
+    }
+  }
+
+  render() {
+    return <div ref={this.containerRef}>{this.props.children}</div>;
+  }
+}
 
 const StyledHeader = styled(Header)(({ theme }) => ({
   marginBottom: theme.spacing(2),
@@ -213,6 +229,9 @@ export class Design extends React.Component {
   onDragEnd = (event) => {
     const { active, over } = event;
 
+    // Always clear activeDragItem when drag ends
+    this.setState({ activeDragItem: null });
+    
     if (!over || !active) {
       console.log('Missing over or active:', { over, active });
       return;
@@ -235,18 +254,15 @@ export class Design extends React.Component {
 
     // moving a choice between categories (alternate response)
     if (activeData.type === 'choice-preview' && overData.type === 'category-alternate') {
-      const fromAlternateIndex = activeData.alternateResponseIndex;
       const toAlternateIndex = overData.alternateResponseIndex;
       this.moveChoiceInAlternate(activeData.id, activeData.categoryId, overData.id, 0, toAlternateIndex);
     }
 
     // placing a choice into a category (alternate response)
     if (allowAlternateEnabled && activeData.type === 'choice' && overData.type === 'category-alternate') {
-      console.log('Placing choice into alternate category');
       const choiceId = activeData.id;
       const categoryId = overData.id;
       const toAlternateResponseIndex = overData.alternateResponseIndex;
-      console.log('Placing choice into alternate category:', { choiceId, categoryId, toAlternateResponseIndex });
       this.addChoiceToAlternateCategory({ id: choiceId }, categoryId, toAlternateResponseIndex);
     }
   };
@@ -716,7 +732,9 @@ export class Design extends React.Component {
             )}
           </layout.ConfigLayout>
           <DragOverlay>
-            {this.renderDragOverlay()}
+            <DragPreviewWrapper>
+              {this.renderDragOverlay()}
+            </DragPreviewWrapper>
           </DragOverlay>
         </IdProvider>
       </DragProvider>

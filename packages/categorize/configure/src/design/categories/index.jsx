@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
@@ -14,7 +13,6 @@ import Category from './category';
 import Header from '../header';
 import { generateValidationMessage } from '../../utils';
 import { RowLabel } from './RowLabel';
-import { renderMath } from '@pie-lib/math-rendering';
 
 const CategoriesContainer = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(3),
@@ -64,30 +62,6 @@ export class Categories extends React.Component {
   state = {
     focusedEl: null,
   };
-
-  componentDidMount() {
-    try {
-      // eslint-disable-next-line react/no-find-dom-node
-      const domNode = ReactDOM.findDOMNode(this);
-
-      renderMath(domNode);
-    } catch (e) {
-      // Added try-catch block to handle "Unable to find node on an unmounted component" error from tests, thrown because of the usage of shallow
-      console.error('DOM not mounted');
-    }
-  }
-
-  componentDidUpdate() {
-    try {
-      // eslint-disable-next-line react/no-find-dom-node
-      const domNode = ReactDOM.findDOMNode(this);
-
-      renderMath(domNode);
-    } catch (e) {
-      // Added try-catch block to handle "Unable to find node on an unmounted component" error from tests, thrown because of the usage of shallow
-      console.error('DOM not mounted');
-    }
-  }
 
   add = () => {
     const { model, categories: oldCategories } = this.props;

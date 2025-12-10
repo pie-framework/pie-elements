@@ -147,9 +147,10 @@ export default class CategorizeConfigure extends HTMLElement {
       this._root = createRoot(this);
     }
     this._root.render(el);
-    queueMicrotask(() => {
+
+    setTimeout(() => {
       renderMath(this);
-    });
+    }, 0);
   }
 
   disconnectedCallback() {

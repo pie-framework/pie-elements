@@ -9,7 +9,77 @@ export default class Categorize extends HTMLElement {
   constructor() {
     super();
     this._root = null;
+    this._mathObserver = null;
+    this._mathRenderPending = false;
   }
+
+  _scheduleMathRender = () => {
+    if (this._mathRenderPending) return;
+
+    this._mathRenderPending = true;
+
+    requestAnimationFrame(() => {
+      if (this._mathObserver && !this._mathObserverPaused) {
+        this._mathObserver.disconnect();
+      }
+
+      renderMath(this);
+
+      this._mathRenderPending = false;
+
+      setTimeout(() => {
+        if (this._mathObserver && !this._mathObserverPaused) {
+          this._mathObserver.observe(this, {
+            childList: true,
+            subtree: true,
+            characterData: false,
+          });
+        }
+      }, 50);
+    });
+  };
+
+  _initMathObserver() {
+    if (this._mathObserver) return;
+
+    this._mathObserver = new MutationObserver(() => {
+      this._scheduleMathRender();
+    });
+
+    this._mathObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      characterData: false,
+    });
+  }
+
+  _disconnectMathObserver() {
+    if (this._mathObserver) {
+      this._mathObserver.disconnect();
+      this._mathObserver = null;
+    }
+  }
+
+  pauseMathObserver = () => {
+    if (this._mathObserver) {
+      this._mathObserver.disconnect();
+      this._mathObserverPaused = true;
+    }
+  };
+
+  resumeMathObserver = () => {
+    if (this._mathObserverPaused) {
+      this._mathObserverPaused = false;
+
+      if (this._mathObserver) {
+        this._mathObserver.observe(this, {
+          childList: true,
+          subtree: true,
+          characterData: false,
+        });
+      }
+    }
+  };
 
   set model(m) {
     this._model = m;
@@ -156,6 +226,8 @@ export default class Categorize extends HTMLElement {
   }
 
   connectedCallback() {
+    this._initMathObserver();
+    
     // Observation:  audio in Chrome will have the autoplay attribute,
     // while other browsers will not have the autoplay attribute and will need a user interaction to play the audio
     // This workaround fixes the issue of audio being cached and played on any user interaction in Safari and Firefox
@@ -245,6 +317,8 @@ export default class Categorize extends HTMLElement {
   }
 
   disconnectedCallback() {
+    this._disconnectMathObserver();
+    
     document.removeEventListener('click', this._enableAudio);
 
     if (this._audio) {
@@ -265,15 +339,14 @@ export default class Categorize extends HTMLElement {
         session: this._session,
         onAnswersChange: this.changeAnswers.bind(this),
         onShowCorrectToggle: this.onShowCorrectToggle.bind(this),
+        pauseMathObserver: this.pauseMathObserver,
+        resumeMathObserver: this.resumeMathObserver,
       });
 
       if (!this._root) {
         this._root = createRoot(this);
       }
       this._root.render(el);
-      queueMicrotask(() => {
-        renderMath(this);
-      });
     }
   }
 }
