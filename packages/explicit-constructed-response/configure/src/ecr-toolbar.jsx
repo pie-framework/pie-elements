@@ -78,7 +78,7 @@ export class ECRToolbar extends React.Component {
 
   onKeyDown = (event) => {
     if (event.key === 'Enter') {
-      return false;
+      return true;
     }
   };
 
