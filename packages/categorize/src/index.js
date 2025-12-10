@@ -339,8 +339,8 @@ export default class Categorize extends HTMLElement {
         session: this._session,
         onAnswersChange: this.changeAnswers.bind(this),
         onShowCorrectToggle: this.onShowCorrectToggle.bind(this),
-        onDragStart: this.pauseMathObserver,
-        onDragEnd: this.resumeMathObserver,
+        pauseMathObserver: this.pauseMathObserver,
+        resumeMathObserver: this.resumeMathObserver,
       });
 
       if (!this._root) {

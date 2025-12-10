@@ -22,7 +22,8 @@ class DragPreviewWrapper extends React.Component {
 
   componentDidMount() {
     if (this.containerRef.current) {
-      renderMath(this.containerRef.current);
+      console.log('Rendering math in drag preview wrapper');
+     renderMath(this.containerRef.current);
     }
   }
 
@@ -44,8 +45,8 @@ export class Categorize extends React.Component {
     }),
     onAnswersChange: PropTypes.func.isRequired,
     onShowCorrectToggle: PropTypes.func.isRequired,
-    onDragStart: PropTypes.func,
-    onDragEnd: PropTypes.func
+    pauseMathObserver: PropTypes.func,
+    resumeMathObserver: PropTypes.func
   };
 
   static defaultProps = {
@@ -330,10 +331,10 @@ class CategorizeProvider extends React.Component {
 
   onDragStart = (event) => {
     const { active } = event;
-    const { onDragStart } = this.props;
+    const { pauseMathObserver } = this.props;
 
-    if (onDragStart) {
-      onDragStart();
+    if (pauseMathObserver) {
+      pauseMathObserver();
     }
 
     if (active?.data?.current) {
@@ -345,12 +346,12 @@ class CategorizeProvider extends React.Component {
 
   onDragEnd = (event) => {
     const { active, over } = event;
-    const { onDragEnd } = this.props;
+    const { resumeMathObserver } = this.props;
 
     this.setState({ activeDragItem: null });
 
-    if (onDragEnd) {
-      onDragEnd();
+    if (resumeMathObserver) {
+      resumeMathObserver();
     }
 
     if (!over || !active) {

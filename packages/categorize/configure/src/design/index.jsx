@@ -233,7 +233,7 @@ export class Design extends React.Component {
     this.setState({ activeDragItem: null });
     
     if (!over || !active) {
-      console.log('[Design] Drag cancelled - no drop target');
+      console.log('Missing over or active:', { over, active });
       return;
     }
 
@@ -242,19 +242,23 @@ export class Design extends React.Component {
     const activeData = active.data.current;
     const overData = over.data.current;
 
+    // moving a choice between categories (correct response)
     if (activeData.type === 'choice-preview' && overData.type === 'category') {
       this.moveChoice(activeData.id, activeData.categoryId, overData.id, 0);
     }
 
+    // placing a choice into a category (correct response)
     if (activeData.type === 'choice' && overData.type === 'category') {
       this.addChoiceToCategory({ id: activeData.id }, overData.id);
     }
 
+    // moving a choice between categories (alternate response)
     if (activeData.type === 'choice-preview' && overData.type === 'category-alternate') {
       const toAlternateIndex = overData.alternateResponseIndex;
       this.moveChoiceInAlternate(activeData.id, activeData.categoryId, overData.id, 0, toAlternateIndex);
     }
 
+    // placing a choice into a category (alternate response)
     if (allowAlternateEnabled && activeData.type === 'choice' && overData.type === 'category-alternate') {
       const choiceId = activeData.id;
       const categoryId = overData.id;
