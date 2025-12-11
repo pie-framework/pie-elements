@@ -30,7 +30,7 @@ export class PossibleResponse extends React.Component {
     if (this.rootRef) {
       this.rootRef.addEventListener('touchstart', this.handleTouchStart, { passive: false });
       this.rootRef.addEventListener('touchend', this.handleTouchEnd);
-      this.rootRef.addEventListener('touchmove', this.handleTouchMove);
+      this.rootRef.addEventListener('touchmove', this.handleTouchMove, { passive: false });
     }
   }
 
