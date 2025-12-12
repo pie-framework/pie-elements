@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import MoreVert from '@mui/icons-material/MoreVert';
 import Delete from '@mui/icons-material/Delete';
 import { useDraggable } from '@dnd-kit/core';
 import { styled } from '@mui/material/styles';
-import { renderMath } from '@pie-lib/math-rendering';
 import { choiceIsEmpty } from './markupUtils';
 
 const GripIcon = ({ style }) => {
@@ -57,12 +56,11 @@ const StyledDeleteIcon = styled(Delete)(({ theme }) => ({
 
 export const BlankContent = (props) => {
   const { choice, onClick, onRemoveChoice, error, instanceId, disabled } = props;
-  const choiceRef = useRef(null);
 
   const {
     attributes,
     listeners,
-    setNodeRef: setDraggableRef,
+    setNodeRef,
     transform,
     isDragging,
   } = useDraggable({
@@ -76,25 +74,6 @@ export const BlankContent = (props) => {
     disabled: disabled || choiceIsEmpty(choice),
 
   });
-
-  // Combine refs
-  const setNodeRef = (node) => {
-    choiceRef.current = node;
-    setDraggableRef(node);
-  };
-
-  // Render math when choice value changes
-  useEffect(() => {
-    // Defer renderMath to allow speech-rule-engine to initialize
-    // This prevents "Cannot read properties of undefined (reading 'speech')" errors
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        if (choiceRef.current) {
-          renderMath(choiceRef.current);
-        }
-      });
-    });
-  }, [choice.value]);
 
   const style = transform ? {
     // transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,

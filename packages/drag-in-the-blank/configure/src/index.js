@@ -153,15 +153,12 @@ export default class DragInTheBlank extends HTMLElement {
     }
     this._root.render(element);
 
-    // Use triple requestAnimationFrame to defer renderMath after Slate finishes rendering
+    // Render math after React finishes rendering
     // This allows speech-rule-engine to initialize and Slate to complete its render cycle
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          renderMath(this);
-        });
-      });
-    });
+    setTimeout(() => {
+      console.log('[configure/index.js] Calling renderMath on entire component');
+      renderMath(this);
+    }, 0);
   }
 
   disconnectedCallback() {

@@ -71,15 +71,14 @@ export class Choices extends React.Component {
   rerenderMath = () => {
     // Use double requestAnimationFrame to defer renderMath
     // This allows speech-rule-engine to initialize and prevents conflicts
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        //eslint-disable-next-line
-        const domNode = ReactDOM.findDOMNode(this);
-        if (domNode) {
-          renderMath(domNode);
-        }
-      });
-    });
+    setTimeout(() => {
+      //eslint-disable-next-line
+      const domNode = ReactDOM.findDOMNode(this);
+      if (domNode) {
+        console.log('[configure/choices.jsx] Calling renderMath on choices container');
+        //  renderMath(domNode);
+      }
+    }, 0);
   };
 
   onChoiceChanged = (prevValue, val, key) => {

@@ -24,6 +24,7 @@ class DragPreviewWrapper extends React.Component {
     // Render math in the drag preview after it mounts
     setTimeout(() => {
       if (this.containerRef.current) {
+        console.log('[configure/main.jsx/DragPreviewWrapper] Calling renderMath in componentDidMount');
         renderMath(this.containerRef.current);
       }
     }, 0);
@@ -33,6 +34,7 @@ class DragPreviewWrapper extends React.Component {
     // Re-render math when the drag preview updates
     setTimeout(() => {
       if (this.containerRef.current) {
+        console.log('[configure/main.jsx/DragPreviewWrapper] Calling renderMath in componentDidUpdate');
         renderMath(this.containerRef.current);
       }
     }, 0);
