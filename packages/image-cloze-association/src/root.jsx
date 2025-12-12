@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withDragContext } from '@pie-lib/drag';
+import { DragOverlay } from '@dnd-kit/core';
+import { DragProvider } from '@pie-lib/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { color, Collapsible, PreviewPrompt, UiLayout, hasText, hasMedia } from '@pie-lib/render-ui';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import Translator from '@pie-lib/translator';
@@ -15,26 +16,27 @@ import Image from './image-container';
 import InteractiveSection from './interactive-section';
 import PossibleResponses from './possible-responses';
 import { getUnansweredAnswers, getAnswersCorrectness } from './utils-correctness';
+import PossibleResponse from './possible-response';
 
 const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
-const styles = (theme) => ({
-  main: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    position: 'relative',
-    '& img': {
-      maxWidth: '100%',
-      height: 'auto',
-    },
+const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
+  color: color.text(),
+  backgroundColor: color.background(),
+  position: 'relative',
+  '& img': {
+    maxWidth: '100%',
+    height: 'auto',
   },
-  teacherInstructions: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  rationale: {
-    marginTop: theme.spacing.unit * 2,
-  },
-});
+}));
+
+const StyledTeacherInstructions = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledRationale = styled(Collapsible)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+}));
 
 export class ImageClozeAssociationComponent extends React.Component {
   constructor(props) {
@@ -77,16 +79,63 @@ export class ImageClozeAssociationComponent extends React.Component {
     };
   }
 
-  beginDrag = (draggingElement) => {
-    this.setState({
-      draggingElement,
-    });
+  onDragStart = (event) => {
+    const { active } = event;
+
+    if (active?.data?.current) {
+      this.setState({
+        draggingElement: active.data.current,
+      });
+    }
   };
 
-  handleOnDragEnd = () => {
-    this.setState({
-      draggingElement: { id: '', value: '' },
-    });
+  onDragEnd = (event) => {
+    console.log('Drag Ended Result:', event);
+    const { active, over } = event;
+
+    this.setState({ draggingElement: { id: '', value: '' } });
+
+    if (!over || !active) {
+      console.log('Missing over or active:', { over, active });
+      return;
+    }
+
+    const draggedItem = active.data.current;
+
+    if (!draggedItem) {
+      return;
+    }
+
+    if (over.id === 'ica-board') {
+      this.handleOnAnswerRemove(draggedItem);
+      return;
+    }
+
+    const responseArea = over.data.current;
+
+    if (responseArea) {
+      this.handleOnAnswerSelect(draggedItem, responseArea.containerIndex);
+    }
+  };
+
+  renderDragOverlay = () => {
+    const { draggingElement } = this.state;
+    const { model } = this.props;
+
+    if (!draggingElement.id) return null;
+
+    if (draggingElement.id) {
+      return (
+        <PossibleResponse
+          key={draggingElement.id}
+          data={draggingElement}
+          answerChoiceTransparency={model.answerChoiceTransparency}
+          containerStyle={{ margin: '4px' }}
+        />
+      );
+    }
+
+    return null;
   };
 
   filterPossibleAnswers = (possibleResponses, answer) =>
@@ -205,7 +254,6 @@ export class ImageClozeAssociationComponent extends React.Component {
 
   render() {
     const {
-      classes,
       model: {
         disabled,
         duplicateResponses,
@@ -279,8 +327,8 @@ export class ImageClozeAssociationComponent extends React.Component {
       duplicateResponses,
       image,
       onAnswerSelect: this.handleOnAnswerSelect,
-      onDragAnswerBegin: this.beginDrag,
-      onDragAnswerEnd: this.handleOnDragEnd,
+      onDragAnswerBegin: this.onDragStart,
+      onDragAnswerEnd: this.onDragEnd,
       responseContainers,
       showDashedBorder,
       responseAreaFill,
@@ -308,8 +356,8 @@ export class ImageClozeAssociationComponent extends React.Component {
             canDrag={!disabled}
             data={possibleResponses}
             onAnswerRemove={this.handleOnAnswerRemove}
-            onDragBegin={this.beginDrag}
-            onDragEnd={this.handleOnDragEnd}
+            onDragBegin={this.onDragStart}
+            onDragEnd={this.onDragEnd}
             answerChoiceTransparency={answerChoiceTransparency}
             customStyle={{
               minWidth: isVertical ? '130px' : image?.width || 'fit-content',
@@ -322,107 +370,96 @@ export class ImageClozeAssociationComponent extends React.Component {
     };
 
     return (
-      <UiLayout
-        extraCSSRules={extraCSSRules}
-        id={'main-container'}
-        className={classes.main}
-        fontSizeFactor={fontSizeFactor}
-      >
-        {showTeacherInstructions && (
-          <Collapsible
-            className={classes.teacherInstructions}
-            labels={{
-              hidden: 'Show Teacher Instructions',
-              visible: 'Hide Teacher Instructions',
-            }}
-          >
-            <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
-        )}
+      <DragProvider onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
+        <StyledUiLayout extraCSSRules={extraCSSRules} id={'main-container'} fontSizeFactor={fontSizeFactor}>
+          {showTeacherInstructions && (
+            <StyledTeacherInstructions
+              labels={{
+                hidden: 'Show Teacher Instructions',
+                visible: 'Hide Teacher Instructions',
+              }}
+            >
+              <PreviewPrompt prompt={teacherInstructions} />
+            </StyledTeacherInstructions>
+          )}
 
-        <PreviewPrompt
-          className="prompt"
-          prompt={prompt}
-          autoplayAudioEnabled={autoplayAudioEnabled}
-          customAudioButton={customAudioButton}
-        />
+          <PreviewPrompt
+            className="prompt"
+            prompt={prompt}
+            autoplayAudioEnabled={autoplayAudioEnabled}
+            customAudioButton={customAudioButton}
+          />
 
-        <PreviewPrompt prompt={stimulus} />
+          <PreviewPrompt prompt={stimulus} />
 
-        <CorrectAnswerToggle
-          show={showToggle}
-          toggled={showCorrect}
-          onToggle={this.toggleCorrect}
-          language={language}
-        />
+          <CorrectAnswerToggle
+            show={showToggle}
+            toggled={showCorrect}
+            onToggle={this.toggleCorrect}
+            language={language}
+          />
 
-        <InteractiveSection responseCorrect={showCorrect && showToggle ? true : responseCorrect} uiStyle={uiStyle}>
-          {renderImage()}
-          {renderPossibleResponses()}
-        </InteractiveSection>
+          <InteractiveSection responseCorrect={showCorrect && showToggle ? true : responseCorrect} uiStyle={uiStyle}>
+            {renderImage()}
+            {renderPossibleResponses()}
+          </InteractiveSection>
 
-        {showRationale && (
-          <Collapsible
-            className={classes.rationale}
-            labels={{
-              hidden: 'Show Rationale',
-              visible: 'Hide Rationale',
-            }}
-          >
-            <PreviewPrompt prompt={rationale} />
-          </Collapsible>
-        )}
-      </UiLayout>
+          {showRationale && (
+            <StyledRationale
+              labels={{
+                hidden: 'Show Rationale',
+                visible: 'Hide Rationale',
+              }}
+            >
+              <PreviewPrompt prompt={rationale} />
+            </StyledRationale>
+          )}
+        </StyledUiLayout>
+        <DragOverlay>{this.renderDragOverlay()}</DragOverlay>
+      </DragProvider>
     );
   }
 }
 
-const WarningInfo = withStyles((theme) => ({
-  warning: {
-    margin: `0 ${theme.spacing.unit * 2}px`,
-    backgroundColor: '#dddddd',
-    padding: theme.spacing.unit,
-    display: 'flex',
-    alignItems: 'center',
-    '& svg': {
-      height: '30px',
-    },
-    '& h1': {
-      padding: '0px',
-      margin: '0px',
-    },
+const WarningContainer = styled('div')(({ theme }) => ({
+  margin: `0 ${theme.spacing(2)}`,
+  backgroundColor: '#dddddd',
+  padding: theme.spacing(1),
+  display: 'flex',
+  alignItems: 'center',
+  '& svg': {
+    height: '30px',
   },
-  message: {
-    paddingLeft: theme.spacing.unit / 2,
-    userSelect: 'none',
+  '& h1': {
+    padding: '0px',
+    margin: '0px',
   },
-}))(({ classes, message }) => (
+}));
+
+const WarningMessage = styled('span')(({ theme }) => ({
+  paddingLeft: theme.spacing(0.5),
+  userSelect: 'none',
+}));
+
+const WarningInfo = ({ message }) => (
   <TransitionGroup>
     <CSSTransition classNames={'fb'} key="fb" timeout={300}>
-      <div key="panel" className={classes.warning}>
+      <WarningContainer key="panel">
         <NotInterestedIcon color={'secondary'} fontSize={'small'} />
-        <span className={classes.message} dangerouslySetInnerHTML={{ __html: message }} />
-      </div>
+        <WarningMessage dangerouslySetInnerHTML={{ __html: message }} />
+      </WarningContainer>
     </CSSTransition>
   </TransitionGroup>
-));
+);
 
 WarningInfo.propTypes = {
   message: PropTypes.string,
-  classes: PropTypes.object.isRequired,
 };
 
 ImageClozeAssociationComponent.propTypes = {
-  classes: PropTypes.object,
   model: PropTypes.object.isRequired,
   session: PropTypes.object,
   updateAnswer: PropTypes.func.isRequired,
 };
 
-ImageClozeAssociationComponent.defaultProps = {
-  classes: {},
-};
-
-const StyledComponent = withStyles(styles)(ImageClozeAssociationComponent);
-
-export default withDragContext(StyledComponent);
+export default ImageClozeAssociationComponent;

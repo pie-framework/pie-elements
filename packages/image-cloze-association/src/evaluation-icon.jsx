@@ -1,9 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import Check from '@mui/icons-material/Check';
 import Close from '@mui/icons-material/Close';
 import { color } from '@pie-lib/render-ui';
+
+const StyledIcon = styled('svg')(() => ({
+  '&.correctEmpty': {
+    color: color.correct(),
+  },
+  '&.correctFilled': {
+    color: color.background(),
+    backgroundColor: color.correct(),
+  },
+  '&.incorrectEmpty': {
+    color: color.incorrect(),
+  },
+  '&.incorrectFilled': {
+    color: color.background(),
+    backgroundColor: color.incorrect(),
+  },
+}));
 
 const getCorrectnessClass = (isCorrect, filled) => {
   const correctness = isCorrect ? 'correct' : 'incorrect';
@@ -12,43 +29,26 @@ const getCorrectnessClass = (isCorrect, filled) => {
   return `${correctness}${fillState}`;
 };
 
-const EvaluationIcon = ({ classes, containerStyle, isCorrect, filled }) => {
+const EvaluationIcon = ({ containerStyle, isCorrect, filled }) => {
   const Icon = isCorrect ? Check : Close;
   const showCorrectness = isCorrect !== undefined;
   const correctness = showCorrectness ? getCorrectnessClass(isCorrect, filled) : '';
 
-  return showCorrectness ? <Icon className={`${classes.icon} ${classes[correctness]}`} style={containerStyle} /> : null;
+  return showCorrectness ? (
+    <Icon component={StyledIcon} className={correctness} style={containerStyle} />
+  ) : null;
 };
 
 EvaluationIcon.propTypes = {
-  classes: PropTypes.object,
   containerStyle: PropTypes.object,
   filled: PropTypes.bool,
   isCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 };
 
 EvaluationIcon.defaultProps = {
-  classes: {},
   containerStyle: {},
   filled: false,
   isCorrect: undefined,
 };
 
-const styles = () => ({
-  correctEmpty: {
-    color: color.correct(),
-  },
-  correctFilled: {
-    color: color.background(),
-    backgroundColor: color.correct(),
-  },
-  incorrectEmpty: {
-    color: color.incorrect(),
-  },
-  incorrectFilled: {
-    color: color.background(),
-    backgroundColor: color.incorrect(),
-  },
-});
-
-export default withStyles(styles)(EvaluationIcon);
+export default EvaluationIcon;

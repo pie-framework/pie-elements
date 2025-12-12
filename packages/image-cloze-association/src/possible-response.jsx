@@ -1,99 +1,146 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import withStyles from '@mui/styles/withStyles';
-import { DragSource } from '@pie-lib/drag';
+import { styled } from '@mui/material/styles';
+import { useDraggable } from '@dnd-kit/core';
 import { color } from '@pie-lib/render-ui';
-import ReactDOM from 'react-dom';
 
 import EvaluationIcon from './evaluation-icon';
-import c from './constants';
 import StaticHTMLSpan from './static-html-span';
 
-export class PossibleResponse extends React.Component {
-  handleTouchEnd = () => {
-    clearTimeout(this.longPressTimer);
+const BaseContainer = styled('div')(() => ({
+  position: 'relative',
+  backgroundColor: color.white(),
+  border: `1px solid ${color.borderDark()}`,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: '28px',
+  width: 'fit-content',
+  '& span img': {
+    // Added for touch devices, for image content.
+    // This will prevent the context menu from appearing and not allowing other interactions with the image.
+    // If interactions with the image in the token will be requested we should handle only the context Menu.
+    pointerEvents: 'none',
+  },
+  '&.textAnswerChoiceStyle': {
+    padding: '0 10px',
+    margin: '4px 6px !important',
+  },
+  '&.answerChoiceTransparency': {
+    border: 'none',
+    backgroundColor: `${color.transparent()}`,
+    '&:hover': {
+      border: `1px solid ${color.borderDark()}`,
+    },
+  },
+  '&.baseCorrect': {
+    border: `2px solid ${color.correct()} !important`,
+  },
+  '&.baseIncorrect': {
+    border: `2px solid ${color.incorrect()} !important`,
+  },
+}));
+
+const StyledSpan = styled(StaticHTMLSpan)(() => ({
+  backgroundColor: color.background(),
+  '&.hiddenSpan': {
+    visibility: 'hidden',
+  },
+}));
+
+const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, onDragEnd, answerChoiceTransparency }) => {
+  const rootRef = useRef(null);
+  const longPressTimer = useRef(null);
+
+  const { setNodeRef, isDragging, attributes, listeners } = useDraggable({
+    id: `possible-response-${data.id}`,
+    data: {
+      id: data.id,
+      value: data.value,
+      containerIndex: data.containerIndex,
+    },
+    disabled: !canDrag,
+  });
+
+  const handleTouchEnd = () => {
+    clearTimeout(longPressTimer.current);
   };
 
-  handleTouchMove = () => {
-    clearTimeout(this.longPressTimer);
+  const handleTouchMove = () => {
+    clearTimeout(longPressTimer.current);
   };
 
-  handleTouchStart = (e) => {
+  const handleTouchStart = (e) => {
     e.preventDefault();
-    this.longPressTimer = setTimeout(() => {
-      this.startDrag();
+    longPressTimer.current = setTimeout(() => {
+      if (canDrag && rootRef.current) {
+        onDragBegin(data);
+      }
     }, 500); // start drag after 500ms (touch and hold duration) for chromebooks and other touch devices
   };
 
-  componentDidMount() {
-    if (this.rootRef) {
-      this.rootRef.addEventListener('touchstart', this.handleTouchStart, { passive: false });
-      this.rootRef.addEventListener('touchend', this.handleTouchEnd);
-      this.rootRef.addEventListener('touchmove', this.handleTouchMove);
-    }
-  }
+  useEffect(() => {
+    const node = rootRef.current;
 
-  componentWillUnmount() {
-    if (this.rootRef) {
-      this.rootRef.removeEventListener('touchstart', this.handleTouchStart);
-      this.rootRef.removeEventListener('touchend', this.handleTouchEnd);
-      this.rootRef.removeEventListener('touchmove', this.handleTouchMove);
-    }
-  }
+    if (!node) return;
 
-  startDrag = () => {
-    const { connectDragSource, disabled } = this.props;
-    if (!disabled) {
-      connectDragSource(this.rootRef);
-    }
-  };
+    node.addEventListener('touchstart', handleTouchStart, { passive: false });
+    node.addEventListener('touchend', handleTouchEnd);
+    node.addEventListener('touchmove', handleTouchMove);
 
-  render() {
-    const { classes, connectDragSource, containerStyle, data, answerChoiceTransparency } = this.props;
-    const { isCorrect } = data || {};
-    const evaluationStyle = {
-      fontSize: 14,
-      position: 'absolute',
-      bottom: '3px',
-      right: '3px',
+    return () => {
+      node.removeEventListener('touchstart', handleTouchStart);
+      node.removeEventListener('touchend', handleTouchEnd);
+      node.removeEventListener('touchmove', handleTouchMove);
     };
-    const correctnessClass = isCorrect === true ? 'baseCorrect' : isCorrect === false ? 'baseIncorrect' : undefined;
+  }, [canDrag, data]);
 
-    const imgRegex = /<img[^>]+src="([^">]+)"/;
-    const containsImage = imgRegex.test(data.value);
+  // useEffect(() => {
+  //   if (!isDragging) {
+  //     onDragEnd();
+  //   }
+  // }, [isDragging, onDragEnd]);
 
-    const containerClassNames = classNames([
-      classes.base,
-      {
-        [classes.answerChoiceTransparency]: answerChoiceTransparency,
-        [classes[correctnessClass]]: !!correctnessClass,
-        [classes.textAnswerChoiceStyle]: !containsImage,
-      },
-    ]);
+  const { isCorrect } = data || {};
+  const evaluationStyle = {
+    fontSize: 14,
+    position: 'absolute',
+    bottom: '3px',
+    right: '3px',
+  };
+  const correctnessClass = isCorrect === true ? 'baseCorrect' : isCorrect === false ? 'baseIncorrect' : undefined;
 
-    const promptClassNames = classNames([classes.span, { [classes.hiddenSpan]: data.hidden }]);
+  const imgRegex = /<img[^>]+src="([^">]+)"/;
+  const containsImage = imgRegex.test(data.value);
 
-    return connectDragSource(
-      <div
-        className={containerClassNames}
-        style={containerStyle}
-        ref={(ref) => {
-          //eslint-disable-next-line
-          this.rootRef = ReactDOM.findDOMNode(ref);
-        }}
-      >
-        <StaticHTMLSpan html={data.value} className={promptClassNames} />
-        <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
-      </div>,
-    );
-  }
-}
+  const containerClassNames = classNames({
+    answerChoiceTransparency,
+    [correctnessClass]: !!correctnessClass,
+    textAnswerChoiceStyle: !containsImage,
+  });
+
+  const promptClassNames = classNames({ hiddenSpan: data.hidden });
+
+  return (
+    <BaseContainer
+      className={containerClassNames}
+      style={containerStyle}
+      ref={(ref) => {
+        rootRef.current = ref;
+        setNodeRef(ref);
+      }}
+      {...listeners}
+      {...attributes}
+    >
+      <StyledSpan html={data.value} className={promptClassNames} />
+      <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
+    </BaseContainer>
+  );
+};
 
 PossibleResponse.propTypes = {
   canDrag: PropTypes.bool.isRequired,
-  classes: PropTypes.object,
-  connectDragSource: PropTypes.func,
   containerStyle: PropTypes.object,
   data: PropTypes.object.isRequired,
   onDragBegin: PropTypes.func.isRequired,
@@ -102,80 +149,8 @@ PossibleResponse.propTypes = {
 };
 
 PossibleResponse.defaultProps = {
-  classes: {},
-  connectDragSource: () => {},
   containerStyle: {},
+  answerChoiceTransparency: false,
 };
 
-const styles = () => ({
-  base: {
-    position: 'relative',
-    backgroundColor: color.white(),
-    border: `1px solid ${color.borderDark()}`,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '28px',
-    width: 'fit-content',
-    '& span img': {
-      // Added for touch devices, for image content.
-      // This will prevent the context menu from appearing and not allowing other interactions with the image.
-      // If interactions with the image in the token will be requested we should handle only the context Menu.
-      pointerEvents: 'none',
-    },
-  },
-  textAnswerChoiceStyle: {
-    padding: '0 10px',
-    margin: '4px 6px !important',
-  },
-  answerChoiceTransparency: {
-    border: 'none',
-    backgroundColor: `${color.transparent()}`,
-
-    '&:hover': {
-      border: `1px solid ${color.borderDark()}`,
-    },
-  },
-  baseCorrect: {
-    border: `2px solid ${color.correct()} !important`,
-  },
-  baseIncorrect: {
-    border: `2px solid ${color.incorrect()} !important`,
-  },
-  span: {
-    backgroundColor: color.background(),
-  },
-  hiddenSpan: {
-    visibility: 'hidden',
-  },
-});
-
-const Styled = withStyles(styles)(PossibleResponse);
-
-const tileSource = {
-  canDrag(props) {
-    const { canDrag } = props;
-    return canDrag;
-  },
-  beginDrag(props) {
-    const {
-      data,
-      data: { id, value, containerIndex },
-      onDragBegin,
-    } = props;
-    onDragBegin(data);
-    return {
-      id,
-      value,
-      containerIndex,
-    };
-  },
-  endDrag(props) {
-    props.onDragEnd();
-  },
-};
-
-export default DragSource(c.types.response, tileSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging(),
-}))(Styled);
+export default PossibleResponse;

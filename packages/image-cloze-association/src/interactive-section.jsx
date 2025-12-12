@@ -1,27 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 import { color } from '@pie-lib/render-ui';
 
 import EvaluationIcon from './evaluation-icon';
 
+const StyledContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  display: 'flex',
+  width: 'fit-content',
+  '&.default': {
+    border: `1px solid ${color.disabled()}`,
+  },
+  '&.correct': {
+    border: `2px solid ${color.correct()}`,
+  },
+  '&.incorrect': {
+    border: `2px solid ${color.incorrect()}`,
+  },
+}));
+
 class InteractiveSection extends React.Component {
   getClassname() {
-    const { classes, responseCorrect } = this.props;
+    const { responseCorrect } = this.props;
     let styleProp;
 
     switch (responseCorrect) {
       case undefined:
-        styleProp = 'interactiveDefault';
+        styleProp = 'default';
         break;
       case true:
-        styleProp = 'interactiveCorrect';
+        styleProp = 'correct';
         break;
       default:
-        styleProp = 'interactiveIncorrect';
+        styleProp = 'incorrect';
         break;
     }
-    return classes[styleProp];
+    return styleProp;
   }
 
   getPositionDirection(choicePosition) {
@@ -58,47 +73,22 @@ class InteractiveSection extends React.Component {
     };
 
     return (
-      <div className={classname} style={style}>
+      <StyledContainer className={classname} style={style}>
         <EvaluationIcon containerStyle={evaluationStyle} filled isCorrect={responseCorrect} />
         {children}
-      </div>
+      </StyledContainer>
     );
   }
 }
 
 InteractiveSection.propTypes = {
-  classes: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired,
   responseCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   uiStyle: PropTypes.object,
 };
 
 InteractiveSection.defaultProps = {
-  classes: {},
   responseCorrect: undefined,
 };
 
-const styles = (theme) => {
-  const baseInteractiveStyle = {
-    marginTop: theme.spacing.unit * 2,
-    display: 'flex',
-    width: 'fit-content',
-  };
-
-  return {
-    interactiveDefault: {
-      ...baseInteractiveStyle,
-      border: `1px solid ${color.disabled()}`,
-    },
-    interactiveCorrect: {
-      ...baseInteractiveStyle,
-      border: `2px solid ${color.correct()}`,
-    },
-    interactiveIncorrect: {
-      ...baseInteractiveStyle,
-      border: `2px solid ${color.incorrect()}`,
-    },
-  };
-};
-
-export default withStyles(styles)(InteractiveSection);
+export default InteractiveSection;

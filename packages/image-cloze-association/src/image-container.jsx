@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
+import { styled } from '@mui/material/styles';
 
 import ImageDropTarget from './image-drop-target';
+
+const BaseContainer = styled('div')(({ theme }) => ({
+  margin: theme.spacing(2),
+  position: 'relative',
+  width: 'fit-content',
+}));
 
 class ImageContainer extends Component {
   render() {
     const {
       answers,
       canDrag,
-      classes,
       draggingElement,
       image: { height, src, width } = {},
       onAnswerSelect,
@@ -25,7 +30,7 @@ class ImageContainer extends Component {
     } = this.props;
 
     return (
-      <div className={classes.base}>
+      <BaseContainer>
         <img src={src} height={height} width={width} />
 
         {(responseContainers || []).map((r, i) => {
@@ -47,6 +52,7 @@ class ImageContainer extends Component {
               }}
               key={r.id + i}
               draggingElement={draggingElement}
+              index={r.index}
               onDrop={(item) => onAnswerSelect(item, r.index)}
               onDragAnswerBegin={onDragAnswerBegin}
               onDragAnswerEnd={onDragAnswerEnd}
@@ -59,7 +65,7 @@ class ImageContainer extends Component {
             />
           );
         })}
-      </div>
+      </BaseContainer>
     );
   }
 }
@@ -67,7 +73,6 @@ class ImageContainer extends Component {
 ImageContainer.propTypes = {
   answers: PropTypes.array.isRequired,
   canDrag: PropTypes.bool.isRequired,
-  classes: PropTypes.object,
   draggingElement: PropTypes.shape({}).isRequired,
   image: PropTypes.object.isRequired,
   onAnswerSelect: PropTypes.func.isRequired,
@@ -82,16 +87,4 @@ ImageContainer.propTypes = {
   maxResponsePerZone: PropTypes.number,
 };
 
-ImageContainer.defaultProps = {
-  classes: {},
-};
-
-const styles = (theme) => ({
-  base: {
-    margin: theme.spacing.unit * 2,
-    position: 'relative',
-    width: 'fit-content',
-  },
-});
-
-export default withStyles(styles)(ImageContainer);
+export default ImageContainer;
