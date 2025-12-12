@@ -22,7 +22,7 @@
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
-    "react-dnd": "^14.0.5",
+    "@dnd-kit/core": "^6.1.0",
     "react-dom": "18.2.0",
     "react-jss": "^8.4.0",
     "react-transition-group": "^2.3.1"

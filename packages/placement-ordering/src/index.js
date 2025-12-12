@@ -3,14 +3,10 @@ import { createRoot } from 'react-dom/client';
 import compact from 'lodash/compact';
 import debug from 'debug';
 import { renderMath } from '@pie-lib/math-rendering';
-import { withDragContext } from '@pie-lib/drag';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
-import { swap } from './ordering';
 
 const log = debug('pie-elements:placement-ordering');
-
-export { withDragContext, swap };
 
 export const isValidSession = ({ model, session }) => {
   const { config } = model;

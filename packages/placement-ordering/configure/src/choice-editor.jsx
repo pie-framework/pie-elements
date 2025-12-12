@@ -1,16 +1,16 @@
-import ChoiceTile from './choice-tile';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
-import withStyles from '@mui/styles/withStyles';
 import isEmpty from 'lodash/isEmpty';
-import cloneDeep from 'lodash/cloneDeep';
-import uniqueId from 'lodash/uniqueId';
 import shuffle from 'lodash/shuffle';
 import isEqual from 'lodash/isEqual';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 import { InputContainer } from '@pie-lib/render-ui';
 import { AlertDialog } from '@pie-lib/config-ui';
+
+import { buildTiles } from './utils';
+import ChoiceTile from './choice-tile';
 
 function findFreeChoiceSlot(choices) {
   let slot = 1;
@@ -25,92 +25,44 @@ function findFreeChoiceSlot(choices) {
 
 const log = debug('@pie-element:placement-ordering:configure:choice-editor');
 
-function updateResponseOrChoices(response, choices, from, to) {
-  const { type: fromType, index: fromIndex } = from;
-  const { type: toType, index: placeAtIndex } = to;
+const StyledControls = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+}));
 
-  if (fromType === 'target' && toType === 'target') {
-    const updatedResponse = cloneDeep(response) || [];
+const StyledAddButton = styled(Button)(({ theme }) => ({
+  marginTop: theme.spacing(2.5),
+  paddingLeft: theme.spacing(1.5),
+  paddingRight: theme.spacing(1.5),
+  '& .MuiButton-label': {
+    transition: 'opacity 200ms linear',
+    '&:hover': {
+      opacity: 0.3,
+    },
+  },
+}));
 
-    const { movedItem, remainingItems } = updatedResponse.reduce(
-      (acc, item, index) => {
-        if (index === fromIndex) {
-          acc.movedItem = item;
-        } else {
-          acc.remainingItems.push(item);
-        }
+const StyledVTiler = styled('div')(({ theme }) => ({
+  gridAutoFlow: 'column',
+  display: 'grid',
+  gridGap: '10px',
+  alignItems: 'center',
+}));
 
-        return acc;
-      },
-      { movedItem: null, remainingItems: [] },
-    );
+const StyledColumnLabel = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+}));
 
-    return {
-      response: [...remainingItems.slice(0, placeAtIndex), movedItem, ...remainingItems.slice(placeAtIndex)],
-      choices,
-    };
-  }
-
-  if (fromType === 'choice' && toType === 'choice') {
-    const updatedChoices = cloneDeep(choices) || [];
-
-    const { movedItem, remainingItems, toIndex } = updatedChoices.reduce(
-      (acc, item, index) => {
-        if (item.id === from.id) {
-          acc.movedItem = item;
-        } else {
-          acc.remainingItems.push(item);
-        }
-
-        if (item.id === to.id) {
-          acc.toIndex = index;
-        }
-
-        return acc;
-      },
-      { movedItem: null, remainingItems: [], toIndex: null },
-    );
-
-    return {
-      response,
-      choices: [...remainingItems.slice(0, toIndex), movedItem, ...remainingItems.slice(toIndex)],
-    };
-  }
-
-  return { response, choices };
-}
-
-function buildTiles(choices, response, instanceId) {
-  const targets = response.map((r, index) => {
-    const respId = r && r.id;
-    const choice = choices.find((c) => respId !== undefined && respId !== null && c.id === respId);
-
-    return {
-      type: 'target',
-      instanceId,
-      ...choice,
-      draggable: true,
-      index,
-      editable: false,
-    };
-  });
-
-  const processedChoices = choices.map((m) => {
-    return Object.assign({}, m, {
-      type: 'choice',
-      droppable: false,
-      draggable: true,
-      instanceId,
-      editable: true,
-    });
-  });
-
-  return processedChoices.concat(targets);
-}
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 class ChoiceEditor extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     correctResponse: PropTypes.array.isRequired,
     choices: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -134,8 +86,6 @@ class ChoiceEditor extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.instanceId = uniqueId();
 
     this.onChoiceChange = (choice) => {
       const { choices, onChange, correctResponse } = this.props;
@@ -214,21 +164,10 @@ class ChoiceEditor extends React.Component {
         onChange(shuffled, correctResponse);
       }
     };
-
-    this.onDropChoice = (ordering, target, source) => {
-      const { onChange } = this.props;
-      const from = ordering.tiles.find((t) => t.id === source.id && t.type === source.type);
-      const to = target;
-      log('[onDropChoice] ', from, to);
-      const { response, choices } = updateResponseOrChoices(ordering.response, ordering.choices, from, to);
-
-      onChange(choices, response);
-    };
   }
 
   render() {
     const {
-      classes,
       correctResponse,
       choices,
       imageSupport,
@@ -242,15 +181,10 @@ class ChoiceEditor extends React.Component {
       maxImageHeight,
       errors,
       mathMlOptions = {},
+      ordering,
     } = this.props;
     const { warning } = this.state;
     const { choicesErrors, orderError } = errors || {};
-
-    const ordering = {
-      choices,
-      response: !correctResponse || isEmpty(correctResponse) ? new Array(choices.length) : correctResponse,
-      tiles: buildTiles(choices, correctResponse, this.instanceId),
-    };
 
     const vTilerStyle = {
       gridTemplateColumns: 'repeat(2, 1fr)',
@@ -258,21 +192,20 @@ class ChoiceEditor extends React.Component {
     };
 
     return (
-      <div className={classes.choiceEditor}>
-        <div className={classes.vtiler} style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
-          <InputContainer label={`Student ${choicesLabel || 'Choices'}`} className={classes.columnLabel} />
-          <InputContainer label="Correct Order" className={classes.columnLabel} />
-        </div>
-        <div className={classes.vtiler} style={vTilerStyle}>
+      <div>
+        <StyledVTiler style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          <StyledColumnLabel label={`Student ${choicesLabel || 'Choices'}`} />
+          <StyledColumnLabel label="Correct Order" />
+        </StyledVTiler>
+        <StyledVTiler style={vTilerStyle}>
           {ordering.tiles.map((choice, index) => (
             <ChoiceTile
+              key={`${choice.type}-${choice.id}`}
               choice={choice}
               index={index}
-              key={index}
               imageSupport={imageSupport}
               onDelete={this.onDelete.bind(this, choice)}
               onChoiceChange={this.onChoiceChange}
-              onDropChoice={(source, index) => this.onDropChoice(ordering, choice, source, index)}
               toolbarOpts={toolbarOpts}
               pluginProps={pluginProps}
               choices={choices}
@@ -284,25 +217,23 @@ class ChoiceEditor extends React.Component {
               mathMlOptions={mathMlOptions}
             />
           ))}
-        </div>
-        {orderError && <div className={classes.errorText}>{orderError}</div>}
-        <div className={classes.controls}>
-          <Button
+        </StyledVTiler>
+        {orderError && <ErrorText>{orderError}</ErrorText>}
+        <StyledControls>
+          <StyledAddButton
             onClick={this.shuffleChoices}
             size="small"
-            variant="contained"
-            classes={{ root: classes.addButtonRoot, label: classes.addButtonLabel }}>
+            variant="contained">
             {`SHUFFLE ${pluralChoiceLabel}`.toUpperCase()}
-          </Button>
+          </StyledAddButton>
 
-          <Button
+          <StyledAddButton
             onClick={this.addChoice}
             size="small"
-            variant="contained"
-            classes={{ root: classes.addButtonRoot, label: classes.addButtonLabel }}>
+            variant="contained">
             {`ADD ${singularChoiceLabel}`.toUpperCase()}
-          </Button>
-        </div>
+          </StyledAddButton>
+        </StyledControls>
         <AlertDialog
           open={warning.open}
           title="Warning"
@@ -314,44 +245,4 @@ class ChoiceEditor extends React.Component {
   }
 }
 
-const styles = (theme) => ({
-  allToggle: {},
-  choiceEditor: {},
-  controls: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  root: {
-    width: '30px',
-    height: '30px',
-    fill: theme.palette.primary[500],
-  },
-  addButtonRoot: {
-    marginTop: theme.spacing.unit * 2.5,
-    paddingHorizontal: theme.spacing.unit * 1.5,
-  },
-  addButtonLabel: {
-    transition: 'opacity 200ms linear',
-    '&:hover': {
-      opacity: 0.3,
-    },
-  },
-  vtiler: {
-    gridAutoFlow: 'column',
-    display: 'grid',
-    gridGap: '10px',
-    alignItems: 'center',
-  },
-  columnLabel: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
-
-export default withStyles(styles)(ChoiceEditor);
+export default ChoiceEditor;
