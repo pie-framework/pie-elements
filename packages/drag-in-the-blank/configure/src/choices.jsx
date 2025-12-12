@@ -69,10 +69,17 @@ export class Choices extends React.Component {
   }
 
   rerenderMath = () => {
-    //eslint-disable-next-line
-    const domNode = ReactDOM.findDOMNode(this);
-
-    renderMath(domNode);
+    // Use double requestAnimationFrame to defer renderMath
+    // This allows speech-rule-engine to initialize and prevents conflicts
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        //eslint-disable-next-line
+        const domNode = ReactDOM.findDOMNode(this);
+        if (domNode) {
+          renderMath(domNode);
+        }
+      });
+    });
   };
 
   onChoiceChanged = (prevValue, val, key) => {

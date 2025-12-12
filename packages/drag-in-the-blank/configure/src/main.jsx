@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import { layout, settings } from '@pie-lib/config-ui';
@@ -17,6 +16,32 @@ import Choice from './choice';
 import Choices from './choices';
 import { createSlateMarkup } from './markupUtils';
 import { generateValidationMessage } from '../utils';
+
+class DragPreviewWrapper extends React.Component {
+  containerRef = React.createRef();
+
+  componentDidMount() {
+    // Render math in the drag preview after it mounts
+    setTimeout(() => {
+      if (this.containerRef.current) {
+        renderMath(this.containerRef.current);
+      }
+    }, 0);
+  }
+
+  componentDidUpdate() {
+    // Re-render math when the drag preview updates
+    setTimeout(() => {
+      if (this.containerRef.current) {
+        renderMath(this.containerRef.current);
+      }
+    }, 0);
+  }
+
+  render() {
+    return <div ref={this.containerRef}>{this.props.children}</div>;
+  }
+}
 
 const { dropdown, toggle, Panel } = settings;
 
@@ -80,13 +105,6 @@ export class Main extends React.Component {
   constructor(props) {
     super(props);
     this.markupRef = React.createRef();
-  }
-
-  componentDidUpdate() {
-    // eslint-disable-next-line
-    const domNode = ReactDOM.findDOMNode(this);
-
-    renderMath(domNode);
   }
 
   onModelChange = (newVal) => {
@@ -435,7 +453,9 @@ export class Main extends React.Component {
           )}
         </layout.ConfigLayout>
         <DragOverlay>
-          {renderDragOverlay()}
+          <DragPreviewWrapper>
+            {renderDragOverlay()}
+          </DragPreviewWrapper>
         </DragOverlay>
       </DragProvider>
     );
