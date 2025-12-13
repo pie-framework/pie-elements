@@ -192,6 +192,36 @@ exports[`Main component Match Snapshot 1`] = `
                 },
               },
               "overrides": Object {
+                "MuiCheckbox": Object {
+                  "root": Object {
+                    "&$checked": Object {
+                      "color": "#3f51b5 !important",
+                    },
+                  },
+                },
+                "MuiRadio": Object {
+                  "root": Object {
+                    "&$checked": Object {
+                      "color": "#3f51b5 !important",
+                    },
+                  },
+                },
+                "MuiSwitch": Object {
+                  "root": Object {
+                    "&$checked": Object {
+                      "& + $bar": Object {
+                        "backgroundColor": "#3f51b5 !important",
+                        "opacity": 0.5,
+                      },
+                      "color": "#3f51b5 !important",
+                    },
+                  },
+                },
+                "MuiTabs": Object {
+                  "root": Object {
+                    "borderBottom": "1px solid #eee",
+                  },
+                },
                 "MuiTypography": Object {
                   "root": Object {
                     "fontFamily": "inherit",
@@ -1080,6 +1110,36 @@ exports[`Main component Match Snapshot 1`] = `
                                               },
                                             },
                                             "overrides": Object {
+                                              "MuiCheckbox": Object {
+                                                "root": Object {
+                                                  "&$checked": Object {
+                                                    "color": "#3f51b5 !important",
+                                                  },
+                                                },
+                                              },
+                                              "MuiRadio": Object {
+                                                "root": Object {
+                                                  "&$checked": Object {
+                                                    "color": "#3f51b5 !important",
+                                                  },
+                                                },
+                                              },
+                                              "MuiSwitch": Object {
+                                                "root": Object {
+                                                  "&$checked": Object {
+                                                    "& + $bar": Object {
+                                                      "backgroundColor": "#3f51b5 !important",
+                                                      "opacity": 0.5,
+                                                    },
+                                                    "color": "#3f51b5 !important",
+                                                  },
+                                                },
+                                              },
+                                              "MuiTabs": Object {
+                                                "root": Object {
+                                                  "borderBottom": "1px solid #eee",
+                                                },
+                                              },
                                               "MuiTypography": Object {
                                                 "root": Object {
                                                   "fontFamily": "inherit",
@@ -1529,6 +1589,36 @@ exports[`Main component Match Snapshot 1`] = `
                                               },
                                             },
                                             "overrides": Object {
+                                              "MuiCheckbox": Object {
+                                                "root": Object {
+                                                  "&$checked": Object {
+                                                    "color": "#3f51b5 !important",
+                                                  },
+                                                },
+                                              },
+                                              "MuiRadio": Object {
+                                                "root": Object {
+                                                  "&$checked": Object {
+                                                    "color": "#3f51b5 !important",
+                                                  },
+                                                },
+                                              },
+                                              "MuiSwitch": Object {
+                                                "root": Object {
+                                                  "&$checked": Object {
+                                                    "& + $bar": Object {
+                                                      "backgroundColor": "#3f51b5 !important",
+                                                      "opacity": 0.5,
+                                                    },
+                                                    "color": "#3f51b5 !important",
+                                                  },
+                                                },
+                                              },
+                                              "MuiTabs": Object {
+                                                "root": Object {
+                                                  "borderBottom": "1px solid #eee",
+                                                },
+                                              },
                                               "MuiTypography": Object {
                                                 "root": Object {
                                                   "fontFamily": "inherit",
