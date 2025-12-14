@@ -22,6 +22,10 @@
   },
   "exports": {
     ".": "./src/index.js",
-    "./print": "./src/print.js"
+    "./print": "./src/print.js",
+    "./esm": "./esm/element.js",
+    "./configure/esm": "./esm/configure.js",
+    "./controller/esm": "./esm/controller.js",
+    "./print/esm": "./esm/print.js"
   }
 }

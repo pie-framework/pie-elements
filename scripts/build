@@ -46,7 +46,10 @@ class ElementsCommands extends Commands {
     super(root, args, getElementPackages);
   }
 
-  beforePublish() {
+  async beforePublish() {
+    // Build ESM artifacts only during publishing (lerna publish invoked by build-helper's release).
+    // This keeps normal `yarn build` behavior unchanged.
+    await this.runCmd(`node scripts/build-esm.js`, { cwd: this.projectRoot });
     return this.commit(['yarn.lock'], '[ci skip] commit yarn.lock');
   }
 
