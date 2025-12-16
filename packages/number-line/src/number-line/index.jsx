@@ -232,7 +232,8 @@ export class NumberLine extends React.Component {
       });
     };
 
-    let elements = showCorrectAnswer ? getCorrectAnswerElements() : getAnswerElements();
+    // Determine which elements to show on the chart
+    let elements = showCorrectAnswer && correctResponse ? getCorrectAnswerElements() : getAnswerElements();
 
     let maxPointsMessage = () =>
       maxNumberOfPoints == 1
