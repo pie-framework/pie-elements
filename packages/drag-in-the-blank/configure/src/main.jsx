@@ -291,7 +291,7 @@ export class Main extends React.Component {
     };
 
     return (
-      <DragProvider modifiers={[restrictToFirstScrollableAncestor]} onDragEnd={onDragEnd} onDragStart={onDragStart}>
+      <DragProvider onDragEnd={onDragEnd} onDragStart={onDragStart}>
         <layout.ConfigLayout
           extraCSSRules={extraCSSRules}
           dimensions={contentDimensions}
