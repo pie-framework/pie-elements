@@ -51,7 +51,6 @@ const ErrorText = styled('div')(({ theme }) => ({
 
 const Choice = ({
   allowMultiplePlacements,
-  className,
   configuration,
   choice,
   deleteFocusedEl,
@@ -70,7 +69,7 @@ const Choice = ({
   uploadSoundSupport,
 }) => {
   const draggable = canDrag({ choice, correctResponseCount, lockChoiceOrder });
-  
+
   const {
     attributes: dragAttributes,
     listeners: dragListeners,
@@ -88,7 +87,6 @@ const Choice = ({
 
   const {
     setNodeRef: setDropNodeRef,
-    isOver,
   } = useDroppable({
     id: `choice-drop-${choice.id}`,
     data: {
@@ -116,20 +114,18 @@ const Choice = ({
 
   const showRemoveAfterPlacing = isCheckboxShown(allowMultiplePlacements);
 
-  // Combine refs for both drag and drop
   const setNodeRef = (element) => {
     setDragNodeRef(element);
     setDropNodeRef(element);
   };
 
   return (
-    <StyledCard ref={setNodeRef} className={className} style={{ opacity: isDragging ? 0.5 : 1 }}>
+    <StyledCard ref={setNodeRef} style={{ opacity: isDragging ? 0.5 : 1 }}>
       <StyledCardActions>
         <DragHandleContainer draggable={draggable} {...dragAttributes} {...dragListeners}>
           <DragHandle color={draggable ? 'primary' : 'disabled'} />
         </DragHandleContainer>
       </StyledCardActions>
-      
       <InputHeader
         imageSupport={imageSupport}
         focusedEl={focusedEl}
@@ -165,7 +161,6 @@ const Choice = ({
 
 Choice.propTypes = {
   allowMultiplePlacements: PropTypes.string,
-  className: PropTypes.string,
   configuration: PropTypes.object.isRequired,
   choice: PropTypes.object.isRequired,
   deleteFocusedEl: PropTypes.func,

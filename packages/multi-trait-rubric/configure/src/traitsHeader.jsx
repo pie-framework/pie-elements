@@ -21,14 +21,14 @@ import {
   HeaderHeightLarge,
 } from './common';
 
-const Label = styled('div')(({ theme }) => ({
+const Label = styled('div')({
   width: '140px',
   border: 'none',
   padding: '10px 0',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-around',
-}));
+});
 
 const GreyHeaderRow = styled('div')(({ height, theme }) => ({
   background: color.secondaryBackground(),

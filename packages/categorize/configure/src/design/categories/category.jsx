@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
+
 import InputHeader from '../input-header';
 import { DeleteButton } from '../buttons';
-
 import PlaceHolder from './droppable-placeholder';
 
 const StyledCard = styled(Card, {
@@ -41,7 +41,6 @@ const ErrorText = styled('div')(({ theme }) => ({
 export class Category extends React.Component {
   static propTypes = {
     alternateResponseIndex: PropTypes.number,
-    className: PropTypes.string,
     category: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     defaultImageMaxHeight: PropTypes.number,
@@ -81,7 +80,6 @@ export class Category extends React.Component {
     const {
       alternateResponseIndex,
       category,
-      className,
       configuration,
       deleteFocusedEl,
       focusedEl,
@@ -98,13 +96,10 @@ export class Category extends React.Component {
       uploadSoundSupport,
       mathMlOptions = {},
     } = this.props;
-
     const isCategoryHeaderDisabled = !!alternateResponseIndex || alternateResponseIndex === 0;
+    
     return (
-      <StyledCard
-        className={className}
-        isDuplicated={isDuplicated}
-      >
+      <StyledCard isDuplicated={isDuplicated}>
         <span>
           {!isCategoryHeaderDisabled ? (
             <InputHeader

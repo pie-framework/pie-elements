@@ -1,6 +1,5 @@
 import React from 'react';
 import { Protractor } from '@pie-lib/tools';
-import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Toggle from './toggle';
 

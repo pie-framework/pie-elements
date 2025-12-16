@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { swap } from '@pie-lib/drag';
 import {
   DndContext,
-} from "@dnd-kit/core"; 
+} from '@dnd-kit/core';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Feedback, PreviewPrompt } from '@pie-lib/render-ui';
 import { styled } from '@mui/material/styles';
@@ -47,25 +47,15 @@ export class Main extends React.Component {
   }
 
   onPlaceAnswer = (event) => {
-    console.log('onPlaceAnswer called with event:', event);
     const { active, over } = event;
 
     if (!over || !active) {
-      console.log('Missing over or active:', { over, active });
       return;
     }
 
     const activeData = active.data.current;
     const overData = over.data.current;
 
-    console.log('Drag event details:', {
-      activeId: active.id,
-      overId: over.id,
-      activeData,
-      overData
-    });
-
-    // If dragging a choice to a drop zone
     if (activeData && overData) {
       const { session, onSessionChange, model } = this.props;
       const { config: { duplicates } } = model;
@@ -74,30 +64,22 @@ export class Main extends React.Component {
         session.value = {};
       }
 
-      // Extract the answer ID and prompt ID from the drag/drop data
       const answerId = activeData.id;
       const targetPromptId = overData.promptId;
 
-      // Only allow dropping choices (not already placed answers) onto drop zones
+      // only allow dropping choices (not already placed answers) onto drop zones
       if (activeData.type === 'choice' && overData.type === 'drop-zone' && targetPromptId) {
-        console.log('Placing choice in answer area:', {
-          answerId,
-          targetPromptId,
-          duplicates
-        });
-
-        // Check if this choice is already placed somewhere
+        // check if this choice is already placed somewhere
         const existingPlacement = findKey(session.value, (val) => val === answerId);
 
         if (existingPlacement && !duplicates) {
-          // Swap if duplicates not allowed
+          // swap if duplicates not allowed
           session.value = swap(session.value, existingPlacement, targetPromptId);
         } else {
-          // Place answer
+          // place answer
           session.value[targetPromptId] = answerId;
         }
 
-        console.log('Updated session:', session);
         onSessionChange(session);
       }
     }
@@ -124,7 +106,7 @@ export class Main extends React.Component {
             onToggle={this.toggleShowCorrect}
             language={language}
           />
-          
+
           <AnswerArea
             instanceId={this.instanceId}
             model={model}

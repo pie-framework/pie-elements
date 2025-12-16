@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
+import { color } from '@pie-lib/render-ui';
+
 import Choice from './choice';
 import PlaceHolder from './droppable-placeholder';
-import { color } from '@pie-lib/render-ui';
 
 export const CategoryType = {
   id: PropTypes.string.isRequired,

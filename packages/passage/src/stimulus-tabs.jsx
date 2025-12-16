@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
 import { Collapsible, color, PreviewPrompt, Purpose, UiLayout } from '@pie-lib/render-ui';
 
-const PassagesContainer = styled('div')(({ theme }) => ({
+const PassagesContainer = styled('div')({
   flexGrow: 1,
   backgroundColor: color.background(),
   color: color.text(),
@@ -16,7 +16,7 @@ const PassagesContainer = styled('div')(({ theme }) => ({
     padding: '.6em 1em',
     textAlign: 'left',
   },
-}));
+});
 
 const Passage = styled('div')(({ theme }) => ({
   backgroundColor: color.background(),
@@ -24,19 +24,17 @@ const Passage = styled('div')(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const PassageTitle = styled('div')(({ theme }) => ({
+const PassageTitle = styled('div')({
   fontSize: '1.75rem',
-}));
+});
 
-const PassageSubtitle = styled('div')(({ theme }) => ({
+const PassageSubtitle = styled('div')({
   fontSize: '1.5rem',
-}));
+});
 
-const PassageAuthor = styled('div')(({ theme }) => ({
+const PassageAuthor = styled('div')({
   fontSize: '1.25rem',
-}));
-
-const PassageText = styled('div')(({ theme }) => ({}));
+});
 
 const TabStyled = styled(Tab)(({ theme }) => ({
   background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
@@ -169,14 +167,12 @@ class StimulusTabs extends React.Component {
           <h2>
             {tab.title && (
               <Purpose purpose="passage-title">
-                <PassageTitle className="title" dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />
+                <PassageTitle dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}/>
               </Purpose>
             )}
             {tab.subtitle && (
               <Purpose purpose="passage-subtitle">
-                <PassageSubtitle
-                  className="subtitle"
-                  dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
+                <PassageSubtitle dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
                 />
               </Purpose>
             )}
@@ -185,13 +181,13 @@ class StimulusTabs extends React.Component {
 
         {tab.author && (
           <Purpose purpose="passage-author">
-            <PassageAuthor className="author" dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }} />
+            <PassageAuthor className="author" dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}/>
           </Purpose>
         )}
 
         {tab.text && (
           <Purpose purpose="passage-text">
-            <PassageText
+            <div
               key={tab.id}
               className="text"
               dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
@@ -231,7 +227,7 @@ class StimulusTabs extends React.Component {
                     id={`button-${tab.id}`}
                     label={
                       <Purpose purpose="passage-label">
-                        <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }} />
+                        <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }}/>
                       </Purpose>
                     }
                     value={tab.id}

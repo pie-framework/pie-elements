@@ -112,18 +112,18 @@ const StyledLabel = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(1),
 }));
 
-const StyledRowLabel = styled('div')(({ theme }) => ({
+const StyledRowLabel = styled('div')({
   alignItems: 'center',
   display: 'flex',
   justifyContent: 'center',
   flex: 0.5,
   marginRight: '12px',
-}));
+});
 
-const StyledCategoryWrapper = styled('div')(({ theme }) => ({
+const StyledCategoryWrapper = styled('div')({
   display: 'flex',
   flex: '2',
   flexDirection: 'column',
-}));
+});
 
 export default Categories;

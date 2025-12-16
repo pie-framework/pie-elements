@@ -14,9 +14,9 @@ import Info from '@mui/icons-material/Info';
 const GREY_A100 = '#D5D5D5';
 const GREY_A200 = '#AAAAAA';
 
-const GraphingTools = styled('div')(({ theme }) => ({
+const GraphingTools = styled('div')({
   color: GREY_A200,
-}));
+});
 
 const Button = styled('div')(({ theme }) => ({
   margin: `${theme.spacing(2.5)} 0`,
@@ -47,10 +47,10 @@ const AvailableTool = styled('div')(({ theme }) => ({
   },
 }));
 
-const SelectedTool = styled(AvailableTool)(({ theme }) => ({
+const SelectedTool = styled(AvailableTool)({
   background: GREY_A100,
   border: `2px solid ${GREY_A200}`,
-}));
+});
 
 const ResponseTitle = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -92,11 +92,11 @@ const ToolsHeader = styled('div')({
   justifyContent: 'space-between',
 });
 
-const DefaultTool = styled('div')(({ theme }) => ({
+const DefaultTool = styled('div')({
   display: 'flex',
   alignItems: 'center',
   width: '300px',
-}));
+});
 
 const DefaultToolSelect = styled(Select)(({ theme }) => ({
   marginLeft: theme.spacing(1),

@@ -7,10 +7,10 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { findSectionsInSolutionSet, pointInsidePolygon, checkIfLinesAreAdded } from './utils';
 import { AlertDialog } from '@pie-lib/config-ui';
 
-const MainContainer = styled(UiLayout)(({ theme }) => ({
+const MainContainer = styled(UiLayout)({
   color: color.text(),
   backgroundColor: color.background(),
-}));
+});
 
 const TeacherInstructions = styled(Collapsible)(({ theme }) => ({
   marginBottom: theme.spacing(2),
@@ -126,7 +126,7 @@ export class Main extends React.Component {
           dialog: {
             open: true,
             title: 'Warning',
-            text: `Please define the line(s) and then select a solution set for the item.`,
+            text: 'Please define the line(s) and then select a solution set for the item.',
             onConfirm: () => this.handleAlertDialog(false),
           },
         });
@@ -142,7 +142,7 @@ export class Main extends React.Component {
           dialog: {
             open: true,
             title: 'Warning',
-            text: `Changing a line after adding a solution set will clear your selected solution set. Click 'Clear Solution Set' to change the line. Otherwise, click 'Cancel'.`,
+            text: 'Changing a line after adding a solution set will clear your selected solution set. Click \'Clear Solution Set\' to change the line. Otherwise, click \'Cancel\'.',
             onConfirm: () => {
               session.answer = session.answer.filter((mark) => mark.type !== 'polygon');
               this.handleGssDataChange(gssData, session);
@@ -183,7 +183,7 @@ export class Main extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `Please add Line A to the graph before adding Line B`,
+          text: 'Please add Line A to the graph before adding Line B',
           onConfirm: () => this.handleAlertDialog(false),
         },
       });
@@ -194,7 +194,7 @@ export class Main extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `Please add Line B to the graph before switching to Line A`,
+          text: 'Please add Line B to the graph before switching to Line A',
           onConfirm: () => this.handleAlertDialog(false),
         },
       });

@@ -15,9 +15,9 @@ const CategoriesHolder = styled('div')(({ theme }) => ({
   gridColumnGap: `${theme.spacing(1)}px`,
 }));
 
-const RowLabel = styled('div')(({ theme }) => ({
-  gridColumn: '1/3',
-}));
+const RowLabel = styled('div')({
+  gridColumn: '1 / 3',
+});
 
 export class AlternateResponses extends React.Component {
   static propTypes = {
@@ -27,7 +27,6 @@ export class AlternateResponses extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
-    className: PropTypes.string,
     categories: PropTypes.array,
     onModelChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
@@ -58,7 +57,6 @@ export class AlternateResponses extends React.Component {
       altIndex,
       model,
       configuration,
-      className,
       categories,
       imageSupport,
       spellCheck,
@@ -74,7 +72,7 @@ export class AlternateResponses extends React.Component {
     const isDuplicated = duplicateAlternate ? duplicateAlternate.index === altIndex : false;
 
     return (
-      <CategoriesContainer className={className}>
+      <CategoriesContainer>
         <CategoriesHolder style={holderStyle}>
           {categories.map((category, index) => {
             const hasRowLabel = index % categoriesPerRow === 0;

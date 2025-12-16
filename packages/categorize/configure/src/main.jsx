@@ -5,7 +5,6 @@ import Design from './design';
 export class Main extends React.Component {
   static propTypes = {
     configuration: PropTypes.object,
-    className: PropTypes.string,
     onConfigurationChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     onModelChanged: PropTypes.func.isRequired,

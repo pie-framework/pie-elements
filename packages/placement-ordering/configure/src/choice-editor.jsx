@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
-import isEmpty from 'lodash/isEmpty';
 import shuffle from 'lodash/shuffle';
 import isEqual from 'lodash/isEqual';
 import Button from '@mui/material/Button';
@@ -9,7 +8,6 @@ import { styled } from '@mui/material/styles';
 import { InputContainer } from '@pie-lib/render-ui';
 import { AlertDialog } from '@pie-lib/config-ui';
 
-import { buildTiles } from './utils';
 import ChoiceTile from './choice-tile';
 
 function findFreeChoiceSlot(choices) {
@@ -25,11 +23,11 @@ function findFreeChoiceSlot(choices) {
 
 const log = debug('@pie-element:placement-ordering:configure:choice-editor');
 
-const StyledControls = styled('div')(({ theme }) => ({
+const StyledControls = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-}));
+});
 
 const StyledAddButton = styled(Button)(({ theme }) => ({
   marginTop: theme.spacing(2.5),
@@ -43,12 +41,12 @@ const StyledAddButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const StyledVTiler = styled('div')(({ theme }) => ({
+const StyledVTiler = styled('div')({
   gridAutoFlow: 'column',
   display: 'grid',
   gridGap: '10px',
   alignItems: 'center',
-}));
+});
 
 const StyledColumnLabel = styled(InputContainer)(({ theme }) => ({
   width: '100%',

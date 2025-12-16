@@ -14,13 +14,6 @@ import { applyConstraints, getGridValues, getLabelValues } from './utils';
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio, dropdown, textField } = settings;
 
-const Title = styled(Typography)(({ theme }) => ({
-  fontSize: '1.1rem',
-  display: 'block',
-  marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(1),
-}));
-
 const PromptHolder = styled(InputContainer)(({ theme }) => ({
   width: '100%',
   paddingTop: theme.spacing(2),
@@ -248,8 +241,6 @@ export class Configure extends React.Component {
           availableChartTypes={availableChartTypes}
           chartTypeLabel={chartTypeLabel}
         />
-
-        
 
         <ChartingConfig
           model={model}

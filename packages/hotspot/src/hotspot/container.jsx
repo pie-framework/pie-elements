@@ -133,8 +133,6 @@ export class Container extends React.Component {
               const isCorrect = isEvaluateMode ? this.correctness(polygon.correct, selected) : undefined;
               const evaluateText = isEvaluateMode ? this.getEvaluateText(polygon.correct, selected) : null;
               const markAsCorrect = !!(isEvaluateMode && showCorrect && polygon.correct);
-              console.log('polygon', polygon);
-              console.log('markAsCorrect', markAsCorrect);
 
               return (
                 <Polygon

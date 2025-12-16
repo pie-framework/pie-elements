@@ -23,12 +23,13 @@ export class ChoicePreview extends React.Component {
   static propTypes = {
     alternateResponseIndex: PropTypes.number,
     category: PropTypes.object,
-    className: PropTypes.string,
     choice: PropTypes.object.isRequired,
     choiceIndex: PropTypes.number,
-    onDelete: PropTypes.func.isRequired,
+    onDelete: PropTypes.func,
   };
-  static defaultProps = {};
+  static defaultProps = {
+    onDelete: () => {},
+  };
 
   delete = () => {
     const { onDelete, choice } = this.props;
@@ -36,9 +37,10 @@ export class ChoicePreview extends React.Component {
   };
 
   render() {
-    const { alternateResponseIndex, category, className, choice, choiceIndex } = this.props;
+    const { alternateResponseIndex, category, choice, choiceIndex } = this.props;
+
     return (
-      <ChoicePreviewContainer className={className}>
+      <ChoicePreviewContainer>
         {choice ? (
           <DraggableChoice
             alternateResponseIndex={alternateResponseIndex}

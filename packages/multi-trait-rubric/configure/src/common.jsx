@@ -1,13 +1,13 @@
 import React from 'react';
-
 import { styled } from '@mui/material/styles';
 import EditableHtml from '@pie-lib/editable-html';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputBase from '@mui/material/InputBase';
 import { color, InputContainer } from '@pie-lib/render-ui';
-import { filteredDefaultPlugins } from './utils';
 import { grey } from '@mui/material/colors';
+
+import { filteredDefaultPlugins } from './utils';
 
 const InputHeight = '120px';
 export const BlockWidth = 200;
@@ -87,13 +87,13 @@ export const MultiTraitButton = ({ children, onClick }) => (
   </StyledButton>
 );
 
-export const PrimaryBlock = styled('div')(({ theme }) => ({
+export const PrimaryBlock = styled('div')({
   width: `${PrimaryBlockWidth}px`,
   minWidth: `${PrimaryBlockWidth}px`,
   position: 'relative',
   padding: '0 10px',
   boxSizing: 'border-box',
-}));
+});
 
 export const Block = styled('div')(({ theme }) => ({
   width: `${BlockWidth}px`,
@@ -104,13 +104,13 @@ export const Block = styled('div')(({ theme }) => ({
   },
 }));
 
-const StyledSecondaryBlock = styled('div')(({ theme }) => ({
+const StyledSecondaryBlock = styled('div')({
   display: 'flex',
   overflowX: 'hidden',
   alignItems: 'flex-end',
   // this is needed to show the editor toolbar!!!
   paddingBottom: '30px',
-}));
+});
 
 export const SecondaryBlock = ({ children, setRef, width }) => (
   <StyledSecondaryBlock style={{ width: width }} ref={setRef}>

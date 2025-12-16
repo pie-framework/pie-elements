@@ -22,18 +22,6 @@ const StyledTooltip = styled(Tooltip)(({ theme }) => ({
   },
 }));
 
-const ErrorText = styled('div')(({ theme }) => ({
-  fontSize: theme.typography.fontSize - 2,
-  color: theme.palette.error.main,
-  paddingTop: theme.spacing(1),
-}));
-
-const FlexRow = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '10px',
-});
-
 const ErrorMessage = styled('div')(({ theme }) => ({
   fontSize: theme.typography.fontSize - 2,
   color: theme.palette.error.main,

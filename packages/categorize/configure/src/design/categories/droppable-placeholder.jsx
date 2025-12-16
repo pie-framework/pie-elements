@@ -50,7 +50,6 @@ Previews.propTypes = {
 const DroppablePlaceHolder = ({
   alternateResponseIndex,
   category,
-  className,
   choices,
   onDeleteChoice,
   categoryId,
@@ -68,7 +67,7 @@ const DroppablePlaceHolder = ({
   });
 
   return (
-    <div ref={setNodeRef} className={className}>
+    <div ref={setNodeRef}>
       <DroppablePlaceholderContainer>
         <PlaceHolder
           isOver={isOver}
@@ -96,7 +95,6 @@ const DroppablePlaceHolder = ({
 DroppablePlaceHolder.propTypes = {
   alternateResponseIndex: PropTypes.number,
   category: PropTypes.object,
-  className: PropTypes.string,
   choices: PropTypes.array,
   onDeleteChoice: PropTypes.func,
   categoryId: PropTypes.string.isRequired,

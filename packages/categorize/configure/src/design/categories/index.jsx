@@ -50,7 +50,6 @@ export class Categories extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
-    className: PropTypes.string,
     categories: PropTypes.array,
     onModelChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
@@ -148,7 +147,6 @@ export class Categories extends React.Component {
   render() {
     const {
       model,
-      className,
       categories,
       imageSupport,
       uploadSoundSupport,
@@ -170,7 +168,7 @@ export class Categories extends React.Component {
     const validationMessage = generateValidationMessage(configuration);
 
     return (
-      <CategoriesContainer className={className}>
+      <CategoriesContainer>
         <Header
           label="Categories"
           buttonLabel="ADD A CATEGORY"

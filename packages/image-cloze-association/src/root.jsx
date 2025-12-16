@@ -20,7 +20,7 @@ import PossibleResponse from './possible-response';
 
 const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
-const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
+const StyledUiLayout = styled(UiLayout)({
   color: color.text(),
   backgroundColor: color.background(),
   position: 'relative',
@@ -28,7 +28,7 @@ const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
     maxWidth: '100%',
     height: 'auto',
   },
-}));
+});
 
 const StyledTeacherInstructions = styled(Collapsible)(({ theme }) => ({
   marginBottom: theme.spacing(2),
@@ -90,13 +90,11 @@ export class ImageClozeAssociationComponent extends React.Component {
   };
 
   onDragEnd = (event) => {
-    console.log('Drag Ended Result:', event);
     const { active, over } = event;
 
     this.setState({ draggingElement: { id: '', value: '' } });
 
     if (!over || !active) {
-      console.log('Missing over or active:', { over, active });
       return;
     }
 
@@ -357,7 +355,6 @@ export class ImageClozeAssociationComponent extends React.Component {
             data={possibleResponses}
             onAnswerRemove={this.handleOnAnswerRemove}
             onDragBegin={this.onDragStart}
-            onDragEnd={this.onDragEnd}
             answerChoiceTransparency={answerChoiceTransparency}
             customStyle={{
               minWidth: isVertical ? '130px' : image?.width || 'fit-content',

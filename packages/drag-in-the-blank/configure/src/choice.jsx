@@ -6,14 +6,12 @@ import { useDraggable } from '@dnd-kit/core';
 import { styled } from '@mui/material/styles';
 import { choiceIsEmpty } from './markupUtils';
 
-const GripIcon = ({ style }) => {
-  return (
-    <span style={style}>
-      <MoreVert style={{ margin: '0 -16px' }} />
-      <MoreVert />
-    </span>
-  );
-};
+const GripIcon = ({ style }) => (
+  <span style={style}>
+    <MoreVert style={{ margin: '0 -16px' }}/>
+    <MoreVert/>
+  </span>
+);
 
 GripIcon.propTypes = {
   style: PropTypes.object,
@@ -21,7 +19,7 @@ GripIcon.propTypes = {
 
 const StyledChoice = styled('div', {
   shouldForwardProp: (prop) => !['error', 'isDragging'].includes(prop),
-})(({ theme, error, isDragging }) => ({
+})(({ theme, error }) => ({
   display: 'inline-flex',
   minWidth: '178px',
   minHeight: '36px',
@@ -33,7 +31,6 @@ const StyledChoice = styled('div', {
   padding: '8px 35px 8px 35px',
   cursor: 'grab',
   border: `1px solid ${error ? '#f44336' : '#C0C3CF'}`,
-  // opacity: isDragging ? 0.5 : 1,
   '& img': {
     display: 'flex'
   },
@@ -60,7 +57,6 @@ export const BlankContent = (props) => {
     attributes,
     listeners,
     setNodeRef,
-    transform,
     isDragging,
   } = useDraggable({
     id: `choice-${choice.id}-${instanceId || 'default'}`,
@@ -74,10 +70,6 @@ export const BlankContent = (props) => {
 
   });
 
-  const style = transform ? {
-    // transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-  } : undefined;
-
   const handleDragStart = (e) => {
     if (choiceIsEmpty(choice)) {
       e.preventDefault();
@@ -89,7 +81,6 @@ export const BlankContent = (props) => {
   return (
     <StyledChoice
       ref={setNodeRef}
-      style={style}
       error={error}
       isDragging={isDragging}
       onClick={onClick}

@@ -173,7 +173,6 @@ function DragAndDropAnswer(props) {
   // droppable only if promptId exists
   const dropId = promptId ? `drop-${promptId}` : undefined;
 
-  // Draggable hook
   const {
     attributes,
     listeners,
@@ -193,7 +192,6 @@ function DragAndDropAnswer(props) {
     disabled: !draggable || disabled,
   });
 
-  // Droppable hook (only initialized if dropId is set)
   const droppable = useDroppable({
     id: dropId,
     data: dropId ? { type: 'drop-zone', promptId, instanceId } : undefined,
@@ -209,12 +207,11 @@ function DragAndDropAnswer(props) {
     : undefined;
 
   // If this item is a drop-zone (prompt slot), we render an outer droppable wrapper.
-  // For droppable wrapper we apply style to the outer wrapper (so it moves visually like React-DnD example).
+  // For droppable wrapper we apply style to the outer wrapper
   if (dropId) {
     return (
       <div
         ref={setDropRef}
-        // apply transform/transition/visuals to outer wrapper when dragging
         style={{
           flex: 1,
           transform: transformStyle,
@@ -230,7 +227,7 @@ function DragAndDropAnswer(props) {
     );
   }
 
-  // If there is NO dropId (this is a choice / draggable-only), render only draggable node and apply transform to it.
+  // if there is NO dropId (this is a choice / draggable-only), render only draggable node and apply transform to it.
   return (
     <div
       ref={setDragRef}

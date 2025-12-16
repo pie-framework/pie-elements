@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
-import classnames from 'classnames';
 import { Layer, Stage } from 'react-konva';
 import { styled } from '@mui/material/styles';
 import Translator from '@pie-lib/translator';
@@ -23,16 +22,6 @@ const Base = styled('div')({
   position: 'relative',
   width: '100%',
 });
-
-const StyledStage = styled(Stage)(({ active }) => ({
-  left: 0,
-  position: 'absolute',
-  touchAction: 'none',
-  top: 0,
-  ...(active && {
-    cursor: 'pointer',
-  }),
-}));
 
 const UndoControls = styled('div')({
   marginTop: -43,

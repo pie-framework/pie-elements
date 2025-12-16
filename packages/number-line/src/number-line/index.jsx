@@ -18,11 +18,6 @@ const { translator } = Translator;
 
 export { Graph };
 
-const MainContainer = styled('div')({
-  color: color.text(),
-  backgroundColor: color.background(),
-});
-
 const StyledUiLayout = styled(UiLayout)(({ $colorContrast }) => ({
   color: color.text(),
   backgroundColor: color.background(),

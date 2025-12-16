@@ -7,11 +7,10 @@ const StyledButton = styled(Button)({
   marginLeft: 8,
 });
 
-const CustomButton = ({ className, label, onClick, disabled }) => (
+const CustomButton = ({ label, onClick, disabled }) => (
   <StyledButton
     onClick={onClick}
     disabled={disabled}
-    className={className}
     size="small"
     variant="contained">
     {label}
@@ -19,7 +18,6 @@ const CustomButton = ({ className, label, onClick, disabled }) => (
 );
 
 CustomButton.propTypes = {
-  className: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,

@@ -22,7 +22,6 @@ class DragPreviewWrapper extends React.Component {
 
   componentDidMount() {
     if (this.containerRef.current) {
-      console.log('Rendering math in drag preview wrapper');
      renderMath(this.containerRef.current);
     }
   }
@@ -46,7 +45,7 @@ export class Categorize extends React.Component {
     onAnswersChange: PropTypes.func.isRequired,
     onShowCorrectToggle: PropTypes.func.isRequired,
     pauseMathObserver: PropTypes.func,
-    resumeMathObserver: PropTypes.func
+    resumeMathObserver: PropTypes.func,
   };
 
   static defaultProps = {
@@ -387,7 +386,7 @@ class CategorizeProvider extends React.Component {
   renderDragOverlay = () => {
     const { activeDragItem } = this.state;
     const { model } = this.props;
-    
+
     if (!activeDragItem) return null;
 
     if (activeDragItem.type === 'choice') {
@@ -425,11 +424,11 @@ class CategorizeProvider extends React.Component {
   }
 }
 
-const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
+const StyledUiLayout = styled(UiLayout)({
   color: color.text(),
   backgroundColor: color.background(),
   position: 'relative',
-}));
+});
 
 const StyledNote = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(2),

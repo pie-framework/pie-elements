@@ -17,7 +17,6 @@
     "@pie-lib/math-rendering": "3.36.0-mui-update.0",
     "@pie-lib/render-ui": "4.45.0-mui-update.0",
     "@pie-lib/translator": "2.34.0-mui-update.0",
-    "classnames": "^2.2.6",
     "enzyme-to-json": "^3.3.5",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.1",

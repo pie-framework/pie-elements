@@ -14,23 +14,22 @@ const StyledTextField = styled(TextField)({
 
 export class Config extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     config: PropTypes.object,
     onModelChanged: PropTypes.func,
     spellCheck: PropTypes.bool,
   };
 
   static defaultProps = {};
-  
+
   changeLabel = ({ target }) => {
     this.props.onModelChanged({ choicesLabel: target.value });
   };
 
   render() {
-    const { className, config, spellCheck } = this.props;
+    const { config, spellCheck } = this.props;
 
     return (
-      <ConfigContainer className={className}>
+      <ConfigContainer>
         <StyledTextField
           InputLabelProps={{
             shrink: true,

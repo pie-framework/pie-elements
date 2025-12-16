@@ -1,14 +1,15 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
-
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
+import intersection from 'lodash/intersection';
+import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+
+import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
+
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
-import intersection from 'lodash/intersection';
 
 const { Panel, toggle, radio, checkboxes, textField, dropdown } = settings;
 const log = debug('@pie-element:graphing:configure');

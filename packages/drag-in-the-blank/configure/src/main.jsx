@@ -54,10 +54,10 @@ const ErrorText = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(1),
 }));
 
-const FlexContainer = styled('div')(({ theme }) => ({
+const FlexContainer = styled('div')({
   display: 'flex',
   alignItems: 'center',
-}));
+});
 
 export class Main extends React.Component {
   static propTypes = {
@@ -222,10 +222,6 @@ export class Main extends React.Component {
         const drag = active.data.current;
 
         if (drag && drag.type === 'drag-in-the-blank-placed-choice') {
-          // Get the current mouse/drop position from the active drag event
-          const dragEndEvent = document.elementFromPoint(active.rect.current.translated?.x || 0, active.rect.current.translated?.y || 0);
-
-          // Check if we have a markup ref and if the drop is outside of it
           if (this.markupRef.current) {
             const markupBounds = this.markupRef.current.getBoundingClientRect();
             const dropX = active.rect.current.translated?.x || 0;

@@ -170,21 +170,4 @@ export class Main extends React.Component {
   }
 }
 
-// const styles = (theme) => ({
-//   mainContainer: {
-//     color: color.text(),
-//     backgroundColor: color.background(),
-//   },
-//   main: {
-//     width: '100%',
-//   },
-//   prompt: {
-//     verticalAlign: 'middle',
-//   },
-//   collapsible: {
-//     marginBottom: theme.spacing.unit * 2,
-//   },
-// });
-
-
 export default Main;

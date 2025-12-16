@@ -16,9 +16,9 @@ const StyledDesign = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(1.5),
 }));
 
-const StyledAddButton = styled(Button)(({ theme }) => ({
+const StyledAddButton = styled(Button)({
   marginLeft: 'auto',
-}));
+});
 
 const StyledAltChoices = styled('div')(({ theme }) => ({
   alignItems: 'flex-start',
@@ -161,7 +161,7 @@ export class Choices extends React.Component {
     } = this.props;
 
     // find the maximum existing id and add 1 to generate the new id so we avoid duplicates
-    const maxId = oldChoices.length > 0 
+    const maxId = oldChoices.length > 0
       ? Math.max(...oldChoices.map(choice => parseInt(choice.id, 10) || 0))
       : -1;
     const newId = `${maxId + 1}`;

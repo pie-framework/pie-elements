@@ -60,10 +60,6 @@ const ReplaceSection = styled('div')({
   marginRight: 'auto',
 });
 
-const ReplaceButton = styled('div')({
-  marginLeft: 0,
-});
-
 const isImage = (file) => {
   const imageType = /image.*/;
 
@@ -211,7 +207,7 @@ export class Container extends Component {
       hoverOutlineColor,
       selectedHotspotColor,
     } = this.props;
-    
+
     const { dropzoneActive, dragEnabled } = this.state;
     const { shapes, selectedShape } = this.state;
 

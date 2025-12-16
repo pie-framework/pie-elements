@@ -50,9 +50,9 @@ const StyledRemoveCircle = styled(RemoveCircle)(({ theme }) => ({
   fill: theme.palette.error[500],
 }));
 
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
+const StyledIconButton = styled(IconButton)({
   color: `${color.tertiary()} !important`,
-}));
+});
 
 export const ChoiceTile = (props) => {
   const {

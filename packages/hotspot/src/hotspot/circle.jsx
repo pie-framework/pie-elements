@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Circle, Group, Rect } from 'react-konva';
-import { styled } from '@mui/material/styles';
 import ImageComponent from './image-konva-tooltip';
 import { faCorrect, faWrong } from './icons';
 

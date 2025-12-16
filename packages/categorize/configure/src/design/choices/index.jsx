@@ -29,7 +29,6 @@ export class Choices extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
-    className: PropTypes.string,
     choices: PropTypes.array.isRequired,
     defaultImageMaxWidth: PropTypes.number,
     defaultImageMaxHeight: PropTypes.number,
@@ -109,7 +108,6 @@ export class Choices extends React.Component {
   render() {
     const { focusedEl } = this.state;
     const {
-      className,
       choices,
       model,
       imageSupport,
@@ -131,7 +129,7 @@ export class Choices extends React.Component {
       maxAnswerChoices && choices?.length >= maxAnswerChoices ? `Only ${maxAnswerChoices} allowed maximum` : '';
 
     return (
-      <ChoicesContainer className={className}>
+      <ChoicesContainer>
         <Header
           label="Choices"
           buttonLabel="ADD A CHOICE"

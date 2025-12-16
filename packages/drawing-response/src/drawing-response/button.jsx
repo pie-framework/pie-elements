@@ -17,12 +17,11 @@ const StyledButton = styled(Button)({
   },
 });
 
-const CustomButton = ({ className, label, onClick, disabled, title }) => (
+const CustomButton = ({ label, onClick, disabled, title }) => (
   <StyledButton
     title={title}
     onClick={onClick}
     disabled={disabled}
-    className={className}
     size="small"
     variant="contained">
     {label}
@@ -30,7 +29,6 @@ const CustomButton = ({ className, label, onClick, disabled, title }) => (
 );
 
 CustomButton.propTypes = {
-  className: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onClick: PropTypes.func,
@@ -38,7 +36,6 @@ CustomButton.propTypes = {
 };
 
 CustomButton.defaultProps = {
-  className: '',
   disabled: false,
   label: 'Add',
   onClick: () => {},

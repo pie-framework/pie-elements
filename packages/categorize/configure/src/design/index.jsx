@@ -229,11 +229,9 @@ export class Design extends React.Component {
   onDragEnd = (event) => {
     const { active, over } = event;
 
-    // Always clear activeDragItem when drag ends
     this.setState({ activeDragItem: null });
-    
+
     if (!over || !active) {
-      console.log('Missing over or active:', { over, active });
       return;
     }
 
@@ -319,7 +317,7 @@ export class Design extends React.Component {
     });
   };
 
-  // Choice manipulation methods for alternate responses
+  // methods for alternate responses
   addChoiceToAlternateCategory = (addedChoice, categoryId, altIndex) => {
     const { model } = this.props;
     const { correctResponse, choices, maxChoicesPerCategory = 0 } = model;

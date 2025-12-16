@@ -26,7 +26,6 @@ const StyledTooltip = styled(Tooltip)(({ theme }) => ({
 
 export class Header extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     buttonLabel: PropTypes.string,
     onAdd: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
@@ -39,9 +38,9 @@ export class Header extends React.Component {
   static defaultProps = {};
 
   render() {
-    const { className, onAdd, label, buttonLabel, info, buttonDisabled, variant, tooltip } = this.props;
+    const { onAdd, label, buttonLabel, info, buttonDisabled, variant, tooltip } = this.props;
     return (
-      <HeaderContainer className={className}>
+      <HeaderContainer>
         <TitleContainer>
           <Typography variant={variant || 'title'}>
             {label}
@@ -50,8 +49,8 @@ export class Header extends React.Component {
         </TitleContainer>
         <StyledTooltip
             title={tooltip || ''}
-            enterTouchDelay={50} // Appear quickly after a touch
-            leaveTouchDelay={3000} // Stay visible for 3 seconds
+            enterTouchDelay={50}
+            leaveTouchDelay={3000}
         >
           <span>
             <AddButton onClick={onAdd} label={buttonLabel} disabled={buttonDisabled} />

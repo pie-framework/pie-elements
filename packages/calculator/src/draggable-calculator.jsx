@@ -57,16 +57,15 @@ const Title = styled(Typography)(({ theme }) => ({
 
 class BaseLayout extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     onClose: PropTypes.func.isRequired,
     mode: PropTypes.oneOf(['basic', 'scientific']),
   };
 
   render() {
-    const { onClose, mode, className } = this.props;
+    const { onClose, mode } = this.props;
 
     return (
-      <CalculatorContainer mode={mode} className={className}>
+      <CalculatorContainer mode={mode}>
         <TitleBar className="handle">
           <Title variant="h6">
             Calculator

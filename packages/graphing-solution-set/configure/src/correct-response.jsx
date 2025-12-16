@@ -9,124 +9,16 @@ import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { findSectionsInSolutionSet, pointInsidePolygon, checkIfLinesAreAdded } from './utils';
 
-const Column = styled('div')({
-  flex: 1,
-});
-
-const GraphingTools = styled('div')(({ theme }) => ({
-  color: theme.palette.grey['A200'],
-}));
-
-const AvailableTool = styled('div')(({ theme }) => ({
-  cursor: 'pointer',
-  margin: theme.spacing(1),
-  padding: theme.spacing(1),
-  border: `2px solid ${theme.palette.common.white}`,
-  textTransform: 'capitalize',
-  '&:hover': {
-    color: theme.palette.grey[800],
-  },
-}));
-
-const SelectedTool = styled(AvailableTool)(({ theme }) => ({
-  background: theme.palette.grey['A100'],
-  border: `2px solid ${theme.palette.grey['A200']}`,
-}));
-
-const Container = styled('div')(({ theme }) => ({
-  border: `2px solid ${theme.palette.grey['A200']}`,
-  borderRadius: '4px',
-  padding: `0 ${theme.spacing(4)} ${theme.spacing(2)}`,
-  background: theme.palette.grey[50],
-}));
-
-const Button = styled('div')(({ theme }) => ({
-  margin: `${theme.spacing(2.5)} 0`,
-  cursor: 'pointer',
-  background: theme.palette.grey[200],
-  padding: theme.spacing(1.5),
-  width: 'fit-content',
-  borderRadius: '4px',
-  '&:hover': {
-    background: theme.palette.grey['A100'],
-  },
-}));
-
-const ResponseTitle = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  marginTop: theme.spacing(2.5),
-}));
-
-const IconButton = styled('div')(({ theme }) => ({
-  marginLeft: '6px',
-  color: theme.palette.grey[600],
-  '&:hover': {
-    cursor: 'pointer',
-    color: theme.palette.common.black,
-  },
-}));
-
-const Name = styled('div')(({ theme }) => ({
-  marginBottom: theme.spacing(0.5),
-}));
-
-const Tooltip = styled('div')(({ theme }) => ({
-  fontSize: theme.typography.fontSize - 2,
-  whiteSpace: 'pre',
-  maxWidth: '500px',
-}));
-
 const SubtitleText = styled(Typography)(({ theme }) => ({
   marginTop: theme.spacing(1.5),
   marginBottom: theme.spacing(1),
 }));
 
-const ToolsHeader = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-});
-
-const DefaultTool = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  width: '300px',
-}));
-
-const DefaultToolSelect = styled('div')(({ theme }) => ({
-  marginLeft: theme.spacing(1),
-  textTransform: 'uppercase',
-  color: theme.palette.grey[800],
-}));
-
-const MenuItem = styled('div')({
-  textTransform: 'uppercase',
-});
-
-const NoDefaultTool = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0.5),
-}));
-
-const ErrorText = styled('div')(({ theme }) => ({
-  color: theme.palette.error.main,
-}));
-
-const ErrorMessage = styled('div')(({ theme }) => ({
-  fontSize: theme.typography.fontSize - 2,
-  color: theme.palette.error.main,
-  marginTop: theme.spacing(1),
-}));
-
-const GraphError = styled('div')(({ theme }) => ({
-  border: `2px solid ${theme.palette.error.main}`,
-}));
-
-const RadioButtonClass = styled(FormControlLabel)(({ theme }) => ({
+const RadioButtonClass = styled(FormControlLabel)({
   height: '20px',
   width: 'fit-content',
   padding: '.5rem 0',
-}));
+});
 
 const StyledRadio = styled(Radio)({
   color: '#000000 !important',
@@ -173,9 +65,9 @@ export class CorrectResponse extends React.Component {
     }
     if (marks.length === 0) {
       gssLineData.selectedTool = 'lineA';
-      set(model, `gssLineData`, gssLineData);
+      set(model, 'gssLineData', gssLineData);
     }
-    set(model, `answers.correctAnswer.marks`, marks);
+    set(model, 'answers.correctAnswer.marks', marks);
     onChange(model);
   };
 
@@ -189,15 +81,15 @@ export class CorrectResponse extends React.Component {
       dialog: {
         open: true,
         title: 'Warning',
-        text: `This will remove all the elements added on the graph and reset graph to original state. Are you sure you want to continue?`,
+        text: 'This will remove all the elements added on the graph and reset graph to original state. Are you sure you want to continue?',
         onConfirm: () => {
           // Reset the graph to original state
           answers.correctAnswer.marks = [];
           gssLineData.selectedTool = 'lineA';
           gssLineData.lineA.lineType = 'Solid';
           if (gssLineData.lineB) gssLineData.lineB.lineType = 'Solid';
-          set(model, `answers`, answers);
-          set(model, `gssLineData`, gssLineData);
+          set(model, 'answers', answers);
+          set(model, 'gssLineData', gssLineData);
           onChange(model);
           this.handleAlertDialog(false);
         },
@@ -219,7 +111,7 @@ export class CorrectResponse extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `Changing number of lines after adding solution set will remove added solution set. Are you sure you want to continue?`,
+          text: 'Changing number of lines after adding solution set will remove added solution set. Are you sure you want to continue?',
           onConfirm: () => {
             this.changeLine(e, value);
             this.handleAlertDialog(false);
@@ -257,8 +149,8 @@ export class CorrectResponse extends React.Component {
       };
     }
     //reset solution set
-    set(model, `answers`, answers);
-    set(model, `gssLineData`, gssLineData);
+    set(model, 'answers', answers);
+    set(model, 'gssLineData', gssLineData);
     onChange(model);
   };
 
@@ -286,7 +178,7 @@ export class CorrectResponse extends React.Component {
         break;
       }
     }
-    set(model, `answers`, answers);
+    set(model, 'answers', answers);
     onChange(model);
   };
 
@@ -307,7 +199,7 @@ export class CorrectResponse extends React.Component {
           dialog: {
             open: true,
             title: 'Warning',
-            text: `Please define the line(s) and then select a solution set for the item.`,
+            text: 'Please define the line(s) and then select a solution set for the item.',
             onConfirm: () => this.handleAlertDialog(false),
           },
         });
@@ -323,7 +215,7 @@ export class CorrectResponse extends React.Component {
           dialog: {
             open: true,
             title: 'Warning',
-            text: `Changing a line after adding a solution set will clear your selected solution set. Click 'Clear Solution Set' to change the line. Otherwise, click 'Cancel'.`,
+            text: 'Changing a line after adding a solution set will clear your selected solution set. Click \'Clear Solution Set\' to change the line. Otherwise, click \'Cancel\'.',
             onConfirm: () => {
               answers.correctAnswer.marks = answers.correctAnswer.marks.filter((mark) => mark.type !== 'polygon');
               this.handleGssLineDataChange(gssLineData, answers);
@@ -366,7 +258,7 @@ export class CorrectResponse extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `Please add Line A to the graph before adding Line B`,
+          text: 'Please add Line A to the graph before adding Line B',
           onConfirm: () => this.handleAlertDialog(false),
         },
       });
@@ -382,14 +274,14 @@ export class CorrectResponse extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `Please add Line B to the graph before switching to Line A`,
+          text: 'Please add Line B to the graph before switching to Line A',
           onConfirm: () => this.handleAlertDialog(false),
         },
       });
       gssLineData.selectedTool = 'lineB';
     }
-    set(model, `gssLineData`, gssLineData);
-    set(model, `answers`, answers);
+    set(model, 'gssLineData', gssLineData);
+    set(model, 'answers', answers);
     onChange(model);
   };
 
@@ -429,7 +321,6 @@ export class CorrectResponse extends React.Component {
       range,
       title,
       titleEnabled,
-      marks,
       answers,
     } = model || {};
     const { correctAnswerErrors = '' } = errors || {};

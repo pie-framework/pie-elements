@@ -1,8 +1,6 @@
 import { NumberTextField as NTF } from '@pie-lib/config-ui';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import cn from 'classnames';
 
 const StyledNTF = styled(NTF)(({ theme }) => ({
   marginLeft: theme.spacing(1),

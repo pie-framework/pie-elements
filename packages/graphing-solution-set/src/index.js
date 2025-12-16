@@ -4,7 +4,6 @@ import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
 import { findSectionsInSolutionSet, removeInvalidAnswers } from './utils';
 import Main from './main';
-import { set } from 'lodash';
 
 export { Main as Component };
 

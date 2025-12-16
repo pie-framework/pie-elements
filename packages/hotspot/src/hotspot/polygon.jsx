@@ -84,7 +84,6 @@ class PolygonComponent extends React.Component {
       : outlineColor;
     const outlineWidth = this.getOutlineWidth(showCorrectEnabled, selected, markAsCorrect, strokeWidth);
 
-    console.log('outlineColorParsed', outlineColorParsed);
     const pointsParsed = this.parsePointsForKonva(points);
     const center = this.getPolygonCenter(points);
     const iconX = center[0];

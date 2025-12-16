@@ -13,10 +13,10 @@ import AnnotationEditor from './annotation/annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
 
-const MainContainer = styled(UiLayout)(({ theme }) => ({
+const MainContainer = styled(UiLayout)({
   backgroundColor: color.background(),
   color: color.text(),
-}));
+});
 
 const StyledPrompt = styled(Typography)(({ theme }) => ({
   width: '100%',

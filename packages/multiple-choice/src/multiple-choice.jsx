@@ -9,8 +9,6 @@ import Translator from '@pie-lib/translator';
 
 import Choice from './choice';
 
-// MultipleChoice
-
 const { translator } = Translator;
 
 const MainContainer = styled(Box)({
@@ -217,14 +215,14 @@ export class MultipleChoice extends React.Component {
   getChecked(choice) {
     // check for print context: options prop is passed from print.js and alwaysShowCorrect is true
     const isPrintMode = this.props.options && this.props.alwaysShowCorrect;
-    
+
     if (isPrintMode) {
       return choice.correct || false;
     }
 
     // evaluate mode with show correct toggled
     const isEvaluateMode = this.state.showCorrect && this.props.mode === 'evaluate';
-    
+
     if (isEvaluateMode) {
       return choice.correct || false;
     }
@@ -320,10 +318,10 @@ export class MultipleChoice extends React.Component {
       return '';
     };
 
-    const LayoutComponent = this.props.choicesLayout === 'grid' 
-      ? GridLayout 
-      : this.props.choicesLayout === 'horizontal' 
-        ? HorizontalLayout 
+    const LayoutComponent = this.props.choicesLayout === 'grid'
+      ? GridLayout
+      : this.props.choicesLayout === 'horizontal'
+        ? HorizontalLayout
         : Box;
 
     return (

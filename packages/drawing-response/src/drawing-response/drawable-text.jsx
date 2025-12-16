@@ -146,7 +146,6 @@ export default class TextDrawable {
     textareaNode.focus();
 
     const keyDownHandler = (e) => {
-      console.log(e.key);
       if (e.key === 'Enter' && !e.shiftKey) {
         this.saveValue(id, textareaNode);
       }

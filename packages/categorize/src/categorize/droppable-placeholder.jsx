@@ -8,7 +8,6 @@ const log = debug('@pie-ui:categorize:droppable-placeholder');
 
 const DroppablePlaceholder = ({
   children,
-  className,
   grid,
   disabled,
   choiceBoard,
@@ -34,7 +33,6 @@ const DroppablePlaceholder = ({
       }}
     >
       <PlaceHolder
-        className={className}
         isOver={isOver}
         grid={grid}
         disabled={disabled}
@@ -50,7 +48,6 @@ const DroppablePlaceholder = ({
 DroppablePlaceholder.propTypes = {
   choiceBoard: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
   grid: PropTypes.object,
   disabled: PropTypes.bool,
   minRowHeight: PropTypes.string,

@@ -49,11 +49,11 @@ const StyledSpan = styled(StaticHTMLSpan)(() => ({
   },
 }));
 
-const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, onDragEnd, answerChoiceTransparency }) => {
+const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, answerChoiceTransparency }) => {
   const rootRef = useRef(null);
   const longPressTimer = useRef(null);
 
-  const { setNodeRef, isDragging, attributes, listeners } = useDraggable({
+  const { setNodeRef, attributes, listeners } = useDraggable({
     id: `possible-response-${data.id}`,
     data: {
       id: data.id,
@@ -95,12 +95,6 @@ const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, onDragEn
       node.removeEventListener('touchmove', handleTouchMove);
     };
   }, [canDrag, data]);
-
-  // useEffect(() => {
-  //   if (!isDragging) {
-  //     onDragEnd();
-  //   }
-  // }, [isDragging, onDragEnd]);
 
   const { isCorrect } = data || {};
   const evaluationStyle = {
@@ -144,7 +138,6 @@ PossibleResponse.propTypes = {
   containerStyle: PropTypes.object,
   data: PropTypes.object.isRequired,
   onDragBegin: PropTypes.func.isRequired,
-  onDragEnd: PropTypes.func.isRequired,
   answerChoiceTransparency: PropTypes.bool,
 };
 

@@ -48,7 +48,7 @@ const ImageDropTarget = ({
   const dropContainerRef = useRef(null);
   const dropContainerResponsesHeightRef = useRef(null);
 
-  const { setNodeRef, active, node, over, isOver } = useDroppable({
+  const { setNodeRef, isOver } = useDroppable({
     id: `response-container-${index}`,
     data: {
       containerIndex: index,

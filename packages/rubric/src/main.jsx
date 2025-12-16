@@ -6,7 +6,7 @@ import Collapse from '@mui/material/Collapse';
 import { color, UiLayout } from '@pie-lib/render-ui';
 import PropTypes from 'prop-types';
 
-const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
+const StyledUiLayout = styled(UiLayout)({
   color: color.text(),
   backgroundColor: color.background(),
   // apply styles to tables to match the rest of the UI
@@ -23,7 +23,7 @@ const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
     marginTop: 0,
     lineHeight: 'normal',
   },
-}));
+});
 
 const StyledListItem = styled(ListItem)({
   display: 'flex',

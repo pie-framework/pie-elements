@@ -17,7 +17,6 @@ const InputHeaderContainer = styled('div')({
 
 export class InputHeader extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     configuration: PropTypes.object.isRequired,
     deleteFocusedEl: PropTypes.func,
     disabled: PropTypes.bool,
@@ -59,7 +58,6 @@ export class InputHeader extends React.Component {
       onChange,
       configuration,
       label,
-      className,
       deleteFocusedEl,
       disabled,
       imageSupport,
@@ -75,7 +73,7 @@ export class InputHeader extends React.Component {
     const { headers, baseInputConfiguration } = configuration;
 
     return (
-      <InputHeaderContainer className={className}>
+      <InputHeaderContainer>
         <StyledEditableHtml
           imageSupport={imageSupport}
           disabled={disabled}

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import debug from 'debug';
 import { styled } from '@mui/material/styles';
 import { useDraggable } from '@dnd-kit/core';
 import { uid } from '@pie-lib/drag';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { color } from '@pie-lib/render-ui';
-import debug from 'debug';
 
 const log = debug('@pie-ui:categorize:choice');
 
@@ -49,18 +49,16 @@ const StyledCardContent = styled(CardContent)(({ theme }) => ({
 export class Layout extends React.Component {
   static propTypes = {
     ...ChoiceType,
-    className: PropTypes.string,
     disabled: PropTypes.bool,
     correct: PropTypes.bool,
     isDragging: PropTypes.bool
   };
   static defaultProps = {};
   render() {
-    const { className, content, isDragging, disabled, correct } = this.props;
+    const { content, isDragging, disabled, correct } = this.props;
 
     return (
       <ChoiceContainer
-        className={className}
         isDragging={isDragging}
         disabled={disabled}
         correct={correct}

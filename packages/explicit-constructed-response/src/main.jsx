@@ -152,8 +152,8 @@ export class Main extends React.Component {
       teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
-      <MainContainer 
-        extraCSSRules={extraCSSRules} 
+      <MainContainer
+        extraCSSRules={extraCSSRules}
         alwaysShowCorrect={alwaysShowCorrect}
         style={{ display: `${displayType}` }}
       >
@@ -193,7 +193,7 @@ export class Main extends React.Component {
           pluginProps={responseAreaInputConfiguration}
         />
 
-        {displayNote && <NoteContainer className="note" dangerouslySetInnerHTML={{ __html: note }} />}
+        {displayNote && <NoteContainer dangerouslySetInnerHTML={{ __html: note }} />}
 
         {showRationale && (
           <CollapsibleContainer>

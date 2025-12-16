@@ -21,14 +21,14 @@ const { translator } = Translator;
 
 const log = debug('pie-elements:placement-ordering');
 
-const PlacementOrderingContainer = styled('div')(({ theme }) => ({
+const PlacementOrderingContainer = styled('div')({
   color: color.text(),
   backgroundColor: color.background(),
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   boxSizing: 'border-box',
-}));
+});
 
 const StyledPrompt = styled('div')(({ theme }) => ({
   paddingBottom: theme.spacing(1),

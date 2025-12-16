@@ -16,12 +16,11 @@ const StyledButton = styled(Button)({
   },
 });
 
-const RawButton = ({ className, label, onClick, disabled, title }) => (
+const RawButton = ({ label, onClick, disabled, title }) => (
   <StyledButton
     title={title}
     onClick={onClick}
     disabled={disabled}
-    className={className}
     size="small"
     variant="contained">
     {label}
@@ -29,7 +28,6 @@ const RawButton = ({ className, label, onClick, disabled, title }) => (
 );
 
 RawButton.propTypes = {
-  className: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onClick: PropTypes.func,
@@ -37,7 +35,6 @@ RawButton.propTypes = {
 };
 
 RawButton.defaultProps = {
-  className: '',
   disabled: false,
   label: 'Add',
   onClick: () => {},

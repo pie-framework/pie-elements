@@ -9,7 +9,6 @@ const StyledAddButton = styled(Button)(({ theme }) => ({
 
 export class RawAddButton extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     label: PropTypes.string,
     onClick: PropTypes.func,
     disabled: PropTypes.bool,
@@ -20,12 +19,11 @@ export class RawAddButton extends React.Component {
   };
 
   render() {
-    const { className, label, onClick, disabled } = this.props;
+    const { label, onClick, disabled } = this.props;
     return (
       <StyledAddButton
         onClick={onClick}
         disabled={disabled}
-        className={className}
         size="small"
         variant="contained"
         color="primary"

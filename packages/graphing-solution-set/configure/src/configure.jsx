@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
-import intersection from 'lodash/intersection';
 
 const { Panel, toggle, radio, checkboxes, textField, dropdown } = settings;
 const log = debug('@pie-element:graphing-solution-set:configure');

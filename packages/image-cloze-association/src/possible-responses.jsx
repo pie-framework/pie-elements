@@ -18,7 +18,6 @@ const PossibleResponses = ({
   canDrag,
   data,
   onDragBegin,
-  onDragEnd,
   answerChoiceTransparency,
   customStyle,
   isVertical,
@@ -32,7 +31,6 @@ const PossibleResponses = ({
           key={item.id}
           data={item}
           onDragBegin={onDragBegin}
-          onDragEnd={onDragEnd}
           answerChoiceTransparency={answerChoiceTransparency}
           containerStyle={{ margin: '4px' }}
         />
@@ -45,7 +43,6 @@ PossibleResponses.propTypes = {
   canDrag: PropTypes.bool.isRequired,
   data: PropTypes.array.isRequired,
   onDragBegin: PropTypes.func.isRequired,
-  onDragEnd: PropTypes.func.isRequired,
   answerChoiceTransparency: PropTypes.bool,
   customStyle: PropTypes.object,
   isVertical: PropTypes.bool,

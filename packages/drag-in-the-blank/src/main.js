@@ -5,14 +5,14 @@ import { DragInTheBlank } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { styled } from '@mui/material/styles';
 
-const StyledUiLayout = styled(UiLayout)(({ theme }) => ({
+const StyledUiLayout = styled(UiLayout)({
   color: color.text(),
   backgroundColor: color.background(),
   '& tr > td': {
     color: color.text(),
   },
   position: 'relative',
-}));
+});
 
 const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
   marginBottom: theme.spacing(2),

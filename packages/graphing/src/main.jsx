@@ -5,10 +5,10 @@ import { GraphContainer, KeyLegend } from '@pie-lib/graphing';
 import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
-const MainContainer = styled(UiLayout)(({ theme }) => ({
+const MainContainer = styled(UiLayout)({
   color: color.text(),
   backgroundColor: color.background(),
-}));
+});
 
 const TeacherInstructions = styled(Collapsible)(({ theme }) => ({
   marginBottom: theme.spacing(2),

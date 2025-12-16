@@ -36,22 +36,22 @@ const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
   marginBottom: theme.spacing(2),
 }));
 
-const StyledRow = styled('div')(({ theme }) => ({
+const StyledRow = styled('div')({
   display: 'grid',
   gridAutoFlow: 'column',
   gridAutoColumns: '1fr',
   gridGap: '8px',
-}));
+});
 
 const StyledChoicesWrapper = styled(FormSection)(({ theme }) => ({
   marginTop: 0,
   marginBottom: theme.spacing(2.5),
 }));
 
-const InlineFlexContainer = styled('div')(({ theme }) => ({
+const InlineFlexContainer = styled('div')({
   display: 'inline-flex',
   position: 'absolute',
-}));
+});
 
 const ErrorText = styled('div')(({ theme }) => ({
   fontSize: theme.typography.fontSize - 2,
@@ -125,8 +125,6 @@ export class Design extends React.Component {
   }
 
   onDragEnd = (event, ordering) => {
-    const { model } = this.props;
-    const { choices, correctResponse } = model;
     const { active, over } = event;
 
     if (!over || !active) {
@@ -138,11 +136,11 @@ export class Design extends React.Component {
     const rawFrom = ordering.tiles.find(t => t.id === source.id && t.type === source.type);
     const rawTo = target;
 
-    const from = { 
-     ...rawFrom, 
+    const from = {
+     ...rawFrom,
       index: normalizeIndex(rawFrom, ordering)
     };
-    const to = { 
+    const to = {
       ...rawTo,
       index: normalizeIndex(rawTo, ordering)
     };
@@ -153,7 +151,7 @@ export class Design extends React.Component {
       from,
       to
     );
-    
+
     this.onChoiceEditorChange(updatedChoices, response);
   };
 

@@ -6,7 +6,7 @@ import { settings, layout } from '@pie-lib/config-ui';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
-import { ConfimationDialog, PassageButton } from './common';
+import { ConfirmationDialog, PassageButton } from './common';
 import Passage from './passage';
 
 const { Panel, toggle, dropdown } = settings;
@@ -164,7 +164,7 @@ export class Main extends React.Component {
             )}
           </React.Fragment>
         ))}
-        <ConfimationDialog
+        <ConfirmationDialog
           open={showConfirmationDialog}
           title={'Warning'}
           content={confirmationDialogContent}

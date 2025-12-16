@@ -49,34 +49,10 @@ const DeleteIcon = styled('div')(({ theme }) => ({
   padding: `0 ${theme.spacing(1)}`,
 }));
 
-const QuestionText = styled('div')(({ theme }) => ({
-  flex: 2,
-  display: 'flex',
-  justifyContent: 'flex-start',
-  marginRight: theme.spacing(1),
-  '&> div': {
-    width: '100%',
-    padding: 0,
-    maxWidth: 'unset',
-    textAlign: 'left',
-    minWidth: '200px',
-  },
-}));
-
 const RowTable = styled('div')({
   display: 'flex',
   flexDirection: 'column',
 });
-
-const HeaderInput = styled('div')({
-  '&> div': {
-    fontWeight: 'bold',
-  },
-});
-
-const MarginBottom = styled('div')(({ theme }) => ({
-  marginBottom: theme.typography.fontSize - 2 + theme.spacing(1),
-}));
 
 const ColumnErrorText = styled('div')(({ theme }) => ({
   fontSize: theme.typography.fontSize - 2,
@@ -133,7 +109,7 @@ class AnswerConfigBlock extends React.Component {
     if (activeData?.type === 'row' && overData?.type === 'row') {
       const from = activeData.index;
       const to = overData.index;
-      
+
       const { model, onChange } = this.props;
       const newModel = { ...model };
       const rows = newModel.rows || [];

@@ -10,17 +10,17 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 
-export const RemoveAddButton = ({ className, label, type = 'add', onClick }) => {
+export const RemoveAddButton = ({ label, type = 'add', onClick }) => {
   const Tag = type === 'add' ? AddCircleIcon : RemoveCircleIcon;
   return (
-    <Button color="primary" size="small" className={className} onClick={onClick}>
+    <Button color="primary" size="small" onClick={onClick}>
       <Tag fontSize="small" color="primary" style={{ marginRight: 4 }} />
       {label}
     </Button>
   );
 };
 
-export const PassageButton = styled(RemoveAddButton)(({ theme }) => ({
+export const PassageButton = styled(RemoveAddButton)({
   textDecoration: 'underline',
   '&:hover': {
     textDecoration: 'underline',
@@ -28,9 +28,9 @@ export const PassageButton = styled(RemoveAddButton)(({ theme }) => ({
   },
   display: 'flex',
   alignItems: 'center',
-}));
+});
 
-export const ConfimationDialog = ({ content, cancel, title, ok, open, onOk, onCancel }) => (
+export const ConfirmationDialog = ({ content, cancel, title, ok, open, onOk, onCancel }) => (
   <Dialog open={open}>
     <DialogTitle>{title}</DialogTitle>
 
@@ -53,7 +53,7 @@ export const ConfimationDialog = ({ content, cancel, title, ok, open, onOk, onCa
   </Dialog>
 );
 
-ConfimationDialog.propTypes = {
+ConfirmationDialog.propTypes = {
   content: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   cancel: PropTypes.string.isRequired,

@@ -11,7 +11,7 @@ import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
 import { InputContainer, settings, layout } from '@pie-lib/config-ui';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { dropdown } from '@pie-lib/config-ui';
+const { dropdown } = settings;
 
 import Response from './response';
 import { processMarkup, createSlateMarkup } from './markupUtils';
@@ -177,8 +177,6 @@ export class Design extends React.Component {
 
       element.dataset.index = index.toString();
     });
-
-    console.log('newResponses', newResponses);
 
     const processedMarkup = processMarkup(markup);
 

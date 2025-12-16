@@ -38,7 +38,6 @@ const ArrowsContainer = styled('div')(({ theme }) => ({
 
 export class Arrows extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
     arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool }).isRequired,
     onChange: PropTypes.func,
   };
@@ -58,11 +57,11 @@ export class Arrows extends React.Component {
   }
 
   render() {
-    const { className, arrows } = this.props;
+    const { arrows } = this.props;
     return (
       <FlexRow>
         <label>Arrows</label>
-        <ArrowsContainer className={className}>
+        <ArrowsContainer>
           <InputCheckbox label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
           <InputCheckbox
             label={'Right'}

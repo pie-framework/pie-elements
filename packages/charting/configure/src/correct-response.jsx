@@ -13,15 +13,6 @@ const Container = styled('div')(({ theme }) => ({
   flex: 1,
 }));
 
-const Button = styled('div')(({ theme }) => ({
-  marginTop: theme.spacing(3),
-  cursor: 'pointer',
-  background: theme.palette.grey[200],
-  padding: theme.spacing(2),
-  width: 'fit-content',
-  borderRadius: '4px',
-}));
-
 const Column = styled('div')({
   flex: 1,
 });
