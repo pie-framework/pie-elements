@@ -232,7 +232,7 @@ export class NumberLine extends React.Component {
       });
     };
 
-    let elements = showCorrectAnswer ? getCorrectAnswerElements() : getAnswerElements();
+    let elements = showCorrectAnswer && correctResponse ? getCorrectAnswerElements() : getAnswerElements();
 
     let maxPointsMessage = () =>
       maxNumberOfPoints == 1
