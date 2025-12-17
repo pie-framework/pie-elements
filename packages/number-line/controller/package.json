@@ -14,8 +14,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "0.32.0-mui-update.0",
-    "@pie-lib/feedback": "0.34.0-mui-update.0",
+    "@pie-lib/controller-utils": "0.34.0-mui-update.0",
+    "@pie-lib/feedback": "0.36.0-mui-update.0",
     "lodash": "^4.17.15",
     "mathjs": "^7.5.1"
   },
