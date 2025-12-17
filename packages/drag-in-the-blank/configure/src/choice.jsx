@@ -56,7 +56,6 @@ const StyledDeleteIcon = styled(Delete)(({ theme }) => ({
 
 export const BlankContent = (props) => {
   const { choice, onClick, onRemoveChoice, error, instanceId, disabled } = props;
-
   const {
     attributes,
     listeners,

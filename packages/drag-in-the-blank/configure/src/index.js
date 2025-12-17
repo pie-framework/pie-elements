@@ -153,10 +153,7 @@ export default class DragInTheBlank extends HTMLElement {
     }
     this._root.render(element);
 
-    // Render math after React finishes rendering
-    // This allows speech-rule-engine to initialize and Slate to complete its render cycle
     setTimeout(() => {
-      console.log('[configure/index.js] Calling renderMath on entire component');
       renderMath(this);
     }, 0);
   }
