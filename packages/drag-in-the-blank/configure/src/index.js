@@ -8,6 +8,7 @@ import {
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { renderMath } from '@pie-lib/math-rendering';
 import Main from './main';
 import debug from 'debug';
 import defaults from 'lodash/defaults';
@@ -151,6 +152,10 @@ export default class DragInTheBlank extends HTMLElement {
       this._root = createRoot(this);
     }
     this._root.render(element);
+
+    setTimeout(() => {
+      renderMath(this);
+    }, 0);
   }
 
   disconnectedCallback() {

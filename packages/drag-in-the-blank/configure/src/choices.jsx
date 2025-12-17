@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import { renderMath } from '@pie-lib/math-rendering';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -56,24 +54,11 @@ export class Choices extends React.Component {
   state = { warning: { open: false } };
   preventDone = false;
 
-  componentDidMount() {
-    this.rerenderMath();
-  }
-
   componentDidUpdate() {
-    this.rerenderMath();
-
     if (this.focusedNodeRef) {
       this.focusedNodeRef.focus('end');
     }
   }
-
-  rerenderMath = () => {
-    //eslint-disable-next-line
-    const domNode = ReactDOM.findDOMNode(this);
-
-    renderMath(domNode);
-  };
 
   onChoiceChanged = (prevValue, val, key) => {
     const { onChange, model } = this.props;

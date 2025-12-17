@@ -74,9 +74,7 @@ export default class DragInTheBlank extends HTMLElement {
         this._root = createRoot(this);
       }
       this._root.render(elem);
-      queueMicrotask(() => {
-        renderMath(this);
-      });
+      setTimeout(() => renderMath(this), 0);
     }
   };
 
