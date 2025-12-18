@@ -347,9 +347,7 @@ export class Main extends React.Component {
   };
 
   handleKeyDown = (event, id) => {
-    console.log('handleKeyDown Andreea', event, id);
     const isTrigerredFromActualPieElement = isChildOfCurrentPieElement(event.target, this.root);
-    console.log('isTrigerredFromActualPieElement Andreea', isTrigerredFromActualPieElement);
     const isAnswerInputFocused =
       this.mqStatic && this.mqStatic.inputRef?.current
         ? this.mqStatic.inputRef?.current.contains(document.activeElement)
@@ -518,7 +516,6 @@ export class Main extends React.Component {
     }
 
     function getDeepChildDataKeypad(element, depth = 0) {
-      console.log("Andreea getDeepChildDataKeypad");
       // only run this max 4 times
       if (!element || depth >= 4) return null;
 
@@ -698,15 +695,33 @@ export class Main extends React.Component {
                             display: 'none',
                           },
                         },
-                        modifiers: {
-                          preventOverflow: {
-                            enabled: true,
-                            boundariesElement: 'body',
+                        modifiers: [
+                          {
+                            name: 'offset',
+                            options: {
+                              offset: [0, 8],
+                            },
                           },
-                          flip: {
+                          {
+                            name: 'preventOverflow',
+                            enabled: true,
+                            options: {
+                              boundary: 'viewport',
+                              padding: 8,
+                            },
+                          },
+                          {
+                            name: 'computeStyles',
+                            options: {
+                              adaptive: true,
+                              gpuAcceleration: true,
+                            },
+                          },
+                          {
+                            name: 'flip',
                             enabled: false,
                           },
-                        },
+                        ],
                       },
                       tooltip: {
                         sx: {
