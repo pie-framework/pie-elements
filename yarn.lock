@@ -2389,10 +2389,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@5.48.0-mui-update.0":
-  version "5.48.0-mui-update.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.48.0-mui-update.0.tgz#218263604c454d8d6de71ae662e274cb9ca5f33d"
-  integrity sha512-0TURXSEAeMz7C87ziNxVd0p8kclXvpXOHT+c9UKDmNha0yjoMOyBGvKv1AP7nu0uU+QKyt0hnywZvyZSY4Tb1Q==
+"@pie-lib/charting@5.48.0-mui-update.1":
+  version "5.48.0-mui-update.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.48.0-mui-update.1.tgz#58bf9cfcebd37acb3111aba31b350118195d0c47"
+  integrity sha512-EThgYe4adbOcY/3ps3RQ6ZY7NL8hComskWww+YuY+wKfqMSR1y0pINultyNj8P5FpjXcC97InKQEPmCewRkTdA==
   dependencies:
     "@emotion/react" "^11.14.0"
     "@emotion/style" "^0.8.0"

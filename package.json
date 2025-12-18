@@ -70,7 +70,7 @@
   "resolutions": {
     "@types/d3-array": "3.0.3",
     "@pie-lib/categorize": "0.40.0-mui-update.0",
-    "@pie-lib/charting": "5.48.0-mui-update.0",
+    "@pie-lib/charting": "5.48.0-mui-update.1",
     "@pie-lib/config-ui": "11.41.0-mui-update.0",
     "@pie-lib/controller-utils": "0.34.0-mui-update.0",
     "@pie-lib/correct-answer-toggle": "2.37.0-mui-update.0",
