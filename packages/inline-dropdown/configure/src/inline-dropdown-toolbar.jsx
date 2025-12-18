@@ -2,7 +2,7 @@ import { getPluginProps } from './utils';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
@@ -164,7 +164,7 @@ export class RespAreaToolbar extends React.Component {
       const domNodeRect = domNode.getBoundingClientRect();
       const editorNode = domNode.closest('.tiptap');
       const editorRect = editorNode.getBoundingClientRect();
-      const top = domNodeRect.top - editorRect.top;
+      const top = domNodeRect.top - domNodeRect.height;
       const left = domNodeRect.left - editorRect.left;
 
       this.setState({
