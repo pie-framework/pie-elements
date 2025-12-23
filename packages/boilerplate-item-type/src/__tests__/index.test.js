@@ -25,9 +25,13 @@ jest.mock('react-dom/client', () => ({
 describe('boilerplate-item-type', () => {
   let c;
   beforeEach(() => {
-    c = new BoilerplateItemType();
+    // Register the custom element before instantiation
+    if (!customElements.get('boilerplate-item-type')) {
+      customElements.define('boilerplate-item-type', BoilerplateItemType);
+    }
+
+    c = document.createElement('boilerplate-item-type');
     c.dispatchEvent = jest.fn();
-    c.tagName = 'boilerplate-item-type';
     c.model = {};
     c.session = {};
   });

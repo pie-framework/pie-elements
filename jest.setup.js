@@ -188,22 +188,32 @@ global.XMLHttpRequest = class XMLHttpRequestMock extends originalXHR {
   }
 };
 
-// Mock customElements for web components (used by some PIE elements)
-global.customElements = {
-  define: jest.fn(),
-  whenDefined: jest.fn().mockResolvedValue(),
-  get: jest.fn(),
-};
+// Ensure customElements is available (jsdom provides this, but ensure it's there)
+// Don't mock it - we need the real implementation for custom element registration
+if (!global.customElements) {
+  // This should not happen in jsdom, but provide a fallback just in case
+  const registry = new Map();
+  global.customElements = {
+    define: (name, constructor) => {
+      if (registry.has(name)) {
+        throw new DOMException(`Failed to execute 'define' on 'CustomElementRegistry': the name "${name}" has already been used with this registry`);
+      }
+      registry.set(name, constructor);
+    },
+    get: (name) => registry.get(name),
+    whenDefined: (name) => {
+      if (registry.has(name)) {
+        return Promise.resolve(registry.get(name));
+      }
+      return Promise.resolve();
+    },
+  };
+}
 
 // Mock CustomEvent for custom element events
-global.CustomEvent = class CustomEvent {};
-
-// Mock HTMLElement methods that may not be fully implemented in jsdom
-global.HTMLElement = class HTMLElement extends global.HTMLElement {
-  dispatchEvent = jest.fn();
-  addEventListener = jest.fn();
-  querySelector = jest.fn().mockReturnValue(this);
-};
+if (!global.CustomEvent) {
+  global.CustomEvent = class CustomEvent {};
+}
 
 // Suppress console errors/warnings in tests (optional - comment out if you want to see them)
 const originalError = console.error;

@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`main snapshot renders 1`] = `<WithStyles(UiLayout) />`;
+exports[`main snapshot renders 1`] = `
+<div>
+  <div
+    class="css-14680sq"
+  />
+</div>
+`;

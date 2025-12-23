@@ -1,68 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`design snapshot renders all items with defaultProps 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "prompt": Object {
-            "label": "Prompt",
-            "settings": true,
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-          },
-          "Settings": Object {},
-        }
-      }
-      model={
-        Object {
-          "tokens": Array [],
-        }
-      }
-      onChangeConfiguration={[MockFunction]}
-      onChangeModel={[Function]}
-    />
-  }
-/>
+<div>
+  <div />
+</div>
 `;
 
 exports[`design snapshot tokenizer renders with html entities 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "prompt": Object {
-            "label": "Prompt",
-            "settings": true,
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-          },
-          "Settings": Object {},
-        }
-      }
-      model={
-        Object {
-          "text": "<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>",
-          "tokens": Array [],
-        }
-      }
-      onChangeConfiguration={[MockFunction]}
-      onChangeModel={[Function]}
-    />
-  }
-/>
+<div>
+  <div />
+</div>
 `;
