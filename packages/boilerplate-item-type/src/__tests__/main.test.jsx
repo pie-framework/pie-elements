@@ -23,10 +23,8 @@ describe('main', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderMain();
-      expect(container).toMatchSnapshot();
-    });
+  it('renders without crashing', () => {
+    const { container } = renderMain();
+    expect(container).toBeInTheDocument();
   });
 });

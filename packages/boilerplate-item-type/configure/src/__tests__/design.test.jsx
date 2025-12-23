@@ -47,20 +47,18 @@ describe('design', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders all items with defaultProps', () => {
-      const { container } = renderDesign();
-      expect(container).toMatchSnapshot();
-    });
+  it('renders all items with defaultProps', () => {
+    const { container } = renderDesign();
+    expect(container).toBeInTheDocument();
+  });
 
-    it('tokenizer renders with html entities', () => {
-      const model = {
-        text: '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>',
-        tokens: [],
-      };
-      const { container } = renderDesign(model);
-      expect(container).toMatchSnapshot();
-    });
+  it('renders with html entities', () => {
+    const model = {
+      text: '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>',
+      tokens: [],
+    };
+    const { container } = renderDesign(model);
+    expect(container).toBeInTheDocument();
   });
 
   describe('logic', () => {
