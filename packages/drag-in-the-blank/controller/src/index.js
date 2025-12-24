@@ -128,6 +128,57 @@ export const getScore = (config, session) => {
 };
 
 /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+  const { value } = session || {};
+  
+  const responseAreas = Object.keys(model.correctResponse || {});
+  const totalAreas = responseAreas.length;
+  traceLog.push(`${totalAreas} response area(s) defined in this question.`);
+  
+  if (value && Object.keys(value).length > 0) {
+    const filledAreas = Object.entries(value).filter(([key, val]) => val && val.trim()).length;
+    traceLog.push(`Student added choices to ${filledAreas} out of ${totalAreas} response area(s).`);
+    
+    responseAreas.forEach((areaKey) => {
+      const studentAnswer = (value && value[areaKey]) || '';
+      const correctAnswer = model.correctResponse[areaKey] || '';
+      
+      if (studentAnswer.trim()) {
+        traceLog.push(`Response area ${areaKey}: student placed '${studentAnswer}' (correct answer: '${correctAnswer}').`);
+      } else {
+        traceLog.push(`Response area ${areaKey}: left empty (correct answer: '${correctAnswer}').`);
+      }
+    });
+  } else {
+    traceLog.push('Student did not add any choices to response areas.');
+  }
+
+  const responses = getAllCorrectResponses(model);
+  const allCorrectResponses = responses.possibleResponses;
+  const numberOfPossibleResponses = responses.numberOfPossibleResponses || 0;
+  
+  if (numberOfPossibleResponses > 1) {
+    traceLog.push(`${numberOfPossibleResponses} alternate response combinations are accepted for this question.`);
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(model, env);
+  const scoringMethod = partialScoringEnabled ? 'partial scoring' : 'all-or-nothing scoring';
+  traceLog.push(`Score calculated using ${scoringMethod}.`);
+
+  const score = getScore(model, session);
+  traceLog.push(`Final score: ${score}.`);
+
+  return traceLog;
+};
+
+/**
  *
  * The score is partial by default for checkbox mode, allOrNothing for radio mode.
  * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring =
@@ -141,13 +192,23 @@ export const getScore = (config, session) => {
  */
 export function outcome(model, session, env = {}) {
   return new Promise((resolve) => {
-    const partialScoringEnabled = partialScoring.enabled(model, env);
-    const score = getScore(model, session);
+    if (!session || isEmpty(session)) {
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        traceLog: ['Student did not add any choices to response areas. Score is 0.'] 
+      });
+    } else {
+      const traceLog = getLogTrace(model, session, env);
+      const score = getScore(model, session);
+      const partialScoringEnabled = partialScoring.enabled(model, env);
 
-    resolve({
-      score: partialScoringEnabled ? score : score === 1 ? 1 : 0,
-      empty: !session || isEmpty(session),
-    });
+      resolve({
+        score: partialScoringEnabled ? score : score === 1 ? 1 : 0,
+        empty: false,
+        traceLog
+      });
+    }
   });
 }
 
