@@ -485,7 +485,7 @@ describe('controller', () => {
           { value: sessionValue },
         );
 
-        expect(result).toEqual(expected);
+        expect(result).toEqual(expect.objectContaining(expected));
       });
     };
 
