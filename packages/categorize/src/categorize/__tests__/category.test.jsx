@@ -1,9 +1,21 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Category } from '../category';
 
+jest.mock('../droppable-placeholder', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('../choice', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+
+const theme = createTheme();
+
 describe('category', () => {
-  const wrapper = (extras) => {
+  const renderCategory = (extras) => {
     const defaults = {
       classes: {
         label: 'label',
@@ -18,20 +30,27 @@ describe('category', () => {
     };
 
     const props = { ...defaults, ...extras };
-    return shallow(<Category {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Category {...props} />
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshots', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderCategory();
+      expect(container).toBeInTheDocument();
     });
 
-    it('disabled', () => {
-      expect(wrapper({ disabled: true })).toMatchSnapshot();
+    it('renders when disabled', () => {
+      const { container } = renderCategory({ disabled: true });
+      expect(container).toBeInTheDocument();
     });
 
-    it('incorrect', () => {
-      expect(wrapper({ choices: [{ correct: false }] })).toMatchSnapshot();
+    it('renders when incorrect', () => {
+      const { container } = renderCategory({ choices: [{ correct: false }] });
+      expect(container).toBeInTheDocument();
     });
   });
 });

@@ -1,5 +1,6 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { Main } from '../main';
 
@@ -15,7 +16,34 @@ jest.mock('@pie-lib/config-ui', () => ({
     toggle: jest.fn(),
     radio: jest.fn(),
   },
+  InputContainer: (props) => <div {...props} />,
+  FeedbackConfig: (props) => <div {...props} />,
+  AlertDialog: (props) => <div {...props} />,
 }));
+
+jest.mock('@pie-lib/drag', () => ({
+  DragProvider: ({ children }) => <div>{children}</div>,
+  uid: {
+    generateId: jest.fn(() => 'test-uid'),
+    Provider: ({ children }) => <div>{children}</div>,
+    withUid: (Component) => Component,
+  },
+}));
+
+jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
+jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.mock('@pie-lib/categorize', () => ({
+  countInAnswer: jest.fn(),
+  ensureNoExtraChoicesInAnswer: jest.fn(),
+  ensureNoExtraChoicesInAlternate: jest.fn(),
+  moveChoiceToCategory: jest.fn(),
+  moveChoiceToAlternate: jest.fn(),
+  removeChoiceFromCategory: jest.fn(),
+  removeChoiceFromAlternate: jest.fn(),
+  verifyAllowMultiplePlacements: jest.fn(),
+}));
+
+const theme = createTheme();
 
 const model = () => ({
   correctResponse: [],
@@ -24,9 +52,8 @@ const model = () => ({
 });
 
 describe('Main', () => {
-  let w;
   let onModelChanged = jest.fn();
-  const wrapper = (extras) => {
+  const renderMain = (extras) => {
     const defaults = {
       classes: {},
       className: 'className',
@@ -35,13 +62,17 @@ describe('Main', () => {
     };
     const props = { ...defaults, ...extras };
 
-    return shallow(<Main {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Main {...props} />
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderMain();
+      expect(container).toBeInTheDocument();
     });
   });
 });

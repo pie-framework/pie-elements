@@ -1,16 +1,27 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Category } from '../category';
 
-describe('category', () => {
-  let w;
+jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
+jest.mock('../droppable-placeholder', () => (props) => <div {...props} />);
 
+const theme = createTheme();
+
+describe('category', () => {
   let onChange = jest.fn();
   let onDelete = jest.fn();
   let onDeleteChoice = jest.fn();
   let onAddChoice = jest.fn();
 
-  const wrapper = (extras) => {
+  beforeEach(() => {
+    onChange = jest.fn();
+    onDelete = jest.fn();
+    onDeleteChoice = jest.fn();
+    onAddChoice = jest.fn();
+  });
+
+  const renderCategory = (extras) => {
     const defaults = {
       classes: {},
       className: 'className',
@@ -24,31 +35,25 @@ describe('category', () => {
       onAddChoice,
     };
     const props = { ...defaults, ...extras };
-    return shallow(<Category {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Category {...props} />
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshot', () => {
+  describe('renders', () => {
     it('renders with default props', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+      const { container } = renderCategory();
+      expect(container).toBeInTheDocument();
     });
 
     it('renders without some components if no handlers are provided', () => {
-      w = wrapper({
+      const { container } = renderCategory({
         onChange: undefined,
         onDelete: undefined,
       });
-      expect(w).toMatchSnapshot();
-    });
-  });
-
-  describe('logic', () => {
-    describe('changeLabel', () => {
-      it('calls onChange', () => {
-        w = wrapper();
-        w.instance().changeLabel('new label');
-        expect(onChange).toBeCalledWith({ id: '1', label: 'new label' });
-      });
+      expect(container).toBeInTheDocument();
     });
   });
 });

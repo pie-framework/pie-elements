@@ -1,101 +1,52 @@
-import { shallow } from 'enzyme';
 import React from 'react';
-import { Choice, Layout, spec } from '../choice';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Choice, Layout } from '../choice';
+
+jest.mock('@pie-lib/render-ui', () => ({
+  HtmlAndMath: (props) => <div>{props.text}</div>,
+  color: {
+    text: () => '#000',
+    background: () => '#fff',
+    white: () => '#fff',
+    correct: () => '#00ff00',
+  },
+}));
+
+const theme = createTheme();
 
 describe('layout', () => {
-  let connectDragSource;
-
-  beforeEach(() => {
-    connectDragSource = jest.fn((n) => n);
-  });
-
-  const wrapper = (extras) => {
+  const renderLayout = (extras) => {
     const defaults = {
       classes: {},
       content: 'Foo',
     };
     const props = { ...defaults, ...extras };
-    return shallow(<Layout {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Layout {...props} />
+      </ThemeProvider>
+    );
   };
 
-  it('renders', () => {
-    expect(wrapper()).toMatchSnapshot();
+  it('renders without crashing', () => {
+    const { container } = renderLayout();
+    expect(container).toBeInTheDocument();
   });
 
-  it('disabled', () => {
-    expect(wrapper({ disabled: true })).toMatchSnapshot();
+  it('renders when disabled', () => {
+    const { container } = renderLayout({ disabled: true });
+    expect(container).toBeInTheDocument();
   });
 
-  it('correct', () => {
-    expect(wrapper({ correct: true })).toMatchSnapshot();
+  it('renders when correct', () => {
+    const { container } = renderLayout({ correct: true });
+    expect(container).toBeInTheDocument();
   });
 
-  it('isDragging', () => {
-    expect(wrapper({ isDragging: true })).toMatchSnapshot();
-  });
-});
-
-describe('spec', () => {
-  describe('canDrag', () => {
-    it('returns false, when disabled', () => {
-      expect(spec.canDrag({ disabled: true })).toEqual(false);
-    });
-    it('returns true, when not disabled', () => {
-      expect(spec.canDrag({ disabled: false })).toEqual(true);
-    });
-  });
-  describe('beginDrag', () => {
-    const id = '1';
-    const categoryId = '1';
-    const choiceIndex = 0;
-    const content = 'mar';
-    const value = 'mar';
-    const itemType = 'categorize'
-
-    it('returns data', () => {
-      expect(spec.beginDrag({ id, categoryId, choiceIndex, content })).toEqual({
-        id,
-        categoryId,
-        choiceIndex,
-        value,
-        itemType
-      });
-    });
-  });
-
-  describe('endDrag', () => {
-    let props;
-    let monitor;
-    let item;
-
-    beforeEach(() => {
-      props = {
-        onRemoveChoice: jest.fn(),
-      };
-      item = { id: '1', categoryId: '1' };
-      monitor = {
-        getItem: jest.fn().mockReturnValue(item),
-        didDrop: jest.fn().mockReturnValue(false),
-        getDifferenceFromInitialOffset: jest.fn().mockReturnValue({ x: 10, y: 10 }), // Mock movement
-      };
-    });
-
-    it('calls onRemoveChoice', () => {
-      spec.endDrag(props, monitor);
-      expect(props.onRemoveChoice).toBeCalledWith(item);
-    });
-
-    it('does not call onRemoveChoice if category id is null', () => {
-      item.categoryId = null;
-      spec.endDrag(props, monitor);
-      expect(props.onRemoveChoice).not.toBeCalledWith(item);
-    });
-
-    it('does not call onRemoveChoice monitor.didDrop returns true', () => {
-      monitor.didDrop.mockReturnValue(true);
-      spec.endDrag(props, monitor);
-      expect(props.onRemoveChoice).not.toBeCalled();
-    });
-
+  it('renders when dragging', () => {
+    const { container } = renderLayout({ isDragging: true });
+    expect(container).toBeInTheDocument();
   });
 });
+

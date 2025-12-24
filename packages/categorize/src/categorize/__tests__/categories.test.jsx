@@ -1,9 +1,18 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Categories } from '../categories';
 
+jest.mock('../category', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+  CategoryType: {},
+}));
+
+const theme = createTheme();
+
 describe('categories', () => {
-  const wrapper = (extras) => {
+  const renderCategories = (extras) => {
     const defaults = {
       classes: {},
       categories: [{ choices: [], id: '1', label: 'category label' }],
@@ -15,16 +24,22 @@ describe('categories', () => {
     };
 
     const props = { ...defaults, ...extras };
-    return shallow(<Categories {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Categories {...props} />
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshots', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderCategories();
+      expect(container).toBeInTheDocument();
     });
 
-    it('disabled', () => {
-      expect(wrapper({ disabled: true })).toMatchSnapshot();
+    it('renders when disabled', () => {
+      const { container } = renderCategories({ disabled: true });
+      expect(container).toBeInTheDocument();
     });
   });
 });

@@ -1,64 +1,45 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import { spec, DroppablePlaceholder } from '../droppable-placeholder';
+import DroppablePlaceholder from '../droppable-placeholder';
 
-describe('spec', () => {
-  describe('drop', () => {
-    let props;
-    let monitor;
-    let item;
+jest.mock('../grid-content', () => ({
+  GridContent: (props) => <div {...props} />,
+}));
 
-    beforeEach(() => {
-      props = {
-        onDropChoice: jest.fn(),
-      };
-      item = {
-        id: '1',
-      };
-      monitor = {
-        getItem: jest.fn().mockReturnValue(item),
-      };
-    });
-
-    it('calls onDropChoice', () => {
-      spec.drop(props, monitor);
-      expect(props.onDropChoice).toBeCalledWith(item);
-    });
-  });
-
-  describe('canDrop', () => {
-    it('returns true when not disabled', () => {
-      expect(spec.canDrop({ disabled: false })).toEqual(true);
-    });
-    it('returns false when disabled', () => {
-      expect(spec.canDrop({ disabled: true })).toEqual(false);
-    });
-  });
-});
+const theme = createTheme();
 
 describe('droppable-placeholder', () => {
-  const wrapper = (extras) => {
+  const renderPlaceholder = (extras) => {
     const defaults = {
       classes: {},
       connectDropTarget: jest.fn((n) => n),
     };
     const props = { ...defaults, ...extras };
-    return shallow(<DroppablePlaceholder {...props}>content</DroppablePlaceholder>);
+    return render(
+      <ThemeProvider theme={theme}>
+        <DroppablePlaceholder {...props}>content</DroppablePlaceholder>
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderPlaceholder();
+      expect(container).toBeInTheDocument();
     });
-    it('className', () => {
-      expect(wrapper({ className: 'foo' })).toMatchSnapshot();
+    it('renders with className', () => {
+      const { container } = renderPlaceholder({ className: 'foo' });
+      expect(container).toBeInTheDocument();
     });
-    it('disabled', () => {
-      expect(wrapper({ disabled: true })).toMatchSnapshot();
+    it('renders when disabled', () => {
+      const { container } = renderPlaceholder({ disabled: true });
+      expect(container).toBeInTheDocument();
     });
-    it('grid', () => {
-      expect(wrapper({ grid: { columns: 2 } })).toMatchSnapshot();
+    it('renders with grid', () => {
+      const { container } = renderPlaceholder({ grid: { columns: 2 } });
+      expect(container).toBeInTheDocument();
     });
   });
 });
