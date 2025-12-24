@@ -436,7 +436,8 @@ describe('controller', () => {
     `('returns score: 0 and empty: true if session is $session', async ({ session, empty }) => {
       const o = await outcome(question, session, { mode: 'evaluate' });
 
-      expect(o).toEqual({ score: 0, empty });
+      expect(o.score).toEqual(0);
+      expect(o.empty).toEqual(empty);
     });
   });
 

@@ -141,6 +141,48 @@ export const getScore = (config, session) => {
 };
 
 /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+  const selected = session?.value || [];
+  
+  const questionType = model.choiceMode === 'radio' ? 'multiple-choice (radio)' : 'multiple-select (checkbox)';
+  traceLog.push(`Question type: ${questionType}.`);
+  
+  if (selected.length) {
+    traceLog.push(`Student selected ${selected.length} answer(s): ${selected.join(', ')}.`);
+  } else {
+    traceLog.push('Student did not select any answers.');
+  }
+
+  const correctChoices = (model.choices || []).filter((c) => c.correct);
+  const correctValues = correctChoices.map((c) => c.value);
+  traceLog.push(`${correctChoices.length} correct answer(s) are defined for this question.`);
+  
+  if (selected.length) {
+    const correctSelected = selected.filter((v) => correctValues.includes(v));
+    const incorrectSelected = selected.filter((v) => !correctValues.includes(v));
+    traceLog.push(
+      `Student selected ${correctSelected.length} correct and ${incorrectSelected.length} incorrect answer(s).`
+    );
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
+  const scoringMethod = partialScoringEnabled ? 'partial scoring' : 'all-or-nothing scoring';
+  traceLog.push(`Score calculated using ${scoringMethod}.`);
+
+  const score = getScore(model, session);
+  traceLog.push(`Final score: ${score}.`);
+
+  return traceLog;
+};
+
+/**
  *
  * The score is partial by default for checkbox mode, allOrNothing for radio mode.
  * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring = false. the value in `env` will
@@ -152,12 +194,17 @@ export const getScore = (config, session) => {
 export function outcome(model, session, env) {
   return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
+      resolve({ score: 0, empty: true, traceLog: ['Student did not select any answers. Score is 0.'] });
     } else {
-      const partialScoringEnabled = partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
+      const traceLog = getLogTrace(model, session, env);
       const score = getScore(model, session);
+      const partialScoringEnabled = partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
 
-      resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0, empty: false });
+      resolve({ 
+        score: partialScoringEnabled ? score : score === 1 ? 1 : 0, 
+        empty: false, 
+        traceLog 
+      });
     }
   });
 }
