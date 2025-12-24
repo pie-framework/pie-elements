@@ -197,6 +197,53 @@ export const getScore = (config, session) => {
 };
 
 /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+  const { value = {} } = session || {};
+  const allCorrectResponses = getAllCorrectResponses(model);
+  const responseAreaKeys = Object.keys(allCorrectResponses);
+  const totalAreas = responseAreaKeys.length;
+  
+  traceLog.push(`${totalAreas} dropdown response area(s) defined in this question.`);
+  
+  if (value && Object.keys(value).length > 0) {
+    const selectedAreas = Object.entries(value).filter(([key, val]) => val && val.trim()).length;
+    traceLog.push(`Student selected options in ${selectedAreas} out of ${totalAreas} dropdown(s).`);
+    
+    responseAreaKeys.forEach((areaKey) => {
+      const studentSelection = (value && value[areaKey]) || '';
+      const correctOptions = allCorrectResponses[areaKey] || [];
+      
+      if (studentSelection.trim()) {
+        traceLog.push(`Dropdown ${parseInt(areaKey) + 1}: student selected '${studentSelection}' (correct options: [${correctOptions.map(opt => `'${opt}'`).join(', ')}]).`);
+      } else {
+        traceLog.push(`Dropdown ${parseInt(areaKey) + 1}: no selection made (correct options: [${correctOptions.map(opt => `'${opt}'`).join(', ')}]).`);
+      }
+    });
+  } else {
+    traceLog.push('Student did not make any selections in the dropdowns.');
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(model, env);
+  traceLog.push(
+    `Scoring method: ${
+      partialScoringEnabled ? 'partial scoring' : 'all-or-nothing scoring'
+    }.`
+  );
+
+  const score = getScore(model, session);
+  traceLog.push(`Final score: ${score}.`);
+
+  return traceLog;
+}
+
+/**
  *
  * The score is partial by default for checkbox mode, allOrNothing for radio mode.
  * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring =
@@ -211,16 +258,22 @@ export const getScore = (config, session) => {
 export function outcome(model, session, env = {}) {
   return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        traceLog: ['Student did not make any selections in the dropdowns. Score is 0.'] 
+      });
+    } else {
+      const traceLog = getLogTrace(model, session, env);
+      const score = getScore(model, session);
+      const partialScoringEnabled = partialScoring.enabled(model, env);
+
+      resolve({
+        score: partialScoringEnabled ? score : Math.floor(score),
+        empty: false,
+        traceLog
+      });
     }
-
-    const partialScoringEnabled = partialScoring.enabled(model, env);
-    const score = getScore(model, session);
-
-    resolve({
-      score: partialScoringEnabled ? score : Math.floor(score),
-      empty: false,
-    });
   });
 }
 
