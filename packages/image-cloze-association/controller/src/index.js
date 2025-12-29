@@ -183,18 +183,91 @@ const getScore = (config, session, env = {}) => {
   return isPartialScoring ? getPartialScore(config, session) : correct ? 1 : 0;
 };
 
+/**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+  const { answers } = session || {};
+  
+  const validResponse = model.validation?.validResponse?.value || [];
+  const totalContainers = validResponse.length;
+  traceLog.push(`${totalContainers} placement container(s) defined in this question.`);
+
+  if (answers && answers.length > 0) {
+    traceLog.push(`Student placed ${answers.length} image(s) into placement containers.`);
+    
+    const answersByContainer = {};
+    answers.forEach((answer) => {
+      if (!answersByContainer[answer.containerIndex]) {
+        answersByContainer[answer.containerIndex] = [];
+      }
+      answersByContainer[answer.containerIndex].push(answer.value);
+    });
+    
+    validResponse.forEach((container, containerIndex) => {
+      const correctImages = container.images || [];
+      const studentImages = answersByContainer[containerIndex] || [];
+      
+      if (correctImages.length > 0) {
+        if (studentImages.length === 0) {
+          traceLog.push(`Container ${containerIndex + 1}: student left empty (should contain ${correctImages.length} image(s)).`);
+        } else {
+          const correctCount = studentImages.filter(img => correctImages.includes(img)).length;
+          const incorrectCount = studentImages.length - correctCount;
+          
+          if (correctCount > 0 && incorrectCount === 0) {
+            traceLog.push(`Container ${containerIndex + 1}: student placed ${correctCount} correct image(s).`);
+          } else if (correctCount === 0 && incorrectCount > 0) {
+            traceLog.push(`Container ${containerIndex + 1}: student placed ${incorrectCount} incorrect image(s).`);
+          } else {
+            traceLog.push(`Container ${containerIndex + 1}: student placed ${correctCount} correct and ${incorrectCount} incorrect image(s).`);
+          }
+        }
+      }
+    });
+  } else {
+    traceLog.push('Student did not place any images into placement containers.');
+  }
+
+  const altResponses = model.validation?.altResponses || [];
+  if (altResponses.length > 0) {
+    traceLog.push(`${altResponses.length} alternate response combination(s) are accepted for this question.`);
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(model, env);
+  const scoringMethod = partialScoringEnabled ? 'partial scoring' : 'all-or-nothing scoring';
+  traceLog.push(`Score calculated using ${scoringMethod}.`);
+
+  const score = getScore(model, session, env);
+  traceLog.push(`Final score: ${score}.`);
+
+  return traceLog;
+}
+
 export const outcome = (config, session, env = {}) => {
   return new Promise((resolve) => {
     log('outcome...');
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
-    }
-
-    const configCamelized = camelizeKeys(config);
-
-    if (session.answers || []) {
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        traceLog: ['Student did not place any images into placement containers. Score is 0.'] 
+      });
+    } else {
+      const configCamelized = camelizeKeys(config);
+      const traceLog = getLogTrace(configCamelized, session, env);
       const score = getScore(configCamelized, session, env);
-      resolve({ score });
+      
+      resolve({ 
+        score, 
+        empty: false,
+        traceLog 
+      });
     }
   });
 };
