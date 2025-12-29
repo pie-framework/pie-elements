@@ -7,7 +7,8 @@ import DroppablePlaceHolder from '../droppable-placeholder';
 jest.mock('../choice-preview', () => {
   const React = require('react');
   return {
-    ChoicePreview: (props) => <div>{props.choice.content}</div>,
+    __esModule: true,
+    default: (props) => <div>{props.choice && props.choice.content}</div>,
   };
 });
 

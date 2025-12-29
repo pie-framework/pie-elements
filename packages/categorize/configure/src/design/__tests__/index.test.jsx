@@ -50,13 +50,15 @@ jest.mock('@pie-lib/drag', () => ({
 
 jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
-jest.mock('@pie-lib/translator', () => ({
-  __esModule: true,
-  default: class Translator {
-    constructor() {}
-    t(key) { return key; }
-  },
-}));
+jest.mock('@pie-lib/translator', () => {
+  const translator = {
+    t: (key) => key,
+  };
+  return {
+    __esModule: true,
+    default: { translator },
+  };
+});
 
 jest.mock('../categories', () => ({
   __esModule: true,

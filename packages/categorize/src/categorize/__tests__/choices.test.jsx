@@ -10,6 +10,11 @@ jest.mock('../choice', () => ({
 }));
 jest.mock('@pie-lib/drag', () => ({
   DraggableChoice: (props) => <div {...props} />,
+  PlaceHolder: ({ children }) => <div>{children}</div>,
+  uid: {
+    withUid: jest.fn((input) => input),
+    generateUid: jest.fn().mockReturnValue('1'),
+  },
 }));
 
 const theme = createTheme();

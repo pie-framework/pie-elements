@@ -34,6 +34,10 @@ describe('choice', () => {
         content: 'hi',
         id: '1',
       },
+      configuration: {
+        headers: {},
+        baseInputConfiguration: {},
+      },
       onChange,
       onDelete,
       connectDragSource,

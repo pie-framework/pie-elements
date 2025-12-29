@@ -13,11 +13,36 @@ jest.mock('@pie-lib/drag', () => ({
   DragProvider: ({ children }) => <div>{children}</div>,
 }));
 
+jest.mock('@dnd-kit/core', () => ({
+  DragOverlay: ({ children }) => <div>{children}</div>,
+  useSensor: jest.fn(),
+  useSensors: jest.fn(() => []),
+  PointerSensor: jest.fn(),
+}));
+
 jest.mock('../categories', () => ({
-  Categories: (props) => <div {...props} />,
+  __esModule: true,
+  default: (props) => <div {...props} />,
 }));
 jest.mock('../choices', () => ({
-  Choices: (props) => <div {...props} />,
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('../choice', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('@pie-lib/correct-answer-toggle', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('@pie-lib/categorize', () => ({
+  buildState: jest.fn(() => ({})),
+  removeChoiceFromCategory: jest.fn(() => []),
+  moveChoiceToCategory: jest.fn(() => []),
+}));
+jest.mock('@pie-lib/config-ui', () => ({
+  AlertDialog: (props) => <div {...props} />,
 }));
 jest.mock('@pie-lib/render-ui', () => {
   const React = require('react');
@@ -34,6 +59,9 @@ jest.mock('@pie-lib/render-ui', () => {
     color: {
       text: () => '#000',
       background: () => '#fff',
+      white: () => '#fff',
+      correct: () => '#00ff00',
+      incorrect: () => '#ff0000',
     },
   };
 });

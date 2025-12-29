@@ -29,6 +29,10 @@ describe('category', () => {
         id: '1',
         label: 'Category title',
       },
+      configuration: {
+        headers: {},
+        baseInputConfiguration: {},
+      },
       onChange,
       onDelete,
       onDeleteChoice,
