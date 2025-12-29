@@ -205,15 +205,122 @@ export const model = (question, session, env, updateSession) =>
     resolve(out);
   });
 
+  /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+  const { answers } = session || {};
+  const { categories, choices, correctResponse } = model || {};
+
+  const draggedChoices = answers.reduce(
+    (sum, a) => sum + (a.choices?.length || 0),
+    0
+  );
+
+  const alternates = getAlternates(correctResponse);
+  const hasAlternates = alternates.length > 0;
+  const partialScoringEnabled = partialScoring.enabled(model, env);
+
+  const builtState =
+    draggedChoices > 0
+      ? buildState(categories, choices, answers, correctResponse)
+      : null;
+
+  const builtCategories = builtState?.categories || [];
+  
+  if (draggedChoices > 0) {
+    traceLog.push(`Student placed ${draggedChoices} choice(s) into categories.`);
+        
+    (categories || []).forEach((category, categoryIndex) => {
+      const categoryId = category.id;
+      const builtCategory = builtCategories.find(c => c.id === categoryId);
+      const studentChoices = builtCategory ? builtCategory.choices || [] : [];
+      const correctResponseForCategory = (correctResponse || []).find(cr => cr.category === categoryId);
+      const expectedChoices = correctResponseForCategory ? correctResponseForCategory.choices || [] : [];
+      
+      if (expectedChoices.length > 0) {
+        if (studentChoices.length === 0) {
+          traceLog.push(`Category ${categoryId}: student left empty (should contain ${expectedChoices.length} choice(s)).`);
+        } else {
+          const correctCount = studentChoices.filter(choice => choice.correct).length;
+          const incorrectCount = studentChoices.length - correctCount;
+          
+          if (correctCount > 0 && incorrectCount === 0) {
+            traceLog.push(`Category ${categoryId}: student placed ${correctCount} correct choice(s).`);
+          } else if (correctCount === 0 && incorrectCount > 0) {
+            traceLog.push(`Category ${categoryId}: student placed ${incorrectCount} incorrect choice(s).`);
+          } else {
+            traceLog.push(`Category ${categoryId}: student placed ${correctCount} correct and ${incorrectCount} incorrect choice(s).`);
+          }
+        }
+      }
+    });
+  } else {
+    traceLog.push('Student did not place any choices into categories.');
+  }
+
+  if (hasAlternates) {
+    traceLog.push(`Alternate response combinations are accepted for this question.`);
+  }
+
+  if (hasAlternates) {
+    traceLog.push(`Score calculated using all-or-nothing scoring (alternate responses disable partial scoring).`);
+    traceLog.push(`Student must get all categories completely correct to receive full credit.`);
+  } else if (partialScoringEnabled) {
+    traceLog.push(`Score calculated using partial scoring.`);
+    traceLog.push(`Student receives credit for each correct placement, with deductions for incorrect placements beyond required amount.`);
+    
+    if (draggedChoices > 0) {
+      const totalCorrect = builtCategories.reduce((sum, cat) => 
+        sum + (cat.choices || []).filter(choice => choice.correct).length, 0);
+      const totalIncorrect = draggedChoices - totalCorrect;
+      const maxPossible = (correctResponse || []).reduce((sum, cat) => 
+        sum + (cat.choices || []).length, 0);
+      
+      traceLog.push(`Partial scoring calculation: ${totalCorrect} correct placements, ${totalIncorrect} incorrect placements.`);
+      
+      if (draggedChoices > maxPossible) {
+        const extraPlacements = draggedChoices - maxPossible;
+        traceLog.push(`${extraPlacements} extra placement(s) beyond required amount will be deducted from score.`);
+      }
+    }
+  } else {
+    traceLog.push(`Score calculated using all-or-nothing scoring.`);
+    traceLog.push(`Student must get all categories completely correct to receive full credit.`);
+  }
+
+  const score = getTotalScore(model, session, env);
+  traceLog.push(`Final score: ${score}.`);
+
+  return traceLog;
+}
+
 export const outcome = (question, session, env) => {
   if (env.mode !== 'evaluate') {
     return Promise.reject(new Error('Can not call outcome when mode is not evaluate'));
   } else {
     return new Promise((resolve) => {
-      resolve({
-        score: getTotalScore(question, session, env),
-        empty: !session || isEmpty(session),
-      });
+      if (!session || isEmpty(session)) {
+        resolve({
+          score: 0,
+          empty: true,
+          traceLog: ['Student did not place any choices into categories. Score is 0.'],
+        });
+      } else {
+        const traceLog = getLogTrace(question, session, env);
+        const score = getTotalScore(question, session, env);
+        
+        resolve({
+          score,
+          empty: false,
+          traceLog,
+        });
+      }
     });
   }
 };
