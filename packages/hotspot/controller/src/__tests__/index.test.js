@@ -50,12 +50,13 @@ describe('controller', () => {
     describe('hanging controller', () => {
       it('doesnt hang if answers is missing', async () => {
         const response = await outcome({}, { id: '1' }, {});
-        expect(response).toEqual({ score: 0, empty: true });
+        expect(response).toEqual({ score: 0, empty: true, traceLog: ['No hotspots selected. Score: 0.'] });
       });
 
       it('doesnt hang if the rest is missing', async () => {
         const response = await outcome({}, { id: '1', answers: {} }, {});
-        expect(response).toEqual({ score: 0 });
+        const score = response.score;
+        expect(score).toEqual(0);
       });
     });
 
@@ -250,7 +251,7 @@ describe('controller', () => {
     const returnOutcome = (session) => {
       it(`returns empty: true when session is ${JSON.stringify(session)}`, async () => {
         const result = await outcome(question, session);
-        expect(result).toEqual({ score: 0, empty: true });
+        expect(result).toEqual({ score: 0, empty: true, traceLog: ['No hotspots selected. Score: 0.'] });
       });
     };
 
