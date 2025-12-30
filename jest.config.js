@@ -26,6 +26,10 @@ module.exports = {
     // Image imports
     '\\.(jpg|jpeg|png|gif|svg|webp)$': '<rootDir>/__mocks__/fileMock.js',
 
+    // Ensure React is resolved from a single location (fixes MUI nested node_modules issue)
+    '^react$': '<rootDir>/node_modules/react',
+    '^react-dom$': '<rootDir>/node_modules/react-dom',
+
     // Legacy react-dnd mappings (for packages that haven't migrated to @dnd-kit)
     '^dnd-core$': 'dnd-core/dist/cjs',
     '^react-dnd$': 'react-dnd/dist/cjs',
