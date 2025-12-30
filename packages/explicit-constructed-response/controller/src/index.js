@@ -217,6 +217,77 @@ export const getScore = (config, session) => {
   return parseFloat(str);
 };
 
+  /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+  const { value } = session || {};
+  const { choices, markup } = model || {};
+  
+  const responseAreas = markup ? markup.match(/\{\{(.+?)\}\}/g) : [];
+  const totalAreas = responseAreas ? responseAreas.length : 0;
+  
+  traceLog.push(`${totalAreas} response area(s) defined in this question.`);
+  
+  if (value && Object.keys(value).length > 0) {
+    const filledAreas = Object.entries(value).filter(([key, val]) => val && val.trim()).length;
+    traceLog.push(`Student filled ${filledAreas} out of ${totalAreas} response area(s).`);
+    
+    Object.keys(choices || {}).forEach((areaKey) => {
+      const studentAnswer = (value && value[areaKey]) || '';
+      const correctOptions = choices[areaKey] || [];
+      const isCorrect = !isEmpty(studentAnswer.trim()) && 
+        correctOptions.some(option => prepareVal(option.label) === prepareVal(studentAnswer));
+      
+      if (studentAnswer.trim()) {
+        traceLog.push(`Response area ${parseInt(areaKey) + 1}: ${isCorrect ? 'CORRECT' : 'INCORRECT'}.`);
+      } else {
+        traceLog.push(`Response area ${parseInt(areaKey) + 1}: left empty.`);
+      }
+    });
+  } else {
+    traceLog.push('Student did not fill any response areas.');
+  }
+
+  const hasAlternates = Object.values(choices || {}).some(optionArray => optionArray.length > 1);
+  if (hasAlternates) {
+    traceLog.push(`Alternate answers are accepted for some response areas.`);
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(model, env);
+  
+  if (partialScoringEnabled) {
+    traceLog.push(`Score calculated using partial scoring.`);
+    traceLog.push(`Student receives credit for each correctly filled response area.`);
+    
+    if (value && Object.keys(value).length > 0) {
+      let correctCount = 0;
+      Object.keys(choices || {}).forEach((areaKey) => {
+        const studentAnswer = (value && value[areaKey]) || '';
+        const correctOptions = choices[areaKey] || [];
+        const isCorrect = !isEmpty(studentAnswer.trim()) && 
+          correctOptions.some(option => prepareVal(option.label) === prepareVal(studentAnswer));
+        if (isCorrect) correctCount++;
+      });
+      
+      traceLog.push(`Partial scoring: ${correctCount} correct out of ${totalAreas} response areas.`);
+    }
+  } else {
+    traceLog.push(`Score calculated using all-or-nothing scoring.`);
+    traceLog.push(`Student must fill all response areas correctly to receive full credit.`);
+  }
+
+  const score = getScore(model, session);
+  traceLog.push(`Score: ${score}.`);
+
+  return traceLog;
+};
+
 /**
  * The score is partial by default for checkbox mode, allOrNothing for radio mode.
  * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring =
@@ -230,10 +301,23 @@ export const getScore = (config, session) => {
  */
 export function outcome(model, session, env = {}) {
   return new Promise((resolve) => {
-    const partialScoringEnabled = partialScoring.enabled(model, env);
-    const score = getScore(model, session);
+    if (!session || isEmpty(session)) {
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        traceLog: ['Student did not fill any response areas. Score: 0.'] 
+      });
+    } else {
+      const traceLog = getLogTrace(model, session, env);
+      const partialScoringEnabled = partialScoring.enabled(model, env);
+      const score = getScore(model, session);
 
-    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0, empty: isEmpty(session) });
+      resolve({ 
+        score: partialScoringEnabled ? score : score === 1 ? 1 : 0, 
+        empty: false,
+        traceLog 
+      });
+    }
   });
 }
 

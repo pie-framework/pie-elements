@@ -151,9 +151,9 @@ export class Main extends React.Component {
 
         {prompt && <PreviewPrompt prompt={prompt} />}
 
-        {!alwaysShowCorrect && (
+        {!alwaysShowCorrect && mode === 'evaluate' && (
           <CorrectAnswerToggle
-            show={mode === 'evaluate'}
+            show
             toggled={showCorrectAnswer}
             onToggle={this.toggleShowCorrect}
             language={language}
