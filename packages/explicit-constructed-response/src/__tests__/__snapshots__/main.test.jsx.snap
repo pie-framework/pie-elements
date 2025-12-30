@@ -142,11 +142,6 @@ exports[`Main render should render in gather mode 1`] = `
   <WithStyles(PreviewPrompt)
     prompt="Prompt"
   />
-  <WithStyles(CorrectAnswerToggle)
-    onToggle={[Function]}
-    show={false}
-    toggled={false}
-  />
   <WithStyles(WithMask)
     choices={
       Object {
@@ -253,11 +248,6 @@ exports[`Main render should render in view mode 1`] = `
   </div>
   <WithStyles(PreviewPrompt)
     prompt="Prompt"
-  />
-  <WithStyles(CorrectAnswerToggle)
-    onToggle={[Function]}
-    show={false}
-    toggled={false}
   />
   <WithStyles(WithMask)
     choices={
@@ -366,11 +356,6 @@ exports[`Main render should render without prompt 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-  <WithStyles(CorrectAnswerToggle)
-    onToggle={[Function]}
-    show={false}
-    toggled={false}
-  />
   <WithStyles(WithMask)
     choices={
       Object {
@@ -481,11 +466,6 @@ exports[`Main render should render without rationale 1`] = `
   <WithStyles(PreviewPrompt)
     prompt="Prompt"
   />
-  <WithStyles(CorrectAnswerToggle)
-    onToggle={[Function]}
-    show={false}
-    toggled={false}
-  />
   <WithStyles(WithMask)
     choices={
       Object {
@@ -566,11 +546,6 @@ exports[`Main render should render without teacher instructions 1`] = `
   </h2>
   <WithStyles(PreviewPrompt)
     prompt="Prompt"
-  />
-  <WithStyles(CorrectAnswerToggle)
-    onToggle={[Function]}
-    show={false}
-    toggled={false}
   />
   <WithStyles(WithMask)
     choices={
