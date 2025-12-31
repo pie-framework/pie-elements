@@ -188,6 +188,39 @@ global.XMLHttpRequest = class XMLHttpRequestMock extends originalXHR {
   }
 };
 
+// Mock HTMLCanvasElement for Konva (required for canvas rendering in tests)
+if (!HTMLCanvasElement.prototype.getContext) {
+  HTMLCanvasElement.prototype.getContext = () => ({
+    fillRect: jest.fn(),
+    clearRect: jest.fn(),
+    getImageData: jest.fn(() => ({ data: [] })),
+    putImageData: jest.fn(),
+    createImageData: jest.fn(() => []),
+    setTransform: jest.fn(),
+    drawImage: jest.fn(),
+    save: jest.fn(),
+    fillText: jest.fn(),
+    restore: jest.fn(),
+    beginPath: jest.fn(),
+    moveTo: jest.fn(),
+    lineTo: jest.fn(),
+    closePath: jest.fn(),
+    stroke: jest.fn(),
+    translate: jest.fn(),
+    scale: jest.fn(),
+    rotate: jest.fn(),
+    arc: jest.fn(),
+    fill: jest.fn(),
+    measureText: jest.fn(() => ({ width: 0 })),
+    transform: jest.fn(),
+    rect: jest.fn(),
+    clip: jest.fn(),
+  });
+}
+
+// Mock canvas package for Konva (Konva tries to require it in Node environment)
+jest.mock('canvas', () => ({}), { virtual: true });
+
 // Ensure customElements is available (jsdom provides this, but ensure it's there)
 // Don't mock it - we need the real implementation for custom element registration
 if (!global.customElements) {

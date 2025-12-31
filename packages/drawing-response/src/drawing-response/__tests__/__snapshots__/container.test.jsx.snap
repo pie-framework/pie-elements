@@ -2,260 +2,100 @@
 
 exports[`Container snapshot renders 1`] = `
 <div>
-  <WithStyles(Palette)
-    fillColor="white"
-    fillList={
-      Array [
-        Object {
-          "label": "No fill",
-          "value": "transparent",
-        },
-        Object {
-          "label": "Light blue",
-          "value": "lightblue",
-        },
-        Object {
-          "label": "Light yellow",
-          "value": "lightyellow",
-        },
-        Object {
-          "label": "Red",
-          "value": "red",
-        },
-        Object {
-          "label": "Orange",
-          "value": "orange",
-        },
-        Object {
-          "label": "Yellow",
-          "value": "yellow",
-        },
-        Object {
-          "label": "Violet",
-          "value": "violet",
-        },
-        Object {
-          "label": "Blue",
-          "value": "blue",
-        },
-        Object {
-          "label": "Green",
-          "value": "green",
-        },
-        Object {
-          "label": "White",
-          "value": "white",
-        },
-        Object {
-          "label": "Black",
-          "value": "black",
-        },
-      ]
-    }
-    onFillColorChange={[Function]}
-    onOutlineColorChange={[Function]}
-    onPaintColorChange={[Function]}
-    outlineColor="black"
-    outlineList={
-      Array [
-        Object {
-          "label": "Red",
-          "value": "red",
-        },
-        Object {
-          "label": "Orange",
-          "value": "orange",
-        },
-        Object {
-          "label": "Yellow",
-          "value": "yellow",
-        },
-        Object {
-          "label": "Violet",
-          "value": "violet",
-        },
-        Object {
-          "label": "Blue",
-          "value": "blue",
-        },
-        Object {
-          "label": "Green",
-          "value": "green",
-        },
-        Object {
-          "label": "White",
-          "value": "white",
-        },
-        Object {
-          "label": "Black",
-          "value": "black",
-        },
-      ]
-    }
-    paintColor="Red"
-    paintList={
-      Array [
-        Object {
-          "label": "Red",
-          "value": "red",
-        },
-        Object {
-          "label": "Orange",
-          "value": "orange",
-        },
-        Object {
-          "label": "Yellow",
-          "value": "yellow",
-        },
-        Object {
-          "label": "Violet",
-          "value": "violet",
-        },
-        Object {
-          "label": "Blue",
-          "value": "blue",
-        },
-        Object {
-          "label": "Green",
-          "value": "green",
-        },
-        Object {
-          "label": "White",
-          "value": "white",
-        },
-        Object {
-          "label": "Black",
-          "value": "black",
-        },
-      ]
-    }
-  />
-  <div>
-    <div>
-      <WithStyles(RawButton)
-        disabled={true}
-        key="Select"
-        label={
-          <IconWrapper
+  <div
+    class="css-1yuhvjn"
+  >
+    <div
+      data-testid="drawable-palette"
+      fillcolor="white"
+      filllist="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+      outlinecolor="black"
+      outlinelist="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+      paintcolor="Red"
+      paintlist="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+    />
+    <div
+      class="css-h5izqy"
+    >
+      <div
+        class="css-uxd8cw"
+      >
+        <button
+          disabled=""
+          label="[object Object]"
+          title="Select"
+        >
+          <span
             path="mdiCursorDefault"
           />
-        }
-        onClick={[Function]}
-        title="Select"
-      />
-      <WithStyles(RawButton)
-        disabled={false}
-        key="FreePathDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          label="[object Object]"
+          title="Free Draw"
+        >
+          <span
             path="mdiPencil"
           />
-        }
-        onClick={[Function]}
-        title="Free Draw"
-      />
-      <WithStyles(RawButton)
-        disabled={false}
-        key="LineDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          label="[object Object]"
+          title="Line"
+        >
+          <span
             path="mdiMinus"
           />
-        }
-        onClick={[Function]}
-        title="Line"
-      />
-      <WithStyles(RawButton)
-        disabled={false}
-        key="RectangleDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          label="[object Object]"
+          title="Rectangle"
+        >
+          <span
             path="mdiRectangle"
           />
-        }
-        onClick={[Function]}
-        title="Rectangle"
-      />
-      <WithStyles(RawButton)
-        disabled={false}
-        key="CircleDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          label="[object Object]"
+          title="Circle"
+        >
+          <span
             path="mdiCircle"
           />
-        }
-        onClick={[Function]}
-        title="Circle"
-      />
-      <WithStyles(RawButton)
-        disabled={false}
-        key="Text"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          label="[object Object]"
+          title="Text Entry"
+        >
+          <span
             path="mdiFormatColorText"
           />
-        }
-        onClick={[Function]}
-        title="Text Entry"
-      />
-      <WithStyles(RawButton)
-        disabled={false}
-        key="EraserDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          label="[object Object]"
+          title="Eraser"
+        >
+          <span
             path="mdiEraser"
           />
-        }
-        onClick={[Function]}
-        title="Eraser"
-      />
-    </div>
-    <div
-      style={
-        Object {
-          "height": 0,
-          "maxHeight": 0,
-          "overflow": "scroll",
-        }
-      }
-    >
-      <WithStyles(DrawableMain)
-        TextEntry={
-          TextDrawable {
-            "addNewTextEntry": [Function],
-            "all": Array [],
-            "eventListenersDetachArray": Array [],
-            "handleClick": [Function],
-            "handleDblClick": [Function],
-            "handleMouseDown": [Function],
-            "handleMouseUp": [Function],
-            "handleTransform": [Function],
-            "removeEventListeners": [Function],
-            "setAll": [Function],
-          }
-        }
-        drawableDimensions={
-          Object {
-            "height": 0,
-            "width": 0,
-          }
-        }
-        fillColor="white"
-        imageDimensions={Object {}}
-        imageUrl="url"
-        onSessionChange={[MockFunction]}
-        outlineColor="black"
-        paintColor="Red"
-        scale={1}
-        session={Object {}}
-        toolActive={
-          Object {
-            "icon": "mdiCursorDefault",
-            "label": "Select",
-            "type": "Select",
-          }
-        }
-      />
+        </button>
+      </div>
+      <div
+        class="css-6oly8l"
+        style="height: 0px; max-height: 0; overflow: scroll;"
+      >
+        <div
+          data-testid="drawable-main"
+          drawabledimensions="[object Object]"
+          fillcolor="white"
+          imagedimensions="[object Object]"
+          imageurl="url"
+          outlinecolor="black"
+          paintcolor="Red"
+          scale="1"
+          session="[object Object]"
+          textentry="[object Object]"
+          toolactive="[object Object]"
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -263,133 +103,98 @@ exports[`Container snapshot renders 1`] = `
 
 exports[`Container snapshot renders disabled 1`] = `
 <div>
-  <div>
-    <div>
-      <WithStyles(RawButton)
-        disabled={true}
-        key="Select"
-        label={
-          <IconWrapper
+  <div
+    class="css-1yuhvjn"
+  >
+    <div
+      class="css-h5izqy"
+    >
+      <div
+        class="css-uxd8cw"
+      >
+        <button
+          disabled=""
+          label="[object Object]"
+          title="Select"
+        >
+          <span
             path="mdiCursorDefault"
           />
-        }
-        onClick={[Function]}
-        title="Select"
-      />
-      <WithStyles(RawButton)
-        disabled={true}
-        key="FreePathDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          disabled=""
+          label="[object Object]"
+          title="Free Draw"
+        >
+          <span
             path="mdiPencil"
           />
-        }
-        onClick={[Function]}
-        title="Free Draw"
-      />
-      <WithStyles(RawButton)
-        disabled={true}
-        key="LineDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          disabled=""
+          label="[object Object]"
+          title="Line"
+        >
+          <span
             path="mdiMinus"
           />
-        }
-        onClick={[Function]}
-        title="Line"
-      />
-      <WithStyles(RawButton)
-        disabled={true}
-        key="RectangleDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          disabled=""
+          label="[object Object]"
+          title="Rectangle"
+        >
+          <span
             path="mdiRectangle"
           />
-        }
-        onClick={[Function]}
-        title="Rectangle"
-      />
-      <WithStyles(RawButton)
-        disabled={true}
-        key="CircleDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          disabled=""
+          label="[object Object]"
+          title="Circle"
+        >
+          <span
             path="mdiCircle"
           />
-        }
-        onClick={[Function]}
-        title="Circle"
-      />
-      <WithStyles(RawButton)
-        disabled={true}
-        key="Text"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          disabled=""
+          label="[object Object]"
+          title="Text Entry"
+        >
+          <span
             path="mdiFormatColorText"
           />
-        }
-        onClick={[Function]}
-        title="Text Entry"
-      />
-      <WithStyles(RawButton)
-        disabled={true}
-        key="EraserDrawable"
-        label={
-          <IconWrapper
+        </button>
+        <button
+          disabled=""
+          label="[object Object]"
+          title="Eraser"
+        >
+          <span
             path="mdiEraser"
           />
-        }
-        onClick={[Function]}
-        title="Eraser"
-      />
-    </div>
-    <div
-      style={
-        Object {
-          "height": 0,
-          "maxHeight": 0,
-          "overflow": "scroll",
-        }
-      }
-    >
-      <WithStyles(DrawableMain)
-        TextEntry={
-          TextDrawable {
-            "addNewTextEntry": [Function],
-            "all": Array [],
-            "eventListenersDetachArray": Array [],
-            "handleClick": [Function],
-            "handleDblClick": [Function],
-            "handleMouseDown": [Function],
-            "handleMouseUp": [Function],
-            "handleTransform": [Function],
-            "removeEventListeners": [Function],
-            "setAll": [Function],
-          }
-        }
-        disabled={true}
-        drawableDimensions={
-          Object {
-            "height": 0,
-            "width": 0,
-          }
-        }
-        fillColor="white"
-        imageDimensions={Object {}}
-        imageUrl="url"
-        onSessionChange={[MockFunction]}
-        outlineColor="black"
-        paintColor="Red"
-        scale={1}
-        session={Object {}}
-        toolActive={
-          Object {
-            "icon": "mdiCursorDefault",
-            "label": "Select",
-            "type": "Select",
-          }
-        }
-      />
+        </button>
+      </div>
+      <div
+        class="css-6oly8l"
+        style="height: 0px; max-height: 0; overflow: scroll;"
+      >
+        <div
+          data-testid="drawable-main"
+          disabled=""
+          drawabledimensions="[object Object]"
+          fillcolor="white"
+          imagedimensions="[object Object]"
+          imageurl="url"
+          outlinecolor="black"
+          paintcolor="Red"
+          scale="1"
+          session="[object Object]"
+          textentry="[object Object]"
+          toolactive="[object Object]"
+        />
+      </div>
     </div>
   </div>
 </div>

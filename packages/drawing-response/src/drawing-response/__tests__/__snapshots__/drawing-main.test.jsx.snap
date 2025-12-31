@@ -1,247 +1,237 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DrawingResponse CircleDrawable snapshot renders 1`] = `
-<Circle
-  onClick={[Function]}
-  onDragEnd={[Function]}
-  radius={100}
-  x={200}
-  y={200}
-/>
+<div>
+  <circle
+    data-testid="konva-circle"
+    radius="100"
+    x="200"
+    y="200"
+  />
+</div>
 `;
 
 exports[`DrawingResponse DrawableMain snapshot renders 1`] = `
 <div>
-  <div>
-    <WithStyles(RawButton)
-      disabled={false}
-      label="Undo"
-      onClick={[Function]}
-    />
-    <WithStyles(RawButton)
-      disabled={false}
-      label="Clear all"
-      onClick={[Function]}
-    />
-  </div>
-  <div>
-    <WithStyles(DrawableImage)
-      dimensions={
-        Object {
-          "height": NaN,
-          "width": NaN,
-        }
-      }
-      url="url"
-    />
-    <ForwardRef
-      className=""
-      height={350}
-      onMouseMove={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      width={353}
+  <div
+    class="css-166ghgk"
+  >
+    <div
+      class="css-83o09w"
     >
-      <Layer />
-    </ForwardRef>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-ptw0f7-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        title=""
+        type="button"
+      >
+        Undo
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-ptw0f7-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        title=""
+        type="button"
+      >
+        Clear all
+      </button>
+    </div>
+    <div
+      class="css-1xg2rii"
+    >
+      <div
+        class="css-wioyy2"
+      >
+        <img
+          alt="drawing-response-image"
+          class="css-p8sy9u"
+          src="url"
+          style="max-width: NaNpx; max-height: 350px;"
+        />
+      </div>
+      <div
+        style="position: absolute; left: 0px; top: 0px; cursor: default;"
+      >
+        <div
+          data-testid="konva-stage"
+          height="350"
+          width="353"
+        >
+          <div
+            data-testid="konva-layer"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`DrawingResponse DrawableMain snapshot renders disabled 1`] = `
 <div>
-  <div>
-    <WithStyles(RawButton)
-      disabled={true}
-      label="Undo"
-      onClick={[Function]}
-    />
-    <WithStyles(RawButton)
-      disabled={true}
-      label="Clear all"
-      onClick={[Function]}
-    />
-  </div>
-  <div>
-    <WithStyles(DrawableImage)
-      dimensions={
-        Object {
-          "height": NaN,
-          "width": NaN,
-        }
-      }
-      url="url"
-    />
-    <ForwardRef
-      className=""
-      height={350}
-      width={353}
+  <div
+    class="css-166ghgk"
+  >
+    <div
+      class="css-83o09w"
     >
-      <Layer />
-    </ForwardRef>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-ptw0f7-MuiButtonBase-root-MuiButton-root"
+        disabled=""
+        tabindex="-1"
+        title=""
+        type="button"
+      >
+        Undo
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-ptw0f7-MuiButtonBase-root-MuiButton-root"
+        disabled=""
+        tabindex="-1"
+        title=""
+        type="button"
+      >
+        Clear all
+      </button>
+    </div>
+    <div
+      class="css-1xg2rii"
+    >
+      <div
+        class="css-wioyy2"
+      >
+        <img
+          alt="drawing-response-image"
+          class="css-p8sy9u"
+          src="url"
+          style="max-width: NaNpx; max-height: 350px;"
+        />
+      </div>
+      <div
+        style="position: absolute; left: 0px; top: 0px; cursor: default;"
+      >
+        <div
+          data-testid="konva-stage"
+          height="350"
+          width="353"
+        >
+          <div
+            data-testid="konva-layer"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`DrawingResponse DrawableText snapshot renders 1`] = `
 <div>
-  <Text
-    bubbles={true}
-    draggable={true}
-    fontSize={16}
-    id="gcifqhhimf8k2d6g8hs"
-    key="gcifqhhimf8k2d6g8hs"
-    name="text_gcifqhhimf8k2d6g8hs"
-    onClick={[Function]}
-    onDblClick={[Function]}
-    onDblTap={[Function]}
-    onDragEnd={[MockFunction]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    onTap={[Function]}
-    onTouchEnd={[Function]}
-    onTouchStart={[Function]}
-    onTransform={[Function]}
-    onTransformEnd={[MockFunction]}
-    text="Double click to edit this text. Press Enter to submit."
-    visible={true}
-    width={200}
-    x={60}
-    y={60}
-  />
-  <TransformerComponent
-    key="transformer_gcifqhhimf8k2d6g8hs"
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchStart={[Function]}
-    selectedShapeName="text_gcifqhhimf8k2d6g8hs"
-  />
+  <div>
+    <text
+      data-testid="konva-text"
+      draggable="true"
+      font-size="16"
+      id="gcifqhhimf8k2d6g8hs"
+      name="text_gcifqhhimf8k2d6g8hs"
+      text="Double click to edit this text. Press Enter to submit."
+      width="200"
+      x="60"
+      y="60"
+    />
+    <g
+      data-testid="drawable-transformer"
+      selectedshapename="text_gcifqhhimf8k2d6g8hs"
+    />
+  </div>
 </div>
 `;
 
 exports[`DrawingResponse DrawableText snapshot renders textAreas 1`] = `
 <div>
-  <textarea
-    key="textarea_gcifqhhimf8k2d6g8hs"
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-  />
+  <div>
+    <textarea
+      style="display: none;"
+    />
+  </div>
 </div>
 `;
 
 exports[`DrawingResponse DrawableText snapshot when there is no value renders 1`] = `
 <div>
-  <Text
-    bubbles={true}
-    draggable={true}
-    fontSize={16}
-    id="gcifqhhimf8k2d6g8hs"
-    key="gcifqhhimf8k2d6g8hs"
-    name="text_gcifqhhimf8k2d6g8hs"
-    onClick={[Function]}
-    onDblClick={[Function]}
-    onDblTap={[Function]}
-    onDragEnd={[MockFunction]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    onTap={[Function]}
-    onTouchEnd={[Function]}
-    onTouchStart={[Function]}
-    onTransform={[Function]}
-    onTransformEnd={[MockFunction]}
-    text="Double click to edit this text. Press Enter to submit."
-    visible={true}
-    width={200}
-    x={60}
-    y={60}
-  />
-  <TransformerComponent
-    key="transformer_gcifqhhimf8k2d6g8hs"
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchStart={[Function]}
-    selectedShapeName="text_gcifqhhimf8k2d6g8hs"
-  />
+  <div>
+    <text
+      data-testid="konva-text"
+      draggable="true"
+      font-size="16"
+      id="gcifqhhimf8k2d6g8hs"
+      name="text_gcifqhhimf8k2d6g8hs"
+      text="Double click to edit this text. Press Enter to submit."
+      width="200"
+      x="60"
+      y="60"
+    />
+    <g
+      data-testid="drawable-transformer"
+      selectedshapename="text_gcifqhhimf8k2d6g8hs"
+    />
+  </div>
 </div>
 `;
 
 exports[`DrawingResponse EraserDrawable snapshot renders 1`] = `
-<Line
-  bezier={true}
-  fill="white"
-  globalCompositeOperation="destination-out"
-  lineJoin="round"
-  lineWidth="5"
-  onDragEnd={[Function]}
-  points={
-    Array [
-      200,
-      200,
-      300,
-      300,
-    ]
-  }
-  stroke="white"
-  strokeStyle="#df4b26"
-  strokeWidth={5}
-  tension={0}
-  x={200}
-  y={200}
-/>
+<div>
+  <line
+    data-testid="konva-line"
+    fill="white"
+    globalcompositeoperation="destination-out"
+    linejoin="round"
+    linewidth="5"
+    points="200,200,300,300"
+    stroke="white"
+    stroke-width="5"
+    strokestyle="#df4b26"
+    tension="0"
+    x="200"
+    y="200"
+  />
+</div>
 `;
 
 exports[`DrawingResponse FreePathDrawable snapshot renders 1`] = `
-<Line
-  bezier={true}
-  onClick={[Function]}
-  onDragEnd={[Function]}
-  points={
-    Array [
-      200,
-      200,
-      300,
-      300,
-    ]
-  }
-  tension={0}
-  x={200}
-  y={200}
-/>
+<div>
+  <line
+    data-testid="konva-line"
+    points="200,200,300,300"
+    tension="0"
+    x="200"
+    y="200"
+  />
+</div>
 `;
 
 exports[`DrawingResponse LineDrawable snapshot renders 1`] = `
-<Arrow
-  onClick={[Function]}
-  onDragEnd={[Function]}
-  pointerLength={0}
-  pointerWidth={0}
-  points={
-    Array [
-      200,
-      200,
-      300,
-      200,
-    ]
-  }
-  x={200}
-  y={200}
-/>
+<div>
+  <line
+    data-testid="konva-arrow"
+    pointerlength="0"
+    pointerwidth="0"
+    points="200,200,300,200"
+    x="200"
+    y="200"
+  />
+</div>
 `;
 
 exports[`DrawingResponse RectangleDrawable snapshot renders 1`] = `
-<Rect
-  height={100}
-  onClick={[Function]}
-  onDragEnd={[Function]}
-  strokeWidth={2}
-  width={100}
-  x={200}
-  y={200}
-/>
+<div>
+  <rect
+    data-testid="konva-rect"
+    height="100"
+    stroke-width="2"
+    width="100"
+    x="200"
+    y="200"
+  />
+</div>
 `;
