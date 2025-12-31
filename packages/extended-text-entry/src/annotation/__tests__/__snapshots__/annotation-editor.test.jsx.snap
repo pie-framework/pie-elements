@@ -4,73 +4,31 @@ exports[`freeform editor snapshots renders 1`] = `
 <div>
   <div>
     <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "",
-        }
-      }
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "maxHeight": "40vh",
-          "minHeight": 100,
-          "width": 466,
-        }
-      }
+      class="css-14ptknt"
+    >
+      <div
+        class="css-1xzm96i"
+        style="width: 466px; min-height: 100px; max-height: 40vh;"
+      />
+      <div
+        class="css-2z6ef6"
+      />
+    </div>
+    <div
+      compname="InputContainer"
+    >
+      Comment
+    </div>
+    <div
+      annotations=""
+      data-testid="annotation-menu"
     />
-    <div />
+    <div
+      data-testid="freeform-editor"
+      offset="0"
+      value=""
+    />
   </div>
-  <Component
-    label="Comment"
-  >
-    <EditableHtml
-      disabled={false}
-      markup=""
-      onChange={[MockFunction]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "controlledKeypadMode": false,
-            "customKeys": Array [],
-            "disabled": false,
-            "keypadMode": "miscellaneous",
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      width="604"
-    />
-  </Component>
-  <WithStyles(AnnotationMenu)
-    anchorEl={null}
-    annotations={Array []}
-    isNewAnnotation={false}
-    onAnnotate={[Function]}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onEdit={[Function]}
-    onWrite={[Function]}
-    open={false}
-  />
-  <WithStyles(FreeformEditor)
-    offset={0}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onSave={[Function]}
-    onTypeChange={[Function]}
-    open={false}
-    type={null}
-    value=""
-  />
 </div>
 `;
 
@@ -78,73 +36,31 @@ exports[`freeform editor snapshots renders disabled 1`] = `
 <div>
   <div>
     <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "",
-        }
-      }
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "maxHeight": "40vh",
-          "minHeight": 100,
-          "width": 466,
-        }
-      }
+      class="css-14ptknt"
+    >
+      <div
+        class="css-1xzm96i"
+        style="width: 466px; min-height: 100px; max-height: 40vh;"
+      />
+      <div
+        class="css-2z6ef6"
+      />
+    </div>
+    <div
+      compname="InputContainer"
+    >
+      Comment
+    </div>
+    <div
+      annotations=""
+      data-testid="annotation-menu"
     />
-    <div />
+    <div
+      data-testid="freeform-editor"
+      offset="0"
+      value=""
+    />
   </div>
-  <Component
-    label="Comment"
-  >
-    <EditableHtml
-      disabled={true}
-      markup=""
-      onChange={[MockFunction]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "controlledKeypadMode": false,
-            "customKeys": Array [],
-            "disabled": false,
-            "keypadMode": "miscellaneous",
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      width="604"
-    />
-  </Component>
-  <WithStyles(AnnotationMenu)
-    anchorEl={null}
-    annotations={Array []}
-    isNewAnnotation={false}
-    onAnnotate={[Function]}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onEdit={[Function]}
-    onWrite={[Function]}
-    open={false}
-  />
-  <WithStyles(FreeformEditor)
-    offset={0}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onSave={[Function]}
-    onTypeChange={[Function]}
-    open={false}
-    type={null}
-    value=""
-  />
 </div>
 `;
 
@@ -152,73 +68,43 @@ exports[`freeform editor snapshots renders with complex text and nested annotati
 <div>
   <div>
     <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<div>This is <b>a complex </b><em>example</em><br/>This is a new line.</div>",
-        }
-      }
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "maxHeight": "40vh",
-          "minHeight": 100,
-          "width": 466,
-        }
-      }
+      class="css-14ptknt"
+    >
+      <div
+        class="css-1xzm96i"
+        style="width: 466px; min-height: 100px; max-height: 40vh;"
+      >
+        <div>
+          This is 
+          <b>
+            a complex 
+          </b>
+          <em>
+            example
+          </em>
+          <br />
+          This is a new line.
+        </div>
+      </div>
+      <div
+        class="css-2z6ef6"
+      />
+    </div>
+    <div
+      compname="InputContainer"
+    >
+      Comment
+    </div>
+    <div
+      annotations=""
+      data-testid="annotation-menu"
     />
-    <div />
+    <div
+      data-testid="freeform-editor"
+      offset="0"
+      value=""
+    />
   </div>
-  <Component
-    label="Comment"
-  >
-    <EditableHtml
-      disabled={false}
-      markup=""
-      onChange={[MockFunction]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "controlledKeypadMode": false,
-            "customKeys": Array [],
-            "disabled": false,
-            "keypadMode": "miscellaneous",
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      width="604"
-    />
-  </Component>
-  <WithStyles(AnnotationMenu)
-    anchorEl={null}
-    annotations={Array []}
-    isNewAnnotation={false}
-    onAnnotate={[Function]}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onEdit={[Function]}
-    onWrite={[Function]}
-    open={false}
-  />
-  <WithStyles(FreeformEditor)
-    offset={0}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onSave={[Function]}
-    onTypeChange={[Function]}
-    open={false}
-    type={null}
-    value=""
-  />
 </div>
 `;
 
@@ -226,96 +112,31 @@ exports[`freeform editor snapshots renders with predefined annotations 1`] = `
 <div>
   <div>
     <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "",
-        }
-      }
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "maxHeight": "40vh",
-          "minHeight": 100,
-          "width": 466,
-        }
-      }
+      class="css-14ptknt"
+    >
+      <div
+        class="css-1xzm96i"
+        style="width: 466px; min-height: 100px; max-height: 40vh;"
+      />
+      <div
+        class="css-2z6ef6"
+      />
+    </div>
+    <div
+      compname="InputContainer"
+    >
+      Comment
+    </div>
+    <div
+      annotations="[object Object],[object Object],[object Object],[object Object]"
+      data-testid="annotation-menu"
     />
-    <div />
+    <div
+      data-testid="freeform-editor"
+      offset="0"
+      value=""
+    />
   </div>
-  <Component
-    label="Comment"
-  >
-    <EditableHtml
-      disabled={false}
-      markup=""
-      onChange={[MockFunction]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "controlledKeypadMode": false,
-            "customKeys": Array [],
-            "disabled": false,
-            "keypadMode": "miscellaneous",
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      width="604"
-    />
-  </Component>
-  <WithStyles(AnnotationMenu)
-    anchorEl={null}
-    annotations={
-      Array [
-        Object {
-          "label": "good",
-          "text": "good",
-          "type": "positive",
-        },
-        Object {
-          "label": "★",
-          "text": "★",
-          "type": "positive",
-        },
-        Object {
-          "label": "cut",
-          "text": "cut",
-          "type": "negative",
-        },
-        Object {
-          "label": "sp",
-          "text": "spelling",
-          "type": "negative",
-        },
-      ]
-    }
-    isNewAnnotation={false}
-    onAnnotate={[Function]}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onEdit={[Function]}
-    onWrite={[Function]}
-    open={false}
-  />
-  <WithStyles(FreeformEditor)
-    offset={0}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onSave={[Function]}
-    onTypeChange={[Function]}
-    open={false}
-    type={null}
-    value=""
-  />
 </div>
 `;
 
@@ -323,73 +144,35 @@ exports[`freeform editor snapshots renders with text and annotations 1`] = `
 <div>
   <div>
     <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<div>This is an example.</div>",
-        }
-      }
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "maxHeight": "40vh",
-          "minHeight": 100,
-          "width": 466,
-        }
-      }
+      class="css-14ptknt"
+    >
+      <div
+        class="css-1xzm96i"
+        style="width: 466px; min-height: 100px; max-height: 40vh;"
+      >
+        <div>
+          This is an example.
+        </div>
+      </div>
+      <div
+        class="css-2z6ef6"
+      />
+    </div>
+    <div
+      compname="InputContainer"
+    >
+      Comment
+    </div>
+    <div
+      annotations=""
+      data-testid="annotation-menu"
     />
-    <div />
+    <div
+      data-testid="freeform-editor"
+      offset="0"
+      value=""
+    />
   </div>
-  <Component
-    label="Comment"
-  >
-    <EditableHtml
-      disabled={false}
-      markup=""
-      onChange={[MockFunction]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "controlledKeypadMode": false,
-            "customKeys": Array [],
-            "disabled": false,
-            "keypadMode": "miscellaneous",
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      width="604"
-    />
-  </Component>
-  <WithStyles(AnnotationMenu)
-    anchorEl={null}
-    annotations={Array []}
-    isNewAnnotation={false}
-    onAnnotate={[Function]}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onEdit={[Function]}
-    onWrite={[Function]}
-    open={false}
-  />
-  <WithStyles(FreeformEditor)
-    offset={0}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onSave={[Function]}
-    onTypeChange={[Function]}
-    open={false}
-    type={null}
-    value=""
-  />
 </div>
 `;
 
@@ -397,72 +180,34 @@ exports[`freeform editor snapshots renders with text and comment 1`] = `
 <div>
   <div>
     <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<div>This is an example.</div>",
-        }
-      }
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "maxHeight": "40vh",
-          "minHeight": 100,
-          "width": 466,
-        }
-      }
+      class="css-14ptknt"
+    >
+      <div
+        class="css-1xzm96i"
+        style="width: 466px; min-height: 100px; max-height: 40vh;"
+      >
+        <div>
+          This is an example.
+        </div>
+      </div>
+      <div
+        class="css-2z6ef6"
+      />
+    </div>
+    <div
+      compname="InputContainer"
+    >
+      Comment
+    </div>
+    <div
+      annotations=""
+      data-testid="annotation-menu"
     />
-    <div />
+    <div
+      data-testid="freeform-editor"
+      offset="0"
+      value=""
+    />
   </div>
-  <Component
-    label="Comment"
-  >
-    <EditableHtml
-      disabled={false}
-      markup="<div>Very good</div>"
-      onChange={[MockFunction]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "controlledKeypadMode": false,
-            "customKeys": Array [],
-            "disabled": false,
-            "keypadMode": "miscellaneous",
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      width="604"
-    />
-  </Component>
-  <WithStyles(AnnotationMenu)
-    anchorEl={null}
-    annotations={Array []}
-    isNewAnnotation={false}
-    onAnnotate={[Function]}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onEdit={[Function]}
-    onWrite={[Function]}
-    open={false}
-  />
-  <WithStyles(FreeformEditor)
-    offset={0}
-    onClose={[Function]}
-    onDelete={[Function]}
-    onSave={[Function]}
-    onTypeChange={[Function]}
-    open={false}
-    type={null}
-    value=""
-  />
 </div>
 `;

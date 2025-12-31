@@ -1,17 +1,107 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { Main } from '../main';
+
+jest.mock('@pie-lib/render-ui', () => ({
+  PreviewPrompt: ({ prompt }) => <div data-testid="preview-prompt">{prompt}</div>,
+  Collapsible: ({ children }) => <div data-testid="collapsible">{children}</div>,
+  UiLayout: ({ children }) => <div data-testid="ui-layout">{children}</div>,
+  hasText: jest.fn(() => true),
+  hasMedia: jest.fn(() => false),
+  color: {
+    text: () => '#000',
+    background: () => '#fff',
+  },
+}));
+
+jest.mock('@pie-lib/correct-answer-toggle', () => ({
+  __esModule: true,
+  default: ({ children }) => <div data-testid="correct-answer-toggle">{children}</div>,
+}));
+
+jest.mock('@pie-lib/mask-markup', () => ({
+  ConstructedResponse: (props) => <div data-testid="constructed-response" {...props} />,
+}));
+
+const theme = createTheme();
 
 const choice = (l, v) => ({ label: l, value: v });
 
 describe('Main', () => {
-  let wrapper;
   let onChange = jest.fn();
 
-  beforeAll(() => {
-    wrapper = (extra) => {
-      const props = {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const renderMain = (extra = {}) => {
+    const props = {
+      classes: {},
+      prompt: 'Prompt',
+      rationale: 'Rationale',
+      teacherInstructions: 'Teacher Instructions',
+      disabled: false,
+      choices: {
+        0: [choice('cow', '0'), choice('cattle', '1'), choice('calf', '2')],
+        1: [choice('over', '0'), choice('past', '1'), choice('beyond', '2')],
+        2: [choice('moon', '0')],
+      },
+      markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
+      mode: 'gather',
+      feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
+      value: { 0: '1', 1: '0', 2: '0' },
+      onChange,
+      ...extra,
+    };
+
+    return render(
+      <ThemeProvider theme={theme}>
+        <Main {...props} />
+      </ThemeProvider>
+    );
+  };
+
+  describe('render', () => {
+    it('should render in gather mode', () => {
+      const { container } = renderMain();
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render in view mode', () => {
+      const { container } = renderMain({ mode: 'view' });
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render in evaluate mode', () => {
+      const { container } = renderMain({ mode: 'evaluate' });
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render without teacher instructions', () => {
+      const { container } = renderMain({ teacherInstructions: null });
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render without rationale', () => {
+      const { container } = renderMain({ rationale: null });
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render without prompt', () => {
+      const { container } = renderMain({ prompt: null });
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('logic', () => {
+    it('onChange calls the onChange prop after debounce', () => {
+      jest.useFakeTimers();
+      const { container } = renderMain();
+
+      // Get the Main component instance to test internal onChange method
+      const mainInstance = new Main({
         classes: {},
         prompt: 'Prompt',
         rationale: 'Rationale',
@@ -27,59 +117,35 @@ describe('Main', () => {
         feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
         value: { 0: '1', 1: '0', 2: '0' },
         onChange,
-        ...extra,
-      };
+      });
 
-      return shallow(<Main {...props} />);
-    };
-  });
+      mainInstance.onChange({ 0: '0', 1: '0', 2: '0' });
 
-  describe('render', () => {
-    it('should render in gather mode', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
+      // Fast-forward time to trigger debounced callback
+      jest.advanceTimersByTime(400);
 
-    it('should render in view mode', () => {
-      expect(wrapper({ mode: 'view' })).toMatchSnapshot();
-    });
+      expect(onChange).toHaveBeenCalledWith({ 0: '0', 1: '0', 2: '0' });
 
-    it('should render in evaluate mode', () => {
-      expect(wrapper({ mode: 'evaluate' })).toMatchSnapshot();
-    });
-
-    it('should render without teacher instructions', () => {
-      expect(wrapper({ teacherInstructions: null })).toMatchSnapshot();
-    });
-
-    it('should render without rationale', () => {
-      expect(wrapper({ rationale: null })).toMatchSnapshot();
-    });
-
-    it('should render without prompt', () => {
-      expect(wrapper({ prompt: null })).toMatchSnapshot();
-    });
-  });
-
-  describe('logic', () => {
-    it('onChange', () => {
-      wrapper().instance().onChange({ 0: '0', 1: '0', 2: '0' });
-
-      setTimeout(() => {
-        expect(onChange).toHaveBeenCalledWith({ 0: '0', 1: '0', 2: '0' });
-      }, 400);
+      jest.useRealTimers();
     });
 
     it('onChange when all responses have max length 1', () => {
-      wrapper({
+      const mainInstance = new Main({
+        classes: {},
+        disabled: false,
         choices: {
           0: [choice('b', '0')],
           1: [choice('a', '0')],
           2: [choice('c', '0')],
         },
         maxLengthPerChoice: [1, 1, 1],
-      })
-        .instance()
-        .onChange({ 0: 'a', 1: 'b', 2: 'c' });
+        markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
+        mode: 'gather',
+        value: { 0: '1', 1: '0', 2: '0' },
+        onChange,
+      });
+
+      mainInstance.onChange({ 0: 'a', 1: 'b', 2: 'c' });
 
       expect(onChange).toHaveBeenCalledWith({ 0: 'a', 1: 'b', 2: 'c' });
     });
