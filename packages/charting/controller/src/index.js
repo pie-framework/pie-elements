@@ -152,6 +152,103 @@ export const getScore = (question, session, env = {}) => {
   return score;
 };
 
+/**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+
+  const { correctAnswer, data: initialData = [], scoringType } = model || {};
+  const { data: correctAnswers = [] } = correctAnswer || {};
+  const studentAnswers = (session && session.answer) || [];
+
+  const isPartialScoring = partialScoring.enabled(
+    { partialScoring: scoringType !== undefined ? scoringType === 'partial scoring' : scoringType },
+    env
+  );
+
+  const defaultAnswers = filterCategories(initialData);
+  const answers = studentAnswers.length > 0 ? filterCategories(studentAnswers) : defaultAnswers;
+
+  if (!studentAnswers.length) {
+    traceLog.push(`Student did not modify the chart. Initial chart is scored.`);
+  }
+
+  correctAnswers.forEach((correct, index) => {
+    const initial = defaultAnswers[index];
+    const student = answers[index];
+
+    if (!student) {
+      traceLog.push(`Category ${index + 1}: missing (expected value '${correct.value}', label '${correct.label}').`);
+      return;
+    }
+
+    const valueCorrect = student.value === correct.value;
+    const labelCorrect = checkLabelsEquality(student.label, correct.label);
+
+    if (!student.interactive) {
+      traceLog.push(`Category ${index + 1}: non-interactive category treated as correct.`);
+      return;
+    }
+
+    if (studentAnswers.length > 0) {
+      const valueChanged = initial ? student.value !== initial.value : true;
+      const labelChanged = initial ? !checkLabelsEquality(student.label, initial.label) : true;
+
+      if (!valueChanged && !labelChanged) {
+        if (valueCorrect && labelCorrect) {
+          traceLog.push(`Category ${index + 1}: unchanged from initial value and correct.`);
+        } else {
+          traceLog.push(`Category ${index + 1}: unchanged from initial value but incorrect.`);
+        }
+        return;
+      }
+
+      const parts = [];
+      if (valueChanged) {
+        parts.push(`value ${valueCorrect ? 'correct' : 'incorrect'}`);
+      }
+      if (labelChanged) {
+        parts.push(`label ${labelCorrect ? 'correct' : 'incorrect'}`);
+      }
+      traceLog.push(`Category ${index + 1}: modified - ${parts.join(', ')}.`);
+    } else {
+      if (valueCorrect && labelCorrect) {
+        traceLog.push(`Category ${index + 1}: initial values are correct.`);
+      } else if (valueCorrect) {
+        traceLog.push(`Category ${index + 1}: initial value correct, label incorrect.`);
+      } else if (labelCorrect) {
+        traceLog.push(`Category ${index + 1}: initial value incorrect, label correct.`);
+      } else {
+        traceLog.push(`Category ${index + 1}: initial value and label incorrect.`);
+      }
+    }
+  });
+
+  if (answers.length > correctAnswers.length) {
+    const extra = answers.length - correctAnswers.length;
+    traceLog.push(`${extra} extra category(ies) provided beyond expected number.`);
+  }
+
+  if (isPartialScoring) {
+    traceLog.push('Score calculated using partial scoring.');
+    traceLog.push('Student receives credit for each correct value and label independently.');
+  } else {
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+    traceLog.push('Student must match all category values and labels exactly for full credit.');
+  }
+
+  const scoreObject = getScore(model, session, env);
+  traceLog.push(`Score: ${scoreObject.score}.`);
+
+  return traceLog;
+};
+
+
 // eslint-disable-next-line no-unused-vars
 export const filterCategories = (categories) => (categories ? categories.map(({ deletable, ...rest }) => rest) : []);
 
@@ -237,14 +334,19 @@ export function model(question, session, env) {
 
 export function outcome(model, session, env) {
   return new Promise((resolve) => {
+    const traceLog = getLogTrace(model, session, env);
     const scoreObject = getScore(model, session, env);
+    
     const result = {
       score: scoreObject.score,
       empty: !session || isEmpty(session),
+      traceLog
     };
+    
     if (env.extraProps && env.extraProps.correctResponseEnabled) {
       result.extraProps = { correctResponse: scoreObject.correctResponses };
     }
+    
     resolve(result);
   });
 }
