@@ -271,10 +271,103 @@ export function model(question, session, env) {
   });
 }
 
+  /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+  const { answers = {}, scoringType } = question || {};
+  const studentMarks = (session && session.answer) || [];
+
+  if (!studentMarks.length) {
+    return ['Student did not interact with the graph.'];
+  }
+
+  traceLog.push(`Student added ${studentMarks.length} object(s) to the graph.`);
+
+  const partialScoringEnabled = getPartialScoring({ scoringType, env });
+
+  const {
+    answersCorrected,
+    bestScore,
+    bestScoreAnswerKey,
+  } = getBestAnswer(question, session, env);
+
+  const correctResponse =
+    bestScoreAnswerKey && answers[bestScoreAnswerKey]
+      ? answers[bestScoreAnswerKey].marks || []
+      : [];
+
+  let correctCount = 0;
+  let incorrectCount = 0;
+  let missingCount = 0;
+
+  for (let i = 0; i < answersCorrected.length; i++) {
+    const c = answersCorrected[i].correctness;
+    if (c === 'correct') correctCount++;
+    else if (c === 'incorrect') incorrectCount++;
+    else if (c === 'missing') missingCount++;
+  }
+
+  if (correctCount > 0) {
+    traceLog.push(`Correct objects: ${correctCount}.`);
+  }
+
+  if (incorrectCount > 0) {
+    traceLog.push(`Incorrect objects: ${incorrectCount}.`);
+  }
+
+  if (missingCount > 0) {
+    traceLog.push(`Missing required objects: ${missingCount}.`);
+  }
+
+  answersCorrected.forEach((mark, index) => {
+    const objectType = mark.type || 'graph object';
+    const objectLabel = mark.label ? `'${mark.label}'` : '';
+    const objectIndex = `with index ${index + 1}`;
+
+    if (mark.correctness === 'correct') {
+      traceLog.push(
+        `${objectType.charAt(0).toUpperCase() + objectType.slice(1)} ${objectLabel || objectIndex} is correct.`
+      );
+    }
+
+    if (mark.correctness === 'incorrect') {
+      traceLog.push(
+        `${objectType.charAt(0).toUpperCase() + objectType.slice(1)} ${objectLabel || objectIndex} does not match the expected ${objectType}.`
+      );
+    }
+
+    if (mark.correctness === 'missing') {
+      traceLog.push(`Expected ${objectType} ${objectLabel || objectIndex} was not plotted by the student.`);
+    }
+  });
+
+  if (studentMarks.length > correctResponse.length) {
+    const extra = studentMarks.length - correctResponse.length;
+    traceLog.push(`${extra} extra object(s) were plotted and are penalized in scoring.`);
+  }
+
+  if (partialScoringEnabled) {
+    traceLog.push('Score calculated using partial scoring.');
+  } else {
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+  }
+
+  traceLog.push(`Final score: ${bestScore}.`);
+
+  return traceLog;
+};
+
+
 export function outcome(question, session, env = {}) {
   return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
+      resolve({ score: 0, empty: true, logTrace: ['Student did not interact with the graph.'] });
     }
 
     if (
@@ -282,12 +375,12 @@ export function outcome(question, session, env = {}) {
       isEmpty(question.answers) ||
       (question.answers && question.answers.correctAnswer && isEmpty(question.answers.correctAnswer.marks))
     ) {
-      resolve({ score: 0 });
+      resolve({ score: 0, empty: true, logTrace: ['Student did not interact with the graph.'] });
     }
 
     const { bestScore } = getBestAnswer(question, session, env);
 
-    resolve({ score: bestScore });
+    resolve({ score: bestScore, empty: false, logTrace: getLogTrace(question, session, env) });
   });
 }
 
