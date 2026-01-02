@@ -2,77 +2,44 @@
 
 exports[`GraphingConfig renders snapshot 1`] = `
 <div>
-  <div />
   <div
-    key="graph"
+    class="css-1vzzb6i"
   >
-    <WithStyles(Typography)
-      component="div"
-      variant="subheading"
+    <div
+      class="css-1wzh6p2"
+    />
+    <div
+      class="css-1km0bek"
     >
-      Define Graph Attributes
-    </WithStyles(Typography)>
-    <WithStyles(Typography)
-      component="div"
-      variant="body1"
-    >
-      Use this interface to add/edit a title and/or labels, and to set background shapes
-    </WithStyles(Typography)>
-    <Root
-      axesSettings={
-        Object {
-          "includeArrows": Object {
-            "down": true,
-            "left": true,
-            "right": true,
-            "up": true,
-          },
-        }
-      }
-      backgroundMarks={Array []}
-      collapsibleToolbar={true}
-      collapsibleToolbarTitle="Add Background Shapes to Graph"
-      coordinatesOnHover={false}
-      domain={
-        Object {
-          "axisLabel": "x",
-          "labelStep": 1,
-          "max": 5,
-          "min": -5,
-          "step": 1,
-        }
-      }
-      key="graphing-config"
-      labels={Object {}}
-      marks={Array []}
-      mathMlOptions={Object {}}
-      onChangeLabels={[Function]}
-      onChangeMarks={[Function]}
-      onChangeTitle={[Function]}
-      range={
-        Object {
-          "axisLabel": "y",
-          "labelStep": 1,
-          "max": 5,
-          "min": -5,
-          "step": 1,
-        }
-      }
-      showPixelGuides={false}
-      size={
-        Object {
-          "height": 500,
-          "width": 500,
-        }
-      }
-      title=""
-      toolbarTools={Array []}
+      <div
+        class="MuiTypography-root MuiTypography-h6 css-1miy0lu-MuiTypography-root"
+      >
+        Define Graph Attributes
+      </div>
+      <div
+        class="MuiTypography-root MuiTypography-body1 css-1rzp2oo-MuiTypography-root"
+      >
+        Use this interface to add/edit a title and/or labels, and to set background shapes
+      </div>
+      <div
+        axessettings="[object Object]"
+        backgroundmarks=""
+        collapsibletoolbartitle="Add Background Shapes to Graph"
+        data-testid="graph-container"
+        domain="[object Object]"
+        labels="[object Object]"
+        marks=""
+        mathmloptions="[object Object]"
+        range="[object Object]"
+        title=""
+        toolbartools=""
+      />
+    </div>
+    <div
+      data-testid="alert-dialog"
+      text="This change would make it impossible for students to plot one or more graph objects in the current correct answers. If you proceed, all such graph objects will be removed from the correct answers."
+      title="Warning"
     />
   </div>
-  <Component
-    open={false}
-    text="This change would make it impossible for students to plot one or more graph objects in the current correct answers. If you proceed, all such graph objects will be removed from the correct answers."
-    title="Warning"
-  />
 </div>
 `;

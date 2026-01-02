@@ -1,12 +1,17 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import React from 'react';
-import { shallowChild } from '@pie-lib/test-utils';
 import AnswerFraction from '../answer-fraction';
-import { TextField } from '@mui/material';
 
-jest.mock('@mui/material', () => ({
-  TextField: (props) => <div {...props} />,
-}));
+jest.mock('@mui/material', () => {
+  const React = require('react');
+  return {
+    ...jest.requireActual('@mui/material'),
+    TextField: (props) => React.createElement('div', { 'data-testid': 'text-field', ...props }),
+  };
+});
+
+const theme = createTheme();
 
 describe('AnswerFraction', () => {
   const defaultProps = {
@@ -28,33 +33,33 @@ describe('AnswerFraction', () => {
     answers: {},
   };
 
-  let wrapper;
-  let component;
+  const renderAnswerFraction = (extras = {}) => {
+    const props = { ...defaultProps, ...extras };
 
-  beforeEach(() => {
-    wrapper = shallowChild(AnswerFraction, defaultProps, 1);
-  });
+    return render(
+      <ThemeProvider theme={theme}>
+        <AnswerFraction {...props} />
+      </ThemeProvider>
+    );
+  };
 
   describe('render', () => {
-    let w;
-
-    beforeEach(() => {
-      w = (props) => shallow(<AnswerFraction {...props} />);
-    });
-
     it('snapshot', () => {
-      expect(w(defaultProps)).toMatchSnapshot();
+      const { container } = renderAnswerFraction();
+      expect(container).toMatchSnapshot();
     });
 
     it('renders correctly', () => {
-      component = wrapper();
-      expect(component.find(TextField).length).toEqual(2);
+      renderAnswerFraction();
+      const textFields = screen.getAllByTestId('text-field');
+      expect(textFields.length).toEqual(2);
     });
 
     it('onValueChange correctly update answers', () => {
-      component = wrapper();
-      component.instance().onValueChange('partsPerModel');
-      component.instance().onValueChange('noOfModel');
+      const testInstance = new AnswerFraction(defaultProps);
+
+      testInstance.onValueChange('partsPerModel');
+      testInstance.onValueChange('noOfModel');
     });
   });
 });

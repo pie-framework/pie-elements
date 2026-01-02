@@ -1,26 +1,51 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import React from 'react';
 import defaultValues from '../defaults';
 import { ModelOptions } from '../model-options';
-import CardBar from '../card-bar';
-import { MiniField } from '../number-text-field';
-import Select from '@mui/material/Select';
-import { Checkbox } from '@pie-lib/config-ui';
 
-jest.mock('@pie-lib/config-ui', () => ({
-  Checkbox: (props) => <div {...props} />,
-  layout: {
-    ConfigLayout: (props) => <div>{props.children}</div>,
-  },
-}));
+jest.mock('@pie-lib/config-ui', () => {
+  const React = require('react');
+  return {
+    Checkbox: (props) => React.createElement('div', { 'data-testid': 'checkbox', ...props }),
+    layout: {
+      ConfigLayout: (props) => React.createElement('div', null, props.children),
+    },
+  };
+});
 
-jest.mock('@pie-lib/editable-html', () => ({
-  EditableHtml: (props) => <div {...props} />,
-}));
+jest.mock('@pie-lib/editable-html', () => {
+  const React = require('react');
+  return {
+    EditableHtml: (props) => React.createElement('div', { ...props }),
+  };
+});
 
-jest.mock('@mui/material', () => ({
-  Select: (props) => <div {...props} />,
-}));
+jest.mock('@mui/material', () => {
+  const React = require('react');
+  const actualMui = jest.requireActual('@mui/material');
+  return {
+    ...actualMui,
+    Select: (props) => React.createElement('div', { 'data-testid': 'select', ...props }),
+  };
+});
+
+jest.mock('../card-bar', () => {
+  const React = require('react');
+  return {
+    __esModule: true,
+    default: (props) => React.createElement('div', { 'data-testid': 'card-bar', ...props }),
+  };
+});
+
+jest.mock('../number-text-field', () => {
+  const React = require('react');
+  return {
+    MiniField: (props) => React.createElement('div', { 'data-testid': 'mini-field', ...props }),
+  };
+});
+
+const theme = createTheme();
 
 jest.mock('lodash/debounce', () => (fn) => fn);
 
@@ -39,41 +64,42 @@ export const defaultProps = {
 };
 
 describe('Model Options', () => {
-  let wrapper;
-  let component;
-
-  beforeEach(() => {
-    wrapper = (props) => {
-      const configProps = {
-        classes: {},
-        ...defaultProps,
-        ...props,
-      };
-      return shallow(<ModelOptions {...configProps} />);
+  const renderModelOptions = (props = {}) => {
+    const configProps = {
+      classes: {},
+      ...defaultProps,
+      ...props,
     };
-  });
+    return render(
+      <ThemeProvider theme={theme}>
+        <ModelOptions {...configProps} />
+      </ThemeProvider>
+    );
+  };
 
   it('snapshot renders', () => {
-    const component = wrapper();
-    expect(component).toMatchSnapshot();
+    const { container } = renderModelOptions();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders correctly: Components mounted correctly', () => {
-    component = wrapper();
-    expect(component.find(CardBar).length).toEqual(1);
-    expect(component.find(Select).length).toEqual(1);
-    expect(component.find(MiniField).length).toEqual(2);
-    expect(component.find(Checkbox).length).toEqual(1);
+    renderModelOptions();
+    expect(screen.getByTestId('card-bar')).toBeInTheDocument();
+    expect(screen.getByRole('combobox')).toBeInTheDocument(); // MUI Select renders as combobox
+    expect(screen.getAllByTestId('mini-field').length).toEqual(2);
+    expect(screen.getByTestId('checkbox')).toBeInTheDocument();
   });
 
   it('render correctly: update model type to Pie', () => {
     let onChange = jest.fn();
 
-    component = wrapper({
+    const testInstance = new ModelOptions({
+      classes: {},
+      ...defaultProps,
       onChange,
     });
 
-    component.instance().handleSelect({
+    testInstance.handleSelect({
       target: { value: 'pie' },
     });
 
@@ -87,11 +113,13 @@ describe('Model Options', () => {
   it('render correctly: update model type to Bar', () => {
     let onChange = jest.fn();
 
-    component = wrapper({
+    const testInstance = new ModelOptions({
+      classes: {},
+      ...defaultProps,
       onChange,
     });
 
-    component.instance().handleSelect({
+    testInstance.handleSelect({
       target: { value: 'bar' },
     });
 
@@ -105,11 +133,13 @@ describe('Model Options', () => {
   it('render correctly: update max no of model', () => {
     let onChange = jest.fn();
 
-    component = wrapper({
+    const testInstance = new ModelOptions({
+      classes: {},
+      ...defaultProps,
       onChange,
     });
 
-    component.instance().change('max', {}, 4);
+    testInstance.change('max', {}, 4);
 
     expect(onChange).toBeCalledWith(
       expect.objectContaining({ maxModelSelected: defaultProps.model.maxModelSelected }),
@@ -121,11 +151,13 @@ describe('Model Options', () => {
   it('render correctly: update parts per model', () => {
     let onChange = jest.fn();
 
-    component = wrapper({
+    const testInstance = new ModelOptions({
+      classes: {},
+      ...defaultProps,
       onChange,
     });
 
-    component.instance().change('part', {}, 7);
+    testInstance.change('part', {}, 7);
 
     expect(onChange).toBeCalledWith(
       expect.objectContaining({ partsPerModel: defaultProps.model.partsPerModel }),
@@ -137,11 +169,13 @@ describe('Model Options', () => {
   it('render correctly: update student config checkbox', () => {
     let onChange = jest.fn();
 
-    component = wrapper({
+    const testInstance = new ModelOptions({
+      classes: {},
+      ...defaultProps,
       onChange,
     });
 
-    component.instance().change('student-config', {}, true);
+    testInstance.change('student-config', {}, true);
 
     expect(onChange).toBeCalledWith(
       expect.objectContaining({ allowedStudentConfig: defaultProps.model.allowedStudentConfig }),

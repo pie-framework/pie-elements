@@ -1,24 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main render snapshot 1`] = `
-<WithStyles(UiLayout)>
-  <WithStyles(CorrectAnswerToggle)
-    onToggle={[Function]}
-    toggled={false}
-  />
-  <Root
-    axesSettings={
-      Object {
-        "includeArrows": undefined,
-      }
-    }
-    backgroundMarks={Array []}
-    disabledLabels={true}
-    disabledTitle={true}
-    limitLabeling={true}
-    marks={Array []}
-    onChangeMarks={[MockFunction]}
-    size={Object {}}
-  />
-</WithStyles(UiLayout)>
+<div>
+  <div
+    data-testid="ui-layout"
+  >
+    <div
+      data-testid="correct-answer-toggle"
+    />
+    <div
+      axessettings="[object Object]"
+      backgroundmarks=""
+      class="css-1ebprri"
+      data-testid="graph-container"
+      marks=""
+    />
+  </div>
+</div>
 `;

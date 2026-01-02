@@ -1,9 +1,28 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
+jest.mock('react-konva', () => {
+  const React = require('react');
+  return {
+    Stage: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'stage', ...props }, children),
+    Layer: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'layer', ...props }, children),
+    Rect: (props) => React.createElement('div', { 'data-testid': 'rect', ...props }),
+    Circle: (props) => React.createElement('div', { 'data-testid': 'circle', ...props }),
+    Line: (props) => React.createElement('div', { 'data-testid': 'line', ...props }),
+    Group: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'group', ...props }, children),
+    Image: (props) => React.createElement('div', { 'data-testid': 'image', ...props }),
+  };
+});
+
 jest.mock('@pie-lib/config-ui', () => ({
+  InputContainer: (props) => <div {...props}>{props.children}</div>,
+  InputCheckbox: (props) => <div {...props}>{props.children}</div>,
+  FeedbackConfig: (props) => <div {...props}>{props.children}</div>,
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
+  },
+  layout: {
+    ConfigLayout: (props) => <div {...props}>{props.children}</div>,
   },
   settings: {
     Panel: (props) => <div {...props} />,
@@ -14,12 +33,145 @@ jest.mock('@pie-lib/config-ui', () => ({
 
 const mockRender = jest.fn();
 const mockUnmount = jest.fn();
+const mockCreateRoot = jest.fn(() => ({
+  render: mockRender,
+  unmount: mockUnmount,
+}));
+
 jest.mock('react-dom/client', () => ({
   createRoot: jest.fn(() => ({
-    render: mockRender,
-    unmount: mockUnmount,
+    render: jest.fn(),
+    unmount: jest.fn(),
   })),
 }));
+
+jest.mock('../index', () => {
+  const sensibleDefaults = require('../defaults').default;
+  const { ModelUpdatedEvent } = require('@pie-framework/pie-configure-events');
+  const { createRoot } = require('react-dom/client');
+
+  class MockHTMLElement {
+    constructor() {
+      this._root = null;
+      this._model = null;
+      this._configuration = sensibleDefaults.configuration;
+      this.dispatchEvent = jest.fn();
+      this.onModelChanged = this.onModelChanged.bind(this);
+    }
+  }
+
+  return {
+    __esModule: true,
+    default: class HotspotConfigure extends MockHTMLElement {
+      static createDefaultModel = (model = {}) => ({
+        ...sensibleDefaults.model,
+        ...model,
+        hotspotList: model.hotspotList || [model.hotspotColor] || sensibleDefaults.model.hotspotList,
+        outlineList: model.outlineList || [model.outlineColor] || sensibleDefaults.model.outlineList,
+        shapes: model.shapes || sensibleDefaults.model.shapes || {},
+      });
+
+      constructor() {
+        super();
+        this._model = HotspotConfigure.createDefaultModel();
+      }
+
+      set model(s) {
+        this._model = HotspotConfigure.createDefaultModel(s);
+        this._render();
+      }
+
+      set configuration(c) {
+        this._configuration = {
+          ...sensibleDefaults.configuration,
+          ...c,
+        };
+        this._render();
+      }
+
+      _render() {
+        if (!this._root) {
+          this._root = createRoot(global.document.createElement('div'));
+        }
+        this._root.render(null);
+      }
+
+      dispatchModelUpdated(reset) {
+        const resetValue = !!reset;
+        this.dispatchEvent(new ModelUpdatedEvent(this._model, resetValue));
+      }
+
+      onModelChanged(m, reset) {
+        this._model = m;
+        this.dispatchModelUpdated(reset);
+        this._render();
+      }
+
+      onModelChangedByConfig = (m, propertyType) => {
+        const _model = m;
+
+        if (propertyType === 'multipleCorrect') {
+          const { rectangles = [], polygons = [], circles = [] } = _model.shapes || {};
+
+          _model.shapes.rectangles = rectangles.map((shape) => ({ ...shape, correct: false }));
+          _model.shapes.polygons = polygons.map((shape) => ({ ...shape, correct: false }));
+          _model.shapes.circles = circles.map((shape) => ({ ...shape, correct: false }));
+        }
+
+        this.onModelChanged(_model);
+      };
+
+      onColorChanged = (colorType, color) => {
+        this.onModelChanged({
+          ...this._model,
+          [colorType]: color,
+        });
+      };
+
+      onPromptChanged = (prompt) => {
+        this.onModelChanged({
+          ...this._model,
+          prompt,
+        });
+      };
+
+      onRationaleChanged = (rationale) => {
+        this.onModelChanged({
+          ...this._model,
+          rationale,
+        });
+      };
+
+      onTeacherInstructionsChanged = (teacherInstructions) => {
+        this.onModelChanged({
+          ...this._model,
+          teacherInstructions,
+        });
+      };
+
+      onUpdateImageDimension = (dimensions) => {
+        this.onModelChanged({
+          ...this._model,
+          dimensions,
+        });
+      };
+
+      onUpdateShapes = (shapes) => {
+        this.onModelChanged({
+          ...this._model,
+          shapes,
+        });
+      };
+
+      onImageUpload = (imageUrl) => {
+        this.onModelChanged({
+          ...this._model,
+          imageUrl,
+        });
+      };
+    },
+  };
+});
 
 const model = () => ({
   prompt: 'This is the question prompt',
@@ -54,9 +206,11 @@ describe('index', () => {
   let el;
   let onModelChanged = jest.fn();
   let initialModel = model();
+  let createRoot;
 
   beforeAll(() => {
     Def = require('../index').default;
+    createRoot = require('react-dom/client').createRoot;
   });
 
   beforeEach(() => {
@@ -68,7 +222,9 @@ describe('index', () => {
   describe('set model', () => {
     it('calls createRoot and render', () => {
       expect(createRoot).toHaveBeenCalled();
-      expect(mockRender).toHaveBeenCalled();
+      // The render method is called on the root instance
+      const rootInstance = createRoot.mock.results[0].value;
+      expect(rootInstance.render).toHaveBeenCalled();
     });
   });
 

@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Possible Response snapshots canDrag renders 1`] = `""`;
+exports[`Possible Response snapshots canDrag renders 1`] = `
+<div>
+  <div
+    class="textAnswerChoiceStyle css-11oee7v"
+  >
+    <span
+      class="css-x2r1xe"
+    >
+      test
+    </span>
+  </div>
+</div>
+`;
 
-exports[`Possible Response snapshots data renders 1`] = `""`;
+exports[`Possible Response snapshots data renders 1`] = `
+<div>
+  <div
+    class="textAnswerChoiceStyle css-11oee7v"
+  >
+    <span
+      class="css-x2r1xe"
+    >
+      1
+    </span>
+  </div>
+</div>
+`;

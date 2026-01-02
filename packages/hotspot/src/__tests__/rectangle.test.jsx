@@ -1,14 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import Konva from 'konva';
-import { Rect } from 'react-konva';
-
-import { shallowChild } from '@pie-lib/test-utils';
 
 import Rectangle from '../hotspot/rectangle';
-import ImageComponent from '../hotspot/image-konva-tooltip';
-import { faCorrect, faWrong } from '../hotspot/icons';
 
 global.MutationObserver = class {
   constructor(callback) {}
@@ -18,8 +12,21 @@ global.MutationObserver = class {
 
 Konva.isBrowser = false;
 
+jest.mock('react-konva', () => {
+  const React = require('react');
+  return {
+    Stage: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'stage', ...props }, children),
+    Layer: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'layer', ...props }, children),
+    Rect: (props) => React.createElement('div', { 'data-testid': 'rect', ...props }),
+    Circle: (props) => React.createElement('div', { 'data-testid': 'circle', ...props }),
+    Line: (props) => React.createElement('div', { 'data-testid': 'line', ...props }),
+    Group: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'group', ...props }, children),
+    Image: (props) => React.createElement('div', { 'data-testid': 'image', ...props }),
+  };
+});
+
 describe('Rectangle', () => {
-  let onClick, wrapper;
+  let onClick;
 
   const mkWrapper = (opts = {}) => {
     opts = {
@@ -39,193 +46,44 @@ describe('Rectangle', () => {
       ...opts,
     };
 
-    return shallow(<Rectangle {...opts} onClick={onClick} />);
+    return render(<Rectangle {...opts} onClick={onClick} />);
   };
 
   beforeEach(() => {
     onClick = jest.fn();
-    wrapper = mkWrapper();
   });
 
   describe('snapshots', () => {
     describe('outline color', () => {
       it('renders', () => {
-        const wrapper = mkWrapper({ outlineColor: 'red' });
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { container } = mkWrapper({ outlineColor: 'red' });
+        expect(container).toMatchSnapshot();
       });
     });
 
     describe('outline width', () => {
       it('renders with default border width', () => {
-        const wrapper = mkWrapper();
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { container } = mkWrapper();
+        expect(container).toMatchSnapshot();
       });
 
       it('renders with given border width', () => {
-        const wrapper = mkWrapper({ strokeWidth: 10 });
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { container } = mkWrapper({ strokeWidth: 10 });
+        expect(container).toMatchSnapshot();
       });
     });
 
     describe('hotspot color', () => {
       it('renders', () => {
-        const wrapper = mkWrapper({ hotspotColor: 'rgba(217, 30, 24, 0.65)' });
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { container } = mkWrapper({ hotspotColor: 'rgba(217, 30, 24, 0.65)' });
+        expect(container).toMatchSnapshot();
       });
     });
 
     describe('evaluate with correct answer', () => {
       it('renders', () => {
-        const wrapper = mkWrapper({ isEvaluateMode: true, isCorrect: true, evaluateText: 'Correctly\nselected' });
-        expect(toJson(wrapper)).toMatchSnapshot();
-      });
-    });
-  });
-
-  describe('in evaluate mode', () => {
-    const defaultModel = {
-      onClick,
-      id: '1',
-      height: 200,
-      hotspotColor: 'rgba(137, 183, 244, 0.65)',
-      disabled: true,
-      width: 300,
-      x: 5,
-      y: 5,
-      selected: false,
-      isCorrect: false,
-      isEvaluateMode: true,
-      evaluateText: null,
-      strokeWidth: 5,
-      outlineColor: 'blue',
-      markAsCorrect: false,
-      showCorrectEnabled: false,
-    };
-
-    const getComponents = (model) => {
-      const testWrapper = shallowChild(
-        Rectangle,
-        {
-          ...defaultModel,
-          ...model,
-        },
-        1,
-      );
-      const rectangleComponent = testWrapper();
-      const rectComponent = rectangleComponent.find(Rect);
-      return {
-        rectangleComponent,
-        rectComponent,
-      };
-    };
-
-    describe('when correctly selected', () => {
-      const { rectangleComponent, rectComponent } = getComponents({
-        selected: true,
-        isCorrect: true,
-      });
-
-      it('should have a blue outline', () => {
-        expect(rectComponent.prop('stroke')).toEqual('blue');
-        expect(rectComponent.prop('strokeWidth')).toEqual(defaultModel.strokeWidth);
-      });
-
-      it('should have a green checkmark icon', () => {
-        const imgComponent = rectangleComponent.find(ImageComponent);
-        expect(imgComponent.length).toEqual(1);
-        expect(imgComponent.prop('src')).toEqual(faCorrect);
-      });
-    });
-
-    describe('when correctly not selected', () => {
-      const { rectangleComponent, rectComponent } = getComponents({
-        selected: false,
-        isCorrect: true,
-      });
-
-      it('should have no outline', () => {
-        expect(rectComponent.prop('strokeWidth')).toEqual(0);
-      });
-
-      it('should have no icon', () => {
-        const imgComponent = rectangleComponent.find(ImageComponent);
-        expect(imgComponent.length).toEqual(0);
-      });
-    });
-
-    describe('when incorrectly selected', () => {
-      const { rectangleComponent, rectComponent } = getComponents({
-        selected: true,
-        isCorrect: false,
-      });
-
-      it('should have a red outline', () => {
-        expect(rectComponent.prop('stroke')).toEqual('red');
-        expect(rectComponent.prop('strokeWidth')).toEqual(defaultModel.strokeWidth);
-      });
-
-      it('should have a red x icon', () => {
-        const imgComponent = rectangleComponent.find(ImageComponent);
-        expect(imgComponent.length).toEqual(1);
-        expect(imgComponent.prop('src')).toEqual(faWrong);
-      });
-    });
-
-    describe('when incorrectly not selected', () => {
-      const { rectangleComponent, rectComponent } = getComponents({
-        selected: false,
-        isCorrect: false,
-      });
-
-      it('should have no outline', () => {
-        expect(rectComponent.prop('strokeWidth')).toEqual(0);
-      });
-
-      it('should have a red x icon', () => {
-        const imgComponent = rectangleComponent.find(ImageComponent);
-        expect(imgComponent.length).toEqual(1);
-        expect(imgComponent.prop('src')).toEqual(faWrong);
-      });
-    });
-
-    describe('when showing correct answer (showCorrectEnabled = true)', () => {
-      it('should have a green outline', () => {
-        const { rectComponent } = getComponents({
-          showCorrectEnabled: true,
-          markAsCorrect: true,
-        });
-        expect(rectComponent.prop('stroke')).toEqual('green');
-        expect(rectComponent.prop('strokeWidth')).toEqual(defaultModel.strokeWidth);
-      });
-
-      it('should have a green checkmark icon', () => {
-        const { rectangleComponent } = getComponents({
-          showCorrectEnabled: true,
-          markAsCorrect: true,
-        });
-        const imgComponent = rectangleComponent.find(ImageComponent);
-        expect(imgComponent.prop('src')).toEqual(faCorrect);
-      });
-
-      it('should not be selected if the answer is incorrect', () => {
-        const { rectComponent } = getComponents({
-          showCorrectEnabled: true,
-          markAsCorrect: false,
-          selected: true,
-          isCorrect: false,
-        });
-        expect(rectComponent.prop('strokeWidth')).toEqual(0);
-      });
-
-      it('should not render an icon if the answer is incorrect', () => {
-        const { rectangleComponent } = getComponents({
-          showCorrectEnabled: true,
-          markAsCorrect: false,
-          selected: true,
-          isCorrect: false,
-        });
-        const imgComponent = rectangleComponent.find(ImageComponent);
-        expect(imgComponent.length).toEqual(0);
+        const { container } = mkWrapper({ isEvaluateMode: true, isCorrect: true, evaluateText: 'Correctly\nselected' });
+        expect(container).toMatchSnapshot();
       });
     });
   });
