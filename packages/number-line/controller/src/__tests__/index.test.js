@@ -152,7 +152,7 @@ describe('controller', () => {
     const assertOutcome = (label, question, session, env, expected) => {
       it(label, async () => {
         const result = await controller.outcome(question, session, env);
-        expect(result).toMatchObject(expected);
+        expect(result).toEqual(expect.objectContaining(expected));
       });
     };
 
