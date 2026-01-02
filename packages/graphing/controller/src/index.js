@@ -271,6 +271,13 @@ export function model(question, session, env) {
   });
 }
 
+  /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
 export const getLogTrace = (question, session, env) => {
   const traceLog = [];
   const { answers = {}, scoringType } = question || {};
