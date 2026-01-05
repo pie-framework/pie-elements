@@ -258,7 +258,9 @@ describe('index', () => {
       )}`, () =>
         expect(
           controller.outcome({}, session, { mode: 'evaluate' })
-        ).resolves.toEqual({ score: 0, empty: true }));
+        ).resolves.toEqual({
+          score: 0, empty: true, logTrace: ["Student did not interact with the placement-ordering item."]
+        }));
     };
 
     assertOutcomeError(null, { value: [] }, {});
