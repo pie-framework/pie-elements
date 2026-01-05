@@ -124,8 +124,7 @@ describe('correct response', () => {
 describe('outcome', () => {
   it('handles empty session', async () => {
     const result = await outcome({ tokens: [] }, { id: '1' }, { mode: 'evaluate' });
-    console.log('result:', result);
-    expect(result).toEqual({ score: 0 });
+    expect(result).toEqual(expect.objectContaining({ score: 0 }));
   });
 
   const assert = assertFn(outcome);

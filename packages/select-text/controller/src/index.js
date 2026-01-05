@@ -66,22 +66,102 @@ export const getPartialScore = (question, session, totalCorrect) => {
   return totalCorrect.length ? parseFloat((positiveCount / totalCorrect.length).toFixed(2)) : 0;
 };
 
+/**
+ * Generates detailed trace log for select-text scoring evaluation
+ * @param {Object} question - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array<string>} traceLog
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+
+  const selectedTokens = session?.selectedTokens || [];
+  const tokens = question?.tokens || [];
+
+  if (selectedTokens.length === 0) {
+    traceLog.push('Student did not select any token.');
+    return traceLog;
+  }
+
+  traceLog.push(`Student selected ${selectedTokens.length} token(s).`);
+
+  let totalCorrectTokens = 0;
+  let correctSelected = 0;
+  let missingCount = 0;
+
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (token.correct) {
+      totalCorrectTokens++;
+      const matched = selectedTokens.some((s) => equalTokens(token, s));
+      if (matched) {
+        correctSelected++;
+      } else {
+        missingCount++;
+      }
+    }
+  }
+
+  const incorrectSelected = selectedTokens.length - correctSelected;
+
+  if (correctSelected > 0) {
+    traceLog.push(`${correctSelected} correct token(s) selected.`);
+  }
+
+  if (incorrectSelected > 0) {
+    traceLog.push(`${incorrectSelected} incorrect token(s) selected.`);
+  }
+
+  if (missingCount > 0) {
+    traceLog.push(`${missingCount} required correct token(s) were not selected.`);
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(question, env, true);
+
+  if (partialScoringEnabled) {
+    traceLog.push('Score calculated using partial scoring.');
+    traceLog.push(
+      'Score is based on the number of correct minus incorrect selections, divided by the total number of correct tokens.',
+    );
+
+    if (incorrectSelected > 0 && selectedTokens.length > totalCorrectTokens) {
+      traceLog.push(
+        'Extra selected tokens beyond the correct set reduce the score.',
+      );
+    }
+  } else {
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+    traceLog.push(
+      'Student must select all correct tokens and no incorrect tokens to receive full credit.',
+    );
+  }
+
+  const rawScore = getPartialScore(question, session, tokens.filter((t) => t.correct));
+  const finalScore = partialScoringEnabled ? rawScore : rawScore === 1 ? 1 : 0;
+
+  traceLog.push(`Final score: ${finalScore}.`);
+
+  return traceLog;
+};
+
 export const outcome = (question, session, env) =>
   new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
+      resolve({ score: 0, empty: true, logTrace: ['Student did not select any token.'] });
     }
 
     session = normalizeSession(session);
 
     if (env.mode !== 'evaluate') {
-      resolve({ score: undefined, completed: undefined });
+      resolve({ score: undefined, completed: undefined, logTrace: [] });
     } else {
       const enabled = partialScoring.enabled(question, env, true);
       const totalCorrect = question.tokens.filter((t) => t.correct);
       const score = getPartialScore(question, session, totalCorrect);
       resolve({
         score: enabled ? score : score === 1 ? 1 : 0,
+        logTrace: getLogTrace(question, session, env),
       });
     }
   });
