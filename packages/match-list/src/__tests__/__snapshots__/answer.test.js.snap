@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Answer render renders correctly 1`] = `
-<div
-  className=""
->
-  <WithStyles(Component)
-    empty={true}
-  />
+<div>
+  <div
+    class="css-jwetqy"
+  >
+    <div
+      data-testid="placeholder"
+    />
+  </div>
 </div>
 `;

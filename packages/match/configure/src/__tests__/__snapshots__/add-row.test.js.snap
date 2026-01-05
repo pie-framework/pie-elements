@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddRow renders correctly 1`] = `
+<div>
+  <button
+    class="css-1msc61l"
+  >
+    <div
+      data-testid="add-icon"
+    />
+    Add Another Row
+  </button>
+</div>
+`;

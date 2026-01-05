@@ -1,288 +1,229 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AnswerGrid renders 1`] = `
-<div
-  className="AnswerGrid-controlsContainer-1"
->
-  <table
-    className="AnswerGrid-table-13"
+<div>
+  <div
+    class="css-1s96wxh"
   >
-    <colgroup>
-      <col
-        key="col-0"
-      />
-      <col
-        key="col-1"
-      />
-      <col
-        key="col-2"
-      />
-    </colgroup>
-    <thead>
-      <tr>
-        <th
-          className="AnswerGrid-rowHeader-7"
-          data-colno="0"
-          key="th-0"
-          scope="row"
-        >
-          <div
-            className="AnswerGrid-rowItem-8 AnswerGrid-questionText-14"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Column 1",
-              }
-            }
-          />
-        </th>
-        <th
-          className="AnswerGrid-rowHeader-7"
-          data-colno="1"
-          key="th-1"
-          scope="row"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Column 2",
-              }
-            }
-          />
-        </th>
-        <th
-          className="AnswerGrid-rowHeader-7"
-          data-colno="2"
-          key="th-2"
-          scope="row"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Column 3",
-              }
-            }
-          />
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      key="row-0"
-      role="group"
+    <table
+      class="css-2p48qf"
     >
-      <tr
-        className="AnswerGrid-separator-9"
+      <colgroup>
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th
+            class="css-l5t2cr"
+            data-colno="0"
+            scope="row"
+          >
+            <div
+              class="css-kpoa6b"
+            >
+              Column 1
+            </div>
+          </th>
+          <th
+            class="css-l5t2cr"
+            data-colno="1"
+            scope="row"
+          >
+            <div
+              class="css-1t0svw6"
+            >
+              Column 2
+            </div>
+          </th>
+          <th
+            class="css-l5t2cr"
+            data-colno="2"
+            scope="row"
+          >
+            <div
+              class="css-1t0svw6"
+            >
+              Column 3
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        role="group"
       >
-        <td
-          data-colno="0"
-          key="td-title-0"
+        <tr
+          class="css-1jtgcxl"
         >
-          <div
-            className="AnswerGrid-rowItem-8 AnswerGrid-questionText-14"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Question Text 1",
-              }
-            }
-          />
-        </td>
-        <td
-          className="AnswerGrid-column-2"
-          data-colno="1"
-          key="td-0-0"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
+          <td
+            data-colno="0"
           >
-            <WithStyles(Radio)
-              checked={false}
-              className="AnswerGrid-tag-10"
-              disabled={false}
-              onChange={[Function]}
-            />
-          </div>
-        </td>
-        <td
-          className="AnswerGrid-column-2"
-          data-colno="2"
-          key="td-0-1"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
+            <div
+              class="css-kpoa6b"
+            >
+              Question Text 1
+            </div>
+          </td>
+          <td
+            class="css-191ejno"
+            data-colno="1"
           >
-            <WithStyles(Radio)
-              checked={false}
-              className="AnswerGrid-tag-10"
-              disabled={false}
-              onChange={[Function]}
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-    <tbody
-      key="row-1"
-      role="group"
-    >
-      <tr
-        className="AnswerGrid-separator-9"
+            <div
+              class="css-1t0svw6"
+            >
+              <input
+                sx="[object Object]"
+                type="radio"
+              />
+            </div>
+          </td>
+          <td
+            class="css-191ejno"
+            data-colno="2"
+          >
+            <div
+              class="css-1t0svw6"
+            >
+              <input
+                sx="[object Object]"
+                type="radio"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tbody
+        role="group"
       >
-        <td
-          data-colno="0"
-          key="td-title-1"
+        <tr
+          class="css-1jtgcxl"
         >
-          <div
-            className="AnswerGrid-rowItem-8 AnswerGrid-questionText-14"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Question Text 2",
-              }
-            }
-          />
-        </td>
-        <td
-          className="AnswerGrid-column-2"
-          data-colno="1"
-          key="td-1-0"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
+          <td
+            data-colno="0"
           >
-            <WithStyles(Radio)
-              checked={false}
-              className="AnswerGrid-tag-10"
-              disabled={false}
-              onChange={[Function]}
-            />
-          </div>
-        </td>
-        <td
-          className="AnswerGrid-column-2"
-          data-colno="2"
-          key="td-1-1"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
+            <div
+              class="css-kpoa6b"
+            >
+              Question Text 2
+            </div>
+          </td>
+          <td
+            class="css-191ejno"
+            data-colno="1"
           >
-            <WithStyles(Radio)
-              checked={false}
-              className="AnswerGrid-tag-10"
-              disabled={false}
-              onChange={[Function]}
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-    <tbody
-      key="row-2"
-      role="group"
-    >
-      <tr
-        className="AnswerGrid-separator-9"
+            <div
+              class="css-1t0svw6"
+            >
+              <input
+                sx="[object Object]"
+                type="radio"
+              />
+            </div>
+          </td>
+          <td
+            class="css-191ejno"
+            data-colno="2"
+          >
+            <div
+              class="css-1t0svw6"
+            >
+              <input
+                sx="[object Object]"
+                type="radio"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tbody
+        role="group"
       >
-        <td
-          data-colno="0"
-          key="td-title-2"
+        <tr
+          class="css-1jtgcxl"
         >
-          <div
-            className="AnswerGrid-rowItem-8 AnswerGrid-questionText-14"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Question Text 3",
-              }
-            }
-          />
-        </td>
-        <td
-          className="AnswerGrid-column-2"
-          data-colno="1"
-          key="td-2-0"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
+          <td
+            data-colno="0"
           >
-            <WithStyles(Radio)
-              checked={true}
-              className="AnswerGrid-tag-10 AnswerGrid-checked-11"
-              disabled={false}
-              onChange={[Function]}
-            />
-          </div>
-        </td>
-        <td
-          className="AnswerGrid-column-2"
-          data-colno="2"
-          key="td-2-1"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
+            <div
+              class="css-kpoa6b"
+            >
+              Question Text 3
+            </div>
+          </td>
+          <td
+            class="css-191ejno"
+            data-colno="1"
           >
-            <WithStyles(Radio)
-              checked={false}
-              className="AnswerGrid-tag-10"
-              disabled={false}
-              onChange={[Function]}
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-    <tbody
-      key="row-3"
-      role="group"
-    >
-      <tr
-        className="AnswerGrid-separator-9"
+            <div
+              class="css-1t0svw6"
+            >
+              <input
+                checked=""
+                sx="[object Object]"
+                type="radio"
+              />
+            </div>
+          </td>
+          <td
+            class="css-191ejno"
+            data-colno="2"
+          >
+            <div
+              class="css-1t0svw6"
+            >
+              <input
+                sx="[object Object]"
+                type="radio"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tbody
+        role="group"
       >
-        <td
-          data-colno="0"
-          key="td-title-3"
+        <tr
+          class="css-1jtgcxl"
         >
-          <div
-            className="AnswerGrid-rowItem-8 AnswerGrid-questionText-14"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Question Text 4",
-              }
-            }
-          />
-        </td>
-        <td
-          className="AnswerGrid-column-2"
-          data-colno="1"
-          key="td-3-0"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
+          <td
+            data-colno="0"
           >
-            <WithStyles(Radio)
-              checked={false}
-              className="AnswerGrid-tag-10"
-              disabled={false}
-              onChange={[Function]}
-            />
-          </div>
-        </td>
-        <td
-          className="AnswerGrid-column-2"
-          data-colno="2"
-          key="td-3-1"
-        >
-          <div
-            className="AnswerGrid-rowItem-8"
+            <div
+              class="css-kpoa6b"
+            >
+              Question Text 4
+            </div>
+          </td>
+          <td
+            class="css-191ejno"
+            data-colno="1"
           >
-            <WithStyles(Radio)
-              checked={false}
-              className="AnswerGrid-tag-10"
-              disabled={false}
-              onChange={[Function]}
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+            <div
+              class="css-1t0svw6"
+            >
+              <input
+                sx="[object Object]"
+                type="radio"
+              />
+            </div>
+          </td>
+          <td
+            class="css-191ejno"
+            data-colno="2"
+          >
+            <div
+              class="css-1t0svw6"
+            >
+              <input
+                sx="[object Object]"
+                type="radio"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 `;
