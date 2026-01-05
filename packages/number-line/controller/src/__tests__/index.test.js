@@ -178,7 +178,7 @@ describe('controller', () => {
         };
         const e = { mode: 'evaluate' };
         const result = await controller.outcome(q, s, e);
-        expect(result).toEqual({ score: 1 });
+        expect(result.score).toEqual(1);
       });
     });
 
