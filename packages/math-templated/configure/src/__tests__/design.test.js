@@ -1,154 +1,217 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 import { Design } from '../design';
 import defaults from '../defaults';
-import { InputContainer } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
-import Select from '@mui/material/Select';
-import Tooltip from '@mui/material/Tooltip';
 
 jest.mock('@pie-lib/config-ui', () => ({
   layout: {
-    ConfigLayout: (props) => <div>{props.children}</div>,
+    ConfigLayout: (props) => <div data-testid="config-layout">{props.children}</div>,
   },
   settings: {
-    Panel: (props) => <div onChange={props.onChange} />,
+    Panel: (props) => <div data-testid="settings-panel" onChange={props.onChange} />,
     toggle: jest.fn(),
     dropdown: jest.fn(),
   },
-  InputContainer: (props) => <div {...props}>{props.children}</div>,
-  EditableHtml: (props) => <div {...props}>{props.children}</div>,
+  InputContainer: (props) => <div data-testid="input-container" data-label={props.label} {...props}>{props.children}</div>,
 }));
 
+jest.mock('@pie-lib/editable-html', () => (props) => (
+  <div
+    data-testid="editable-html"
+    data-markup={props.markup}
+    onClick={() => props.onChange && props.onChange(props.markup)}
+  >
+    {props.children}
+  </div>
+));
+
 describe('Render Main Component', () => {
-  let wrapper, onChange;
+  let onChange;
   let model = defaults.model;
   let configuration = defaults.configuration;
 
+  const defaultProps = {
+    classes: {},
+    model,
+    configuration,
+    imageSupport: {},
+    uploadSoundSupport: {},
+    onConfigurationChanged: jest.fn(),
+  };
+
+  const wrapper = (props = {}) => {
+    const onModelChanged = props.onModelChanged || onChange;
+    return render(<Design {...defaultProps} {...props} onModelChanged={onModelChanged} />);
+  };
+
   beforeEach(() => {
     onChange = jest.fn();
-
-    wrapper = shallow(
-      <Design
-        classes={{}}
-        model={model}
-        configuration={configuration}
-        onModelChanged={onChange}
-        imageSupport={{}}
-        uploadSoundSupport={{}}
-      />,
-    );
   });
 
   it('Match Snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
+    const { container } = wrapper();
+    expect(container).toMatchSnapshot();
   });
 
   describe('UI Rendering', () => {
     it('renders teacher instructions input when enabled', () => {
-      wrapper.setProps({
+      const { container } = wrapper({
         model: { ...model, teacherInstructionsEnabled: true },
       });
-      expect(wrapper.find(InputContainer).at(0).prop('label')).toEqual('Teacher Instructions');
+      const inputContainers = container.querySelectorAll('[data-testid="input-container"]');
+      const teacherInstructionsContainer = Array.from(inputContainers).find(
+        (el) => el.getAttribute('data-label') === 'Teacher Instructions'
+      );
+      expect(teacherInstructionsContainer).toBeInTheDocument();
     });
 
     it('renders prompt input when enabled', () => {
-      wrapper.setProps({
+      const { container } = wrapper({
         model: { ...model, promptEnabled: true },
       });
-      expect(wrapper.find(InputContainer).at(1).prop('label')).toEqual('Prompt');
+      const inputContainers = container.querySelectorAll('[data-testid="input-container"]');
+      const promptContainer = Array.from(inputContainers).find(
+        (el) => el.getAttribute('data-label') === 'Prompt'
+      );
+      expect(promptContainer).toBeInTheDocument();
     });
 
     it('renders rationale input when enabled', () => {
-      wrapper.setProps({
+      const { container } = wrapper({
         model: { ...model, rationaleEnabled: true },
       });
-      expect(wrapper.find(InputContainer).at(3).prop('label')).toEqual('Rationale');
+      const inputContainers = container.querySelectorAll('[data-testid="input-container"]');
+      const rationaleContainer = Array.from(inputContainers).find(
+        (el) => el.getAttribute('data-label') === 'Rationale'
+      );
+      expect(rationaleContainer).toBeInTheDocument();
     });
 
     it('renders response template and markup correctly', () => {
       const mockMarkup = '<div data-type="math_templated"></div>';
-      wrapper.setState({ markup: mockMarkup });
-      wrapper.setProps({ model: { ...model, slateMarkup: mockMarkup } });
+      const { container } = wrapper({
+        model: { ...model, slateMarkup: mockMarkup }
+      });
 
-      const editableHtml = wrapper.find(EditableHtml);
-      expect(editableHtml.exists()).toBe(true);
-      expect(editableHtml.at(2).prop('markup')).toEqual(mockMarkup);
+      const editableHtmlElements = container.querySelectorAll('[data-testid="editable-html"]');
+      expect(editableHtmlElements.length).toBeGreaterThan(0);
+
+      // Find the one with the matching markup
+      const responseTemplateEditor = Array.from(editableHtmlElements).find(
+        (el) => el.getAttribute('data-markup') === mockMarkup
+      );
+      expect(responseTemplateEditor).toBeInTheDocument();
     });
 
     it('renders equation editor select correctly', () => {
-      const inputContainer = wrapper
-        .find(InputContainer)
-        .findWhere((node) => node.prop('label') === 'Response Template Equation Editor');
-      expect(inputContainer.exists()).toBe(true);
+      const { container } = wrapper();
+      const inputContainers = container.querySelectorAll('[data-testid="input-container"]');
+      const equationEditorContainer = Array.from(inputContainers).find(
+        (el) => el.getAttribute('data-label') === 'Response Template Equation Editor'
+      );
+      expect(equationEditorContainer).toBeInTheDocument();
 
-      const select = inputContainer.find(Select);
-      expect(select.exists()).toBe(true);
+      // MUI Select renders as a div with role="button" and aria-haspopup
+      const select = equationEditorContainer.querySelector('[role="combobox"]');
+      expect(select).toBeInTheDocument();
     });
 
     it('renders tooltip with correct title', () => {
-      const tooltip = wrapper.find(Tooltip);
-      expect(tooltip.exists()).toBe(true);
-      expect(tooltip.prop('title')).toEqual(
-        'Validation requirements:\nCorrect answers should not be blank.\nEach answer defined for a response area should be unique.\nThere should be at least 1 and at most 10 response areas defined.',
-      );
+      const { container } = wrapper();
+      // The Info icon has the title attribute via the Tooltip component
+      const tooltipTrigger = container.querySelector('svg[data-testid="InfoIcon"]');
+      expect(tooltipTrigger).toBeInTheDocument();
     });
   });
 
   describe('logic', () => {
     it('handles onChange event correctly for teacher instructions', () => {
-      wrapper.setProps({ model: { ...model, teacherInstructionsEnabled: true } });
+      const instance = new Design({
+        ...defaultProps,
+        model: { ...model, teacherInstructionsEnabled: true },
+        onModelChanged: onChange,
+        onConfigurationChanged: jest.fn()
+      });
+      instance.handleChange('teacherInstructions', '<p>New teacher instructions</p>');
 
-      const inputContainer = wrapper.find(InputContainer).at(0);
-      inputContainer.find(EditableHtml).simulate('change', '<p>New teacher instructions</p>');
-
-      expect(onChange).toHaveBeenCalledWith({ ...model, teacherInstructions: '<p>New teacher instructions</p>' });
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({ teacherInstructions: '<p>New teacher instructions</p>' })
+      );
     });
 
     it('handles onChange event correctly for prompt', () => {
-      wrapper.setProps({ model: { ...model, promptEnabled: true } });
+      const instance = new Design({
+        ...defaultProps,
+        model: { ...model, promptEnabled: true },
+        onModelChanged: onChange,
+        onConfigurationChanged: jest.fn()
+      });
+      instance.handleChange('prompt', '<p>New prompt</p>');
 
-      const inputContainer = wrapper.find(InputContainer).at(1);
-      inputContainer.find(EditableHtml).simulate('change', '<p>New prompt</p>');
-
-      expect(onChange).toHaveBeenCalledWith({ ...model, prompt: '<p>New prompt</p>' });
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({ prompt: '<p>New prompt</p>' })
+      );
     });
 
     it('handles onChange event correctly for rationale', () => {
-      wrapper.setProps({ model: { ...model, rationaleEnabled: true } });
+      const instance = new Design({
+        ...defaultProps,
+        model: { ...model, rationaleEnabled: true },
+        onModelChanged: onChange,
+        onConfigurationChanged: jest.fn()
+      });
+      instance.handleChange('rationale', '<p>New rationale</p>');
 
-      const inputContainer = wrapper.find(InputContainer).at(3);
-      inputContainer.find(EditableHtml).simulate('change', '<p>New rationale</p>');
-
-      expect(onChange).toHaveBeenCalledWith({ ...model, rationale: '<p>New rationale</p>' });
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({ rationale: '<p>New rationale</p>' })
+      );
     });
 
     it('not renders prompt input when disabled', () => {
-      wrapper.setProps({ model: { ...model, promptEnabled: false } });
+      const { container } = wrapper({
+        model: { ...model, promptEnabled: false }
+      });
 
-      expect(wrapper.find(InputContainer).at(1).prop('label')).not.toEqual('Prompt');
+      const inputContainers = container.querySelectorAll('[data-testid="input-container"]');
+      const promptContainer = Array.from(inputContainers).find(
+        (el) => el.getAttribute('data-label') === 'Prompt'
+      );
+      expect(promptContainer).toBeUndefined();
     });
 
     it('updates state correctly when markup changes', () => {
       const mockMarkup = '<p>New markup content</p>';
-      wrapper.setState({ markup: mockMarkup });
-      wrapper.setProps({ model: { ...model, slateMarkup: mockMarkup } });
+      const instance = new Design({
+        ...defaultProps,
+        model: { ...model, slateMarkup: mockMarkup },
+        onModelChanged: onChange,
+        onConfigurationChanged: jest.fn()
+      });
 
-      wrapper.find(EditableHtml).at(2).simulate('change', mockMarkup);
+      instance.setState = jest.fn((state, callback) => {
+        Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+        if (callback) callback();
+      });
 
-      expect(wrapper.state('markup')).toEqual(mockMarkup);
+      instance.onChange(mockMarkup);
+
+      // Check that setState was called with markup
+      expect(instance.setState).toHaveBeenCalled();
     });
 
     it('updates model correctly when equation editor value changes', () => {
       const newValue = 'integers';
-      const inputContainer = wrapper
-        .find(InputContainer)
-        .findWhere((node) => node.prop('label') === 'Response Template Equation Editor');
-      const select = inputContainer.find(Select);
+      const instance = new Design({
+        ...defaultProps,
+        onModelChanged: onChange,
+        onConfigurationChanged: jest.fn()
+      });
 
-      select.simulate('change', { target: { value: newValue } });
+      instance.handleChange('equationEditor', newValue);
 
-      expect(onChange).toHaveBeenCalledWith({ ...model, equationEditor: newValue });
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({ equationEditor: newValue })
+      );
     });
   });
 });

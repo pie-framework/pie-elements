@@ -1,567 +1,129 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render Main Component Match Snapshot 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "allowTrailingZeros": Object {
-            "enabled": true,
-            "label": "Allow Trailing Zeros",
-            "settings": false,
-          },
-          "baseInputConfiguration": Object {
-            "audio": Object {
-              "disabled": false,
-            },
-            "blockquote": Object {
-              "disabled": true,
-            },
-            "h3": Object {
-              "disabled": true,
-            },
-            "html": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": false,
-            },
-            "separateParagraphs": Object {
-              "disabled": true,
-            },
-            "showParagraphs": Object {
-              "disabled": false,
-            },
-            "textAlign": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": false,
-            },
-          },
-          "editSource": Object {
-            "enabled": false,
-            "label": "Edit Source",
-            "settings": false,
-          },
-          "ignoreOrder": Object {
-            "enabled": true,
-            "label": "Ignore Order",
-            "settings": false,
-          },
-          "language": Object {
-            "enabled": false,
-            "label": "Specify Language",
-            "settings": false,
-          },
-          "languageChoices": Object {
-            "label": "Language Choices",
-            "options": Array [],
-          },
-          "mathMlOptions": Object {
-            "mmlEditing": false,
-            "mmlOutput": false,
-          },
-          "maxImageHeight": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "maxImageWidth": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "maxResponseAreas": 10,
-          "partialScoring": Object {
-            "label": "Allow Partial Scoring",
-            "settings": true,
-          },
-          "playerSpellCheck": Object {
-            "enabled": true,
-            "label": "Student Spellcheck",
-            "settings": true,
-          },
-          "prompt": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Prompt",
-            "required": false,
-            "settings": true,
-          },
-          "rationale": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Rationale",
-            "required": false,
-            "settings": true,
-          },
-          "spellCheck": Object {
-            "enabled": true,
-            "label": "Spellcheck",
-            "settings": false,
-          },
-          "teacherInstructions": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Teacher Instructions",
-            "required": false,
-            "settings": true,
-          },
-          "template": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "editSource.enabled": false,
-            "partialScoring": undefined,
-            "playerSpellCheckEnabled": undefined,
-            "promptEnabled": undefined,
-            "rationaleEnabled": undefined,
-            "spellCheckEnabled": false,
-            "teacherInstructionsEnabled": undefined,
-          },
-          "Settings": Object {
-            "language": false,
-            "language.enabled": false,
-          },
-        }
-      }
-      model={
-        Object {
-          "allowTrailingZerosDefault": false,
-          "equationEditor": "8",
-          "ignoreOrderDefault": false,
-          "markup": "",
-          "playerSpellCheckEnabled": true,
-          "prompt": "",
-          "promptEnabled": true,
-          "rationale": "",
-          "rationaleEnabled": true,
-          "responses": Object {},
-          "spellCheckEnabled": true,
-          "teacherInstructions": "",
-          "teacherInstructionsEnabled": true,
-          "toolbarEditorPosition": "bottom",
-          "validationDefault": "literal",
-        }
-      }
-      onChangeModel={[Function]}
-    />
-  }
->
-  <InputContainer
-    label="Teacher Instructions"
+<div>
+  <div
+    data-testid="config-layout"
   >
-    <EditableHtml
-      imageSupport={Object {}}
-      languageCharactersProps={
-        Array [
-          Object {
-            "language": "spanish",
-          },
-          Object {
-            "language": "special",
-          },
-        ]
-      }
-      markup=""
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      maxImageHeight={300}
-      maxImageWidth={300}
-      nonEmpty={false}
-      onChange={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": false,
-          },
-          "blockquote": Object {
-            "disabled": true,
-          },
-          "h3": Object {
-            "disabled": true,
-          },
-          "html": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "separateParagraphs": Object {
-            "disabled": true,
-          },
-          "showParagraphs": Object {
-            "disabled": false,
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": false,
-          },
-        }
-      }
-      spellCheck={true}
-      toolbarOpts={
-        Object {
-          "position": "bottom",
-        }
-      }
-      uploadSoundSupport={Object {}}
-    />
-  </InputContainer>
-  <InputContainer
-    label="Prompt"
-  >
-    <EditableHtml
-      disableUnderline={true}
-      imageSupport={Object {}}
-      languageCharactersProps={
-        Array [
-          Object {
-            "language": "spanish",
-          },
-          Object {
-            "language": "special",
-          },
-        ]
-      }
-      markup=""
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      maxImageHeight={300}
-      maxImageWidth={300}
-      nonEmpty={false}
-      onChange={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": false,
-          },
-          "blockquote": Object {
-            "disabled": true,
-          },
-          "h3": Object {
-            "disabled": true,
-          },
-          "html": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "separateParagraphs": Object {
-            "disabled": true,
-          },
-          "showParagraphs": Object {
-            "disabled": false,
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": false,
-          },
-        }
-      }
-      spellCheck={true}
-      toolbarOpts={
-        Object {
-          "position": "bottom",
-        }
-      }
-      uploadSoundSupport={Object {}}
-    />
-  </InputContainer>
-  <div>
-    <WithStyles(Typography)
-      component="div"
+    <div
+      class="css-1dq7hve"
+      data-label="Teacher Instructions"
+      data-testid="input-container"
+      label="Teacher Instructions"
     >
-      Response Template
-    </WithStyles(Typography)>
-    <WithStyles(Tooltip)
-      classes={
-        Object {
-          "tooltip": undefined,
-        }
-      }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
+      <div
+        data-markup=""
+        data-testid="editable-html"
+      />
+    </div>
+    <div
+      class="css-1dq7hve"
+      data-label="Prompt"
+      data-testid="input-container"
+      label="Prompt"
+    >
+      <div
+        data-markup=""
+        data-testid="editable-html"
+      />
+    </div>
+    <div
+      class="css-1bc9qkb"
+    >
+      <div
+        class="MuiTypography-root MuiTypography-body1 css-6hmszg-MuiTypography-root"
+      >
+        Response Template
+      </div>
+      <svg
+        aria-hidden="true"
+        aria-label="Validation requirements:
 Correct answers should not be blank.
 Each answer defined for a response area should be unique.
 There should be at least 1 and at most 10 response areas defined."
-    >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-      />
-    </WithStyles(Tooltip)>
-  </div>
-  <EditableHtml
-    disableImageAlignmentButtons={true}
-    disabled={false}
-    highlightShape={false}
-    imageSupport={Object {}}
-    languageCharactersProps={
-      Array [
-        Object {
-          "language": "spanish",
-        },
-        Object {
-          "language": "special",
-        },
-      ]
-    }
-    mathMlOptions={
-      Object {
-        "mmlEditing": false,
-        "mmlOutput": false,
-      }
-    }
-    onBlur={[Function]}
-    onChange={[Function]}
-    pluginProps={
-      Object {
-        "audio": Object {
-          "disabled": false,
-        },
-        "blockquote": Object {
-          "disabled": true,
-        },
-        "h3": Object {
-          "disabled": true,
-        },
-        "html": Object {
-          "disabled": true,
-        },
-        "image": Object {
-          "disabled": false,
-        },
-        "separateParagraphs": Object {
-          "disabled": true,
-        },
-        "showParagraphs": Object {
-          "disabled": false,
-        },
-        "textAlign": Object {
-          "disabled": true,
-        },
-        "video": Object {
-          "disabled": false,
-        },
-      }
-    }
-    responseAreaProps={
-      Object {
-        "error": [Function],
-        "maxResponseAreas": 10,
-        "onHandleAreaChange": [Function],
-        "respAreaToolbar": null,
-        "type": "math-templated",
-      }
-    }
-    spellCheck={true}
-    toolbarOpts={
-      Object {
-        "position": "top",
-      }
-    }
-    uploadSoundSupport={Object {}}
-  />
-  <WithStyles(Typography)>
-    Define Response
-  </WithStyles(Typography)>
-  <InputContainer
-    label="Response Template Equation Editor"
-  >
-    <WithStyles(WithFormControlContext(Select))
-      onChange={[Function]}
-      value="8"
-    >
-      <WithStyles(MenuItem)
-        value="non-negative-integers"
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-1cinn38-MuiSvgIcon-root"
+        data-mui-internal-clone-element="true"
+        data-testid="InfoIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        Numeric - Non-Negative Integers
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value="integers"
-      >
-        Numeric - Integers
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value="decimals"
-      >
-        Numeric - Decimals
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value="fractions"
-      >
-        Numeric - Fractions
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value={1}
-      >
-        Grade 1 - 2
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value={3}
-      >
-        Grade 3 - 5
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value={6}
-      >
-        Grade 6 - 7
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value={8}
-      >
-        Grade 8 - HS
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value="geometry"
-      >
-        Geometry
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value="advanced-algebra"
-      >
-        Advanced Algebra
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value="statistics"
-      >
-        Statistics
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        value="item-authoring"
-      >
-        Item Authoring
-      </WithStyles(MenuItem)>
-    </WithStyles(WithFormControlContext(Select))>
-  </InputContainer>
-  <InputContainer
-    label="Rationale"
-  >
-    <EditableHtml
-      imageSupport={Object {}}
-      languageCharactersProps={
-        Array [
-          Object {
-            "language": "spanish",
-          },
-          Object {
-            "language": "special",
-          },
-        ]
-      }
-      markup=""
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      maxImageHeight={300}
-      maxImageWidth={300}
-      nonEmpty={false}
-      onChange={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": false,
-          },
-          "blockquote": Object {
-            "disabled": true,
-          },
-          "h3": Object {
-            "disabled": true,
-          },
-          "html": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "math": Object {
-            "controlledKeypadMode": false,
-          },
-          "separateParagraphs": Object {
-            "disabled": true,
-          },
-          "showParagraphs": Object {
-            "disabled": false,
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": false,
-          },
-        }
-      }
-      spellCheck={true}
-      toolbarOpts={
-        Object {
-          "position": "bottom",
-        }
-      }
-      uploadSoundSupport={Object {}}
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
+        />
+      </svg>
+    </div>
+    <div
+      data-testid="editable-html"
     />
-  </InputContainer>
-</ConfigLayout>
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-6hmszg-MuiTypography-root"
+    >
+      Define Response
+    </p>
+    <div
+      class="css-mlgji3"
+      data-label="Response Template Equation Editor"
+      data-testid="input-container"
+      label="Response Template Equation Editor"
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiSelect-root css-bnym77-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+      >
+        <div
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-18jp67o-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+          role="combobox"
+          tabindex="0"
+        >
+          Grade 8 - HS
+        </div>
+        <input
+          aria-hidden="true"
+          aria-invalid="false"
+          class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput"
+          tabindex="-1"
+          value="8"
+        />
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-1rfqz7c-MuiSvgIcon-root-MuiNativeSelect-root-MuiSelect-icon"
+          data-testid="ArrowDropDownIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+        <fieldset
+          aria-hidden="true"
+          class="MuiOutlinedInput-notchedOutline css-18p5xg2-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="css-1nf2c5d-MuiNotchedOutlined-root"
+          >
+            <span
+              aria-hidden="true"
+              class="notranslate"
+            >
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      class="css-1dq7hve"
+      data-label="Rationale"
+      data-testid="input-container"
+      label="Rationale"
+    >
+      <div
+        data-markup=""
+        data-testid="editable-html"
+      />
+    </div>
+  </div>
+</div>
 `;
