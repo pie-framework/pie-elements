@@ -1,580 +1,800 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Trait Header snapshot renders 1`] = `
-<WithStyles(Component)
-  height="160px"
->
-  <WithStyles(Component)>
-    <WithStyles(Component)
-      imageSupport={Object {}}
-      label="Level Label"
-      markup="Category"
-      mathMlOptions={Object {}}
-      onChange={[Function]}
-      pluginProps={Object {}}
-    />
-    <WithStyles(Component)>
-      <div>
-        Scale 
-        1
-      </div>
-      <div>
-        <WithStyles(IconButton)
-          aria-controls="long-menu"
-          aria-haspopup="true"
-          aria-label="more"
-          onClick={[Function]}
-        >
-          <pure(MoreVertIcon) />
-        </WithStyles(IconButton)>
-        <WithStyles(Menu)
-          anchorEl={null}
-          id="long-menu"
-          keepMounted={true}
-          onClose={[Function]}
-          open={false}
-        >
-          <WithStyles(MenuItem)
-            key="Remove Scale"
-            onClick={[Function]}
-          >
-            Remove Scale
-          </WithStyles(MenuItem)>
-        </WithStyles(Menu)>
-      </div>
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-  <WithStyles(Component)
-    setRef={[Function]}
-    width="undefinedpx"
+<div>
+  <div
+    class="css-1j46ppt"
+    height="160px"
   >
-    <WithStyles(Component)>
-      <div>
-        Standard(s)
+    <div
+      class="css-13nr7ki"
+    >
+      <div
+        class="css-1o276k3"
+      >
+        <div
+          class="css-mobhrh"
+        >
+          <div>
+            Level Label
+          </div>
+          <div>
+            EditableHtml
+          </div>
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)>
-      <div>
-        Description
+      <div
+        class="css-xr034w"
+      >
+        <div>
+          Scale 
+          1
+        </div>
+        <div>
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-0"
+    </div>
+    <div
+      class="css-1xunb8w"
     >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="C"
-        scorePointsValue={0}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-1"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="B"
-        scorePointsValue={1}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-2"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="A"
-        scorePointsValue={2}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-</WithStyles(Component)>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Standard(s)
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Description
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                0
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                1
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                2
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Trait Header snapshot renders without description 1`] = `
-<WithStyles(Component)
-  height="160px"
->
-  <WithStyles(Component)>
-    <WithStyles(Component)
-      imageSupport={Object {}}
-      label="Level Label"
-      markup="Category"
-      mathMlOptions={Object {}}
-      onChange={[Function]}
-      pluginProps={Object {}}
-    />
-    <WithStyles(Component)>
-      <div>
-        Scale 
-        1
-      </div>
-      <div>
-        <WithStyles(IconButton)
-          aria-controls="long-menu"
-          aria-haspopup="true"
-          aria-label="more"
-          onClick={[Function]}
-        >
-          <pure(MoreVertIcon) />
-        </WithStyles(IconButton)>
-        <WithStyles(Menu)
-          anchorEl={null}
-          id="long-menu"
-          keepMounted={true}
-          onClose={[Function]}
-          open={false}
-        >
-          <WithStyles(MenuItem)
-            key="Remove Scale"
-            onClick={[Function]}
-          >
-            Remove Scale
-          </WithStyles(MenuItem)>
-        </WithStyles(Menu)>
-      </div>
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-  <WithStyles(Component)
-    setRef={[Function]}
-    width="undefinedpx"
+<div>
+  <div
+    class="css-1j46ppt"
+    height="160px"
   >
-    <WithStyles(Component)>
-      <div>
-        Standard(s)
+    <div
+      class="css-13nr7ki"
+    >
+      <div
+        class="css-1o276k3"
+      >
+        <div
+          class="css-mobhrh"
+        >
+          <div>
+            Level Label
+          </div>
+          <div>
+            EditableHtml
+          </div>
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-0"
+      <div
+        class="css-xr034w"
+      >
+        <div>
+          Scale 
+          1
+        </div>
+        <div>
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1xunb8w"
     >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="C"
-        scorePointsValue={0}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-1"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="B"
-        scorePointsValue={1}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-2"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="A"
-        scorePointsValue={2}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-</WithStyles(Component)>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Standard(s)
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                0
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                1
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                2
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Trait Header snapshot renders without level tag input 1`] = `
-<WithStyles(Component)
-  height="100px"
->
-  <WithStyles(Component)>
-    <WithStyles(Component)>
-      <div>
-        Scale 
-        1
-      </div>
-      <div>
-        <WithStyles(IconButton)
-          aria-controls="long-menu"
-          aria-haspopup="true"
-          aria-label="more"
-          onClick={[Function]}
-        >
-          <pure(MoreVertIcon) />
-        </WithStyles(IconButton)>
-        <WithStyles(Menu)
-          anchorEl={null}
-          id="long-menu"
-          keepMounted={true}
-          onClose={[Function]}
-          open={false}
-        >
-          <WithStyles(MenuItem)
-            key="Remove Scale"
-            onClick={[Function]}
-          >
-            Remove Scale
-          </WithStyles(MenuItem)>
-        </WithStyles(Menu)>
-      </div>
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-  <WithStyles(Component)
-    setRef={[Function]}
-    width="undefinedpx"
+<div>
+  <div
+    class="css-rqetng"
+    height="100px"
   >
-    <WithStyles(Component)>
-      <div>
-        Standard(s)
+    <div
+      class="css-13nr7ki"
+    >
+      <div
+        class="css-xr034w"
+      >
+        <div>
+          Scale 
+          1
+        </div>
+        <div>
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)>
-      <div>
-        Description
+    </div>
+    <div
+      class="css-1xunb8w"
+    >
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Standard(s)
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-0"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="C"
-        scorePointsValue={0}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-1"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="B"
-        scorePointsValue={1}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-2"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="A"
-        scorePointsValue={2}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-</WithStyles(Component)>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Description
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                0
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                1
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                2
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Trait Header snapshot renders without score point labels 1`] = `
-<WithStyles(Component)
-  height="160px"
->
-  <WithStyles(Component)>
-    <WithStyles(Component)
-      imageSupport={Object {}}
-      label="Level Label"
-      markup="Category"
-      mathMlOptions={Object {}}
-      onChange={[Function]}
-      pluginProps={Object {}}
-    />
-    <WithStyles(Component)>
-      <div>
-        Scale 
-        1
-      </div>
-      <div>
-        <WithStyles(IconButton)
-          aria-controls="long-menu"
-          aria-haspopup="true"
-          aria-label="more"
-          onClick={[Function]}
-        >
-          <pure(MoreVertIcon) />
-        </WithStyles(IconButton)>
-        <WithStyles(Menu)
-          anchorEl={null}
-          id="long-menu"
-          keepMounted={true}
-          onClose={[Function]}
-          open={false}
-        >
-          <WithStyles(MenuItem)
-            key="Remove Scale"
-            onClick={[Function]}
-          >
-            Remove Scale
-          </WithStyles(MenuItem)>
-        </WithStyles(Menu)>
-      </div>
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-  <WithStyles(Component)
-    setRef={[Function]}
-    width="undefinedpx"
+<div>
+  <div
+    class="css-1j46ppt"
+    height="160px"
   >
-    <WithStyles(Component)>
-      <div>
-        Standard(s)
+    <div
+      class="css-13nr7ki"
+    >
+      <div
+        class="css-1o276k3"
+      >
+        <div
+          class="css-mobhrh"
+        >
+          <div>
+            Level Label
+          </div>
+          <div>
+            EditableHtml
+          </div>
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)>
-      <div>
-        Description
+      <div
+        class="css-xr034w"
+      >
+        <div>
+          Scale 
+          1
+        </div>
+        <div>
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-0"
+    </div>
+    <div
+      class="css-1xunb8w"
     >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="C"
-        scorePointsValue={0}
-        showScorePointLabels={false}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-1"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="B"
-        scorePointsValue={1}
-        showScorePointLabels={false}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-2"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="A"
-        scorePointsValue={2}
-        showScorePointLabels={false}
-      />
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-</WithStyles(Component)>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Standard(s)
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Description
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-zyfzsr"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                0
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-zyfzsr"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                1
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-zyfzsr"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                2
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Trait Header snapshot renders without score point values 1`] = `
-<WithStyles(Component)
-  height="160px"
->
-  <WithStyles(Component)>
-    <WithStyles(Component)
-      imageSupport={Object {}}
-      label="Level Label"
-      markup="Category"
-      mathMlOptions={Object {}}
-      onChange={[Function]}
-      pluginProps={Object {}}
-    />
-    <WithStyles(Component)>
-      <div>
-        Scale 
-        1
-      </div>
-      <div>
-        <WithStyles(IconButton)
-          aria-controls="long-menu"
-          aria-haspopup="true"
-          aria-label="more"
-          onClick={[Function]}
-        >
-          <pure(MoreVertIcon) />
-        </WithStyles(IconButton)>
-        <WithStyles(Menu)
-          anchorEl={null}
-          id="long-menu"
-          keepMounted={true}
-          onClose={[Function]}
-          open={false}
-        >
-          <WithStyles(MenuItem)
-            key="Remove Scale"
-            onClick={[Function]}
-          >
-            Remove Scale
-          </WithStyles(MenuItem)>
-        </WithStyles(Menu)>
-      </div>
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-  <WithStyles(Component)
-    setRef={[Function]}
-    width="undefinedpx"
+<div>
+  <div
+    class="css-1j46ppt"
+    height="160px"
   >
-    <WithStyles(Component)>
-      <div>
-        Standard(s)
+    <div
+      class="css-13nr7ki"
+    >
+      <div
+        class="css-1o276k3"
+      >
+        <div
+          class="css-mobhrh"
+        >
+          <div>
+            Level Label
+          </div>
+          <div>
+            EditableHtml
+          </div>
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)>
-      <div>
-        Description
+      <div
+        class="css-xr034w"
+      >
+        <div>
+          Scale 
+          1
+        </div>
+        <div>
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-</WithStyles(Component)>
+    </div>
+    <div
+      class="css-1xunb8w"
+    >
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Standard(s)
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Description
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Trait Header snapshot renders without standards 1`] = `
-<WithStyles(Component)
-  height="160px"
->
-  <WithStyles(Component)>
-    <WithStyles(Component)
-      imageSupport={Object {}}
-      label="Level Label"
-      markup="Category"
-      mathMlOptions={Object {}}
-      onChange={[Function]}
-      pluginProps={Object {}}
-    />
-    <WithStyles(Component)>
-      <div>
-        Scale 
-        1
-      </div>
-      <div>
-        <WithStyles(IconButton)
-          aria-controls="long-menu"
-          aria-haspopup="true"
-          aria-label="more"
-          onClick={[Function]}
-        >
-          <pure(MoreVertIcon) />
-        </WithStyles(IconButton)>
-        <WithStyles(Menu)
-          anchorEl={null}
-          id="long-menu"
-          keepMounted={true}
-          onClose={[Function]}
-          open={false}
-        >
-          <WithStyles(MenuItem)
-            key="Remove Scale"
-            onClick={[Function]}
-          >
-            Remove Scale
-          </WithStyles(MenuItem)>
-        </WithStyles(Menu)>
-      </div>
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-  <WithStyles(Component)
-    setRef={[Function]}
-    width="undefinedpx"
+<div>
+  <div
+    class="css-1j46ppt"
+    height="160px"
   >
-    <WithStyles(Component)>
-      <div>
-        Description
+    <div
+      class="css-13nr7ki"
+    >
+      <div
+        class="css-1o276k3"
+      >
+        <div
+          class="css-mobhrh"
+        >
+          <div>
+            Level Label
+          </div>
+          <div>
+            EditableHtml
+          </div>
+        </div>
       </div>
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-0"
+      <div
+        class="css-xr034w"
+      >
+        <div>
+          Scale 
+          1
+        </div>
+        <div>
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1xunb8w"
     >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="C"
-        scorePointsValue={0}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-1"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="B"
-        scorePointsValue={1}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-    <WithStyles(Component)
-      key="secondary-block-part-2"
-    >
-      <WithStyles(Component)
-        alignToRight={false}
-        error=""
-        imageSupport={Object {}}
-        mathMlOptions={Object {}}
-        onChange={[Function]}
-        pluginProps={Object {}}
-        scoreDescriptor="A"
-        scorePointsValue={2}
-        showScorePointLabels={true}
-      />
-    </WithStyles(Component)>
-  </WithStyles(Component)>
-</WithStyles(Component)>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-17o3yfn"
+        >
+          Description
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                0
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                1
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zg2680"
+      >
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-135lx0"
+          >
+            <div
+              class="css-1edjtj5"
+            >
+              <div
+                class="css-sai6ed"
+              >
+                2
+              </div>
+              <div>
+                EditableHtml
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

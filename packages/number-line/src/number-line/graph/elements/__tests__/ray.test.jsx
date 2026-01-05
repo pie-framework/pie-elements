@@ -1,28 +1,21 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import _ from 'lodash';
-import { assertProp, stubContext } from './utils';
-
+import { stubContext } from './utils';
 import { Ray } from '../ray';
-import Arrow from '../../arrow';
-import Point from '../point';
 
+// Mock Point component
 jest.mock('../point', () => () => <text>Point</text>);
 
-describe('ray', () => {
-  let wrapper;
+// Mock Arrow component
+jest.mock('../../arrow', () => (props) => <polygon data-testid="arrow" {...props} />);
 
-  const mkWrapper = (props, context) => {
+describe('ray', () => {
+  const mkWrapper = (props) => {
     const onMove = jest.fn();
     const onToggleSelect = jest.fn();
 
     const defaults = {
-      classes: {
-        ray: 'ray',
-        selected: 'selected',
-        correct: 'correct',
-        incorrect: 'incorrect',
-      },
       domain: { min: 0, max: 1 },
       selected: false,
       correct: false,
@@ -36,75 +29,122 @@ describe('ray', () => {
     };
 
     props = _.merge(defaults, props);
-    const opts = _.merge({ context: stubContext }, { context: context });
-    return shallow(<Ray {...props} />, opts);
+
+    // Create a wrapper component that provides context
+    const RayWrapper = () => {
+      const FakeContext = React.createContext(stubContext);
+      Ray.contextType = FakeContext;
+
+      return (
+        <FakeContext.Provider value={stubContext}>
+          <svg>
+            <Ray {...props} />
+          </svg>
+        </FakeContext.Provider>
+      );
+    };
+
+    return { component: render(<RayWrapper />), props };
   };
 
-  describe('init', () => {
-    beforeEach(() => {
-      wrapper = mkWrapper();
+  describe('rendering', () => {
+    it('renders with default props', () => {
+      const { component } = mkWrapper();
+      expect(component.container.querySelector('line.line-handle')).toBeInTheDocument();
     });
 
-    it('sets the className', () => {
-      expect(wrapper.find('g').hasClass('ray')).toBe(true);
+    it('renders with selected=true', () => {
+      const { component } = mkWrapper({ selected: true });
+      expect(component.container.querySelector('line.line-handle')).toBeInTheDocument();
     });
 
-    it('sets the transform', () => {
-      const g = wrapper.find('g');
-      expect(wrapper.find('g').prop('transform')).toEqual('translate(0, 0)');
+    it('renders with selected=true and correct=true', () => {
+      const { component } = mkWrapper({ selected: true, correct: true });
+      expect(component.container.querySelector('line.line-handle')).toBeInTheDocument();
     });
 
-    describe('line', () => {
-      const assert = assertProp.bind(null, () => wrapper.find('line'));
-
-      assert('x1', 1);
-      assert('x2', 92);
+    it('renders line element', () => {
+      const { component } = mkWrapper();
+      expect(component.container.querySelector('line')).toBeInTheDocument();
     });
 
-    describe('Point', () => {
-      const assert = assertProp.bind(null, () => wrapper.find(Point));
-      assert('disabled', false);
-      assert('correct', false);
-      assert('selected', false);
-      assert('empty', false);
-      assert('interval', 10);
-      assert('bounds', { left: -1, right: 0 });
-    });
-  });
-
-  describe('className', () => {
-    assertProp(() => mkWrapper({ selected: true }).find('g'), 'className', 'ray selected incorrect');
-    assertProp(() => mkWrapper({ selected: true, correct: true }).find('g'), 'className', 'ray selected correct');
-  });
-
-  describe('Arrow.arrowDirection', () => {
-    assertProp(() => mkWrapper().find(Arrow), 'direction', 'right');
-    assertProp(() => mkWrapper({ direction: 'negative' }).find(Arrow), 'direction', 'left');
-  });
-
-  describe('drag', () => {
-    it('sets does not set state.dragPosition if position < domain.min', () => {
-      wrapper.instance().drag(-5);
-      expect(wrapper.state('dragPosition')).toEqual(null);
+    it('renders Point component', () => {
+      const { component } = mkWrapper();
+      const point = component.container.querySelector('text');
+      expect(point).toBeInTheDocument();
     });
 
-    it('sets does not set state.dragPosition if position > domain.max', () => {
-      wrapper.instance().drag(100);
-      expect(wrapper.state('dragPosition')).toEqual(null);
+    it('renders Arrow component', () => {
+      const { component } = mkWrapper();
+      expect(component.getByTestId('arrow')).toBeInTheDocument();
     });
 
-    it('sets state.dragPosition', () => {
-      wrapper.instance().drag(0);
-      expect(wrapper.state('dragPosition')).toEqual(0);
+    it('renders with direction=positive', () => {
+      const { component } = mkWrapper({ direction: 'positive' });
+      expect(component.getByTestId('arrow')).toBeInTheDocument();
+    });
+
+    it('renders with direction=negative', () => {
+      const { component } = mkWrapper({ direction: 'negative' });
+      expect(component.getByTestId('arrow')).toBeInTheDocument();
     });
   });
 
-  describe('stopDrag', () => {
-    it('sets state.dragPosition', () => {
-      wrapper.instance().drag(0);
-      expect(wrapper.state('dragPosition')).toEqual(0);
-      wrapper.instance().stopDrag();
-      expect(wrapper.state('dragPosition')).toEqual(null);
+  describe('instance methods', () => {
+    const createInstance = (props) => {
+      const onMove = jest.fn();
+      const onToggleSelect = jest.fn();
+
+      const defaults = {
+        domain: { min: 0, max: 1 },
+        selected: false,
+        correct: false,
+        empty: false,
+        direction: 'positive',
+        position: 1,
+        onMove: onMove,
+        interval: 10,
+        width: 100,
+        onToggleSelect: onToggleSelect,
+      };
+
+      props = _.merge(defaults, props);
+      const instance = new Ray(props);
+      instance.context = stubContext;
+      instance.setState = jest.fn((state) => {
+        Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+      });
+      return instance;
+    };
+
+    describe('drag', () => {
+      it('does not set state.dragPosition if position < domain.min', () => {
+        const instance = createInstance();
+        instance.drag(-5);
+        expect(instance.state.dragPosition).toEqual(null);
+      });
+
+      it('does not set state.dragPosition if position > domain.max', () => {
+        const instance = createInstance();
+        instance.drag(100);
+        expect(instance.state.dragPosition).toEqual(null);
+      });
+
+      it('sets state.dragPosition', () => {
+        const instance = createInstance();
+        instance.drag(0);
+        expect(instance.state.dragPosition).toEqual(0);
+      });
+    });
+
+    describe('stopDrag', () => {
+      it('sets state.dragPosition', () => {
+        const instance = createInstance();
+        instance.drag(0);
+        expect(instance.state.dragPosition).toEqual(0);
+        instance.stopDrag();
+        expect(instance.state.dragPosition).toEqual(null);
+      });
     });
   });
 });

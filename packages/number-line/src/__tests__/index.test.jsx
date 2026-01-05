@@ -8,6 +8,13 @@ jest.mock('../number-line', () => ({
 describe('number-line', () => {
   let mod, deps, instance;
 
+  beforeAll(() => {
+    // Register the custom element if not already registered
+    if (!customElements.get('number-line-element')) {
+      customElements.define('number-line-element', El);
+    }
+  });
+
   let point = {
     session: (n) => ({
       type: 'point',
@@ -22,7 +29,7 @@ describe('number-line', () => {
   };
 
   let getStubInstance = () => {
-    let out = new El();
+    let out = document.createElement('number-line-element');
     out._render = jest.fn();
     out._applyInitialElements = jest.fn();
     return out;
@@ -30,7 +37,7 @@ describe('number-line', () => {
 
   describe('constructor', () => {
     it('inits', () => {
-      instance = new El();
+      instance = document.createElement('number-line-element');
       expect(instance).not.toBe(null);
     });
   });

@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { Main } from '../main';
@@ -6,16 +6,32 @@ import defaults from '../defaults';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import MultipleChoice from '../index';
 
+jest.mock('@pie-lib/editable-html', () => (props) => (
+  <div data-testid="editable-html">{props.markup}</div>
+));
+
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
     normalizeChoices: jest.fn((model) => model),
   },
   settings: {
-    Panel: (props) => <div {...props} />,
+    Panel: (props) => <div data-testid="settings-panel" {...props} />,
     toggle: jest.fn(),
     radio: jest.fn(),
+    dropdown: jest.fn(),
   },
+  layout: {
+    ConfigLayout: (props) => <div data-testid="config-layout">{props.children}</div>,
+  },
+  InputContainer: (props) => <div data-testid="input-container" {...props}>{props.children}</div>,
+  ChoiceConfiguration: (props) => (
+    <div data-testid="choice-configuration">
+      <button onClick={() => props.onDelete()}>Delete</button>
+      <button onClick={() => props.onChange(props.data)}>Change</button>
+    </div>
+  ),
+  AlertDialog: (props) => props.open ? <div data-testid="alert-dialog">{props.text}</div> : null,
 }));
 
 const model = (extras) => ({
@@ -64,42 +80,63 @@ const model = (extras) => ({
 });
 
 describe('Main', () => {
-  let w;
   let onModelChanged = jest.fn();
   let onConfigurationChanged = jest.fn();
   let initialModel = model();
 
   const wrapper = (extras) => {
-    const defaults = {
+    const defaultProps = {
       onModelChanged,
       onConfigurationChanged,
       classes: {},
       model: model(),
+      configuration: defaults.configuration,
     };
-    const props = { ...defaults, ...extras };
+    const props = { ...defaultProps, ...extras };
 
-    return shallow(<Main {...props} />);
+    return render(<Main {...props} />);
   };
+
+  const createInstance = (extras) => {
+    const defaultProps = {
+      onModelChanged,
+      onConfigurationChanged,
+      classes: {},
+      model: model(),
+      configuration: defaults.configuration,
+    };
+    const props = { ...defaultProps, ...extras };
+    const instance = new Main(props);
+    instance.setState = jest.fn((state, callback) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+      if (callback) callback();
+    });
+    return instance;
+  };
+
+  beforeEach(() => {
+    onModelChanged = jest.fn();
+    onConfigurationChanged = jest.fn();
+    initialModel = model();
+  });
 
   describe('snapshot', () => {
     it('renders with choicePrefix="numbers"', () => {
-      w = wrapper({ model: model({ choicePrefix: 'numbers' }) });
-      expect(w).toMatchSnapshot();
+      const { container } = wrapper({ model: model({ choicePrefix: 'numbers' }) });
+      expect(container).toMatchSnapshot();
     });
 
     it('renders with choicePrefix="letters" as default', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+      const { container } = wrapper();
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('logic', () => {
-    beforeEach(() => {
-      w = wrapper();
-    });
     describe('onRemoveChoice', () => {
       it('removes choice', () => {
-        w.instance().onRemoveChoice(0);
+        const instance = createInstance();
+        instance.onRemoveChoice(0);
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -136,7 +173,8 @@ describe('Main', () => {
 
     describe('onAddChoice', () => {
       it('adds a choice', () => {
-        w.instance().onAddChoice();
+        const instance = createInstance();
+        instance.onAddChoice();
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -160,6 +198,7 @@ describe('Main', () => {
     describe('onChoiceChanged', () => {
       describe('checkbox', () => {
         it('changes choice (there are 2 true values)', () => {
+          const instance = createInstance();
           const newChoices = [...model().choices];
           let choice = {
             correct: true,
@@ -171,7 +210,7 @@ describe('Main', () => {
             },
           };
 
-          w.instance().onChoiceChanged(1, choice);
+          instance.onChoiceChanged(1, choice);
 
           newChoices[1].correct = true;
 
@@ -195,9 +234,9 @@ describe('Main', () => {
           };
 
           const newModel = { ...initialModel, choiceMode: 'radio', choices: initialModel.choices.slice(0, 2) };
-          w = wrapper({ model: newModel });
+          const instance = createInstance({ model: newModel });
 
-          w.instance().onChoiceChanged(1, choice);
+          instance.onChoiceChanged(1, choice);
 
           expect(onModelChanged).toBeCalledWith({
             ...newModel,
@@ -228,7 +267,8 @@ describe('Main', () => {
 
     describe('onPromptChanged', () => {
       it('changes prompt', () => {
-        w.instance().onPromptChanged('New Prompt');
+        const instance = createInstance();
+        instance.onPromptChanged('New Prompt');
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -239,7 +279,8 @@ describe('Main', () => {
 
     describe('onTeacherInstructionsChanged', () => {
       it('changes teacher instructions', () => {
-        w.instance().onTeacherInstructionsChanged('New Teacher Instructions');
+        const instance = createInstance();
+        instance.onTeacherInstructionsChanged('New Teacher Instructions');
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -250,7 +291,8 @@ describe('Main', () => {
 
     describe('onModelChanged', () => {
       it('changes choice and makes incorrect all other choices', () => {
-        w.instance().onModelChanged(
+        const instance = createInstance();
+        instance.onModelChanged(
           {
             ...initialModel,
             choiceMode: 'radio',

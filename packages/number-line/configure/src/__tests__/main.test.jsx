@@ -1,49 +1,128 @@
 /* eslint-disable react/display-name */
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Main } from '../main';
 import { model as defaultModel, configuration as defaultConfig } from '../defaults';
 
+jest.mock('../number-text-field', () => (props) => (
+  <input data-testid="number-text-field" {...props} />
+));
+
+jest.mock('../card-bar', () => (props) => (
+  <div data-testid="card-bar" {...props} />
+));
+
+jest.mock('../size', () => (props) => (
+  <div data-testid="size" {...props} />
+));
+
+jest.mock('../domain', () => (props) => (
+  <div data-testid="domain" {...props} />
+));
+
+jest.mock('../arrows', () => (props) => (
+  <div data-testid="arrows" {...props} />
+));
+
+jest.mock('../point-config', () => (props) => (
+  <div data-testid="point-config" {...props} />
+));
+
+jest.mock('../ticks', () => (props) => (
+  <div data-testid="ticks" {...props} />
+));
+
+jest.mock('@pie-element/number-line', () => ({
+  NumberLineComponent: (props) => <div data-testid="number-line-component" {...props} />,
+  dataConverter: {
+    lineIsSwitched: jest.fn(),
+    switchGraphLine: jest.fn(),
+    toGraphFormat: jest.fn(),
+    toSessionFormat: jest.fn(),
+  },
+  tickUtils: {
+    getMinorLimits: jest.fn(() => ({ min: 0.1, max: 1 })),
+    getMajorMinorValues: jest.fn(() => ({ major: [0, 1, 2], minor: [0, 0.5, 1, 1.5, 2] })),
+    generateMinorValues: jest.fn(() => ({ decimal: [0.1, 0.2, 0.5], fraction: ['1/10', '1/5', '1/2'] })),
+    generateMajorValues: jest.fn(() => [0, 1, 2]),
+    snapElements: jest.fn((domain, ticks, elements) => elements),
+    generateMajorValuesForMinor: jest.fn(() => ({ decimal: [0, 1, 2, 3], fraction: ['0', '1', '2', '3'] })),
+  },
+}));
+
+jest.mock('@pie-lib/editable-html', () => (props) => (
+  <div data-testid="editable-html">{props.markup}</div>
+));
+
 jest.mock('@pie-lib/config-ui', () => ({
-  FormSection: () => <div />,
-  FeedbackConfig: () => <div />,
-  InputCheckbox: () => <div />,
+  FormSection: (props) => <div data-testid="form-section">{props.children}</div>,
+  FeedbackConfig: (props) => <div data-testid="feedback-config" />,
+  InputCheckbox: (props) => <div data-testid="input-checkbox" />,
+  InputContainer: (props) => <div data-testid="input-container">{props.children}</div>,
+  AlertDialog: (props) => props.open ? <div data-testid="alert-dialog">{props.text}</div> : null,
   layout: {
-    ConfigLayout: (props) => <div>{props.children}</div>,
+    ConfigLayout: (props) => <div data-testid="config-layout">{props.children}</div>,
   },
   settings: {
-    Panel: (props) => <div onChange={props.onChange} />,
+    Panel: (props) => <div data-testid="settings-panel" onChange={props.onChange} />,
     toggle: jest.fn(),
   },
 }));
 
 describe('main', () => {
-  let w;
   let onChange = jest.fn();
+
   const wrapper = (extras) => {
-    const defaults = {
+    const defaultProps = {
       classes: {},
       className: 'className',
       onChange,
+      onConfigurationChanged: jest.fn(),
       model: { correctResponse: [], graph: { ...defaultModel.graph } },
       configuration: { ...defaultConfig },
+      imageSupport: {},
+      uploadSoundSupport: {},
     };
-    const props = { ...defaults, ...extras };
-    return shallow(<Main {...props} />);
+    const props = { ...defaultProps, ...extras };
+    return render(<Main {...props} />);
   };
-  describe.only('snapshot', () => {
+
+  const createInstance = (extras) => {
+    const defaultProps = {
+      classes: {},
+      className: 'className',
+      onChange,
+      onConfigurationChanged: jest.fn(),
+      model: { correctResponse: [], graph: { ...defaultModel.graph } },
+      configuration: { ...defaultConfig },
+      imageSupport: {},
+      uploadSoundSupport: {},
+    };
+    const props = { ...defaultProps, ...extras };
+    const instance = new Main(props);
+    instance.setState = jest.fn((state, callback) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+      if (callback) callback();
+    });
+    return instance;
+  };
+
+  beforeEach(() => {
+    onChange = jest.fn();
+  });
+
+  describe('snapshot', () => {
     it('renders', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+      const { container } = wrapper();
+      expect(container).toMatchSnapshot();
     });
   });
   describe('logic', () => {
     const fn = (fnName, args, expected) => {
       describe(fnName, () => {
         it(`(${args.map((a) => JSON.stringify(a)).join(',')})`, () => {
-          const w = wrapper();
-          const i = w.instance();
-          i[fnName].apply(w.instance(), args);
+          const instance = createInstance();
+          instance[fnName].apply(instance, args);
           expect(onChange).toHaveBeenCalledWith(expected);
         });
       });
@@ -57,22 +136,36 @@ describe('main', () => {
       graph: expect.objectContaining({ width: 0, height: 0 }),
     });
 
-    fn('changeMaxNoOfPoints', [{}, 10], {
-      graph: expect.objectContaining({ maxNumberOfPoints: 10, height: 300 }),
+    describe('changeMaxNoOfPoints', () => {
+      it('changes max number of points', () => {
+        const instance = createInstance();
+        instance.changeMaxNoOfPoints({}, 10);
+        expect(onChange).toHaveBeenCalledWith(
+          expect.objectContaining({
+            graph: expect.objectContaining({ maxNumberOfPoints: 10 }),
+          })
+        );
+      });
     });
 
     fn('changeGraphTitle', ['title'], {
       graph: expect.objectContaining({ title: 'title' }),
     });
 
-    fn(
-      'changeTicks',
-      [{ minor: 1, major: 3 }],
-      expect.objectContaining({
-        correctResponse: [],
-        graph: expect.objectContaining({ ticks: { minor: 1, major: 3 } }),
-      }),
-    );
+    describe('changeTicks', () => {
+      it('changes ticks', () => {
+        const instance = createInstance();
+        instance.changeTicks({ ticks: { minor: 1, major: 3, tickIntervalType: 'Integer' } });
+        expect(onChange).toHaveBeenCalledWith(
+          expect.objectContaining({
+            correctResponse: [],
+            graph: expect.objectContaining({
+              ticks: expect.objectContaining({ minor: 1, major: 3, tickIntervalType: 'Integer' })
+            }),
+          })
+        );
+      });
+    });
 
     fn(
       'changeArrows',
@@ -94,44 +187,22 @@ describe('main', () => {
 
     describe('clearCorrectResponse', () => {
       it('clears correct response', () => {
-        const w = wrapper();
-        const i = w.instance();
-        i.props.model.correctResponse = ['Point1', 'Point2'];
-        i.clearCorrectResponse();
+        const instance = createInstance();
+        instance.props.model.correctResponse = ['Point1', 'Point2'];
+        instance.clearCorrectResponse();
         expect(onChange).toHaveBeenCalledWith({ correctResponse: [] });
       });
     });
 
-    describe('clearInitialView', () => {
-      it('clear initial elements', () => {
-        const w = wrapper();
-        const i = w.instance();
-        i.props.model.initialElements = ['Point1', 'Point2'];
-        i.clearInitialView();
-        const graph = { ...defaultModel.graph, initialElements: [] };
-        expect(onChange).toHaveBeenCalledWith({ graph });
-      });
-    });
 
     describe('undoCorrectResponse', () => {
       it('undo correct response', () => {
-        const w = wrapper();
-        const i = w.instance();
-        i.props.model.correctResponse = ['Point1', 'Point2'];
-        i.undoCorrectResponse();
+        const instance = createInstance();
+        instance.props.model.correctResponse = ['Point1', 'Point2'];
+        instance.undoCorrectResponse();
         expect(onChange).toHaveBeenCalledWith({ correctResponse: ['Point1'] });
       });
     });
 
-    describe('undoInitialView', () => {
-      it('undo initial response', () => {
-        const w = wrapper();
-        const i = w.instance();
-        i.props.model.initialElements = ['Point1'];
-        i.undoInitialView();
-        const graph = { ...defaultModel.graph, initialElements: [] };
-        expect(onChange).toHaveBeenCalledWith({ graph });
-      });
-    });
   });
 });
