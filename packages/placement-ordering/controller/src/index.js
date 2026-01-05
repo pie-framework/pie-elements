@@ -16,10 +16,97 @@ const { translator } = Translator;
 
 export const questionError = () => new Error('Question is missing required array: correctResponse');
 
+/**
+ * Generates detailed trace log for placement-ordering scoring evaluation
+ * @param {Object} question - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array<string>} traceLog
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+
+  const value = session?.value || [];
+  const correctResponse = question?.correctResponse || [];
+  const hasPlacementArea = question?.placementArea === true;
+
+  if (!value.length) {
+    if (hasPlacementArea) {
+      traceLog.push('Student did not place any tiles in the target area.');
+    } else {
+      traceLog.push('Student did not reorder any tiles.');
+    }
+    traceLog.push('Final score: 0.');
+    return traceLog;
+  }
+
+  const allCorrectResponses = getAllCorrectResponses(question);
+
+  let bestMatch = { score: 0, response: [] };
+
+  allCorrectResponses.forEach((cr) => {
+    let matchCount = 0;
+    value.forEach((v, idx) => {
+      if (cr[idx] === v) {
+        matchCount++;
+      }
+    });
+
+    if (matchCount > bestMatch.score) {
+      bestMatch = { score: matchCount, response: cr };
+    }
+  });
+
+  const correctCount = bestMatch.score;
+  const incorrectCount = value.length - correctCount;
+
+  if (correctCount > 0) {
+    traceLog.push(`${correctCount} tile(s) placed in the correct order.`);
+    }
+
+    if (incorrectCount > 0) {
+    traceLog.push(`${incorrectCount} tile(s) placed in an incorrect order.`);
+  }
+
+  const isFullyCorrect = allCorrectResponses.some((cr) => isEqual(cr, value));
+
+  const partialScoringEnabled = partialScoring.enabled(question, env || {});
+
+  if (partialScoringEnabled) {
+    traceLog.push('Score calculated using partial scoring.');
+    traceLog.push(
+      'Each tile placed in the correct position contributes to the score.',
+    );
+  } else {
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+    if (hasPlacementArea) {
+      traceLog.push(
+        'Student must place all tiles in the correct positions within the target area to receive full credit.',
+      );
+    } else {
+      traceLog.push(
+        'Student must arrange all tiles in the correct order to receive full credit.',
+      );
+    }
+  }
+
+  const rawScore = score(question, session);
+  const finalScore = partialScoringEnabled ? rawScore : rawScore === 1 ? 1 : 0;
+
+  traceLog.push(`Final score: ${finalScore}.`);
+
+  return traceLog;
+};
+
 export function outcome(question, session, env) {
   return new Promise((resolve, reject) => {
     if (!session || _.isEmpty(session)) {
-      resolve({ score: 0, empty: true });
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        logTrace: ['Student did not interact with the placement-ordering item.'] 
+      });
+      return;
     }
 
     if (!question || !question.correctResponse || _.isEmpty(question.correctResponse)) {
@@ -30,6 +117,7 @@ export function outcome(question, session, env) {
         const finalScore = partialScoring.enabled(question, env || {}) ? s : s === 1 ? 1 : 0;
         resolve({
           score: finalScore,
+          logTrace: getLogTrace(question, session, env)
         });
       } catch (e) {
         reject(e);
