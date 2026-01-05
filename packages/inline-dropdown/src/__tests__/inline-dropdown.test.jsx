@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { InlineDropdown } from '../inline-dropdown';
@@ -79,33 +79,39 @@ describe('InlineDropdown', () => {
         ...extra,
       };
 
-      return shallow(<InlineDropdown {...props} />);
+      return render(<InlineDropdown {...props} />);
     };
   });
 
   describe('render', () => {
     it('should render in gather mode', () => {
-      expect(wrapper()).toMatchSnapshot();
+      const { container } = wrapper();
+      expect(container).toMatchSnapshot();
     });
 
     it('should render in view mode', () => {
-      expect(wrapper({ mode: 'view' })).toMatchSnapshot();
+      const { container } = wrapper({ mode: 'view' });
+      expect(container).toMatchSnapshot();
     });
 
     it('should render in evaluate mode', () => {
-      expect(wrapper({ mode: 'evaluate' })).toMatchSnapshot();
+      const { container } = wrapper({ mode: 'evaluate' });
+      expect(container).toMatchSnapshot();
     });
 
     it('should render without teacher instructions', () => {
-      expect(wrapper({ teacherInstructions: null })).toMatchSnapshot();
+      const { container } = wrapper({ teacherInstructions: null });
+      expect(container).toMatchSnapshot();
     });
 
     it('should render without rationale', () => {
-      expect(wrapper({ rationale: null })).toMatchSnapshot();
+      const { container } = wrapper({ rationale: null });
+      expect(container).toMatchSnapshot();
     });
 
     it('should render without prompt', () => {
-      expect(wrapper({ prompt: null })).toMatchSnapshot();
+      const { container } = wrapper({ prompt: null });
+      expect(container).toMatchSnapshot();
     });
   });
 });
