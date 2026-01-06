@@ -103,17 +103,86 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+/**
+ * Generates detailed trace log for math-inline scoring evaluation
+ * @param {Object} question
+ * @param {Object} session
+ * @param {Object} env
+ * @returns {Array<string>} traceLog
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+
+  if (!session || (!session.response && !session.completeAnswer)) {
+    traceLog.push('Student did not enter a response.');
+    return traceLog;
+  }
+
+  const responseType = question?.responseType;
+  const isAdvanced = responseType === ResponseTypes.advanced;
+  const studentAnswer = isAdvanced ? session.completeAnswer : session.response;
+
+  const cleanStudentAnswer = studentAnswer ? studentAnswer.replace(/\\/g, '') : '';
+
+  if (!cleanStudentAnswer) {
+    traceLog.push('Student entered a response, but then it was removed.');
+    return traceLog;
+  }
+
+  traceLog.push(`Student entered response: ${cleanStudentAnswer}.`);
+  traceLog.push(`Response type: ${isAdvanced ? 'advanced' : 'simple'}.`);
+
+  const responses = question.responses || [];
+  const responsesToCheck = isAdvanced ? responses : responses.slice(0, 1);
+  
+  responsesToCheck.forEach((response, index) => {
+    const validation = response.validation || question.validationDefault;
+    traceLog.push(`Response ${index + 1} validation mode: ${validation}.`);
+    
+    if (validation === 'literal') {
+      const allowTrailingZeros = response.allowTrailingZeros || false;
+      const ignoreOrder = response.ignoreOrder || false;
+
+      traceLog.push(`Allow trailing zeros: ${allowTrailingZeros ? 'enabled' : 'disabled'}.`);
+      traceLog.push(`Ignore order: ${ignoreOrder ? 'enabled' : 'disabled'}.`);
+    }
+    
+    const acceptedValues = [response.answer].concat(
+      Object.keys(response.alternates || {}).map((alternateId) => response.alternates[alternateId])
+    );
+    
+    if (acceptedValues.length > 1) {
+      traceLog.push(`Accepted answers: ${acceptedValues.length} (including alternates).`);
+    }
+  });
+
+  const correctness = getCorrectness(question, env, session, true);
+
+  if (correctness.correctness === 'correct') {
+    traceLog.push('Student answer matches one of the accepted responses.');
+  } else if (correctness.correctness === 'incorrect') {
+    traceLog.push('Student answer does not match any of the accepted responses.');
+  } else {
+    traceLog.push('Student answer could not be evaluated.');
+  }
+
+  traceLog.push(`Response evaluated as ${correctness.correctness}.`);
+  traceLog.push(`Final score: ${correctness.score}.`);
+
+  return traceLog;
+};
+
 export const outcome = (question, session, env) => {
   return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
-      resolve({ score: undefined, completed: undefined });
+      resolve({ score: undefined, completed: undefined, logTrace: [] });
     } else {
       if (!session || isEmpty(session)) {
-        resolve({ score: 0, empty: true });
+        resolve({ score: 0, empty: true, logTrace: ['Student did not enter a response.'] });
       } else {
         const correctness = getCorrectness(question, env, session, true);
 
-        resolve({ score: correctness.score });
+        resolve({ score: correctness.score, logTrace: getLogTrace(question, session, env) });
       }
     }
   });
