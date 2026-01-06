@@ -137,17 +137,118 @@ const getOutComeScore = (question, env, answers = {}) => {
     : 0;
 };
 
+/**
+ * Generates detailed trace log for match item scoring evaluation
+ * @param {Object} question
+ * @param {Object} session
+ * @param {Object} env
+ * @returns {Array<string>} traceLog
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+
+  const answers = session?.answers || {};
+  const rows = question?.rows || [];
+  const checkboxMode = question.choiceMode === 'checkbox';
+
+  if (!answers || Object.keys(answers).length === 0) {
+    traceLog.push('Student did not provide any answer.');
+    return traceLog;
+  }
+
+  traceLog.push(`Match item contains ${rows.length} row(s).`);
+  traceLog.push(`Matching mode: ${checkboxMode ? 'checkbox (multiple matches allowed)' : 'radio (single match per row)'}.`);
+
+  let correctCount = 0;
+  let incorrectCount = 0;
+  let totalCorrect = 0;
+
+  rows.forEach((row) => {
+    const studentAnswer = answers[row.id];
+    const correctValues = row.values || [];
+
+    if (checkboxMode) {
+      correctValues.forEach((v, idx) => {
+        if (v) {
+          totalCorrect++;
+        }
+
+        if (studentAnswer && studentAnswer[idx]) {
+          if (studentAnswer[idx] === v) {
+            correctCount++;
+          } else {
+            incorrectCount++;
+          }
+        }
+      });
+    } else {
+      totalCorrect++;
+      if (studentAnswer) {
+        if (isEqual(correctValues, studentAnswer)) {
+          correctCount++;
+        } else {
+          incorrectCount++;
+        }
+      }
+    }
+  });
+
+  if (correctCount > 0) {
+    traceLog.push(`${correctCount} correct match(es) selected.`);
+  }
+
+  if (incorrectCount > 0) {
+    traceLog.push(`${incorrectCount} incorrect match(es) selected.`);
+  }
+
+  if (correctCount === 0 && incorrectCount === 0) {
+    traceLog.push('Student provided answers, but none matched the correct responses.');
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(question, env);
+
+  if (partialScoringEnabled) {
+    traceLog.push('Score calculated using partial scoring.');
+
+    if (checkboxMode) {
+      traceLog.push(
+        'Score is based on the number of correct minus extra incorrect matches, divided by the total number of correct matches.',
+      );
+
+      if (correctCount + incorrectCount > totalCorrect) {
+        traceLog.push('Extra selected matches beyond the correct set reduce the score.');
+      }
+    } else {
+      traceLog.push(
+        'Score is based on the number of correctly matched rows divided by the total number of rows.',
+      );
+    }
+  } else {
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+    traceLog.push('Student must match all rows correctly to receive full credit.');
+  }
+
+  const rawScore = getOutComeScore(question, env, answers);
+  const finalScore = partialScoringEnabled ? rawScore : rawScore === 1 ? 1 : 0;
+
+  traceLog.push(`Final score: ${finalScore}.`);
+
+  return traceLog;
+};
+
 export const outcome = (question, session, env) => {
   return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
-      resolve({ score: undefined, completed: undefined });
+      resolve({ score: undefined, completed: undefined, logTrace: [] });
     } else {
       if (!session || isEmpty(session)) {
-        resolve({ score: 0, empty: true });
+        resolve({ score: 0, empty: true, logTrace: ['Student did not provide any answer.'] });
       }
 
       const out = {
         score: getOutComeScore(question, env, session.answers),
+        empty: false,
+        logTrace: getLogTrace(question, session, env),
       };
 
       resolve(out);
