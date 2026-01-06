@@ -1,16 +1,18 @@
 import React from 'react';
+import { render } from '@testing-library/react';
 import StimulusTabs from '../stimulus-tabs';
-import { shallow } from 'enzyme';
 
 const props = {
   tabs: [
     {
       id: 1,
+      label: 'Tab One',
       title: 'one',
       text: 'text for one',
     },
     {
       id: 2,
+      label: 'Tab Two',
       title: 'two',
       text: 'text for two',
     },
@@ -20,8 +22,8 @@ const props = {
 describe('stimulus tabs', () => {
   describe('snapshot', () => {
     it('should render component', () => {
-      const wrapper = shallow(<StimulusTabs tabs={props.tabs} />);
-      expect(wrapper).toMatchSnapshot();
+      const { container } = render(<StimulusTabs tabs={props.tabs} />);
+      expect(container).toMatchSnapshot();
     });
   });
 });

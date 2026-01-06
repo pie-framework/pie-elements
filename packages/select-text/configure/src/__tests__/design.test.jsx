@@ -1,16 +1,20 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Design } from '../design';
 import defaultValues from '../defaultConfiguration';
 
 jest.mock('@pie-lib/config-ui', () => ({
+  InputContainer: (props) => <div data-testid="input-container">{props.children}</div>,
+  NumberTextField: (props) => <input data-testid="number-text-field" {...props} />,
+  FeedbackConfig: (props) => <div data-testid="feedback-config" />,
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: (props) => <div oChangeModel={props.onChange} />,
+    Panel: (props) => <div data-testid="settings-panel" onChange={props.onChange} />,
     toggle: jest.fn(),
     radio: jest.fn(),
+    dropdown: jest.fn(),
   },
 }));
 
@@ -25,11 +29,31 @@ describe('design', () => {
   const getModel = () => ({
     tokens: [],
   });
+
+  const createInstance = (props = {}) => {
+    const defaultProps = {
+      model: getModel(),
+      configuration: defaultValues.configuration,
+      classes: {},
+      className: 'foo',
+      onModelChanged: onChange,
+      onPromptChanged: onPromptChanged,
+      onRationaleChanged: onRationaleChanged,
+      ...props,
+    };
+    const instance = new Design(defaultProps);
+    instance.setState = jest.fn((state, callback) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+      if (callback) callback();
+    });
+    return instance;
+  };
+
   beforeEach(() => {
     onChange = jest.fn();
     onPromptChanged = jest.fn();
     onRationaleChanged = jest.fn();
-    w = shallow(
+    w = render(
       <Design
         model={getModel()}
         configuration={defaultValues.configuration}
@@ -44,26 +68,26 @@ describe('design', () => {
 
   describe('snapshot', () => {
     it('renders all items with defaultProps', () => {
-      expect(w).toMatchSnapshot();
+      const { container } = w;
+      expect(container).toMatchSnapshot();
     });
 
     it('tokenizer renders with html entities', () => {
-      expect(
-        shallow(
-          <Design
-            model={{
-              text: '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>',
-              tokens: [],
-            }}
-            configuration={defaultValues.configuration}
-            classes={{}}
-            className={'foo'}
-            onModelChanged={onChange}
-            onPromptChanged={onPromptChanged}
-            onRationaleChanged={onRationaleChanged}
-          />,
-        ),
-      ).toMatchSnapshot();
+      const { container } = render(
+        <Design
+          model={{
+            text: '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>',
+            tokens: [],
+          }}
+          configuration={defaultValues.configuration}
+          classes={{}}
+          className={'foo'}
+          onModelChanged={onChange}
+          onPromptChanged={onPromptChanged}
+          onRationaleChanged={onRationaleChanged}
+        />,
+      );
+      expect(container).toMatchSnapshot();
     });
 
     it('renders all items except feedback', () => {
@@ -71,7 +95,7 @@ describe('design', () => {
 
       defaultConfiguration.feedback.settings = false;
 
-      const wrapper = shallow(
+      const { container } = render(
         <Design
           model={getModel()}
           configuration={defaultConfiguration}
@@ -83,7 +107,7 @@ describe('design', () => {
         />,
       );
 
-      expect(wrapper).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
 
     it('renders all items except the content input', () => {
@@ -91,7 +115,7 @@ describe('design', () => {
 
       defaultConfiguration.text.settings = false;
 
-      const wrapper = shallow(
+      const { container } = render(
         <Design
           model={getModel()}
           configuration={defaultConfiguration}
@@ -103,7 +127,7 @@ describe('design', () => {
         />,
       );
 
-      expect(wrapper).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
   });
 
@@ -112,10 +136,8 @@ describe('design', () => {
       const e = expected(getModel());
 
       it(`${fn} ${JSON.stringify(args)} => ${JSON.stringify(e)}`, () => {
-        const instance = w.instance();
+        const instance = createInstance();
         instance[fn].apply(instance, args);
-
-        //jest.runAllTimers();
 
         expect(onChange).toBeCalledWith(e);
       });

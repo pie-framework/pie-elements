@@ -1,983 +1,633 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`design snapshot renders all items except feedback 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "baseInputConfiguration": Object {
-            "audio": Object {
-              "disabled": false,
-            },
-            "image": Object {
-              "disabled": false,
-            },
-            "separateParagraphs": Object {
-              "disabled": true,
-            },
-            "showParagraphs": Object {
-              "disabled": false,
-            },
-            "textAlign": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": false,
-            },
-          },
-          "correctAnswer": Object {
-            "label": "Correct Answers",
-            "settings": true,
-          },
-          "feedback": Object {
-            "label": "Feedback",
-            "settings": false,
-          },
-          "highlightChoices": Object {
-            "label": "Highlight choices",
-            "settings": true,
-          },
-          "language": Object {
-            "enabled": false,
-            "label": "Specify Language",
-            "settings": false,
-          },
-          "languageChoices": Object {
-            "label": "Language Choices",
-            "options": Array [],
-          },
-          "mathMlOptions": Object {
-            "mmlEditing": false,
-            "mmlOutput": false,
-          },
-          "maxImageHeight": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "maxImageWidth": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "minTokens": 2,
-          "mode": Object {
-            "label": "Mode",
-            "settings": true,
-          },
-          "partialScoring": Object {
-            "label": "Allow Partial Scoring",
-            "settings": false,
-          },
-          "prompt": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Prompt",
-            "required": false,
-            "settings": true,
-          },
-          "rationale": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Rationale",
-            "required": false,
-            "settings": true,
-          },
-          "scoringType": Object {
-            "label": "Scoring Type",
-            "settings": false,
-          },
-          "selectionCount": Object {
-            "label": "Selection count",
-            "settings": true,
-          },
-          "selections": Object {
-            "label": "Selections Available",
-            "settings": true,
-          },
-          "spellCheck": Object {
-            "enabled": true,
-            "label": "Spellcheck",
-            "settings": false,
-          },
-          "studentInstructions": Object {
-            "label": "Student Instructions",
-            "settings": false,
-          },
-          "teacherInstructions": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Teacher Instructions",
-            "required": false,
-            "settings": true,
-          },
-          "text": Object {
-            "label": "Content",
-            "settings": true,
-          },
-          "tokens": Object {
-            "label": "Tokens",
-            "settings": true,
-          },
-          "withRubric": Object {
-            "label": "Add Rubric",
-            "settings": false,
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-            "rationaleEnabled": undefined,
-            "rubricEnabled": false,
-            "scoringType": false,
-            "spellCheckEnabled": false,
-            "studentInstructionsEnabled": false,
-            "teacherInstructionsEnabled": undefined,
-          },
-          "Settings": Object {
-            "feedbackEnabled": false,
-            "highlightChoices": undefined,
-            "language": false,
-            "language.enabled": false,
-            "partialScoring": false,
-          },
-        }
-      }
-      model={
-        Object {
-          "tokens": Array [],
-        }
-      }
-      onChangeModel={[Function]}
-    />
-  }
->
-  <Component
-    label="Content"
-  >
-    <TextField
-      defaultValue=""
-      multiline={true}
-      onChange={[Function]}
-      required={false}
-      select={false}
-      variant="standard"
-    />
-  </Component>
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tooltip)
-      classes={
-        Object {
-          "tooltip": undefined,
-        }
-      }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
+<div>
+  <div>
+    <div
+      data-testid="input-container"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root css-9iku5d-MuiFormControl-root-MuiTextField-root"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-multiline css-ed63ti-MuiInputBase-root-MuiInput-root"
+        >
+          <textarea
+            aria-invalid="false"
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-9j73qj-MuiInputBase-input-MuiInput-input"
+            id=":ro:"
+            style="height: 0px; overflow: hidden;"
+          />
+          <textarea
+            aria-hidden="true"
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-9j73qj-MuiInputBase-input-MuiInput-input"
+            readonly=""
+            style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+            tabindex="-1"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="input-container"
+    >
+      <svg
+        aria-hidden="true"
+        aria-label="Validation requirements:
 There should be at least 2 tokens defined.
 There should be at least 1 token selected."
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-1cinn38-MuiSvgIcon-root"
+        data-mui-internal-clone-element="true"
+        data-testid="InfoIcon"
+        focusable="false"
+        style="position: absolute; left: 48px; top: -3px;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
+        />
+      </svg>
+      <div
+        class="css-1kawqjx"
+      >
+        <div
+          class="css-1lekzkb"
+        >
+          <div>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Words
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Sentences
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Paragraphs
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorSecondary css-1opw42y-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
+          <label
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
+          >
+            <span
+              class="MuiSwitch-root MuiSwitch-sizeMedium css-j4bl39-MuiSwitch-root"
+            >
+              <span
+                class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqlqb4-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
+              >
+                <input
+                  class="PrivateSwitchBase-input MuiSwitch-input css-12xagqm-MuiSwitchBase-root"
+                  role="switch"
+                  type="checkbox"
+                />
+                <span
+                  class="MuiSwitch-thumb css-17jyosd-MuiSwitch-thumb"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track css-tj8d99-MuiSwitch-track"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+            >
+              Set correct answers
+            </span>
+          </label>
+        </div>
+        <div
+          class="text css-1nu1g70"
+        >
+          <span />
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1qf8rfk"
     >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "left": "48px",
-            "position": "absolute",
-            "top": "-3px",
-          }
-        }
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Mode: None
+        </span>
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Selections Available: 0
+        </span>
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Correct Answers: 0
+        </span>
+      </div>
+      <input
+        class="css-1xs541o"
+        data-testid="number-text-field"
+        label="Selection count (0:any)"
+        max="0"
+        min="0"
+        value=""
       />
-    </WithStyles(Tooltip)>
-    <WithStyles(Tokenizer)
-      onChange={[Function]}
-      tokens={Array []}
-    />
-  </Component>
-  <div>
-    <WithStyles(Chip)
-      label="Mode: None"
-    />
-    <WithStyles(Chip)
-      label="Selections Available: 0"
-    />
-    <WithStyles(Chip)
-      label="Correct Answers: 0"
-    />
-    <Component
-      label="Selection count (0:any)"
-      max={0}
-      min={0}
-      onChange={[Function]}
-    />
+    </div>
   </div>
-</ConfigLayout>
+</div>
 `;
 
 exports[`design snapshot renders all items except the content input 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "baseInputConfiguration": Object {
-            "audio": Object {
-              "disabled": false,
-            },
-            "image": Object {
-              "disabled": false,
-            },
-            "separateParagraphs": Object {
-              "disabled": true,
-            },
-            "showParagraphs": Object {
-              "disabled": false,
-            },
-            "textAlign": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": false,
-            },
-          },
-          "correctAnswer": Object {
-            "label": "Correct Answers",
-            "settings": true,
-          },
-          "feedback": Object {
-            "label": "Feedback",
-            "settings": false,
-          },
-          "highlightChoices": Object {
-            "label": "Highlight choices",
-            "settings": true,
-          },
-          "language": Object {
-            "enabled": false,
-            "label": "Specify Language",
-            "settings": false,
-          },
-          "languageChoices": Object {
-            "label": "Language Choices",
-            "options": Array [],
-          },
-          "mathMlOptions": Object {
-            "mmlEditing": false,
-            "mmlOutput": false,
-          },
-          "maxImageHeight": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "maxImageWidth": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "minTokens": 2,
-          "mode": Object {
-            "label": "Mode",
-            "settings": true,
-          },
-          "partialScoring": Object {
-            "label": "Allow Partial Scoring",
-            "settings": false,
-          },
-          "prompt": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Prompt",
-            "required": false,
-            "settings": true,
-          },
-          "rationale": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Rationale",
-            "required": false,
-            "settings": true,
-          },
-          "scoringType": Object {
-            "label": "Scoring Type",
-            "settings": false,
-          },
-          "selectionCount": Object {
-            "label": "Selection count",
-            "settings": true,
-          },
-          "selections": Object {
-            "label": "Selections Available",
-            "settings": true,
-          },
-          "spellCheck": Object {
-            "enabled": true,
-            "label": "Spellcheck",
-            "settings": false,
-          },
-          "studentInstructions": Object {
-            "label": "Student Instructions",
-            "settings": false,
-          },
-          "teacherInstructions": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Teacher Instructions",
-            "required": false,
-            "settings": true,
-          },
-          "text": Object {
-            "label": "Content",
-            "settings": false,
-          },
-          "tokens": Object {
-            "label": "Tokens",
-            "settings": true,
-          },
-          "withRubric": Object {
-            "label": "Add Rubric",
-            "settings": false,
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-            "rationaleEnabled": undefined,
-            "rubricEnabled": false,
-            "scoringType": false,
-            "spellCheckEnabled": false,
-            "studentInstructionsEnabled": false,
-            "teacherInstructionsEnabled": undefined,
-          },
-          "Settings": Object {
-            "feedbackEnabled": false,
-            "highlightChoices": undefined,
-            "language": false,
-            "language.enabled": false,
-            "partialScoring": false,
-          },
-        }
-      }
-      model={
-        Object {
-          "tokens": Array [],
-        }
-      }
-      onChangeModel={[Function]}
-    />
-  }
->
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tooltip)
-      classes={
-        Object {
-          "tooltip": undefined,
-        }
-      }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
+<div>
+  <div>
+    <div
+      data-testid="input-container"
+    >
+      <svg
+        aria-hidden="true"
+        aria-label="Validation requirements:
 There should be at least 2 tokens defined.
 There should be at least 1 token selected."
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-1cinn38-MuiSvgIcon-root"
+        data-mui-internal-clone-element="true"
+        data-testid="InfoIcon"
+        focusable="false"
+        style="position: absolute; left: 48px; top: -3px;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
+        />
+      </svg>
+      <div
+        class="css-1kawqjx"
+      >
+        <div
+          class="css-1lekzkb"
+        >
+          <div>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Words
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Sentences
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Paragraphs
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorSecondary css-1opw42y-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
+          <label
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
+          >
+            <span
+              class="MuiSwitch-root MuiSwitch-sizeMedium css-j4bl39-MuiSwitch-root"
+            >
+              <span
+                class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqlqb4-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
+              >
+                <input
+                  class="PrivateSwitchBase-input MuiSwitch-input css-12xagqm-MuiSwitchBase-root"
+                  role="switch"
+                  type="checkbox"
+                />
+                <span
+                  class="MuiSwitch-thumb css-17jyosd-MuiSwitch-thumb"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track css-tj8d99-MuiSwitch-track"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+            >
+              Set correct answers
+            </span>
+          </label>
+        </div>
+        <div
+          class="text css-1nu1g70"
+        >
+          <span />
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1qf8rfk"
     >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "left": "48px",
-            "position": "absolute",
-            "top": "-3px",
-          }
-        }
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Mode: None
+        </span>
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Selections Available: 0
+        </span>
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Correct Answers: 0
+        </span>
+      </div>
+      <input
+        class="css-1xs541o"
+        data-testid="number-text-field"
+        label="Selection count (0:any)"
+        max="0"
+        min="0"
+        value=""
       />
-    </WithStyles(Tooltip)>
-    <WithStyles(Tokenizer)
-      onChange={[Function]}
-      tokens={Array []}
-    />
-  </Component>
-  <div>
-    <WithStyles(Chip)
-      label="Mode: None"
-    />
-    <WithStyles(Chip)
-      label="Selections Available: 0"
-    />
-    <WithStyles(Chip)
-      label="Correct Answers: 0"
-    />
-    <Component
-      label="Selection count (0:any)"
-      max={0}
-      min={0}
-      onChange={[Function]}
-    />
+    </div>
   </div>
-</ConfigLayout>
+</div>
 `;
 
 exports[`design snapshot renders all items with defaultProps 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "baseInputConfiguration": Object {
-            "audio": Object {
-              "disabled": false,
-            },
-            "image": Object {
-              "disabled": false,
-            },
-            "separateParagraphs": Object {
-              "disabled": true,
-            },
-            "showParagraphs": Object {
-              "disabled": false,
-            },
-            "textAlign": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": false,
-            },
-          },
-          "correctAnswer": Object {
-            "label": "Correct Answers",
-            "settings": true,
-          },
-          "feedback": Object {
-            "label": "Feedback",
-            "settings": true,
-          },
-          "highlightChoices": Object {
-            "label": "Highlight choices",
-            "settings": true,
-          },
-          "language": Object {
-            "enabled": false,
-            "label": "Specify Language",
-            "settings": false,
-          },
-          "languageChoices": Object {
-            "label": "Language Choices",
-            "options": Array [],
-          },
-          "mathMlOptions": Object {
-            "mmlEditing": false,
-            "mmlOutput": false,
-          },
-          "maxImageHeight": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "maxImageWidth": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "minTokens": 2,
-          "mode": Object {
-            "label": "Mode",
-            "settings": true,
-          },
-          "partialScoring": Object {
-            "label": "Allow Partial Scoring",
-            "settings": false,
-          },
-          "prompt": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Prompt",
-            "required": false,
-            "settings": true,
-          },
-          "rationale": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Rationale",
-            "required": false,
-            "settings": true,
-          },
-          "scoringType": Object {
-            "label": "Scoring Type",
-            "settings": false,
-          },
-          "selectionCount": Object {
-            "label": "Selection count",
-            "settings": true,
-          },
-          "selections": Object {
-            "label": "Selections Available",
-            "settings": true,
-          },
-          "spellCheck": Object {
-            "enabled": true,
-            "label": "Spellcheck",
-            "settings": false,
-          },
-          "studentInstructions": Object {
-            "label": "Student Instructions",
-            "settings": false,
-          },
-          "teacherInstructions": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Teacher Instructions",
-            "required": false,
-            "settings": true,
-          },
-          "text": Object {
-            "label": "Content",
-            "settings": true,
-          },
-          "tokens": Object {
-            "label": "Tokens",
-            "settings": true,
-          },
-          "withRubric": Object {
-            "label": "Add Rubric",
-            "settings": false,
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-            "rationaleEnabled": undefined,
-            "rubricEnabled": false,
-            "scoringType": false,
-            "spellCheckEnabled": false,
-            "studentInstructionsEnabled": false,
-            "teacherInstructionsEnabled": undefined,
-          },
-          "Settings": Object {
-            "feedbackEnabled": undefined,
-            "highlightChoices": undefined,
-            "language": false,
-            "language.enabled": false,
-            "partialScoring": false,
-          },
-        }
-      }
-      model={
-        Object {
-          "tokens": Array [],
-        }
-      }
-      onChangeModel={[Function]}
-    />
-  }
->
-  <Component
-    label="Content"
-  >
-    <TextField
-      defaultValue=""
-      multiline={true}
-      onChange={[Function]}
-      required={false}
-      select={false}
-      variant="standard"
-    />
-  </Component>
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tooltip)
-      classes={
-        Object {
-          "tooltip": undefined,
-        }
-      }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
+<div>
+  <div>
+    <div
+      data-testid="input-container"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root css-9iku5d-MuiFormControl-root-MuiTextField-root"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-multiline css-ed63ti-MuiInputBase-root-MuiInput-root"
+        >
+          <textarea
+            aria-invalid="false"
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-9j73qj-MuiInputBase-input-MuiInput-input"
+            id=":r0:"
+            style="height: 0px; overflow: hidden;"
+          />
+          <textarea
+            aria-hidden="true"
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-9j73qj-MuiInputBase-input-MuiInput-input"
+            readonly=""
+            style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+            tabindex="-1"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="input-container"
+    >
+      <svg
+        aria-hidden="true"
+        aria-label="Validation requirements:
 There should be at least 2 tokens defined.
 There should be at least 1 token selected."
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-1cinn38-MuiSvgIcon-root"
+        data-mui-internal-clone-element="true"
+        data-testid="InfoIcon"
+        focusable="false"
+        style="position: absolute; left: 48px; top: -3px;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
+        />
+      </svg>
+      <div
+        class="css-1kawqjx"
+      >
+        <div
+          class="css-1lekzkb"
+        >
+          <div>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Words
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Sentences
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Paragraphs
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorSecondary css-1opw42y-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
+          <label
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
+          >
+            <span
+              class="MuiSwitch-root MuiSwitch-sizeMedium css-j4bl39-MuiSwitch-root"
+            >
+              <span
+                class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqlqb4-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
+              >
+                <input
+                  class="PrivateSwitchBase-input MuiSwitch-input css-12xagqm-MuiSwitchBase-root"
+                  role="switch"
+                  type="checkbox"
+                />
+                <span
+                  class="MuiSwitch-thumb css-17jyosd-MuiSwitch-thumb"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track css-tj8d99-MuiSwitch-track"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+            >
+              Set correct answers
+            </span>
+          </label>
+        </div>
+        <div
+          class="text css-1nu1g70"
+        >
+          <span />
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1qf8rfk"
     >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "left": "48px",
-            "position": "absolute",
-            "top": "-3px",
-          }
-        }
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Mode: None
+        </span>
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Selections Available: 0
+        </span>
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Correct Answers: 0
+        </span>
+      </div>
+      <input
+        class="css-1xs541o"
+        data-testid="number-text-field"
+        label="Selection count (0:any)"
+        max="0"
+        min="0"
+        value=""
       />
-    </WithStyles(Tooltip)>
-    <WithStyles(Tokenizer)
-      onChange={[Function]}
-      tokens={Array []}
-    />
-  </Component>
-  <div>
-    <WithStyles(Chip)
-      label="Mode: None"
-    />
-    <WithStyles(Chip)
-      label="Selections Available: 0"
-    />
-    <WithStyles(Chip)
-      label="Correct Answers: 0"
-    />
-    <Component
-      label="Selection count (0:any)"
-      max={0}
-      min={0}
-      onChange={[Function]}
-    />
+    </div>
   </div>
-</ConfigLayout>
+</div>
 `;
 
 exports[`design snapshot tokenizer renders with html entities 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "baseInputConfiguration": Object {
-            "audio": Object {
-              "disabled": false,
-            },
-            "image": Object {
-              "disabled": false,
-            },
-            "separateParagraphs": Object {
-              "disabled": true,
-            },
-            "showParagraphs": Object {
-              "disabled": false,
-            },
-            "textAlign": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": false,
-            },
-          },
-          "correctAnswer": Object {
-            "label": "Correct Answers",
-            "settings": true,
-          },
-          "feedback": Object {
-            "label": "Feedback",
-            "settings": true,
-          },
-          "highlightChoices": Object {
-            "label": "Highlight choices",
-            "settings": true,
-          },
-          "language": Object {
-            "enabled": false,
-            "label": "Specify Language",
-            "settings": false,
-          },
-          "languageChoices": Object {
-            "label": "Language Choices",
-            "options": Array [],
-          },
-          "mathMlOptions": Object {
-            "mmlEditing": false,
-            "mmlOutput": false,
-          },
-          "maxImageHeight": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "maxImageWidth": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "minTokens": 2,
-          "mode": Object {
-            "label": "Mode",
-            "settings": true,
-          },
-          "partialScoring": Object {
-            "label": "Allow Partial Scoring",
-            "settings": false,
-          },
-          "prompt": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Prompt",
-            "required": false,
-            "settings": true,
-          },
-          "rationale": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Rationale",
-            "required": false,
-            "settings": true,
-          },
-          "scoringType": Object {
-            "label": "Scoring Type",
-            "settings": false,
-          },
-          "selectionCount": Object {
-            "label": "Selection count",
-            "settings": true,
-          },
-          "selections": Object {
-            "label": "Selections Available",
-            "settings": true,
-          },
-          "spellCheck": Object {
-            "enabled": true,
-            "label": "Spellcheck",
-            "settings": false,
-          },
-          "studentInstructions": Object {
-            "label": "Student Instructions",
-            "settings": false,
-          },
-          "teacherInstructions": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Teacher Instructions",
-            "required": false,
-            "settings": true,
-          },
-          "text": Object {
-            "label": "Content",
-            "settings": true,
-          },
-          "tokens": Object {
-            "label": "Tokens",
-            "settings": true,
-          },
-          "withRubric": Object {
-            "label": "Add Rubric",
-            "settings": false,
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-            "rationaleEnabled": undefined,
-            "rubricEnabled": false,
-            "scoringType": false,
-            "spellCheckEnabled": false,
-            "studentInstructionsEnabled": false,
-            "teacherInstructionsEnabled": undefined,
-          },
-          "Settings": Object {
-            "feedbackEnabled": undefined,
-            "highlightChoices": undefined,
-            "language": false,
-            "language.enabled": false,
-            "partialScoring": false,
-          },
-        }
-      }
-      model={
-        Object {
-          "text": "<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>",
-          "tokens": Array [],
-        }
-      }
-      onChangeModel={[Function]}
-    />
-  }
->
-  <Component
-    label="Content"
-  >
-    <TextField
-      defaultValue="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
-      multiline={true}
-      onChange={[Function]}
-      required={false}
-      select={false}
-      variant="standard"
-    />
-  </Component>
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tooltip)
-      classes={
-        Object {
-          "tooltip": undefined,
-        }
-      }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="right"
-      title="Validation requirements:
+<div>
+  <div>
+    <div
+      data-testid="input-container"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root css-9iku5d-MuiFormControl-root-MuiTextField-root"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-multiline css-ed63ti-MuiInputBase-root-MuiInput-root"
+        >
+          <textarea
+            aria-invalid="false"
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-9j73qj-MuiInputBase-input-MuiInput-input"
+            id=":rc:"
+            style="height: 0px; overflow: hidden;"
+          >
+            &lt;p&gt;&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.&lt;/p&gt;&lt;p&gt;Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;&lt;/p&gt;
+          </textarea>
+          <textarea
+            aria-hidden="true"
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-9j73qj-MuiInputBase-input-MuiInput-input"
+            readonly=""
+            style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+            tabindex="-1"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="input-container"
+    >
+      <svg
+        aria-hidden="true"
+        aria-label="Validation requirements:
 There should be at least 2 tokens defined.
 There should be at least 1 token selected."
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-1cinn38-MuiSvgIcon-root"
+        data-mui-internal-clone-element="true"
+        data-testid="InfoIcon"
+        focusable="false"
+        style="position: absolute; left: 48px; top: -3px;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
+        />
+      </svg>
+      <div
+        class="css-1kawqjx"
+      >
+        <div
+          class="css-1lekzkb"
+        >
+          <div>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Words
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Sentences
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xhjzlu-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Paragraphs
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorSecondary css-1opw42y-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
+          <label
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
+          >
+            <span
+              class="MuiSwitch-root MuiSwitch-sizeMedium css-j4bl39-MuiSwitch-root"
+            >
+              <span
+                class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqlqb4-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
+              >
+                <input
+                  class="PrivateSwitchBase-input MuiSwitch-input css-12xagqm-MuiSwitchBase-root"
+                  role="switch"
+                  type="checkbox"
+                />
+                <span
+                  class="MuiSwitch-thumb css-17jyosd-MuiSwitch-thumb"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track css-tj8d99-MuiSwitch-track"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+            >
+              Set correct answers
+            </span>
+          </label>
+        </div>
+        <div
+          class="text css-1nu1g70"
+        >
+          <span>
+            <p>
+              “Lucy?? Are you using your time wisely to plan your project?!!!” Mr. Wilson asked.
+            </p>
+            <p>
+              Lucy looked a little confused at first. Ã Then she grinned and proudly stated, “Why, yes I am! I plan to make a bird feeder for that tree out our window!”
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1qf8rfk"
     >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "left": "48px",
-            "position": "absolute",
-            "top": "-3px",
-          }
-        }
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Mode: None
+        </span>
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Selections Available: 0
+        </span>
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1eukjgb-MuiChip-root"
+      >
+        <span
+          class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        >
+          Correct Answers: 0
+        </span>
+      </div>
+      <input
+        class="css-1xs541o"
+        data-testid="number-text-field"
+        label="Selection count (0:any)"
+        max="0"
+        min="0"
+        value=""
       />
-    </WithStyles(Tooltip)>
-    <WithStyles(Tokenizer)
-      onChange={[Function]}
-      text="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
-      tokens={Array []}
-    />
-  </Component>
-  <div>
-    <WithStyles(Chip)
-      label="Mode: None"
-    />
-    <WithStyles(Chip)
-      label="Selections Available: 0"
-    />
-    <WithStyles(Chip)
-      label="Correct Answers: 0"
-    />
-    <Component
-      label="Selection count (0:any)"
-      max={0}
-      min={0}
-      onChange={[Function]}
-    />
+    </div>
   </div>
-</ConfigLayout>
+</div>
 `;
