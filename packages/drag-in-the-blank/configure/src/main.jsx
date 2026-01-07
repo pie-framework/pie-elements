@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
 import { renderMath } from '@pie-lib/math-rendering';

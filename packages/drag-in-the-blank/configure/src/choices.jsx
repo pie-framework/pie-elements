@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { renderMath } from '@pie-lib/math-rendering';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Button from '@material-ui/core/Button';
@@ -161,7 +161,7 @@ export class Choices extends React.Component {
     } = this.props;
 
     // find the maximum existing id and add 1 to generate the new id so we avoid duplicates
-    const maxId = oldChoices.length > 0 
+    const maxId = oldChoices.length > 0
       ? Math.max(...oldChoices.map(choice => parseInt(choice.id, 10) || 0))
       : -1;
     const newId = `${maxId + 1}`;

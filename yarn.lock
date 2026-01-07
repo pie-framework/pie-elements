@@ -2316,10 +2316,10 @@
     react-draggable "^3.1.1"
     react-input-autosize "^2.2.1"
 
-"@pie-lib/config-ui@11.30.2-beta-8":
-  version "11.30.2-beta-8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.30.2-beta-8.tgz#06a19edc9e98d9009fdf440c9458dcafb9501624"
-  integrity sha512-M9lv8DT2FFZG/SggPV7eel/2BBAhn9V7+tqf7ja+pqTDnYh73zo9rZziGnKQX39+3fV5jvoJGqMeElpXQW/M7Q==
+"@pie-lib/config-ui@11.30.2-beta-9":
+  version "11.30.2-beta-9"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.30.2-beta-9.tgz#3fc5c06d38b5ecf7b7d57ecd90fd6da139e315dc"
+  integrity sha512-2F19w4MkW4tWu50phL58ZdbnS8I2uWsRlrIIK5kD9ith+6FBaW/gx5EzRzosyGMGNZqzvBJX7vH7pp0t4VBoLA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2462,10 +2462,10 @@
     tippy.js latest
     to-style "^1.3.3"
 
-"@pie-lib/editable-html-tip-tap@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html-tip-tap/-/editable-html-tip-tap-1.0.13.tgz#197b5fbefaf9f362d5e978ae46c50ba015f6c9b9"
-  integrity sha512-UiBpmMQr1IBiI1MyfEK+849BNwXYrVK7ze/JLfGWAU9UOnzKPpGK+jgmBPaJ8I/cBuQ+JV9VhUxF+xNPMGDpuw==
+"@pie-lib/editable-html-tip-tap@^1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html-tip-tap/-/editable-html-tip-tap-1.0.14.tgz#b58b565f651329863c72b4c1720b5a1d1b4140a6"
+  integrity sha512-UW3ADB4liqzyYORaDDuEYa/ln7U49EJy8VT4O00lxijnhRWEH4GE9lqdV73EuLE/BfKGK0VJnFrSsIGy19dwtA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2645,10 +2645,10 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@1.33.2-beta-13":
-  version "1.33.2-beta-13"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.33.2-beta-13.tgz#a542b91a4d568c4bb8190e7eff28a354c97b29e5"
-  integrity sha512-upj3IBPLtnIkkYavOT23UnsXZv6LTZagndPYoXfEm5zEuzKjq4EwdwARdlVHpFwaYX6mVPJEt4BkSxNJQ7SmGQ==
+"@pie-lib/mask-markup@1.33.2-beta-14":
+  version "1.33.2-beta-14"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.33.2-beta-14.tgz#296d549bdb9be1718ac6e65ac8c9d78c647edcb5"
+  integrity sha512-oJ2G5N/tkVc8xbqC1bCxWnF6EMKZK6M6KozlHBdegHPBWnBKu+V+zYPx4/ZsN/HmzJZrDA9ktmUXKakU10KcZg==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
