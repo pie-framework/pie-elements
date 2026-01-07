@@ -312,7 +312,7 @@ describe('controller', () => {
     const returnsScoreWhen = (session) => {
       it(`returns empty: true if session is ${JSON.stringify(session)}`, async () => {
         const result = await outcome(question, session);
-        expect(result).toEqual({ score: 0, scoreA: 0, scoreB: 0, empty: true });
+        expect(result).toEqual({ score: 0, scoreA: 0, scoreB: 0, empty: true, logTrace: ['Student did not answer the question.'] });
       });
     };
 
