@@ -198,12 +198,101 @@ const getScore = (config, sessionPart, key, partialScoringEnabled) => {
   return parseFloat(maxScore ? (correctChoices / maxScore).toFixed(2) : 0);
 };
 
+/**
+ * Generates detailed trace log for math-templated scoring evaluation
+ * @param {Object} question
+ * @param {Object} session
+ * @param {Object} env
+ * @returns {Array<string>} traceLog
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+
+  if (!session || !session.value) {
+    traceLog.push('Student did not answer the question.');
+    return traceLog;
+  }
+
+  const { value } = session;
+  const { partA, partB } = value;
+
+  const partialScoringEnabled = partialScoring.enabled(question, env);
+
+  traceLog.push(
+    `Scoring method: ${partialScoringEnabled ? 'partial scoring' : 'all-or-nothing scoring'}.`
+  );
+
+  const partAquestionType =
+    question.partA.choiceMode === 'radio'
+      ? 'multiple-choice (radio)'
+      : 'multiple-select (checkbox)';
+  traceLog.push(`Part A question type: ${partAquestionType}.`);
+
+  const partASelections = partA?.value || [];
+  const partACorrectChoices = (question.partA.choices || []).filter((c) => c.correct);
+  const partACorrectValues = partACorrectChoices.map((c) => c.value);
+  const partACorrectSelected = partASelections.filter((v) => partACorrectValues.includes(v));
+  const partAIncorrectSelected = partASelections.filter((v) => !partACorrectValues.includes(v));
+
+  if (partASelections.length) {
+    traceLog.push(
+      `Part A: student selected ${partASelections.length} choice(s) (${partACorrectSelected.length} correct, ${partAIncorrectSelected.length} incorrect).`
+    );
+  }
+  
+  const scoreA = getScore(question, partA, 'partA', partialScoringEnabled);
+  traceLog.push(`Part A score: ${scoreA}.`);
+
+  const partBquestionType =
+    question.partB.choiceMode === 'radio'
+      ? 'multiple-choice (radio)'
+      : 'multiple-select (checkbox)';
+  traceLog.push(`Part B question type: ${partBquestionType}.`);
+
+  const partBSelections = partB?.value || [];
+  const partBCorrectChoices = (question.partB.choices || []).filter((c) => c.correct);
+  const partBCorrectValues = partBCorrectChoices.map((c) => c.value);
+  const correctSelected = partBSelections.filter((v) => partBCorrectValues.includes(v));
+  const incorrectSelected = partBSelections.filter((v) => !partBCorrectValues.includes(v));
+
+  if (partBSelections.length) {
+    traceLog.push(
+      `Part B: student selected ${partBSelections.length} choice(s) (${correctSelected.length} correct, ${incorrectSelected.length} incorrect).`
+    );
+  }
+
+  const scoreB = getScore(question, partB, 'partB', partialScoringEnabled);
+  traceLog.push(`Part B score: ${scoreB}.`);
+
+  if (!partialScoringEnabled) {
+    traceLog.push(
+      'Final score is awarded only if both Part A and Part B are completely correct.'
+    );
+    traceLog.push(`Final score: ${scoreA === 1 && scoreB === 1 ? 1 : 0}.`);
+  } else {
+    traceLog.push(
+      'With partial scoring enabled, Part A must be correct to earn any credit.'
+    );
+
+    let finalScore = 0;
+    if (scoreA === 1 && scoreB === 1) {
+      finalScore = 2;
+    } else if (scoreA === 1 && scoreB < 1) {
+      finalScore = 1;
+    }
+
+    traceLog.push(`Final score: ${finalScore}.`);
+  }
+
+  return traceLog;
+};
+
 export function outcome(config, session, env) {
   return new Promise((resolve) => {
     const { value } = session || {};
 
     if (!session || !value) {
-      resolve({ score: 0, scoreA: 0, scoreB: 0, empty: true });
+      resolve({ score: 0, scoreA: 0, scoreB: 0, empty: true, logTrace: ['Student did not answer the question.'] });
     }
 
     if (value) {
@@ -213,24 +302,25 @@ export function outcome(config, session, env) {
 
       const scoreA = getScore(config, partA, 'partA', partialScoringEnabled);
       const scoreB = getScore(config, partB, 'partB', partialScoringEnabled);
+      const logTrace = getLogTrace(config, session, env);
 
       if (!partialScoringEnabled) {
         // The EBSR item is worth 1 point
         // That point is awarded if and only if both parts are fully correct, otherwise no points are awarded
-        resolve({ score: scoreA === 1 && scoreB === 1 ? 1 : 0, scoreA, scoreB, max: 1 });
+        resolve({ score: scoreA === 1 && scoreB === 1 ? 1 : 0, scoreA, scoreB, max: 1, logTrace });
       } else {
         // The EBSR item is worth 2 points
         if (scoreA === 1) {
           if (scoreB === 1) {
             // If Part A and Part B are both correct, 2 points are awarded
-            resolve({ score: 2, scoreA, scoreB, max: 2 });
+            resolve({ score: 2, scoreA, scoreB, max: 2, logTrace });
           } else {
             // If Part A is correct and part B is incorrect, 1 point is awarded
-            resolve({ score: 1, scoreA, scoreB, max: 2 });
+            resolve({ score: 1, scoreA, scoreB, max: 2, logTrace });
           }
         } else {
           // For all other combinations, no points are awarded
-          resolve({ score: 0, scoreA, scoreB, max: 2 });
+          resolve({ score: 0, scoreA, scoreB, max: 2, logTrace });
         }
       }
     }
