@@ -22,7 +22,7 @@ class DragPreviewWrapper extends React.Component {
 
   componentDidMount() {
     if (this.containerRef.current) {
-     renderMath(this.containerRef.current);
+      renderMath(this.containerRef.current);
     }
   }
 
@@ -83,6 +83,7 @@ export class Categorize extends React.Component {
 
     // treat special case to replace the existing choice with the new one when maxChoicesPerCategory = 1
     if (draggedChoice && maxChoicesPerCategory === 1 && answer && answer.choices && answer.choices.length === 1) {
+      // First, move the dragged choice to the target category (this will also remove it from source if allowMultiplePlacements is disabled)
       newAnswers = moveChoiceToCategory(
         draggedChoice.id,
         draggedChoice.categoryId,
@@ -90,7 +91,8 @@ export class Categorize extends React.Component {
         draggedChoice.choiceIndex,
         answers,
       );
-      newAnswers = removeChoiceFromCategory(answer.choices[0], categoryId, 0, answers);
+      // Then, remove the existing choice from the target category (use newAnswers, not answers)
+      newAnswers = removeChoiceFromCategory(answer.choices[0], categoryId, 0, newAnswers);
     }
 
     // treat special case when there are as many choices as maxChoicesPerCategory is
@@ -103,12 +105,12 @@ export class Categorize extends React.Component {
     ) {
       newAnswers = draggedChoice.categoryId
         ? moveChoiceToCategory(
-          draggedChoice.id,
-          draggedChoice.categoryId,
-          draggedChoice.categoryId,
-          draggedChoice.choiceIndex,
-          answers,
-        )
+            draggedChoice.id,
+            draggedChoice.categoryId,
+            draggedChoice.categoryId,
+            draggedChoice.choiceIndex,
+            answers,
+          )
         : removeChoiceFromCategory(draggedChoice.id, draggedChoice.categoryId, draggedChoice.choiceIndex, answers);
       this.setState({ showMaxChoiceAlert: true });
     }
@@ -120,12 +122,12 @@ export class Categorize extends React.Component {
     } else {
       newAnswers = draggedChoice
         ? moveChoiceToCategory(
-          draggedChoice.id,
-          draggedChoice.categoryId,
-          categoryId,
-          draggedChoice.choiceIndex,
-          answers,
-        )
+            draggedChoice.id,
+            draggedChoice.categoryId,
+            categoryId,
+            draggedChoice.choiceIndex,
+            answers,
+          )
         : this.removeChoice(categoryId);
     }
 
@@ -237,11 +239,7 @@ export class Categorize extends React.Component {
       model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
-      <StyledUiLayout
-        extraCSSRules={extraCSSRules}
-        id={'main-container'}
-        fontSizeFactor={fontSizeFactor}
-      >
+      <StyledUiLayout extraCSSRules={extraCSSRules} id={'main-container'} fontSizeFactor={fontSizeFactor}>
         {showTeacherInstructions && (
           <React.Fragment>
             <StyledCollapsible
@@ -360,7 +358,6 @@ class CategorizeProvider extends React.Component {
     const draggedItem = active.data.current;
 
     if (draggedItem && draggedItem.type === 'choice') {
-
       const choiceData = {
         id: draggedItem.id,
         categoryId: draggedItem.categoryId,
@@ -390,15 +387,9 @@ class CategorizeProvider extends React.Component {
     if (!activeDragItem) return null;
 
     if (activeDragItem.type === 'choice') {
-      const choice = model.choices?.find(c => c.id === activeDragItem.id);
+      const choice = model.choices?.find((c) => c.id === activeDragItem.id);
       if (choice) {
-        return (
-          <Choice
-            key={choice.id}
-            id={choice.id}
-            {...choice}
-          />
-        );
+        return <Choice key={choice.id} id={choice.id} {...choice} />;
       }
     }
 
@@ -407,16 +398,11 @@ class CategorizeProvider extends React.Component {
 
   render() {
     return (
-      <DragProvider
-        onDragStart={this.onDragStart}
-        onDragEnd={this.onDragEnd}
-      >
+      <DragProvider onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
         <uid.Provider value={this.uid}>
-          <Categorize ref={(ref) => this.categorizeRef = ref} {...this.props} />
+          <Categorize ref={(ref) => (this.categorizeRef = ref)} {...this.props} />
           <DragOverlay>
-            <DragPreviewWrapper>
-              {this.renderDragOverlay()}
-            </DragPreviewWrapper>
+            <DragPreviewWrapper>{this.renderDragOverlay()}</DragPreviewWrapper>
           </DragOverlay>
         </uid.Provider>
       </DragProvider>
