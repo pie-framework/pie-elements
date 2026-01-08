@@ -2316,14 +2316,14 @@
     react-draggable "^3.1.1"
     react-input-autosize "^2.2.1"
 
-"@pie-lib/config-ui@11.30.2-beta-9":
-  version "11.30.2-beta-9"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.30.2-beta-9.tgz#3fc5c06d38b5ecf7b7d57ecd90fd6da139e315dc"
-  integrity sha512-2F19w4MkW4tWu50phL58ZdbnS8I2uWsRlrIIK5kD9ith+6FBaW/gx5EzRzosyGMGNZqzvBJX7vH7pp0t4VBoLA==
+"@pie-lib/config-ui@11.30.2-beta-10":
+  version "11.30.2-beta-10"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.30.2-beta-10.tgz#778d3dd8cedde1d442d29ecbadfc6a8e4f6d841b"
+  integrity sha512-2rHRqLC3rQVV6i5KJL9rOE7MvuLJ7e8V+F4e8arX+imA38zQo0dLco2wTt2WwIC4n4ycrIkFpKUad/j3mmNckQ==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html-tip-tap" "^1.0.12"
+    "@pie-lib/editable-html-tip-tap" "^1.0.15"
     "@pie-lib/icons" "^2.24.1"
     "@pie-lib/render-ui" "^4.35.2"
     assert "^1.4.1"
@@ -2410,62 +2410,10 @@
     react-dnd-multi-backend "^6.0.2"
     react-dnd-touch-backend "^12.0.0"
 
-"@pie-lib/editable-html-tip-tap@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html-tip-tap/-/editable-html-tip-tap-1.0.12.tgz#04f6ee535d78f8a399dc5eec989e825ae9fedb66"
-  integrity sha512-Vd0nc453cSwsRB49k8wE+0pNvDIbcC6LtReCJcP3XUmIuCUBtVvWm97A6P9AR4ztQsHs8fldHWaXhXP18xCMsw==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@material-ui/styles" "^3.0.0-alpha.10"
-    "@pie-lib/drag" "^2.22.1"
-    "@pie-lib/math-input" "6.31.1-beta-1"
-    "@pie-lib/math-rendering" "^3.22.1"
-    "@pie-lib/math-toolbar" "1.31.2-beta.3"
-    "@pie-lib/render-ui" "^4.35.1"
-    "@tiptap/core" "3.0.9"
-    "@tiptap/extension-character-count" "3.0.9"
-    "@tiptap/extension-color" "3.0.9"
-    "@tiptap/extension-image" "3.0.9"
-    "@tiptap/extension-list-item" "3.0.9"
-    "@tiptap/extension-subscript" "3.0.9"
-    "@tiptap/extension-superscript" "3.0.9"
-    "@tiptap/extension-table" "3.0.9"
-    "@tiptap/extension-table-cell" "3.0.9"
-    "@tiptap/extension-table-header" "3.0.9"
-    "@tiptap/extension-table-row" "3.0.9"
-    "@tiptap/extension-text-align" "3.0.9"
-    "@tiptap/extension-text-style" "3.0.9"
-    "@tiptap/pm" "3.0.9"
-    "@tiptap/react" "3.0.9"
-    "@tiptap/starter-kit" "3.0.9"
-    change-case "^3.0.2"
-    classnames "^2.2.6"
-    debug "^4.1.1"
-    immutable "^4.0.0-rc.12"
-    keycode "^2.2.0"
-    lodash "^4.17.11"
-    prop-types "^15.6.2"
-    react-attr-converter "^0.3.1"
-    react-jss "^8.6.1"
-    react-portal "^4.2.0"
-    slate "^0.36.2"
-    slate-dev-environment "^0.2.0"
-    slate-edit-list "^0.11.3"
-    slate-edit-table "^0.17.0"
-    slate-html-serializer "^0.6.12"
-    slate-plain-serializer "^0.5.26"
-    slate-prop-types "^0.4.38"
-    slate-react "^0.14.3"
-    slate-schema-violations "^0.1.39"
-    slate-soft-break "^0.8.1"
-    tippy.js latest
-    to-style "^1.3.3"
-
-"@pie-lib/editable-html-tip-tap@^1.0.14":
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html-tip-tap/-/editable-html-tip-tap-1.0.14.tgz#b58b565f651329863c72b4c1720b5a1d1b4140a6"
-  integrity sha512-UW3ADB4liqzyYORaDDuEYa/ln7U49EJy8VT4O00lxijnhRWEH4GE9lqdV73EuLE/BfKGK0VJnFrSsIGy19dwtA==
+"@pie-lib/editable-html-tip-tap@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html-tip-tap/-/editable-html-tip-tap-1.0.15.tgz#f739b18ce4176c2d40a33f5b3297eb4d11673526"
+  integrity sha512-sSqVDuUdJJd3SfUsNlF+GnssZSumH7qYYFOLdy53XV3TszYQUGoQFQY42CJ+5KewWbbLwvMKgrCff6SvFL7t7Q==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2645,15 +2593,15 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@1.33.2-beta-14":
-  version "1.33.2-beta-14"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.33.2-beta-14.tgz#296d549bdb9be1718ac6e65ac8c9d78c647edcb5"
-  integrity sha512-oJ2G5N/tkVc8xbqC1bCxWnF6EMKZK6M6KozlHBdegHPBWnBKu+V+zYPx4/ZsN/HmzJZrDA9ktmUXKakU10KcZg==
+"@pie-lib/mask-markup@1.33.2-beta-15":
+  version "1.33.2-beta-15"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.33.2-beta-15.tgz#3e86839ae036d74229c12c84a169d21bda17f6b4"
+  integrity sha512-2ZMRJgXTWhS155Ap2QfIDuK5imnBpLKjq/F2OUn5KSRtSjXjCfrncQd9uYET5uq2bsHFpV24+GXgu/5kn/7dbQ==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/drag" "^2.22.2"
-    "@pie-lib/editable-html-tip-tap" "^1.0.12"
+    "@pie-lib/editable-html-tip-tap" "^1.0.15"
     "@pie-lib/math-rendering" "^3.22.1"
     "@pie-lib/render-ui" "^4.35.2"
     classnames "^2.2.6"

@@ -156,7 +156,7 @@ export class Main extends React.Component {
     let { maxLengthPerChoice } = model;
     const newValLength = decodeHTML(newVal || '').length;
 
-    if (!choices[index]) {
+    if (!choices[index] || !choices[index].length) {
       choices[index] = [{ label: newVal || '', value: '0' }];
 
       // add default values for missing choices up to the new index position

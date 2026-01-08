@@ -189,9 +189,11 @@ export class RespAreaToolbar extends React.Component {
   };
 
   onAddChoice = () => {
-    if (this.editorRef) {
-      this.editorRef.finishEditing();
-    }
+    const { editor } = this.props;
+    const { tr } = editor.state;
+
+    tr.isDone = true;
+    editor.view.dispatch(tr);
   };
 
   onDone = (val) => {
@@ -206,6 +208,7 @@ export class RespAreaToolbar extends React.Component {
 
     if (!isEmpty(onlyText)) {
       onAddChoice(node.attrs.index, val, editedChoiceIndex);
+      editor.commands.refreshResponseArea();
     }
 
     this.setState({ editedChoiceIndex: -1 });
@@ -216,12 +219,9 @@ export class RespAreaToolbar extends React.Component {
 
     editor.commands.updateAttributes('inline_dropdown', { value: newValue });
 
-    // const nextText = value.document.getNextText(node.key);
-    //
-    // change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
-
     onToolbarDone(false);
     onSelectChoice(index);
+    editor.commands.refreshResponseArea();
   };
 
   onRemoveChoice = (val, index) => {
@@ -233,6 +233,7 @@ export class RespAreaToolbar extends React.Component {
     }
 
     onRemoveChoice(index);
+    editor.commands.refreshResponseArea();
   };
 
   onEditChoice = (val, index) => {
