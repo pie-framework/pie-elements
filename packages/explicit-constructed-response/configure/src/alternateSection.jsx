@@ -92,6 +92,12 @@ export class Choice extends React.Component {
     this.updateText(strippedValue);
   };
 
+  onKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      return true;
+    }
+  };
+
   render() {
     const { value } = this.state;
     const { classes, onDelete, spellCheck, error, showMaxLength, pluginProps } = this.props;
@@ -110,6 +116,7 @@ export class Choice extends React.Component {
             className={classnames(classes.choice, error && classes.inputError)}
             disableUnderline
             onChange={this.onChange}
+            onKeyDown={this.onKeyDown}
             markup={value || ''}
             activePlugins={['languageCharacters']}
             pluginProps={pluginProps}

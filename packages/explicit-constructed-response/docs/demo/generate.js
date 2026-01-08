@@ -5,22 +5,16 @@ const markup = '<p>The {{0}} <br> jumped {{1}} <br> the {{2}}</p>';
 exports.model = (id, element) => ({
   id,
   element,
-  "disabled": false,
-  "prompt": "<p>Subtract.</p><p>wsfsf</p><p>fs</p><p>fsfvsdfvd</p><p></p><p></p><p></p><p>sfsafsfsa<br><br>ddsvdvdsvsvsdvbsd</p>",
-  "promptEnabled": true,
-  "displayType": "block",
-  "maxLengthPerChoiceEnabled": true,
-  "playerSpellCheckEnabled": true,
-  "rationale": "<p>ffew</p><p>fefefef</p><p></p><p>sdfdegdsgsg<br>dfvsdv<br><br>bbsfbbsfgbs<br><br>dfvdvsdvv</p>",
-  "rationaleEnabled": true,
-  "spellCheckEnabled": true,
-  "studentInstructionsEnabled": true,
-  "teacherInstructions": "<p>rsfvsv</p><p>fdggs</p><p>gdgdg</p><p>dsg</p>",
-  "teacherInstructionsEnabled": true,
-  "toolbarEditorPosition": "bottom",
-  "responseAreaInputConfiguration": {
-    "characters": {
-      "disabled": true
-    }
+  markup,
+  disabled: false,
+  choices: {
+    0: [choice('cow', '0'), choice('cattle', '1'), choice('calf', '2')],
+    1: [choice('over', '0'), choice('past', '1'), choice('beyond', '2')],
+    2: [choice('moon', '0')],
   },
+  maxLengthPerChoice: [7, 10, 4],
+  prompt: 'Complete the sentence',
+  promptEnabled: true,
+  toolbarEditorPosition: 'bottom',
+  rubricEnabled: false,
 });
