@@ -66,10 +66,8 @@ const FractionModelChart = (props) => {
 
   /*
    * Function to handle mouse leave event on chart
-   * @param chartIndex: index of the chart
-   * @param sectorIndex: index of the sector
    * */
-  const handleChartMouseLeave = (chartIndex, sectorIndex) => {
+  const handleChartMouseLeave = () => {
     setHoveredIndex(null);
   };
 

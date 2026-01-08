@@ -231,11 +231,15 @@ export class NumberLine extends React.Component {
       return (answers || []).map((e, index) => {
         let out = cloneDeep(e);
         out.selected = selectedElements.indexOf(index) !== -1;
-        out.correct = corrected.correct.includes(index)
-          ? true
-          : corrected.incorrect.includes(index)
-          ? false
-          : undefined;
+
+        if (corrected.correct.includes(index)) {
+          out.correct = true;
+        } else if (corrected.incorrect.includes(index)) {
+          out.correct = false;
+        } else {
+          out.correct = undefined;
+        }
+
         return out;
       });
     };

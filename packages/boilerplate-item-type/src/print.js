@@ -15,7 +15,7 @@ const log = debug('pie-element:multiple-choice:print');
  * - get configure/controller building
  */
 
-const preparePrintModel = (model, opts) => {
+const preparePrintModel = (model) => {
   return model;
 };
 

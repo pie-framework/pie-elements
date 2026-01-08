@@ -212,13 +212,13 @@ export class Design extends React.Component {
         if (!newChoices[keyForNode] && newCachedResponses[keyForNode]) {
           Object.assign(newChoices, pick(newCachedResponses, keyForNode));
 
-          if (newCachedResponses.hasOwnProperty(keyForNode)) {
+          if (Object.prototype.hasOwnProperty.call(newCachedResponses, keyForNode)) {
             delete newCachedResponses[keyForNode];
           }
         } else {
           Object.assign(newCachedResponses, pick(newChoices, keyForNode));
 
-          if (newChoices.hasOwnProperty(keyForNode)) {
+          if (Object.prototype.hasOwnProperty.call(newChoices, keyForNode)) {
             delete newChoices[keyForNode];
           }
         }

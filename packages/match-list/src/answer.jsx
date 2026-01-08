@@ -9,14 +9,6 @@ import { color } from '@pie-lib/render-ui';
 
 const log = debug('pie-elements:match-title:answer');
 
-const HolderContainer = styled('div')({
-  display: 'flex',
-  padding: 0,
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '40px',
-});
-
 const HolderNumber = styled('div')(({ theme }) => ({
   width: '100%',
   fontSize: '18px',

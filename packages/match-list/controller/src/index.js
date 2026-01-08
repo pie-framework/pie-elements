@@ -100,93 +100,89 @@ export const normalize = (model) => ({ ...defaults, ...model });
  * @param {*} env
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export function model(question, session, env, updateSession) {
-  return new Promise(async (resolve) => {
-    question = normalize(question);
-    const correctness = getCorrectness(question, env, session && session.value);
-    const correctResponse = {};
-    const score = `${getOutComeScore(question, env, session && session.value) * 100}%`;
-    const correctInfo = {
-      score,
-      correctness,
-    };
+export async function model(question, session, env, updateSession) {
+  question = normalize(question);
+  const correctness = getCorrectness(question, env, session && session.value);
+  const correctResponse = {};
+  const score = `${getOutComeScore(question, env, session && session.value) * 100}%`;
+  const correctInfo = {
+    score,
+    correctness,
+  };
 
-    const shuffledValues = {};
-    let prompts = question.prompts;
-    let answers = question.answers;
+  const shuffledValues = {};
+  let prompts = question.prompts;
+  let answers = question.answers;
 
-    const us = (part) => (id, element, update) => {
-      return new Promise((resolve) => {
-        shuffledValues[part] = update.shuffledValues;
-        resolve();
-      });
-    };
-
-    const lockChoiceOrder = lockChoices(question, session, env);
-
-    if (!lockChoiceOrder) {
-      prompts = await getShuffledChoices(
-        prompts,
-        { shuffledValues: ((session && session.shuffledValues) || {}).prompts },
-        us('prompts'),
-        'id',
-      );
-      answers = await getShuffledChoices(
-        answers,
-        { shuffledValues: ((session && session.shuffledValues) || {}).answers },
-        us('answers'),
-        'id',
-      );
-    }
-
-    if (!isEmpty(shuffledValues)) {
-      if (updateSession && typeof updateSession === 'function') {
-        updateSession(session.id, session.element, {
-          shuffledValues,
-        }).catch((e) => {
-          // eslint-disable-next-line no-console
-          console.error('update session failed', e);
-        });
-      }
-    }
-
-    if (question && prompts) {
-      prompts.forEach((prompt) => {
-        correctResponse[prompt.id] = prompt.relatedAnswer;
-      });
-    }
-
-    const fb =
-      env.mode === 'evaluate'
-        ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
-        : Promise.resolve(undefined);
-
-    fb.then((feedback) => {
-      const base = {
-        config: {
-          ...question,
-          prompts,
-          answers,
-        },
-        correctness: correctInfo,
-        feedback,
-        mode: env.mode,
-      };
-
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        base.rationale = question.rationale;
-      } else {
-        base.rationale = null;
-      }
-
-      const out = Object.assign(base, {
-        correctResponse,
-      });
-
-      log('out: ', out);
-      resolve(out);
+  const us = (part) => (id, element, update) => {
+    return new Promise((resolve) => {
+      shuffledValues[part] = update.shuffledValues;
+      resolve();
     });
+  };
+
+  const lockChoiceOrder = lockChoices(question, session, env);
+
+  if (!lockChoiceOrder) {
+    prompts = await getShuffledChoices(
+      prompts,
+      { shuffledValues: ((session && session.shuffledValues) || {}).prompts },
+      us('prompts'),
+      'id',
+    );
+    answers = await getShuffledChoices(
+      answers,
+      { shuffledValues: ((session && session.shuffledValues) || {}).answers },
+      us('answers'),
+      'id',
+    );
+  }
+
+  if (!isEmpty(shuffledValues)) {
+    if (updateSession && typeof updateSession === 'function') {
+      updateSession(session.id, session.element, {
+        shuffledValues,
+      }).catch((e) => {
+        // eslint-disable-next-line no-console
+        console.error('update session failed', e);
+      });
+    }
+  }
+
+  if (question && prompts) {
+    prompts.forEach((prompt) => {
+      correctResponse[prompt.id] = prompt.relatedAnswer;
+    });
+  }
+
+  const feedback =
+    env.mode === 'evaluate'
+      ? await getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
+      : undefined;
+
+  const base = {
+    config: {
+      ...question,
+      prompts,
+      answers,
+    },
+    correctness: correctInfo,
+    feedback,
+    mode: env.mode,
+  };
+
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    base.rationale = question.rationale;
+  } else {
+    base.rationale = null;
+  }
+
+  const out = Object.assign(base, {
+    correctResponse,
   });
+
+  log('out: ', out);
+  return out;
 }
 
 export const createCorrectResponseSession = (question, env) => {

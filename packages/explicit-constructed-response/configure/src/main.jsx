@@ -233,13 +233,13 @@ export class Main extends React.Component {
         if (!newChoices[keyForNode] && newCachedChoices[keyForNode]) {
           Object.assign(newChoices, pick(newCachedChoices, keyForNode));
 
-          if (newCachedChoices.hasOwnProperty(keyForNode)) {
+          if (Object.prototype.hasOwnProperty.call(newCachedChoices, keyForNode)) {
             delete newCachedChoices[keyForNode];
           }
         } else {
           Object.assign(newCachedChoices, pick(newChoices, keyForNode));
 
-          if (newChoices.hasOwnProperty(keyForNode)) {
+          if (Object.prototype.hasOwnProperty.call(newChoices, keyForNode)) {
             delete newChoices[keyForNode];
           }
         }

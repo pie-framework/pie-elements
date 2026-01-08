@@ -127,38 +127,34 @@ export default class NumberLine extends HTMLElement {
   }
 
   _render() {
-    try {
-      if (this._model && this._session) {
-        if (!this._session.answer) {
-          this._applyInitialElements();
-        }
-
-        let answer = (this._session.answer || []).map(toGraphFormat);
-        let model = cloneDeep(this._model);
-        model.correctResponse = model.correctResponse && model.correctResponse.map(toGraphFormat);
-
-        let props = {
-          model,
-          answer,
-          onAddElement: this.addElement.bind(this),
-          onMoveElement: this.moveElement.bind(this),
-          onDeleteElements: this.deleteElements.bind(this),
-          onUndoElement: this.undoElement.bind(this),
-          onClearElements: this.clearElements.bind(this),
-        };
-
-        let el = React.createElement(RootComponent, props);
-
-        if (!this._root) {
-          this._root = createRoot(this);
-        }
-        this._root.render(el);
-        queueMicrotask(() => {
-          renderMath(this);
-        });
+    if (this._model && this._session) {
+      if (!this._session.answer) {
+        this._applyInitialElements();
       }
-    } catch (e) {
-      throw e;
+
+      let answer = (this._session.answer || []).map(toGraphFormat);
+      let model = cloneDeep(this._model);
+      model.correctResponse = model.correctResponse && model.correctResponse.map(toGraphFormat);
+
+      let props = {
+        model,
+        answer,
+        onAddElement: this.addElement.bind(this),
+        onMoveElement: this.moveElement.bind(this),
+        onDeleteElements: this.deleteElements.bind(this),
+        onUndoElement: this.undoElement.bind(this),
+        onClearElements: this.clearElements.bind(this),
+      };
+
+      let el = React.createElement(RootComponent, props);
+
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+      queueMicrotask(() => {
+        renderMath(this);
+      });
     }
   }
 

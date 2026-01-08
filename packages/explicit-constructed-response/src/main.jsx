@@ -11,7 +11,7 @@ import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 
-const MainContainer = styled(UiLayout)(({ theme, alwaysShowCorrect }) => ({
+const MainContainer = styled(UiLayout)(({ alwaysShowCorrect }) => ({
   color: color.text(),
   backgroundColor: color.background(),
   ...(alwaysShowCorrect && {
@@ -73,7 +73,7 @@ export class Main extends React.Component {
 
   // if for all responses max length is 1, call onChange for each keystroke
   getChangeSession = (maxLengthPerChoice) =>
-    maxLengthPerChoice && maxLengthPerChoice.every((val, i, arr) => val === arr[0] && val === 1)
+    maxLengthPerChoice && maxLengthPerChoice.every((val, _i, arr) => val === arr[0] && val === 1)
       ? this.props.onChange
       : debounce(this.props.onChange, 200, { maxWait: 200 });
 

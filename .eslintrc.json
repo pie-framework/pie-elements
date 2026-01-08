@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended"
@@ -17,8 +17,12 @@
     }
   },
   "parserOptions": {
+    "requireConfigFile": false,
     "ecmaFeatures": {
       "jsx": true
+    },
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
     },
     "sourceType": "module"
   },
@@ -40,7 +44,7 @@
     "no-undef": "warn",
     "no-unreachable": "warn",
     "no-unused-vars": "warn",
-    "jsx-uses-vars": true,
+    "react/jsx-uses-vars": "warn",
     "constructor-super": "warn",
     "valid-typeof": "warn",
     "no-case-declarations": "warn",

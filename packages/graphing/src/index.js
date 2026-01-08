@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
 
-import { removeInvalidAnswers } from './utils';
 import Main from './main';
 
 export { Main as Component };
