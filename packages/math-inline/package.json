@@ -1,5 +1,6 @@
 {
   "name": "@pie-element/math-inline",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
@@ -7,6 +8,7 @@
   "version": "10.2.0",
   "main": "lib/index.js",
   "description": "",
+  "sideEffects": false,
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
@@ -35,7 +37,16 @@
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js"
+    },
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js"
+    },
+    "./configure": {
+      "import": "./esm/configure.js"
+    }
   }
 }

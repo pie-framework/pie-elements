@@ -1,11 +1,13 @@
 {
   "name": "@pie-element/fraction-model",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
   "version": "4.2.0",
   "description": "",
+  "sideEffects": false,
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/style": "^0.8.0",
@@ -31,6 +33,16 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js"
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js"
+    },
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js"
+    },
+    "./configure": {
+      "import": "./esm/configure.js"
+    }
   }
 }

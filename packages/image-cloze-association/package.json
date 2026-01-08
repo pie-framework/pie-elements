@@ -1,11 +1,13 @@
 {
   "name": "@pie-element/image-cloze-association",
+  "type": "module",
   "version": "8.2.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
   "dependencies": {
     "@dnd-kit/core": "6.1.0",
     "@emotion/react": "^11.14.0",
@@ -31,5 +33,18 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js"
+    },
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js"
+    },
+    "./configure": {
+      "import": "./esm/configure.js"
+    }
+  }
 }

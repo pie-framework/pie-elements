@@ -5,6 +5,7 @@ node_modules
 .DS_Store
 **/.pie
 **/lib
+**/esm
 **/*.tgz
 **/dist
 .vscode

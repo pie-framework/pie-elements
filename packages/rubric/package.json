@@ -1,5 +1,6 @@
 {
   "name": "@pie-element/rubric",
+  "type": "module",
   "version": "6.2.0-mui-update.2",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -8,6 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/style": "^0.8.0",
@@ -24,8 +26,16 @@
     "postpublish": "../../scripts/postpublish"
   },
   "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js",
-    "./configure/lib": "./configure/lib/index.js"
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js"
+    },
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js"
+    },
+    "./configure": {
+      "import": "./esm/configure.js"
+    }
   }
 }

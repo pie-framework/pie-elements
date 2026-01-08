@@ -1,11 +1,13 @@
 {
   "name": "@pie-element/graphing-solution-set",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
   "version": "4.2.0",
   "description": "",
+  "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postpublish": "../../scripts/postpublish"
@@ -30,5 +32,18 @@
   "license": "ISC",
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./esm/element.js",
+      "require": "./lib/index.js"
+    },
+    "./controller": {
+      "import": "./esm/controller.js",
+      "require": "./controller/lib/index.js"
+    },
+    "./configure": {
+      "import": "./esm/configure.js"
+    }
+  }
 }
