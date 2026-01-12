@@ -1,13 +1,11 @@
 {
   "name": "@pie-element/matrix",
-  "type": "module",
   "publishConfig": {
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
   "version": "2.2.0",
   "description": "",
-  "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,18 +27,5 @@
   "license": "ISC",
   "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa",
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "exports": {
-    ".": {
-      "import": "./esm/element.js",
-      "require": "./lib/index.js"
-    },
-    "./controller": {
-      "import": "./esm/controller.js",
-      "require": "./controller/lib/index.js"
-    },
-    "./configure": {
-      "import": "./esm/configure.js"
-    }
-  }
+  "module": "src/index.js"
 }

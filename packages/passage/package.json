@@ -1,6 +1,5 @@
 {
   "name": "@pie-element/passage",
-  "type": "module",
   "version": "5.2.0",
   "publishConfig": {
     "access": "public"
@@ -9,7 +8,6 @@
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",
-  "sideEffects": false,
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/style": "^0.8.0",
@@ -29,16 +27,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": {
-      "import": "./esm/element.js",
-      "require": "./lib/index.js"
-    },
-    "./controller": {
-      "import": "./esm/controller.js",
-      "require": "./controller/lib/index.js"
-    },
-    "./configure": {
-      "import": "./esm/configure.js"
-    }
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
   }
 }

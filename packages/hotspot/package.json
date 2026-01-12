@@ -1,13 +1,11 @@
 {
   "name": "@pie-element/hotspot",
-  "type": "module",
   "version": "9.2.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": false,
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/style": "^0.8.0",
@@ -31,18 +29,5 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "exports": {
-    ".": {
-      "import": "./esm/element.js",
-      "require": "./lib/index.js"
-    },
-    "./controller": {
-      "import": "./esm/controller.js",
-      "require": "./controller/lib/index.js"
-    },
-    "./configure": {
-      "import": "./esm/configure.js"
-    }
-  }
+  "module": "src/index.js"
 }
