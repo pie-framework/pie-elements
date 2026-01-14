@@ -242,7 +242,11 @@ export class Design extends React.Component {
 
     // moving a choice between categories (correct response)
     if (activeData.type === 'choice-preview' && overData.type === 'category') {
-      this.moveChoice(activeData.id, activeData.categoryId, overData.id, 0);
+      // Extract original choice.id - if DraggableChoice uses the unique id in data, extract the first part
+      // Format: ${choice.id}-${categoryId}-${choiceIndex} or ${choice.id}-${categoryId}-${choiceIndex}-alt-${alternateResponseIndex}
+      const choiceId =
+        activeData.choice?.id || (typeof activeData.id === 'string' ? activeData.id.split('-')[0] : activeData.id);
+      this.moveChoice(choiceId, activeData.categoryId, overData.id, activeData.choiceIndex || 0);
     }
 
     // placing a choice into a category (correct response)
@@ -253,7 +257,16 @@ export class Design extends React.Component {
     // moving a choice between categories (alternate response)
     if (activeData.type === 'choice-preview' && overData.type === 'category-alternate') {
       const toAlternateIndex = overData.alternateResponseIndex;
-      this.moveChoiceInAlternate(activeData.id, activeData.categoryId, overData.id, 0, toAlternateIndex);
+      // Extract original choice.id - if DraggableChoice uses the unique id in data, extract the first part
+      const choiceId =
+        activeData.choice?.id || (typeof activeData.id === 'string' ? activeData.id.split('-')[0] : activeData.id);
+      this.moveChoiceInAlternate(
+        choiceId,
+        activeData.categoryId,
+        overData.id,
+        activeData.choiceIndex || 0,
+        toAlternateIndex,
+      );
     }
 
     // placing a choice into a category (alternate response)
@@ -416,32 +429,18 @@ export class Design extends React.Component {
     if (!activeDragItem) return null;
 
     if (activeDragItem.type === 'choice') {
-      const choice = model.choices?.find(c => c.id === activeDragItem.id);
+      const choice = model.choices?.find((c) => c.id === activeDragItem.id);
       if (!choice) return null;
 
-      return (
-        <Choice
-          choice={choice}
-          configuration={configuration}
-        />
-      );
+      return <Choice choice={choice} configuration={configuration} />;
     } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex === undefined) {
-      const choice = model.choices?.find(c => c.id === activeDragItem.id);
+      const choice = model.choices?.find((c) => c.id === activeDragItem.id);
       if (!choice) return null;
-      return (
-        <ChoicePreview
-          choice={choice}
-        />
-      );
+      return <ChoicePreview choice={choice} />;
     } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex !== undefined) {
-      const choice = model.choices?.find(c => c.id === activeDragItem.id);
+      const choice = model.choices?.find((c) => c.id === activeDragItem.id);
       if (!choice) return null;
-      return (
-        <ChoicePreview
-          choice={choice}
-          alternateResponseIndex={activeDragItem.alternateResponseIndex}
-        />
-      );
+      return <ChoicePreview choice={choice} alternateResponseIndex={activeDragItem.alternateResponseIndex} />;
     }
 
     return null;
@@ -730,9 +729,7 @@ export class Design extends React.Component {
             )}
           </layout.ConfigLayout>
           <DragOverlay>
-            <DragPreviewWrapper>
-              {this.renderDragOverlay()}
-            </DragPreviewWrapper>
+            <DragPreviewWrapper>{this.renderDragOverlay()}</DragPreviewWrapper>
           </DragOverlay>
         </IdProvider>
       </DragProvider>

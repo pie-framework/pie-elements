@@ -119,6 +119,8 @@ class RectComponent extends React.Component {
           />
         )}
         <Rect
+          x={x}
+          y={y}
           width={width}
           height={height}
           fill={selected && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
@@ -129,11 +131,8 @@ class RectComponent extends React.Component {
           strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
-          x={x}
-          y={y}
           opacity={0.5}
           cursor="pointer"
-          position="relative"
         />
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>

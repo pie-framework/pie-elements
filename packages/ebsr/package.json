@@ -9,7 +9,7 @@
   "dependencies": {
     "@pie-element/multiple-choice": "11.2.0-mui-update.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/translator": "2.36.0-mui-update.0",
+    "@pie-lib/translator": "2.38.0-mui-update.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.11"

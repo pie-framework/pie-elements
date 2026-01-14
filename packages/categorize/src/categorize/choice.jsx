@@ -51,18 +51,14 @@ export class Layout extends React.Component {
     ...ChoiceType,
     disabled: PropTypes.bool,
     correct: PropTypes.bool,
-    isDragging: PropTypes.bool
+    isDragging: PropTypes.bool,
   };
   static defaultProps = {};
   render() {
     const { content, isDragging, disabled, correct } = this.props;
 
     return (
-      <ChoiceContainer
-        isDragging={isDragging}
-        disabled={disabled}
-        correct={correct}
-      >
+      <ChoiceContainer isDragging={isDragging} disabled={disabled} correct={correct}>
         <StyledCard>
           <StyledCardContent dangerouslySetInnerHTML={{ __html: content }} />
         </StyledCard>
@@ -71,17 +67,14 @@ export class Layout extends React.Component {
   }
 }
 
-const DraggableChoice = ({
-  id,
-  content,
-  disabled,
-  correct,
-  extraStyle,
-  categoryId,
-  choiceIndex,
-}) => {
+const DraggableChoice = ({ id, content, disabled, correct, extraStyle, categoryId, choiceIndex }) => {
+  // Generate unique draggable ID for each instance
+  // If in choices board (categoryId is undefined), use 'board' suffix
+  // If in a category, include categoryId and choiceIndex to make it unique
+  const draggableId = categoryId !== undefined ? `choice-${id}-${categoryId}-${choiceIndex}` : `choice-${id}-board`;
+
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
-    id: `choice-${id}`,
+    id: draggableId,
     data: {
       id,
       categoryId,
@@ -94,19 +87,8 @@ const DraggableChoice = ({
   });
 
   return (
-    <div
-      ref={setNodeRef}
-      style={{ margin: '4px', ...extraStyle }}
-      {...listeners}
-      {...attributes}
-    >
-      <Layout
-        id={id}
-        content={content}
-        disabled={disabled}
-        correct={correct}
-        isDragging={isDragging}
-      />
+    <div ref={setNodeRef} style={{ margin: '4px', ...extraStyle }} {...listeners} {...attributes}>
+      <Layout id={id} content={content} disabled={disabled} correct={correct} isDragging={isDragging} />
     </div>
   );
 };

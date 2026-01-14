@@ -39,6 +39,13 @@ export class ChoicePreview extends React.Component {
   render() {
     const { alternateResponseIndex, category, choice, choiceIndex } = this.props;
 
+    // Generate unique ID for each instance to distinguish multiple instances of the same choice
+    const categoryId = category && category.id;
+    const uniqueId =
+      alternateResponseIndex !== undefined
+        ? `${choice.id}-${categoryId}-${choiceIndex}-alt-${alternateResponseIndex}`
+        : `${choice.id}-${categoryId}-${choiceIndex}`;
+
     return (
       <ChoicePreviewContainer>
         {choice ? (
@@ -49,16 +56,13 @@ export class ChoicePreview extends React.Component {
             choiceIndex={choiceIndex}
             onRemoveChoice={this.delete}
             type={'choice-preview'}
-            id={choice.id}
-            categoryId={category && category.id}
+            id={uniqueId}
+            categoryId={categoryId}
           >
             <HtmlAndMath html={choice?.content} />
           </DraggableChoice>
         ) : null}
-        <DeleteIconButton
-          aria-label="delete"
-          onClick={this.delete}
-          size="large">
+        <DeleteIconButton aria-label="delete" onClick={this.delete} size="large">
           <RemoveCircleOutlineIcon />
         </DeleteIconButton>
       </ChoicePreviewContainer>
