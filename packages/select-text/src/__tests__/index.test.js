@@ -24,10 +24,16 @@ jest.mock('react-dom/client', () => ({
 
 describe('select-text', () => {
   let c;
+
+  beforeAll(() => {
+    if (!customElements.get('select-text')) {
+      customElements.define('select-text', SelectText);
+    }
+  });
+
   beforeEach(() => {
     c = new SelectText();
     c.dispatchEvent = jest.fn();
-    c.tagName = 'select-text';
     c.model = {};
     c.session = {};
   });

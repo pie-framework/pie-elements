@@ -1,6 +1,9 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import React from 'react';
 import AnnotationMenu from '../annotation-menu';
+
+const theme = createTheme();
 
 describe('freeform editor', () => {
   const defaultProps = {
@@ -35,22 +38,27 @@ describe('freeform editor', () => {
     };
     const props = { ...defaults, ...extras };
 
-    return shallow(<AnnotationMenu { ...props } />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <AnnotationMenu { ...props } />
+      </ThemeProvider>
+    );
   };
 
   describe('snapshots', () => {
     it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
+      const { container } = wrapper();
+      expect(container).toMatchSnapshot();
     });
 
     it('opened', () => {
-      expect(wrapper({ open: true })).toMatchSnapshot();
+      const { container } = wrapper({ open: true });
+      expect(container).toMatchSnapshot();
     });
 
     it('opened and new annotation selected', () => {
-      expect(
-        wrapper({ open: true, isNewAnnotation: true })
-      ).toMatchSnapshot();
+      const { container } = wrapper({ open: true, isNewAnnotation: true });
+      expect(container).toMatchSnapshot();
     });
   });
 });

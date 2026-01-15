@@ -1,12 +1,11 @@
-import { shallow } from 'enzyme';
-
+import { render } from '@testing-library/react';
 import React from 'react';
 import { PlacementOrdering, Choice } from '../placement-ordering';
 import { buildState, reducer } from '../ordering';
 
 jest.mock('../ordering', () => ({
-  buildState: jest.fn().mockReturnValue({}),
-  reducer: jest.fn().mockReturnValue({})
+  buildState: jest.fn().mockReturnValue({ tiles: [], choices: [], response: [] }),
+  reducer: jest.fn().mockReturnValue({ tiles: [], choices: [], response: [] })
 }));
 
 describe('PlacementOrdering', () => {
@@ -14,9 +13,10 @@ describe('PlacementOrdering', () => {
   let choices;
   let correctResponse;
   let onSessionChange;
-  const mkWrapper = (mod, session) => {
+
+  const mkWrapper = (mod, sess) => {
     onSessionChange = jest.fn();
-    session = { value: [], ...session };
+    session = { value: [], ...sess };
     choices = [
       {
         id: 'c1',
@@ -44,7 +44,7 @@ describe('PlacementOrdering', () => {
       ...mod
     };
 
-    return shallow(
+    return render(
       <PlacementOrdering
         model={model}
         session={session}
@@ -52,9 +52,56 @@ describe('PlacementOrdering', () => {
           placementOrdering: 'placementOrdering'
         }}
         onSessionChange={onSessionChange}
-      />,
-      { disableLifecycleMethods: true }
+      />
     );
+  };
+
+  const createInstance = (mod, sess) => {
+    onSessionChange = jest.fn();
+    session = { value: [], ...sess };
+    choices = [
+      {
+        id: 'c1',
+        label: 'C1'
+      },
+      {
+        id: 'c2',
+        label: 'C2'
+      },
+      {
+        id: 'c3',
+        label: 'C3'
+      },
+      {
+        id: 'c4',
+        label: 'C4'
+      }
+    ];
+    correctResponse = ['c1', 'c2', 'c3', 'c4'];
+    model = {
+      config: {
+        includeTargets: true
+      },
+      choices,
+      ...mod
+    };
+
+    const props = {
+      model,
+      session,
+      classes: {
+        placementOrdering: 'placementOrdering'
+      },
+      onSessionChange
+    };
+
+    const instance = new PlacementOrdering(props);
+    instance.setState = jest.fn((state, callback) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+      if (callback) callback();
+    });
+    instance.props = props;
+    return instance;
   };
 
   beforeEach(() => {
@@ -63,18 +110,18 @@ describe('PlacementOrdering', () => {
 
   describe('render', () => {
     it('snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+      const { container } = mkWrapper();
+      expect(container).toMatchSnapshot();
     });
 
     it('shows toggle', () => {
-      let w = mkWrapper({ correctResponse: ['c1', 'c2', 'c3', 'c4'] });
-      expect(w).toMatchSnapshot();
+      const { container } = mkWrapper({ correctResponse: ['c1', 'c2', 'c3', 'c4'] });
+      expect(container).toMatchSnapshot();
     });
 
     it('snapshot with rationale', () => {
-      let w = mkWrapper({ rationale: 'This is rationale.' });
-
-      expect(w).toMatchSnapshot();
+      const { container } = mkWrapper({ rationale: 'This is rationale.' });
+      expect(container).toMatchSnapshot();
     });
   });
 
@@ -85,19 +132,19 @@ describe('PlacementOrdering', () => {
 
   describe('logic', () => {
     let response;
+    let instance;
 
     describe('onDropChoice', () => {
       beforeEach(() => {
         response = ['c4', 'c2', 'c3', 'c1'];
 
         reducer.mockReturnValue({ response });
-        wrapper
-          .instance()
-          .onDropChoice(
-            { id: 'c4', type: 'choice' },
-            { id: 'c1', type: 'choice' },
-            ordering({ tiles: [{ id: 'c1', type: 'choice' }] })
-          );
+        instance = createInstance();
+        instance.onDropChoice(
+          { id: 'c4', type: 'choice' },
+          { id: 'c1', type: 'choice' },
+          ordering({ tiles: [{ id: 'c1', type: 'choice' }] })
+        );
       });
 
       it('calls reducer', () =>
@@ -120,10 +167,10 @@ describe('PlacementOrdering', () => {
       beforeEach(() => {
         reducer.mockReset();
         reducer.mockReturnValue({ response: ['c1', 'c2', 'c3'] });
-        wrapper = mkWrapper();
+        instance = createInstance();
 
         target = { id: 'c4', type: 'target', index: 3 };
-        wrapper.instance().onRemoveChoice(target, {});
+        instance.onRemoveChoice(target, {});
       });
 
       it('calls reducer', () => {
@@ -144,15 +191,15 @@ describe('PlacementOrdering', () => {
       let opts = { includeTargets: true, allowSameChoiceInTargets: undefined };
 
       beforeEach(() => {
-        wrapper = mkWrapper({
+        instance = createInstance({
           correctResponse
         });
       });
 
       describe('when showingCorrect is false', () => {
         beforeEach(() => {
-          wrapper.setState({ showingCorrect: false });
-          wrapper.instance().createOrdering();
+          instance.state.showingCorrect = false;
+          instance.createOrdering();
         });
 
         it('calls buildState with default values', () => {
@@ -160,9 +207,8 @@ describe('PlacementOrdering', () => {
         });
 
         it('calls buildState with session values', () => {
-          wrapper.setProps({ session: { value: ['c4', 'c2', 'c3', 'c1'] } });
-
-          wrapper.instance().createOrdering();
+          instance.props = { ...instance.props, session: { value: ['c4', 'c2', 'c3', 'c1'] } };
+          instance.createOrdering();
 
           expect(buildState).toHaveBeenCalledWith(choices, ['c4', 'c2', 'c3', 'c1'], undefined, opts);
         });
@@ -174,8 +220,8 @@ describe('PlacementOrdering', () => {
         beforeEach(() => {
           outcomes = correctResponse.map(id => ({ id, outcome: 'correct' }));
 
-          wrapper.setState({ showingCorrect: true });
-          wrapper.instance().createOrdering();
+          instance.state.showingCorrect = true;
+          instance.createOrdering();
         });
 
         it('calls buildState with default values', () => {

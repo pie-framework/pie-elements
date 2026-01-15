@@ -1,32 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main snapshot renders with default values 1`] = `
-<WithStyles(Component)
-  classes={Object {}}
-  model={
-    Object {
-      "columnLabels": Array [
-        "COLUMN 1",
-        "COLUMN 2",
-        "COLUMN 3",
-      ],
-      "configure": Object {},
-      "labelType": "agreement",
-      "matrixValues": Object {},
-      "prompt": "",
-      "promptEnabled": true,
-      "rowLabels": Array [
-        "STATEMENT 1",
-        "STATEMENT 2",
-      ],
-      "teacherInstructions": "",
-      "teacherInstructionsEnabled": true,
-    }
-  }
-  onChangeModel={[MockFunction]}
-  onConfigurationChanged={[MockFunction]}
-  onModelChanged={[MockFunction]}
-  onPromptChanged={[Function]}
-  onTeacherInstructionsChanged={[Function]}
-/>
+<div>
+  <div
+    data-testid="config-layout"
+  >
+    <div
+      class="css-17vnkrk"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="editable-html"
+        markup=""
+        pluginprops="[object Object]"
+      />
+    </div>
+    <div
+      class="css-17vnkrk"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="editable-html"
+        markup=""
+        pluginprops="[object Object]"
+      />
+    </div>
+    <div
+      class="css-1p1ziox"
+    >
+      <div
+        data-testid="matrix-rows-size-header-input"
+        model="[object Object]"
+      />
+      <div
+        data-testid="matrix-columns-size-header-input"
+        model="[object Object]"
+      />
+      <div
+        data-testid="matrix-label-type-header-input"
+        model="[object Object]"
+      />
+    </div>
+    <div
+      data-testid="matrix-values"
+      model="[object Object]"
+    />
+  </div>
+</div>
 `;

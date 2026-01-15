@@ -2,98 +2,150 @@
 
 exports[`AlternateSection snapshot renders 1`] = `
 <div>
-  <div>
-    <WithStyles(WithFormControlContext(Select))
-      displayEmpty={true}
-      onChange={[Function]}
-      value="cow"
+  <div
+    class="css-1itv5e3"
+  >
+    <div
+      class="css-10x1oia"
     >
-      <WithStyles(MenuItem)
-        value=""
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiSelect-root css-1dgmmce-MuiInputBase-root-MuiInput-root-MuiSelect-root"
       >
-        <em>
-          Remove selection
-        </em>
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="0"
-        value="2"
+        <div
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          class="MuiSelect-select MuiSelect-standard MuiInputBase-input MuiInput-input css-unhb03-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiInput-input"
+          role="combobox"
+          tabindex="0"
+        >
+          <span
+            aria-hidden="true"
+            class="notranslate"
+          >
+            ​
+          </span>
+        </div>
+        <input
+          aria-hidden="true"
+          aria-invalid="false"
+          class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput"
+          tabindex="-1"
+          value="cow"
+        />
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard css-ug7h84-MuiSvgIcon-root-MuiNativeSelect-root-MuiSelect-icon"
+          data-testid="ArrowDropDownIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+      <div
+        class="css-1atl7vu"
       >
-        moon
-      </WithStyles(MenuItem)>
-    </WithStyles(WithFormControlContext(Select))>
-    <div>
-      <WithStyles(Button)
-        color="primary"
-        onClick={[Function]}
-        variant="contained"
-      >
-        Add
-      </WithStyles(Button)>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-74d805-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          Add
+        </button>
+      </div>
     </div>
-  </div>
-  <div>
-    <Choice
-      classes={Object {}}
-      key="1"
-      markup="cattle"
-      onChange={[Function]}
-      onDelete={[Function]}
-    />
-    <Choice
-      classes={Object {}}
-      key="2"
-      markup="calf"
-      onChange={[Function]}
-      onDelete={[Function]}
-    />
+    <div
+      class="css-6la5f1"
+    >
+      <div
+        class="css-1jc8l5b"
+      >
+        <div
+          data-testid="editable-html"
+        >
+          cattle
+        </div>
+        <button
+          aria-label="delete"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-f3cj28-MuiButtonBase-root-MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+            data-testid="DeleteIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="css-1jc8l5b"
+      >
+        <div
+          data-testid="editable-html"
+        >
+          calf
+        </div>
+        <button
+          aria-label="delete"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-f3cj28-MuiButtonBase-root-MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+            data-testid="DeleteIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`Choice snapshot renders 1`] = `
-<Fragment>
+<div>
   <div
-    style={
-      Object {
-        "alignItems": "center",
-        "display": "flex",
-        "justifyContent": "space-between",
-      }
-    }
+    class="css-1jc8l5b"
   >
-    <EditableHtml
-      activePlugins={
-        Array [
-          "languageCharacters",
-        ]
-      }
-      autoWidthToolbar={true}
-      className=""
-      disableUnderline={true}
-      languageCharactersProps={
-        Array [
-          Object {
-            "language": "spanish",
-          },
-        ]
-      }
-      markup="cow"
-      maxLength={25}
-      onChange={[Function]}
-      toolbarOpts={
-        Object {
-          "isHidden": false,
-          "minWidth": "auto",
-        }
-      }
-    />
-    <WithStyles(IconButton)
-      aria-label="delete"
-      onClick={[MockFunction]}
+    <div
+      data-testid="editable-html"
     >
-      <pure(DeleteIcon) />
-    </WithStyles(IconButton)>
+      cow
+    </div>
+    <button
+      aria-label="delete"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-f3cj28-MuiButtonBase-root-MuiIconButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+        data-testid="DeleteIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+        />
+      </svg>
+    </button>
   </div>
-</Fragment>
+</div>
 `;

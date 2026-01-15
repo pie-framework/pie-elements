@@ -9,8 +9,19 @@ jest.mock('@pie-lib/config-ui', () => ({
     Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
     radio: jest.fn(),
+    dropdown: jest.fn(),
   },
+  layout: {
+    ConfigLayout: (props) => <div>{props.children}</div>,
+  },
+  InputContainer: (props) => <div {...props}>{props.children}</div>,
 }));
+
+jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
+
+jest.mock('@mui/material/Typography', () => (props) => <div {...props}>{props.children}</div>);
+
+jest.mock('../image-container', () => (props) => <div {...props} />);
 
 const model = () => ({
   promptEnabled: true,
@@ -39,10 +50,15 @@ describe('index', () => {
 
   beforeAll(() => {
     Def = require('../index').default;
+    // Register the custom element if not already registered
+    if (!customElements.get('drawing-response-configure')) {
+      customElements.define('drawing-response-configure', Def);
+    }
   });
 
   beforeEach(() => {
-    el = new Def();
+    // Create custom element using document.createElement to properly initialize
+    el = document.createElement('drawing-response-configure');
     el.model = initialModel;
     el.onModelChanged = onModelChanged;
   });

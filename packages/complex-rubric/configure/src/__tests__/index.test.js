@@ -10,11 +10,26 @@ jest.mock('@pie-lib/config-ui', () => ({
     radio: jest.fn(),
   },
 }));
+
 jest.mock('@pie-lib/render-ui', () => ({
   color: {
     tertiary: jest.fn(() => '#146EB3'),
   },
 }));
+
+jest.mock('@pie-element/rubric/configure/lib', () => {
+  class MockRubricConfigure {
+    constructor() {}
+  }
+  return MockRubricConfigure;
+});
+
+jest.mock('@pie-element/multi-trait-rubric/configure/lib', () => {
+  class MockMultiTraitRubricConfigure {
+    constructor() {}
+  }
+  return MockMultiTraitRubricConfigure;
+});
 
 const model = () => ({ ...defaults.model });
 
@@ -35,10 +50,14 @@ describe('index', () => {
 
   beforeAll(() => {
     Def = require('../index').default;
+    // Register the custom element for testing
+    if (!customElements.get('complex-rubric-configure-test')) {
+      customElements.define('complex-rubric-configure-test', Def);
+    }
   });
 
   beforeEach(() => {
-    el = new Def();
+    el = document.createElement('complex-rubric-configure-test');
     el.model = initialModel;
     el.onModelChanged = onModelChanged;
   });

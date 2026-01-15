@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Main Component should match snapshot 1`] = `
+<div>
+  <div
+    data-testid="ui-layout"
+  >
+    <h2
+      class="css-sxv43x"
+    >
+      Constructed Response Question
+    </h2>
+    <div
+      data-testid="editable-html"
+    >
+      hi
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Render Main Component should match snapshot with teacher instructions 1`] = `
+<div>
+  <div
+    data-testid="ui-layout"
+  >
+    <h2
+      class="css-sxv43x"
+    >
+      Constructed Response Question
+    </h2>
+    <div
+      class="css-1qm1lh"
+    >
+      <div
+        data-testid="collapsible"
+      >
+        <div
+          data-testid="preview-prompt"
+        >
+          Teacher Instructions
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="editable-html"
+    >
+      hi
+    </div>
+  </div>
+</div>
+`;

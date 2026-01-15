@@ -1,43 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Arrow render renders correctly for default direction 1`] = `
-<div
-  style={
-    Object {
-      "transform": "rotate(180deg)",
-    }
-  }
->
-  <pure(ArrowDropDownIcon)
-    style={
-      Object {
-        "color": "#979797",
-        "fontSize": 40,
-        "transform": "rotate(90deg)",
-      }
-    }
-  />
-  <span
-    className="undefined"
-  />
+<div>
+  <div
+    class="css-1825de8"
+    style="transform: rotate(180deg);"
+  >
+    <div
+      data-testid="arrow-head"
+      style="transform: rotate(90deg); color: rgb(151, 151, 151); font-size: 40px;"
+    />
+    <span
+      class="css-1w5bq1v"
+    />
+  </div>
 </div>
 `;
 
 exports[`Arrow render renders correctly for direction left 1`] = `
-<div
-  style={Object {}}
->
-  <pure(ArrowDropDownIcon)
-    style={
-      Object {
-        "color": "#979797",
-        "fontSize": 40,
-        "transform": "rotate(90deg)",
-      }
-    }
-  />
-  <span
-    className=""
-  />
+<div>
+  <div
+    class="css-1825de8"
+  >
+    <div
+      data-testid="arrow-head"
+      style="transform: rotate(90deg); color: rgb(151, 151, 151); font-size: 40px;"
+    />
+    <span
+      class="css-lvya29"
+    />
+  </div>
 </div>
 `;

@@ -15,82 +15,80 @@ export const normalize = (question) => ({
  * @param {*} env
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export function model(question, session, env, updateSession) {
-  return new Promise(async (resolve) => {
-    const normalizedQuestion = normalize(question);
-    let feedback = {};
+export async function model(question, session, env, updateSession) {
+  const normalizedQuestion = normalize(question);
+  let feedback = {};
 
-    if (env.mode === 'evaluate') {
-      const responses = getAllCorrectResponses(normalizedQuestion) || {};
-      const allCorrectResponses = responses.possibleResponses;
-      const numberOfPossibleResponses = responses.numberOfPossibleResponses || 0;
-      let correctResponses = undefined;
-      const { value } = session || {};
+  if (env.mode === 'evaluate') {
+    const responses = getAllCorrectResponses(normalizedQuestion) || {};
+    const allCorrectResponses = responses.possibleResponses;
+    const numberOfPossibleResponses = responses.numberOfPossibleResponses || 0;
+    let correctResponses = undefined;
+    const { value } = session || {};
 
-      for (let i = 0; i < numberOfPossibleResponses; i++) {
-        const result = Object.keys(allCorrectResponses).reduce(
-          (obj, key) => {
-            const choices = allCorrectResponses[key];
-            const answer = (value && value[key]) || '';
+    for (let i = 0; i < numberOfPossibleResponses; i++) {
+      const result = Object.keys(allCorrectResponses).reduce(
+        (obj, key) => {
+          const choices = allCorrectResponses[key];
+          const answer = (value && value[key]) || '';
 
-            obj.feedback[key] = choices[i] === answer;
+          obj.feedback[key] = choices[i] === answer;
 
-            if (obj.feedback[key]) {
-              obj.correctResponses += 1;
-            }
+          if (obj.feedback[key]) {
+            obj.correctResponses += 1;
+          }
 
-            return obj;
-          },
-          { correctResponses: 0, feedback: {} },
-        );
+          return obj;
+        },
+        { correctResponses: 0, feedback: {} },
+      );
 
-        if (correctResponses === undefined || result.correctResponses > correctResponses) {
-          correctResponses = result.correctResponses;
-          feedback = result.feedback;
-        }
+      if (correctResponses === undefined || result.correctResponses > correctResponses) {
+        correctResponses = result.correctResponses;
+        feedback = result.feedback;
       }
     }
+  }
 
-    let choices = normalizedQuestion.choices && normalizedQuestion.choices.filter((choice) => !choiceIsEmpty(choice));
+  let choices = normalizedQuestion.choices && normalizedQuestion.choices.filter((choice) => !choiceIsEmpty(choice));
 
-    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
+  const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
-    if (!lockChoiceOrder) {
-      choices = await getShuffledChoices(choices, session, updateSession, 'id');
-    }
+  if (!lockChoiceOrder) {
+    choices = await getShuffledChoices(choices, session, updateSession, 'id');
+  }
 
-    // we don't need to check for fewer areas to be filled in the alternateResponses
-    // because the alternates are an option in the default correct response (for scoring)
-    const responseAreasToBeFilled = Object.values(normalizedQuestion.correctResponse || {}).filter(
-      (value) => !!value,
-    ).length;
+  // we don't need to check for fewer areas to be filled in the alternateResponses
+  // because the alternates are an option in the default correct response (for scoring)
+  const responseAreasToBeFilled = Object.values(normalizedQuestion.correctResponse || {}).filter(
+    (value) => !!value,
+  ).length;
 
-    const shouldIncludeCorrectResponse = env.mode === 'evaluate';
+  const shouldIncludeCorrectResponse = env.mode === 'evaluate';
 
-    const out = {
-      ...normalizedQuestion,
-      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-      choices,
-      feedback,
-      mode: env.mode,
-      disabled: env.mode !== 'gather',
-      responseCorrect: shouldIncludeCorrectResponse ? getScore(normalizedQuestion, session) === 1 : undefined,
-      correctResponse: shouldIncludeCorrectResponse ? normalizedQuestion.correctResponse : undefined,
-      responseAreasToBeFilled,
-    };
+  const out = {
+    ...normalizedQuestion,
+    prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+    choices,
+    feedback,
+    mode: env.mode,
+    disabled: env.mode !== 'gather',
+    responseCorrect: shouldIncludeCorrectResponse ? getScore(normalizedQuestion, session) === 1 : undefined,
+    correctResponse: shouldIncludeCorrectResponse ? normalizedQuestion.correctResponse : undefined,
+    responseAreasToBeFilled,
+  };
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
-        ? normalizedQuestion.teacherInstructions
-        : null;
-    } else {
-      out.rationale = null;
-      out.teacherInstructions = null;
-    }
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+    out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+      ? normalizedQuestion.teacherInstructions
+      : null;
+  } else {
+    out.rationale = null;
+    out.teacherInstructions = null;
+  }
 
-    resolve(out);
-  });
+  return out;
 }
 
 export const getScore = (config, session) => {

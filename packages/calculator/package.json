@@ -9,14 +9,6 @@
     "test:coverage": "jest --coverage",
     "postpublish": "../../scripts/postpublish"
   },
-  "jest": {
-    "setupFiles": [
-      "./jestsetup.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
   "publishConfig": {
     "access": "public"
   },

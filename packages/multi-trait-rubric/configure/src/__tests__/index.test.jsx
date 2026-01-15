@@ -3,8 +3,11 @@ import defaults from '../defaults';
 import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-framework/pie-configure-events';
 import React from 'react';
 
-jest.mock('react-dom', () => ({
-  render: jest.fn(),
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: jest.fn(),
+    unmount: jest.fn(),
+  })),
 }));
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -48,8 +51,15 @@ const configuration = (c) => ({ ...defaults.configuration, ...c });
 describe('MultiTraitRubricElement', () => {
   let element;
 
+  beforeAll(() => {
+    // Register the custom element if not already registered
+    if (!customElements.get('multi-trait-rubric-element')) {
+      customElements.define('multi-trait-rubric-element', MultiTraitRubricElement);
+    }
+  });
+
   beforeEach(() => {
-    element = new MultiTraitRubricElement();
+    element = document.createElement('multi-trait-rubric-element');
   });
 
   afterEach(() => {

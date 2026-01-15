@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`index createDefaultModel default-snapshot 1`] = `
-Object {
-  "partA": Object {
+{
+  "partA": {
     "choiceMode": "radio",
     "choicePrefix": "letters",
-    "choices": Array [],
+    "choices": [],
     "choicesLayout": "vertical",
     "feedbackEnabled": false,
     "gridColumns": 2,
@@ -19,10 +19,10 @@ Object {
     "teacherInstructionsEnabled": true,
     "toolbarEditorPosition": "bottom",
   },
-  "partB": Object {
+  "partB": {
     "choiceMode": "radio",
     "choicePrefix": "letters",
-    "choices": Array [],
+    "choices": [],
     "choicesLayout": "vertical",
     "feedbackEnabled": false,
     "gridColumns": 2,
@@ -42,11 +42,11 @@ Object {
 `;
 
 exports[`index createDefaultModel with-overrides-snapshot 1`] = `
-Object {
-  "partA": Object {
+{
+  "partA": {
     "choiceMode": "radio",
     "choicePrefix": "letters",
-    "choices": Array [],
+    "choices": [],
     "choicesLayout": "vertical",
     "feedbackEnabled": false,
     "gridColumns": 2,
@@ -60,10 +60,10 @@ Object {
     "teacherInstructionsEnabled": true,
     "toolbarEditorPosition": "bottom",
   },
-  "partB": Object {
+  "partB": {
     "choiceMode": "radio",
     "choicePrefix": "letters",
-    "choices": Array [],
+    "choices": [],
     "choicesLayout": "vertical",
     "feedbackEnabled": false,
     "gridColumns": 2,

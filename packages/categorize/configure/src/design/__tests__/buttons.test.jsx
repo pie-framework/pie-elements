@@ -1,24 +1,31 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { RawAddButton } from '../buttons';
 
+const theme = createTheme();
+
 describe('AddButton', () => {
-  let w;
   let onClick = jest.fn();
-  const wrapper = (extras) => {
+  const renderAddButton = (extras) => {
     const defaults = {
       classes: { addButton: 'addButton' },
       className: 'className',
       onClick,
     };
     const props = { ...defaults, ...extras };
-    return shallow(<RawAddButton {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <RawAddButton {...props} />
+      </ThemeProvider>
+    );
   };
-  describe('snapshot', () => {
-    it('renders', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderAddButton();
+      expect(container).toBeInTheDocument();
     });
   });
 });

@@ -1,6 +1,19 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Drawable } from '../hotspot-drawable';
+
+jest.mock('react-konva', () => {
+  const React = require('react');
+  return {
+    Stage: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'stage', ...props }, children),
+    Layer: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'layer', ...props }, children),
+    Rect: (props) => React.createElement('div', { 'data-testid': 'rect', ...props }),
+    Circle: (props) => React.createElement('div', { 'data-testid': 'circle', ...props }),
+    Line: (props) => React.createElement('div', { 'data-testid': 'line', ...props }),
+    Group: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'group', ...props }, children),
+    Image: (props) => React.createElement('div', { 'data-testid': 'image', ...props }),
+  };
+});
 
 const model = () => ({
   imageUrl: 'https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W',
@@ -101,33 +114,52 @@ describe('HotspotDrawable', () => {
         ...extras,
       };
 
-      return shallow(<Drawable {...props} />);
+      return render(<Drawable {...props} />);
     };
   });
 
   describe('render', () => {
     it('renders with default strokeWidth', () => {
-      expect(w()).toMatchSnapshot();
+      const { container } = w();
+      expect(container).toMatchSnapshot();
     });
 
     it('renders with given strokeWidth', () => {
-      expect(w({ strokeWidth: 10 })).toMatchSnapshot();
+      const { container } = w({ strokeWidth: 10 });
+      expect(container).toMatchSnapshot();
     });
 
     it('renders', () => {
-      expect(w()).toMatchSnapshot();
+      const { container } = w();
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('logic', () => {
-    let wrapper;
-
-    beforeEach(() => {
-      wrapper = w();
-    });
+    const createInstance = () => {
+      const props = {
+        classes: {},
+        dimensions: initialModel.dimensions,
+        disableDrag: handleDisableDrag,
+        enableDrag: handleEnableDrag,
+        imageUrl: initialModel.imageUrl,
+        hotspotColor: initialModel.hotspotColor,
+        multipleCorrect: initialModel.multipleCorrect,
+        onUpdateImageDimension: onUpdateImageDimension,
+        onUpdateShapes: onUpdateShapes,
+        outlineColor: initialModel.outlineColor,
+        shapes: initialModel.shapes,
+        strokeWidth: 5,
+        shapeType: 'rectangle',
+        handleFinishDrawing: jest.fn(),
+        onDeleteShape: jest.fn(),
+      };
+      return new Drawable(props);
+    };
 
     it('handleOnMouseDown target != Stage', () => {
-      wrapper.instance().state.stateShapes = initialModel.shapes;
+      const instance = createInstance();
+      instance.state.stateShapes = initialModel.shapes;
 
       const event = {
         target: 'Line',
@@ -138,12 +170,13 @@ describe('HotspotDrawable', () => {
         },
       };
 
-      wrapper.instance().handleOnMouseDown(event);
+      instance.handleOnMouseDown(event);
 
       expect(onUpdateShapes).not.toBeCalled();
     });
 
     it('handleOnMouseDown target = Stage', () => {
+      const instance = createInstance();
       const event = {
         target: 'Stage',
         currentTarget: 'Stage',
@@ -153,7 +186,7 @@ describe('HotspotDrawable', () => {
         },
       };
 
-      wrapper.instance().handleOnMouseDown(event);
+      instance.handleOnMouseDown(event);
 
       expect(onUpdateShapes).toHaveBeenCalledWith([
         ...initialModel.shapes,
@@ -170,10 +203,11 @@ describe('HotspotDrawable', () => {
     });
 
     it('handleOnMouseUp isDrawing = true', () => {
-      wrapper.instance().state.isDrawing = true;
-      wrapper.instance().state.shapes = initialModel.shapes.slice(0, 2);
+      const instance = createInstance();
+      instance.state.isDrawing = true;
+      instance.state.shapes = initialModel.shapes.slice(0, 2);
 
-      wrapper.instance().handleOnMouseUp({
+      instance.handleOnMouseUp({
         evt: {
           layerX: 20,
           layerY: 30,
@@ -183,9 +217,9 @@ describe('HotspotDrawable', () => {
       expect(onUpdateShapes).toHaveBeenCalledWith([...initialModel.shapes.slice(0, 2)]);
 
       // at this point, state.stateShapes is false, so we don't want to update shapes with false (onUpdateShapes)
-      expect(wrapper.instance().state.stateShapes).toEqual(false);
+      expect(instance.state.stateShapes).toEqual(false);
 
-      wrapper.instance().handleOnMouseUp({
+      instance.handleOnMouseUp({
         evt: {
           layerX: 20,
           layerY: 30,
@@ -194,13 +228,14 @@ describe('HotspotDrawable', () => {
 
       expect(onUpdateShapes).not.toBeCalledWith(false);
 
-      wrapper.instance().handleOnMouseUp({});
+      instance.handleOnMouseUp({});
 
       expect(onUpdateShapes).toHaveBeenCalledWith(initialModel.shapes.slice(0, 2));
     });
 
     it('handleOnSetAsCorrect correct', () => {
-      wrapper.instance().handleOnSetAsCorrect({
+      const instance = createInstance();
+      instance.handleOnSetAsCorrect({
         id: '1',
       });
 
@@ -215,7 +250,8 @@ describe('HotspotDrawable', () => {
     });
 
     it('handleOnSetAsCorrect incorrect', () => {
-      wrapper.instance().handleOnSetAsCorrect({
+      const instance = createInstance();
+      instance.handleOnSetAsCorrect({
         id: '0',
       });
 
@@ -229,7 +265,8 @@ describe('HotspotDrawable', () => {
     });
 
     it('handleOnDragEnd', () => {
-      wrapper.instance().handleOnDragEnd('0', { x: 1, y: 1 });
+      const instance = createInstance();
+      instance.handleOnDragEnd('0', { x: 1, y: 1 });
 
       expect(onUpdateShapes).toHaveBeenCalledWith([
         {
@@ -242,7 +279,8 @@ describe('HotspotDrawable', () => {
     });
 
     it('handleOnDragEnd unexistent id', () => {
-      wrapper.instance().handleOnDragEnd('10', { x: 1, y: 1 });
+      const instance = createInstance();
+      instance.handleOnDragEnd('10', { x: 1, y: 1 });
 
       expect(onUpdateShapes).toHaveBeenCalledWith(initialModel.shapes);
     });

@@ -1,26 +1,39 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import isObject from 'lodash/isObject';
 import isArray from 'lodash/isArray';
 import { AnswerArea } from '../answer-area';
 import { model, answer } from '../../docs/demo/config';
+
+jest.mock('../arrow', () => (props) => <div data-testid="arrow" {...props} />);
+jest.mock('../answer', () => (props) => <div data-testid="drag-drop-answer" {...props} />);
 
 describe('AnswerArea', () => {
   const defaultProps = {
     model: model('1'),
     session: {},
     classes: {},
+    instanceId: '1',
+    disabled: false,
+    showCorrect: false,
   };
 
-  let wrapper;
+  const wrapper = (props = {}) => {
+    return render(<AnswerArea {...defaultProps} {...props} />);
+  };
 
-  beforeEach(() => {
-    wrapper = shallow(<AnswerArea {...defaultProps} />);
-  });
+  const createInstance = (props = {}) => {
+    const instanceProps = {
+      ...defaultProps,
+      ...props,
+    };
+    return new AnswerArea(instanceProps);
+  };
 
   describe('render', () => {
     it('renders correctly', () => {
-      expect(wrapper).toMatchSnapshot();
+      const { container} = wrapper();
+      expect(container).toMatchSnapshot();
     });
   });
 
@@ -28,12 +41,8 @@ describe('AnswerArea', () => {
     describe('getCorrectOrIncorrectArray', () => {
       const mkTestForFn = (title, extraProps, val) => {
         it(title, () => {
-          wrapper.setProps({
-            ...defaultProps,
-            ...extraProps,
-          });
-
-          const value = wrapper.instance().getCorrectOrIncorrectMap();
+          const instance = createInstance(extraProps);
+          const value = instance.getCorrectOrIncorrectMap();
 
           expect(isObject(value)).toBe(true);
           expect(value).toEqual(val);
@@ -100,13 +109,10 @@ describe('AnswerArea', () => {
         const values = isArray(val) ? val : [val];
 
         it(title, () => {
-          wrapper.setProps({
-            ...defaultProps,
-            ...extraProps,
-          });
+          const instance = createInstance(extraProps);
 
           indexes.forEach((i, key) => {
-            const value = wrapper.instance().getAnswerFromSession(i);
+            const value = instance.getAnswerFromSession(i);
 
             expect(value).toEqual(values[key]);
           });

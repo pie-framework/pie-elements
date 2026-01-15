@@ -2,109 +2,28 @@
 
 exports[`AlternateResponses snapshot renders 1`] = `
 <div>
-  <WithStyles(AlternateSection)
-    choiceChanged={[Function]}
-    choiceRemoved={[Function]}
-    choices={
-      Array [
-        Object {
-          "label": "cow",
-          "value": "0",
-        },
-        Object {
-          "label": "cattle",
-          "value": "1",
-        },
-        Object {
-          "label": "calf",
-          "value": "2",
-        },
-      ]
-    }
-    key="0"
-    lengthChanged={[Function]}
-    maxLength={6}
-    onSelect={[Function]}
-    selectChoices={
-      Array [
-        Object {
-          "label": "cow",
-          "value": "0",
-        },
-      ]
-    }
-    showMaxLength={true}
-    value="0"
-  />
-  <WithStyles(AlternateSection)
-    choiceChanged={[Function]}
-    choiceRemoved={[Function]}
-    choices={
-      Array [
-        Object {
-          "label": "over",
-          "value": "0",
-        },
-        Object {
-          "label": "past",
-          "value": "1",
-        },
-        Object {
-          "label": "beyond",
-          "value": "2",
-        },
-      ]
-    }
-    key="1"
-    lengthChanged={[Function]}
-    maxLength={6}
-    onSelect={[Function]}
-    selectChoices={
-      Array [
-        Object {
-          "label": "over",
-          "value": "0",
-        },
-      ]
-    }
-    showMaxLength={true}
-    value="0"
-  />
-  <WithStyles(AlternateSection)
-    choiceChanged={[Function]}
-    choiceRemoved={[Function]}
-    choices={
-      Array [
-        Object {
-          "label": "moon",
-          "value": "0",
-        },
-      ]
-    }
-    key="2"
-    lengthChanged={[Function]}
-    maxLength={4}
-    onSelect={[Function]}
-    selectChoices={
-      Array [
-        undefined,
-      ]
-    }
-    showMaxLength={true}
-  />
-  <WithStyles(AlternateSection)
-    choiceChanged={[Function]}
-    choiceRemoved={[Function]}
-    onSelect={[Function]}
-    selectChoices={
-      Array [
-        Object {
-          "label": "moon",
-          "value": "2",
-        },
-      ]
-    }
-    value=""
-  />
+  <div>
+    <div
+      choices="[object Object],[object Object],[object Object]"
+      data-testid="alternate-section"
+      maxlength="6"
+      selectchoices="[object Object]"
+      value="0"
+    />
+    <div
+      choices="[object Object],[object Object],[object Object]"
+      data-testid="alternate-section"
+      maxlength="6"
+      selectchoices="[object Object]"
+      value="0"
+    />
+    <div
+      choices="[object Object]"
+      data-testid="alternate-section"
+      maxlength="4"
+      selectchoices="[object Object]"
+      value="0"
+    />
+  </div>
 </div>
 `;

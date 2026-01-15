@@ -1,78 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Math-Inline Main render renders correctly with snapshot 1`] = `
-<Main
-  classes={
-    Object {
-      "blockContainer": "Main-blockContainer-20",
-      "blockMath": "Main-blockMath-23",
-      "blockResponse": "Main-blockResponse-21",
-      "collapsible": "Main-collapsible-10",
-      "correct": "Main-correct-18",
-      "correctAnswerShown": "Main-correctAnswerShown-16",
-      "expression": "Main-expression-12",
-      "incorrect": "Main-incorrect-19",
-      "inputAndKeypadContainer": "Main-inputAndKeypadContainer-14",
-      "keypadTooltip": "Main-keypadTooltip-4",
-      "keypadTooltipPopper": "Main-keypadTooltipPopper-5",
-      "main": "Main-main-7",
-      "mainContainer": "Main-mainContainer-1",
-      "note": "Main-note-9",
-      "printContainer": "Main-printContainer-24",
-      "printCorrect": "Main-printCorrect-17",
-      "promptContainer": "Main-promptContainer-6",
-      "responseContainer": "Main-responseContainer-11",
-      "showCorrectness": "Main-showCorrectness-15",
-      "srOnly": "Main-srOnly-25",
-      "static": "Main-static-13",
-      "title": "Main-title-8",
-      "toggle": "Main-toggle-22",
-      "tooltip": "Main-tooltip-2",
-      "tooltipPopper": "Main-tooltipPopper-3",
-    }
-  }
-  model={
-    Object {
-      "config": Object {
-        "customKeys": Array [
-          "\\\\left(\\\\right)",
-          "\\\\frac{}{}",
-          "x\\\\frac{}{}",
-        ],
-        "element": "math-inline",
-        "equationEditor": "miscellaneous",
-        "expression": "\\\\text{A family sized box contains} {{response}} \\\\text{less than} {{response}} \\\\text{times the number  }  \\\\frac{3}{6}=\\\\frac{ {{response}} }{4} + \\\\frac{ {{response}} }{4}",
-        "feedback": Object {
-          "correct": Object {
-            "default": "Correct",
-            "type": "none",
-          },
-          "incorrect": Object {
-            "default": "Incorrect",
-            "type": "none",
-          },
-          "partial": Object {
-            "default": "Nearly",
-            "type": "none",
-          },
-        },
-        "note": "The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.",
-        "question": "<p>The binomial <math xmlns=\\"http://www.w3.org/1998/Math/MathML\\"> <mi>x</mi><mo>&#8722;</mo><mn>2</mn> </math> is a factor of the polynomial below.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\"> <mi>f</mi><mo stretchy=\\"false\\">(</mo><mi>x</mi><mo stretchy=\\"false\\">)</mo><mo>=</mo><msup> <mi>x</mi> <mn>3</mn> </msup> <mo>+</mo><msup> <mi>x</mi> <mn>2</mn> </msup> <mo>+</mo><mi>n</mi><mi>x</mi><mo>+</mo><mn>10</mn> </math> </span></p><p>What is the value of <span class=\\"variable\\">n</span>? Use the on-screen keyboard&#160;to type the correct answer in the box.</p>",
-        "responseType": "Advanced Multi",
-        "responses": Array [
-          Object {
-            "alternates": Object {},
-            "answer": "\\\\frac{3}{6}=\\\\frac{1}{2}",
-            "validation": "literal",
-          },
-        ],
-      },
-      "correctness": Object {},
-      "element": "math-inline",
-      "id": "1",
-    }
-  }
-  onSessionChange={[MockFunction]}
-  session={Object {}}
-/>
+<div>
+  <div
+    data-testid="ui-layout"
+  >
+    <div
+      class="css-15fir7p"
+    >
+      <div
+        class="css-18gmp8p"
+      >
+        <div
+          data-testid="readable"
+        >
+          <div
+            class="css-1on8jpd"
+            tabindex="0"
+          >
+            <div
+              class="css-coxmqn"
+            >
+              <div
+                class=""
+                data-mui-internal-clone-element="true"
+              >
+                <div
+                  class="static-math"
+                  data-testid="mq-static"
+                  latex="\\text{A family sized box contains} \\MathQuillMathField[r1]{} \\text{less than} \\MathQuillMathField[r2]{} \\text{times the number  }  \\frac{3}{6}=\\frac{ \\MathQuillMathField[r3]{} }{4} + \\frac{ \\MathQuillMathField[r4]{} }{4}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

@@ -3,117 +3,107 @@
 exports[`Trait snapshot renders 1`] = `
 <div>
   <div>
-    <div>
-      <WithStyles(Component)>
-        <WithStyles(Component)>
-          <div>
-            <WithStyles(IconButton)
-              aria-controls="long-menu"
-              aria-haspopup="true"
-              aria-label="more"
-              onClick={[Function]}
-            >
-              <pure(MoreVertIcon) />
-            </WithStyles(IconButton)>
-            <WithStyles(Menu)
-              id="long-menu"
-              keepMounted={true}
-              onClose={[Function]}
-              open={false}
-            >
-              <WithStyles(MenuItem)
-                onClick={[Function]}
-              >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Remove Presentation",
-                    }
-                  }
-                />
-              </WithStyles(MenuItem)>
-            </WithStyles(Menu)>
-          </div>
-          <WithStyles(Component)
-            error=""
-            imageSupport={Object {}}
-            markup="Presentation"
-            mathMlOptions={Object {}}
-            onChange={[Function]}
-            placeholder="Enter Category"
-            pluginProps={Object {}}
-          />
-        </WithStyles(Component)>
-        <WithStyles(Component)
-          setRef={[Function]}
-          width="undefinedpx"
+    <div
+      style="display: flex;"
+    >
+      <div
+        class="css-1jqtxcx"
+      >
+        <div
+          class="css-2dklvx"
         >
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Standards"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              error=""
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Description"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-0"
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1380s6h-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting is generally legible
-
-Overall appearance is acceptable or better"
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-1"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-nq8ddj"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting poor
-
-Overall appearance is distracting to unacceptable"
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-2"
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-1xunb8w"
+      >
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-        </WithStyles(Component)>
-      </WithStyles(Component)>
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -122,117 +112,107 @@ Overall appearance is distracting to unacceptable"
 exports[`Trait snapshot renders with drag and drop 1`] = `
 <div>
   <div>
-    <div>
-      <WithStyles(Component)>
-        <WithStyles(Component)>
-          <div>
-            <WithStyles(IconButton)
-              aria-controls="long-menu"
-              aria-haspopup="true"
-              aria-label="more"
-              onClick={[Function]}
-            >
-              <pure(MoreVertIcon) />
-            </WithStyles(IconButton)>
-            <WithStyles(Menu)
-              id="long-menu"
-              keepMounted={true}
-              onClose={[Function]}
-              open={false}
-            >
-              <WithStyles(MenuItem)
-                onClick={[Function]}
-              >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Remove Presentation",
-                    }
-                  }
-                />
-              </WithStyles(MenuItem)>
-            </WithStyles(Menu)>
-          </div>
-          <WithStyles(Component)
-            error=""
-            imageSupport={Object {}}
-            markup="Presentation"
-            mathMlOptions={Object {}}
-            onChange={[Function]}
-            placeholder="Enter Category"
-            pluginProps={Object {}}
-          />
-        </WithStyles(Component)>
-        <WithStyles(Component)
-          setRef={[Function]}
-          width="undefinedpx"
+    <div
+      style="display: flex;"
+    >
+      <div
+        class="css-1jqtxcx"
+      >
+        <div
+          class="css-2dklvx"
         >
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Standards"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              error=""
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Description"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-0"
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1380s6h-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting is generally legible
-
-Overall appearance is acceptable or better"
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-1"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-nq8ddj"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting poor
-
-Overall appearance is distracting to unacceptable"
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-2"
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-1xunb8w"
+      >
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-        </WithStyles(Component)>
-      </WithStyles(Component)>
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -241,117 +221,107 @@ Overall appearance is distracting to unacceptable"
 exports[`Trait snapshot renders without description 1`] = `
 <div>
   <div>
-    <div>
-      <WithStyles(Component)>
-        <WithStyles(Component)>
-          <div>
-            <WithStyles(IconButton)
-              aria-controls="long-menu"
-              aria-haspopup="true"
-              aria-label="more"
-              onClick={[Function]}
-            >
-              <pure(MoreVertIcon) />
-            </WithStyles(IconButton)>
-            <WithStyles(Menu)
-              id="long-menu"
-              keepMounted={true}
-              onClose={[Function]}
-              open={false}
-            >
-              <WithStyles(MenuItem)
-                onClick={[Function]}
-              >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Remove Presentation",
-                    }
-                  }
-                />
-              </WithStyles(MenuItem)>
-            </WithStyles(Menu)>
-          </div>
-          <WithStyles(Component)
-            error=""
-            imageSupport={Object {}}
-            markup="Presentation"
-            mathMlOptions={Object {}}
-            onChange={[Function]}
-            placeholder="Enter Category"
-            pluginProps={Object {}}
-          />
-        </WithStyles(Component)>
-        <WithStyles(Component)
-          setRef={[Function]}
-          width="undefinedpx"
+    <div
+      style="display: flex;"
+    >
+      <div
+        class="css-1jqtxcx"
+      >
+        <div
+          class="css-2dklvx"
         >
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Standards"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              error=""
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Description"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-0"
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1380s6h-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting is generally legible
-
-Overall appearance is acceptable or better"
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-1"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-nq8ddj"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting poor
-
-Overall appearance is distracting to unacceptable"
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-2"
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-1xunb8w"
+      >
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-        </WithStyles(Component)>
-      </WithStyles(Component)>
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -360,74 +330,74 @@ Overall appearance is distracting to unacceptable"
 exports[`Trait snapshot renders without score points values 1`] = `
 <div>
   <div>
-    <div>
-      <WithStyles(Component)>
-        <WithStyles(Component)>
-          <div>
-            <WithStyles(IconButton)
-              aria-controls="long-menu"
-              aria-haspopup="true"
-              aria-label="more"
-              onClick={[Function]}
-            >
-              <pure(MoreVertIcon) />
-            </WithStyles(IconButton)>
-            <WithStyles(Menu)
-              id="long-menu"
-              keepMounted={true}
-              onClose={[Function]}
-              open={false}
-            >
-              <WithStyles(MenuItem)
-                onClick={[Function]}
-              >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Remove Presentation",
-                    }
-                  }
-                />
-              </WithStyles(MenuItem)>
-            </WithStyles(Menu)>
-          </div>
-          <WithStyles(Component)
-            error=""
-            imageSupport={Object {}}
-            markup="Presentation"
-            mathMlOptions={Object {}}
-            onChange={[Function]}
-            placeholder="Enter Category"
-            pluginProps={Object {}}
-          />
-        </WithStyles(Component)>
-        <WithStyles(Component)
-          setRef={[Function]}
-          width="undefinedpx"
+    <div
+      style="display: flex;"
+    >
+      <div
+        class="css-1jqtxcx"
+      >
+        <div
+          class="css-2dklvx"
         >
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Standards"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              error=""
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Description"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-        </WithStyles(Component)>
-      </WithStyles(Component)>
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1380s6h-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-nq8ddj"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-1xunb8w"
+      >
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -436,107 +406,96 @@ exports[`Trait snapshot renders without score points values 1`] = `
 exports[`Trait snapshot renders without standards 1`] = `
 <div>
   <div>
-    <div>
-      <WithStyles(Component)>
-        <WithStyles(Component)>
-          <div>
-            <WithStyles(IconButton)
-              aria-controls="long-menu"
-              aria-haspopup="true"
-              aria-label="more"
-              onClick={[Function]}
-            >
-              <pure(MoreVertIcon) />
-            </WithStyles(IconButton)>
-            <WithStyles(Menu)
-              id="long-menu"
-              keepMounted={true}
-              onClose={[Function]}
-              open={false}
-            >
-              <WithStyles(MenuItem)
-                onClick={[Function]}
-              >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Remove Presentation",
-                    }
-                  }
-                />
-              </WithStyles(MenuItem)>
-            </WithStyles(Menu)>
-          </div>
-          <WithStyles(Component)
-            error=""
-            imageSupport={Object {}}
-            markup="Presentation"
-            mathMlOptions={Object {}}
-            onChange={[Function]}
-            placeholder="Enter Category"
-            pluginProps={Object {}}
-          />
-        </WithStyles(Component)>
-        <WithStyles(Component)
-          setRef={[Function]}
-          width="undefinedpx"
+    <div
+      style="display: flex;"
+    >
+      <div
+        class="css-1jqtxcx"
+      >
+        <div
+          class="css-2dklvx"
         >
-          <WithStyles(Component)>
-            <WithStyles(Component)
-              error=""
-              imageSupport={Object {}}
-              markup=""
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Description"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-0"
+          <button
+            aria-controls="long-menu"
+            aria-haspopup="true"
+            aria-label="more"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1380s6h-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting is generally legible
-
-Overall appearance is acceptable or better"
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-1"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="MoreVertIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="css-1o276k3"
+        >
+          <div
+            class="css-nq8ddj"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting poor
-
-Overall appearance is distracting to unacceptable"
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-          <WithStyles(Component)
-            key="key-key-2"
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-1xunb8w"
+      >
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
           >
-            <WithStyles(Component)
-              alignToRight={false}
-              imageSupport={Object {}}
-              markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
-              mathMlOptions={Object {}}
-              onChange={[Function]}
-              placeholder="Enter Descriptor"
-              pluginProps={Object {}}
-            />
-          </WithStyles(Component)>
-        </WithStyles(Component)>
-      </WithStyles(Component)>
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-zg2680"
+        >
+          <div
+            class="css-1o276k3"
+          >
+            <div>
+              EditableHtml
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

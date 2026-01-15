@@ -17,12 +17,10 @@
     "@pie-lib/translator": "2.38.0-mui-update.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
-    "enzyme-to-json": "^3.3.3",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-test-renderer": "18.2.0",
     "react-transition-group": "^2.3.1"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",

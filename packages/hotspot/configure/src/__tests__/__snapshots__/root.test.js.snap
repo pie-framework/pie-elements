@@ -1,469 +1,410 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Root render renders 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  hideSettings={false}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "baseInputConfiguration": Object {
-            "audio": Object {
-              "disabled": false,
-            },
-            "image": Object {
-              "disabled": false,
-            },
-            "separateParagraphs": Object {
-              "disabled": true,
-            },
-            "showParagraphs": Object {
-              "disabled": false,
-            },
-            "textAlign": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": false,
-            },
-          },
-          "language": Object {
-            "enabled": false,
-            "label": "Specify Language",
-            "settings": false,
-          },
-          "languageChoices": Object {
-            "label": "Language Choices",
-            "options": Array [],
-          },
-          "mathMlOptions": Object {
-            "mmlEditing": false,
-            "mmlOutput": false,
-          },
-          "maxImageHeight": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "maxImageWidth": Object {
-            "prompt": 300,
-            "rationale": 300,
-            "teacherInstructions": 300,
-          },
-          "minShapes": 2,
-          "multipleCorrect": Object {
-            "label": "Multiple Correct Responses",
-            "settings": true,
-          },
-          "partialScoring": Object {
-            "label": "Allow Partial Scoring",
-            "settings": false,
-          },
-          "preserveAspectRatio": Object {
-            "enabled": true,
-            "label": "Preserve aspect ratio",
-            "settings": false,
-          },
-          "prompt": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Prompt",
-            "required": false,
-            "settings": true,
-          },
-          "rationale": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Rationale",
-            "required": false,
-            "settings": true,
-          },
-          "settingsPanelDisabled": false,
-          "spellCheck": Object {
-            "enabled": true,
-            "label": "Spellcheck",
-            "settings": false,
-          },
-          "teacherInstructions": Object {
-            "inputConfiguration": Object {
-              "audio": Object {
-                "disabled": false,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "video": Object {
-                "disabled": false,
-              },
-            },
-            "label": "Teacher Instructions",
-            "required": false,
-            "settings": true,
-          },
-          "withRubric": Object {
-            "label": "Add Rubric",
-            "settings": false,
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "rationaleEnabled": undefined,
-            "rubricEnabled": false,
-            "spellCheckEnabled": false,
-            "teacherInstructionsEnabled": undefined,
-          },
-          "Settings": Object {
-            "language": false,
-            "language.enabled": false,
-            "multipleCorrect": undefined,
-            "partialScoring": false,
-            "promptEnabled": undefined,
-          },
-        }
-      }
-      model={
-        Object {
-          "configure": Object {},
-          "dimensions": Object {
-            "height": 300,
-            "width": 400,
-          },
-          "hotspotColor": "rgba(137, 183, 244, 0.65)",
-          "hotspotList": Array [
-            "rgba(137, 183, 244, 0.65)",
-            "rgba(217, 30, 24, 0.65)",
-            "rgba(254, 241, 96, 0.65)",
-          ],
-          "imageUrl": "https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W",
-          "multipleCorrect": true,
-          "outlineColor": "blue",
-          "outlineList": Array [
-            "blue",
-            "red",
-            "yellow",
-          ],
-          "partialScoring": false,
-          "prompt": "This is the question prompt",
-          "shapes": Object {
-            "circles": Array [
-              Object {
-                "correct": false,
-                "id": "6",
-                "radius": 70,
-                "x": 100,
-                "y": 100,
-              },
-            ],
-            "polygons": Array [
-              Object {
-                "correct": true,
-                "id": "3",
-                "points": Array [
-                  Object {
-                    "x": 1,
-                    "y": 148,
-                  },
-                  Object {
-                    "x": 1,
-                    "y": 288,
-                  },
-                  Object {
-                    "x": 129,
-                    "y": 288,
-                  },
-                  Object {
-                    "x": 129,
-                    "y": 148,
-                  },
-                ],
-              },
-              Object {
-                "correct": false,
-                "id": "4",
-                "points": Array [
-                  Object {
-                    "x": 141,
-                    "y": 151,
-                  },
-                  Object {
-                    "x": 141,
-                    "y": 289,
-                  },
-                  Object {
-                    "x": 269,
-                    "y": 289,
-                  },
-                  Object {
-                    "x": 269,
-                    "y": 151,
-                  },
-                ],
-              },
-              Object {
-                "correct": false,
-                "id": "5",
-                "points": Array [
-                  Object {
-                    "x": 279,
-                    "y": 149.99999999999997,
-                  },
-                  Object {
-                    "x": 279,
-                    "y": 289,
-                  },
-                  Object {
-                    "x": 407,
-                    "y": 289,
-                  },
-                  Object {
-                    "x": 407,
-                    "y": 149.99999999999997,
-                  },
-                ],
-              },
-            ],
-            "rectangles": Array [
-              Object {
-                "correct": true,
-                "height": 140,
-                "id": "0",
-                "width": 130,
-                "x": 1,
-                "y": 1,
-              },
-              Object {
-                "height": 140,
-                "id": "1",
-                "width": 130,
-                "x": 140,
-                "y": 1,
-              },
-              Object {
-                "height": 140,
-                "id": "2",
-                "width": 130,
-                "x": 280,
-                "y": 1,
-              },
-            ],
-          },
-        }
-      }
-    />
-  }
->
+<div>
   <div>
-    <WithStyles(Typography)
-      variant="subheading"
+    <div
+      class="css-yeouz0"
     >
-      Define Hotspot
-    </WithStyles(Typography)>
-    <WithStyles(Tooltip)
-      classes={
-        Object {
-          "tooltip": undefined,
-        }
-      }
-      disableFocusListener={true}
-      disableTouchListener={true}
-      placement="left"
-      title="Validation requirements:
+      <h6
+        class="MuiTypography-root MuiTypography-h6 css-12figca-MuiTypography-root"
+      >
+        Define Hotspot
+      </h6>
+      <svg
+        aria-hidden="true"
+        aria-label="Validation requirements:
 There should be at least 2 shapes defined.
 There should be at least 1 shape selected."
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-1cinn38-MuiSvgIcon-root"
+        data-mui-internal-clone-element="true"
+        data-testid="InfoIcon"
+        focusable="false"
+        style="float: right;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
+        />
+      </svg>
+    </div>
+    <div
+      class="css-68zlnx"
     >
-      <pure(InfoIcon)
-        color="primary"
-        fontSize="small"
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      />
-    </WithStyles(Tooltip)>
+      <div
+        class="css-e9c91y"
+        label="Hot Spot"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiSelect-root css-1dgmmce-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+        >
+          <div
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            class="MuiSelect-select MuiSelect-standard MuiInputBase-input MuiInput-input css-unhb03-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiInput-input"
+            role="combobox"
+            tabindex="0"
+          >
+            rgba(137, 183, 244, 0.65)
+          </div>
+          <input
+            aria-hidden="true"
+            aria-invalid="false"
+            class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput"
+            tabindex="-1"
+            value="rgba(137, 183, 244, 0.65)"
+          />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard css-ug7h84-MuiSvgIcon-root-MuiNativeSelect-root-MuiSelect-icon"
+            data-testid="ArrowDropDownIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="css-e9c91y"
+        label="Response Outline"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiSelect-root css-1dgmmce-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+        >
+          <div
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            class="MuiSelect-select MuiSelect-standard MuiInputBase-input MuiInput-input css-unhb03-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiInput-input"
+            role="combobox"
+            tabindex="0"
+          >
+            blue
+          </div>
+          <input
+            aria-hidden="true"
+            aria-invalid="false"
+            class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput"
+            tabindex="-1"
+            value="blue"
+          />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard css-ug7h84-MuiSvgIcon-root-MuiNativeSelect-root-MuiSelect-icon"
+            data-testid="ArrowDropDownIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-cn4xw"
+    >
+      <div
+        class="css-1ln2387"
+      >
+        <div
+          class="css-1xzofvh"
+        >
+          <div
+            class="css-1mvjaiz"
+          >
+            <svg
+              fill="none"
+              height="32"
+              viewBox="0 0 48 32"
+              width="48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M0 4C0 1.79086 1.79086 0 4 0H43C45.2091 0 47 1.79086 47 4V28.0001C47 30.2093 45.2091 32.0001 43 32.0001H4C1.79086 32.0001 0 30.2093 0 28.0001V4Z"
+                fill="#ECEDF1"
+                fill-rule="evenodd"
+              />
+              <mask
+                fill="white"
+                id="path-8-inside-2_2196_700"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M13 8H17V9.5H29V8H33V12H31.5V20H33V24H29V22.5H17V24H13V20H14.5V12H13V8ZM17 21.5V20H15.5V12H17V10.5H29V12H30.5V20H29V21.5H17Z"
+                  fill-rule="evenodd"
+                />
+              </mask>
+              <path
+                d="M17 8H18V7H17V8ZM13 8V7H12V8H13ZM17 9.5H16V10.5H17V9.5ZM29 9.5V10.5H30V9.5H29ZM29 8V7H28V8H29ZM33 8H34V7H33V8ZM33 12V13H34V12H33ZM31.5 12V11H30.5V12H31.5ZM31.5 20H30.5V21H31.5V20ZM33 20H34V19H33V20ZM33 24V25H34V24H33ZM29 24H28V25H29V24ZM29 22.5H30V21.5H29V22.5ZM17 22.5V21.5H16V22.5H17ZM17 24V25H18V24H17ZM13 24H12V25H13V24ZM13 20V19H12V20H13ZM14.5 20V21H15.5V20H14.5ZM14.5 12H15.5V11H14.5V12ZM13 12H12V13H13V12ZM17 20H18V19H17V20ZM17 21.5H16V22.5H17V21.5ZM15.5 20H14.5V21H15.5V20ZM15.5 12V11H14.5V12H15.5ZM17 12V13H18V12H17ZM17 10.5V9.5H16V10.5H17ZM29 10.5H30V9.5H29V10.5ZM29 12H28V13H29V12ZM30.5 12H31.5V11H30.5V12ZM30.5 20V21H31.5V20H30.5ZM29 20V19H28V20H29ZM29 21.5V22.5H30V21.5H29ZM17 7H13V9H17V7ZM18 9.5V8H16V9.5H18ZM29 8.5H17V10.5H29V8.5ZM28 8V9.5H30V8H28ZM33 7H29V9H33V7ZM34 12V8H32V12H34ZM31.5 13H33V11H31.5V13ZM32.5 20V12H30.5V20H32.5ZM33 19H31.5V21H33V19ZM34 24V20H32V24H34ZM29 25H33V23H29V25ZM28 22.5V24H30V22.5H28ZM17 23.5H29V21.5H17V23.5ZM16 22.5V24H18V22.5H16ZM17 23H13V25H17V23ZM14 24V20H12V24H14ZM13 21H14.5V19H13V21ZM13.5 12V20H15.5V12H13.5ZM13 13H14.5V11H13V13ZM12 8V12H14V8H12ZM16 20V21.5H18V20H16ZM15.5 21H17V19H15.5V21ZM16.5 20V12H14.5V20H16.5ZM15.5 13H17V11H15.5V13ZM18 12V10.5H16V12H18ZM17 11.5H29V9.5H17V11.5ZM28 10.5V12H30V10.5H28ZM29 13H30.5V11H29V13ZM29.5 12V20H31.5V12H29.5ZM30.5 19H29V21H30.5V19ZM28 20V21.5H30V20H28ZM29 20.5H17V22.5H29V20.5Z"
+                fill="black"
+                mask="url(#path-8-inside-2_2196_700)"
+              />
+            </svg>
+          </div>
+          <div
+            class="css-1mvjaiz"
+          >
+            <svg
+              fill="none"
+              height="32"
+              viewBox="112 0 48 32"
+              width="48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M112 4C112 1.79086 113.791 0 116 0H155C157.209 0 159 1.79086 159 4V28.0001C159 30.2093 157.209 32.0001 155 32.0001H116C113.791 32.0001 112 30.2093 112 28.0001V4Z"
+                fill="#ECEDF1"
+                fill-rule="evenodd"
+              />
+              <mask
+                fill="white"
+                id="path-6-inside-1_2196_700"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M130 8H126V12H127.5V20H126V24H130V22.7145H141V24H145V20H141.737L139.998 18H140V14.4265L142.11 12H145V8H141V9.71451H130V8ZM139.046 14L141 11.7525V10.7145H130V12H128.5V20H130V21.7145H141V20.6765L138.673 18H136V14H139.046Z"
+                  fill-rule="evenodd"
+                />
+              </mask>
+              <path
+                d="M126 8V7H125V8H126ZM130 8H131V7H130V8ZM126 12H125V13H126V12ZM127.5 12H128.5V11H127.5V12ZM127.5 20V21H128.5V20H127.5ZM126 20V19H125V20H126ZM126 24H125V25H126V24ZM130 24V25H131V24H130ZM130 22.7145V21.7145H129V22.7145H130ZM141 22.7145H142V21.7145H141V22.7145ZM141 24H140V25H141V24ZM145 24V25H146V24H145ZM145 20H146V19H145V20ZM141.737 20L140.982 20.6562L141.281 21H141.737V20ZM139.998 18V17H137.803L139.243 18.6562L139.998 18ZM140 18V19H141V18H140ZM140 14.4265L139.245 13.7703L139 14.0525V14.4265H140ZM142.11 12V11H141.654L141.355 11.3438L142.11 12ZM145 12V13H146V12H145ZM145 8H146V7H145V8ZM141 8V7H140V8H141ZM141 9.71451V10.7145H142V9.71451H141ZM130 9.71451H129V10.7145H130V9.71451ZM141 11.7525L141.755 12.4087L142 12.1265V11.7525H141ZM139.046 14V15H139.501L139.8 14.6562L139.046 14ZM141 10.7145H142V9.71451H141V10.7145ZM130 10.7145V9.71451H129V10.7145H130ZM130 12V13H131V12H130ZM128.5 12V11H127.5V12H128.5ZM128.5 20H127.5V21H128.5V20ZM130 20H131V19H130V20ZM130 21.7145H129V22.7145H130V21.7145ZM141 21.7145V22.7145H142V21.7145H141ZM141 20.6765H142V20.3025L141.755 20.0203L141 20.6765ZM138.673 18L139.427 17.3438L139.128 17H138.673V18ZM136 18H135V19H136V18ZM136 14V13H135V14H136ZM126 9H130V7H126V9ZM127 12V8H125V12H127ZM127.5 11H126V13H127.5V11ZM128.5 20V12H126.5V20H128.5ZM126 21H127.5V19H126V21ZM127 24V20H125V24H127ZM130 23H126V25H130V23ZM129 22.7145V24H131V22.7145H129ZM141 21.7145H130V23.7145H141V21.7145ZM142 24V22.7145H140V24H142ZM145 23H141V25H145V23ZM144 20V24H146V20H144ZM141.737 21H145V19H141.737V21ZM139.243 18.6562L140.982 20.6562L142.492 19.3438L140.752 17.3438L139.243 18.6562ZM140 17H139.998V19H140V17ZM139 14.4265V18H141V14.4265H139ZM141.355 11.3438L139.245 13.7703L140.755 15.0827L142.865 12.6562L141.355 11.3438ZM145 11H142.11V13H145V11ZM144 8V12H146V8H144ZM141 9H145V7H141V9ZM142 9.71451V8H140V9.71451H142ZM130 10.7145H141V8.71451H130V10.7145ZM129 8V9.71451H131V8H129ZM140.245 11.0963L138.291 13.3438L139.8 14.6562L141.755 12.4087L140.245 11.0963ZM140 10.7145V11.7525H142V10.7145H140ZM130 11.7145H141V9.71451H130V11.7145ZM131 12V10.7145H129V12H131ZM128.5 13H130V11H128.5V13ZM129.5 20V12H127.5V20H129.5ZM130 19H128.5V21H130V19ZM131 21.7145V20H129V21.7145H131ZM141 20.7145H130V22.7145H141V20.7145ZM140 20.6765V21.7145H142V20.6765H140ZM137.918 18.6562L140.245 21.3327L141.755 20.0203L139.427 17.3438L137.918 18.6562ZM138.673 17H136V19H138.673V17ZM137 18V14H135V18H137ZM136 15H139.046V13H136V15Z"
+                fill="black"
+                mask="url(#path-6-inside-1_2196_700)"
+              />
+            </svg>
+          </div>
+          <div
+            class="css-1mvjaiz"
+          >
+            <svg
+              fill="none"
+              height="32"
+              viewBox="56 0 48 32"
+              width="48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M56 4C56 1.79086 57.7909 0 60 0H99C101.209 0 103 1.79086 103 4V28.0001C103 30.2093 101.209 32.0001 99 32.0001H60C57.7909 32.0001 56 30.2093 56 28.0001V4Z"
+                fill="#ECEDF1"
+                fill-rule="evenodd"
+              />
+              <circle
+                cx="79"
+                cy="16"
+                r="7.5"
+                stroke="black"
+              />
+            </svg>
+          </div>
+          <div
+            class="css-t9yj6p"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-966geo-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Replace Image
+            </button>
+            <input
+              accept="image/*"
+              style="display: none;"
+              type="file"
+            />
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-966geo-MuiButtonBase-root-MuiButton-root"
+            tabindex="0"
+            type="button"
+          >
+            Clear all
+          </button>
+        </div>
+        <div
+          class="css-1boidfl"
+        >
+          <div
+            class="css-19sk4h4"
+          >
+            <div
+              class="css-wioyy2"
+            >
+              <img
+                class="css-p8sy9u"
+                src="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
+                style="height: 300px; width: 400px;"
+              />
+              <div
+                class="css-xn3u"
+              />
+            </div>
+            <div
+              class="css-1leypxp"
+              data-testid="stage"
+              height="300"
+              width="400"
+            >
+              <div
+                data-testid="layer"
+              >
+                <div
+                  data-testid="group"
+                  padding="12"
+                >
+                  <div
+                    cursor="pointer"
+                    data-testid="rect"
+                    draggable="true"
+                    fill="rgba(137, 183, 244, 0.65)"
+                    height="140"
+                    opacity="0.5"
+                    stroke="blue"
+                    stroke-width="5"
+                    width="130"
+                    x="1"
+                    y="1"
+                  />
+                </div>
+                <div
+                  data-testid="group"
+                  padding="12"
+                >
+                  <div
+                    cursor="pointer"
+                    data-testid="rect"
+                    draggable="true"
+                    fill="rgba(137, 183, 244, 0.65)"
+                    height="140"
+                    opacity="0.5"
+                    stroke="blue"
+                    stroke-width="0"
+                    width="130"
+                    x="140"
+                    y="1"
+                  />
+                </div>
+                <div
+                  data-testid="group"
+                  padding="12"
+                >
+                  <div
+                    cursor="pointer"
+                    data-testid="rect"
+                    draggable="true"
+                    fill="rgba(137, 183, 244, 0.65)"
+                    height="140"
+                    opacity="0.5"
+                    stroke="blue"
+                    stroke-width="0"
+                    width="130"
+                    x="280"
+                    y="1"
+                  />
+                </div>
+                <div
+                  data-testid="group"
+                >
+                  <div
+                    data-testid="line"
+                    draggable="true"
+                    fill="rgba(137, 183, 244, 0.65)"
+                    opacity="0.5"
+                    points="0,-140,0,0,128,0,128,-140"
+                    stroke="blue"
+                    stroke-width="5"
+                    x="1"
+                    y="288"
+                  />
+                </div>
+                <div
+                  data-testid="group"
+                >
+                  <div
+                    data-testid="line"
+                    draggable="true"
+                    fill="rgba(137, 183, 244, 0.65)"
+                    opacity="0.5"
+                    points="0,-138,0,0,128,0,128,-138"
+                    stroke=""
+                    stroke-width="0"
+                    x="141"
+                    y="289"
+                  />
+                </div>
+                <div
+                  data-testid="group"
+                >
+                  <div
+                    data-testid="line"
+                    draggable="true"
+                    fill="rgba(137, 183, 244, 0.65)"
+                    opacity="0.5"
+                    points="0,-139.00000000000003,0,0,128,0,128,-139.00000000000003"
+                    stroke=""
+                    stroke-width="0"
+                    x="279"
+                    y="289"
+                  />
+                </div>
+                <div
+                  data-testid="group"
+                  padding="12"
+                >
+                  <div
+                    cursor="pointer"
+                    data-testid="circle"
+                    draggable="true"
+                    fill="rgba(137, 183, 244, 0.65)"
+                    opacity="0.5"
+                    radius="70"
+                    stroke="blue"
+                    stroke-width="0"
+                    x="100"
+                    y="100"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6
+      class="MuiTypography-root MuiTypography-h6 css-1miy0lu-MuiTypography-root"
+    >
+      Image Dimensions
+    </h6>
+    <div
+      class="css-3i8gv9"
+    >
+      <div
+        class="css-e9c91y"
+      >
+        <input
+          label="Width"
+          min="0"
+          type="number"
+          value="400"
+        />
+      </div>
+      <div
+        class="css-e9c91y"
+      >
+        <input
+          label="Height"
+          min="0"
+          type="number"
+          value="300"
+        />
+      </div>
+    </div>
   </div>
-  <WithStyles(Palette)
-    hotspotColor="rgba(137, 183, 244, 0.65)"
-    hotspotList={
-      Array [
-        "rgba(137, 183, 244, 0.65)",
-        "rgba(217, 30, 24, 0.65)",
-        "rgba(254, 241, 96, 0.65)",
-      ]
-    }
-    onHotspotColorChange={[Function]}
-    onOutlineColorChange={[Function]}
-    outlineColor="blue"
-    outlineList={
-      Array [
-        "blue",
-        "red",
-        "yellow",
-      ]
-    }
-  />
-  <WithStyles(Container)
-    dimensions={
-      Object {
-        "height": 300,
-        "width": 400,
-      }
-    }
-    hasErrors={false}
-    hotspotColor="rgba(137, 183, 244, 0.65)"
-    imageUrl="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
-    multipleCorrect={true}
-    outlineColor="blue"
-    preserveAspectRatioEnabled={true}
-    shapes={
-      Object {
-        "circles": Array [
-          Object {
-            "correct": false,
-            "id": "6",
-            "radius": 70,
-            "x": 100,
-            "y": 100,
-          },
-        ],
-        "polygons": Array [
-          Object {
-            "correct": true,
-            "id": "3",
-            "points": Array [
-              Object {
-                "x": 1,
-                "y": 148,
-              },
-              Object {
-                "x": 1,
-                "y": 288,
-              },
-              Object {
-                "x": 129,
-                "y": 288,
-              },
-              Object {
-                "x": 129,
-                "y": 148,
-              },
-            ],
-          },
-          Object {
-            "correct": false,
-            "id": "4",
-            "points": Array [
-              Object {
-                "x": 141,
-                "y": 151,
-              },
-              Object {
-                "x": 141,
-                "y": 289,
-              },
-              Object {
-                "x": 269,
-                "y": 289,
-              },
-              Object {
-                "x": 269,
-                "y": 151,
-              },
-            ],
-          },
-          Object {
-            "correct": false,
-            "id": "5",
-            "points": Array [
-              Object {
-                "x": 279,
-                "y": 149.99999999999997,
-              },
-              Object {
-                "x": 279,
-                "y": 289,
-              },
-              Object {
-                "x": 407,
-                "y": 289,
-              },
-              Object {
-                "x": 407,
-                "y": 149.99999999999997,
-              },
-            ],
-          },
-        ],
-        "rectangles": Array [
-          Object {
-            "correct": true,
-            "height": 140,
-            "id": "0",
-            "width": 130,
-            "x": 1,
-            "y": 1,
-          },
-          Object {
-            "height": 140,
-            "id": "1",
-            "width": 130,
-            "x": 140,
-            "y": 1,
-          },
-          Object {
-            "height": 140,
-            "id": "2",
-            "width": 130,
-            "x": 280,
-            "y": 1,
-          },
-        ],
-      }
-    }
-  />
-  <WithStyles(Typography)
-    variant="subheading"
-  >
-    Image Dimensions
-  </WithStyles(Typography)>
-  <div>
-    <Component
-      key="hotspot-manual-width"
-      label="Width"
-      min={0}
-      onChange={[Function]}
-      showErrorWhenOutsideRange={true}
-      value={400}
-    />
-    <Component
-      key="hotspot-manual-height"
-      label="Height"
-      min={0}
-      onChange={[Function]}
-      showErrorWhenOutsideRange={true}
-      value={300}
-    />
-  </div>
-</ConfigLayout>
+</div>
 `;

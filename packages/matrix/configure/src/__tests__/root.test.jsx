@@ -1,14 +1,40 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { Main } from '../Main';
 import defaults from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
+  InputContainer: (props) => <div data-testid="input-container" {...props}>{props.children}</div>,
   settings: {
-    Panel: (props) => <div {...props} />,
+    Panel: (props) => <div data-testid="settings-panel" {...props} />,
+    toggle: jest.fn(),
+    radio: jest.fn(),
+  },
+  layout: {
+    ConfigLayout: (props) => <div data-testid="config-layout">{props.children}</div>,
   },
 }));
+
+jest.mock('@pie-lib/editable-html', () => (props) => (
+  <div data-testid="editable-html" {...props}>{props.children}</div>
+));
+
+jest.mock('../MatrixColumnsSizeHeaderInput', () => (props) => (
+  <div data-testid="matrix-columns-size-header-input" {...props} />
+));
+
+jest.mock('../MatrixRowsSizeHeaderInput', () => (props) => (
+  <div data-testid="matrix-rows-size-header-input" {...props} />
+));
+
+jest.mock('../MatrixLabelTypeHeaderInput', () => (props) => (
+  <div data-testid="matrix-label-type-header-input" {...props} />
+));
+
+jest.mock('../MatrixValues', () => (props) => (
+  <div data-testid="matrix-values" {...props} />
+));
 
 const model = (extras) => ({
   ...defaults.model,
@@ -17,37 +43,54 @@ const model = (extras) => ({
 });
 
 describe('Main', () => {
-  let w;
-  let onModelChanged = jest.fn();
-  let onConfigurationChanged = jest.fn();
-  let initialModel = model();
+  let onModelChanged;
+  let onConfigurationChanged;
+  let initialModel;
+
+  const defaultProps = {
+    classes: {},
+    model: model(),
+  };
 
   const wrapper = (extras) => {
-    const defaults = {
+    const props = {
+      ...defaultProps,
       onModelChanged,
       onConfigurationChanged,
-      classes: {},
-      model: model(),
+      ...extras
     };
-    const props = { ...defaults, ...extras };
 
-    return shallow(<Main {...props} />);
+    return render(<Main {...props} />);
   };
+
+  const createInstance = (extras) => {
+    const props = {
+      ...defaultProps,
+      onModelChanged,
+      onConfigurationChanged,
+      ...extras,
+    };
+    return new Main(props);
+  };
+
+  beforeEach(() => {
+    onModelChanged = jest.fn();
+    onConfigurationChanged = jest.fn();
+    initialModel = model();
+  });
 
   describe('snapshot', () => {
     it('renders with default values', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+      const { container } = wrapper();
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('logic', () => {
-    beforeEach(() => {
-      w = wrapper();
-    });
     describe('onRemoveRowLabel', () => {
       it('removes a row label', () => {
-        w.instance().onChangeModel({
+        const instance = createInstance();
+        instance.onChangeModel({
           ...initialModel,
           rowLabels: ['I am interested in politics.'],
         });
@@ -61,7 +104,8 @@ describe('Main', () => {
 
     describe('onAddRowLabel', () => {
       it('adds a row label', () => {
-        w.instance().onChangeModel({
+        const instance = createInstance();
+        instance.onChangeModel({
           ...initialModel,
           rowLabels: ["I'm interested in politics.", "I'm interested in economics.", 'c'],
         });
@@ -75,7 +119,8 @@ describe('Main', () => {
 
     describe('onRemoveColumnLabel', () => {
       it('removes a row label', () => {
-        w.instance().onChangeModel({
+        const instance = createInstance();
+        instance.onChangeModel({
           ...initialModel,
           columnLabels: ['Disagree', 'Unsure'],
         });
@@ -89,7 +134,8 @@ describe('Main', () => {
 
     describe('onAddColumnLabel', () => {
       it('adds a column label', () => {
-        w.instance().onChangeModel({
+        const instance = createInstance();
+        instance.onChangeModel({
           ...initialModel,
           columnLabels: ['Disagree', 'Unsure', 'Agree', 'a'],
         });
@@ -103,7 +149,8 @@ describe('Main', () => {
 
     describe('onPromptChanged', () => {
       it('changes prompt', () => {
-        w.instance().onPromptChanged('New Prompt');
+        const instance = createInstance();
+        instance.onPromptChanged('New Prompt');
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -114,7 +161,8 @@ describe('Main', () => {
 
     describe('onTeacherInstructionsChanged', () => {
       it('changes teacher instructions', () => {
-        w.instance().onTeacherInstructionsChanged('New Teacher Instructions');
+        const instance = createInstance();
+        instance.onTeacherInstructionsChanged('New Teacher Instructions');
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,

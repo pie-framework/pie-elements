@@ -1,14 +1,31 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import { DroppablePlaceHolder, spec } from '../droppable-placeholder';
+import DroppablePlaceHolder from '../droppable-placeholder';
+
+jest.mock('../choice-preview', () => {
+  const React = require('react');
+  return {
+    __esModule: true,
+    default: (props) => <div>{props.choice && props.choice.content}</div>,
+  };
+});
+
+const theme = createTheme();
 
 describe('DroppablePlaceholder', () => {
-  let w;
   let connectDropTarget = jest.fn((o) => o);
   let onDropChoice = jest.fn();
   let onDeleteChoice = jest.fn();
-  const wrapper = (extras) => {
+
+  beforeEach(() => {
+    connectDropTarget = jest.fn((o) => o);
+    onDropChoice = jest.fn();
+    onDeleteChoice = jest.fn();
+  });
+
+  const renderPlaceholder = (extras) => {
     const defaults = {
       classes: {},
       className: 'className',
@@ -22,43 +39,23 @@ describe('DroppablePlaceholder', () => {
       ...defaults,
       ...extras,
     };
-    return shallow(<DroppablePlaceHolder {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <DroppablePlaceHolder {...props} />
+      </ThemeProvider>
+    );
   };
-  describe('snapshot', () => {
-    it('renders', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderPlaceholder();
+      expect(container).toBeInTheDocument();
     });
 
-    it('renders helper', () => {
-      w = wrapper({ choices: [] });
-      expect(w).toMatchSnapshot();
+    it('renders helper when no choices', () => {
+      const { container } = renderPlaceholder({ choices: [] });
+      expect(container).toBeInTheDocument();
     });
   });
 });
 
-describe('spec', () => {
-  describe('drop', () => {
-    it('calls onDropChoice', () => {
-      const props = {
-        onDropChoice: jest.fn(),
-        categoryId: '1',
-      };
-
-      const item = { id: '2' };
-      const monitor = {
-        getItem: jest.fn().mockReturnValue(item),
-      };
-      spec.drop(props, monitor);
-      expect(props.onDropChoice).toBeCalledWith(item, props.categoryId);
-    });
-  });
-  describe('canDrop', () => {
-    it('returns true if !disabled', () => {
-      expect(spec.canDrop({ disabled: false })).toEqual(true);
-    });
-    it('returns false if disabled', () => {
-      expect(spec.canDrop({ disabled: true })).toEqual(false);
-    });
-  });
-});

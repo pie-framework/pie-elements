@@ -1,618 +1,371 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AnswerConfigBlock render snapshot 1`] = `
-<div
-  className="AnswerConfigBlock-container-8"
->
-  <WithStyles(Typography)
-    component="div"
-    type="body1"
-  >
-    Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
-  </WithStyles(Typography)>
+<div>
   <div
-    className="AnswerConfigBlock-rowTable-13"
-    style={Object {}}
+    class="css-lpjlij"
   >
-    <div
-      className="AnswerConfigBlock-rowContainer-9"
-    >
+    <div>
       <div
-        className="AnswerConfigBlock-rowItem-10 AnswerConfigBlock-questionText-12"
-        key="0"
+        class="css-841suf"
       >
-        <Component
-          activePlugins={Array []}
-          autoWidthToolbar={true}
-          className="AnswerConfigBlock-headerInput-14"
-          label="column label"
-          languageCharactersProps={
-            Array [
-              Object {
-                "language": "spanish",
-              },
-              Object {
-                "language": "special",
-              },
-            ]
-          }
-          markup="Column 1"
-          onChange={[Function]}
-          pluginProps={
-            Object {
-              "audio": Object {
-                "disabled": true,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "separateParagraphs": Object {
-                "disabled": true,
-              },
-              "showParagraphs": Object {
-                "disabled": false,
-              },
-              "textAlign": Object {
-                "disabled": true,
-              },
-              "video": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
+        <div
+          class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+          type="body1"
+        >
+          Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
+        </div>
+        <div
+          class="css-1km0bek"
+        >
+          <div
+            class="css-1s3yhxr"
+          >
+            <div
+              class="questionText css-1lkb2sk"
+            >
+              <div
+                data-testid="editable-html"
+              />
+            </div>
+            <div
+              class="css-u46i7e"
+            >
+              <div
+                data-testid="editable-html"
+              />
+            </div>
+            <div
+              class="css-u46i7e"
+            >
+              <div
+                data-testid="editable-html"
+              />
+            </div>
+            <div
+              class="css-58jx8r"
+            />
+          </div>
+          <div
+            style="opacity: 1; background-color: transparent;"
+          >
+            <div>
+              <div
+                style="width: 100%;"
+              >
+                <span
+                  class="css-zxe338"
+                  itemid="handle"
+                >
+                  <div
+                    data-testid="drag-handle"
+                  />
+                </span>
+                <div
+                  class="css-3v6xmt"
+                >
+                  <div
+                    class="css-1nc2gr0"
+                  >
+                    <div
+                      data-testid="editable-html"
+                    />
+                  </div>
+                  <div
+                    class="css-2omq2f"
+                  >
+                    <input
+                      class="css-18ssibn"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    class="css-2omq2f"
+                  >
+                    <input
+                      class="css-18ssibn"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    class="css-1hnoy10"
+                  >
+                    <button
+                      aria-label="Delete"
+                    >
+                      <div
+                        data-testid="delete-icon"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <hr
+                  class="css-fy70dx"
+                />
+                <div />
+              </div>
+            </div>
+          </div>
+          <div
+            style="opacity: 1; background-color: transparent;"
+          >
+            <div>
+              <div
+                style="width: 100%;"
+              >
+                <span
+                  class="css-zxe338"
+                  itemid="handle"
+                >
+                  <div
+                    data-testid="drag-handle"
+                  />
+                </span>
+                <div
+                  class="css-3v6xmt"
+                >
+                  <div
+                    class="css-1nc2gr0"
+                  >
+                    <div
+                      data-testid="editable-html"
+                    />
+                  </div>
+                  <div
+                    class="css-2omq2f"
+                  >
+                    <input
+                      class="css-18ssibn"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    class="css-2omq2f"
+                  >
+                    <input
+                      class="css-18ssibn"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    class="css-1hnoy10"
+                  >
+                    <button
+                      aria-label="Delete"
+                    >
+                      <div
+                        data-testid="delete-icon"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <hr
+                  class="css-fy70dx"
+                />
+                <div />
+              </div>
+            </div>
+          </div>
+          <div
+            style="opacity: 1; background-color: transparent;"
+          >
+            <div>
+              <div
+                style="width: 100%;"
+              >
+                <span
+                  class="css-zxe338"
+                  itemid="handle"
+                >
+                  <div
+                    data-testid="drag-handle"
+                  />
+                </span>
+                <div
+                  class="css-3v6xmt"
+                >
+                  <div
+                    class="css-1nc2gr0"
+                  >
+                    <div
+                      data-testid="editable-html"
+                    />
+                  </div>
+                  <div
+                    class="css-2omq2f"
+                  >
+                    <input
+                      class="css-18ssibn"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    class="css-2omq2f"
+                  >
+                    <input
+                      class="css-18ssibn"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    class="css-1hnoy10"
+                  >
+                    <button
+                      aria-label="Delete"
+                    >
+                      <div
+                        data-testid="delete-icon"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <hr
+                  class="css-fy70dx"
+                />
+                <div />
+              </div>
+            </div>
+          </div>
+          <div
+            style="opacity: 1; background-color: transparent;"
+          >
+            <div>
+              <div
+                style="width: 100%;"
+              >
+                <span
+                  class="css-zxe338"
+                  itemid="handle"
+                >
+                  <div
+                    data-testid="drag-handle"
+                  />
+                </span>
+                <div
+                  class="css-3v6xmt"
+                >
+                  <div
+                    class="css-1nc2gr0"
+                  >
+                    <div
+                      data-testid="editable-html"
+                    />
+                  </div>
+                  <div
+                    class="css-2omq2f"
+                  >
+                    <input
+                      class="css-18ssibn"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    class="css-2omq2f"
+                  >
+                    <input
+                      class="css-18ssibn"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    class="css-1hnoy10"
+                  >
+                    <button
+                      aria-label="Delete"
+                    >
+                      <div
+                        data-testid="delete-icon"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <hr
+                  class="css-fy70dx"
+                />
+                <div />
+              </div>
+            </div>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-6s2gy-MuiButtonBase-root-MuiButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-5defm6-MuiSvgIcon-root"
+              data-testid="AddIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"
+              />
+            </svg>
+            Add Another Row
+          </button>
+        </div>
       </div>
-      <div
-        className="AnswerConfigBlock-rowItem-10"
-        key="1"
-      >
-        <Component
-          activePlugins={Array []}
-          autoWidthToolbar={true}
-          className="AnswerConfigBlock-headerInput-14"
-          label="column label"
-          languageCharactersProps={
-            Array [
-              Object {
-                "language": "spanish",
-              },
-              Object {
-                "language": "special",
-              },
-            ]
-          }
-          markup="Column 2"
-          onChange={[Function]}
-          pluginProps={
-            Object {
-              "audio": Object {
-                "disabled": true,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "separateParagraphs": Object {
-                "disabled": true,
-              },
-              "showParagraphs": Object {
-                "disabled": false,
-              },
-              "textAlign": Object {
-                "disabled": true,
-              },
-              "video": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-      </div>
-      <div
-        className="AnswerConfigBlock-rowItem-10"
-        key="2"
-      >
-        <Component
-          activePlugins={Array []}
-          autoWidthToolbar={true}
-          className="AnswerConfigBlock-headerInput-14"
-          label="column label"
-          languageCharactersProps={
-            Array [
-              Object {
-                "language": "spanish",
-              },
-              Object {
-                "language": "special",
-              },
-            ]
-          }
-          markup="Column 3"
-          onChange={[Function]}
-          pluginProps={
-            Object {
-              "audio": Object {
-                "disabled": true,
-              },
-              "image": Object {
-                "disabled": false,
-              },
-              "separateParagraphs": Object {
-                "disabled": true,
-              },
-              "showParagraphs": Object {
-                "disabled": false,
-              },
-              "textAlign": Object {
-                "disabled": true,
-              },
-              "video": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-      </div>
-      <div
-        className="AnswerConfigBlock-deleteIcon-11"
-      />
     </div>
-    <DropTarget(DragSource(WithStyles(Row)))
-      idx={0}
-      inputConfiguration={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "separateParagraphs": Object {
-            "disabled": true,
-          },
-          "showParagraphs": Object {
-            "disabled": false,
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      key="0"
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      maxImageHeight={150}
-      maxImageWidth={300}
-      minQuestions={2}
-      model={
-        Object {
-          "choiceMode": "radio",
-          "element": "match-element",
-          "feedback": Object {
-            "correct": Object {
-              "default": "Correct",
-              "type": "none",
-            },
-            "incorrect": Object {
-              "default": "Incorrect",
-              "type": "none",
-            },
-            "partial": Object {
-              "default": "Nearly",
-              "type": "none",
-            },
-          },
-          "feedbackEnabled": true,
-          "headers": Array [
-            "Column 1",
-            "Column 2",
-            "Column 3",
-          ],
-          "id": "1",
-          "layout": 3,
-          "lockChoiceOrder": true,
-          "partialScoring": Array [],
-          "prompt": "Prompt",
-          "rows": Array [
-            Object {
-              "id": 1,
-              "title": "Question Text 1",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 2,
-              "title": "Question Text 2",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 3,
-              "title": "Question Text 3",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 4,
-              "title": "Question Text 4",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-          ],
-        }
-      }
-      onChange={[MockFunction]}
-      onDeleteRow={[MockFunction]}
-      onMoveRow={[Function]}
-      row={
-        Object {
-          "id": 1,
-          "title": "Question Text 1",
-          "values": Array [
-            false,
-            false,
-          ],
-        }
-      }
-    />
-    <DropTarget(DragSource(WithStyles(Row)))
-      idx={1}
-      inputConfiguration={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "separateParagraphs": Object {
-            "disabled": true,
-          },
-          "showParagraphs": Object {
-            "disabled": false,
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      key="1"
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      maxImageHeight={150}
-      maxImageWidth={300}
-      minQuestions={2}
-      model={
-        Object {
-          "choiceMode": "radio",
-          "element": "match-element",
-          "feedback": Object {
-            "correct": Object {
-              "default": "Correct",
-              "type": "none",
-            },
-            "incorrect": Object {
-              "default": "Incorrect",
-              "type": "none",
-            },
-            "partial": Object {
-              "default": "Nearly",
-              "type": "none",
-            },
-          },
-          "feedbackEnabled": true,
-          "headers": Array [
-            "Column 1",
-            "Column 2",
-            "Column 3",
-          ],
-          "id": "1",
-          "layout": 3,
-          "lockChoiceOrder": true,
-          "partialScoring": Array [],
-          "prompt": "Prompt",
-          "rows": Array [
-            Object {
-              "id": 1,
-              "title": "Question Text 1",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 2,
-              "title": "Question Text 2",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 3,
-              "title": "Question Text 3",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 4,
-              "title": "Question Text 4",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-          ],
-        }
-      }
-      onChange={[MockFunction]}
-      onDeleteRow={[MockFunction]}
-      onMoveRow={[Function]}
-      row={
-        Object {
-          "id": 2,
-          "title": "Question Text 2",
-          "values": Array [
-            false,
-            false,
-          ],
-        }
-      }
-    />
-    <DropTarget(DragSource(WithStyles(Row)))
-      idx={2}
-      inputConfiguration={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "separateParagraphs": Object {
-            "disabled": true,
-          },
-          "showParagraphs": Object {
-            "disabled": false,
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      key="2"
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      maxImageHeight={150}
-      maxImageWidth={300}
-      minQuestions={2}
-      model={
-        Object {
-          "choiceMode": "radio",
-          "element": "match-element",
-          "feedback": Object {
-            "correct": Object {
-              "default": "Correct",
-              "type": "none",
-            },
-            "incorrect": Object {
-              "default": "Incorrect",
-              "type": "none",
-            },
-            "partial": Object {
-              "default": "Nearly",
-              "type": "none",
-            },
-          },
-          "feedbackEnabled": true,
-          "headers": Array [
-            "Column 1",
-            "Column 2",
-            "Column 3",
-          ],
-          "id": "1",
-          "layout": 3,
-          "lockChoiceOrder": true,
-          "partialScoring": Array [],
-          "prompt": "Prompt",
-          "rows": Array [
-            Object {
-              "id": 1,
-              "title": "Question Text 1",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 2,
-              "title": "Question Text 2",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 3,
-              "title": "Question Text 3",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 4,
-              "title": "Question Text 4",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-          ],
-        }
-      }
-      onChange={[MockFunction]}
-      onDeleteRow={[MockFunction]}
-      onMoveRow={[Function]}
-      row={
-        Object {
-          "id": 3,
-          "title": "Question Text 3",
-          "values": Array [
-            false,
-            false,
-          ],
-        }
-      }
-    />
-    <DropTarget(DragSource(WithStyles(Row)))
-      idx={3}
-      inputConfiguration={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "separateParagraphs": Object {
-            "disabled": true,
-          },
-          "showParagraphs": Object {
-            "disabled": false,
-          },
-          "textAlign": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
-      key="3"
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      maxImageHeight={150}
-      maxImageWidth={300}
-      minQuestions={2}
-      model={
-        Object {
-          "choiceMode": "radio",
-          "element": "match-element",
-          "feedback": Object {
-            "correct": Object {
-              "default": "Correct",
-              "type": "none",
-            },
-            "incorrect": Object {
-              "default": "Incorrect",
-              "type": "none",
-            },
-            "partial": Object {
-              "default": "Nearly",
-              "type": "none",
-            },
-          },
-          "feedbackEnabled": true,
-          "headers": Array [
-            "Column 1",
-            "Column 2",
-            "Column 3",
-          ],
-          "id": "1",
-          "layout": 3,
-          "lockChoiceOrder": true,
-          "partialScoring": Array [],
-          "prompt": "Prompt",
-          "rows": Array [
-            Object {
-              "id": 1,
-              "title": "Question Text 1",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 2,
-              "title": "Question Text 2",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 3,
-              "title": "Question Text 3",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-            Object {
-              "id": 4,
-              "title": "Question Text 4",
-              "values": Array [
-                false,
-                false,
-              ],
-            },
-          ],
-        }
-      }
-      onChange={[MockFunction]}
-      onDeleteRow={[MockFunction]}
-      onMoveRow={[Function]}
-      row={
-        Object {
-          "id": 4,
-          "title": "Question Text 4",
-          "values": Array [
-            false,
-            false,
-          ],
-        }
-      }
-    />
-    <WithStyles(AddRowButton)
-      onAddClick={[MockFunction]}
-    />
   </div>
 </div>
 `;
 
-exports[`choice snapshot renders 1`] = `""`;
+exports[`choice snapshot renders 1`] = `
+<div>
+  <div
+    style="width: 100%;"
+  >
+    <span
+      class="css-zxe338"
+      itemid="handle"
+    >
+      <div
+        data-testid="drag-handle"
+      />
+    </span>
+    <div
+      class="css-3v6xmt"
+    >
+      <div
+        class="css-1nc2gr0"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+      <div
+        class="css-2omq2f"
+      >
+        <input
+          class="css-18ssibn"
+          type="radio"
+        />
+      </div>
+      <div
+        class="css-2omq2f"
+      >
+        <input
+          class="css-18ssibn"
+          type="radio"
+        />
+      </div>
+      <div
+        class="css-1hnoy10"
+      >
+        <button
+          aria-label="Delete"
+        >
+          <div
+            data-testid="delete-icon"
+          />
+        </button>
+      </div>
+    </div>
+    <hr
+      class="css-fy70dx"
+    />
+    <div />
+  </div>
+</div>
+`;

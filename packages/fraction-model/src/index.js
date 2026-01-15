@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
+import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
 import cloneDeep from 'lodash/cloneDeep';
 import { renderMath } from '@pie-lib/math-rendering';

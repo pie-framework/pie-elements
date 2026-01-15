@@ -1,163 +1,319 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
-<Fragment>
-  <Component
-    onConfirm={[Function]}
-    open={false}
-    text="There can't be less than 0 choices."
-    title="Warning"
-  />
-  <WithStyles(Component)
-    classes={Object {}}
-    model={
-      Object {
-        "choiceMode": "checkbox",
-        "choicePrefix": "letters",
-        "choices": Array [
-          Object {
-            "correct": true,
-            "feedback": Object {
-              "type": "none",
-              "value": "",
-            },
-            "label": "Sweden",
-            "value": "sweden",
-          },
-          Object {
-            "feedback": Object {
-              "type": "none",
-              "value": "",
-            },
-            "label": "Iceland",
-            "value": "iceland",
-          },
-          Object {
-            "feedback": Object {
-              "type": "none",
-              "value": "",
-            },
-            "label": "Norway",
-            "value": "norway",
-          },
-          Object {
-            "correct": true,
-            "feedback": Object {
-              "type": "none",
-              "value": "",
-            },
-            "label": "Finland",
-            "value": "finland",
-          },
-        ],
-        "choicesLayout": "vertical",
-        "configure": Object {},
-        "feedbackEnabled": false,
-        "gridColumns": 2,
-        "keyboardEventsEnabled": false,
-        "lockChoiceOrder": true,
-        "partialScoring": false,
-        "prompt": "Which of these northern European countries are EU members?",
-        "promptEnabled": true,
-        "rationale": "",
-        "rationaleEnabled": true,
-        "scoringType": "auto",
-        "selectedAnswerBackgroundColor": "initial",
-        "studentInstructionsEnabled": true,
-        "teacherInstructions": "",
-        "teacherInstructionsEnabled": true,
-        "toolbarEditorPosition": "bottom",
-      }
-    }
-    onAddChoice={[Function]}
-    onChangeModel={[Function]}
-    onChoiceChanged={[Function]}
-    onConfigurationChanged={[MockFunction]}
-    onModelChanged={[MockFunction]}
-    onPromptChanged={[Function]}
-    onRemoveChoice={[Function]}
-    onTeacherInstructionsChanged={[Function]}
-  />
-</Fragment>
+<div>
+  <div
+    data-testid="config-layout"
+  >
+    <div
+      class="css-1dq7hve"
+      data-testid="input-container"
+      label="Teacher Instructions"
+    >
+      <div
+        data-testid="editable-html"
+      />
+    </div>
+    <div
+      class="css-1dq7hve"
+      data-testid="input-container"
+      label="Prompt"
+    >
+      <div
+        data-testid="editable-html"
+      >
+        Which of these northern European countries are EU members?
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-10mejol"
+    >
+      <div
+        class="MuiTypography-root MuiTypography-body1 css-14872c4-MuiTypography-root"
+      >
+        Choices
+      </div>
+      <svg
+        aria-hidden="true"
+        aria-label="Validation requirements:
+There should be at least 2 and at most 5 answer choices defined.
+Every answer choice should be non-blank and unique.
+A correct answer must be defined."
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-1cinn38-MuiSvgIcon-root"
+        data-mui-internal-clone-element="true"
+        data-testid="InfoIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
+        />
+      </svg>
+    </div>
+    <div
+      class="css-cowa9p"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="choice-configuration"
+      >
+        <button>
+          Delete
+        </button>
+        <button>
+          Change
+        </button>
+      </div>
+      <div
+        class="css-ljl9e9"
+        data-testid="input-container"
+        label="Rationale"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+    </div>
+    <div
+      class="css-cowa9p"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="choice-configuration"
+      >
+        <button>
+          Delete
+        </button>
+        <button>
+          Change
+        </button>
+      </div>
+      <div
+        class="css-ljl9e9"
+        data-testid="input-container"
+        label="Rationale"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+    </div>
+    <div
+      class="css-cowa9p"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="choice-configuration"
+      >
+        <button>
+          Delete
+        </button>
+        <button>
+          Change
+        </button>
+      </div>
+      <div
+        class="css-ljl9e9"
+        data-testid="input-container"
+        label="Rationale"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+    </div>
+    <div
+      class="css-cowa9p"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="choice-configuration"
+      >
+        <button>
+          Delete
+        </button>
+        <button>
+          Change
+        </button>
+      </div>
+      <div
+        class="css-ljl9e9"
+        data-testid="input-container"
+        label="Rationale"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+    </div>
+    <button
+      aria-label=""
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-194e9db-MuiButtonBase-root-MuiButton-root"
+      data-mui-internal-clone-element="true"
+      tabindex="0"
+      type="button"
+    >
+      Add a Choice
+    </button>
+  </div>
+</div>
 `;
 
 exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
-<Fragment>
-  <Component
-    onConfirm={[Function]}
-    open={false}
-    text="There can't be less than 0 choices."
-    title="Warning"
-  />
-  <WithStyles(Component)
-    classes={Object {}}
-    model={
-      Object {
-        "choiceMode": "checkbox",
-        "choicePrefix": "numbers",
-        "choices": Array [
-          Object {
-            "correct": true,
-            "feedback": Object {
-              "type": "none",
-              "value": "",
-            },
-            "label": "Sweden",
-            "value": "sweden",
-          },
-          Object {
-            "feedback": Object {
-              "type": "none",
-              "value": "",
-            },
-            "label": "Iceland",
-            "value": "iceland",
-          },
-          Object {
-            "feedback": Object {
-              "type": "none",
-              "value": "",
-            },
-            "label": "Norway",
-            "value": "norway",
-          },
-          Object {
-            "correct": true,
-            "feedback": Object {
-              "type": "none",
-              "value": "",
-            },
-            "label": "Finland",
-            "value": "finland",
-          },
-        ],
-        "choicesLayout": "vertical",
-        "configure": Object {},
-        "feedbackEnabled": false,
-        "gridColumns": 2,
-        "keyboardEventsEnabled": false,
-        "lockChoiceOrder": true,
-        "partialScoring": false,
-        "prompt": "Which of these northern European countries are EU members?",
-        "promptEnabled": true,
-        "rationale": "",
-        "rationaleEnabled": true,
-        "scoringType": "auto",
-        "selectedAnswerBackgroundColor": "initial",
-        "studentInstructionsEnabled": true,
-        "teacherInstructions": "",
-        "teacherInstructionsEnabled": true,
-        "toolbarEditorPosition": "bottom",
-      }
-    }
-    onAddChoice={[Function]}
-    onChangeModel={[Function]}
-    onChoiceChanged={[Function]}
-    onConfigurationChanged={[MockFunction]}
-    onModelChanged={[MockFunction]}
-    onPromptChanged={[Function]}
-    onRemoveChoice={[Function]}
-    onTeacherInstructionsChanged={[Function]}
-  />
-</Fragment>
+<div>
+  <div
+    data-testid="config-layout"
+  >
+    <div
+      class="css-1dq7hve"
+      data-testid="input-container"
+      label="Teacher Instructions"
+    >
+      <div
+        data-testid="editable-html"
+      />
+    </div>
+    <div
+      class="css-1dq7hve"
+      data-testid="input-container"
+      label="Prompt"
+    >
+      <div
+        data-testid="editable-html"
+      >
+        Which of these northern European countries are EU members?
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-10mejol"
+    >
+      <div
+        class="MuiTypography-root MuiTypography-body1 css-14872c4-MuiTypography-root"
+      >
+        Choices
+      </div>
+      <svg
+        aria-hidden="true"
+        aria-label="Validation requirements:
+There should be at least 2 and at most 5 answer choices defined.
+Every answer choice should be non-blank and unique.
+A correct answer must be defined."
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall css-1cinn38-MuiSvgIcon-root"
+        data-mui-internal-clone-element="true"
+        data-testid="InfoIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
+        />
+      </svg>
+    </div>
+    <div
+      class="css-cowa9p"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="choice-configuration"
+      >
+        <button>
+          Delete
+        </button>
+        <button>
+          Change
+        </button>
+      </div>
+      <div
+        class="css-ljl9e9"
+        data-testid="input-container"
+        label="Rationale"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+    </div>
+    <div
+      class="css-cowa9p"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="choice-configuration"
+      >
+        <button>
+          Delete
+        </button>
+        <button>
+          Change
+        </button>
+      </div>
+      <div
+        class="css-ljl9e9"
+        data-testid="input-container"
+        label="Rationale"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+    </div>
+    <div
+      class="css-cowa9p"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="choice-configuration"
+      >
+        <button>
+          Delete
+        </button>
+        <button>
+          Change
+        </button>
+      </div>
+      <div
+        class="css-ljl9e9"
+        data-testid="input-container"
+        label="Rationale"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+    </div>
+    <div
+      class="css-cowa9p"
+      data-testid="input-container"
+    >
+      <div
+        data-testid="choice-configuration"
+      >
+        <button>
+          Delete
+        </button>
+        <button>
+          Change
+        </button>
+      </div>
+      <div
+        class="css-ljl9e9"
+        data-testid="input-container"
+        label="Rationale"
+      >
+        <div
+          data-testid="editable-html"
+        />
+      </div>
+    </div>
+    <button
+      aria-label=""
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-194e9db-MuiButtonBase-root-MuiButton-root"
+      data-mui-internal-clone-element="true"
+      tabindex="0"
+      type="button"
+    >
+      Add a Choice
+    </button>
+  </div>
+</div>
 `;

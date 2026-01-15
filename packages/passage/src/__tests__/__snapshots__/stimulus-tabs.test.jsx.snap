@@ -1,34 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`stimulus tabs snapshot should render component 1`] = `
-<StimulusTabs
-  classes={
-    Object {
-      "passage": "StimulusTabs-passage-2",
-      "passageAuthor": "StimulusTabs-passageAuthor-5",
-      "passageSubtitle": "StimulusTabs-passageSubtitle-4",
-      "passageText": "StimulusTabs-passageText-6",
-      "passageTitle": "StimulusTabs-passageTitle-3",
-      "passages": "StimulusTabs-passages-1",
-      "stickyTabs": "StimulusTabs-stickyTabs-7",
-      "tab": "StimulusTabs-tab-8",
-      "tabButton": "StimulusTabs-tabButton-9",
-      "teacherInstructions": "StimulusTabs-teacherInstructions-10",
-    }
-  }
-  tabs={
-    Array [
-      Object {
-        "id": 1,
-        "text": "text for one",
-        "title": "one",
-      },
-      Object {
-        "id": 2,
-        "text": "text for two",
-        "title": "two",
-      },
-    ]
-  }
-/>
+<div>
+  <div
+    class="css-14680sq"
+  >
+    <div
+      class="passages css-y2xlie"
+    >
+      <div
+        class="MuiTabs-root css-1o4roff-MuiTabs-root"
+      >
+        <div
+          class="MuiTabs-scroller MuiTabs-fixed css-s2t35c-MuiTabs-scroller"
+          style="overflow: hidden; margin-bottom: 0px;"
+        >
+          <div
+            class="MuiTabs-list MuiTabs-flexContainer css-hzcega-MuiTabs-list"
+            role="tablist"
+          >
+            <button
+              aria-controls="tabpanel-1"
+              aria-selected="false"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-snzvsa-MuiButtonBase-root-MuiTab-root"
+              id="button-1"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                data-pie-purpose="passage-label"
+              >
+                Tab One
+              </span>
+            </button>
+            <button
+              aria-controls="tabpanel-2"
+              aria-selected="false"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-snzvsa-MuiButtonBase-root-MuiTab-root"
+              id="button-2"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                data-pie-purpose="passage-label"
+              >
+                Tab Two
+              </span>
+            </button>
+          </div>
+          <span
+            class="MuiTabs-indicator css-1qltlow-MuiTabs-indicator"
+            style="left: 0px; width: 0px;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

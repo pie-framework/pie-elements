@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Main Component Match Snapshot 1`] = `
+<div>
+  <div
+    data-testid="config-layout"
+  >
+    <div
+      data-testid="input-container"
+    >
+      <div
+        data-testid="editable-html"
+      />
+    </div>
+    <div
+      data-testid="input-container"
+    >
+      <div
+        data-testid="editable-html"
+      />
+    </div>
+  </div>
+</div>
+`;

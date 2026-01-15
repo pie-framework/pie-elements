@@ -63,8 +63,7 @@ export const normalize = (question) => ({
  * @param {*} session
  * @param {*} env
  */
-export function model(question, session, env) {
-  return new Promise(async (resolve) => {
+export async function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const base = {};
 
@@ -156,18 +155,15 @@ export function model(question, session, env) {
         normalizedQuestion.feedbackEnabled = false;
       }
 
-      const fb = normalizedQuestion.feedbackEnabled
-        ? getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback)
-        : Promise.resolve(undefined);
+      const feedback = normalizedQuestion.feedbackEnabled
+        ? await getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback)
+        : undefined;
 
-      fb.then((feedback) => {
-        base.feedback = feedback;
-        resolve(base);
-      });
+      base.feedback = feedback;
+      return base;
     } else {
-      resolve(base);
+      return base;
     }
-  });
 }
 
 export const createCorrectResponseSession = (question, env) => {

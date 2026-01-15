@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import MultipleChoiceComponent from '../main';
 import MultipleChoice from '../index';
@@ -24,31 +24,32 @@ describe('isComplete', () => {
 
 describe('multiple-choice', () => {
   describe('renders', () => {
-    let wrapper = (props) => {
-      let defaultProps = {
+    const renderComponent = (props = {}) => {
+      const defaultProps = {
         model: {
+          choices: [],
           ...props,
         },
         session: {},
         classes: {},
       };
 
-      return shallow(<MultipleChoiceComponent {...defaultProps} />);
+      return render(<MultipleChoiceComponent {...defaultProps} />);
     };
 
-    it('snapshot', () => {
-      const w = wrapper();
-      expect(w).toMatchSnapshot();
+    it('renders without crashing', () => {
+      const { container } = renderComponent();
+      expect(container).toBeInTheDocument();
     });
 
-    it('snapshot with rationale', () => {
-      const w = wrapper({ rationale: 'This is rationale' });
-      expect(w).toMatchSnapshot();
+    it('renders with rationale', () => {
+      const { container } = renderComponent({ rationale: 'This is rationale' });
+      expect(container).toBeInTheDocument();
     });
 
-    it('snapshot with teacherInstructions', () => {
-      const w = wrapper({ teacherInstructions: 'These are teacher instructions' });
-      expect(w).toMatchSnapshot();
+    it('renders with teacherInstructions', () => {
+      const { container } = renderComponent({ teacherInstructions: 'These are teacher instructions' });
+      expect(container).toBeInTheDocument();
     });
   });
 

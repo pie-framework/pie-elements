@@ -24,6 +24,12 @@ const StyledRadio = styled(Radio)({
   color: '#000000 !important',
 });
 
+const ErrorMessage = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
 export class CorrectResponse extends React.Component {
   static propTypes = {
     errors: PropTypes.object,

@@ -1,24 +1,21 @@
 import * as React from 'react';
+import { render, screen } from '@testing-library/react';
 import AddRow from '../add-row';
-import Button from '@mui/material/Button';
-import AddButton from '@mui/icons-material/Add';
-import { shallowChild } from '@pie-lib/test-utils';
+
+jest.mock('@mui/material/Button', () => (props) => <button {...props}>{props.children}</button>);
+jest.mock('@mui/icons-material/Add', () => () => <div data-testid="add-icon" />);
 
 describe('AddRow', () => {
   const defaultProps = {
-    onAddClick: () => {},
+    onAddClick: jest.fn(),
     disabled: false,
   };
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallowChild(AddRow, defaultProps, 1);
-  });
 
   it('renders correctly', () => {
-    const component = wrapper();
+    const { container } = render(<AddRow {...defaultProps} />);
 
-    expect(component.find(Button).length).toEqual(1);
-    expect(component.find(AddButton).length).toEqual(1);
+    expect(screen.getByText('Add Another Row')).toBeInTheDocument();
+    expect(screen.getByTestId('add-icon')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

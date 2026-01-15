@@ -229,59 +229,55 @@ const updateTicks = (model) => {
   return model;
 };
 
-export function model(question, session, env) {
+export async function model(question, session, env) {
   if (!question) {
-    return Promise.reject(new Error('question is null'));
+    throw new Error('question is null');
   }
 
-  return new Promise(async (resolve, reject) => {
-    const normalizedQuestion = await normalize(question);
-    const normalizedModel = updateTicks(normalizedQuestion);
-    // this function is also called in configure, it is a duplicate to maintain consistency and correctness
-    const graph = reloadTicksData(normalizedModel.graph);
+  const normalizedQuestion = await normalize(question);
+  const normalizedModel = updateTicks(normalizedQuestion);
+  // this function is also called in configure, it is a duplicate to maintain consistency and correctness
+  const graph = reloadTicksData(normalizedModel.graph);
 
-    if (graph) {
-      const evaluateMode = env.mode === 'evaluate';
+  if (graph) {
+    const evaluateMode = env.mode === 'evaluate';
 
-      const correctResponse = cloneDeep(normalizedQuestion.correctResponse);
-      const corrected = evaluateMode && getCorrected(session ? session.answer || [] : [], correctResponse);
-      const correctness = evaluateMode && getCorrectness(corrected);
+    const correctResponse = cloneDeep(normalizedQuestion.correctResponse);
+    const corrected = evaluateMode && getCorrected(session ? session.answer || [] : [], correctResponse);
+    const correctness = evaluateMode && getCorrectness(corrected);
 
-      const { exhibitOnly } = graph;
-      const disabled = env.mode !== 'gather' || exhibitOnly === true;
-      let teacherInstructions = null;
+    const { exhibitOnly } = graph;
+    const disabled = env.mode !== 'gather' || exhibitOnly === true;
+    let teacherInstructions = null;
 
-      if (env.role === 'instructor' && (env.mode === 'view' || evaluateMode)) {
-        teacherInstructions = normalizedQuestion.teacherInstructions;
-      }
-
-      const fb = evaluateMode
-        ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
-        : Promise.resolve(undefined);
-
-      fb.then((feedbackMessage) => {
-        const out = {
-          prompt: normalizedQuestion.prompt,
-          teacherInstructions,
-          graph,
-          disabled,
-          corrected,
-          correctResponse:
-            evaluateMode && ['unanswered', 'correct'].indexOf(correctness) === -1 && normalizedQuestion.correctResponse,
-          feedback: feedbackMessage && {
-            type: correctness,
-            message: feedbackMessage,
-          },
-          colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
-          language: normalizedQuestion.language,
-          extraCSSRules: normalizedQuestion.extraCSSRules,
-        };
-        resolve(omitBy(out, (v) => !v));
-      });
-    } else {
-      reject(new Error('graph is undefined'));
+    if (env.role === 'instructor' && (env.mode === 'view' || evaluateMode)) {
+      teacherInstructions = normalizedQuestion.teacherInstructions;
     }
-  });
+
+    const feedbackMessage = evaluateMode
+      ? await getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
+      : undefined;
+
+    const out = {
+      prompt: normalizedQuestion.prompt,
+      teacherInstructions,
+      graph,
+      disabled,
+      corrected,
+      correctResponse:
+        evaluateMode && ['unanswered', 'correct'].indexOf(correctness) === -1 && normalizedQuestion.correctResponse,
+      feedback: feedbackMessage && {
+        type: correctness,
+        message: feedbackMessage,
+      },
+      colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
+      language: normalizedQuestion.language,
+      extraCSSRules: normalizedQuestion.extraCSSRules,
+    };
+    return omitBy(out, (v) => !v);
+  } else {
+    throw new Error('graph is undefined');
+  }
 }
 
 export const createCorrectResponseSession = (question, env) => {

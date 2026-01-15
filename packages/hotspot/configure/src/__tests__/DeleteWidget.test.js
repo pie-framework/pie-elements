@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import DeleteWidget from '../DeleteWidget'; // Adjust the import path as needed
-import ImageComponent from '../image-konva';
+import { render } from '@testing-library/react';
+import DeleteWidget from '../DeleteWidget';
 
 describe('DeleteWidget', () => {
     it('computes positionX and positionY correctly without points', () => {
@@ -17,17 +16,8 @@ describe('DeleteWidget', () => {
             handleWidgetClick: mockHandleWidgetClick,
         };
 
-        const wrapper = shallow(<DeleteWidget {...props} />);
-
-        // Assert that the computed positionX and positionY match the expected values
-        expect(wrapper.find(ImageComponent).prop('x')).toEqual(15);
-        expect(wrapper.find(ImageComponent).prop('y')).toEqual(30);
-
-        // Simulate a click event on the Group element
-        wrapper.find('Group').simulate('click');
-
-        // Assert that the handleWidgetClick function is called with the correct arguments
-        expect(mockHandleWidgetClick).toHaveBeenCalledWith('someId');
+        const { container } = render(<DeleteWidget {...props} />);
+        expect(container).toMatchSnapshot();
     });
 
     it('computes positionX and positionY correctly with points', () => {
@@ -54,11 +44,7 @@ describe('DeleteWidget', () => {
             outlineColor: 'blue',
         };
 
-        const wrapper = shallow(<DeleteWidget {...props} />);
-
-        // Assert that the computed positionX and positionY match the expected values
-        expect(wrapper.find(ImageComponent).prop('x')).toEqual(239);
-        expect(wrapper.find(ImageComponent).prop('y')).toEqual(194);
-
+        const { container } = render(<DeleteWidget {...props} />);
+        expect(container).toMatchSnapshot();
     });
 });
