@@ -1,14 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 
 import Scale from '../scale';
 
 describe('Scale', () => {
-  let wrapper, scale;
-
   const mkWrapper = (scaleOptions = {}) => {
-    scale = {
+    const scale = {
       excludeZero: false,
       maxPoints: 1,
       scorePointsLabels: ['A', 'B'],
@@ -24,32 +21,28 @@ describe('Scale', () => {
       ...scaleOptions,
     };
 
-    return mount(<Scale scale={scale} scaleIndex={1} classes={{}} />);
+    return render(<Scale scale={scale} scaleIndex={1} classes={{}} />);
   };
-
-  beforeEach(() => {
-    wrapper = mkWrapper();
-  });
 
   describe('snapshots', () => {
     it('renders without 0', () => {
-      const wrapper = mkWrapper({ excludeZero: true });
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper({ excludeZero: true });
+      expect(container).toMatchSnapshot();
     });
 
     it('renders with 0', () => {
-      const wrapper = mkWrapper();
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper();
+      expect(container).toMatchSnapshot();
     });
 
     it('renders with no score points', () => {
-      const wrapper = mkWrapper({ excludeZero: true, maxPoints: 0 });
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper({ excludeZero: true, maxPoints: 0 });
+      expect(container).toMatchSnapshot();
     });
 
     it('renders with no traits', () => {
-      const wrapper = mkWrapper({ traits: [] });
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper({ traits: [] });
+      expect(container).toMatchSnapshot();
     });
   });
 });

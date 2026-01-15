@@ -1,40 +1,30 @@
 import React from 'react';
-import _ from 'lodash';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import DrawingResponse from '../drawing-response';
-import toJson from 'enzyme-to-json';
 
 describe('DrawingResponse', () => {
-  let wrapper;
-
   const mkWrapper = (opts = {}) => {
-    opts = _.extend(
-      {
-        model: {
-          disabled: false,
-          imageDimensions: {
-            height: 0,
-            width: 0,
-          },
-          imageUrl: '',
-          mode: 'gather',
-          prompt: 'This is the question prompt',
+    const defaultProps = {
+      model: {
+        disabled: false,
+        imageDimensions: {
+          height: 0,
+          width: 0,
         },
+        imageUrl: '',
+        mode: 'gather',
+        prompt: 'This is the question prompt',
       },
-      opts,
-    );
+      ...opts,
+    };
 
-    return shallow(<DrawingResponse {...opts} />);
+    return render(<DrawingResponse {...defaultProps} />);
   };
-
-  beforeEach(() => {
-    wrapper = mkWrapper();
-  });
 
   describe('snapshots', () => {
     it('renders', () => {
-      const wrapper = mkWrapper();
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper();
+      expect(container).toMatchSnapshot();
     });
   });
 });

@@ -1,14 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 
 import Main from '../main';
 
 describe('Main', () => {
-  let wrapper, model;
-
   const mkWrapper = (modelOptions = {}) => {
-    model = {
+    const model = {
       halfScoring: false,
       scales: [
         {
@@ -23,32 +20,28 @@ describe('Main', () => {
       ...modelOptions,
     };
 
-    return mount(<Main model={model} />);
+    return render(<Main model={model} />);
   };
-
-  beforeEach(() => {
-    wrapper = mkWrapper();
-  });
 
   describe('snapshots', () => {
     it('not visible to students => renders empty div', () => {
-      const wrapper = mkWrapper();
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper();
+      expect(container).toMatchSnapshot();
     });
 
     it('visible to students => renders table without half-scoring', () => {
-      const wrapper = mkWrapper({ visible: true });
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper({ visible: true });
+      expect(container).toMatchSnapshot();
     });
 
     it('visible to students => renders table with half-scoring', () => {
-      const wrapper = mkWrapper({ visible: true, halfScoring: true });
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper({ visible: true, halfScoring: true });
+      expect(container).toMatchSnapshot();
     });
 
     it('visible to students => renders empty div if no scales', () => {
-      const wrapper = mkWrapper({ scales: [] });
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = mkWrapper({ scales: [] });
+      expect(container).toMatchSnapshot();
     });
   });
 });

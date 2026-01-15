@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Matrix from '../Matrix';
 
 describe('Matrix', () => {
-  const getShallowMatrix = (onSessionChange, propsToOverride = {}) => {
+  const renderMatrix = (propsToOverride = {}) => {
+    const onSessionChange = jest.fn();
     const props = {
       prompt: 'magic prompt',
       teacherInstructions: 'instructions',
@@ -15,14 +16,13 @@ describe('Matrix', () => {
       onSessionChange,
       ...propsToOverride,
     };
-    return shallow(<Matrix {...props} />);
+    return render(<Matrix {...props} />);
   };
 
   describe('snapshot', () => {
     it('renders', () => {
-      const onSessionChange = jest.fn();
-      const shallowMatrix = getShallowMatrix(onSessionChange);
-      expect(shallowMatrix).toMatchSnapshot();
+      const { container } = renderMatrix();
+      expect(container).toMatchSnapshot();
     });
   });
 });
