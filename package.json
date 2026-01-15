@@ -71,6 +71,9 @@
     "rollup-plugin-analyzer": "^4.0.0"
   },
   "resolutions": {
+    "jest": "29.7.0",
+    "jest-config": "29.7.0",
+    "@jest/test-sequencer": "29.7.0",
     "@types/d3-array": "3.0.3",
     "@pie-lib/categorize": "0.42.0-mui-update.0",
     "@pie-lib/charting": "5.50.0-mui-update.0",
