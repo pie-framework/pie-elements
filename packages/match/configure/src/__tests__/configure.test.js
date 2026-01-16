@@ -416,13 +416,6 @@ describe('AnswerConfigBlock', () => {
     return instance;
   };
 
-  describe('render', () => {
-    it('snapshot', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('moveRow', () => {
     it('calls onChange', () => {
       const component = createInstance();

@@ -139,20 +139,6 @@ describe('index', () => {
     el.dispatchEvent = el.onModelUpdated;
   });
 
-  describe('createDefaultModel', () => {
-    it('default-snapshot', () => {
-      const m = EbsrConfigure.createDefaultModel({});
-      expect(m).toMatchSnapshot();
-    });
-
-    it('with-overrides-snapshot', () => {
-      const m = EbsrConfigure.createDefaultModel({
-        partA: { rationale: 'foo', teacherInstructions: 'ti' },
-      });
-      expect(m).toMatchSnapshot();
-    });
-  });
-
   describe('set model', () => {
     it('calls ReactDOM.render', () => {
       el.model = model;

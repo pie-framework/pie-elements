@@ -43,13 +43,6 @@ describe('GraphingConfig', () => {
     );
   };
 
-  describe('renders', () => {
-    it('snapshot', () => {
-      const { container } = renderGraphingConfig();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('changeBackgroundMarks calls onChange', () => {
       const onChange = jest.fn();

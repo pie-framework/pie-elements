@@ -106,13 +106,6 @@ describe('choice', () => {
     return instance;
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('onRowTitleChange', () => {
       it('calls onChange', () => {

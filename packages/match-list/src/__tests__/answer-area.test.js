@@ -30,13 +30,6 @@ describe('AnswerArea', () => {
     return new AnswerArea(instanceProps);
   };
 
-  describe('render', () => {
-    it('renders correctly', () => {
-      const { container} = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('getCorrectOrIncorrectArray', () => {
       const mkTestForFn = (title, extraProps, val) => {

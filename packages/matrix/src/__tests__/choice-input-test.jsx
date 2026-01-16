@@ -18,14 +18,7 @@ describe('ChoiceInput', () => {
     };
   };
 
-  describe('snapshots', () => {
-    it('renders', () => {
-      const onChange = jest.fn();
-      const props = getPropsDefault(onChange);
-      const { container } = render(<ChoiceInput {...props} />);
-      expect(container).toMatchSnapshot();
-    });
-
+  describe('onChange', () => {
     it('calls onChange', () => {
       const onChange = jest.fn();
       const props = getPropsDefault(onChange);

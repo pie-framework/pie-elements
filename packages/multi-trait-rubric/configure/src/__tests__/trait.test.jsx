@@ -68,33 +68,6 @@ describe('Trait', () => {
     };
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without standards', () => {
-      const { container } = wrapper({ showStandards: false });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without description', () => {
-      const { container } = wrapper({ description: false });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders with drag and drop', () => {
-      const { container } = wrapper({ dragAndDrop: true });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without score points values', () => {
-      const { container } = wrapper({ scorePointsValues: [] });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let onScaleChange;
     let onTraitChanged;

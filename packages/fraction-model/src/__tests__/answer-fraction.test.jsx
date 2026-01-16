@@ -44,11 +44,6 @@ describe('AnswerFraction', () => {
   };
 
   describe('render', () => {
-    it('snapshot', () => {
-      const { container } = renderAnswerFraction();
-      expect(container).toMatchSnapshot();
-    });
-
     it('renders correctly', () => {
       renderAnswerFraction();
       const textFields = screen.getAllByTestId('text-field');

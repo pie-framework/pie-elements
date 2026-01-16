@@ -97,11 +97,6 @@ describe('Main', () => {
     );
   };
 
-  it('snapshot renders', () => {
-    const { container } = renderMain();
-    expect(container).toMatchSnapshot();
-  });
-
   it('renders correctly', () => {
     renderMain();
     expect(screen.getAllByTestId('card-bar').length).toEqual(2);

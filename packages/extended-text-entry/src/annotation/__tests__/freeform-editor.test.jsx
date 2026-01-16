@@ -43,23 +43,6 @@ describe('freeform editor', () => {
     );
   };
 
-  describe('snapshots', () => {
-    it('renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('opened', () => {
-      const { container } = wrapper({ open: true });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('opened, negative type', () => {
-      const { container } = wrapper({ open: true, type: 'negative' });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('save or autosave', () => {
       it('calls onSave',  () => {

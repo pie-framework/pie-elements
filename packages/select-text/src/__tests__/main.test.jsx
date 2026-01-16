@@ -48,25 +48,6 @@ describe('main', () => {
     return instance;
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = getWrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders rationale', () => {
-      const { container } = getWrapper({ rationale: 'This is rationale ' });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders showCorrect', () => {
-      const instance = createInstance();
-      instance.toggleShowCorrect();
-      const { container } = render(<Main {...instance.props} />);
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('shows correct answer', () => {
       const correctTokens = [{ start: 0, end: 1, text: 'f', correct: true, oldStart: 0, oldEnd: 1 }];

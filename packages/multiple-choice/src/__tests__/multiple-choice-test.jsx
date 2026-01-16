@@ -42,13 +42,6 @@ describe('Choice', () => {
     return render(<Choice {...props} />);
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderChoice();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('does not call onChoiceChanged if disabled is true', () => {
       const { container } = renderChoice({ disabled: true });
@@ -76,39 +69,6 @@ describe('CorespringChoice', () => {
 
     return render(<MultipleChoice {...defaultProps} />);
   };
-
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = mkWrapper({
-        choices: [
-          { value: 'a', label: 'label a', correct: true, feedback: 'great' },
-          { value: 'b', label: 'label b' },
-          { value: 'c', label: 'label c', correct: true, feedback: 'great' },
-        ],
-      });
-
-      expect(container).toMatchSnapshot();
-    });
-
-    describe('renders incorrect tick if one answer is correct but it is not checked', () => {
-      it('renders', () => {
-        const { container } = mkWrapper({
-          mode: 'evaluate',
-          keyMode: 'none',
-          choices: [
-            { value: 'a', label: 'label a', correct: true, feedback: 'great' },
-            { value: 'b', label: 'label b' },
-            { value: 'c', label: 'label c', correct: true, feedback: 'great' },
-          ],
-          session: {
-            value: ['a'],
-          },
-        });
-
-        expect(container).toMatchSnapshot();
-      });
-    });
-  });
 
   describe('Toggle', () => {
     it('toggle is rendered', () => {

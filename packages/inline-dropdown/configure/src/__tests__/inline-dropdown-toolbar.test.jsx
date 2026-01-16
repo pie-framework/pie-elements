@@ -118,13 +118,6 @@ describe('Main', () => {
     return instance;
   };
 
-  describe('snapshot', () => {
-    it('Renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let instance;
 

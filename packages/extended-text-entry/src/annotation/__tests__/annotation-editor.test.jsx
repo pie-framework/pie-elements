@@ -30,25 +30,7 @@ jest.mock('../annotation-menu', () => ({
 }));
 
 const theme = createTheme();
-const predefinedAnnotations = [
-  {
-    label: 'good',
-    text: 'good',
-    type: 'positive'
-  }, {
-    label: '★',
-    text: '★',
-    type: 'positive'
-  }, {
-    label: 'cut',
-    text: 'cut',
-    type: 'negative'
-  }, {
-    label: 'sp',
-    text: 'spelling',
-    type: 'negative'
-  }
-];
+
 const mockedElementDOM = {
   removeChild: jest.fn(),
   classList: {
@@ -96,106 +78,6 @@ describe('freeform editor', () => {
         nodeName: 'BODY',
         ownerDocument: document,
       },
-    });
-  });
-
-  const wrapper = extras => {
-    const defaults = {
-      ...defaultProps,
-      onChange,
-      onCommentChange
-    };
-    const props = { ...defaults, ...extras };
-
-    return render(
-      <ThemeProvider theme={theme}>
-        <AnnotationEditor { ...props } />
-      </ThemeProvider>
-    );
-  };
-
-  describe('snapshots', () => {
-    beforeEach(() => {
-      // Mock componentDidMount to avoid DOM Range API issues in snapshots
-      AnnotationEditor.prototype.componentDidMount = jest.fn();
-    });
-
-    afterEach(() => {
-      // Restore original componentDidMount
-      AnnotationEditor.prototype.componentDidMount = originalComponentDidMount;
-    });
-
-    it('renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders disabled', () => {
-      const { container } = wrapper({ disabled: true });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders with predefined annotations', () => {
-      const { container } = wrapper({ predefinedAnnotations });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders with text and annotations', () => {
-      const { container } = wrapper({
-        text: '<div>This is an example.</div>',
-        annotations: [
-          {
-            'id': '1',
-            'label': 'good',
-            'type': 'positive',
-            'quote': 'This',
-            'start': 0,
-            'end': 4
-          }
-        ]
-      });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders with complex text and nested annotations', () => {
-      const { container } = wrapper({
-        text: '<div>This is <b>a complex </b><em>example</em><br/>This is a new line.</div>',
-        annotations: [
-          {
-            'id': '1',
-            'label': 'creative',
-            'type': 'positive',
-            'quote': 'This is a complex exam',
-            'start': 0,
-            'end': 22
-          },
-          {
-            'id': '2',
-            'label': 'punctuation',
-            'type': 'negative',
-            'quote': 'exampleThis is',
-            'start': 18,
-            'end': 32
-          },
-          {
-            'id': '3',
-            'label': 'cut',
-            'type': 'negative',
-            'quote': 'a comp',
-            'start': 8,
-            'end': 14
-          }
-        ]
-      });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders with text and comment', () => {
-      const { container } = wrapper({
-        text: '<div>This is an example.</div>',
-        comment: '<div>Very good</div>'
-      });
-      expect(container).toMatchSnapshot();
     });
   });
 

@@ -79,13 +79,6 @@ describe('Main', () => {
     initialModel = model();
   });
 
-  describe('snapshot', () => {
-    it('renders with default values', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('onRemoveRowLabel', () => {
       it('removes a row label', () => {

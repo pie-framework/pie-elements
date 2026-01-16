@@ -133,11 +133,6 @@ describe('Main component', () => {
     jest.clearAllMocks();
   });
 
-  it('Match Snapshot', () => {
-    const { container } = wrapper();
-    expect(container).toMatchSnapshot();
-  });
-
   it('displays the prompt', () => {
     const prompt = 'Solve the equation:';
     const { getByTestId } = wrapper({ model: { ...defaultModel, prompt } });

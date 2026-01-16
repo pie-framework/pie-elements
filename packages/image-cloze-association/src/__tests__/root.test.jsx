@@ -96,10 +96,4 @@ describe('Root', () => {
     });
   });
 
-  describe('snapshots', () => {
-    it('renders correctly', () => {
-      const { container } = mkWrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
 });

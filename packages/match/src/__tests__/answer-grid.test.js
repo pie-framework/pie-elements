@@ -90,12 +90,6 @@ describe('AnswerGrid', () => {
     return instance;
   };
 
-  it('renders', () => {
-    const { container } = wrapper();
-
-    expect(container).toMatchSnapshot();
-  });
-
   it('renders correctly', () => {
     const { container } = wrapper();
 

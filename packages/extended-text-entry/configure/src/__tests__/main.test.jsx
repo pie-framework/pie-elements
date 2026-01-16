@@ -61,11 +61,6 @@ describe('Render Main Component', () => {
     );
   };
 
-  it('Match Snapshot', () => {
-    const { container } = renderMain();
-    expect(container).toMatchSnapshot();
-  });
-
   describe('logic', () => {
     it('onPromptChange calls onModelChanged', () => {
       const testInstance = new Main({

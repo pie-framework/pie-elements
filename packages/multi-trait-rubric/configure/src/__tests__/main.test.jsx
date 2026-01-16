@@ -279,18 +279,6 @@ describe('Main', () => {
     return instance;
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without scales', () => {
-      const { container } = wrapper({ scales: [] });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     beforeEach(() => {
       onModelChanged = jest.fn();

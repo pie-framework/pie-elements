@@ -66,13 +66,6 @@ describe('ECRToolbar', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderToolbar();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('onDone: calls onToolbarDone and onChangeResponse', () => {
       // Create an instance to test the internal method

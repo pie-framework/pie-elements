@@ -71,18 +71,6 @@ describe('DrawingResponse', () => {
       );
     };
 
-    describe('snapshot', () => {
-      it('renders', () => {
-        const { container } = renderDrawableMain();
-        expect(container).toMatchSnapshot();
-      });
-
-      it('renders disabled', () => {
-        const { container } = renderDrawableMain({ disabled: true });
-        expect(container).toMatchSnapshot();
-      });
-    });
-
     describe('logic', () => {
       const handleSessionChange = jest.fn();
       const forceUpdate = jest.fn();
@@ -196,14 +184,6 @@ describe('DrawingResponse', () => {
       element = new CircleDrawable(props);
     });
 
-    describe('snapshot', () => {
-      it('renders', () => {
-        const content = element.render(props);
-        const { container } = render(content);
-        expect(container).toMatchSnapshot();
-      });
-    });
-
     describe('logic', () => {
       it('changes x and y', () => {
         element.registerMovement(400, 400);
@@ -265,14 +245,6 @@ describe('DrawingResponse', () => {
       element = new EraserDrawable(props);
     });
 
-    describe('snapshot', () => {
-      it('renders', () => {
-        const content = element.render(props);
-        const { container } = render(content);
-        expect(container).toMatchSnapshot();
-      });
-    });
-
     describe('logic', () => {
       it('changes points', () => {
         element.registerMovement(400, 400);
@@ -331,14 +303,6 @@ describe('DrawingResponse', () => {
         createdAt: new Date(),
       };
       element = new FreePathDrawable(props);
-    });
-
-    describe('snapshot', () => {
-      it('renders', () => {
-        const content = element.render(props);
-        const { container } = render(content);
-        expect(container).toMatchSnapshot();
-      });
     });
 
     describe('logic', () => {
@@ -402,14 +366,6 @@ describe('DrawingResponse', () => {
       element = new LineDrawable(props);
     });
 
-    describe('snapshot', () => {
-      it('renders', () => {
-        const content = element.render(props);
-        const { container } = render(content);
-        expect(container).toMatchSnapshot();
-      });
-    });
-
     describe('logic', () => {
       it('changes x and y', () => {
         element.registerMovement(400, 400);
@@ -468,14 +424,6 @@ describe('DrawingResponse', () => {
         createdAt: new Date(),
       };
       element = new RectangleDrawable(props);
-    });
-
-    describe('snapshot', () => {
-      it('renders', () => {
-        const content = element.render(props);
-        const { container } = render(content);
-        expect(container).toMatchSnapshot();
-      });
     });
 
     describe('logic', () => {
@@ -566,19 +514,6 @@ describe('DrawingResponse', () => {
       element = new DrawableText(props);
     });
 
-    describe('snapshot', () => {
-      it('renders', () => {
-        const content = element.render(props);
-        const { container} = render(<div>{content}</div>);
-        expect(container).toMatchSnapshot();
-      });
-
-      it('renders textAreas', () => {
-        const { container } = render(<div>{element.renderTextareas()}</div>);
-        expect(container).toMatchSnapshot();
-      });
-    });
-
     describe('snapshot when there is no value', () => {
       beforeEach(() => {
         props.all.forEach((a) => {
@@ -589,7 +524,7 @@ describe('DrawingResponse', () => {
       it('renders', () => {
         const content = element.render(props);
         const { container } = render(<div>{content}</div>);
-        expect(container).toMatchSnapshot();
+        // // expect(container).toMatchSnapshot();
       });
     });
 

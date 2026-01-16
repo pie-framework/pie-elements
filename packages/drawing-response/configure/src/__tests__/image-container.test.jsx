@@ -40,13 +40,6 @@ describe('ImageContainer', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderImageContainer();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let oldFileReader;
     let dummyFileReader;

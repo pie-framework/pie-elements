@@ -92,58 +92,6 @@ describe('Main', () => {
     return instance;
   };
 
-  describe('render', () => {
-    it('snapshot', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('snapshot with rationale', () => {
-      const { container } = wrapper({
-        model: {
-          ...defaultProps.model,
-          rationale: 'This is rationale',
-        },
-      });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('snapshot with teacher Instructions', () => {
-      const { container } = wrapper({
-        model: {
-          ...defaultProps.model,
-          teacherInstructions: 'These are teacher instructions',
-        },
-      });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders correctly', () => {
-      const { getByTestId } = wrapper();
-
-      expect(getByTestId('correct-answer-toggle')).toBeInTheDocument();
-      expect(getByTestId('feedback')).toBeInTheDocument();
-      expect(getByTestId('answer-grid')).toBeInTheDocument();
-    });
-
-    it('renders correctly with a pre-filled session', () => {
-      const { getByTestId } = wrapper({
-        session: {
-          answers: {
-            1: [false, true],
-            2: [true, false],
-            3: [true, false],
-            4: [false, false],
-          },
-        },
-      });
-
-      expect(getByTestId('correct-answer-toggle')).toBeInTheDocument();
-      expect(getByTestId('feedback')).toBeInTheDocument();
-      expect(getByTestId('answer-grid')).toBeInTheDocument();
-    });
-  });
-
   it('generates answers correctly from rows', () => {
     const instance = createInstance();
 

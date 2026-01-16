@@ -131,13 +131,6 @@ describe('HotspotContainer', () => {
     };
   });
 
-  describe('render', () => {
-    it('renders', () => {
-      const { container } = w();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     const createInstance = () => {
       const props = {

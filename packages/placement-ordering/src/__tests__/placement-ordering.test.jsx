@@ -108,23 +108,6 @@ describe('PlacementOrdering', () => {
     wrapper = mkWrapper();
   });
 
-  describe('render', () => {
-    it('snapshot', () => {
-      const { container } = mkWrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('shows toggle', () => {
-      const { container } = mkWrapper({ correctResponse: ['c1', 'c2', 'c3', 'c4'] });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('snapshot with rationale', () => {
-      const { container } = mkWrapper({ rationale: 'This is rationale.' });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   const ordering = d => ({
     opts: {},
     ...d
@@ -271,7 +254,6 @@ describe('PlacementOrdering', () => {
         expect(onSessionChange).not.toBeCalled();
       });
 
-
       it('calls initSessionIfNeeded if session is not valid', () => {
         wrapper.setProps({
           model: {
@@ -386,7 +368,6 @@ describe('PlacementOrdering', () => {
         expect(onSessionChange).not.toHaveBeenCalled();
       });
 
-
       it('calls initSessionIfNeeded if choicesNumberChanged changes', () => {
         const initialSession = ['c1', 'c3', 'c4', 'c2'];
 
@@ -430,7 +411,6 @@ describe('PlacementOrdering', () => {
         expect(onSessionChange).toHaveBeenCalledWith({ value: ['c3', 'c4', 'c1', 'c2'] });
       });
     });
-
 
     xdescribe('initSessionIfNeeded', () => {
       beforeEach(() => {

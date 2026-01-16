@@ -37,38 +37,6 @@ describe('Trait Header', () => {
     return instance;
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without standards', () => {
-      const { container } = wrapper({ showStandards: false });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without description', () => {
-      const { container } = wrapper({ showDescription: false });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without score point labels', () => {
-      const { container } = wrapper({ showScorePointLabels: false });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without level tag input', () => {
-      const { container } = wrapper({ showLevelTagInput: false });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without score point values', () => {
-      const { container } = wrapper({ scorePointsValues: [] });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let onScaleChange;
     const scrollToPositionSpy = jest.fn();

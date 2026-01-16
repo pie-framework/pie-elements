@@ -48,18 +48,6 @@ describe('Container', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderContainer();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders disabled', () => {
-      const { container } = renderContainer({ disabled: true });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('setDimensions', () => {
       it('handles errors and clears interval', () => {

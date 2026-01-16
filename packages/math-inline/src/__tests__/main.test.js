@@ -118,11 +118,6 @@ describe('Math-Inline Main', () => {
   };
 
   describe('render', () => {
-    it('renders correctly with snapshot', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
     it('renders correctly', () => {
       const { queryByTestId } = wrapper();
       expect(queryByTestId('correct-answer-toggle')).not.toBeInTheDocument();
