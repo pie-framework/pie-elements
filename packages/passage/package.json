@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "5.2.0",
+  "version": "5.3.3",
   "publishConfig": {
     "access": "public"
   },
@@ -28,6 +28,10 @@
   "module": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./print": "./src/print.js"
+    "./print": "./src/print.js",
+    "./esm": "./esm/element.js",
+    "./configure/esm": "./esm/configure.js",
+    "./controller/esm": "./esm/controller.js",
+    "./print/esm": "./esm/print.js"
   }
 }

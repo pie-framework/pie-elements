@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/extended-text-entry",
-  "version": "13.2.0",
+  "version": "13.4.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -33,6 +33,10 @@
   "module": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./print": "./src/print.js"
+    "./print": "./src/print.js",
+    "./esm": "./esm/element.js",
+    "./configure/esm": "./esm/configure.js",
+    "./controller/esm": "./esm/controller.js",
+    "./print/esm": "./esm/print.js"
   }
 }

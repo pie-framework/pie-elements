@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "11.2.0-mui-update.4",
+  "version": "11.4.3",
   "publishConfig": {
     "access": "public"
   },
@@ -32,6 +32,10 @@
   "exports": {
     ".": "./src/index.js",
     "./print": "./src/print.js",
-    "./configure/lib": "./configure/lib/index.js"
+    "./configure/lib": "./configure/lib/index.js",
+    "./esm": "./esm/element.js",
+    "./configure/esm": "./esm/configure.js",
+    "./controller/esm": "./esm/controller.js",
+    "./print/esm": "./esm/print.js"
   }
 }

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "11.2.0",
+  "version": "11.3.3",
   "description": "",
   "dependencies": {
     "@emotion/react": "^11.14.0",
