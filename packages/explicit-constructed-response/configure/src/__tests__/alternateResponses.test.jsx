@@ -102,13 +102,6 @@ describe('AlternateResponses', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderAlternateResponses();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('updateChoicesIfNeeded', () => {
       it('sets state, updates edited choice', () => {

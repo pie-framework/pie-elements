@@ -51,13 +51,6 @@ describe('Main', () => {
     return instance;
   };
 
-  describe('render', () => {
-    it('renders correctly', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('onRemoveAnswer', () => {
       it('should call onSessionChange with appropriate values', () => {

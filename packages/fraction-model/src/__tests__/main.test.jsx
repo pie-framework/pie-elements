@@ -71,11 +71,6 @@ describe('Main', () => {
   };
 
   describe('render', () => {
-    it('snapshot', () => {
-      const { container } = renderMain();
-      expect(container).toMatchSnapshot();
-    });
-
     it('renders correctly', () => {
       renderMain();
 

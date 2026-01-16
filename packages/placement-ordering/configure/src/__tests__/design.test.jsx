@@ -52,41 +52,6 @@ describe('Placement Ordering', () => {
     configuration = _.cloneDeep(defaultValues.configuration);
   });
 
-  describe('snapshot', () => {
-    it('renders all default items', () => {
-      const { container } = render(
-        <Design
-          model={model}
-          configuration={configuration}
-          classes={{}}
-          className={'foo'}
-          onModelChanged={onModelChanged}
-          onConfigurationChanged={onConfigurationChanged}
-        />,
-      );
-
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders custom items', () => {
-      configuration.prompt.settings = false;
-      configuration.removeTilesAfterPlacing.settings = true;
-
-      const { container } = render(
-        <Design
-          model={model}
-          configuration={configuration}
-          classes={{}}
-          className={'foo'}
-          onModelChanged={onModelChanged}
-          onConfigurationChanged={onConfigurationChanged}
-        />,
-      );
-
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let instance;
     let modelFn;

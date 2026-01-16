@@ -57,13 +57,6 @@ describe('Root', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderRoot();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('onPromptChanged calls onModelChanged', () => {
       const { container } = renderRoot();

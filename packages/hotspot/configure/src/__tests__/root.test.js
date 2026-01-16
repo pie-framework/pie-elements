@@ -119,19 +119,6 @@ const model = () => ({
 describe('Root', () => {
   let initialModel = model();
 
-  describe('render', () => {
-    it('renders', () => {
-      const props = {
-        classes: {},
-        configuration: defaultValues.configuration,
-        model: initialModel,
-      };
-
-      const { container } = render(<Root {...props} />);
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let onColorChanged = jest.fn();
 

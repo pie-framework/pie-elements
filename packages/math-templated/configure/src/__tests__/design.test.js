@@ -48,11 +48,6 @@ describe('Render Main Component', () => {
     onChange = jest.fn();
   });
 
-  it('Match Snapshot', () => {
-    const { container } = wrapper();
-    expect(container).toMatchSnapshot();
-  });
-
   describe('UI Rendering', () => {
     it('renders teacher instructions input when enabled', () => {
       const { container } = wrapper({

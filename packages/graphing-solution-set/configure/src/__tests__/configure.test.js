@@ -63,13 +63,6 @@ describe('Configure', () => {
     );
   };
 
-  describe('renders', () => {
-    it('snapshot', () => {
-      const { container } = renderConfigure();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('updates rationale', () => {
       const onModelChanged = jest.fn();

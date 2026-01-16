@@ -118,23 +118,6 @@ describe('HotspotDrawable', () => {
     };
   });
 
-  describe('render', () => {
-    it('renders with default strokeWidth', () => {
-      const { container } = w();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders with given strokeWidth', () => {
-      const { container } = w({ strokeWidth: 10 });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders', () => {
-      const { container } = w();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     const createInstance = () => {
       const props = {

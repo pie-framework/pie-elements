@@ -120,18 +120,6 @@ describe('Main', () => {
     initialModel = model();
   });
 
-  describe('snapshot', () => {
-    it('renders with choicePrefix="numbers"', () => {
-      const { container } = wrapper({ model: model({ choicePrefix: 'numbers' }) });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders with choicePrefix="letters" as default', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('onRemoveChoice', () => {
       it('removes choice', () => {

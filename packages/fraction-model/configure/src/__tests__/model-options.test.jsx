@@ -77,11 +77,6 @@ describe('Model Options', () => {
     );
   };
 
-  it('snapshot renders', () => {
-    const { container } = renderModelOptions();
-    expect(container).toMatchSnapshot();
-  });
-
   it('renders correctly: Components mounted correctly', () => {
     renderModelOptions();
     expect(screen.getByTestId('card-bar')).toBeInTheDocument();

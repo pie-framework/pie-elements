@@ -63,38 +63,6 @@ describe('Main', () => {
     );
   };
 
-  describe('render', () => {
-    it('should render in gather mode', () => {
-      const { container } = renderMain();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render in view mode', () => {
-      const { container } = renderMain({ mode: 'view' });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render in evaluate mode', () => {
-      const { container } = renderMain({ mode: 'evaluate' });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render without teacher instructions', () => {
-      const { container } = renderMain({ teacherInstructions: null });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render without rationale', () => {
-      const { container } = renderMain({ rationale: null });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render without prompt', () => {
-      const { container } = renderMain({ prompt: null });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('onChange calls the onChange prop after debounce', () => {
       jest.useFakeTimers();

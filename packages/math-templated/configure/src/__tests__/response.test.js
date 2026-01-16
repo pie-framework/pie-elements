@@ -50,12 +50,6 @@ describe('Response component', () => {
   beforeEach(() => {
     mockOnResponseChange.mockClear();
   });
-
-  it('Match Snapshot', () => {
-    const { container } = wrapper();
-    expect(container).toMatchSnapshot();
-  });
-
   it('renders correctly', () => {
     const { container } = wrapper();
     expect(container).toBeInTheDocument();

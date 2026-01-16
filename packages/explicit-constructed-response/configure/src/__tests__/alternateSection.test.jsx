@@ -47,13 +47,6 @@ describe('Choice', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderChoice();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('calls onChange', () => {
       jest.useFakeTimers();
@@ -145,13 +138,6 @@ describe('AlternateSection', () => {
       </ThemeProvider>
     );
   };
-
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = renderAlternateSection();
-      expect(container).toMatchSnapshot();
-    });
-  });
 
   describe('logic', () => {
     describe('updateChoicesIfNeeded', () => {

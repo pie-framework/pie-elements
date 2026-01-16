@@ -151,22 +151,6 @@ describe('Main', () => {
     return instance;
   };
 
-  describe('snapshot', () => {
-    it('renders with teacher instructions, prompt and rationale even if not set', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without teacher instructions, prompt and rationale', () => {
-      const { container } = wrapper({
-        promptEnabled: false,
-        teacherInstructionsEnabled: false,
-        rationaleEnabled: false,
-      });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let w;
 

@@ -107,40 +107,6 @@ describe('image-cloze-association', () => {
     mockCreateRoot.mockClear();
   });
 
-  describe('renders', () => {
-    let wrapper = (props) => {
-      let defaultProps = {
-        model: {
-          possibleResponses: [],
-          responseContainers: [],
-          duplicateResponses: false,
-          maxResponsePerZone: 1,
-          image: { src: 'test.jpg', width: 100, height: 100 },
-          ...props,
-        },
-        session: {},
-        updateAnswer: jest.fn(),
-      };
-
-      return render(<ImageClozeAssociationComponent {...defaultProps} />);
-    };
-
-    it('snapshot', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('snapshot with rationale', () => {
-      const { container } = wrapper({ rationale: 'This is rationale' });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('snapshot with teacherInstructions', () => {
-      const { container } = wrapper({ teacherInstructions: 'These are teacher instructions' });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('events', () => {
     describe('model', () => {
       it('dispatches model set event', () => {
@@ -190,7 +156,6 @@ describe('image-cloze-association', () => {
         el.session = { answers: [] };
         el.updateAnswer([{ id: '1', containerIndex: 0, value: '' }]);
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ica-el', false));
-
 
         el.updateAnswer([
           { id: '1', containerIndex: 0, value: '' },

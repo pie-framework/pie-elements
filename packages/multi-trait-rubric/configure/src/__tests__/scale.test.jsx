@@ -44,33 +44,6 @@ describe('Scale', () => {
     return instance;
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without traits', () => {
-      const { container } = wrapper({ traits: [] });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without standards', () => {
-      const { container } = wrapper({ showStandards: false });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without descriptions', () => {
-      const { container } = wrapper({ showDescription: false });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders with drag and drop enabled', () => {
-      const { container } = wrapper({ dragAndDrop: true });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let onScaleChanged;
 

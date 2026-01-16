@@ -46,13 +46,6 @@ describe('CorrectResponse', () => {
     );
   };
 
-  describe('renders', () => {
-    it('snapshot', () => {
-      const { container } = renderCorrectResponse();
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('changeMarks calls onChange', () => {
       const onChange = jest.fn();

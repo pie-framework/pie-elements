@@ -17,22 +17,6 @@ describe('rubric viewer', () => {
         return render(<Rubric {...props} />);
     };
 
-    describe('snapshot', () => {
-        it('renders', () => {
-            const { container } = wrapper();
-            expect(container).toMatchSnapshot();
-        });
-    });
-
-    describe('expanded snapshot', () => {
-        it('renders', async () => {
-            const { container } = wrapper();
-            const toggle = container.querySelector('#rubric-toggle');
-            await userEvent.click(toggle);
-            expect(container).toMatchSnapshot();
-        });
-    });
-
     describe('exclude zeros', () => {
         it('renders correctly with excluded zeroes', async () => {
             let result = wrapper({

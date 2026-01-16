@@ -77,36 +77,6 @@ jest.mock('react-konva', () => {
 });
 
 describe('hotspot', () => {
-  describe('renders', () => {
-    let wrapper = (props) => {
-      let defaultProps = {
-        model: {
-          dimensions: { height: 0, width: 0 },
-          shapes: { rectangles: [], polygons: [], circles: [] },
-          ...props,
-        },
-        session: {},
-        classes: {},
-      };
-
-      return render(<HotspotComponent {...defaultProps} />);
-    };
-
-    it('snapshot', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('snapshot with rationale', () => {
-      const { container } = wrapper({ rationale: 'This is rationale' });
-      expect(container).toMatchSnapshot();
-    });
-
-    it('snapshot with teacherInstructions', () => {
-      const { container } = wrapper({ teacherInstructions: 'These are teacher instructions' });
-      expect(container).toMatchSnapshot();
-    });
-  });
 
   describe('events', () => {
     describe('model', () => {

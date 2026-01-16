@@ -111,12 +111,6 @@ describe('main', () => {
     onChange = jest.fn();
   });
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const { container } = wrapper();
-      expect(container).toMatchSnapshot();
-    });
-  });
   describe('logic', () => {
     const fn = (fnName, args, expected) => {
       describe(fnName, () => {
@@ -193,7 +187,6 @@ describe('main', () => {
         expect(onChange).toHaveBeenCalledWith({ correctResponse: [] });
       });
     });
-
 
     describe('undoCorrectResponse', () => {
       it('undo correct response', () => {

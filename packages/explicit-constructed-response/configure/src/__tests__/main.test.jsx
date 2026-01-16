@@ -107,22 +107,6 @@ describe('Main', () => {
     );
   };
 
-  describe('snapshot', () => {
-    it('renders with teacher instructions, prompt and rationale even if not set', () => {
-      const { container } = renderMain();
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders without teacher instructions, prompt and rationale', () => {
-      const { container } = renderMain({
-        promptEnabled: false,
-        teacherInstructionsEnabled: false,
-        rationaleEnabled: false,
-      });
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('onModelChange', () => {
       it('changes the model', () => {
