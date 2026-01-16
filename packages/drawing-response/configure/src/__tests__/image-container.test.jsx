@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -39,6 +39,38 @@ describe('ImageContainer', () => {
       </ThemeProvider>
     );
   };
+
+  describe('rendering', () => {
+    it('renders "Replace Image" button when imageUrl is provided', () => {
+      renderImageContainer({ imageUrl: 'http://example.com/image.png' });
+      expect(screen.getByRole('button', { name: /replace image/i })).toBeInTheDocument();
+    });
+
+    it('renders "Upload Image" button when no imageUrl', () => {
+      renderImageContainer({ imageUrl: '' });
+      // Should have two "Upload Image" buttons - one in toolbar, one in center
+      const uploadButtons = screen.getAllByRole('button', { name: /upload image/i });
+      expect(uploadButtons.length).toBeGreaterThanOrEqual(1);
+    });
+
+    it('shows drag and drop instruction when no image', () => {
+      renderImageContainer({ imageUrl: '' });
+      expect(screen.getByText(/drag and drop or upload image from computer/i)).toBeInTheDocument();
+    });
+
+    it('renders the image when imageUrl is provided', () => {
+      const { container } = renderImageContainer({ imageUrl: 'http://example.com/test.png' });
+      // Image has alt="" so it has role="presentation", query by tag instead
+      const image = container.querySelector('img');
+      expect(image).toBeInTheDocument();
+      expect(image).toHaveAttribute('src', 'http://example.com/test.png');
+    });
+
+    it('does not show drag and drop instruction when image exists', () => {
+      renderImageContainer({ imageUrl: 'http://example.com/image.png' });
+      expect(screen.queryByText(/drag and drop or upload image from computer/i)).not.toBeInTheDocument();
+    });
+  });
 
   describe('logic', () => {
     let oldFileReader;

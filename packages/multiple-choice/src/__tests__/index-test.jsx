@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import MultipleChoiceComponent from '../main';
 import MultipleChoice from '../index';
@@ -8,6 +8,26 @@ import { isComplete } from '../index';
 jest.useFakeTimers();
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
 jest.mock('lodash/debounce', () => jest.fn((fn) => fn));
+
+// Mock the render-ui PreviewLayout
+jest.mock('@pie-lib/render-ui', () => ({
+  PreviewLayout: ({ children }) => <div data-testid="preview-layout">{children}</div>,
+  Collapsible: ({ children, labels }) => (
+    <div data-testid="collapsible">
+      <button>{labels?.hidden || 'Show'}</button>
+      {children}
+    </div>
+  ),
+  PreviewPrompt: ({ prompt }) => <div data-testid="preview-prompt">{prompt}</div>,
+  color: {
+    text: () => '#000',
+    background: () => '#fff',
+    primary: () => '#1976d2',
+    correct: () => '#4caf50',
+    incorrect: () => '#f44336',
+    disabled: () => '#9e9e9e',
+  },
+}));
 
 describe('isComplete', () => {
   it.each`
@@ -23,12 +43,13 @@ describe('isComplete', () => {
 });
 
 describe('multiple-choice', () => {
-  describe('renders', () => {
-    const renderComponent = (props = {}) => {
+  describe('rendering', () => {
+    const renderComponent = (modelOverrides = {}) => {
       const defaultProps = {
         model: {
           choices: [],
-          ...props,
+          prompt: 'Select an answer',
+          ...modelOverrides,
         },
         session: {},
         classes: {},
@@ -42,14 +63,30 @@ describe('multiple-choice', () => {
       expect(container).toBeInTheDocument();
     });
 
+    it('renders the preview layout wrapper', () => {
+      renderComponent();
+      expect(screen.getByTestId('preview-layout')).toBeInTheDocument();
+    });
+
     it('renders with rationale', () => {
-      const { container } = renderComponent({ rationale: 'This is rationale' });
-      expect(container).toBeInTheDocument();
+      renderComponent({ rationale: 'This is rationale' });
+      expect(screen.getByText('This is rationale')).toBeInTheDocument();
     });
 
     it('renders with teacherInstructions', () => {
-      const { container } = renderComponent({ teacherInstructions: 'These are teacher instructions' });
-      expect(container).toBeInTheDocument();
+      renderComponent({ teacherInstructions: 'These are teacher instructions' });
+      expect(screen.getByText('These are teacher instructions')).toBeInTheDocument();
+    });
+
+    it('renders choices when provided', () => {
+      renderComponent({
+        choices: [
+          { value: 'a', label: 'Option A' },
+          { value: 'b', label: 'Option B' },
+        ],
+      });
+      expect(screen.getByText('Option A')).toBeInTheDocument();
+      expect(screen.getByText('Option B')).toBeInTheDocument();
     });
   });
 

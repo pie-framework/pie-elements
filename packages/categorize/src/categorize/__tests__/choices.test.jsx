@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Choices } from '../choices';
 
 jest.mock('../choice', () => ({
   __esModule: true,
-  default: (props) => <div {...props} />,
+  default: ({ label, id }) => <div data-testid={`choice-${id}`}>{label}</div>,
   ChoiceType: {},
 }));
 jest.mock('@pie-lib/drag', () => ({
@@ -19,7 +19,7 @@ jest.mock('@pie-lib/drag', () => ({
 
 const theme = createTheme();
 
-describe('choices', () => {
+describe('Choices', () => {
   const renderChoices = (extras) => {
     const defaults = {
       classes: {},
@@ -39,7 +39,7 @@ describe('choices', () => {
     );
   };
 
-  describe('renders', () => {
+  describe('rendering', () => {
     it('renders without crashing', () => {
       const { container } = renderChoices();
       expect(container).toBeInTheDocument();
@@ -50,14 +50,42 @@ describe('choices', () => {
       expect(container).toBeInTheDocument();
     });
 
-    it('renders with choices', () => {
-      const { container } = renderChoices({ choices: [{ id: '1', label: 'foo' }] });
-      expect(container).toBeInTheDocument();
+    it('renders choices with their labels', () => {
+      renderChoices({
+        choices: [
+          { id: '1', label: 'Choice One' },
+          { id: '2', label: 'Choice Two' },
+        ],
+      });
+      expect(screen.getByTestId('choice-1')).toBeInTheDocument();
+      expect(screen.getByTestId('choice-2')).toBeInTheDocument();
+      expect(screen.getByText('Choice One')).toBeInTheDocument();
+      expect(screen.getByText('Choice Two')).toBeInTheDocument();
     });
 
-    it('renders with empty choice', () => {
-      const { container } = renderChoices({ choices: [{ empty: true }] });
-      expect(container).toBeInTheDocument();
+    it('does not render empty choices as visible elements', () => {
+      const { container } = renderChoices({
+        choices: [{ empty: true }, { id: '1', label: 'Visible Choice' }],
+      });
+      expect(screen.getByText('Visible Choice')).toBeInTheDocument();
+      // Empty choice renders as empty div
+      expect(container.querySelectorAll('[data-testid^="choice-"]').length).toBe(1);
+    });
+  });
+
+  describe('choices label', () => {
+    it('displays choices label when provided', () => {
+      renderChoices({
+        model: { choicesLabel: 'Available Choices', categoriesPerRow: 1 },
+      });
+      expect(screen.getByText('Available Choices')).toBeInTheDocument();
+    });
+
+    it('does not display label when choicesLabel is empty', () => {
+      renderChoices({
+        model: { choicesLabel: '', categoriesPerRow: 1 },
+      });
+      expect(screen.queryByText('Available Choices')).not.toBeInTheDocument();
     });
   });
 });

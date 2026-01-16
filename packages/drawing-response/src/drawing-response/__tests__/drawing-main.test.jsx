@@ -514,17 +514,17 @@ describe('DrawingResponse', () => {
       element = new DrawableText(props);
     });
 
-    describe('snapshot when there is no value', () => {
+    describe('when there is no value', () => {
       beforeEach(() => {
         props.all.forEach((a) => {
           delete a.value;
         });
         element = new DrawableText(props);
       });
-      it('renders', () => {
+      it('renders without crashing', () => {
         const content = element.render(props);
         const { container } = render(<div>{content}</div>);
-        // // expect(container).toMatchSnapshot();
+        expect(container).toBeInTheDocument();
       });
     });
 
