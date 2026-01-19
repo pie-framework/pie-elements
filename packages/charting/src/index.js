@@ -51,8 +51,13 @@ export default class Graphing extends HTMLElement {
       return;
     }
 
+    const modelClone = {
+      ...this._model,
+      data: this._model.data ? [...this._model.data] : this._model.data,
+    };
+
     const el = React.createElement(Main, {
-      model: this._model,
+      model: modelClone,
       categories: this._session.answer,
       onAnswersChange: this.changeAnswers,
     });
