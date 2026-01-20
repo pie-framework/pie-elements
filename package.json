@@ -13,8 +13,11 @@
     "build": "scripts/build build",
     "release": "scripts/build build release",
     "release:next": "scripts/build build release --next --lernaLogLevel silly",
-    "publish:beta": "lerna publish --dist-tag beta --from-package --force-publish",
-    "publish:beta:dry-run": "lerna publish --dist-tag beta --from-package --force-publish --dry-run",
+    "publish:beta": "lerna publish premajor --dist-tag beta --preid beta --force-publish --ignore-scripts",
+    "publish:beta:continue": "lerna publish from-package --dist-tag beta --force-publish --ignore-scripts",
+    "publish:beta:patch": "lerna publish prepatch --dist-tag beta --preid beta --force-publish --ignore-scripts",
+    "publish:beta:minor": "lerna publish preminor --dist-tag beta --preid beta --force-publish --ignore-scripts",
+    "publish:beta:prerelease": "lerna publish prerelease --dist-tag beta --preid beta --force-publish --ignore-scripts",
     "postinstall": "lerna bootstrap && git config --local include.path ../.gitconfig",
     "clean-install": "git clean -xdf . && yarn install && lerna bootstrap && ./scripts/build babel"
   },

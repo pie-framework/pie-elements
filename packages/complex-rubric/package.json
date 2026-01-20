@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/complex-rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "6.0.0-beta.0",
+  "version": "6.0.0-beta.1",
   "publishConfig": {
     "access": "public"
   },
@@ -10,8 +10,8 @@
     "@emotion/style": "^0.8.0",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
-    "@pie-element/multi-trait-rubric": "6.2.1-mui-update.1",
-    "@pie-element/rubric": "6.2.0-mui-update.2",
+    "@pie-element/multi-trait-rubric": "7.0.0-beta.0",
+    "@pie-element/rubric": "7.0.0-beta.0",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/rubric": "0.28.4-next.0",
     "classnames": "^2.2.5",
@@ -19,7 +19,7 @@
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "152071b68dd68e003f320561a30f681987f50b65",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

@@ -28,7 +28,7 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa",
+  "gitHead": "028605f2d7b2b3b7e5b8840078c0d2c5d9a562e0",
   "main": "lib/index.js",
   "module": "src/index.js"
 }

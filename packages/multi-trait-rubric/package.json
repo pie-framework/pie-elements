@@ -18,7 +18,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "c47957cb243457f62111caf9d07deaad04b39545",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
