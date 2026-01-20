@@ -23,7 +23,7 @@
     "react-dom": "18.2.0",
     "react-transition-group": "^2.3.1"
   },
-  "gitHead": "f63dcdd0432cb3ab6f6c6887b362381472247628",
+  "gitHead": "d122562838e319cebb58d61b3eedd952fc9ad960",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
