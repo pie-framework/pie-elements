@@ -79,6 +79,8 @@
   "resolutions": {
     "jest": "29.7.0",
     "jest-config": "29.7.0",
+    "d3-scale": "4.0.2",
+    "d3-selection": "3.0.0",
     "@jest/test-sequencer": "29.7.0",
     "@types/d3-array": "3.0.3",
     "@pie-lib/categorize": "0.28.3-next.0",

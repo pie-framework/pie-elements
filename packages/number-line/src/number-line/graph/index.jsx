@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import { select, mouse } from 'd3-selection';
+import { select, pointer } from 'd3-selection';
 import { color } from '@pie-lib/render-ui';
 import { DndContext } from '@dnd-kit/core';
 import Point from './elements/point';
@@ -93,10 +93,10 @@ export class NumberLineGraph extends React.Component {
   }
 
   /**
-   * Note: we use d3 click + mouse to give us domain values directly.
+   * Note: we use d3 click + pointer to give us domain values directly.
    * Saves us having to calculate them ourselves from a MouseEvent.
    */
-  onRectClick(rect) {
+  onRectClick(event) {
     const { elements, disabled } = this.props;
 
     if (disabled) {
@@ -108,7 +108,7 @@ export class NumberLineGraph extends React.Component {
     if (anyElementSelected) {
       this.props.onDeselectElements();
     } else {
-      var coords = mouse(rect._groups[0][0]);
+      const coords = pointer(event, this.rect);
       const x = this.xScaleFn().invert(coords[0]);
       this.addElement(x);
     }
@@ -116,7 +116,7 @@ export class NumberLineGraph extends React.Component {
 
   componentDidMount() {
     const rect = select(this.rect);
-    rect.on('click', this.onRectClick.bind(this, rect));
+    rect.on('click', this.onRectClick.bind(this));
   }
 
   addElement(x) {
