@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-element/multiple-choice": "11.2.0-mui-update.4",
+    "@pie-element/multiple-choice": "12.0.0-beta.0",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/translator": "2.23.3-next.0",
     "classnames": "^2.2.5",
@@ -16,7 +16,7 @@
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "802d21e25bfd05e6c6f6913260dfb6a4ed28a274",
+  "gitHead": "028605f2d7b2b3b7e5b8840078c0d2c5d9a562e0",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
