@@ -1,203 +1,187 @@
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import CardActions from '@material-ui/core/CardActions';
-import DragHandle from '@material-ui/icons/DragHandle';
-
-import { DragSource, DropTarget } from 'react-dnd';
-import classNames from 'classnames';
-
-import IconButton from '@material-ui/core/IconButton';
-import PropTypes from 'prop-types';
 import React from 'react';
-import RemoveCircle from '@material-ui/icons/RemoveCircle';
+import PropTypes from 'prop-types';
 import debug from 'debug';
-import { withStyles } from '@material-ui/core/styles';
+import { useDraggable, useDroppable } from '@dnd-kit/core';
+import CardActions from '@mui/material/CardActions';
+import DragHandle from '@mui/icons-material/DragHandle';
+import IconButton from '@mui/material/IconButton';
+import RemoveCircle from '@mui/icons-material/RemoveCircle';
+import { styled } from '@mui/material/styles';
+
 import { color } from '@pie-lib/render-ui';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
-export class ChoiceTile extends React.Component {
-  static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    connectDropTarget: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired,
-    id: PropTypes.any,
-    maxImageHeight: PropTypes.object,
-    maxImageWidth: PropTypes.object,
-    label: PropTypes.string,
-    isOver: PropTypes.bool,
-    classes: PropTypes.object.isRequired,
-    type: PropTypes.string,
-    empty: PropTypes.bool,
-    disabled: PropTypes.bool,
-    outcome: PropTypes.object,
-    index: PropTypes.number,
-    imageSupport: PropTypes.shape({
-      add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired,
-    }),
-    choice: PropTypes.object,
-    choices: PropTypes.array.isRequired,
-    onChoiceChange: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
-    toolbarOpts: PropTypes.object,
-    pluginProps: PropTypes.object,
-    choicesLabel: PropTypes.string,
-    error: PropTypes.string,
-    spellCheck: PropTypes.bool,
-  };
+const StyledChoiceTile = styled('div')(({ theme }) => ({
+  margin: `${theme.spacing(1)}px 0`,
+  backgroundColor: theme.palette.background.paper,
+  display: 'flex',
+  flexDirection: 'column',
+  cursor: 'move'
+}));
 
-  onLabelChange = (label) => {
-    const { choice, onChoiceChange } = this.props;
+const StyledEditableHtml = styled(EditableHtml)(({ theme, isTargetPrompt }) => ({
+  width: '80%',
+  border: 'none',
+  borderRadius: '4px',
+  ...(isTargetPrompt && {
+    backgroundColor: theme.palette.error.light,
+  }),
+}));
 
+const StyledControls = styled('div')(() => ({
+  display: 'flex',
+  justifyContent: 'flex-end',
+}));
+
+const StyledActions = styled(DragHandle)(({ theme }) => ({
+  color: theme.palette.error[400],
+}));
+
+const StyledErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  marginLeft: theme.spacing(5),
+  marginTop: theme.spacing(1),
+}));
+
+const StyledRemoveCircle = styled(RemoveCircle)(({ theme }) => ({
+  fill: theme.palette.error[500],
+}));
+
+const StyledIconButton = styled(IconButton)({
+  color: `${color.tertiary()} !important`,
+});
+
+export const ChoiceTile = (props) => {
+  const {
+    choice,
+    index,
+    onChoiceChange,
+    onDelete,
+    imageSupport,
+    spellCheck,
+    toolbarOpts,
+    pluginProps,
+    maxImageWidth,
+    maxImageHeight,
+    error,
+    mathMlOptions = {},
+  } = props;
+  const { label, editable, type } = choice;
+  const draggableId = `${type}-${choice.id}`;
+  const droppableId = `${type}-drop-${choice.id}`;
+
+  const {
+    attributes,
+    listeners,
+    setNodeRef: setDragRef,
+    transform,
+    isDragging,
+  } = useDraggable({
+    id: draggableId,
+    data: {
+      id: choice.id,
+      index,
+      type,
+    },
+  });
+
+  const {
+    setNodeRef: setDropRef,
+  } = useDroppable({
+    id: droppableId,
+    data: {
+      id: choice.id,
+      index,
+      type,
+    },
+  });
+
+  const onLabelChange = (label) => {
     choice.label = label;
     onChoiceChange(choice);
   };
 
-  render() {
-    const {
-      choice: { label, editable, type },
-      isDragging,
-      connectDragSource,
-      connectDropTarget,
-      classes,
-      onDelete,
-      imageSupport,
-      spellCheck,
-      toolbarOpts,
-      pluginProps,
-      maxImageWidth,
-      maxImageHeight,
-      error,
-      mathMlOptions = {},
-    } = this.props;
+  const style = {
+    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+    opacity: isDragging ? 0.5 : 1,
+    width: '100%',
+  };
 
-    const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
-      (p) => p !== 'bulleted-list' && p !== 'numbered-list',
-    );
+  const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
+    (p) => p !== 'bulleted-list' && p !== 'numbered-list',
+  );
 
-    const opacity = isDragging ? 0 : 1;
-    const markup = (
-      <div className={classes.choiceTile} style={{ opacity: opacity, width: '100%' }}>
-        <div style={{ width: '100%', display: 'flex' }}>
-          <CardActions>
-            <span className={classNames(classes.dragHandle)}>
-              <DragHandle className={classes.actions} />
-            </span>
-          </CardActions>
+  return (
+    <div ref={setDropRef}>
+      <div ref={setDragRef} {...listeners} {...attributes}>
+        <StyledChoiceTile style={style}>
+          <div style={{ width: '100%', display: 'flex' }}>
+            <CardActions>
+              <StyledActions />
+            </CardActions>
 
-          <EditableHtml
-            disabled={!editable}
-            className={classNames(classes.prompt, !editable && classes.targetPrompt)}
-            placeholder={type !== 'target' && !label.includes('data-latex') ? 'Enter a choice' : ''}
-            markup={label}
-            imageSupport={imageSupport || undefined}
-            onChange={this.onLabelChange}
-            pluginProps={pluginProps}
-            toolbarOpts={toolbarOpts}
-            activePlugins={filteredDefaultPlugins}
-            spellCheck={spellCheck}
-            autoWidthToolbar
-            maxImageWidth={maxImageWidth}
-            maxImageHeight={maxImageHeight}
-            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            error={editable && error}
-            mathMlOptions={mathMlOptions}
-          />
+            <StyledEditableHtml
+              disabled={!editable}
+              placeholder={type !== 'target' && !label.includes('data-latex') ? 'Enter a choice' : ''}
+              markup={label}
+              imageSupport={imageSupport || undefined}
+              onChange={onLabelChange}
+              pluginProps={pluginProps}
+              toolbarOpts={toolbarOpts}
+              activePlugins={filteredDefaultPlugins}
+              spellCheck={spellCheck}
+              autoWidthToolbar
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              error={editable && error}
+              mathMlOptions={mathMlOptions}
+            />
 
-          {editable && (
-            <div className={classes.controls}>
-              <IconButton className={classes.customColor} onClick={onDelete}>
-                <RemoveCircle classes={{ root: classes.removeCircle }} />
-              </IconButton>
-            </div>
-          )}
-        </div>
+            {editable && (
+              <StyledControls>
+                <StyledIconButton onClick={onDelete} size="large">
+                  <StyledRemoveCircle />
+                </StyledIconButton>
+              </StyledControls>
+            )}
+          </div>
 
-        {editable && error && <div className={classes.errorText}>{error}</div>}
+          {editable && error && <StyledErrorText>{error}</StyledErrorText>}
+        </StyledChoiceTile>
       </div>
-    );
-
-    return connectDragSource(connectDropTarget(<div>{markup}</div>), dragSourceOpts);
-  }
-}
-
-const Styled = withStyles((theme) => ({
-  removeCircle: {
-    fill: theme.palette.error[500],
-  },
-  choiceTile: {
-    cursor: 'move',
-    backgroundColor: theme.palette.common.white,
-    margin: `${theme.spacing.unit}px 0`,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  controls: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  prompt: {
-    width: '80%',
-    border: 'none',
-    borderRadius: '4px',
-  },
-  targetPrompt: {
-    backgroundColor: theme.palette.error['A100'],
-  },
-  actions: {
-    color: theme.palette.error[400],
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    marginLeft: theme.spacing.unit * 5,
-    marginTop: theme.spacing.unit,
-  },
-  correctOrder: {
-    position: 'absolute',
-    top: 0,
-    fontSize: theme.typography.fontSize - 2,
-    color: color.disabled(),
-  },
-  customColor: {
-    color: `${color.tertiary()} !important`,
-  },
-}))(ChoiceTile);
-
-const NAME = 'choice-config';
-
-const choiceSource = {
-  beginDrag(props) {
-    return {
-      id: props.choice.id,
-      index: props.index,
-      type: props.choice.type,
-      instanceId: props.choice.instanceId,
-    };
-  },
+    </div>
+  );
 };
 
-const StyledSource = DragSource(NAME, choiceSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging(),
-}))(Styled);
-
-const choiceTarget = {
-  hover() {
-    log('[hover]');
-  },
-  drop(props, monitor) {
-    const item = monitor.getItem();
-    log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
-
-    props.onDropChoice(item, props.index);
-  },
+ChoiceTile.propTypes = {
+  id: PropTypes.any,
+  maxImageHeight: PropTypes.object,
+  maxImageWidth: PropTypes.object,
+  label: PropTypes.string,
+  isOver: PropTypes.bool,
+  type: PropTypes.string,
+  empty: PropTypes.bool,
+  disabled: PropTypes.bool,
+  outcome: PropTypes.object,
+  index: PropTypes.number,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
+  choice: PropTypes.object,
+  choices: PropTypes.array.isRequired,
+  onChoiceChange: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  toolbarOpts: PropTypes.object,
+  pluginProps: PropTypes.object,
+  choicesLabel: PropTypes.string,
+  error: PropTypes.string,
+  spellCheck: PropTypes.bool,
+  mathMlOptions: PropTypes.object,
 };
 
-const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget(),
-  isOver: monitor.isOver(),
-}))(StyledSource);
-
-export default StyledSourceAndTarget;
+export default ChoiceTile;

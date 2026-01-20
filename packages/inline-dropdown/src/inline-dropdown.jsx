@@ -6,12 +6,50 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { InlineDropdown as DropDown } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
+
+const StyledUiLayout = styled(UiLayout)({
+  color: color.text(),
+  backgroundColor: color.background(),
+});
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const ChoiceRationaleWrapper = styled('div')(({ theme }) => ({
+  '&:not(:last-child)': {
+    marginBottom: theme.spacing(2),
+  },
+}));
+
+const ChoiceRationale = styled('div')({
+  display: 'flex',
+  whiteSpace: 'break-spaces',
+});
+
+const ChoiceRationaleLabel = styled('div')(({ correct }) => ({
+  display: 'flex',
+  ...(correct
+    ? {
+        color: color.correct(),
+      }
+    : {
+        color: color.incorrectWithIcon(),
+      }),
+}));
+
+const SrOnly = styled('h2')({
+  position: 'absolute',
+  left: '-10000px',
+  top: 'auto',
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+});
 
 export class InlineDropdown extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     prompt: PropTypes.string,
     disabled: PropTypes.bool,
     markup: PropTypes.string,
@@ -54,7 +92,7 @@ export class InlineDropdown extends React.Component {
 
   render() {
     const { showCorrectAnswer } = this.state;
-    const { classes, prompt, mode, model, rationale, teacherInstructions, choices, displayType, language } = this.props;
+    const { prompt, mode, model, rationale, teacherInstructions, choices, displayType, language } = this.props;
     const { extraCSSRules } = model || {};
     const showCorrectAnswerToggle = mode === 'evaluate';
     let choiceRationalesHaveText = false;
@@ -75,16 +113,15 @@ export class InlineDropdown extends React.Component {
     );
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} style={{ display: `${displayType}` }}>
-        {mode === 'gather' && <h2 className={classes.srOnly}>Inline Dropdown Question</h2>}
+      <StyledUiLayout extraCSSRules={extraCSSRules} style={{ display: `${displayType}` }}>
+        {mode === 'gather' && <SrOnly>Inline Dropdown Question</SrOnly>}
 
         {showTeacherInstructions && (
-          <Collapsible
-            className={classes.collapsible}
+          <StyledCollapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
           >
             <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {prompt && <PreviewPrompt prompt={prompt} />}
@@ -99,25 +136,24 @@ export class InlineDropdown extends React.Component {
         <DropDown {...this.props} showCorrectAnswer={showCorrectAnswer} />
 
         {choiceRationalesHaveText && (
-          <Collapsible
-            className={classes.collapsible}
+          <StyledCollapsible
             labels={{ hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices' }}
           >
             {choiceRationales.map((choices, index) => (
-              <div key={index} className={classes.choiceRationaleWrapper}>
+              <ChoiceRationaleWrapper key={index}>
                 {choices?.length > 0 &&
                   choices.map((choice) => (
-                    <div className={classes.choiceRationale} key={choice.label}>
-                      <div
-                        className={classNames(classes.choiceRationaleLabel, choice.correct ? 'correct' : 'incorrect')}
+                    <ChoiceRationale key={choice.label}>
+                      <ChoiceRationaleLabel
+                        correct={choice.correct}
                         dangerouslySetInnerHTML={{ __html: `${choice.label}: ` }}
                       />
                       <PreviewPrompt prompt={choice.rationale} />
-                    </div>
+                    </ChoiceRationale>
                   ))}
-              </div>
+              </ChoiceRationaleWrapper>
             ))}
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {showRationale && (
@@ -125,45 +161,9 @@ export class InlineDropdown extends React.Component {
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
-      </UiLayout>
+      </StyledUiLayout>
     );
   }
 }
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  choiceRationaleWrapper: {
-    '&:not(:last-child)': {
-      marginBottom: theme.spacing.unit * 2,
-    },
-  },
-  choiceRationale: {
-    display: 'flex',
-    whiteSpace: 'break-spaces',
-  },
-  choiceRationaleLabel: {
-    display: 'flex',
-    '&.correct': {
-      color: color.correct(),
-    },
-    '&.incorrect': {
-      color: color.incorrectWithIcon(),
-    },
-  },
-  srOnly: {
-    position: 'absolute',
-    left: '-10000px',
-    top: 'auto',
-    width: '1px',
-    height: '1px',
-    overflow: 'hidden',
-  },
-});
-
-export default withStyles(styles)(InlineDropdown);
+export default InlineDropdown;

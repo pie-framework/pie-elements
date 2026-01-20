@@ -3,15 +3,31 @@ import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
-import classnames from 'classnames';
 import { Layer, Stage } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 import ImageBackground from './drawable-image';
 import Button from './button';
 import factory from './factory';
+
+const Wrapper = styled('div')({
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'flex-end',
+});
+
+const Base = styled('div')({
+  position: 'relative',
+  width: '100%',
+});
+
+const UndoControls = styled('div')({
+  marginTop: -43,
+  marginRight: 10,
+  position: 'absolute',
+});
 
 export class DrawableMain extends React.Component {
   constructor(props) {
@@ -21,6 +37,14 @@ export class DrawableMain extends React.Component {
       newDrawable: [],
       textIsSelected: false,
     };
+    this.stage = null;
+    this.layer = null;
+  }
+
+  componentWillUnmount() {
+    // Clean up refs to prevent React Konva errors
+    this.stage = null;
+    this.layer = null;
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -90,7 +114,10 @@ export class DrawableMain extends React.Component {
     const { toolActive, fillColor, outlineColor, scale } = this.props;
 
     if (newDrawable.length === 0 && !textIsSelected) {
-      const { x, y } = e.target.getStage().getPointerPosition();
+      const stage = e.target.getStage();
+      if (!stage) return;
+
+      const { x, y } = stage.getPointerPosition();
 
       const newDrawable = factory(toolActive.type, {
         startx: x / scale,
@@ -114,7 +141,10 @@ export class DrawableMain extends React.Component {
     const { scale } = this.props;
 
     if (newDrawable.length === 1) {
-      const { x, y } = e.target.getStage().getPointerPosition();
+      const stage = e.target.getStage();
+      if (!stage) return;
+
+      const { x, y } = stage.getPointerPosition();
       const drawableToAdd = newDrawable[0];
 
       drawableToAdd.registerMovement(x / scale, y / scale);
@@ -135,7 +165,10 @@ export class DrawableMain extends React.Component {
     const { scale } = this.props;
 
     if (newDrawable.length === 1) {
-      const { x, y } = e.target.getStage().getPointerPosition();
+      const stage = e.target.getStage();
+      if (!stage) return;
+
+      const { x, y } = stage.getPointerPosition();
       const updatedNewDrawable = newDrawable[0];
 
       updatedNewDrawable.registerMovement(x / scale, y / scale);
@@ -176,7 +209,6 @@ export class DrawableMain extends React.Component {
 
   render() {
     const {
-      classes,
       disabled,
       drawableDimensions,
       fillColor,
@@ -232,8 +264,8 @@ export class DrawableMain extends React.Component {
     const imageWidth = imageDimensions?.width * scale;
 
     return (
-      <div className={classes.wrapper}>
-        <div className={classes.undoControls}>
+      <Wrapper>
+        <UndoControls>
           <Button
             disabled={disabled}
             onClick={this.handleUndo}
@@ -244,71 +276,46 @@ export class DrawableMain extends React.Component {
             onClick={this.handleClearAll}
             label={translator.t('common:clearAll', { lng: language })}
           />
-        </div>
-        <div className={classes.base}>
+        </UndoControls>
+        <Base>
           {backgroundImageEnabled && imageUrl && (
             <ImageBackground dimensions={{ height: imageHeight, width: imageWidth }} url={imageUrl} />
           )}
 
           {TextEntry.renderTextareas()}
 
-          <Stage
-            scaleX={scale}
-            scaleY={scale}
-            ref={(ref) => {
-              this.stage = ref;
+          {/* Wrap Stage in a styled div instead of styling Stage directly */}
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              touchAction: 'none',
+              cursor: draggable && (isOver || newDrawable.length === 1) ? 'pointer' : 'default',
             }}
-            className={classnames(classes.stage, {
-              [classes.active]: draggable && (isOver || (newDrawable && newDrawable.length === 1)),
-            })}
-            height={drawableDimensions.height}
-            width={drawableDimensions.width}
-            {...listeners}
           >
-            <Layer
-              ref={(ref) => {
-                this.layer = ref;
-              }}
+            <Stage
+              key="drawing-stage"
+              scaleX={scale}
+              scaleY={scale}
+              ref={(ref) => (this.stage = ref)}
+              height={drawableDimensions.height}
+              width={drawableDimensions.width}
+              {...listeners}
             >
-              {drawables.map((drawable, key) => drawable.render({ ...drawableProps, key }))}
-              {/* Text Entry is a special case  */}
-              {TextEntry.render(drawableProps)}
-            </Layer>
-          </Stage>
-        </div>
-      </div>
+              <Layer ref={(ref) => (this.layer = ref)}>
+                {drawables.map((drawable, key) => drawable.render({ ...drawableProps, key }))}
+                {TextEntry.render(drawableProps)}
+              </Layer>
+            </Stage>
+          </div>
+        </Base>
+      </Wrapper>
     );
   }
 }
 
-const styles = () => ({
-  wrapper: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-end',
-  },
-  base: {
-    position: 'relative',
-    width: '100%',
-  },
-  stage: {
-    left: 0,
-    position: 'absolute',
-    touchAction: 'none',
-    top: 0,
-  },
-  active: {
-    cursor: 'pointer',
-  },
-  undoControls: {
-    marginTop: -43,
-    marginRight: 10,
-    position: 'absolute',
-  },
-});
-
 DrawableMain.propTypes = {
-  classes: PropTypes.object.isRequired,
   disabled: PropTypes.bool,
   drawableDimensions: PropTypes.object.isRequired,
   imageDimensions: PropTypes.object.isRequired,
@@ -325,4 +332,4 @@ DrawableMain.propTypes = {
   language: PropTypes.string,
 };
 
-export default withStyles(styles)(DrawableMain);
+export default DrawableMain;

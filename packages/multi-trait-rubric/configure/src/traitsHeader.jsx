@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { color } from '@pie-lib/render-ui';
 
 import {
   Block,
   BlockWidth,
-  PrimaryBlock,
-  Row,
+  PrimaryBlockWidth,
   SecondaryBlock,
   ScorePoint,
   MaxPointsPicker,
@@ -22,33 +21,40 @@ import {
   HeaderHeightLarge,
 } from './common';
 
-const styles = (theme) => ({
-  label: {
-    textAlign: 'center',
-    width: '140px',
-    border: 'none',
-    margin: theme.spacing.unit,
-    padding: '10px 0',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  greyHeader: {
-    background: color.secondaryBackground(),
-    borderRadius: '4px',
-    position: 'relative',
-    marginBottom: theme.spacing.unit * 2,
-  },
-  primaryBlockGreyHeader: {
-    paddingTop: theme.spacing.unit * 1.5,
-  },
-  scorePointErrorText: {
-    position: 'absolute',
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit / 2,
-  },
+const Label = styled('div')({
+  width: '140px',
+  border: 'none',
+  padding: '10px 0',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-around',
 });
+
+const GreyHeaderRow = styled('div')(({ height, theme }) => ({
+  background: color.secondaryBackground(),
+  borderRadius: '4px',
+  position: 'relative',
+  marginBottom: theme.spacing(2),
+  display: 'flex',
+  height: height,
+}));
+
+const PrimaryBlockGreyHeader = styled('div')(({ theme }) => ({
+  width: `${PrimaryBlockWidth}px`,
+  minWidth: `${PrimaryBlockWidth}px`,
+  position: 'relative',
+  padding: '0 10px',
+  boxSizing: 'border-box',
+  paddingTop: theme.spacing(1.5),
+  alignSelf: 'center'
+}));
+
+const ScorePointErrorText = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(0.5),
+}));
 
 export class TraitsHeaderTile extends React.Component {
   static propTypes = {
@@ -93,7 +99,6 @@ export class TraitsHeaderTile extends React.Component {
       scorePointsValues,
       scorePointsLabels,
       traitLabel,
-      classes,
       currentPosition,
       showStandards,
       onTraitLabelChange,
@@ -117,8 +122,8 @@ export class TraitsHeaderTile extends React.Component {
     const { anchorEl } = this.state;
 
     return (
-      <Row className={classes.greyHeader} height={showLevelTagInput ? HeaderHeightLarge : HeaderHeight}>
-        <PrimaryBlock className={classes.primaryBlockGreyHeader}>
+      <GreyHeaderRow height={showLevelTagInput ? HeaderHeightLarge : HeaderHeight}>
+        <PrimaryBlockGreyHeader>
           {showLevelTagInput && (
             <SimpleInput
               markup={traitLabel || 'Trait'}
@@ -140,10 +145,22 @@ export class TraitsHeaderTile extends React.Component {
             )}
 
             <div>
-              <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
+              <IconButton
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                onClick={this.handleClick}
+                size="large">
                 <MoreVertIcon />
               </IconButton>
-              <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={!!anchorEl} onClose={this.handleClose}>
+              <Menu
+                id="long-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={!!anchorEl}
+                onClose={this.handleClose}
+                transitionDuration={{ enter: 225, exit: 195 }}
+              >
                 {['Remove Scale'].map((option) => (
                   <MenuItem key={option} onClick={this.openMenu}>
                     {option}
@@ -152,8 +169,7 @@ export class TraitsHeaderTile extends React.Component {
               </Menu>
             </div>
           </ScaleSettings>
-        </PrimaryBlock>
-
+        </PrimaryBlockGreyHeader>
         <SecondaryBlock
           setRef={(ref) => {
             if (ref) {
@@ -165,13 +181,13 @@ export class TraitsHeaderTile extends React.Component {
         >
           {showStandards && (
             <Block>
-              <div className={classes.label}>Standard(s)</div>
+              <Label>Standard(s)</Label>
             </Block>
           )}
 
           {showDescription && (
             <Block>
-              <div className={classes.label}>Description</div>
+              <Label>Description</Label>
             </Block>
           )}
 
@@ -204,18 +220,17 @@ export class TraitsHeaderTile extends React.Component {
                   mathMlOptions={mathMlOptions}
                   imageSupport={imageSupport}
                 />
-                {error && <div className={classes.scorePointErrorText}>{error}</div>}
+                {error && <ScorePointErrorText>{error}</ScorePointErrorText>}
               </Block>
             );
           })}
         </SecondaryBlock>
-      </Row>
+      </GreyHeaderRow>
     );
   }
 }
 
 TraitsHeaderTile.propTypes = {
-  classes: PropTypes.object.isRequired,
   onTraitLabelChange: PropTypes.func,
   onScaleChange: PropTypes.func,
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
@@ -241,4 +256,4 @@ TraitsHeaderTile.propTypes = {
   }),
 };
 
-export default withStyles(styles)(TraitsHeaderTile);
+export default TraitsHeaderTile;

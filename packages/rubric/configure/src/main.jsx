@@ -1,16 +1,15 @@
 import React from 'react';
-import { Authoring } from './pie-toolbox-rubric/index';
-import { withStyles } from '@material-ui/core/styles';
+import { Authoring } from '@pie-lib/rubric';
+import { styled } from '@mui/material/styles';
 import { layout, settings } from '@pie-lib/config-ui';
 
 const { Panel, toggle } = settings;
 
-const styles = (theme) => ({
-  design: {
-    fontFamily: 'Cerebri Sans',
-    fontSize: theme.typography.fontSize,
-  },
-});
+const StyledDiv = styled('div')(({ theme, width }) => ({
+  maxWidth: width,
+  fontFamily: 'Cerebri Sans',
+  fontSize: theme.typography.fontSize,
+}));
 
 class Main extends React.Component {
   verifyRubriclessModel = (m, config) => {
@@ -68,9 +67,8 @@ class Main extends React.Component {
             }}
             imageSupport={imageSupport}
           />
-        }
-      >
-        <div style={{ maxWidth: width }}>
+        }        >
+        <StyledDiv width={width}>
           <Authoring
             value={value}
             config={configuration}
@@ -80,10 +78,10 @@ class Main extends React.Component {
             pluginOpts={baseInputConfiguration}
             imageSupport={imageSupport}
           />
-        </div>
+        </StyledDiv>
       </layout.ConfigLayout>
     );
   }
 }
 
-export default withStyles(styles)(Main);
+export default Main;

@@ -1,32 +1,18 @@
-import { NumberTextField as NTF } from '@pie-lib/config-ui';
-import PropTypes from 'prop-types';
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import cn from 'classnames';
+import { NumberTextField as NTF } from '@pie-lib/config-ui';
+import { styled } from '@mui/material/styles';
 
-export class NumberTextField extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+const StyledNumberTextField = styled(NTF)(({ theme }) => ({
+  marginLeft: theme.spacing(1),
+}));
 
-  render() {
-    const { classes } = this.props;
-    const props = { ...this.props, classes: undefined };
-    return <NTF {...props} className={cn(classes.textField, props.className)} variant="outlined" />;
-  }
-}
-
-const styles = (theme) => ({
-  textField: {
-    marginLeft: theme.spacing.unit,
-  },
+const MiniField = styled(NTF)({
+  maxWidth: '100px',
 });
 
-const miniStyles = () => ({
-  textField: {
-    maxWidth: '100px',
-  },
-});
-export const MiniField = withStyles(miniStyles)(NumberTextField);
+const NumberTextField = (props) => {
+  return <StyledNumberTextField {...props} variant="outlined" />;
+};
 
-export default withStyles(styles)(NumberTextField);
+export { MiniField };
+export default NumberTextField;

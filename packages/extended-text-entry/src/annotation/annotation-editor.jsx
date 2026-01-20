@@ -1,6 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 
 import {
@@ -18,158 +17,66 @@ import AnnotationMenu from './annotation-menu';
 import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer } from '@pie-lib/config-ui';
 
-const style = (theme) => ({
-  textContainer: {
-    padding: '10px 120px 10px 16px',
-    backgroundColor: 'rgba(0, 0, 0, 0.06)',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    overflowY: 'scroll',
-    lineHeight: '36px',
-    whiteSpace: 'pre-wrap',
-    overflowWrap: 'break-word',
-    '& p': {
-      margin: 0,
-    },
-    '& span[data-latex]': {
-      userSelect: 'none',
-      '-webkit-user-select': 'none',
-      '-moz-user-select': 'none',
-      '-ms-user-select': 'none',
-    },
+const TextContainer = styled('div')({
+  padding: '10px 120px 10px 16px',
+  backgroundColor: 'rgba(0, 0, 0, 0.06)',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
+  overflowY: 'scroll',
+  lineHeight: '36px',
+  whiteSpace: 'pre-wrap',
+  overflowWrap: 'break-word',
+  '& p': {
+    margin: 0,
   },
-  labelsContainer: {
-    width: '230px',
-  },
-  wrapper: {
-    position: 'relative',
-    overflowX: 'hidden',
-    display: 'flex',
-  },
-  commentContainer: {
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  annotation: {
-    position: 'relative',
-    cursor: 'pointer',
-
-    '&.positive': {
-      backgroundColor: 'rgb(51, 255, 51, 0.5)',
-    },
-
-    '&.negative': {
-      backgroundColor: 'rgba(255, 102, 204, 0.4)',
-    },
-  },
-  annotationLabel: {
-    backgroundColor: 'rgb(242, 242, 242)',
-    padding: '2px',
-    position: 'absolute',
+  '& span[data-latex]': {
     userSelect: 'none',
-    whiteSpace: 'nowrap',
-    top: '-10px',
-    left: '-2px',
-    fontSize: theme.typography.fontSize - 2,
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    lineHeight: '6px',
     '-webkit-user-select': 'none',
     '-moz-user-select': 'none',
     '-ms-user-select': 'none',
-
-    '&.positive': {
-      color: 'rgb(0, 128, 0)',
-    },
-
-    '&.negative': {
-      color: 'rgb(204, 0, 136)',
-    },
-  },
-  labelHover: {
-    zIndex: 20,
-
-    '&.positive': {
-      color: 'rgb(0, 77, 0)',
-    },
-
-    '&.negative': {
-      color: 'rgb(153, 0, 102)',
-    },
-  },
-  highlight: {
-    zIndex: 10,
-  },
-  hover: {
-    zIndex: 20,
-
-    '&.positive': {
-      backgroundColor: 'rgb(51, 255, 51, 0.7)',
-    },
-
-    '&.negative': {
-      backgroundColor: 'rgba(255, 102, 204, 0.55)',
-    },
-  },
-  sideAnnotationHover: {
-    zIndex: 20,
-
-    '&.negative': {
-      backgroundColor: 'rgb(255, 179, 230) !important',
-      '&:before': {
-        borderRightColor: 'rgb(255, 179, 230) !important',
-      },
-    },
-
-    '&.positive': {
-      backgroundColor: 'rgb(128, 255, 128) !important',
-      '&:before': {
-        borderRightColor: 'rgb(153, 255, 153) !important',
-      },
-    },
-  },
-  sideAnnotation: {
-    position: 'absolute',
-    padding: theme.spacing.unit / 2,
-    borderRadius: '4px',
-    marginLeft: theme.spacing.unit,
-    width: '180px',
-    whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word',
-    border: `2px solid ${theme.palette.common.white}`,
-    fontSize: theme.typography.fontSize,
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-
-    '&:before': {
-      position: 'absolute',
-      right: '100%',
-      top: '5px',
-      border: 'solid transparent',
-      content: '""',
-      height: 0,
-      width: 0,
-      pointerEvents: 'none',
-      borderWidth: '7px',
-    },
-
-    '&.negative': {
-      backgroundColor: 'rgb(255, 204, 238)',
-      '&:before': {
-        borderRightColor: 'rgb(255, 204, 238)',
-      },
-    },
-
-    '&.positive': {
-      backgroundColor: 'rgb(153, 255, 153)',
-      '&:before': {
-        borderRightColor: 'rgb(153, 255, 153)',
-      },
-    },
   },
 });
+
+const LabelsContainer = styled('div')({
+  width: '230px',
+});
+
+const Wrapper = styled('div')({
+  position: 'relative',
+  overflowX: 'hidden',
+  display: 'flex',
+});
+
+const CommentContainer = styled(InputContainer)(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  marginTop: theme.spacing(2),
+  width: '100%',
+}));
+
+// Global styles for pseudo-elements that can't be applied inline
+const globalStyles = `
+  .sideAnnotation:before {
+    position: absolute;
+    right: var(--before-right, 100%);
+    top: var(--before-top, 5px);
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    pointer-events: none;
+    border-width: var(--before-border-width, 7px);
+    border-right-color: var(--before-border-color, rgb(153, 255, 153));
+  }
+`;
+
+// Inject styles if not already injected
+if (!document.getElementById('annotation-editor-styles')) {
+  const styleElement = document.createElement('style');
+  styleElement.id = 'annotation-editor-styles';
+  styleElement.textContent = globalStyles;
+  document.head.appendChild(styleElement);
+}
 
 class AnnotationEditor extends React.Component {
   static propTypes = {
@@ -186,7 +93,6 @@ class AnnotationEditor extends React.Component {
     disabledMath: PropTypes.bool,
     customKeys: PropTypes.array,
     keypadMode: PropTypes.string,
-    classes: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -245,7 +151,7 @@ class AnnotationEditor extends React.Component {
   };
 
   handleClick = (event) => {
-    const { annotations, classes } = this.props;
+    const { annotations } = this.props;
     const { selectionDetails } = this.state;
 
     if (selectionDetails) {
@@ -261,7 +167,7 @@ class AnnotationEditor extends React.Component {
     const isSideLabel = labelElem.hasAttribute('data-freeform');
 
     if (isSideLabel) {
-      labelElem.classList.add(classes.highlight);
+      labelElem.style.zIndex = '10';
     }
 
     this.setState({
@@ -277,31 +183,76 @@ class AnnotationEditor extends React.Component {
   };
 
   handleHover = (event) => {
-    const { classes } = this.props;
     const { id, annId } = event.target.dataset;
     const annotationId = id || annId;
     const selectedElems = getAnnotationElements(annotationId);
     const labelElem = getLabelElement(annotationId);
     const isSideLabel = labelElem.hasAttribute('data-freeform');
 
-    selectedElems.forEach((elem) => elem.classList.add(classes.hover));
-    labelElem.classList.add(isSideLabel ? classes.sideAnnotationHover : classes.labelHover);
+    selectedElems.forEach((elem) => {
+      elem.style.zIndex = '20';
+      if (elem.classList.contains('positive')) {
+        elem.style.backgroundColor = 'rgb(51, 255, 51, 0.7)';
+      } else if (elem.classList.contains('negative')) {
+        elem.style.backgroundColor = 'rgba(255, 102, 204, 0.55)';
+      }
+    });
+
+    if (isSideLabel) {
+      labelElem.style.zIndex = '20';
+      if (labelElem.classList.contains('positive')) {
+        labelElem.style.backgroundColor = 'rgb(128, 255, 128)';
+        labelElem.style.setProperty('--before-border-color', 'rgb(153, 255, 153)');
+      } else if (labelElem.classList.contains('negative')) {
+        labelElem.style.backgroundColor = 'rgb(255, 179, 230)';
+        labelElem.style.setProperty('--before-border-color', 'rgb(255, 179, 230)');
+      }
+    } else {
+      labelElem.style.zIndex = '20';
+      if (labelElem.classList.contains('positive')) {
+        labelElem.style.color = 'rgb(0, 77, 0)';
+      } else if (labelElem.classList.contains('negative')) {
+        labelElem.style.color = 'rgb(153, 0, 102)';
+      }
+    }
   };
 
   handleCancelHover = (event) => {
-    const { classes } = this.props;
     const { id, annId } = event.target.dataset;
     const annotationId = id || annId;
     const selectedElems = getAnnotationElements(annotationId);
     const labelElem = getLabelElement(annotationId);
     const isSideLabel = labelElem.hasAttribute('data-freeform');
 
-    selectedElems.forEach((elem) => elem.classList.remove(classes.hover));
-    labelElem.classList.remove(isSideLabel ? classes.sideAnnotationHover : classes.labelHover);
+    selectedElems.forEach((elem) => {
+      elem.style.zIndex = '';
+      if (elem.classList.contains('positive')) {
+        elem.style.backgroundColor = 'rgb(51, 255, 51, 0.5)';
+      } else if (elem.classList.contains('negative')) {
+        elem.style.backgroundColor = 'rgba(255, 102, 204, 0.4)';
+      }
+    });
+
+    if (isSideLabel) {
+      labelElem.style.zIndex = '';
+      if (labelElem.classList.contains('positive')) {
+        labelElem.style.backgroundColor = 'rgb(153, 255, 153)';
+        labelElem.style.removeProperty('--before-border-color');
+      } else if (labelElem.classList.contains('negative')) {
+        labelElem.style.backgroundColor = 'rgb(255, 204, 238)';
+        labelElem.style.removeProperty('--before-border-color');
+      }
+    } else {
+      labelElem.style.zIndex = '';
+      if (labelElem.classList.contains('positive')) {
+        labelElem.style.color = 'rgb(0, 128, 0)';
+      } else if (labelElem.classList.contains('negative')) {
+        labelElem.style.color = 'rgb(204, 0, 136)';
+      }
+    }
   };
 
   handleClose = (event) => {
-    const { classes } = this.props;
     const { selectedElems, labelElem } = this.state;
 
     if (selectedElems.length && !selectedElems[0].hasAttribute('data-id')) {
@@ -309,7 +260,7 @@ class AnnotationEditor extends React.Component {
     }
 
     if (labelElem) {
-      labelElem.classList.remove(classes.highlight);
+      labelElem.style.zIndex = '';
     }
 
     this.setState({
@@ -368,12 +319,20 @@ class AnnotationEditor extends React.Component {
   };
 
   createDOMAnnotation = (elems, annotation) => {
-    const { classes, disabled } = this.props;
+    const { disabled } = this.props;
     const { id, label, type } = annotation;
 
     (elems || []).forEach((elem) => {
       elem.dataset.id = id;
-      elem.className = classNames(classes.annotation, type);
+      elem.className = `annotation ${type}`;
+      // Apply annotation styles directly
+      elem.style.position = 'relative';
+      elem.style.cursor = 'pointer';
+      if (type === 'positive') {
+        elem.style.backgroundColor = 'rgb(51, 255, 51, 0.5)';
+      } else if (type === 'negative') {
+        elem.style.backgroundColor = 'rgba(255, 102, 204, 0.4)';
+      }
       elem.onclick = !disabled && this.handleClick;
       elem.onmouseover = this.handleHover;
       elem.onmouseout = this.handleCancelHover;
@@ -394,13 +353,65 @@ class AnnotationEditor extends React.Component {
       const left = this.textRef.offsetLeft + this.textRef.offsetWidth + 8;
 
       labelElem.dataset.freeform = true;
-      labelElem.className = classNames(classes.sideAnnotation, type);
+      labelElem.className = `sideAnnotation ${type}`;
+      
+      // Apply side annotation styles directly
+      labelElem.style.position = 'absolute';
+      labelElem.style.padding = '4px';
+      labelElem.style.borderRadius = '4px';
+      labelElem.style.marginLeft = '8px';
+      labelElem.style.width = '180px';
+      labelElem.style.whiteSpace = 'pre-wrap';
+      labelElem.style.wordBreak = 'break-word';
+      labelElem.style.border = '2px solid #ffffff';
+      labelElem.style.fontSize = '14px';
+      labelElem.style.fontStyle = 'normal';
+      labelElem.style.fontWeight = 'normal';
       labelElem.style.top = `${top}px`;
       labelElem.style.left = `${left}px`;
+      
+      if (type === 'negative') {
+        labelElem.style.backgroundColor = 'rgb(255, 204, 238)';
+      } else if (type === 'positive') {
+        labelElem.style.backgroundColor = 'rgb(153, 255, 153)';
+      }
+      
+      // Add pseudo-element styles via CSS
+      labelElem.style.setProperty('--before-border-width', '7px');
+      labelElem.style.setProperty('--before-top', '5px');
+      labelElem.style.setProperty('--before-right', '100%');
+      if (type === 'negative') {
+        labelElem.style.setProperty('--before-border-color', 'rgb(255, 204, 238)');
+      } else if (type === 'positive') {
+        labelElem.style.setProperty('--before-border-color', 'rgb(153, 255, 153)');
+      }
 
       this.labelsRef.appendChild(labelElem);
     } else {
-      labelElem.className = classNames(classes.annotationLabel, type);
+      labelElem.className = `annotationLabel ${type}`;
+      
+      // Apply annotation label styles directly
+      labelElem.style.backgroundColor = 'rgb(242, 242, 242)';
+      labelElem.style.padding = '2px';
+      labelElem.style.position = 'absolute';
+      labelElem.style.userSelect = 'none';
+      labelElem.style.whiteSpace = 'nowrap';
+      labelElem.style.top = '-10px';
+      labelElem.style.left = '-2px';
+      labelElem.style.fontSize = '12px';
+      labelElem.style.fontStyle = 'normal';
+      labelElem.style.fontWeight = 'normal';
+      labelElem.style.lineHeight = '6px';
+      labelElem.style.webkitUserSelect = 'none';
+      labelElem.style.mozUserSelect = 'none';
+      labelElem.style.msUserSelect = 'none';
+      
+      if (type === 'positive') {
+        labelElem.style.color = 'rgb(0, 128, 0)';
+      } else if (type === 'negative') {
+        labelElem.style.color = 'rgb(204, 0, 136)';
+      }
+      
       firstSpan.appendChild(labelElem);
     }
   };
@@ -526,7 +537,6 @@ class AnnotationEditor extends React.Component {
 
   render() {
     const {
-      classes,
       comment,
       customKeys,
       disabled,
@@ -546,21 +556,20 @@ class AnnotationEditor extends React.Component {
 
     return (
       <div>
-        <div className={classes.wrapper}>
-          <div
-            className={classes.textContainer}
+        <Wrapper>
+          <TextContainer
             style={{ width: width - 34, minHeight: height, maxHeight: maxHeight }}
             ref={(r) => (this.textRef = r)}
             onMouseDown={!disabled ? clearSelection : () => {}}
             onMouseUp={!disabled ? this.handleSelection : () => {}}
             dangerouslySetInnerHTML={{ __html: text }}
           />
-          <div className={classes.labelsContainer} ref={(r) => (this.labelsRef = r)} />
-        </div>
+          <LabelsContainer ref={(r) => (this.labelsRef = r)} />
+        </Wrapper>
 
-        <InputContainer label={'Comment'} className={classes.commentContainer}>
+        <CommentContainer label={'Comment'}>
           <EditableHtml
-            className={classes.prompt}
+            className="prompt"
             markup={comment || ''}
             onChange={onCommentChange}
             width={width && (width + 104).toString()}
@@ -583,7 +592,7 @@ class AnnotationEditor extends React.Component {
               },
             }}
           />
-        </InputContainer>
+        </CommentContainer>
 
         <AnnotationMenu
           anchorEl={anchorEl}
@@ -613,4 +622,4 @@ class AnnotationEditor extends React.Component {
   }
 }
 
-export default withStyles(style)(AnnotationEditor);
+export default AnnotationEditor;

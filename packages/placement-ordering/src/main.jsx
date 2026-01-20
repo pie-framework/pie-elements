@@ -1,8 +1,7 @@
-import PlacementOrdering from './placement-ordering';
 import React from 'react';
-import { withDragContext } from '@pie-lib/drag';
-
 import PropTypes from 'prop-types';
+
+import PlacementOrdering from './placement-ordering';
 
 class Main extends React.Component {
   static propTypes = {
@@ -14,10 +13,10 @@ class Main extends React.Component {
   render() {
     const { model, session, onSessionChange } = this.props;
 
-    return <PlacementOrdering model={model} session={session} onSessionChange={onSessionChange} />;
+    return (
+      <PlacementOrdering model={model} session={session} onSessionChange={onSessionChange} />
+    );
   }
 }
 
-const out = withDragContext(Main);
-
-export default out;
+export default Main;

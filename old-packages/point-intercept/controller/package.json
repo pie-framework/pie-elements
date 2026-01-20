@@ -5,7 +5,7 @@
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
-    "@pie-lib/feedback": "^0.4.1"
+    "@pie-lib/feedback": "0.31.0-mui-update.0"
   },
   "author": "",
   "license": "ISC"

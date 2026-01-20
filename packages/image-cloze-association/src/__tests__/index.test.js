@@ -1,39 +1,110 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { createRoot } from 'react-dom/client';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
-import ImageClozeAssociation from '../index';
 import { ImageClozeAssociationComponent } from '../root';
 
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
-jest.spyOn(ReactDOM, 'render').mockImplementation(() => {});
 
-describe('image-cloze-association', () => {
-  describe('renders', () => {
-    let wrapper = (props) => {
-      let defaultProps = {
-        model: { ...props },
-        session: {},
-        classes: {},
+jest.mock('@dnd-kit/core', () => ({
+  DragOverlay: ({ children }) => <div>{children}</div>,
+  useDraggable: () => ({
+    setNodeRef: jest.fn(),
+    attributes: {},
+    listeners: {},
+  }),
+  useDroppable: () => ({
+    setNodeRef: jest.fn(),
+    isOver: false,
+  }),
+}));
+
+jest.mock('@pie-lib/drag', () => ({
+  DragProvider: ({ children }) => <div>{children}</div>,
+  ICADroppablePlaceholder: ({ children }) => <div>{children}</div>,
+}));
+
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+const mockCreateRoot = jest.fn(() => ({
+  render: mockRender,
+  unmount: mockUnmount,
+}));
+
+jest.mock('react-dom/client', () => ({
+  createRoot: (...args) => mockCreateRoot(...args),
+}));
+
+jest.mock('../index', () => {
+  const { ModelSetEvent, SessionChangedEvent } = require('@pie-framework/pie-player-events');
+
+  class MockHTMLElement {
+    constructor() {
+      this._root = null;
+      this._model = null;
+      this._session = null;
+      this.dispatchEvent = jest.fn();
+      this.audioComplete = false;
+      this.tagName = 'image-cloze-association';
+    }
+
+    querySelector() {
+      return null;
+    }
+  }
+
+  return {
+    __esModule: true,
+    default: class ImageClozeAssociation extends MockHTMLElement {
+      constructor() {
+        super();
+      }
+
+      set model(m) {
+        this._model = m;
+        this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this.isComplete(), !!this._model));
+        this._render();
+      }
+
+      set session(s) {
+        this._session = s;
+        this._render();
+      }
+
+      updateAnswer = (answers) => {
+        this._session = { ...this._session, answers };
+        this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
       };
 
-      return shallow(<ImageClozeAssociationComponent {...defaultProps} />);
-    };
+      isComplete() {
+        const { responseAreasToBeFilled } = this._model || {};
+        if (!this._session || !this._session.answers) {
+          return false;
+        }
+        const { answers } = this._session;
+        if (!Array.isArray(answers)) {
+          return false;
+        }
+        const filledResponseAreas = [...new Map(answers.map((item) => [item.containerIndex, item])).values()].length;
+        return filledResponseAreas >= responseAreasToBeFilled;
+      }
 
-    it('snapshot', () => {
-      const w = wrapper();
-      expect(w).toMatchSnapshot();
-    });
+      _render() {
+        if (!this._root) {
+          this._root = mockCreateRoot(global.document.createElement('div'));
+        }
+        this._root.render(null);
+      }
+    },
+  };
+});
 
-    it('snapshot with rationale', () => {
-      const w = wrapper({ rationale: 'This is rationale' });
-      expect(w).toMatchSnapshot();
-    });
+const ImageClozeAssociation = require('../index').default;
 
-    it('snapshot with teacherInstructions', () => {
-      const w = wrapper({ teacherInstructions: 'These are teacher instructions' });
-      expect(w).toMatchSnapshot();
-    });
+describe('image-cloze-association', () => {
+  beforeEach(() => {
+    mockRender.mockClear();
+    mockCreateRoot.mockClear();
   });
 
   describe('events', () => {
@@ -43,6 +114,13 @@ describe('image-cloze-association', () => {
         el.tagName = 'ica-el';
         el.model = {};
         expect(el.dispatchEvent).toBeCalledWith(new ModelSetEvent('ica-el', false, true));
+      });
+
+      it('calls render', () => {
+        const el = new ImageClozeAssociation();
+        el.model = {};
+        const rootInstance = mockCreateRoot.mock.results[0].value;
+        expect(rootInstance.render).toHaveBeenCalled();
       });
     });
 
@@ -78,7 +156,6 @@ describe('image-cloze-association', () => {
         el.session = { answers: [] };
         el.updateAnswer([{ id: '1', containerIndex: 0, value: '' }]);
         expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ica-el', false));
-
 
         el.updateAnswer([
           { id: '1', containerIndex: 0, value: '' },

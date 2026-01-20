@@ -1,11 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { TextField } from '@material-ui/core';
+import { styled } from '@mui/material/styles';
+import { TextField } from '@mui/material';
+
+const GroupInline = styled('div')({
+  alignItems: 'center',
+  display: 'flex',
+  gap: '20px',
+});
+
+const Group = styled('div')({
+  margin: '12px 0',
+});
+
+const InputLabel = styled('label')({
+  display: 'block',
+  marginBottom: '4px',
+});
+
+const StyledTextField = styled(TextField)({
+  width: '120px',
+  maxHeight: '40px',
+  '& [class^="MuiInputBase-root"]': {
+    height: 40,
+    fontSize: '14px',
+  },
+});
 
 export class AnswerFraction extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     disabled: PropTypes.bool.isRequired,
     showCorrect: PropTypes.bool.isRequired,
@@ -34,18 +57,17 @@ export class AnswerFraction extends React.Component {
   };
 
   render() {
-    const { model, classes, showCorrect, answers, disabled } = this.props;
+    const { model, showCorrect, answers, disabled } = this.props;
 
     return (
       <div>
         {model.allowedStudentConfig && (
-          <div className={classes.groupInline}>
-            <div className={classes.group}>
-              <label htmlFor={'preview_number-of-models'} className={classes.inputLabel}>
+          <GroupInline>
+            <Group>
+              <InputLabel htmlFor={'preview_number-of-models'}>
                 Number of Models
-              </label>
-              <TextField
-                className={classes.textField}
+              </InputLabel>
+              <StyledTextField
                 id="preview_number-of-models"
                 inputProps={{ min: 1, max: model.maxModelSelected }}
                 name="preview_number-of-models"
@@ -55,13 +77,12 @@ export class AnswerFraction extends React.Component {
                 disabled={disabled}
                 value={showCorrect ? model.maxModelSelected : answers.noOfModel}
               />
-            </div>
-            <div className={classes.group}>
-              <label htmlFor={'preview_parts-per-model'} className={classes.inputLabel}>
+            </Group>
+            <Group>
+              <InputLabel htmlFor={'preview_parts-per-model'}>
                 Parts per Model
-              </label>
-              <TextField
-                className={classes.textField}
+              </InputLabel>
+              <StyledTextField
                 id="preview_parts-per-model"
                 inputProps={{ min: 1, max: 9 }}
                 name="preview_parts-per-model"
@@ -71,35 +92,12 @@ export class AnswerFraction extends React.Component {
                 disabled={disabled}
                 value={showCorrect ? model.partsPerModel : answers.partsPerModel}
               />
-            </div>
-          </div>
+            </Group>
+          </GroupInline>
         )}
       </div>
     );
   }
 }
 
-const styles = () => ({
-  groupInline: {
-    alignItems: 'center',
-    display: 'flex',
-    gap: '20px',
-  },
-  group: {
-    margin: '12px 0',
-  },
-  inputLabel: {
-    display: 'block',
-    marginBottom: '4px',
-  },
-  textField: {
-    width: '120px',
-    maxHeight: '40px',
-    '& [class^="MuiInputBase-root"]': {
-      height: 40,
-      fontSize: '14px',
-    },
-  },
-});
-
-export default withStyles(styles)(AnswerFraction);
+export default AnswerFraction;

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ModelSetEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
@@ -9,6 +9,7 @@ export default class MultiTraitRubric extends HTMLElement {
     super();
     this._model = {};
     this._session = null;
+    this._root = null;
   }
 
   set model(s) {
@@ -33,8 +34,18 @@ export default class MultiTraitRubric extends HTMLElement {
   _render() {
     const el = React.createElement(Main, { model: this._model, session: this._session });
 
-    ReactDOM.render(el, this, () => {
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(el);
+    queueMicrotask(() => {
       renderMath(this);
     });
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

@@ -8,7 +8,7 @@ import {
 
 import Main from './design';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import defaultValues from './defaults';
 import defaults from 'lodash/defaults';
 
@@ -53,6 +53,7 @@ export default class PlacementOrdering extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
 
     this._model = PlacementOrdering.createDefaultModel();
     this._configuration = defaultValues.configuration;
@@ -154,6 +155,15 @@ export default class PlacementOrdering extends HTMLElement {
       },
     });
 
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

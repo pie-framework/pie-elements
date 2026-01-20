@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
 
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 
 import EditableHtml from '@pie-lib/editable-html';
 import { color, Feedback, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
@@ -14,32 +13,34 @@ import AnnotationEditor from './annotation/annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
 
-const style = (theme) => ({
-  main: {
-    backgroundColor: color.background(),
-    color: color.text(),
-  },
-  prompt: {
-    width: '100%',
-    color: color.text(),
-    marginBottom: theme.spacing.unit * 2,
-    fontSize: 'inherit',
-  },
-  teacherInstructions: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  editor: {
-    marginBottom: theme.spacing.unit * 2,
-    borderRadius: '4px',
-  },
-  srOnly: {
-    position: 'absolute',
-    left: '-10000px',
-    top: 'auto',
-    width: '1px',
-    height: '1px',
-    overflow: 'hidden',
-  },
+const MainContainer = styled(UiLayout)({
+  backgroundColor: color.background(),
+  color: color.text(),
+});
+
+const StyledPrompt = styled(Typography)(({ theme }) => ({
+  width: '100%',
+  color: color.text(),
+  marginBottom: theme.spacing(2),
+  fontSize: 'inherit',
+}));
+
+const TeacherInstructions = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const Editor = styled(EditableHtml)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+  borderRadius: '4px',
+}));
+
+const SrOnly = styled('h2')({
+  position: 'absolute',
+  left: '-10000px',
+  top: 'auto',
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
 });
 
 export class Main extends React.Component {
@@ -48,7 +49,6 @@ export class Main extends React.Component {
     onAnnotationsChange: PropTypes.func.isRequired,
     onCommentChange: PropTypes.func.isRequired,
     model: PropTypes.object,
-    classes: PropTypes.object.isRequired,
     session: PropTypes.shape({
       value: PropTypes.string,
       annotations: PropTypes.array,
@@ -61,7 +61,7 @@ export class Main extends React.Component {
   changeSessionComment = debounce(this.props.onCommentChange, 1500);
 
   render() {
-    const { model, classes, session, onAnnotationsChange } = this.props;
+    const { model, session, onAnnotationsChange } = this.props;
     const {
       animationsDisabled,
       annotatorMode,
@@ -103,34 +103,32 @@ export class Main extends React.Component {
     }
 
     return (
-      <UiLayout
+      <MainContainer
         extraCSSRules={extraCSSRules}
-        className={classes.main}
         ref={(ref) => {
           this.containerRef = ref;
         }}
       >
-        <h2 className={classes.srOnly}>Constructed Response Question</h2>
+        <SrOnly>Constructed Response Question</SrOnly>
 
         {teacherInstructions && (
-          <div className={classes.teacherInstructions}>
+          <TeacherInstructions>
             {!animationsDisabled ? (
               <Collapsible
                 labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-                className={classes.collapsible}
               >
                 {teacherInstructionsDiv}
               </Collapsible>
             ) : (
               teacherInstructionsDiv
             )}
-          </div>
+          </TeacherInstructions>
         )}
 
         {prompt && (
-          <Typography component={'span'} className={classes.prompt}>
+          <StyledPrompt component={'span'}>
             <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />
-          </Typography>
+          </StyledPrompt>
         )}
 
         {annotatorMode ? (
@@ -150,8 +148,8 @@ export class Main extends React.Component {
             keypadMode={equationEditor}
           />
         ) : (
-          <EditableHtml
-            className={classnames(classes.editor, 'response-area-editor')}
+          <Editor
+            className="response-area-editor"
             onChange={this.changeSessionValue}
             markup={value || ''}
             maxWidth={width && width.toString()}
@@ -192,9 +190,9 @@ export class Main extends React.Component {
         )}
 
         {feedback && <Feedback correctness="correct" feedback={feedback} />}
-      </UiLayout>
+      </MainContainer>
     );
   }
 }
 
-export default withStyles(style)(Main);
+export default Main;

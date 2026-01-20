@@ -1,5 +1,10 @@
+import React from 'react';
 import { getUpdatedCategories } from '../correct-response';
 import cloneDeep from 'lodash/cloneDeep';
+
+jest.mock('@pie-lib/charting', () => ({
+  Chart: (props) => <div data-testid="chart">{props.children}</div>,
+}));
 
 describe('CorrectResponse - getUpdatedCategories function', () => {
   const prevProps = {

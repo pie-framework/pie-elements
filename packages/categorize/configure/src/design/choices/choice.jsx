@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
 import InputHeader from '../input-header';
 import { Checkbox } from '@pie-lib/config-ui';
 import { DeleteButton } from '../buttons';
-import DragHandle from '@material-ui/icons/DragHandle';
-import { DragSource, DropTarget } from 'react-dnd';
+import DragHandle from '@mui/icons-material/DragHandle';
+import { useDraggable, useDroppable } from '@dnd-kit/core';
 import debug from 'debug';
 import { uid } from '@pie-lib/drag';
 import { multiplePlacements } from '../../utils';
-import flow from 'lodash/flow';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -28,48 +26,82 @@ const canDrag = (props) => {
   }
 };
 
-export class Choice extends React.Component {
-  static propTypes = {
-    allowMultiplePlacements: PropTypes.string,
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
-    configuration: PropTypes.object.isRequired,
-    choice: PropTypes.object.isRequired,
-    connectDropTarget: PropTypes.func,
-    deleteFocusedEl: PropTypes.func,
-    focusedEl: PropTypes.number,
-    index: PropTypes.number,
-    lockChoiceOrder: PropTypes.bool,
-    maxImageHeight: PropTypes.object,
-    maxImageWidth: PropTypes.object,
-    onChange: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
-    connectDragSource: PropTypes.func.isRequired,
-    connectDragPreview: PropTypes.func.isRequired,
-    correctResponseCount: PropTypes.number.isRequired,
-    imageSupport: PropTypes.shape({
-      add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired,
-    }),
-    toolbarOpts: PropTypes.object,
-    error: PropTypes.string,
-    uploadSoundSupport: PropTypes.shape({
-      add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired,
-    }),
-    spellCheck: PropTypes.bool,
-  };
+const StyledCard = styled(Card)(({ theme }) => ({
+  minWidth: '196px',
+  padding: theme.spacing(1),
+  overflow: 'visible',
+}));
 
-  static defaultProps = {};
+const StyledCardActions = styled(CardActions)({
+  padding: 0,
+  justifyContent: 'space-between',
+});
 
-  changeContent = (content) => {
-    const { onChange, choice } = this.props;
+const DragHandleContainer = styled('span', {
+  shouldForwardProp: (prop) => prop !== 'draggable',
+})(({ draggable }) => ({
+  cursor: draggable ? 'move' : 'inherit',
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingBottom: theme.spacing(1),
+}));
+
+const Choice = ({
+  allowMultiplePlacements,
+  configuration,
+  choice,
+  deleteFocusedEl,
+  focusedEl,
+  index,
+  onDelete,
+  onChange,
+  correctResponseCount,
+  lockChoiceOrder,
+  imageSupport,
+  spellCheck,
+  toolbarOpts,
+  error,
+  maxImageWidth,
+  maxImageHeight,
+  uploadSoundSupport,
+}) => {
+  const draggable = canDrag({ choice, correctResponseCount, lockChoiceOrder });
+
+  const {
+    attributes: dragAttributes,
+    listeners: dragListeners,
+    setNodeRef: setDragNodeRef,
+    isDragging,
+  } = useDraggable({
+    id: `choice-${choice.id}`,
+    data: {
+      id: choice.id,
+      index,
+      type: 'choice',
+    },
+    disabled: !draggable,
+  });
+
+  const {
+    setNodeRef: setDropNodeRef,
+  } = useDroppable({
+    id: `choice-drop-${choice.id}`,
+    data: {
+      id: choice.id,
+      index,
+      type: 'choice',
+    },
+  });
+
+  const changeContent = (content) => {
     choice.content = content;
     onChange(choice);
   };
 
-  changeCategoryCount = () => {
-    const { onChange, choice } = this.props;
+  const changeCategoryCount = () => {
     if (choice.categoryCount === 1) {
       choice.categoryCount = 0;
     } else {
@@ -78,158 +110,80 @@ export class Choice extends React.Component {
     onChange(choice);
   };
 
-  isCheckboxShown = (allowMultiplePlacements) => allowMultiplePlacements === multiplePlacements.perChoice;
+  const isCheckboxShown = (allowMultiplePlacements) => allowMultiplePlacements === multiplePlacements.perChoice;
 
-  render() {
-    const {
-      allowMultiplePlacements,
-      classes,
-      className,
-      configuration,
-      choice,
-      deleteFocusedEl,
-      focusedEl,
-      index,
-      onDelete,
-      connectDropTarget,
-      connectDragSource,
-      connectDragPreview,
-      imageSupport,
-      spellCheck,
-      toolbarOpts,
-      error,
-      maxImageWidth,
-      maxImageHeight,
-      uploadSoundSupport,
-    } = this.props;
+  const showRemoveAfterPlacing = isCheckboxShown(allowMultiplePlacements);
 
-    const showRemoveAfterPlacing = this.isCheckboxShown(allowMultiplePlacements);
-    const draggable = canDrag(this.props);
+  const setNodeRef = (element) => {
+    setDragNodeRef(element);
+    setDropNodeRef(element);
+  };
 
-    return (
-      <Card className={classNames(classes.choice, className)}>
-        <CardActions className={classes.actions}>
-          {connectDragSource(
-            connectDropTarget(
-              <span className={classNames(classes.dragHandle, draggable === false && classes.dragDisabled)}>
-                <DragHandle color={draggable ? 'primary' : 'disabled'} />
-              </span>,
-            ),
-          )}
-        </CardActions>
-        {connectDragPreview(
-          <span>
-            <InputHeader
-              imageSupport={imageSupport}
-              focusedEl={focusedEl}
-              deleteFocusedEl={deleteFocusedEl}
-              index={index}
-              label={choice.content}
-              onChange={this.changeContent}
-              onDelete={onDelete}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheck}
-              error={error}
-              maxImageWidth={maxImageWidth}
-              maxImageHeight={maxImageHeight}
-              uploadSoundSupport={uploadSoundSupport}
-              configuration={configuration}
-            />
-            {error && <div className={classes.errorText}>{error}</div>}
-          </span>,
+  return (
+    <StyledCard ref={setNodeRef} style={{ opacity: isDragging ? 0.5 : 1 }}>
+      <StyledCardActions>
+        <DragHandleContainer draggable={draggable} {...dragAttributes} {...dragListeners}>
+          <DragHandle color={draggable ? 'primary' : 'disabled'} />
+        </DragHandleContainer>
+      </StyledCardActions>
+      <InputHeader
+        imageSupport={imageSupport}
+        focusedEl={focusedEl}
+        deleteFocusedEl={deleteFocusedEl}
+        index={index}
+        label={choice.content}
+        onChange={changeContent}
+        onDelete={onDelete}
+        toolbarOpts={toolbarOpts}
+        spellCheck={spellCheck}
+        error={error}
+        maxImageWidth={maxImageWidth}
+        maxImageHeight={maxImageHeight}
+        uploadSoundSupport={uploadSoundSupport}
+        configuration={configuration}
+      />
+      {error && <ErrorText>{error}</ErrorText>}
+
+      <StyledCardActions>
+        <DeleteButton label={'delete'} onClick={onDelete} />
+        {showRemoveAfterPlacing && (
+          <Checkbox
+            mini
+            label={'Remove after placing'}
+            checked={choice.categoryCount === 1}
+            onChange={changeCategoryCount}
+          />
         )}
-
-        <CardActions className={classes.actions}>
-          <DeleteButton label={'delete'} onClick={onDelete} />
-          {showRemoveAfterPlacing && (
-            <Checkbox
-              mini
-              label={'Remove after placing'}
-              checked={choice.categoryCount === 1}
-              onChange={this.changeCategoryCount}
-            />
-          )}
-        </CardActions>
-      </Card>
-    );
-  }
-}
-const styles = (theme) => ({
-  actions: {
-    padding: 0,
-    justifyContent: 'space-between',
-  },
-  choice: {
-    minWidth: '196px',
-    padding: theme.spacing.unit,
-    overflow: 'visible',
-  },
-  dragHandle: {
-    cursor: 'move',
-  },
-  dragDisabled: {
-    cursor: 'inherit',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingBottom: theme.spacing.unit,
-  },
-});
-
-const StyledChoice = withStyles(styles)(Choice);
-
-export const spec = {
-  canDrag,
-  beginDrag: (props) => {
-    const out = {
-      id: props.choice.id,
-      index: props.index,
-    };
-    log('[beginDrag] out:', out);
-    return out;
-  },
-  endDrag: (props, monitor) => {
-    if (!monitor.didDrop()) {
-      const item = monitor.getItem();
-      if (item.categoryId) {
-        log('wasnt droppped - what to do?');
-        props.onRemoveChoice(item);
-      }
-    }
-  },
+      </StyledCardActions>
+    </StyledCard>
+  );
 };
 
-export const specTarget = {
-  drop: (props, monitor) => {
-    log('[drop] props: ', props);
-    const item = monitor.getItem();
-    props.rearrangeChoices(item.index, props.index);
-  },
-  canDrop: (props, monitor) => {
-    const item = monitor.getItem();
-    return props.choice.id !== item.id;
-  },
+Choice.propTypes = {
+  allowMultiplePlacements: PropTypes.string,
+  configuration: PropTypes.object.isRequired,
+  choice: PropTypes.object.isRequired,
+  deleteFocusedEl: PropTypes.func,
+  focusedEl: PropTypes.number,
+  index: PropTypes.number,
+  lockChoiceOrder: PropTypes.bool,
+  maxImageHeight: PropTypes.object,
+  maxImageWidth: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  correctResponseCount: PropTypes.number.isRequired,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
+  toolbarOpts: PropTypes.object,
+  error: PropTypes.string,
+  uploadSoundSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
+  spellCheck: PropTypes.bool,
+  rearrangeChoices: PropTypes.func,
 };
 
-export default uid.withUid(
-  flow(
-    DragSource(
-      ({ uid }) => uid,
-      spec,
-      (connect, monitor) => ({
-        connectDragSource: connect.dragSource(),
-        connectDragPreview: connect.dragPreview(),
-        isDragging: monitor.isDragging(),
-      }),
-    ),
-    DropTarget(
-      ({ uid }) => uid,
-      specTarget,
-      (connect, monitor) => ({
-        connectDropTarget: connect.dropTarget(),
-        isOver: monitor.isOver(),
-      }),
-    ),
-  )(StyledChoice),
-);
+export default uid.withUid(Choice);

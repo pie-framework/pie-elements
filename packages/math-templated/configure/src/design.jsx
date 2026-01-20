@@ -1,23 +1,83 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 import cloneDeep from 'lodash/cloneDeep';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
 import { InputContainer, settings, layout } from '@pie-lib/config-ui';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { dropdown } from '@pie-lib/config-ui';
+const { dropdown } = settings;
 
 import Response from './response';
 import { processMarkup, createSlateMarkup } from './markupUtils';
 import { generateValidationMessage } from './utils';
 
 const { Panel, toggle } = settings;
+
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledEditableHtml = styled(EditableHtml)({
+  width: '100%',
+});
+
+const ErrorText = styled('div')(({ theme }) => ({
+  color: theme.palette.error.main,
+  fontSize: '0.75rem',
+  marginTop: theme.spacing(1),
+}));
+
+const ResponseAreaError = styled('div')(({ theme }) => ({
+  color: theme.palette.error.main,
+  fontSize: '0.75rem',
+  marginBottom: theme.spacing(1),
+}));
+
+const StyledMarkup = styled(EditableHtml)(({ theme }) => ({
+  width: '100%',
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(3),
+}));
+
+const StyledSelectContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  marginTop: theme.spacing(2),
+  '& > *:not(label)': {
+    marginTop: theme.spacing(1),
+  },
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledSelect = styled(Select)({
+  width: '100%',
+});
+
+const StyledTitle = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize * 1.25,
+  fontWeight: 'bold',
+}));
+
+const TooltipContainer = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+});
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+}));
 
 const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
@@ -30,7 +90,6 @@ export class Design extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
@@ -119,8 +178,6 @@ export class Design extends React.Component {
       element.dataset.index = index.toString();
     });
 
-    console.log('newResponses', newResponses);
-
     const processedMarkup = processMarkup(markup);
 
     const callback = () =>
@@ -155,13 +212,13 @@ export class Design extends React.Component {
         if (!newChoices[keyForNode] && newCachedResponses[keyForNode]) {
           Object.assign(newChoices, pick(newCachedResponses, keyForNode));
 
-          if (newCachedResponses.hasOwnProperty(keyForNode)) {
+          if (Object.prototype.hasOwnProperty.call(newCachedResponses, keyForNode)) {
             delete newCachedResponses[keyForNode];
           }
         } else {
           Object.assign(newCachedResponses, pick(newChoices, keyForNode));
 
-          if (newChoices.hasOwnProperty(keyForNode)) {
+          if (Object.prototype.hasOwnProperty.call(newChoices, keyForNode)) {
             delete newChoices[keyForNode];
           }
         }
@@ -217,7 +274,7 @@ export class Design extends React.Component {
   };
 
   render() {
-    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
 
     const {
@@ -309,9 +366,8 @@ export class Design extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
+          <StyledInputContainer label={teacherInstructions.label}>
+            <StyledEditableHtml
               markup={model.teacherInstructions || ''}
               onChange={(value) => this.handleChange('teacherInstructions', value)}
               imageSupport={imageSupport}
@@ -326,14 +382,13 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
+          <StyledInputContainer label={prompt.label}>
+            <StyledEditableHtml
               markup={model.prompt}
               onChange={(value) => this.handleChange('prompt', value)}
               imageSupport={imageSupport}
@@ -349,24 +404,23 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </StyledInputContainer>
         )}
-        <div className={classes.tooltipContainer}>
-          <Typography className={classes.title} component={'div'}>
+        <TooltipContainer>
+          <StyledTitle component={'div'}>
             Response Template
-          </Typography>
-          <Tooltip
-            classes={{ tooltip: classes.tooltip }}
+          </StyledTitle>
+          <StyledTooltip
             disableFocusListener
             disableTouchListener
             placement={'right'}
             title={validationMessage}
           >
             <Info fontSize={'small'} color={'primary'} />
-          </Tooltip>
-        </div>
-        <EditableHtml
+          </StyledTooltip>
+        </TooltipContainer>
+        <StyledMarkup
           activePlugins={ALL_PLUGINS}
           toolbarOpts={{ position: 'top' }}
           spellCheck={spellCheckEnabled}
@@ -378,7 +432,6 @@ export class Design extends React.Component {
             onHandleAreaChange: this.onHandleAreaChange,
             maxResponseAreas: maxResponseAreas,
           }}
-          className={classes.markup}
           markup={model.slateMarkup}
           onChange={this.onChange}
           imageSupport={imageSupport}
@@ -391,13 +444,13 @@ export class Design extends React.Component {
           languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           mathMlOptions={mathMlOptions}
         />
-        {responseAreasError && <div className={classes.responseAreaError}>{responseAreasError}</div>}
+        {responseAreasError && <ResponseAreaError>{responseAreasError}</ResponseAreaError>}
 
-        <Typography className={classes.title}>Define Response</Typography>
+        <StyledTitle>Define Response</StyledTitle>
 
-        <InputContainer label="Response Template Equation Editor" className={classes.selectContainer}>
-          <Select
-            className={classes.select}
+        <StyledSelectContainer label="Response Template Equation Editor">
+          <StyledSelect
+            MenuProps={{transitionDuration: { enter: 225, exit: 195 } }}
             onChange={(event) => this.handleChange('equationEditor', event.target.value)}
             value={equationEditor}
           >
@@ -413,8 +466,8 @@ export class Design extends React.Component {
             <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
             <MenuItem value={'statistics'}>Statistics</MenuItem>
             <MenuItem value={'item-authoring'}>Item Authoring</MenuItem>
-          </Select>
-        </InputContainer>
+          </StyledSelect>
+        </StyledSelectContainer>
 
         {Object.keys(responses || {}).map((responseKey, idx) => {
           const response = responses[idx];
@@ -440,9 +493,8 @@ export class Design extends React.Component {
         })}
 
         {rationaleEnabled && (
-          <InputContainer label={rationale.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
+          <StyledInputContainer label={rationale.label}>
+            <StyledEditableHtml
               markup={model.rationale || ''}
               onChange={(value) => this.handleChange('rationale', value)}
               imageSupport={imageSupport}
@@ -462,57 +514,12 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
-          </InputContainer>
+            {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+          </StyledInputContainer>
         )}
       </layout.ConfigLayout>
     );
   }
 }
 
-export default withStyles((theme) => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  prompt: {
-    width: '100%',
-  },
-  errorText: {
-    color: theme.palette.error.main,
-    fontSize: '0.75rem',
-    marginTop: theme.spacing.unit,
-  },
-  responseAreaError: {
-    color: theme.palette.error.main,
-    fontSize: '0.75rem',
-    marginBottom: theme.spacing.unit,
-  },
-  markup: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 3,
-  },
-  selectContainer: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 2,
-  },
-  select: {
-    width: '100%',
-  },
-  title: {
-    fontSize: theme.typography.fontSize * 1.25,
-    fontWeight: 'bold',
-  },
-  tooltipContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-  },
-  tooltip: {
-    fontSize: theme.typography.fontSize - 2,
-    whiteSpace: 'pre',
-    maxWidth: '500px',
-  },
-}))(Design);
+export default Design;

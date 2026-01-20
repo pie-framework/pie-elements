@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
@@ -10,24 +10,22 @@ import { getPluginProps, ResponseTypes } from './utils';
 const log = debug('@pie-element:math-inline:configure');
 const { Panel, toggle, radio, dropdown } = settings;
 
-const styles = (theme) => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
+const PromptHolder = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     onConfigurationChanged: PropTypes.func,
-    classes: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     imageSupport: PropTypes.object,
@@ -52,7 +50,7 @@ export class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
+    const { model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
       this.props;
     const {
       allowTrailingZeros = {},
@@ -134,9 +132,8 @@ export class Configure extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <PromptHolder label={teacherInstructions.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.teacherInstructions || ''}
               onChange={this.changeTeacherInstructions}
               imageSupport={imageSupport}
@@ -151,8 +148,8 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </PromptHolder>
         )}
 
         <GeneralConfigBlock
@@ -175,4 +172,4 @@ export class Configure extends React.Component {
   }
 }
 
-export default withStyles(styles)(Configure);
+export default Configure;

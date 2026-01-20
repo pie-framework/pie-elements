@@ -23,8 +23,7 @@ export const normalize = (question) => ({ ...defaults, ...question });
  * @param {*} env
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export function model(question, session, env, updateSession) {
-  return new Promise(async (resolve) => {
+export async function model(question, session, env, updateSession) {
     const normalizedQuestion = normalize(question);
     const { value = {} } = session || {};
     let choices = reduce(
@@ -156,8 +155,7 @@ export function model(question, session, env, updateSession) {
       extraCSSRules: normalizedQuestion.extraCSSRules,
     };
 
-    resolve(out);
-  });
+  return out;
 }
 
 export const getScore = (config, session) => {

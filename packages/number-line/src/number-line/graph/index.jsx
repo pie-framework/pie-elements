@@ -2,6 +2,7 @@ import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { select, mouse } from 'd3-selection';
 import { color } from '@pie-lib/render-ui';
+import { DndContext } from '@dnd-kit/core';
 import Point from './elements/point';
 import Line from './elements/line';
 import Ray from './elements/ray';
@@ -177,6 +178,7 @@ export class NumberLineGraph extends React.Component {
               onToggleSelect={toggleElement}
               position={el.position}
               empty={empty}
+              key={index}
             />
           );
         } else if (el.type === 'point') {
@@ -193,6 +195,7 @@ export class NumberLineGraph extends React.Component {
               bounds={bounds}
               onClick={toggleElement}
               onMove={moveElement}
+              key={index}
             />
           );
         } else if (el.type === 'ray') {
@@ -206,32 +209,37 @@ export class NumberLineGraph extends React.Component {
               onToggleSelect={toggleElement}
               width={width}
               empty={el.pointType === 'empty'}
+              key={index}
             />
           );
         }
       });
 
       return (
-        <svg width={width} height={fraction ? height + 20 : height}>
-          {false && <Debug domain={domain} ticks={ticks} />}
-          <BaseLine y={lineY} width={width} />
-          {arrows.left && <Arrow y={lineY} />}
-          {arrows.right && <Arrow x={width} y={lineY} direction="right" />}
-          <Ticks y={lineY} domain={domain} width={width} ticks={ticks} fraction={fraction} />
-          <rect
-            ref={(rect) => (this.rect = rect)}
-            //need to have a fill for it to be clickable
-            fill={color.primary()}
-            fillOpacity="0.0"
-            width={width}
-            height={height}
-          />
-          <TransitionGroup component="g">
-            {elements.map((c, index) => (
-              <Fade key={index}>{c}</Fade>
-            ))}
-          </TransitionGroup>
-        </svg>
+        <DndContext>
+          <div style={{ display: 'inline-block' }}>
+            <svg width={width} height={fraction ? height + 20 : height}>
+              {false && <Debug domain={domain} ticks={ticks} />}
+              <BaseLine y={lineY} width={width} />
+              {arrows.left && <Arrow y={lineY} />}
+              {arrows.right && <Arrow x={width} y={lineY} direction="right" />}
+              <Ticks y={lineY} domain={domain} width={width} ticks={ticks} fraction={fraction} />
+              <rect
+                ref={(rect) => (this.rect = rect)}
+                //need to have a fill for it to be clickable
+                fill={color.primary()}
+                fillOpacity="0.0"
+                width={width}
+                height={height}
+              />
+              <TransitionGroup component="g">
+                {elements.map((c, index) => (
+                  <Fade key={index}>{c}</Fade>
+                ))}
+              </TransitionGroup>
+            </svg>
+          </div>
+        </DndContext>
       );
     }
   }

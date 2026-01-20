@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Rect, Group } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles';
 import ImageComponent from './image-konva-tooltip';
 import { faCorrect, faWrong } from './icons';
 
@@ -44,7 +43,6 @@ class RectComponent extends React.Component {
 
   render() {
     const {
-      classes,
       height,
       hotspotColor,
       hoverOutlineColor,
@@ -121,7 +119,8 @@ class RectComponent extends React.Component {
           />
         )}
         <Rect
-          classes={classes.base}
+          x={x}
+          y={y}
           width={width}
           height={height}
           fill={selected && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
@@ -132,8 +131,8 @@ class RectComponent extends React.Component {
           strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
-          x={x}
-          y={y}
+          opacity={0.5}
+          cursor="pointer"
         />
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
@@ -141,16 +140,7 @@ class RectComponent extends React.Component {
   }
 }
 
-const styles = () => ({
-  base: {
-    cursor: 'pointer',
-    opacity: 0.5,
-    position: 'relative',
-  },
-});
-
 RectComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
   height: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
@@ -179,4 +169,4 @@ RectComponent.defaultProps = {
   scale: 1,
 };
 
-export default withStyles(styles)(RectComponent);
+export default RectComponent;

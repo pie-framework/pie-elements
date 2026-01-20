@@ -1,17 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MiniField } from './number-text-field';
-import { withStyles } from '@material-ui/core/styles';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import { styled } from '@mui/material/styles';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import CardBar from './card-bar';
 import { Checkbox } from '@pie-lib/config-ui';
 import cloneDeep from 'lodash/cloneDeep';
 
+const GroupInline = styled('div')({
+  alignItems: 'center',
+  display: 'flex',
+  gap: '20px',
+});
+
+const Group = styled('div')({
+  margin: '12px 0',
+});
+
+const InputLabel = styled('label')({
+  display: 'block',
+  marginBottom: '4px',
+});
+
+const StyledSelect = styled(Select)({
+  width: '80px',
+  alignItems: 'center',
+  height: '40px',
+  verticalAlign: 'top',
+  marginBottom: '8px',
+  '& .MuiSelect-select': {
+    paddingLeft: '10px',
+  },
+});
+
+const CheckboxContainer = styled('div')({
+  marginLeft: '-15px',
+});
+
+const CheckboxLabel = styled('span')({
+  verticalAlign: 'middle',
+});
+
 export class ModelOptions extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
-    classes: PropTypes.object,
     onChange: PropTypes.func,
     modelOptions: PropTypes.object.isRequired,
   };
@@ -58,26 +91,32 @@ export class ModelOptions extends React.Component {
   };
 
   render() {
-    const { model, classes, modelOptions } = this.props;
+    const { model, modelOptions } = this.props;
     const { maxOfModel, partsPerModel, modelTypeChoices } = modelOptions;
 
     return (
       <div>
         <CardBar header="Configure Fraction Model"></CardBar>
         <br />
-        <div className={classes.groupInline}>
-          <div className={classes.group}>
-            <label className={classes.inputLabel}>Model Type</label>
-            <Select className={classes.container2} onChange={this.handleSelect} value={model.modelTypeSelected}>
+        <GroupInline>
+          <Group>
+            <InputLabel>Model Type</InputLabel>
+            <StyledSelect
+              onChange={this.handleSelect}
+              value={model.modelTypeSelected}
+              MenuProps={{
+                transitionDuration: { enter: 225, exit: 195 }
+              }}
+            >
               {modelTypeChoices.map((choice, index) => (
                 <MenuItem key={'item_' + index} value={choice.value}>
                   {choice.label}
                 </MenuItem>
               ))}
-            </Select>
-          </div>
-          <div className={classes.group}>
-            <label className={classes.inputLabel}>Max # of Models</label>
+            </StyledSelect>
+          </Group>
+          <Group>
+            <InputLabel>Max # of Models</InputLabel>
             <MiniField
               min={maxOfModel.min}
               max={maxOfModel.max}
@@ -85,9 +124,9 @@ export class ModelOptions extends React.Component {
               name="max-model"
               onChange={this.changeMaxModel}
             />
-          </div>
-          <div className={classes.group}>
-            <label className={classes.inputLabel}>Parts per Model</label>
+          </Group>
+          <Group>
+            <InputLabel>Parts per Model</InputLabel>
             <MiniField
               min={partsPerModel.min}
               max={partsPerModel.max}
@@ -95,52 +134,15 @@ export class ModelOptions extends React.Component {
               name="model-parts"
               onChange={this.changePartModel}
             />
-          </div>
-        </div>
-        <div className={classes.checkbox}>
+          </Group>
+        </GroupInline>
+        <CheckboxContainer>
           <Checkbox onChange={this.studentConfig} checked={model.allowedStudentConfig} label={''} />
-          <span className={classes.chkLabel}>Allow student to configure number of models and parts per model</span>
-        </div>
+          <CheckboxLabel>Allow student to configure number of models and parts per model</CheckboxLabel>
+        </CheckboxContainer>
       </div>
     );
   }
 }
 
-const styles = () => ({
-  groupInline: {
-    alignItems: 'center',
-    display: 'flex',
-    gap: '20px',
-  },
-  group: {
-    margin: '12px 0',
-  },
-  inputLabel: {
-    display: 'block',
-    marginBottom: '4px',
-  },
-  labelWidth: {
-    width: '35%',
-  },
-  container2: {
-    width: '80px',
-    alignItems: 'center',
-    height: '40px',
-    verticalAlign: 'top',
-    border: '1px solid rgb(0, 0, 0, 0.23)',
-    borderRadius: '4px',
-    marginBottom: '8px',
-    paddingLeft: '10px',
-    ':hover': {
-      border: '1px solid rgb(0, 0, 0, 0.87)',
-    },
-  },
-  checkbox: {
-    marginLeft: '-15px',
-  },
-  chkLabel: {
-    verticalAlign: 'middle',
-  },
-});
-
-export default withStyles(styles, { name: 'ModelOptions' })(ModelOptions);
+export default ModelOptions;

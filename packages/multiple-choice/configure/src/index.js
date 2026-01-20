@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import debug from 'debug';
 import {
   DeleteImageEvent,
@@ -70,6 +70,8 @@ export default class MultipleChoice extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
+    this._reactContainer = null;
     this._model = MultipleChoice.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
@@ -169,23 +171,78 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   _render() {
-    log('_render');
-    let element = React.createElement(Main, {
-      model: this._model,
-      configuration: this._configuration,
-      onModelChanged: this.onModelChanged,
-      onConfigurationChanged: this.onConfigurationChanged,
-      disableSidePanel: this._disableSidePanel,
-      imageSupport: {
-        add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this),
-      },
-      uploadSoundSupport: {
-        add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this),
-      },
-    });
+    console.log('🔧 [multiple-choice-configure] _render - Starting render');
+    console.log('🔧 [multiple-choice-configure] _render - Model:', this._model ? 'present' : 'missing');
+    console.log('🔧 [multiple-choice-configure] _render - Configuration:', this._configuration ? 'present' : 'missing');
+    console.log('🔧 [multiple-choice-configure] _render - Root exists:', !!this._root);
+    log('_render - Starting render');
+    log('_render - Model:', this._model ? 'present' : 'missing');
+    log('_render - Configuration:', this._configuration ? 'present' : 'missing');
+    log('_render - Root exists:', !!this._root);
+    
+    try {
+      let element = React.createElement(Main, {
+        model: this._model,
+        configuration: this._configuration,
+        onModelChanged: this.onModelChanged,
+        onConfigurationChanged: this.onConfigurationChanged,
+        disableSidePanel: this._disableSidePanel,
+        imageSupport: {
+          add: this.insertImage.bind(this),
+          delete: this.onDeleteImage.bind(this),
+        },
+        uploadSoundSupport: {
+          add: this.insertSound.bind(this),
+          delete: this.onDeleteSound.bind(this),
+        },
+      });
 
-    ReactDOM.render(element, this);
+      if (!this._root) {
+        console.log('🔧 [multiple-choice-configure] _render - Creating React container');
+        log('_render - Creating React container');
+        
+        // Create a container div for React to render into
+        this._reactContainer = document.createElement('div');
+        this._reactContainer.className = 'pie-configure-wrapper';
+        this.appendChild(this._reactContainer);
+        
+        console.log('🔧 [multiple-choice-configure] _render - Creating new React root');
+        log('_render - Creating new React root');
+        this._root = createRoot(this._reactContainer);
+        console.log('✅ [multiple-choice-configure] _render - React root created successfully');
+        log('_render - React root created successfully');
+      }
+      
+      console.log('🔧 [multiple-choice-configure] _render - Calling root.render()');
+      log('_render - Calling root.render()');
+      this._root.render(element);
+      console.log('✅ [multiple-choice-configure] _render - Render completed successfully');
+      log('_render - Render completed successfully');
+    } catch (error) {
+      console.error('❌ [multiple-choice-configure] Render error:', error);
+      console.error('Error stack:', error.stack);
+      throw error;
+    }
+  }
+
+  connectedCallback() {
+    console.log('🔧 [multiple-choice-configure] connectedCallback - Component connected to DOM');
+    log('connectedCallback - Component connected to DOM');
+    log('connectedCallback - Model:', this._model ? 'present' : 'missing');
+    log('connectedCallback - Configuration:', this._configuration ? 'present' : 'missing');
+  }
+
+  disconnectedCallback() {
+    console.log('🔧 [multiple-choice-configure] disconnectedCallback - Component disconnected from DOM');
+    log('disconnectedCallback - Component disconnected from DOM');
+    if (this._root) {
+      console.log('🔧 [multiple-choice-configure] disconnectedCallback - Unmounting React root');
+      log('disconnectedCallback - Unmounting React root');
+      this._root.unmount();
+      this._root = null;
+    }
+    if (this._reactContainer) {
+      this._reactContainer = null;
+    }
   }
 }

@@ -1,9 +1,8 @@
 import { getPluginProps } from './utils';
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import { FeedbackConfig, settings, layout, InputContainer, AlertDialog } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
-import { withDragContext } from '@pie-lib/drag';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import GeneralConfigBlock from './general-config-block';
@@ -12,24 +11,28 @@ import AnswerConfigBlock from './answer-config-block';
 const log = debug('@pie-element:match:configure');
 const { Panel, toggle, radio, dropdown } = settings;
 
-const styles = (theme) => ({
-  promptHolder: {
+const MainLayout = styled('div')(() => ({
+  '& .promptHolder': {
     width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
   },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
+}));
+
+const PromptHolder = styled('div')(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     onConfigurationChanged: PropTypes.func,
-    classes: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
@@ -42,9 +45,7 @@ class Configure extends React.Component {
     }),
   };
 
-  static defaultProps = {
-    classes: {},
-  };
+  static defaultProps = {};
 
   constructor(props) {
     super(props);
@@ -212,7 +213,7 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
+    const { model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
       this.props;
     const {
       baseInputConfiguration = {},
@@ -277,7 +278,8 @@ class Configure extends React.Component {
     log('[render] model', model);
 
     return (
-      <layout.ConfigLayout
+      <MainLayout>
+        <layout.ConfigLayout
         extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
@@ -295,45 +297,49 @@ class Configure extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.teacherInstructions || ''}
-              onChange={this.onTeacherInstructionsChanged}
-              imageSupport={imageSupport}
-              error={teacherInstructionsError}
-              nonEmpty={false}
-              toolbarOpts={toolbarOpts}
-              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
-              spellCheck={spellCheckEnabled}
-              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-              uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          <InputContainer label={teacherInstructions.label} className="promptHolder">
+            <PromptHolder>
+              <EditableHtml
+                className="prompt"
+                markup={model.teacherInstructions || ''}
+                onChange={this.onTeacherInstructionsChanged}
+                imageSupport={imageSupport}
+                error={teacherInstructionsError}
+                nonEmpty={false}
+                toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              />
+              {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+            </PromptHolder>
           </InputContainer>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.prompt}
-              onChange={this.onPromptChanged}
-              imageSupport={imageSupport}
-              error={promptError}
-              nonEmpty={false}
-              disableUnderline
-              toolbarOpts={toolbarOpts}
-              pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
-              spellCheck={spellCheckEnabled}
-              maxImageWidth={maxImageWidth && maxImageWidth.prompt}
-              maxImageHeight={maxImageHeight && maxImageHeight.prompt}
-              uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
+          <InputContainer label={prompt.label} className="promptHolder">
+            <PromptHolder>
+              <EditableHtml
+                className="prompt"
+                markup={model.prompt}
+                onChange={this.onPromptChanged}
+                imageSupport={imageSupport}
+                error={promptError}
+                nonEmpty={false}
+                disableUnderline
+                toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              />
+              {promptError && <ErrorText>{promptError}</ErrorText>}
+            </PromptHolder>
           </InputContainer>
         )}
 
@@ -357,22 +363,24 @@ class Configure extends React.Component {
         />
 
         {rationaleEnabled && (
-          <InputContainer label={rationale.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.rationale || ''}
-              onChange={this.onRationaleChanged}
-              imageSupport={imageSupport}
-              error={rationaleError}
-              toolbarOpts={toolbarOpts}
-              pluginProps={getPluginProps(rationale?.inputConfiguration, baseInputConfiguration)}
-              spellCheck={spellCheckEnabled}
-              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-              uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            />
-            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+          <InputContainer label={rationale.label} className="promptHolder">
+            <PromptHolder>
+              <EditableHtml
+                className="prompt"
+                markup={model.rationale || ''}
+                onChange={this.onRationaleChanged}
+                imageSupport={imageSupport}
+                error={rationaleError}
+                toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(rationale?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              />
+              {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+            </PromptHolder>
           </InputContainer>
         )}
 
@@ -386,10 +394,11 @@ class Configure extends React.Component {
           onConfirm={() => this.setState({ dialog: { open: false } })}
         />
       </layout.ConfigLayout>
+    </MainLayout>
     );
   }
 }
 
 export const Config = Configure;
 
-export default withDragContext(withStyles(styles)(Configure));
+export default Configure;

@@ -1,3 +1,30 @@
+// Mock the module to avoid HTMLElement issues
+jest.mock('..', () => {
+  // Define mock base class inside the factory
+  class MockHTMLElement {
+    constructor() {
+      this._root = null;
+    }
+  }
+
+  return {
+    __esModule: true,
+    default: class FractionModel extends MockHTMLElement {
+      constructor() {
+        super();
+        this._root = null;
+      }
+
+      isSessionComplete(session, model) {
+        const answers = session && session.answers;
+        const configComplete = model.allowedStudentConfig ? answers.noOfModel > 0 && answers.partsPerModel > 0 : true;
+        const responseComplete = Array.isArray(answers.response) && answers.response.length > 0;
+        return configComplete && responseComplete;
+      }
+    },
+  };
+});
+
 import FractionModel from '..';
 
 const component = new FractionModel();

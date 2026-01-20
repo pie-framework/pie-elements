@@ -2,50 +2,53 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { GraphContainer, GridSetup } from '@pie-lib/graphing-solution-set';
 import { AlertDialog } from '@pie-lib/config-ui';
-import { MenuItem, Select, Typography, OutlinedInput } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { MenuItem, Select, Typography, OutlinedInput } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { applyConstraints, filterPlotableMarks, getGridValues, getLabelValues } from './utils';
 import { isEqual, cloneDeep } from 'lodash';
 
-const styles = (theme) => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  gridConfigWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginRight: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  graphConfig: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  subtitleText: {
-    marginTop: theme.spacing.unit * 1.5,
-    marginBottom: theme.spacing.unit,
-  },
-  gridConfig: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    width: '100%',
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  gridConfigLabel: {
-    padding: `0 ${theme.spacing.unit}px`,
-  },
-  gridConfigSelect: {
-    flex: '1',
-  },
+const Container = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
+  marginBottom: theme.spacing(2.5),
+}));
+
+const GridConfigWrapper = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  marginRight: theme.spacing(3),
+  marginBottom: theme.spacing(2.5),
+}));
+
+const GraphConfig = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const SubtitleText = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(1.5),
+  marginBottom: theme.spacing(1),
+}));
+
+const GridConfig = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  width: '100%',
+  marginBottom: theme.spacing(2.5),
+}));
+
+const GridConfigLabel = styled(Typography)(({ theme }) => ({
+  padding: `0 ${theme.spacing(1)}`,
+}));
+
+const GridConfigSelect = styled(Select)({
+  flex: '1',
 });
 
 export class GraphingConfig extends React.Component {
   static propTypes = {
     availableTools: PropTypes.array,
-    classes: PropTypes.object.isRequired,
     authoring: PropTypes.object,
     dimensionsEnabled: PropTypes.bool,
     graphDimensions: PropTypes.object,
@@ -187,7 +190,6 @@ export class GraphingConfig extends React.Component {
   render() {
     const {
       authoring = {},
-      classes,
       gridConfigurations = [],
       graphDimensions = {},
       labelsPlaceholders,
@@ -222,27 +224,27 @@ export class GraphingConfig extends React.Component {
       authoring.enabled &&
       Object.values(displayedFields).some((field) => (typeof field === 'object' ? field.enabled : field));
     return (
-      <div className={classes.container}>
-        <div className={classes.gridConfigWrapper}>
+      <Container>
+        <GridConfigWrapper>
           {gridConfigurations && gridConfigurations.length ? (
-            <div className={classes.gridConfig}>
-              <Typography component="div" variant="subheading" className={classes.gridConfigLabel}>
+            <GridConfig>
+              <GridConfigLabel component="div" variant="h6">
                 Grid Configuration
-              </Typography>
-              <Select
+              </GridConfigLabel>
+              <GridConfigSelect
                 input={<OutlinedInput labelWidth={10} />}
-                className={classes.gridConfigSelect}
                 displayEmpty
                 onChange={this.changeGridConfiguration}
                 value={defaultGridConfiguration}
+                MenuProps={{ transitionDuration: { enter: 225, exit: 195 } }}
               >
                 {(gridConfigurations || []).map((config, index) => (
                   <MenuItem key={index} value={index}>
                     {config.label}
                   </MenuItem>
                 ))}
-              </Select>
-            </div>
+              </GridConfigSelect>
+            </GridConfig>
           ) : null}
           {displayGridSetup && (
             <GridSetup
@@ -259,14 +261,14 @@ export class GraphingConfig extends React.Component {
               onChangeView={this.onChangeView}
             />
           )}
-        </div>
-        <div className={classes.graphConfig} key="graph">
-          <Typography component="div" variant="subheading">
+        </GridConfigWrapper>
+        <GraphConfig key="graph">
+          <Typography component="div" variant="h6">
             Define Graph Attributes
           </Typography>
-          <Typography component="div" variant="body1" className={classes.subtitleText}>
+          <SubtitleText component="div" variant="body1">
             Use this interface to add/edit a title and/or labels
-          </Typography>
+          </SubtitleText>
           <GraphContainer
             axesSettings={{ includeArrows: arrows }}
             backgroundMarks={[]}
@@ -290,7 +292,7 @@ export class GraphingConfig extends React.Component {
             disableToolbar={true}
             mathMlOptions={mathMlOptions}
           />
-        </div>
+        </GraphConfig>
         <AlertDialog
           open={dialog.isOpened}
           title="Warning"
@@ -298,9 +300,9 @@ export class GraphingConfig extends React.Component {
           onClose={dialog.onClose}
           onConfirm={dialog.onConfirm}
         />
-      </div>
+      </Container>
     );
   }
 }
 
-export default withStyles(styles)(GraphingConfig);
+export default GraphingConfig;

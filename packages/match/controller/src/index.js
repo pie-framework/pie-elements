@@ -173,79 +173,75 @@ export const normalize = (question) => ({ ...defaults, ...question });
  * @param {*} env
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export function model(question, session, env, updateSession) {
-  return new Promise(async (resolve) => {
-    const normalizedQuestion = cloneDeep(normalize(question));
-    let correctness, score;
+export async function model(question, session, env, updateSession) {
+  const normalizedQuestion = cloneDeep(normalize(question));
+  let correctness, score;
 
-    if ((!session || isEmpty(session)) && env.mode === 'evaluate') {
-      correctness = 'unanswered';
-      score = '0%';
-    } else {
-      correctness = getCorrectness(normalizedQuestion, env, session && session.answers);
-      score = `${getOutComeScore(normalizedQuestion, env, session && session.answers) * 100}%`;
+  if ((!session || isEmpty(session)) && env.mode === 'evaluate') {
+    correctness = 'unanswered';
+    score = '0%';
+  } else {
+    correctness = getCorrectness(normalizedQuestion, env, session && session.answers);
+    score = `${getOutComeScore(normalizedQuestion, env, session && session.answers) * 100}%`;
+  }
+
+  const correctResponse = {};
+  const correctInfo = {
+    score,
+    correctness,
+  };
+
+  const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
+
+  if (!lockChoiceOrder) {
+    normalizedQuestion.rows = await getShuffledChoices(normalizedQuestion.rows, session, updateSession, 'id');
+  }
+
+  normalizedQuestion.rows.forEach((row) => {
+    correctResponse[row.id] = row.values;
+
+    if (env.mode !== 'evaluate') {
+      delete row.values;
     }
-
-    const correctResponse = {};
-    const correctInfo = {
-      score,
-      correctness,
-    };
-
-    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
-
-    if (!lockChoiceOrder) {
-      normalizedQuestion.rows = await getShuffledChoices(normalizedQuestion.rows, session, updateSession, 'id');
-    }
-
-    normalizedQuestion.rows.forEach((row) => {
-      correctResponse[row.id] = row.values;
-
-      if (env.mode !== 'evaluate') {
-        delete row.values;
-      }
-    });
-
-    const fb =
-      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
-        ? getFeedbackForCorrectness(correctInfo.correctness, normalizedQuestion.feedback)
-        : Promise.resolve(undefined);
-
-    fb.then((feedback) => {
-      const { extraCSSRules, feedbackEnabled, promptEnabled, prompt, lockChoiceOrder, ...essentials } =
-        normalizedQuestion;
-      const out = {
-        ...essentials,
-        extraCSSRules,
-        allowFeedback: feedbackEnabled,
-        prompt: promptEnabled ? prompt : null,
-        shuffled: !lockChoiceOrder,
-        feedback,
-        disabled: env.mode !== 'gather',
-        view: env.mode === 'view',
-      };
-
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
-          ? normalizedQuestion.teacherInstructions
-          : null;
-        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      } else {
-        out.rationale = null;
-        out.teacherInstructions = null;
-      }
-
-      if (env.mode === 'evaluate') {
-        Object.assign(out, {
-          correctResponse,
-          correctness: correctInfo,
-        });
-      }
-
-      log('out: ', out);
-      resolve(out);
-    });
   });
+
+  const feedback =
+    env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+      ? await getFeedbackForCorrectness(correctInfo.correctness, normalizedQuestion.feedback)
+      : undefined;
+
+  const { extraCSSRules, feedbackEnabled, promptEnabled, prompt, lockChoiceOrder: _, ...essentials } =
+    normalizedQuestion;
+  const out = {
+    ...essentials,
+    extraCSSRules,
+    allowFeedback: feedbackEnabled,
+    prompt: promptEnabled ? prompt : null,
+    shuffled: !lockChoiceOrder,
+    feedback,
+    disabled: env.mode !== 'gather',
+    view: env.mode === 'view',
+  };
+
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+      ? normalizedQuestion.teacherInstructions
+      : null;
+    out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+  } else {
+    out.rationale = null;
+    out.teacherInstructions = null;
+  }
+
+  if (env.mode === 'evaluate') {
+    Object.assign(out, {
+      correctResponse,
+      correctness: correctInfo,
+    });
+  }
+
+  log('out: ', out);
+  return out;
 }
 
 export const createCorrectResponseSession = (question, env) => {

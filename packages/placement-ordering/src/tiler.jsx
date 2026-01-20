@@ -1,23 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Tile from './tile';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 
-const common = {
-  tiler: {
-    display: 'grid',
-  },
-  withGap: {
-    gridGap: '10px',
-  },
-};
+import Tile from './tile';
 
 const types = {
   choiceLabel: PropTypes.string,
   targetLabel: PropTypes.string,
   disabled: PropTypes.bool,
-  onDropChoice: PropTypes.func.isRequired,
   tiles: PropTypes.array.isRequired,
   tileSize: PropTypes.string,
   addGuide: PropTypes.bool,
@@ -31,8 +21,6 @@ const defaults = {
 
 const buildTiles = (props) => {
   const T = (tile, index) => {
-    tile.onDropChoice = (source, index) => props.onDropChoice(tile, source, index);
-    tile.onRemoveChoice = () => props.onRemoveChoice(tile);
     tile.instanceId = props.instanceId;
     tile.disabled = props.disabled;
     tile.guideIndex = props.addGuide ? tile.index + 1 : undefined;
@@ -48,11 +36,46 @@ const buildTiles = (props) => {
   return T;
 };
 
-class HTiler extends React.Component {
+const StyledHTilerContainer = styled('div')(({ theme, includeTargets }) => ({
+  display: 'grid',
+  paddingBottom: theme.spacing(2),
+  ...(includeTargets && {
+    gridGap: '10px',
+  }),
+}));
+
+const StyledChoiceLabel = styled('div')({
+  textAlign: 'center',
+});
+
+const StyledTargetLabel = styled('div')({
+  textAlign: 'center',
+  gridRow: '3/4',
+});
+
+const StyledVTilerContainer = styled('div')(({ includeTargets }) => ({
+  gridAutoFlow: 'column',
+  display: 'grid',
+  ...(includeTargets && {
+    gridGap: '10px',
+  }),
+}));
+
+const StyledVChoiceLabel = styled('div')({
+  gridColumn: '1/2',
+  textAlign: 'center',
+});
+
+const StyledVTargetLabel = styled('div')({
+  gridColumn: '2/3',
+  textAlign: 'center',
+});
+
+export class HorizontalTiler extends React.Component {
   static propTypes = { ...types };
   static defaultProps = { ...defaults };
   render() {
-    const { includeTargets, choiceLabelEnabled, choiceLabel, targetLabel, tiles, classes, tileSize } = this.props;
+    const { includeTargets, choiceLabelEnabled, choiceLabel, targetLabel, tiles, tileSize } = this.props;
 
     const rows = includeTargets ? `auto ${tileSize} auto ${tileSize}` : `auto ${tileSize} auto`;
     const columns = includeTargets ? tiles.length / 2 : tiles.length;
@@ -68,47 +91,26 @@ class HTiler extends React.Component {
       gridColumn: `1/${columns + 1}`,
     };
 
-    const names = classNames(classes.htiler, includeTargets ? classes.withGap : null);
-
     return (
-      <div className={names} style={style}>
-        <div
-          className={classes.choiceLabel}
+      <StyledHTilerContainer includeTargets={includeTargets} style={style}>
+        <StyledChoiceLabel
           style={labelStyle}
           dangerouslySetInnerHTML={{ __html: choiceLabelEnabled ? choiceLabel : '' }}
         />
-
         {includeTargets && (
-          <div className={classes.targetLabel} style={labelStyle} dangerouslySetInnerHTML={{ __html: targetLabel }} />
+          <StyledTargetLabel style={labelStyle} dangerouslySetInnerHTML={{ __html: targetLabel }} />
         )}
         {tiles.map(buildTiles(this.props))}
-      </div>
+      </StyledHTilerContainer>
     );
   }
 }
 
-const horizontalStyles = (theme) => ({
-  htiler: { ...common.tiler, paddingBottom: theme.spacing.unit * 2 },
-  paddingBottom: theme.spacing.unit * 4,
-  choiceLabel: {
-    textAlign: 'center',
-  },
-  targetLabel: {
-    textAlign: 'center',
-    gridRow: '3/4',
-  },
-  withGap: {
-    gridGap: '10px',
-  },
-});
-
-export const HorizontalTiler = withStyles(horizontalStyles)(HTiler);
-
-class VTiler extends React.Component {
+export class VerticalTiler extends React.Component {
   static propTypes = { ...types };
   static defaultProps = { ...defaults };
   render() {
-    const { includeTargets, choiceLabelEnabled, choiceLabel, targetLabel, tiles, classes, tileSize } = this.props;
+    const { includeTargets, choiceLabelEnabled, choiceLabel, targetLabel, tiles, tileSize } = this.props;
 
     const columns = includeTargets ? 2 : 1;
     const rows = includeTargets ? tiles.length / 2 : tiles.length;
@@ -120,35 +122,15 @@ class VTiler extends React.Component {
         : `auto auto repeat(${Math.floor(rows / 2) - 1}, ${tileSize} 10px) ${tileSize} auto`,
     };
 
-    const names = classNames(classes.vtiler, includeTargets ? classes.withGap : null);
-
     return (
-      <div className={names} style={style}>
-        <div
-          className={classes.choiceLabel}
+      <StyledVTilerContainer includeTargets={includeTargets} style={style}>
+        <StyledVChoiceLabel
           dangerouslySetInnerHTML={{ __html: choiceLabelEnabled ? choiceLabel : '' }}
         />
 
-        {includeTargets && <div className={classes.targetLabel} dangerouslySetInnerHTML={{ __html: targetLabel }} />}
+        {includeTargets && <StyledVTargetLabel dangerouslySetInnerHTML={{ __html: targetLabel }} />}
         {tiles.map(buildTiles(this.props))}
-      </div>
+      </StyledVTilerContainer>
     );
   }
 }
-
-const verticalStyles = {
-  vtiler: { gridAutoFlow: 'column', ...common.tiler },
-  choiceLabel: {
-    gridColumn: '1/2',
-    textAlign: 'center',
-  },
-  targetLabel: {
-    gridColumn: '2/3',
-    textAlign: 'center',
-  },
-  withGap: {
-    gridGap: '10px',
-  },
-};
-
-export const VerticalTiler = withStyles(verticalStyles)(VTiler);

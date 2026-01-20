@@ -55,7 +55,7 @@ const Matrix = (props) => {
             matrixValue={matrixValue || 0}
             disabled={disabled}
             onChange={onSessionChange}
-            checked={session.value && session.value.hasOwnProperty(matrixKey)}
+            checked={session.value && Object.prototype.hasOwnProperty.call(session.value, matrixKey)}
           />
         );
       }

@@ -1,22 +1,51 @@
-import { HorizontalTiler, VerticalTiler } from './tiler';
-import { buildState, reducer } from './ordering';
-import { Collapsible, color, Feedback, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
-import { withStyles } from '@material-ui/core/styles';
-import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/math-rendering';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
+import { styled } from '@mui/material/styles';
+
+import { Collapsible, color, Feedback, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
 import Translator from '@pie-lib/translator';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { DragProvider } from '@pie-lib/drag';
+
+import { HorizontalTiler, VerticalTiler } from './tiler';
+import { buildState, reducer } from './ordering';
 import { haveSameValuesButDifferentOrder } from './utils';
 
 const { translator } = Translator;
 
 const log = debug('pie-elements:placement-ordering');
+
+const PlacementOrderingContainer = styled('div')({
+  color: color.text(),
+  backgroundColor: color.background(),
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  boxSizing: 'border-box',
+});
+
+const StyledPrompt = styled('div')(({ theme }) => ({
+  paddingBottom: theme.spacing(1),
+}));
+
+const StyledNote = styled('div')(({ theme }) => ({
+  paddingBottom: theme.spacing(2),
+}));
+
+const StyledToggle = styled(CorrectAnswerToggle)(({ theme }) => ({
+  paddingBottom: theme.spacing(1),
+}));
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+  alignSelf: 'flex-start',
+}));
 
 const OrderingTiler = (props) => {
   const { tiler: Comp, ordering, onDropChoice, onRemoveChoice, ...compProps } = props;
@@ -43,7 +72,6 @@ export class PlacementOrdering extends React.Component {
     onSessionChange: PropTypes.func.isRequired,
     model: PropTypes.object.isRequired,
     session: PropTypes.oneOfType([PropTypes.array.isRequired, PropTypes.object.isRequired]),
-    classes: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -215,22 +243,46 @@ export class PlacementOrdering extends React.Component {
 
     return showingCorrect
       ? buildState(
-          model.choices,
-          model.correctResponse,
-          model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
-          {
-            includeTargets,
-            allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
-          },
-        )
-      : buildState(model.choices, session.value, model.outcomes, {
+        model.choices,
+        model.correctResponse,
+        model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
+        {
           includeTargets,
           allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
-        });
+        },
+      )
+      : buildState(model.choices, session.value, model.outcomes, {
+        includeTargets,
+        allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
+      });
   };
 
+  onDragEnd = (event) => {
+    const { over, active } = event;
+    const ordering = this.createOrdering();
+
+    if (over && active) {
+      const draggedItem = active.data.current;
+      const droppedOnItem = over.data.current;
+
+      if (draggedItem && droppedOnItem && droppedOnItem.type === 'target') {
+        this.onDropChoice(droppedOnItem, draggedItem, ordering);
+        return;
+      }
+
+      if (draggedItem && droppedOnItem) {
+        this.onDropChoice(droppedOnItem, draggedItem, ordering);
+      }
+    } else if (!over && active) {
+      const draggedItem = active.data.current;
+      if (draggedItem && draggedItem.type === 'target') {
+        this.onRemoveChoice(draggedItem, ordering);
+      }
+    }
+  }
+
   render() {
-    const { classes, model } = this.props;
+    const { model } = this.props;
     const {
       correctResponse,
       correctness,
@@ -263,80 +315,67 @@ export class PlacementOrdering extends React.Component {
     const showTeacherInstructions =
       teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
+    const containerStyle = {
+      color: color.text(),
+      backgroundColor: color.background(),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      boxSizing: 'border-box',
+    };
+
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.placementOrdering}>
-        {showTeacherInstructions && (
-          <Collapsible
-            labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-            className={classes.collapsible}
-          >
-            <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
-        )}
+      <DragProvider onDragStart={() => { }} onDragEnd={this.onDragEnd}>
+        <PlacementOrderingContainer>
+          <UiLayout extraCSSRules={extraCSSRules} style={containerStyle}>
+            {showTeacherInstructions && (
+              <StyledCollapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                className="collapsible"
+              >
+                <PreviewPrompt prompt={teacherInstructions} />
+              </StyledCollapsible>
+            )}
 
-        <div className={classes.prompt}>
-          <PreviewPrompt prompt={prompt} />
-        </div>
+            <StyledPrompt>
+              <PreviewPrompt prompt={prompt} />
+            </StyledPrompt>
 
-        <CorrectAnswerToggle
-          className={classes.toggle}
-          show={showToggle}
-          toggled={showingCorrect}
-          onToggle={this.toggleCorrect}
-          language={language}
-        />
+            <StyledToggle
+              className="toggle"
+              show={showToggle}
+              toggled={showingCorrect}
+              onToggle={this.toggleCorrect}
+              language={language}
+            />
 
-        <OrderingTiler
-          instanceId={this.instanceId}
-          choiceLabel={config.choiceLabel}
-          targetLabel={config.targetLabel}
-          ordering={ordering}
-          tiler={Tiler}
-          disabled={disabled}
-          addGuide={config.showOrdering}
-          tileSize={config.tileSize}
-          includeTargets={includeTargets}
-          choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
-          onDropChoice={this.onDropChoice}
-          onRemoveChoice={this.onRemoveChoice}
-        />
+            <OrderingTiler
+              instanceId={this.instanceId}
+              choiceLabel={config.choiceLabel}
+              targetLabel={config.targetLabel}
+              ordering={ordering}
+              tiler={Tiler}
+              disabled={disabled}
+              addGuide={config.showOrdering}
+              tileSize={config.tileSize}
+              includeTargets={includeTargets}
+              choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
+            />
 
-        {displayNote && <div className={classes.note} dangerouslySetInnerHTML={{ __html: note }} />}
+            {displayNote && <StyledNote dangerouslySetInnerHTML={{ __html: note }} />}
 
-        {showRationale && (
-          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
-            <PreviewPrompt prompt={rationale} />
-          </Collapsible>
-        )}
+            {showRationale && (
+              <StyledCollapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className="collapsible">
+                <PreviewPrompt prompt={rationale} />
+              </StyledCollapsible>
+            )}
 
-        {!showingCorrect && <Feedback correctness={correctness} feedback={feedback} />}
-      </UiLayout>
+            {!showingCorrect && <Feedback correctness={correctness} feedback={feedback} />}
+          </UiLayout>
+        </PlacementOrderingContainer>
+      </DragProvider>
     );
   }
 }
 
-const styles = (theme) => ({
-  placementOrdering: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    boxSizing: 'border-box',
-  },
-  prompt: {
-    paddingBottom: theme.spacing.unit,
-  },
-  toggle: {
-    paddingBottom: theme.spacing.unit,
-  },
-  note: {
-    paddingBottom: theme.spacing.unit * 2,
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-    alignSelf: 'flex-start',
-  },
-});
-
-export default withStyles(styles)(PlacementOrdering);
+export default PlacementOrdering;

@@ -42,14 +42,20 @@ describe('ebsr', () => {
 
   beforeAll(() => {
     Def = require('../index').default;
+
+    // Register the custom element if not already registered
+    if (!customElements.get('ebsr-element')) {
+      customElements.define('ebsr-element', Def);
+    }
   });
 
   beforeEach(() => {
-    el = new Def();
-    el.connectedCallback();
+    el = document.createElement('ebsr-element');
+
+    // Mock createElement for part elements
     ebsr = {
-      partA: new HTMLElement(),
-      partB: new HTMLElement(),
+      partA: document.createElement('div'),
+      partB: document.createElement('div'),
     };
     el.querySelector = jest.fn((s) => {
       if (s === '#part-a') {
@@ -58,7 +64,14 @@ describe('ebsr', () => {
         return ebsr.partB;
       }
     });
-    el.tagName = 'ebsr-element';
+
+    // Mock _render to avoid innerHTML issues with custom elements
+    el._render = jest.fn();
+
+    // Mock dispatchEvent for testing
+    el.dispatchEvent = jest.fn();
+
+    el.connectedCallback();
     el.model = defaultModel;
     el.session = defaultSession;
   });

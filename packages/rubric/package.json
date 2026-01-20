@@ -9,9 +9,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@pie-lib/math-rendering": "3.22.1",
-    "@pie-lib/render-ui": "4.35.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
+    "@pie-lib/math-rendering": "3.22.3-next.0",
+    "@pie-lib/render-ui": "4.35.4-next.0",
     "prop-types": "^15.7.2"
   },
   "author": "pie framework developers",
@@ -23,6 +26,7 @@
   "exports": {
     ".": "./src/index.js",
     "./print": "./src/print.js",
+    "./configure/lib": "./configure/lib/index.js",
     "./esm": "./esm/element.js",
     "./configure/esm": "./esm/configure.js",
     "./controller/esm": "./esm/controller.js",

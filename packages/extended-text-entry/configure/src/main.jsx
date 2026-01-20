@@ -1,8 +1,8 @@
 import React from 'react';
 import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 
 const { Panel, toggle, numberFields, dropdown } = settings;
@@ -12,6 +12,23 @@ const defaultFeedback = {
   default: 'Your answer has been submitted',
 };
 
+const StyledHeader = styled(Typography)(({ theme }) => ({
+  paddingBottom: theme.spacing(1),
+}));
+
+const PromptContainer = styled(InputContainer)(({ theme }) => ({
+  paddingTop: theme.spacing(1),
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  width: '100%',
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
 export class Main extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func.isRequired,
@@ -20,7 +37,6 @@ export class Main extends React.Component {
     configuration: PropTypes.object.isRequired,
     imageSupport: PropTypes.object.isRequired,
     uploadSoundSupport: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -49,7 +65,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, classes, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { model, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
       annotations = {},
@@ -159,9 +175,9 @@ export class Main extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
+          <PromptContainer label={teacherInstructions.label}>
             <EditableHtml
-              className={classes.prompt}
+              className="prompt"
               markup={model.teacherInstructions || ''}
               onChange={this.changeTeacherInstructions}
               imageSupport={imageSupport}
@@ -176,15 +192,15 @@ export class Main extends React.Component {
               mathMlOptions={mathMlOptions}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </PromptContainer>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptContainer}>
+          <PromptContainer label={prompt.label}>
             <EditableHtml
               activePlugins={ALL_PLUGINS}
-              className={classes.prompt}
+              className="prompt"
               markup={model.prompt || ''}
               onChange={this.onPromptChange}
               imageSupport={imageSupport}
@@ -199,15 +215,15 @@ export class Main extends React.Component {
               mathMlOptions={mathMlOptions}
               pluginProps={getPluginProps(prompt?.inputConfiguration)}
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </PromptContainer>
         )}
 
         {feedbackEnabled && (
           <React.Fragment>
-            <Typography className={classes.header} variant="subheading">
+            <StyledHeader variant="h6">
               Feedback
-            </Typography>
+            </StyledHeader>
 
             <FeedbackSelector
               label="When submitted, show"
@@ -221,18 +237,5 @@ export class Main extends React.Component {
     );
   }
 }
-export default withStyles((theme) => ({
-  header: {
-    paddingBottom: theme.spacing.unit,
-  },
-  promptContainer: {
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-}))(Main);
+
+export default Main;

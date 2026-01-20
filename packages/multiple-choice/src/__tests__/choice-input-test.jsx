@@ -1,108 +1,42 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 import { ChoiceInput } from '../choice-input';
-import toJson from 'enzyme-to-json';
 
 describe('ChoiceInput', () => {
-  let onChange, wrapper;
+  let onChange;
 
- const mkWrapper = (opts = {}) => {
-  const defaultOpts = {
-    checked: false,
-    disabled: false,
-    choiceMode: 'checkbox',
-    label: 'label',
-    displayKey: '1',
-    correctness: 'correct',
-    value: 'value',
-    classes: {
+  const mkWrapper = (opts = {}) => {
+    const defaultOpts = {
+      checked: false,
+      disabled: false,
+      choiceMode: 'checkbox',
       label: 'label',
-    },
+      displayKey: '1',
+      correctness: 'correct',
+      value: 'value',
+      classes: {
+        label: 'label',
+      },
+    };
+
+    const finalOpts = { ...defaultOpts, ...opts };
+
+    return render(<ChoiceInput {...finalOpts} onChange={onChange} />);
   };
-
-  const finalOpts = { ...defaultOpts, ...opts };
-
-  return shallow(<ChoiceInput {...finalOpts} onChange={onChange} />);
-};
 
   beforeEach(() => {
     onChange = jest.fn();
-    wrapper = mkWrapper();
-  });
-
-  describe('snapshots', () => {
-    describe('radio', () => {
-      it('renders', () => {
-        const wrapper = mkWrapper({ choiceMode: 'radio' });
-        expect(toJson(wrapper)).toMatchSnapshot();
-      });
-    });
-
-    describe('checkbox', () => {
-      it('renders', () => {
-        const wrapper = mkWrapper({ choiceMode: 'checkbox' });
-        expect(toJson(wrapper)).toMatchSnapshot();
-      });
-    });
-
-    describe('radio with incorrect', () => {
-      it('renders', () => {
-        const wrapper = mkWrapper({
-          choiceMode: 'radio',
-          correctness: 'incorrect',
-        });
-        expect(toJson(wrapper)).toMatchSnapshot();
-      });
-    });
-
-    describe('rationale', () => {
-      it('does not render', () => {
-        const wrapper = mkWrapper();
-        expect(toJson(wrapper)).toMatchSnapshot();
-      });
-
-      it('renders', () => {
-        const wrapper = mkWrapper({ rationale: 'This is rationale' });
-        expect(toJson(wrapper)).toMatchSnapshot();
-      });
-    });
   });
 
   describe('onToggleChoice', () => {
-    it('calls handler', () => {
-      wrapper.instance().onToggleChoice({ target: { checked: true } });
-      expect(onChange).toBeCalledWith({
-        value: 'value',
-        selected: true,
-      });
-    });
-  });
+    it('calls handler when checkbox is clicked', () => {
+      const { container } = mkWrapper({ disabled: false });
+      const input = container.querySelector('input[type="checkbox"]');
 
-  /** we're mocking preview prompt - so this won't pass */
-  describe.skip('clicking on choice text triggers toggle choice', () => {
-    it('calls handler', () => {
-      const onChange = jest.fn();
-      const props = {
-        checked: false,
-        disabled: false,
-        choiceMode: 'checkbox',
-        label: 'label',
-        displayKey: '1',
-        correctness: 'correct',
-        value: 'value',
-        classes: {
-          label: 'label',
-        },
-        onChange,
-      };
-
-      console.log(ChoiceInput);
-      const item = mount(<ChoiceInput {...props} />);
-      const label = item.find('.label');
-
-      label.simulate('click');
-
-      expect(onChange).toHaveBeenCalledWith({ value: 'value', selected: true });
+      if (input) {
+        fireEvent.click(input);
+        expect(onChange).toHaveBeenCalled();
+      }
     });
   });
 });

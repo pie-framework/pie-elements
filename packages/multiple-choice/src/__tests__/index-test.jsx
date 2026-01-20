@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import MultipleChoiceComponent from '../main';
 import MultipleChoice from '../index';
@@ -8,6 +8,26 @@ import { isComplete } from '../index';
 jest.useFakeTimers();
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
 jest.mock('lodash/debounce', () => jest.fn((fn) => fn));
+
+// Mock the render-ui PreviewLayout
+jest.mock('@pie-lib/render-ui', () => ({
+  PreviewLayout: ({ children }) => <div data-testid="preview-layout">{children}</div>,
+  Collapsible: ({ children, labels }) => (
+    <div data-testid="collapsible">
+      <button>{labels?.hidden || 'Show'}</button>
+      {children}
+    </div>
+  ),
+  PreviewPrompt: ({ prompt }) => <div data-testid="preview-prompt">{prompt}</div>,
+  color: {
+    text: () => '#000',
+    background: () => '#fff',
+    primary: () => '#1976d2',
+    correct: () => '#4caf50',
+    incorrect: () => '#f44336',
+    disabled: () => '#9e9e9e',
+  },
+}));
 
 describe('isComplete', () => {
   it.each`
@@ -23,32 +43,50 @@ describe('isComplete', () => {
 });
 
 describe('multiple-choice', () => {
-  describe('renders', () => {
-    let wrapper = (props) => {
-      let defaultProps = {
+  describe('rendering', () => {
+    const renderComponent = (modelOverrides = {}) => {
+      const defaultProps = {
         model: {
-          ...props,
+          choices: [],
+          prompt: 'Select an answer',
+          ...modelOverrides,
         },
         session: {},
         classes: {},
       };
 
-      return shallow(<MultipleChoiceComponent {...defaultProps} />);
+      return render(<MultipleChoiceComponent {...defaultProps} />);
     };
 
-    it('snapshot', () => {
-      const w = wrapper();
-      expect(w).toMatchSnapshot();
+    it('renders without crashing', () => {
+      const { container } = renderComponent();
+      expect(container).toBeInTheDocument();
     });
 
-    it('snapshot with rationale', () => {
-      const w = wrapper({ rationale: 'This is rationale' });
-      expect(w).toMatchSnapshot();
+    it('renders the preview layout wrapper', () => {
+      renderComponent();
+      expect(screen.getByTestId('preview-layout')).toBeInTheDocument();
     });
 
-    it('snapshot with teacherInstructions', () => {
-      const w = wrapper({ teacherInstructions: 'These are teacher instructions' });
-      expect(w).toMatchSnapshot();
+    it('renders with rationale', () => {
+      renderComponent({ rationale: 'This is rationale' });
+      expect(screen.getByText('This is rationale')).toBeInTheDocument();
+    });
+
+    it('renders with teacherInstructions', () => {
+      renderComponent({ teacherInstructions: 'These are teacher instructions' });
+      expect(screen.getByText('These are teacher instructions')).toBeInTheDocument();
+    });
+
+    it('renders choices when provided', () => {
+      renderComponent({
+        choices: [
+          { value: 'a', label: 'Option A' },
+          { value: 'b', label: 'Option B' },
+        ],
+      });
+      expect(screen.getByText('Option A')).toBeInTheDocument();
+      expect(screen.getByText('Option B')).toBeInTheDocument();
     });
   });
 

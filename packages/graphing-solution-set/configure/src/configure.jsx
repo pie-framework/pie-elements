@@ -1,48 +1,37 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
-import intersection from 'lodash/intersection';
 
 const { Panel, toggle, radio, checkboxes, textField, dropdown } = settings;
 const log = debug('@pie-element:graphing-solution-set:configure');
 
-const styles = (theme) => ({
-  title: {
-    fontSize: '1.1rem',
-    display: 'block',
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
-  },
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-  },
-  description: {
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-});
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  marginTop: theme.spacing(2),
+}));
+
+const Description = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(2.5),
+}));
 
 export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     onConfigurationChanged: PropTypes.func,
-    classes: PropTypes.object,
     imageSupport: PropTypes.object,
     uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
   };
-
-  static defaultProps = { classes: {} };
 
   /*
    * Triggered when configure component is mounted
@@ -97,7 +86,7 @@ export class Configure extends React.Component {
    * Render the component
    * */
   render() {
-    const { classes, model, configuration, onConfigurationChanged, onModelChanged, imageSupport, uploadSoundSupport } =
+    const { model, configuration, onConfigurationChanged, onModelChanged, imageSupport, uploadSoundSupport } =
       this.props;
     const {
       arrows = {},
@@ -189,13 +178,12 @@ export class Configure extends React.Component {
           />
         }
       >
-        <Typography component="div" type="body1" className={classes.description}>
+        <Description component="div" variant="body1">
           {instruction?.label || ''}
-        </Typography>
+        </Description>
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <StyledInputContainer label={teacherInstructions.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChange}
               imageSupport={imageSupport}
@@ -207,12 +195,11 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-          </InputContainer>
+          </StyledInputContainer>
         )}
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
+          <StyledInputContainer label={prompt.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.prompt}
               onChange={this.onPromptChange}
               imageSupport={imageSupport}
@@ -225,7 +212,7 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-          </InputContainer>
+          </StyledInputContainer>
         )}
         <GraphingConfig
           authoring={authoring}
@@ -247,9 +234,8 @@ export class Configure extends React.Component {
           mathMlOptions={mathMlOptions}
         />
         {rationaleEnabled && (
-          <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
+          <StyledInputContainer label={rationale.label || 'Rationale'}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.rationale || ''}
               onChange={this.onRationaleChange}
               imageSupport={imageSupport}
@@ -260,11 +246,11 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-          </InputContainer>
+          </StyledInputContainer>
         )}
       </layout.ConfigLayout>
     );
   }
 }
 
-export default withStyles(styles)(Configure);
+export default Configure;

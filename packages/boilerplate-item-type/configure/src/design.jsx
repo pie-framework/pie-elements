@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import cloneDeep from 'lodash/cloneDeep';
-import { InputContainer, settings, layout } from '@pie-lib/config-ui';
+import { settings, layout } from '@pie-lib/config-ui';
+import { InputContainer } from '@pie-lib/render-ui'
 import EditableHtml from '@pie-lib/editable-html';
 
 const { Panel, toggle } = settings;
+
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(1),
+  marginBottom: theme.spacing(2),
+  marginTop: theme.spacing(2),
+}));
 
 export class Design extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
@@ -32,7 +39,7 @@ export class Design extends React.Component {
   };
 
   render() {
-    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const { contentDimensions = {}, prompt = {}, settingsPanelDisabled } = configuration || {};
     const { extraCSSRules, promptEnabled } = model || {};
@@ -62,26 +69,19 @@ export class Design extends React.Component {
         }
       >
         {promptEnabled && (
-          <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
+          <StyledInputContainer label={prompt.label || ''}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.prompt}
               onChange={this.onPromptChanged}
               imageSupport={imageSupport}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
-          </InputContainer>
+          </StyledInputContainer>
         )}
       </layout.ConfigLayout>
     );
   }
 }
 
-export default withStyles((theme) => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-}))(Design);
+export default Design;
