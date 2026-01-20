@@ -29,7 +29,7 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "f7170c384c729616bce308c461c7443d6bc65ccc",
+  "gitHead": "c47957cb243457f62111caf9d07deaad04b39545",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
