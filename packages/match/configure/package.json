@@ -1,12 +1,13 @@
 {
   "name": "@pie-element/match-configure",
   "private": true,
-  "version": "8.3.3",
+  "version": "9.0.0-beta.0",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
   "author": "",
   "dependencies": {
+    "@dnd-kit/core": "6.1.0",
     "@emotion/react": "^11.14.0",
     "@emotion/style": "^0.8.0",
     "@mui/icons-material": "^7.3.4",
@@ -23,7 +24,6 @@
     "prop-types": "^15.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "@dnd-kit/core": "6.1.0",
     "react-swipeable-views": "^0.12.17"
   },
   "license": "ISC"

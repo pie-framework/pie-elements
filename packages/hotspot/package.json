@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/hotspot",
-  "version": "9.3.3",
+  "version": "10.0.0-beta.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -16,11 +16,11 @@
     "@pie-lib/math-rendering": "3.22.3-next.0",
     "@pie-lib/render-ui": "4.35.4-next.0",
     "@pie-lib/test-utils": "0.22.3-next.0",
+    "konva": "8.3.0",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-konva": "18.1.0",
-    "konva": "8.3.0"
+    "react-konva": "18.1.0"
   },
   "author": "pie framework developers",
   "license": "ISC",

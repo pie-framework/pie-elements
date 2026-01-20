@@ -4,11 +4,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "11.3.3",
+  "version": "12.0.0-beta.0",
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
+    "@dnd-kit/core": "6.1.0",
     "@emotion/react": "^11.14.0",
     "@emotion/style": "^0.8.0",
     "@mui/icons-material": "^7.3.4",
@@ -25,7 +26,6 @@
     "lodash": "^4.17.15",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
-    "@dnd-kit/core": "6.1.0",
     "react-dom": "18.2.0"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",

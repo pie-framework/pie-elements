@@ -1,10 +1,11 @@
 {
   "name": "@pie-element/placement-ordering-configure",
-  "version": "9.3.3",
+  "version": "10.0.0-beta.0",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
     "@emotion/react": "^11.14.0",
     "@emotion/style": "^0.8.0",
     "@mui/icons-material": "^7.3.4",
@@ -20,7 +21,6 @@
     "pluralize": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "18.2.0",
-    "@dnd-kit/core": "^6.1.0",
     "react-dom": "18.2.0"
   }
 }

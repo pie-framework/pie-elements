@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/drawing-response",
-  "version": "10.3.3",
+  "version": "11.0.0-beta.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -9,20 +9,20 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/style": "^0.8.0",
-    "@mui/icons-material": "^7.3.4",
-    "@mui/material": "^7.3.4",
     "@mdi/js": "^3.6.95",
     "@mdi/react": "^1.1.1",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/math-rendering": "3.22.3-next.0",
     "@pie-lib/render-ui": "4.35.4-next.0",
     "@pie-lib/translator": "2.23.3-next.0",
+    "konva": "8.3.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-konva": "18.1.0",
-    "konva": "8.3.0"
+    "react-konva": "18.1.0"
   },
   "author": "pie framework developers",
   "license": "ISC",
