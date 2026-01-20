@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
@@ -30,6 +30,9 @@ const fadeStyles = `
 `;
 
 const FadeTransition = (props) => {
+  const nodeRef = useRef(null);
+  const child = React.Children.only(props.children);
+
   useEffect(() => {
     // Inject styles if not already present
     if (!document.getElementById(`${classPrefix}-styles`)) {
@@ -43,6 +46,7 @@ const FadeTransition = (props) => {
   return (
     <CSSTransition
       {...props}
+      nodeRef={nodeRef}
       appear={true}
       classNames={{
         enter: `${classPrefix}-enter`,
@@ -53,7 +57,9 @@ const FadeTransition = (props) => {
         appearActive: `${classPrefix}-appear-active`,
       }}
       timeout={duration}
-    />
+    >
+      {React.cloneElement(child, { ref: nodeRef })}
+    </CSSTransition>
   );
 };
 

@@ -2,7 +2,7 @@ import { Correct, Incorrect, NothingSubmitted, PartiallyCorrect, ShowRationale }
 import PropTypes from 'prop-types';
 import { color } from '@pie-lib/render-ui';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { styled } from '@mui/material/styles';
 
@@ -52,11 +52,12 @@ const Message = styled('span')({
 const Feedback = (props) => {
   const { type, width, message } = props;
   let Icon = getIcon(type);
+  const nodeRef = useRef(null);
 
   return (
     <TransitionGroup>
-      <CSSTransition classNames={'fb'} key="fb" timeout={300}>
-        <FeedbackContainer key="panel" $type={type} style={{ width }}>
+      <CSSTransition classNames={'fb'} key="fb" timeout={300} nodeRef={nodeRef}>
+        <FeedbackContainer ref={nodeRef} key="panel" $type={type} style={{ width }}>
           <Icon iconSet="emoji" shape="square" />
           <Message dangerouslySetInnerHTML={{ __html: message }} />
         </FeedbackContainer>
