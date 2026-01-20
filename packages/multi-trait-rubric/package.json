@@ -23,9 +23,5 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "exports": {
-    ".": "./src/index.js",
-    "./configure/lib": "./configure/lib/index.js"
-  }
+  "module": "src/index.js"
 }

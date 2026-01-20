@@ -28,9 +28,5 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
-  }
+  "module": "src/index.js"
 }

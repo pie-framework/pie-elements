@@ -27,13 +27,5 @@
   "module": "src/index.js",
   "description": "Complex Rubric Scoring Interaction",
   "author": "pie framework developers",
-  "license": "ISC",
-  "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js",
-    "./esm": "./esm/element.js",
-    "./configure/esm": "./esm/configure.js",
-    "./controller/esm": "./esm/controller.js",
-    "./print/esm": "./esm/print.js"
-  }
+  "license": "ISC"
 }
