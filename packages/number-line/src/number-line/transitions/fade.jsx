@@ -58,7 +58,9 @@ const FadeTransition = (props) => {
       }}
       timeout={duration}
     >
-      {React.cloneElement(child, { ref: nodeRef })}
+      <g ref={nodeRef}>
+        {child}
+      </g>
     </CSSTransition>
   );
 };
