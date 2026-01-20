@@ -56,6 +56,11 @@ class FeedbackTick extends React.Component {
     correctness: PropTypes.string,
   };
 
+  constructor(props) {
+    super(props);
+    this.nodeRef = React.createRef();
+  }
+
   getIncorrectIcon = () => (
     <StyledSVG
       key="1"
@@ -120,6 +125,7 @@ class FeedbackTick extends React.Component {
         <TransitionGroup>
           {correctness && (
             <CSSTransition
+              nodeRef={this.nodeRef}
               classNames={{
                 enter: 'feedback-tick-enter',
                 enterActive: 'feedback-tick-enter-active',
@@ -128,7 +134,7 @@ class FeedbackTick extends React.Component {
               }}
               timeout={{ enter: 700, exit: 300 }}
             >
-              <TransitionWrapper>{icon}</TransitionWrapper>
+              <TransitionWrapper ref={this.nodeRef}>{icon}</TransitionWrapper>
             </CSSTransition>
           )}
         </TransitionGroup>
