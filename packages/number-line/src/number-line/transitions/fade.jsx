@@ -1,56 +1,88 @@
-import injectSheet from 'react-jss';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
 const duration = 200;
-const fade = {
-  appear: {
-    opacity: 0,
-  },
-  appearActive: {
-    opacity: 1,
-    transition: `opacity ${duration}ms ease-in`,
-  },
-  enter: {
-    opacity: 0,
-  },
-  enterActive: {
-    opacity: 1,
-    transition: `opacity ${duration}ms ease-in`,
-  },
-  exit: {
-    opacity: 1,
-  },
-  exitActive: {
-    opacity: 0,
-    transition: `opacity ${duration}ms ease-in`,
-  },
-};
+const classPrefix = 'fade-transition';
+
+const fadeStyles = `
+  .${classPrefix}-appear {
+    opacity: 0;
+  }
+  .${classPrefix}-appear-active {
+    opacity: 1;
+    transition: opacity ${duration}ms ease-in;
+  }
+  .${classPrefix}-enter {
+    opacity: 0;
+  }
+  .${classPrefix}-enter-active {
+    opacity: 1;
+    transition: opacity ${duration}ms ease-in;
+  }
+  .${classPrefix}-exit {
+    opacity: 1;
+  }
+  .${classPrefix}-exit-active {
+    opacity: 0;
+    transition: opacity ${duration}ms ease-in;
+  }
+`;
 
 const FadeTransition = (props) => {
-  const { classes } = props;
+  const nodeRef = useRef(null);
+  const child = React.Children.only(props.children);
+
+  useEffect(() => {
+    // Inject styles if not already present
+    if (!document.getElementById(`${classPrefix}-styles`)) {
+      const style = document.createElement('style');
+      style.id = `${classPrefix}-styles`;
+      style.textContent = fadeStyles;
+      document.head.appendChild(style);
+    }
+  }, []);
+
   return (
     <CSSTransition
       {...props}
+      nodeRef={nodeRef}
       appear={true}
       classNames={{
-        enter: classes.enter,
-        enterActive: classes.enterActive,
-        exit: classes.exit,
-        exitActive: classes.exitActive,
-        appear: classes.appear,
-        appearActive: classes.appearActive,
+        enter: `${classPrefix}-enter`,
+        enterActive: `${classPrefix}-enter-active`,
+        exit: `${classPrefix}-exit`,
+        exitActive: `${classPrefix}-exit-active`,
+        appear: `${classPrefix}-appear`,
+        appearActive: `${classPrefix}-appear-active`,
       }}
       timeout={duration}
-    />
+    >
+      {React.cloneElement(child, { ref: nodeRef })}
+    </CSSTransition>
   );
 };
 
 FadeTransition.propTypes = {
-  classes: PropTypes.object.isRequired,
+  // CSSTransition props
+  children: PropTypes.node,
+  in: PropTypes.bool,
+  mountOnEnter: PropTypes.bool,
+  unmountOnExit: PropTypes.bool,
+  appear: PropTypes.bool,
+  enter: PropTypes.bool,
+  exit: PropTypes.bool,
+  timeout: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({
+    enter: PropTypes.number,
+    exit: PropTypes.number,
+  })]),
+  addEndListener: PropTypes.func,
+  onEnter: PropTypes.func,
+  onEntering: PropTypes.func,
+  onEntered: PropTypes.func,
+  onExit: PropTypes.func,
+  onExiting: PropTypes.func,
+  onExited: PropTypes.func,
 };
 
-const Fade = injectSheet(fade)(FadeTransition);
-
-export default Fade;
+export default FadeTransition;

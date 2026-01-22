@@ -1,29 +1,36 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import React from 'react';
 import AnnotationEditor from '../annotation-editor';
-import { unwrap } from "@material-ui/core/test-utils";
 import * as utils from '../annotation-utils';
 
-const Editor = unwrap(AnnotationEditor);
-const predefinedAnnotations = [
-  {
-    label: 'good',
-    text: 'good',
-    type: 'positive'
-  }, {
-    label: '★',
-    text: '★',
-    type: 'positive'
-  }, {
-    label: 'cut',
-    text: 'cut',
-    type: 'negative'
-  }, {
-    label: 'sp',
-    text: 'spelling',
-    type: 'negative'
-  }
-];
+jest.mock('@pie-lib/editable-html', () => ({
+  __esModule: true,
+  default: ({ markup, onChange, disabled }) => (
+    <div data-testid="editable-html" onClick={() => !disabled && onChange && onChange('new value')}>
+      {markup}
+    </div>
+  ),
+}));
+
+jest.mock('@pie-lib/config-ui', () => ({
+  InputContainer: ({ children, label }) => (
+    <div compname="InputContainer">{label || 'InputContainer'}</div>
+  ),
+}));
+
+jest.mock('../freeform-editor', () => ({
+  __esModule: true,
+  default: (props) => <div data-testid="freeform-editor" {...props} />,
+}));
+
+jest.mock('../annotation-menu', () => ({
+  __esModule: true,
+  default: (props) => <div data-testid="annotation-menu" {...props} />,
+}));
+
+const theme = createTheme();
+
 const mockedElementDOM = {
   removeChild: jest.fn(),
   classList: {
@@ -33,6 +40,14 @@ const mockedElementDOM = {
 };
 
 jest.spyOn(utils, 'removeElemsWrapping').mockImplementation(() => {});
+
+// Store the original componentDidMount
+let originalComponentDidMount;
+
+beforeAll(() => {
+  // Save original componentDidMount
+  originalComponentDidMount = AnnotationEditor.prototype.componentDidMount;
+});
 
 describe('freeform editor', () => {
   const defaultProps = {
@@ -66,123 +81,43 @@ describe('freeform editor', () => {
     });
   });
 
-  const wrapper = extras => {
-    const defaults = {
-      ...defaultProps,
-      onChange,
-      onCommentChange
-    };
-    const props = { ...defaults, ...extras };
-
-    return shallow(<Editor { ...props } />);
-  };
-
-  describe('snapshots', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-
-    it('renders disabled', () => {
-      expect(wrapper({ disabled: true })).toMatchSnapshot();
-    });
-
-    it('renders with predefined annotations', () => {
-      expect(wrapper({ predefinedAnnotations })).toMatchSnapshot();
-    });
-
-    it('renders with text and annotations', () => {
-      expect(
-        wrapper({
-          text: '<div>This is an example.</div>',
-          annotations: [
-            {
-              'id': '1',
-              'label': 'good',
-              'type': 'positive',
-              'quote': 'This',
-              'start': 0,
-              'end': 4
-            }
-          ]
-        })
-      ).toMatchSnapshot();
-    });
-
-    it('renders with complex text and nested annotations', () => {
-      expect(
-        wrapper({
-          text: '<div>This is <b>a complex </b><em>example</em><br/>This is a new line.</div>',
-          annotations: [
-            {
-              'id': '1',
-              'label': 'creative',
-              'type': 'positive',
-              'quote': 'This is a complex exam',
-              'start': 0,
-              'end': 22
-            },
-            {
-              'id': '2',
-              'label': 'punctuation',
-              'type': 'negative',
-              'quote': 'exampleThis is',
-              'start': 18,
-              'end': 32
-            },
-            {
-              'id': '3',
-              'label': 'cut',
-              'type': 'negative',
-              'quote': 'a comp',
-              'start': 8,
-              'end': 14
-            }
-          ]
-        })
-      ).toMatchSnapshot();
-    });
-
-    it('renders with text and comment', () => {
-      expect(
-        wrapper({
-          text: '<div>This is an example.</div>',
-          comment: '<div>Very good</div>'
-        })
-      ).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     describe('select a predefined annotation', () => {
       it('calls onChange when new annotation selected',  () => {
-        const w = wrapper({
+        const testInstance = new AnnotationEditor({
+          ...defaultProps,
+          onChange,
+          onCommentChange,
           text: '<div>This is an example.</div>',
         });
 
-        w.instance().createDOMAnnotation = jest.fn();
-        w.instance().handleClose = jest.fn();
-        w.update();
+        testInstance.createDOMAnnotation = jest.fn();
+        testInstance.handleClose = jest.fn();
 
-        w.setState({
+        testInstance.state = {
           selectedElems: [mockedElementDOM, mockedElementDOM],
           selectionDetails: {
             'quote': 'This',
             'start': 0,
             'end': 4
           },
-        });
-        w.instance().handleMenuClick({
+        };
+
+        testInstance.handleMenuClick({
           type: 'positive',
           text: 'good'
         });
 
-        expect(w.instance().createDOMAnnotation).toBeCalled();
+        expect(testInstance.createDOMAnnotation).toBeCalled();
         expect(onChange).toBeCalled();
-        expect(w.instance().handleClose).toBeCalled();
+        expect(testInstance.handleClose).toBeCalled();
       });
 
       it('calls onChange when old annotation selected',  () => {
-        const w = wrapper({
+        const testInstance = new AnnotationEditor({
+          ...defaultProps,
+          onChange,
+          onCommentChange,
           text: '<div>This is an example.</div>',
           annotations: [
             {
@@ -196,11 +131,10 @@ describe('freeform editor', () => {
           ]
         });
 
-        w.instance().updateLabel = jest.fn();
-        w.instance().handleClose = jest.fn();
-        w.update();
+        testInstance.updateLabel = jest.fn();
+        testInstance.handleClose = jest.fn();
 
-        w.setState({
+        testInstance.state = {
           annotation: {
             'id': '1',
             'label': 'good',
@@ -212,65 +146,82 @@ describe('freeform editor', () => {
           labelElem: mockedElementDOM,
           selectedElems: [mockedElementDOM, mockedElementDOM],
           annotationIndex: 0
-        });
-        w.instance().handleMenuClick({
+        };
+
+        testInstance.handleMenuClick({
           type: 'negative',
           text: 'wrong'
         });
-        expect(w.instance().updateLabel).toBeCalled();
+
+        expect(testInstance.updateLabel).toBeCalled();
         expect(onChange).toBeCalled();
-        expect(w.instance().handleClose).toBeCalled();
+        expect(testInstance.handleClose).toBeCalled();
       });
     });
 
     describe('write new annotation', () => {
       it('calls onChange',  () => {
-        const w = wrapper({
+        const testInstance = new AnnotationEditor({
+          ...defaultProps,
+          onChange,
+          onCommentChange,
           text: '<div>This is an example.</div>',
         });
 
-        w.instance().createDOMAnnotation = jest.fn();
-        w.update();
+        testInstance.createDOMAnnotation = jest.fn();
 
-        w.setState({
+        testInstance.state = {
           selectedElems: [mockedElementDOM, mockedElementDOM],
           selectionDetails: {
             'quote': 'This',
             'start': 0,
             'end': 4
           },
-        });
-        w.instance().addAnnotation('positive');
+        };
 
-        expect(w.instance().createDOMAnnotation).toBeCalled();
+        testInstance.addAnnotation('positive');
+
+        expect(testInstance.createDOMAnnotation).toBeCalled();
         expect(onChange).toBeCalled();
       });
     });
 
     describe('edit annotation', () => {
       it('updates state',  () => {
-        const w = wrapper();
+        const testInstance = new AnnotationEditor({
+          ...defaultProps,
+          onChange,
+          onCommentChange,
+        });
 
-        w.setState({
+        testInstance.state = {
           openedMenu: true,
           openedEditor: false
+        };
+
+        testInstance.setState = jest.fn((newState) => {
+          testInstance.state = { ...testInstance.state, ...newState };
         });
-        w.instance().editAnnotation();
-        expect(w.state().openedMenu).toEqual(false);
-        expect(w.state().openedEditor).toEqual(true);
+
+        testInstance.editAnnotation();
+
+        expect(testInstance.state.openedMenu).toEqual(false);
+        expect(testInstance.state.openedEditor).toEqual(true);
       });
     });
 
     describe('delete annotation', () => {
       it('calls onChange',  () => {
-        const w = wrapper({
+        const testInstance = new AnnotationEditor({
+          ...defaultProps,
+          onChange,
+          onCommentChange,
           text: '<div>This is an example.</div>',
         });
 
-        w.instance().handleClose = jest.fn();
-        w.update();
+        testInstance.handleClose = jest.fn();
 
-        w.setState({
+        testInstance.state = {
           annotation: {
             'id': '1',
             'label': 'good',
@@ -282,18 +233,22 @@ describe('freeform editor', () => {
           labelElem: mockedElementDOM,
           selectedElems: [mockedElementDOM, mockedElementDOM],
           annotationIndex: 0
-        });
-        w.instance().deleteAnnotation();
+        };
+
+        testInstance.deleteAnnotation();
 
         expect(utils.removeElemsWrapping).toBeCalled();
         expect(onChange).toBeCalled();
-        expect(w.instance().handleClose).toBeCalled();
+        expect(testInstance.handleClose).toBeCalled();
       });
     });
 
     describe('update annotation', () => {
       it('calls onChange',  () => {
-        const w = wrapper({
+        const testInstance = new AnnotationEditor({
+          ...defaultProps,
+          onChange,
+          onCommentChange,
           text: '<div>This is an example.</div>',
           annotations: [
             {
@@ -307,22 +262,25 @@ describe('freeform editor', () => {
           ]
         });
 
-        w.instance().updateLabel = jest.fn();
-        w.update();
+        testInstance.updateLabel = jest.fn();
 
-        w.setState({
+        testInstance.state = {
           annotationIndex: 0
-        });
-        w.instance().updateAnnotation();
+        };
 
-        expect(w.instance().updateLabel).toBeCalled();
+        testInstance.updateAnnotation();
+
+        expect(testInstance.updateLabel).toBeCalled();
         expect(onChange).toBeCalled();
       });
     });
 
     describe('change annotation type', () => {
       it('calls onChange',  () => {
-        const w = wrapper({
+        const testInstance = new AnnotationEditor({
+          ...defaultProps,
+          onChange,
+          onCommentChange,
           text: '<div>This is an example.</div>',
           annotations: [
             {
@@ -336,11 +294,10 @@ describe('freeform editor', () => {
           ]
         });
 
-        w.instance().updateLabel = jest.fn();
-        w.instance().handleClose = jest.fn();
-        w.update();
+        testInstance.updateLabel = jest.fn();
+        testInstance.handleClose = jest.fn();
 
-        w.setState({
+        testInstance.state = {
           annotation: {
             'id': '1',
             'label': 'good',
@@ -352,17 +309,22 @@ describe('freeform editor', () => {
           labelElem: mockedElementDOM,
           selectedElems: [mockedElementDOM, mockedElementDOM],
           annotationIndex: 0
-        });
-        w.instance().changeAnnotationType('very good');
-        expect(w.instance().updateLabel).toBeCalled();
+        };
+
+        testInstance.changeAnnotationType('very good');
+
+        expect(testInstance.updateLabel).toBeCalled();
         expect(onChange).toBeCalled();
-        expect(w.instance().handleClose).toBeCalled();
+        expect(testInstance.handleClose).toBeCalled();
       });
     });
 
     describe('update annotation label', () => {
       it('calls createDOMAnnotation',  () => {
-        const w = wrapper({
+        const testInstance = new AnnotationEditor({
+          ...defaultProps,
+          onChange,
+          onCommentChange,
           text: '<div>This is an example.</div>',
           annotations: [
             {
@@ -376,11 +338,10 @@ describe('freeform editor', () => {
           ]
         });
 
-        w.instance().updateLabel = jest.fn();
-        w.instance().handleClose = jest.fn();
-        w.update();
+        testInstance.updateLabel = jest.fn();
+        testInstance.handleClose = jest.fn();
 
-        w.setState({
+        testInstance.state = {
           annotation: {
             'id': '1',
             'label': 'good',
@@ -392,11 +353,13 @@ describe('freeform editor', () => {
           labelElem: mockedElementDOM,
           selectedElems: [mockedElementDOM, mockedElementDOM],
           annotationIndex: 0
-        });
-        w.instance().changeAnnotationType('very good');
-        expect(w.instance().updateLabel).toBeCalled();
+        };
+
+        testInstance.changeAnnotationType('very good');
+
+        expect(testInstance.updateLabel).toBeCalled();
         expect(onChange).toBeCalled();
-        expect(w.instance().handleClose).toBeCalled();
+        expect(testInstance.handleClose).toBeCalled();
       });
     });
 

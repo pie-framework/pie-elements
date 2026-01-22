@@ -106,104 +106,103 @@ export const normalize = (question) => ({ ...defaults, ...question });
  * @param {*} env
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export const model = (question, session, env, updateSession) =>
-  new Promise(async (resolve) => {
-    const normalizedQuestion = normalize(question);
-    const answerCorrectness = await getCorrectness(normalizedQuestion, session, env);
+export const model = async (question, session, env, updateSession) => {
+  const normalizedQuestion = normalize(question);
+  const answerCorrectness = await getCorrectness(normalizedQuestion, session, env);
 
-    const { mode, role } = env || {};
+  const { mode, role } = env || {};
 
-    const {
-      categories,
-      categoriesPerRow,
-      choicesLabel,
-      choicesPosition,
-      correctResponse,
-      feedback,
-      feedbackEnabled,
-      promptEnabled,
-      prompt,
-      rowLabels,
-      rationaleEnabled,
-      rationale,
-      teacherInstructionsEnabled,
-      teacherInstructions,
-      language,
-      maxChoicesPerCategory,
-      extraCSSRules,
-      minRowHeight,
-      fontSizeFactor,
-      autoplayAudioEnabled,
-      completeAudioEnabled,
-      customAudioButton,
-    } = normalizedQuestion;
-    let { choices, note } = normalizedQuestion;
-    let fb;
+  const {
+    categories,
+    categoriesPerRow,
+    choicesLabel,
+    choicesPosition,
+    correctResponse,
+    feedback,
+    feedbackEnabled,
+    promptEnabled,
+    prompt,
+    rowLabels,
+    rationaleEnabled,
+    rationale,
+    teacherInstructionsEnabled,
+    teacherInstructions,
+    language,
+    maxChoicesPerCategory,
+    extraCSSRules,
+    minRowHeight,
+    fontSizeFactor,
+    autoplayAudioEnabled,
+    completeAudioEnabled,
+    customAudioButton,
+  } = normalizedQuestion;
+  let { choices, note } = normalizedQuestion;
+  let fb;
 
-    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
+  const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
-    const filteredCorrectResponse = correctResponse.map((response) => {
-      const filteredChoices = (response.choices || []).filter((choice) => choice !== 'null');
-      return { ...response, choices: filteredChoices };
-    });
-
-    if (mode === 'evaluate' && feedbackEnabled) {
-      fb = await getFeedbackForCorrectness(answerCorrectness, feedback);
-    }
-
-    if (!lockChoiceOrder) {
-      choices = await getShuffledChoices(choices, session, updateSession, 'id');
-    }
-
-    if (!note) {
-      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: language });
-    }
-
-    const alternates = getAlternates(filteredCorrectResponse);
-    const { responseAreasToBeFilled, possibleResponses, hasUnplacedChoices } = getCompleteResponseDetails(
-      filteredCorrectResponse,
-      normalizedQuestion.allowAlternateEnabled ? alternates : [],
-      normalizedQuestion.choices,
-    );
-    const out = {
-      categories: categories || [],
-      categoriesPerRow: categoriesPerRow || 2,
-      maxChoicesPerCategory,
-      correctness: answerCorrectness,
-      choices: choices || [],
-      choicesLabel: choicesLabel || '',
-      choicesPosition,
-      disabled: mode !== 'gather',
-      feedback: fb,
-      lockChoiceOrder,
-      prompt: promptEnabled ? prompt : null,
-      rowLabels,
-      note,
-      env,
-      showNote: alternates && alternates.length > 0,
-      correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
-      language,
-      extraCSSRules,
-      fontSizeFactor,
-      minRowHeight: minRowHeight,
-      autoplayAudioEnabled,
-      completeAudioEnabled,
-      customAudioButton,
-      possibleResponses,
-      responseAreasToBeFilled,
-      hasUnplacedChoices,
-    };
-
-    if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
-      out.rationale = rationaleEnabled ? rationale : null;
-      out.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
-    } else {
-      out.rationale = null;
-      out.teacherInstructions = null;
-    }
-
-    resolve(out);
+  const filteredCorrectResponse = correctResponse.map((response) => {
+    const filteredChoices = (response.choices || []).filter((choice) => choice !== 'null');
+    return { ...response, choices: filteredChoices };
   });
+
+  if (mode === 'evaluate' && feedbackEnabled) {
+    fb = await getFeedbackForCorrectness(answerCorrectness, feedback);
+  }
+
+  if (!lockChoiceOrder) {
+    choices = await getShuffledChoices(choices, session, updateSession, 'id');
+  }
+
+  if (!note) {
+    note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: language });
+  }
+
+  const alternates = getAlternates(filteredCorrectResponse);
+  const { responseAreasToBeFilled, possibleResponses, hasUnplacedChoices } = getCompleteResponseDetails(
+    filteredCorrectResponse,
+    normalizedQuestion.allowAlternateEnabled ? alternates : [],
+    normalizedQuestion.choices,
+  );
+  const out = {
+    categories: categories || [],
+    categoriesPerRow: categoriesPerRow || 2,
+    maxChoicesPerCategory,
+    correctness: answerCorrectness,
+    choices: choices || [],
+    choicesLabel: choicesLabel || '',
+    choicesPosition,
+    disabled: mode !== 'gather',
+    feedback: fb,
+    lockChoiceOrder,
+    prompt: promptEnabled ? prompt : null,
+    rowLabels,
+    note,
+    env,
+    showNote: alternates && alternates.length > 0,
+    correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
+    language,
+    extraCSSRules,
+    fontSizeFactor,
+    minRowHeight: minRowHeight,
+    autoplayAudioEnabled,
+    completeAudioEnabled,
+    customAudioButton,
+    possibleResponses,
+    responseAreasToBeFilled,
+    hasUnplacedChoices,
+  };
+
+  if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
+    out.rationale = rationaleEnabled ? rationale : null;
+    out.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
+  } else {
+    out.rationale = null;
+    out.teacherInstructions = null;
+  }
+
+  return out;
+};
 
 export const outcome = (question, session, env) => {
   if (env.mode !== 'evaluate') {

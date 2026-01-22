@@ -1,16 +1,56 @@
 import React from 'react';
 import { settings, layout, InputContainer, NumberTextField } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
 import { updateImageDimensions, generateValidationMessage, getUpdatedShapes, getAllShapes, groupShapes } from './utils';
 
 const { Panel, toggle, dropdown } = settings;
+
+const DimensionsContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  marginBottom: theme.spacing(1.5),
+}));
+
+const FieldContainer = styled('div')({
+  flex: 1,
+  width: '90%',
+});
+
+const PromptContainer = styled(InputContainer)(({ theme }) => ({
+  paddingTop: theme.spacing(1),
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  width: '100%',
+}));
+
+const SubHeading = styled(Typography)(({ theme }) => ({
+  marginRight: theme.spacing(1),
+}));
+
+const FlexContainer = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 export class Root extends React.Component {
   handleColorChange = (fieldType, color) => {
@@ -49,7 +89,6 @@ export class Root extends React.Component {
 
   render() {
     const {
-      classes,
       configuration,
       model,
       imageSupport,
@@ -144,7 +183,7 @@ export class Root extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
+          <PromptContainer label={teacherInstructions.label}>
             <EditableHtml
               markup={model.teacherInstructions || ''}
               onChange={onTeacherInstructionsChanged}
@@ -160,12 +199,12 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </PromptContainer>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptContainer}>
+          <PromptContainer label={prompt.label}>
             <EditableHtml
               markup={model.prompt || ''}
               onChange={onPromptChanged}
@@ -181,24 +220,23 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </PromptContainer>
         )}
 
-        <div className={classes.flexContainer}>
-          <Typography className={classes.subheading} variant="subheading">
+        <FlexContainer>
+          <SubHeading variant="h6">
             Define Hotspot
-          </Typography>
-          <Tooltip
-            classes={{ tooltip: classes.tooltip }}
+          </SubHeading>
+          <StyledTooltip
             disableFocusListener
             disableTouchListener
             placement={'left'}
             title={validationMessage}
           >
             <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }} />
-          </Tooltip>
-        </div>
+          </StyledTooltip>
+        </FlexContainer>
 
         <HotspotPalette
           hotspotColor={model.hotspotColor}
@@ -226,39 +264,41 @@ export class Root extends React.Component {
           preserveAspectRatioEnabled={preserveAspectRatio.enabled}
           insertImage={imageSupport && imageSupport.add}
         />
-        {shapesError && <div className={classes.errorText}>{shapesError}</div>}
-        {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
+        {shapesError && <ErrorText>{shapesError}</ErrorText>}
+        {selectionsError && <ErrorText>{selectionsError}</ErrorText>}
 
         {model.imageUrl && (
           <React.Fragment>
-            <Typography variant="subheading">Image Dimensions</Typography>
+            <Typography variant="h6">Image Dimensions</Typography>
 
-            <div className={classes.dimensions}>
-              <NumberTextField
-                key="hotspot-manual-width"
-                label="Width"
-                value={model.dimensions.width}
-                min={0}
-                onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'width')}
-                showErrorWhenOutsideRange
-                className={classes.field}
-              />
+            <DimensionsContainer>
+              <FieldContainer>
+                <NumberTextField
+                  key="hotspot-manual-width"
+                  label="Width"
+                  value={model.dimensions.width}
+                  min={0}
+                  onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'width')}
+                  showErrorWhenOutsideRange
+                />
+              </FieldContainer>
 
-              <NumberTextField
-                key="hotspot-manual-height"
-                label="Height"
-                value={model.dimensions.height}
-                min={0}
-                onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'height')}
-                showErrorWhenOutsideRange
-                className={classes.field}
-              />
-            </div>
+              <FieldContainer>
+                <NumberTextField
+                  key="hotspot-manual-height"
+                  label="Height"
+                  value={model.dimensions.height}
+                  min={0}
+                  onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'height')}
+                  showErrorWhenOutsideRange
+                />
+              </FieldContainer>
+            </DimensionsContainer>
           </React.Fragment>
         )}
 
         {rationaleEnabled && (
-          <InputContainer label={rationale.label} className={classes.promptContainer}>
+          <PromptContainer label={rationale.label}>
             <EditableHtml
               markup={model.rationale || ''}
               onChange={onRationaleChanged}
@@ -273,49 +313,15 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
-          </InputContainer>
+            {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+          </PromptContainer>
         )}
       </layout.ConfigLayout>
     );
   }
 }
 
-const styles = (theme) => ({
-  dimensions: {
-    display: 'flex',
-    marginBottom: theme.spacing.unit * 1.5,
-  },
-  field: {
-    flex: 1,
-    width: '90%',
-  },
-  promptContainer: {
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  subheading: {
-    marginRight: theme.spacing.unit,
-  },
-  flexContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  tooltip: {
-    fontSize: theme.typography.fontSize - 2,
-    whiteSpace: 'pre',
-    maxWidth: '500px',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
-
 Root.propTypes = {
-  classes: PropTypes.object.isRequired,
   configuration: PropTypes.object,
   model: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
@@ -337,4 +343,4 @@ Root.propTypes = {
   onTeacherInstructionsChanged: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Root);
+export default Root;

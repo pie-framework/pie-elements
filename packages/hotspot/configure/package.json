@@ -1,25 +1,26 @@
 {
   "name": "@pie-element/hotspot-configure",
   "private": true,
-  "version": "8.3.2",
+  "version": "9.0.0-beta.0",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
   "author": "",
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@material-ui/icons": "^3.0.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "@pie-framework/pie-configure-events": "^1.3.0",
-    "@pie-lib/config-ui": "^11.30.1",
-    "@pie-lib/editable-html": "^11.21.1",
-    "classnames": "^2.2.6",
+    "@pie-lib/config-ui": "11.30.3-next.205",
+    "@pie-lib/editable-html-tip-tap": "^1.0.21-next.6057",
     "debug": "^3.1.0",
-    "konva": "^3.2.4",
+    "konva": "8.3.0",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-konva": "^16.9.0-0"
+    "react-konva": "18.1.0"
   },
   "license": "ISC"
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Line, Group, Rect } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles';
 import ImageComponent from './image-konva-tooltip';
 import { faCorrect, faWrong } from './icons';
 
@@ -63,7 +62,6 @@ class PolygonComponent extends React.Component {
 
   render() {
     const {
-      classes,
       hotspotColor,
       isCorrect,
       isEvaluateMode,
@@ -152,7 +150,6 @@ class PolygonComponent extends React.Component {
         <Line
           points={pointsParsed}
           closed={true}
-          classes={classes.base}
           fill={selected && selectedHotspotColor? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
@@ -161,6 +158,9 @@ class PolygonComponent extends React.Component {
           strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
+          opacity={0.5}
+          cursor='pointer'
+          position='relative'
         />
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
@@ -168,16 +168,7 @@ class PolygonComponent extends React.Component {
   }
 }
 
-const styles = () => ({
-  base: {
-    cursor: 'pointer',
-    opacity: 0.5,
-    position: 'relative',
-  },
-});
-
 PolygonComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   isCorrect: PropTypes.bool.isRequired,
@@ -202,4 +193,4 @@ PolygonComponent.defaultProps = {
   scale: 1,
 };
 
-export default withStyles(styles)(PolygonComponent);
+export default PolygonComponent;

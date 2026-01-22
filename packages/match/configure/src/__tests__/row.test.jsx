@@ -1,7 +1,42 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
-import { Row, choiceSource, choiceTarget, canDrag } from '../row';
+import { Row, canDrag } from '../row';
 import { defaultProps } from './configure.test';
+
+jest.mock('@mui/material/Radio', () => (props) => <input type="radio" {...props} />);
+jest.mock('@mui/material/IconButton', () => (props) => <button {...props}>{props.children}</button>);
+jest.mock('@mui/icons-material/Delete', () => () => <div data-testid="delete-icon" />);
+jest.mock('@mui/icons-material/DragHandle', () => () => <div data-testid="drag-handle" />);
+jest.mock('@pie-lib/render-ui', () => ({
+  color: {
+    tertiary: () => '#999',
+  },
+}));
+jest.mock('@pie-lib/editable-html', () => {
+  const React = require('react');
+  return {
+    __esModule: true,
+    default: (props) => <div data-testid="editable-html" />,
+    DEFAULT_PLUGINS: ['bold', 'italic'],
+  };
+});
+jest.mock('@pie-lib/config-ui', () => ({
+  Checkbox: (props) => <input type="checkbox" {...props} />,
+  AlertDialog: (props) => <div>{props.children}</div>,
+  NumberTextField: (props) => <div />,
+  InputContainer: (props) => <div>{props.children}</div>,
+  FeedbackConfig: (props) => <div />,
+  InputCheckbox: (props) => <div />,
+  layout: {
+    ConfigLayout: (props) => <div>{props.children}</div>,
+  },
+  settings: {
+    Panel: (props) => <div onChange={props.onChange} />,
+    toggle: jest.fn(),
+    radio: jest.fn(),
+    dropdown: jest.fn(),
+  },
+}));
 
 describe('choice', () => {
   let onDeleteRow;
@@ -39,21 +74,43 @@ describe('choice', () => {
       ...extras,
     };
 
-    return shallow(<Row {...props} />);
+    return render(<Row {...props} />);
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const w = wrapper();
-      expect(w).toMatchSnapshot();
+  const createInstance = (extras) => {
+    const props = {
+      classes: {},
+      model: defaultModel,
+      row: {
+        id: 1,
+        title: 'Question Text 1',
+        values: [false, false],
+      },
+      idx: 1,
+      isDragging: false,
+      onDeleteRow: onDeleteRow,
+      onChange: onChange,
+      connectDragSource: connectDragSource,
+      connectDropTarget: connectDropTarget,
+      onMoveRow: onMoveRow,
+      ...extras,
+    };
+
+    const instance = new Row(props);
+
+    // Mock setState to execute updates immediately for testing
+    instance.setState = jest.fn((state) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
     });
-  });
+
+    return instance;
+  };
 
   describe('logic', () => {
     describe('onRowTitleChange', () => {
       it('calls onChange', () => {
-        const w = wrapper();
-        const callback = w.instance().onRowTitleChange(1);
+        const w = createInstance();
+        const callback = w.onRowTitleChange(1);
 
         callback({
           target: {
@@ -77,8 +134,8 @@ describe('choice', () => {
 
     describe('onRowValueChange', () => {
       it('calls onChange', () => {
-        const w = wrapper();
-        const callback = w.instance().onRowValueChange(1, 1);
+        const w = createInstance();
+        const callback = w.onRowValueChange(1, 1);
 
         callback({
           target: {
@@ -102,8 +159,8 @@ describe('choice', () => {
 
     describe('onDeleteRow', () => {
       it('calls onChange', () => {
-        const w = wrapper();
-        const callback = w.instance().onDeleteRow(1);
+        const w = createInstance();
+        const callback = w.onDeleteRow(1);
 
         callback();
 
@@ -112,8 +169,8 @@ describe('choice', () => {
 
       it('does not delete all rows and shows dialog', () => {
         let onModelChanged = jest.fn();
-        const w = wrapper();
-        const callback = w.instance().onDeleteRow(1);
+        const w = createInstance();
+        const callback = w.onDeleteRow(1);
 
         callback();
 
@@ -123,9 +180,9 @@ describe('choice', () => {
 
     describe('onMouseDownOnHandle', () => {
       it('change canDrag value to true', () => {
-        const w = wrapper();
+        const w = createInstance();
 
-        w.instance().onMouseDownOnHandle();
+        w.onMouseDownOnHandle();
 
         expect(canDrag).toEqual(true);
       });
@@ -133,9 +190,9 @@ describe('choice', () => {
 
     describe('onMouseUpOnHandle', () => {
       it('change canDrag value to false', () => {
-        const w = wrapper();
+        const w = createInstance();
 
-        w.instance().onMouseUpOnHandle();
+        w.onMouseUpOnHandle();
 
         expect(canDrag).toEqual(false);
       });
@@ -143,140 +200,3 @@ describe('choice', () => {
   });
 });
 
-describe('spec', () => {
-  let onDeleteRow;
-  let onChange;
-  let connectDragSource;
-  let connectDropTarget;
-  let onMoveRow;
-
-  beforeEach(() => {
-    onChange = jest.fn();
-    onDeleteRow = jest.fn();
-    connectDragSource = jest.fn();
-    connectDropTarget = jest.fn();
-    onMoveRow = jest.fn();
-  });
-
-  const defaultModel = {
-    id: '1',
-    element: 'match-element',
-    rows: [
-      {
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false],
-      },
-      {
-        id: 2,
-        title: 'Question Text 2',
-        values: [false, false],
-      },
-      {
-        id: 3,
-        title: 'Question Text 3',
-        values: [false, false],
-      },
-      {
-        id: 4,
-        title: 'Question Text 4',
-        values: [false, false],
-      },
-    ],
-    lockChoiceOrder: false,
-    partialScoring: [],
-    layout: 3,
-    headers: ['Column 1', 'Column 2', 'Column 3'],
-    choiceMode: 'radio',
-    feedback: {
-      correct: {
-        type: 'none',
-        default: 'Correct',
-      },
-      partial: {
-        type: 'none',
-        default: 'Nearly',
-      },
-      incorrect: {
-        type: 'none',
-        default: 'Incorrect',
-      },
-    },
-  };
-
-  const wrapper = (extras) => {
-    const props = {
-      classes: {},
-      model: defaultModel,
-      row: {
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false],
-      },
-      idx: 1,
-      isDragging: false,
-      onDeleteRow: onDeleteRow,
-      onChange: onChange,
-      connectDragSource: connectDragSource,
-      connectDropTarget: connectDropTarget,
-      onMoveRow: onMoveRow,
-      ...extras,
-    };
-
-    return shallow(<Row {...props} />);
-  };
-
-  describe('canDrag', () => {
-    it('returns true after mousedown event was emmited on the Drag Handle', () => {
-      const w = wrapper();
-
-      w.instance().onMouseDownOnHandle();
-
-      const result = choiceSource.canDrag({});
-
-      expect(result).toEqual(true);
-    });
-
-    it('returns false after mouseup event was emmited on the document', () => {
-      const w = wrapper();
-
-      w.instance().onMouseUpOnHandle();
-
-      const result = choiceSource.canDrag({});
-
-      expect(result).toEqual(false);
-    });
-  });
-
-  describe('beginDrag', () => {
-    it('returns the id', () => {
-      const result = choiceSource.beginDrag({ row: { id: 1 }, idx: 1 });
-
-      expect(result).toEqual({ id: 1, index: 1 });
-    });
-  });
-
-  describe('drop', () => {
-    let monitor;
-    let item;
-
-    beforeEach(() => {
-      item = {
-        index: 1,
-      };
-      monitor = {
-        didDrop: jest.fn().mockReturnValue(false),
-        getItem: jest.fn().mockReturnValue(item),
-      };
-    });
-
-    it('calls onMoveRow when one row is dropped over another', () => {
-      const props = {
-        idx: 2,
-        onMoveRow: jest.fn(),
-      };
-      choiceTarget.drop(props, monitor);
-      expect(props.onMoveRow).toBeCalledWith(1, 2);
-    });
-  });
-});

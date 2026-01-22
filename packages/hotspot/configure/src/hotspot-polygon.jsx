@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Group, Line, Circle } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles/index';
 import { Rect } from 'react-konva/lib/ReactKonvaCore';
 import DeleteWidget from './DeleteWidget';
 
@@ -188,7 +187,6 @@ class PolComponent extends React.Component {
 
   render() {
     const {
-      classes,
       correct,
       id,
       hotspotColor,
@@ -208,7 +206,7 @@ class PolComponent extends React.Component {
     const calculatedFill = correct && selectedHotspotColor ? selectedHotspotColor : hotspotColor;
 
     return (
-      <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
+      <Group onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         {hoverOutlineColor && hovered && (
           <Rect
             x={boundingBox.x}
@@ -221,7 +219,6 @@ class PolComponent extends React.Component {
           />
         )}
         <Line
-          classes={classes.base}
           points={this.serialize(points)}
           closed={!isInProgress}
           fill={isInProgress ? 'transparent' : calculatedFill}
@@ -235,13 +232,13 @@ class PolComponent extends React.Component {
           onDragEnd={(e) => this.handleOnDragEnd(e, true)}
           x={x}
           y={y}
+          opacity={0.5}
         />
 
         {showPoints &&
           points.map((point, index) => (
             <Circle
               key={index}
-              className={classes.circle}
               x={point.x}
               y={point.y}
               radius={5}
@@ -257,6 +254,7 @@ class PolComponent extends React.Component {
                 this.handleOnDragVertex(e, index, true);
               }}
               draggable
+              opacity={4}
             />
           ))}
         {!this.state.isDragging && this.state.hovered && (
@@ -267,21 +265,7 @@ class PolComponent extends React.Component {
   }
 }
 
-const styles = () => ({
-  base: {
-    cursor: 'pointer',
-    opacity: 0.5,
-  },
-  circle: {
-    opacity: 4,
-  },
-  group: {
-    padding: '12px',
-  },
-});
-
 PolComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
   correct: PropTypes.bool,
   isDrawing: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
@@ -308,4 +292,4 @@ PolComponent.defaultProps = {
   correct: false,
 };
 
-export default withStyles(styles)(PolComponent);
+export default PolComponent;

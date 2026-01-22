@@ -1,16 +1,64 @@
-import { withStyles } from '@material-ui/core/styles/index';
-import classNames from 'classnames';
-import { SUPPORTED_SHAPES } from './shapes';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { styled } from '@mui/material/styles';
+import PropTypes from 'prop-types';
 import Button from './button';
 import { CircleButton } from './buttons/circle';
 import { PolygonButton } from './buttons/polygon';
 import { RectangleButton } from './buttons/rectangle';
-
+import { SUPPORTED_SHAPES } from './shapes';
 import Drawable from './hotspot-drawable';
 import UploadControl from './upload-control';
 import { getAllShapes, groupShapes } from './utils';
+
+const BaseContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(1.5),
+  marginBottom: theme.spacing(2.5),
+}));
+
+const BoxContainer = styled('div')(({ theme, hasErrors, dropzoneActive }) => ({
+  border: '1px solid #E0E1E6',
+  borderRadius: '5px',
+  ...(dropzoneActive && {
+    border: '1px solid #0032C2',
+  }),
+  ...(hasErrors && !dropzoneActive && {
+    border: `1px solid ${theme.palette.error.main}`,
+  }),
+}));
+
+const ButtonShape = styled('div')({
+  marginRight: '5px',
+  '&:hover': {
+    cursor: 'pointer',
+  },
+});
+
+const CenteredContainer = styled('div')({
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+});
+
+const DrawableHeight = styled('div')(({ theme }) => ({
+  minHeight: 350,
+  paddingBottom: theme.spacing(5),
+  paddingRight: theme.spacing(5),
+}));
+
+const Toolbar = styled('div')(({ theme }) => ({
+  backgroundColor: '#FFF',
+  borderBottom: '1px solid #E0E1E6',
+  borderTopLeftRadius: '5px',
+  borderTopRightRadius: '5px',
+  display: 'flex',
+  justifyContent: 'flex-end',
+  padding: theme.spacing(1),
+}));
+
+const ReplaceSection = styled('div')({
+  marginRight: 'auto',
+});
 
 const isImage = (file) => {
   const imageType = /image.*/;
@@ -147,7 +195,6 @@ export class Container extends Component {
 
   render() {
     const {
-      classes,
       dimensions,
       hasErrors,
       hotspotColor,
@@ -160,17 +207,15 @@ export class Container extends Component {
       hoverOutlineColor,
       selectedHotspotColor,
     } = this.props;
-    
+
     const { dropzoneActive, dragEnabled } = this.state;
     const { shapes, selectedShape } = this.state;
 
     return (
-      <div className={classes.base}>
-        <div
-          className={classNames(classes.box, {
-            [classes.boxError]: hasErrors && !dropzoneActive,
-            [classes.boxActive]: dropzoneActive,
-          })}
+      <BaseContainer>
+        <BoxContainer
+          hasErrors={hasErrors}
+          dropzoneActive={dropzoneActive}
           {...(dragEnabled
             ? {
                 onDragExit: this.handleOnDragExit,
@@ -181,45 +226,41 @@ export class Container extends Component {
               }
             : {})}
         >
-          <div className={classes.toolbar}>
-            <div
+          <Toolbar>
+            <ButtonShape
               onClick={() => this.setState({ selectedShape: selectedShape === SUPPORTED_SHAPES.RECTANGLE ? SUPPORTED_SHAPES.NONE : SUPPORTED_SHAPES.RECTANGLE })}
-              className={classes.buttonShape}
             >
               <RectangleButton isActive={selectedShape === SUPPORTED_SHAPES.RECTANGLE} />
-            </div>
-            <div
+            </ButtonShape>
+            <ButtonShape
               onClick={() => this.setState({ selectedShape: selectedShape === SUPPORTED_SHAPES.POLYGON ? SUPPORTED_SHAPES.NONE : SUPPORTED_SHAPES.POLYGON })}
-              className={classes.buttonShape}
             >
               <PolygonButton isActive={selectedShape === SUPPORTED_SHAPES.POLYGON} />
-            </div>
-            <div
+            </ButtonShape>
+            <ButtonShape
               onClick={() => this.setState({ selectedShape: selectedShape === SUPPORTED_SHAPES.CIRCLE ? SUPPORTED_SHAPES.NONE : SUPPORTED_SHAPES.CIRCLE })}
-              className={classes.buttonShape}
             >
               <CircleButton isActive={selectedShape === SUPPORTED_SHAPES.CIRCLE} />
-            </div>
+            </ButtonShape>
 
             {imageUrl && (
-              <UploadControl
-                classNameButton={classes.replaceButton}
-                classNameSection={classes.replaceSection}
-                label="Replace Image"
-                onInputClick={this.handleInputClick}
-                setRef={(ref) => {
-                  this.input = ref;
-                }}
-              />
+              <ReplaceSection>
+                <UploadControl
+                  label="Replace Image"
+                  onInputClick={this.handleInputClick}
+                  setRef={(ref) => {
+                    this.input = ref;
+                  }}
+                />
+              </ReplaceSection>
             )}
             <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all" />
-          </div>
+          </Toolbar>
 
-          <div
+          <DrawableHeight
             ref={(ref) => {
               this.imageSection = ref;
             }}
-            className={classes.drawableHeight}
           >
             {imageUrl ? (
               <Drawable
@@ -242,7 +283,7 @@ export class Container extends Component {
                 preserveAspectRatioEnabled={preserveAspectRatioEnabled}
               />
             ) : (
-              <div className={classNames(classes.drawableHeight, classes.centered)}>
+              <CenteredContainer>
                 <label>Drag and drop or upload image from computer</label>
                 <br />
                 <UploadControl
@@ -252,73 +293,16 @@ export class Container extends Component {
                     this.input = ref;
                   }}
                 />
-              </div>
+              </CenteredContainer>
             )}
-          </div>
-        </div>
-      </div>
+          </DrawableHeight>
+        </BoxContainer>
+      </BaseContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  buttonShape: {
-    marginRight: '5px',
-    '&:hover': {
-      cursor: 'pointer',
-    },
-  },
-  base: {
-    marginTop: theme.spacing.unit * 1.5,
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  box: {
-    border: '1px solid #E0E1E6',
-    borderRadius: '5px',
-  },
-  boxActive: {
-    border: '1px solid #0032C2',
-  },
-  boxError: {
-    border: `1px solid ${theme.palette.error.main}`,
-  },
-  centered: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  drawableHeight: {
-    minHeight: 350,
-    paddingBottom: theme.spacing.unit * 5,
-    paddingRight: theme.spacing.unit * 5,
-  },
-  icon: {
-    '&:hover': {
-      color: '#333131',
-      cursor: 'help',
-    },
-    color: '#C1C1C1',
-  },
-  replaceButton: {
-    marginLeft: 0,
-  },
-  replaceSection: {
-    marginRight: 'auto',
-  },
-  toolbar: {
-    backgroundColor: '#FFF',
-    borderBottom: '1px solid #E0E1E6',
-    borderTopLeftRadius: '5px',
-    borderTopRightRadius: '5px',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    padding: theme.spacing.unit,
-  },
-});
-
 Container.propTypes = {
-  classes: PropTypes.object.isRequired,
   dimensions: PropTypes.object.isRequired,
   imageUrl: PropTypes.string.isRequired,
   hotspotColor: PropTypes.string.isRequired,
@@ -343,4 +327,4 @@ Container.defaultProps = {
   strokeWidth: 5,
 };
 
-export default withStyles(styles)(Container);
+export default Container;

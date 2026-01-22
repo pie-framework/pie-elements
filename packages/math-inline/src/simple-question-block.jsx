@@ -1,14 +1,65 @@
 import React from 'react';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import { mq } from '@pie-lib/math-input';
-import cx from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import { color } from '@pie-lib/render-ui';
 
-export class SimpleQuestionBlockRaw extends React.Component {
+const Expression = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  padding: theme.spacing(1),
+}));
+
+const Static = styled('div', {
+  shouldForwardProp: (prop) => !['isCorrect', 'isIncorrect'].includes(prop),
+})(({ theme, isCorrect, isIncorrect }) => ({
+  color: color.text(),
+  background: color.background(),
+  border: isCorrect
+    ? `2px solid ${color.correct()} !important`
+    : isIncorrect
+      ? `2px solid ${color.incorrect()} !important`
+      : `1px solid ${color.primaryLight()}`,
+  width: 'fit-content',
+  fontSize: '1rem',
+  padding: isCorrect || isIncorrect ? theme.spacing(1) : theme.spacing(0.5),
+  letterSpacing: (isCorrect || isIncorrect) ? '0.5px' : 'normal',
+  '& > .mq-math-mode': {
+    '& > .mq-hasCursor': {
+      '& > .mq-cursor': {
+        display: 'none',
+      },
+    },
+  },
+}));
+
+// CSS for MathToolbar classNames (used as strings)
+if (typeof document !== 'undefined') {
+  const styleId = 'math-inline-simple-question-styles';
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      .response-editor {
+        display: flex;
+        justify-content: center;
+        width: auto;
+        max-width: fit-content;
+        height: auto;
+        text-align: left;
+        padding: 8px;
+      }
+      .response-editor.mq-math-mode {
+        border: 1px solid ${color.primaryLight()};
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
+
+export class SimpleQuestionBlock extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     onSimpleResponseChange: PropTypes.func,
     model: PropTypes.object.isRequired,
     emptyResponse: PropTypes.bool,
@@ -43,7 +94,7 @@ export class SimpleQuestionBlockRaw extends React.Component {
   };
 
   render() {
-    const { classes, model, showCorrect, session, emptyResponse, onSimpleResponseChange, showKeypad } = this.props;
+    const { model, showCorrect, session, emptyResponse,onSimpleResponseChange, showKeypad } = this.props;
     const { config, disabled, correctness } = model || {};
 
     if (!config) {
@@ -54,22 +105,20 @@ export class SimpleQuestionBlockRaw extends React.Component {
     const { responses, equationEditor } = config;
 
     return (
-      <div className={classes.expression} data-keypad={true}>
+      <Expression data-keypad={true}>
         {showCorrect || disabled ? (
-          <div
-            className={cx(classes.static, {
-              [classes.incorrect]: !emptyResponse && !correct && !showCorrect,
-              [classes.correct]: !emptyResponse && (correct || showCorrect),
-            })}
+          <Static
+            isIncorrect={!emptyResponse && !correct && !showCorrect}
+            isCorrect={!emptyResponse && (correct || showCorrect)}
           >
             <mq.Static
               latex={showCorrect ? responses && responses.length && responses[0].answer : session.response || ''}
             />
-          </div>
+          </Static>
         ) : (
           <div id={this.mathToolBarId}>
             <MathToolbar
-              classNames={{ editor: classes.responseEditor }}
+              classNames={{ editor: 'response-editor' }}
               latex={session.response}
               keypadMode={equationEditor}
               onChange={onSimpleResponseChange}
@@ -81,54 +130,9 @@ export class SimpleQuestionBlockRaw extends React.Component {
             />
           </div>
         )}
-      </div>
+      </Expression>
     );
   }
 }
-
-const SimpleQuestionBlock = withStyles((theme) => ({
-  responseEditor: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: 'auto',
-    maxWidth: 'fit-content',
-    height: 'auto',
-    textAlign: 'left',
-    padding: theme.spacing.unit,
-    '&.mq-math-mode': {
-      border: `1px solid ${color.primaryLight()}`,
-    },
-  },
-  expression: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    padding: theme.spacing.unit,
-  },
-  static: {
-    color: color.text(),
-    background: color.background(),
-    border: `1px solid ${color.primaryLight()}`,
-    width: 'fit-content',
-    fontSize: '1rem',
-    padding: theme.spacing.unit / 2,
-    '& > .mq-math-mode': {
-      '& > .mq-hasCursor': {
-        '& > .mq-cursor': {
-          display: 'none',
-        },
-      },
-    },
-  },
-  correct: {
-    border: `2px solid ${color.correct()} !important`,
-    padding: theme.spacing.unit,
-    letterSpacing: '0.5px',
-  },
-  incorrect: {
-    border: `2px solid ${color.incorrect()} !important`,
-    padding: theme.spacing.unit,
-    letterSpacing: '0.5px',
-  },
-}))(SimpleQuestionBlockRaw);
 
 export default SimpleQuestionBlock;

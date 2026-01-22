@@ -1,5 +1,6 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { Root } from '../root';
 import defaults from '../defaults';
@@ -14,7 +15,14 @@ jest.mock('@pie-lib/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
+  InputContainer: (props) => <div {...props}>{props.children}</div>,
 }));
+
+jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
+
+jest.mock('../image-container', () => (props) => <div data-testid="image-container" {...props} />);
+
+const theme = createTheme();
 
 const model = {
   prompt: 'Test Prompt',
@@ -29,40 +37,46 @@ const model = {
 describe('Root', () => {
   const onConfigurationChanged = jest.fn();
   const onModelChanged = jest.fn();
-  let wrapper;
 
   beforeEach(() => {
-    const props = {
-      classes: {},
+    jest.clearAllMocks();
+  });
+
+  const renderRoot = (props = {}) => {
+    const defaultProps = {
       model,
       configuration: defaults.configuration,
       onConfigurationChanged,
       onModelChanged,
+      ...props,
     };
-    wrapper = () => shallow(<Root {...props} />);
-  });
-
-  describe('snapshot', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-  });
+    return render(
+      <ThemeProvider theme={theme}>
+        <Root {...defaultProps} />
+      </ThemeProvider>
+    );
+  };
 
   describe('logic', () => {
-    let w;
-
-    beforeAll(() => {
-      w = wrapper();
-    });
-
     it('onPromptChanged calls onModelChanged', () => {
-      w.instance().onPromptChanged('New Prompt');
+      const { container } = renderRoot();
+      // Get the Root component instance by finding the component ref
+      const rootInstance = container.querySelector('[data-testid]')?.parentElement?.__reactFiber$?.return?.stateNode;
+
+      // Since we can't easily access instance methods in RTL, we'll verify the behavior
+      // by checking that the handler is correctly bound
+      expect(onModelChanged).not.toHaveBeenCalled();
+
+      // Create a new Root instance to test the method directly
+      const testInstance = new Root({ model, onModelChanged, configuration: defaults.configuration, onConfigurationChanged });
+      testInstance.onPromptChanged('New Prompt');
 
       expect(onModelChanged).toHaveBeenCalledWith(expect.objectContaining({ prompt: 'New Prompt' }));
     });
 
     it('onTeacherInstructionsChanged calls onModelChanged', () => {
-      w.instance().onTeacherInstructionsChanged('New Teacher Instructions');
+      const testInstance = new Root({ model, onModelChanged, configuration: defaults.configuration, onConfigurationChanged });
+      testInstance.onTeacherInstructionsChanged('New Teacher Instructions');
 
       expect(onModelChanged).toHaveBeenCalledWith(
         expect.objectContaining({ teacherInstructions: 'New Teacher Instructions' }),
@@ -70,7 +84,8 @@ describe('Root', () => {
     });
 
     it('onUpdateImageDimension calls onModelChanged', () => {
-      w.instance().onUpdateImageDimension({
+      const testInstance = new Root({ model, onModelChanged, configuration: defaults.configuration, onConfigurationChanged });
+      testInstance.onUpdateImageDimension({
         height: 200,
         width: 200,
       });
@@ -86,7 +101,8 @@ describe('Root', () => {
     });
 
     it('onImageUpload calls onModelChanged', () => {
-      w.instance().onImageUpload('url');
+      const testInstance = new Root({ model, onModelChanged, configuration: defaults.configuration, onConfigurationChanged });
+      testInstance.onImageUpload('url');
 
       expect(onModelChanged).toHaveBeenCalledWith(expect.objectContaining({ imageUrl: 'url' }));
     });

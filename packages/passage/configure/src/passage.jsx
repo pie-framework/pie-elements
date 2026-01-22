@@ -1,12 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import { InputContainer } from '@pie-lib/config-ui';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
+import { styled } from '@mui/material/styles';
+
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  width: '100%',
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 export class PassageComponent extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     onModelChanged: PropTypes.func.isRequired,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
@@ -37,7 +48,7 @@ export class PassageComponent extends React.Component {
   };
 
   render() {
-    const { model, classes, configuration, imageSupport, passageIndex, uploadSoundSupport } = this.props;
+    const { model, configuration, imageSupport, passageIndex, uploadSoundSupport } = this.props;
     const {
       maxImageWidth = {},
       maxImageHeight = {},
@@ -76,7 +87,7 @@ export class PassageComponent extends React.Component {
     return (
       <React.Fragment>
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
+          <StyledInputContainer label={teacherInstructions.label}>
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               markup={passages[passageIndex].teacherInstructions || ''}
@@ -89,12 +100,12 @@ export class PassageComponent extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {titleEnabled && (
-          <InputContainer label={title.label} className={classes.inputContainer}>
+          <StyledInputContainer label={title.label}>
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               markup={passages[passageIndex].title || ''}
@@ -105,12 +116,12 @@ export class PassageComponent extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               pluginProps={getPluginProps(title?.inputConfiguration)}
             />
-            {titleError && <div className={classes.errorText}>{titleError}</div>}
-          </InputContainer>
+            {titleError && <ErrorText>{titleError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {subtitleEnabled && (
-          <InputContainer label={subtitle.label} className={classes.inputContainer}>
+          <StyledInputContainer label={subtitle.label}>
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               markup={passages[passageIndex].subtitle || ''}
@@ -121,12 +132,12 @@ export class PassageComponent extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               pluginProps={getPluginProps(subtitle?.inputConfiguration)}
             />
-            {subtitleError && <div className={classes.errorText}>{subtitleError}</div>}
-          </InputContainer>
+            {subtitleError && <ErrorText>{subtitleError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {authorEnabled && (
-          <InputContainer label={author.label} className={classes.inputContainer}>
+          <StyledInputContainer label={author.label}>
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               markup={passages[passageIndex].author || ''}
@@ -137,12 +148,12 @@ export class PassageComponent extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               pluginProps={getPluginProps(author?.inputConfiguration)}
             />
-            {authorError && <div className={classes.errorText}>{authorError}</div>}
-          </InputContainer>
+            {authorError && <ErrorText>{authorError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {textEnabled && (
-          <InputContainer label={text.label} className={classes.inputContainer}>
+          <StyledInputContainer label={text.label}>
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               markup={passages[passageIndex].text || ''}
@@ -157,23 +168,12 @@ export class PassageComponent extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               pluginProps={getPluginProps(text?.inputConfiguration)}
             />
-            {textError && <div className={classes.errorText}>{textError}</div>}
-          </InputContainer>
+            {textError && <ErrorText>{textError}</ErrorText>}
+          </StyledInputContainer>
         )}
       </React.Fragment>
     );
   }
 }
 
-export default withStyles((theme) => ({
-  inputContainer: {
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-}))(PassageComponent);
+export default PassageComponent;

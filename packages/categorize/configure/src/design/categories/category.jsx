@@ -1,19 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import Card from '@material-ui/core/Card';
-import InputHeader from '../input-header';
-import CardActions from '@material-ui/core/CardActions';
-import { DeleteButton } from '../buttons';
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
 
+import InputHeader from '../input-header';
+import { DeleteButton } from '../buttons';
 import PlaceHolder from './droppable-placeholder';
+
+const StyledCard = styled(Card, {
+  shouldForwardProp: (prop) => prop !== 'isDuplicated',
+})(({ theme, isDuplicated }) => ({
+  minWidth: '196px',
+  padding: theme.spacing(1),
+  overflow: 'visible',
+  ...(isDuplicated && {
+    border: '1px solid red',
+  }),
+}));
+
+const StyledCardActions = styled(CardActions)(({ theme }) => ({
+  padding: 0,
+  paddingBottom: 0,
+  paddingTop: theme.spacing(1),
+}));
+
+const CategoryHeader = styled('div')(({ theme }) => ({
+  padding: theme.spacing(2),
+  '& p': {
+    margin: 0,
+  },
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingBottom: theme.spacing(1),
+}));
 
 export class Category extends React.Component {
   static propTypes = {
     alternateResponseIndex: PropTypes.number,
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
     category: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     defaultImageMaxHeight: PropTypes.number,
@@ -28,8 +55,6 @@ export class Category extends React.Component {
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
     onDeleteChoice: PropTypes.func,
-    onAddChoice: PropTypes.func,
-    onMoveChoice: PropTypes.func,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -40,6 +65,7 @@ export class Category extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
+    isAlternate: PropTypes.bool,
   };
 
   static defaultProps = {};
@@ -54,8 +80,6 @@ export class Category extends React.Component {
     const {
       alternateResponseIndex,
       category,
-      classes,
-      className,
       configuration,
       deleteFocusedEl,
       focusedEl,
@@ -64,8 +88,6 @@ export class Category extends React.Component {
       isDuplicated,
       onDelete,
       onDeleteChoice,
-      onAddChoice,
-      onMoveChoice,
       imageSupport,
       spellCheck,
       toolbarOpts,
@@ -74,14 +96,10 @@ export class Category extends React.Component {
       uploadSoundSupport,
       mathMlOptions = {},
     } = this.props;
-
     const isCategoryHeaderDisabled = !!alternateResponseIndex || alternateResponseIndex === 0;
+    
     return (
-      <Card
-        className={classNames(classes.category, className, {
-          [classes.duplicateError]: isDuplicated,
-        })}
-      >
+      <StyledCard isDuplicated={isDuplicated}>
         <span>
           {!isCategoryHeaderDisabled ? (
             <InputHeader
@@ -103,76 +121,31 @@ export class Category extends React.Component {
               configuration={configuration}
             />
           ) : (
-            <div
-              className={classes.categoryHeader}
+            <CategoryHeader
               dangerouslySetInnerHTML={{
                 __html: category.label,
               }}
-            ></div>
+            />
           )}
-          {error && <div className={classes.errorText}>{error}</div>}
+          {error && <ErrorText>{error}</ErrorText>}
         </span>
         <PlaceHolder
-          className={classes.placeHolder}
           alternateResponseIndex={alternateResponseIndex}
           category={category}
           choices={category.choices}
           onDeleteChoice={onDeleteChoice}
-          onDropChoice={onAddChoice}
-          onMoveChoice={onMoveChoice}
           categoryId={category.id}
+          extraStyles={{ minHeight: '100px', }}
+          isAlternate={this.props.isAlternate}
         />
         {onDelete && (
-          <CardActions className={classes.actions}>
+          <StyledCardActions>
             <DeleteButton label={'delete'} onClick={onDelete} />
-          </CardActions>
+          </StyledCardActions>
         )}
-      </Card>
+      </StyledCard>
     );
   }
 }
-const styles = (theme) => ({
-  placeHolder: {
-    minHeight: '100px',
-  },
-  deleteButton: {
-    margin: 0,
-  },
-  actions: {
-    padding: 0,
-    paddingBottom: 0,
-    paddingTop: theme.spacing.unit,
-  },
-  iconButtonRoot: {
-    width: 'auto',
-    height: 'auto',
-  },
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  category: {
-    minWidth: '196px',
-    padding: theme.spacing.unit,
-    overflow: 'visible',
-  },
-  categoryHeader: {
-    padding: theme.spacing.unit * 2,
-    '& p': {
-      margin: 0
-    }
-  },
-  duplicateError: {
-    border: '1px solid red',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingBottom: theme.spacing.unit,
-  },
-  editor: {
-    flex: '1',
-    paddingBottom: theme.spacing.unit * 2,
-  },
-});
-export default withStyles(styles)(Category);
+
+export default Category;

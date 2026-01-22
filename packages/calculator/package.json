@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/calculator",
-  "version": "7.3.2",
+  "version": "8.0.0-beta.0",
   "description": "A catalog tool",
   "repository": "pie-framework/pie-elements",
   "scripts": {
@@ -9,30 +9,23 @@
     "test:coverage": "jest --coverage",
     "postpublish": "../../scripts/postpublish"
   },
-  "jest": {
-    "setupFiles": [
-      "./jestsetup.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
   "publishConfig": {
     "access": "public"
   },
   "author": "Harry",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@material-ui/icons": "^3.0.2",
-    "@pie-framework/material-ui-calculator": "^3.1.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-draggable": "^3.0.5"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "f63dcdd0432cb3ab6f6c6887b362381472247628",
   "main": "lib/index.js",
   "module": "src/index.js"
 }

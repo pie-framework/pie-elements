@@ -1,10 +1,22 @@
 import * as React from 'react';
-import Main from '../main';
-import { shallowChild } from '@pie-lib/test-utils';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { Feedback } from '@pie-lib/render-ui';
-import AnswerGrid from '../answer-grid';
-import { shallow } from 'enzyme/build';
+import { render } from '@testing-library/react';
+import { Main } from '../main';
+
+jest.mock('@pie-lib/correct-answer-toggle', () => (props) => <div data-testid="correct-answer-toggle" {...props} />);
+jest.mock('@pie-lib/render-ui', () => ({
+  Collapsible: (props) => <div data-testid="collapsible">{props.children}</div>,
+  Feedback: (props) => <div data-testid="feedback" {...props} />,
+  hasText: jest.fn(),
+  PreviewPrompt: (props) => <div data-testid="preview-prompt">{props.children}</div>,
+  UiLayout: (props) => <div data-testid="ui-layout">{props.children}</div>,
+  hasMedia: jest.fn(),
+  color: {
+    text: () => '#000',
+    background: () => '#fff',
+    primaryLight: () => '#ccc',
+  },
+}));
+jest.mock('../answer-grid', () => (props) => <div data-testid="answer-grid" {...props} />);
 
 describe('Main', () => {
   const defaultProps = {
@@ -56,110 +68,35 @@ describe('Main', () => {
     session: {},
   };
 
-  let wrapper;
-  let component;
+  const wrapper = (extras) => {
+    const props = {
+      ...defaultProps,
+      ...extras,
+    };
 
-  beforeEach(() => {
-    wrapper = shallowChild(Main, defaultProps, 1);
-  });
+    return render(<Main {...props} />);
+  };
 
-  describe('render', () => {
-    let w;
+  const createInstance = (extras) => {
+    const props = {
+      ...defaultProps,
+      ...extras,
+    };
 
-    beforeEach(() => {
-      w = (props) => shallow(<Main {...props} />);
+    const instance = new Main(props);
+
+    instance.setState = jest.fn((state) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
     });
 
-    it('snapshot', () => {
-      expect(w(defaultProps)).toMatchSnapshot();
-    });
-
-    it('snapshot with rationale', () => {
-      expect(
-        w({
-          ...defaultProps,
-          rationale: 'This is rationale',
-        }),
-      ).toMatchSnapshot();
-    });
-
-    it('snapshot with teacher Instructions', () => {
-      expect(
-        w({
-          ...defaultProps,
-          teacherInstructions: 'These are teacher instructions',
-        }),
-      ).toMatchSnapshot();
-    });
-
-    it('renders correctly', () => {
-      component = wrapper();
-
-      expect(component.find(CorrectAnswerToggle).length).toEqual(1);
-      expect(component.find(Feedback).length).toEqual(1);
-      expect(component.find(AnswerGrid).length).toEqual(1);
-
-      expect(component.state()).toEqual({
-        session: {
-          answers: {
-            1: [false, false],
-            2: [false, false],
-            3: [false, false],
-            4: [false, false],
-          },
-        },
-        showCorrect: false,
-      });
-    });
-    it('renders correctly with a pre-filled session', () => {
-      component = wrapper();
-
-      expect(component.find(CorrectAnswerToggle).length).toEqual(1);
-      expect(component.find(Feedback).length).toEqual(1);
-      expect(component.find(AnswerGrid).length).toEqual(1);
-
-      expect(component.state()).toEqual({
-        session: {
-          answers: {
-            1: [false, false],
-            2: [false, false],
-            3: [false, false],
-            4: [false, false],
-          },
-        },
-        showCorrect: false,
-      });
-
-      component = wrapper({
-        session: {
-          answers: {
-            1: [false, true],
-            2: [true, false],
-            3: [true, false],
-            4: [false, false],
-          },
-        },
-      });
-
-      expect(component.state()).toEqual({
-        session: {
-          answers: {
-            1: [false, true],
-            2: [true, false],
-            3: [true, false],
-            4: [false, false],
-          },
-        },
-        showCorrect: false,
-      });
-    });
-  });
+    return instance;
+  };
 
   it('generates answers correctly from rows', () => {
-    component = wrapper();
+    const instance = createInstance();
 
     expect(
-      component.instance().generateAnswers({
+      instance.generateAnswers({
         layout: 3,
         rows: [
           {

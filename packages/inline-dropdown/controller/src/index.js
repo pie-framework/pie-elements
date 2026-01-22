@@ -23,8 +23,7 @@ export const normalize = (question) => ({ ...defaults, ...question });
  * @param {*} env
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export function model(question, session, env, updateSession) {
-  return new Promise(async (resolve) => {
+export async function model(question, session, env, updateSession) {
     const normalizedQuestion = normalize(question);
     const { value = {} } = session || {};
     let choices = reduce(
@@ -77,13 +76,41 @@ export function model(question, session, env, updateSession) {
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
     if (!lockChoiceOrder) {
+      const shuffledValues = {};
       const keys = Object.keys(choices);
+
+      const us = (part) => (id, element, update) => {
+        return new Promise((resolve) => {
+          shuffledValues[part] = update.shuffledValues;
+          resolve();
+        });
+      };
+
       let i;
 
       for (i = 0; i < keys.length; i++) {
         const key = keys[i];
+        const storedValues = session?.shuffledValues?.[key];
 
-        choices[key] = await getShuffledChoices(choices[key], session, updateSession, 'value');
+        choices[key] = await getShuffledChoices(
+          choices[key],
+          // the shuffledValues structure was updated to an object like { choice_key: [] }
+          // and we need to override shuffledValues if it's not an array
+          { shuffledValues: Array.isArray(storedValues) ? storedValues : [] },
+          us(key),
+          'value',
+        );
+      }
+
+      if (!isEmpty(shuffledValues)) {
+        if (session && updateSession && typeof updateSession === 'function') {
+          updateSession(session.id, session.element, {
+            shuffledValues,
+          }).catch((e) => {
+            // eslint-disable-next-line no-console
+            console.error('update session failed', e);
+          });
+        }
       }
     }
 
@@ -128,8 +155,7 @@ export function model(question, session, env, updateSession) {
       extraCSSRules: normalizedQuestion.extraCSSRules,
     };
 
-    resolve(out);
-  });
+  return out;
 }
 
 export const getScore = (config, session) => {

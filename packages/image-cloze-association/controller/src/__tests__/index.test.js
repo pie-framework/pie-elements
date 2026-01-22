@@ -321,7 +321,7 @@ describe('controller', () => {
     });
 
     describe('alternate correct answers', () => {
-      describe('handles one option', async () => {
+      describe('handles one option', () => {
         it('returns score of 1', async () => {
           const result = await outcome(
             {
@@ -375,7 +375,7 @@ describe('controller', () => {
         });
       });
 
-      describe('handles multiple options', async () => {
+      describe('handles multiple options', () => {
         it('returns score of 1', async () => {
           const result = await outcome(
             {

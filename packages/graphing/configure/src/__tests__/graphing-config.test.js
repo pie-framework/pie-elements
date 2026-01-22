@@ -1,11 +1,27 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
-
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { GraphingConfig } from '../graphing-config';
 import defaultValues from '../defaults';
 
+jest.mock('@pie-lib/graphing', () => {
+  const React = require('react');
+  return {
+    GraphContainer: (props) => React.createElement('div', { 'data-testid': 'graph-container', ...props }),
+    GridSetup: (props) => React.createElement('div', { 'data-testid': 'grid-setup', ...props }),
+  };
+});
+
+jest.mock('@pie-lib/config-ui', () => {
+  const React = require('react');
+  return {
+    AlertDialog: (props) => React.createElement('div', { 'data-testid': 'alert-dialog', ...props }),
+  };
+});
+
+const theme = createTheme();
+
 describe('GraphingConfig', () => {
-  let wrapper;
   let props;
 
   beforeEach(() => {
@@ -15,28 +31,27 @@ describe('GraphingConfig', () => {
       onChange: jest.fn(),
       tools: [],
     };
-
-    wrapper = (newProps) => {
-      const configureProps = { ...props, newProps };
-
-      return shallow(<GraphingConfig {...configureProps} />);
-    };
   });
 
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-  });
+  const renderGraphingConfig = (newProps = {}) => {
+    const configureProps = { ...props, ...newProps };
+
+    return render(
+      <ThemeProvider theme={theme}>
+        <GraphingConfig {...configureProps} />
+      </ThemeProvider>
+    );
+  };
 
   describe('logic', () => {
     it('changeBackgroundMarks calls onChange', () => {
-      const component = wrapper();
+      const onChange = jest.fn();
+      const testInstance = new GraphingConfig({ ...props, onChange });
       const bM = [{ x: 1, y: 1, type: 'point' }];
 
-      component.instance().changeBackgroundMarks(bM);
+      testInstance.changeBackgroundMarks(bM);
 
-      expect(component.instance().props.onChange).toBeCalledWith({
+      expect(onChange).toBeCalledWith({
         ...defaultValues.model,
         backgroundMarks: bM,
       });

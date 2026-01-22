@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
-
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Configure } from '../configure';
 import defaultValues from '../defaults';
 
@@ -63,29 +63,40 @@ jest.mock('@pie-lib/graphing', () => ({
   },
 }));
 
+jest.mock('../graphing-config', () => ({
+  __esModule: true,
+  default: (props) => <div data-testid="graphing-config" {...props} />,
+}));
+
+jest.mock('../correct-response', () => ({
+  __esModule: true,
+  default: (props) => <div data-testid="correct-response" {...props} />,
+}));
+
+jest.mock('@pie-lib/editable-html', () => ({
+  __esModule: true,
+  default: (props) => <div data-testid="editable-html" {...props} />,
+}));
+
+const theme = createTheme();
+
 describe('Configure', () => {
-  let wrapper;
+  const renderConfigure = (props = {}) => {
+    const configureProps = { ...defaultValues, ...props };
 
-  beforeEach(() => {
-    wrapper = (props) => {
-      const configureProps = { ...defaultValues, ...props };
-
-      return shallow(<Configure {...configureProps} />);
-    };
-  });
-
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-  });
+    return render(
+      <ThemeProvider theme={theme}>
+        <Configure {...configureProps} />
+      </ThemeProvider>
+    );
+  };
 
   describe('logic', () => {
     it('updates rationale', () => {
       const onModelChanged = jest.fn();
-      const component = wrapper({ onModelChanged });
+      const testInstance = new Configure({ ...defaultValues, onModelChanged });
 
-      component.instance().onRationaleChange('New Rationale');
+      testInstance.onRationaleChange('New Rationale');
 
       expect(onModelChanged).toBeCalledWith(
         expect.objectContaining({
@@ -97,9 +108,9 @@ describe('Configure', () => {
 
     it('updates prompt', () => {
       const onModelChanged = jest.fn();
-      const component = wrapper({ onModelChanged });
+      const testInstance = new Configure({ ...defaultValues, onModelChanged });
 
-      component.instance().onPromptChange('New Prompt');
+      testInstance.onPromptChange('New Prompt');
 
       expect(onModelChanged).toBeCalledWith(
         expect.objectContaining({
@@ -111,9 +122,9 @@ describe('Configure', () => {
 
     it('updates teacher instructions', () => {
       const onModelChanged = jest.fn();
-      const component = wrapper({ onModelChanged });
+      const testInstance = new Configure({ ...defaultValues, onModelChanged });
 
-      component.instance().onTeacherInstructionsChange('New Teacher Instructions');
+      testInstance.onTeacherInstructionsChange('New Teacher Instructions');
 
       expect(onModelChanged).toBeCalledWith(
         expect.objectContaining({

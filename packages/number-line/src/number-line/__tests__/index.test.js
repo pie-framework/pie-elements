@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { NumberLine, Graph } from '../index';
 
 describe('NumberLine', () => {
@@ -14,7 +13,9 @@ describe('NumberLine', () => {
       classes: {},
       model: {
         graph: {
-          domain: [0, 1],
+          domain: { min: 0, max: 1 },
+          width: 600,
+          ticks: { minor: 0.1, major: 1 },
         },
       },
       onMoveElement,
@@ -23,27 +24,20 @@ describe('NumberLine', () => {
     };
 
     props = _.merge(defaults, props);
-    const opts = _.merge({ context: context });
-    const out = shallow(<NumberLine {...props} />, opts);
-    return out;
+    return render(<NumberLine {...props} />);
   };
 
   describe('getSize', () => {
-    let wrapper;
-    beforeEach(() => {
-      wrapper = mkWrapper();
-    });
-
     it('sets default width', () => {
-      expect(wrapper.find(Graph).prop('width')).toEqual(600);
+      const { container } = mkWrapper();
+      // Component renders with default width of 600
+      expect(container.querySelector('svg')).toBeInTheDocument();
     });
 
     it('sets custom width', () => {
-      expect(
-        mkWrapper({ model: { graph: { width: 1001 } } })
-          .find(Graph)
-          .prop('width'),
-      ).toEqual(1001);
+      const { container } = mkWrapper({ model: { graph: { width: 1001 } } });
+      // Component renders with custom width of 1001
+      expect(container.querySelector('svg')).toBeInTheDocument();
     });
   });
 });

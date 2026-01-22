@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import EditableHtml from '@pie-lib/editable-html-tip-tap';
-import { stripHtmlTags, decodeHTML } from './markupUtils';
+import { stripHtmlTags } from './markupUtils';
 
 const findSlateNode = (key) => {
   return window.document.querySelector('[data-key="' + key + '"]');
 };
 
+const StyledEditableHtml = styled(EditableHtml)(({ theme }) => ({
+  backgroundColor: theme.palette.common.white,
+  outline: 'none',
+  lineHeight: '15px',
+}));
+
 export class ECRToolbar extends React.Component {
   static propTypes = {
     correctChoice: PropTypes.object,
-    classes: PropTypes.object,
     node: PropTypes.object,
     onDone: PropTypes.func,
     onChangeResponse: PropTypes.func.isRequired,
@@ -89,15 +94,14 @@ export class ECRToolbar extends React.Component {
   };
 
   render() {
-    const { classes, maxLengthPerChoiceEnabled, pluginProps, spellCheck } = this.props;
+    const { maxLengthPerChoiceEnabled, pluginProps, spellCheck } = this.props;
     const { markup, toolbarStyle } = this.state;
     const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
 
     return (
       <div style={toolbarStyle}>
-        <EditableHtml
+        <StyledEditableHtml
           autoFocus={true}
-          className={classes.markup}
           disableUnderline
           onChange={(respAreaMarkup) => {
             if (this.preventDone) {
@@ -135,12 +139,4 @@ export class ECRToolbar extends React.Component {
   }
 }
 
-const StyledECRToolbar = withStyles((theme) => ({
-  markup: {
-    backgroundColor: theme.palette.common.white,
-    outline: 'none',
-    lineHeight: '15px',
-  },
-}))(ECRToolbar);
-
-export default StyledECRToolbar;
+export default ECRToolbar;

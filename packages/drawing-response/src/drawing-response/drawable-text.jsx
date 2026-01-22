@@ -38,6 +38,7 @@ export default class TextDrawable {
 
     all.push({
       id: id,
+      text: '',
       isDefault: true,
       label: translator.t('drawingResponse.onDoubleClick', { lng: language }),
       width: 200,
@@ -83,15 +84,19 @@ export default class TextDrawable {
     }
   }
 
-  saveValue(id, textNode, textareaNode) {
-    if (textareaNode.value) {
-      textNode.text(textareaNode.value);
-    } else {
-      this.all = this.all.filter((text) => text.id !== id);
-      this.props.forceUpdate();
+  saveValue(id, textareaNode) {
+    const value = textareaNode.value;
+    this.all = this.all.map((t) =>
+      t.id === id ? { ...t, text: value } : t
+    );
+
+    if (!value) {
+      this.all = this.all.filter((t) => t.id !== id);
     }
 
+    this.toggleTextarea(id, false);
     this.props.handleSessionChange();
+    this.props.forceUpdate();
   }
 
   handleMouseDown = () => this.props.toggleTextSelected(true);
@@ -110,9 +115,11 @@ export default class TextDrawable {
     const textNode = this[TextDrawable.getTextNode(id)];
     const textareaNode = this[TextDrawable.getTextareaNode(id)];
 
-    const areaPosition = textNode._lastPos;
+    if (!textNode || !textareaNode) return;
 
-    textareaNode.value = isDefault ? '' : textNode.text();
+    const areaPosition = textNode.getAbsolutePosition();
+
+    textareaNode.value = text.text || '';
     textareaNode.style.position = 'absolute';
     textareaNode.style.top = areaPosition.y + 'px';
     textareaNode.style.left = areaPosition.x + 'px';
@@ -131,53 +138,34 @@ export default class TextDrawable {
     textareaNode.style.transformOrigin = 'left top';
     textareaNode.style.textAlign = textNode.align();
     textareaNode.style.color = textNode.fill();
+    textareaNode.style.display = 'block';
 
     let rotation = textNode.rotation();
-    let transform = '';
-    if (rotation) {
-      transform += 'rotateZ(' + rotation + 'deg)';
-    }
-
-    let px = 0;
-    const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-
-    if (isFirefox) {
-      px += 2 + Math.round(textNode.fontSize() / 20);
-    }
-
-    transform += 'translateY(-' + px + 'px)';
-
-    textareaNode.style.transform = transform;
-    textareaNode.style.height = 'auto';
-    textareaNode.style.height = textareaNode.scrollHeight + 3 + 'px';
+    textareaNode.style.transform = rotation ? `rotateZ(${rotation}deg)` : '';
 
     textareaNode.focus();
 
     const keyDownHandler = (e) => {
-      // hide on enter but don't hide on shift + enter
-      if (e.keyCode === 13 && !e.shiftKey) {
-        this.toggleTextarea(id, false);
-        this.saveValue(id, textNode, textareaNode);
+      if (e.key === 'Enter' && !e.shiftKey) {
+        this.saveValue(id, textareaNode);
       }
-
-      // on esc do not set value back to node
-      if (e.keyCode === 27) {
+      if (e.key === 'Escape') {
         this.toggleTextarea(id, false);
       }
     };
-
-    textareaNode.addEventListener('keydown', keyDownHandler);
-
-    this.eventListenersDetachArray.push(() => textareaNode.removeEventListener('keydown', keyDownHandler));
 
     const blurHandler = () => {
       this.showOnlyTextNodes();
-      this.saveValue(id, textNode, textareaNode);
+      this.saveValue(id, textareaNode);
     };
 
+    textareaNode.addEventListener('keydown', keyDownHandler);
     textareaNode.addEventListener('blur', blurHandler);
 
-    this.eventListenersDetachArray.push(() => textareaNode.removeEventListener('blur', blurHandler));
+    this.eventListenersDetachArray.push(() => {
+      textareaNode.removeEventListener('keydown', keyDownHandler);
+      textareaNode.removeEventListener('blur', blurHandler);
+    });
 
     this.initializeDefault(id, isDefault);
     this.props.forceUpdate();

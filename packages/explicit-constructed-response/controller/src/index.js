@@ -81,8 +81,7 @@ export const normalize = (question) => ({ ...defaults, ...question });
  * @param {*} session
  * @param {*} env
  */
-export function model(question, session, env) {
-  return new Promise(async (resolve) => {
+export async function model(question, session, env) {
     // this was added to treat an exception, when the model has choices without
     // the "value" property like: { label: 'test' }
     if (question.choices) {
@@ -185,8 +184,7 @@ export function model(question, session, env) {
         : defaults.teacherInstructions;
     }
 
-    resolve(out);
-  });
+  return out;
 }
 
 export const prepareVal = (html) => {

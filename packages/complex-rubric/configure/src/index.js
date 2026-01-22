@@ -1,6 +1,6 @@
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import RubricConfigure from '@pie-element/rubric/configure/lib';
 import MultiTraitRubricConfigure from '@pie-element/multi-trait-rubric/configure/lib';
 import debug from 'debug';
@@ -72,6 +72,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this.canUpdateModel = false;
 
     debug.log('constructor called');
@@ -144,10 +145,6 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
     this._render();
   }
 
-  disconnectedCallback() {
-    this.removeEventListener(MODEL_UPDATED, this.onModelUpdated);
-  }
-
   _render() {
     let element = React.createElement(Main, {
       model: this._model,
@@ -157,6 +154,16 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
       canUpdateModel: this.canUpdateModel
     });
 
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener(MODEL_UPDATED, this.onModelUpdated);
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

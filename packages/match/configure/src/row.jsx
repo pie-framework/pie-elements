@@ -1,36 +1,93 @@
-import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import { AlertDialog, Checkbox } from '@pie-lib/config-ui';
-import DragHandle from '@material-ui/icons/DragHandle';
-import Radio from '@material-ui/core/Radio';
-import IconButton from '@material-ui/core/IconButton';
-import Delete from '@material-ui/icons/Delete';
-import { DragSource, DropTarget } from 'react-dnd';
+import DragHandle from '@mui/icons-material/DragHandle';
+import Radio from '@mui/material/Radio';
+import IconButton from '@mui/material/IconButton';
+import Delete from '@mui/icons-material/Delete';
+import { useDraggable, useDroppable } from '@dnd-kit/core';
 import debug from 'debug';
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
 export let canDrag = false;
 
+const DragHandleStyled = styled('span')({
+  cursor: 'move',
+});
+
+const RowContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  display: 'flex',
+  alignItems: 'center',
+  flex: 1,
+}));
+
+const RowItem = styled('div')(({ theme }) => ({
+  flex: 1,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  minWidth: '120px',
+  padding: `0 ${theme.spacing(1)}`,
+}));
+
+const RadioButtonStyled = styled(Radio)(({ theme, error }) => ({
+  '& input': {
+    width: '100% !important',
+  },
+  '&.MuiRadio-root': {
+    color: `${error ? theme.palette.error.main : color.tertiary()} !important`,
+  },
+}));
+
+const DeleteIcon = styled('div')(({ theme }) => ({
+  flex: 0.5,
+  display: 'flex',
+  justifyContent: 'center',
+  minWidth: '45px',
+  padding: `0 ${theme.spacing(1)}`,
+}));
+
+const QuestionText = styled(RowItem)(({ theme }) => ({
+  flex: 2,
+  display: 'flex',
+  justifyContent: 'flex-start',
+  padding: 0,
+  maxWidth: 'unset',
+  textAlign: 'left',
+  minWidth: '200px',
+  marginRight: theme.spacing(1),
+  '&> div': {
+    width: '100%',
+  },
+}));
+
+const Separator = styled('hr')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  border: 0,
+  borderTop: `2px solid ${theme.palette.grey['A100']}`,
+  width: '100%',
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
 export class Row extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     row: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
-    isDragging: PropTypes.bool.isRequired,
     maxImageWidth: PropTypes.object,
     maxImageHeight: PropTypes.object,
     onDeleteRow: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    connectDragSource: PropTypes.func.isRequired,
-    connectDropTarget: PropTypes.func.isRequired,
-    onMoveRow: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -107,11 +164,7 @@ export class Row extends React.Component {
 
   render() {
     const {
-      classes,
       imageSupport,
-      connectDragSource,
-      connectDropTarget,
-      isDragging,
       model,
       row,
       idx,
@@ -125,20 +178,19 @@ export class Row extends React.Component {
       mathMlOptions = {},
     } = this.props;
     const { dialog } = this.state;
-    const opacity = isDragging ? 0 : 1;
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'bulleted-list' && p !== 'numbered-list',
     );
 
     const content = (
-      <div style={{ opacity: opacity, width: '100%' }}>
-        <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
+      <div style={{ width: '100%' }}>
+        <DragHandleStyled itemID={'handle'} onMouseDown={this.onMouseDownOnHandle}>
           <DragHandle color={'primary'} />
-        </span>
+        </DragHandleStyled>
 
-        <div className={classes.rowContainer}>
-          <div className={classNames(classes.rowItem, classes.questionText)}>
+        <RowContainer>
+          <QuestionText>
             <EditableHtml
               imageSupport={imageSupport}
               autoWidthToolbar
@@ -146,7 +198,6 @@ export class Row extends React.Component {
               label={'label'}
               markup={row.title}
               onChange={this.onRowTitleChange(idx)}
-              className={classes.editor}
               pluginProps={inputConfiguration}
               toolbarOpts={toolbarOpts}
               activePlugins={filteredDefaultPlugins}
@@ -158,15 +209,13 @@ export class Row extends React.Component {
               error={error && error !== 'No correct response defined.'}
               mathMlOptions={mathMlOptions}
             />
-          </div>
+          </QuestionText>
 
           {row.values.map((rowValue, rowIdx) => (
-            <div key={rowIdx} className={classes.rowItem}>
+            <RowItem key={rowIdx}>
               {model.choiceMode === 'radio' ? (
-                <Radio
-                  className={classNames(classes.radioButton, classes.customColor, {
-                    [classes.errorResponse]: error?.includes('No correct response defined.'),
-                  })}
+                <RadioButtonStyled
+                  error={error?.includes('No correct response defined.')}
                   onChange={this.onRowValueChange(idx, rowIdx)}
                   checked={rowValue === true}
                 />
@@ -178,18 +227,18 @@ export class Row extends React.Component {
                   error={error?.includes('No correct response defined.')}
                 />
               )}
-            </div>
+            </RowItem>
           ))}
 
-          <div className={classes.deleteIcon}>
-            <IconButton onClick={this.onDeleteRow(idx)} aria-label="Delete">
+          <DeleteIcon>
+            <IconButton onClick={this.onDeleteRow(idx)} aria-label="Delete" size="large">
               <Delete />
             </IconButton>
-          </div>
-        </div>
+          </DeleteIcon>
+        </RowContainer>
 
-        {error && <div className={classes.errorText}>{error}</div>}
-        <hr className={classes.separator} />
+        {error && <ErrorText>{error}</ErrorText>}
+        <Separator />
 
         <AlertDialog
           open={dialog.open}
@@ -200,125 +249,54 @@ export class Row extends React.Component {
       </div>
     );
 
-    return connectDragSource(connectDropTarget(content));
+    return content;
   }
 }
 
-const styles = (theme) => ({
-  actions: {
-    padding: 0,
-    justifyContent: 'space-between',
-  },
-  choice: {
-    padding: theme.spacing.unit,
-    overflow: 'visible',
-  },
-  dragHandle: {
-    cursor: 'move',
-  },
-  dragDisabled: {
-    cursor: 'inherit',
-  },
-
-  container: {
-    marginTop: theme.spacing.unit * 2,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  rowContainer: {
-    marginTop: theme.spacing.unit * 2,
-    display: 'flex',
-    alignItems: 'center',
-    flex: 1,
-  },
-  rowItem: {
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minWidth: '120px',
-    padding: `0 ${theme.spacing.unit}px`,
-  },
-  radioButton: {
-    '& input': {
-      width: '100% !important',
-    },
-  },
-  customColor: {
-    color: `${color.tertiary()} !important`,
-  },
-  deleteIcon: {
-    flex: 0.5,
-    display: 'flex',
-    justifyContent: 'center',
-    minWidth: '45px',
-    padding: `0 ${theme.spacing.unit}px`,
-  },
-  questionText: {
-    flex: 2,
-    display: 'flex',
-    justifyContent: 'flex-start',
-    padding: 0,
-    maxWidth: 'unset',
-    textAlign: 'left',
-    minWidth: '200px',
-    marginRight: theme.spacing.unit,
-    '&> div': {
-      width: '100%',
-    },
-  },
-  separator: {
-    marginTop: theme.spacing.unit * 2,
-    border: 0,
-    borderTop: `2px solid ${theme.palette.grey['A100']}`,
-    width: '100%',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-  errorResponse: {
-    color: theme.palette.error.main,
-  },
-});
-
-const StyledRow = withStyles(styles)(Row);
-
-const NAME = 'row-config';
-
-export const choiceSource = {
-  canDrag() {
-    return canDrag;
-  },
-  beginDrag(props) {
-    return {
-      id: props.row.id,
+// Create a wrapper component for drag and drop functionality
+function DraggableRow(props) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef: setDragRef,
+    transform,
+    transition,
+    isDragging,
+  } = useDraggable({
+    id: `row-${props.row.id}`,
+    data: {
+      type: 'row',
       index: props.idx,
-    };
-  },
-};
+      id: props.row.id,
+    },
+  });
 
-const StyledSource = DragSource(NAME, choiceSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging(),
-}))(StyledRow);
+  const {
+    setNodeRef: setDropRef,
+    isOver,
+  } = useDroppable({
+    id: `row-drop-${props.row.id}`,
+    data: {
+      type: 'row',
+      index: props.idx,
+      id: props.row.id,
+    },
+  });
 
-export const choiceTarget = {
-  hover() {
-    log('[hover]');
-  },
-  drop(props, monitor) {
-    const item = monitor.getItem();
+  const style = {
+    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+    backgroundColor: isOver ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
+  };
 
-    log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
+  return (
+    <div ref={setDropRef} style={style}>
+      <div ref={setDragRef} {...listeners} {...attributes}>
+        <Row {...props} />
+      </div>
+    </div>
+  );
+}
 
-    props.onMoveRow(item.index, props.idx);
-  },
-};
-
-const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, (connect) => ({
-  connectDropTarget: connect.dropTarget(),
-}))(StyledSource);
-
-export default StyledSourceAndTarget;
+export default DraggableRow;

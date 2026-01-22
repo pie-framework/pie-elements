@@ -4,16 +4,19 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "2.3.2",
+  "version": "3.0.0-beta.0",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "^3.22.1",
-    "@pie-lib/render-ui": "^4.35.1",
+    "@pie-lib/math-rendering": "3.22.2-next.172",
+    "@pie-lib/render-ui": "4.35.3-next.163",
     "debug": "^4.1.1",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
@@ -22,7 +25,7 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa",
+  "gitHead": "802d21e25bfd05e6c6f6913260dfb6a4ed28a274",
   "main": "lib/index.js",
   "module": "src/index.js"
 }

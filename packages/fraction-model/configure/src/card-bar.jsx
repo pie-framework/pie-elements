@@ -1,56 +1,57 @@
-import { withStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import HelpIcon from '@material-ui/icons/HelpOutline';
-import IconButton from '@material-ui/core/IconButton';
-import PropTypes from 'prop-types';
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
+import Tooltip from '@mui/material/Tooltip';
+import HelpIcon from '@mui/icons-material/HelpOutline';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+
+const StyledCardBar = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+});
+
+const FlexContainer = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const StyledIconButton = styled(IconButton)({
+  margin: 0,
+  padding: 0,
+});
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
+    fontSize: theme.typography.fontSize - 2,
+  },
+}));
 
 const CardBar = (props) => {
-  const { classes, header, children, mini, info } = props;
+  const { header, children, mini, info } = props;
 
   return (
-    <div className={classes.cardBar}>
-      <div className={classes.flexContainer}>
-        <Typography variant={mini ? 'subheading' : 'h5'}>{header}</Typography>
+    <StyledCardBar>
+      <FlexContainer>
+        <Typography variant={mini ? 'h6' : 'h5'}>{header}</Typography>
         {info}
-      </div>
-
+      </FlexContainer>
       {children && (
-        <Tooltip title={children} classes={{ tooltip: classes.tooltip }}>
-          <IconButton aria-label="Delete" className={classes.button}>
+        <StyledTooltip title={children}>
+          <StyledIconButton aria-label="Delete" size="large">
             <HelpIcon />
-          </IconButton>
-        </Tooltip>
+          </StyledIconButton>
+        </StyledTooltip>
       )}
-    </div>
+    </StyledCardBar>
   );
 };
 
 CardBar.propTypes = {
-  classes: PropTypes.object,
   mini: PropTypes.bool,
   header: PropTypes.string,
   children: PropTypes.node,
   info: PropTypes.any,
 };
 
-const styles = (theme) => ({
-  cardBar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  button: {
-    margin: 0,
-    padding: 0,
-  },
-  tooltip: {
-    fontSize: theme.typography.fontSize - 2,
-  },
-  flexContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-});
-
-export default withStyles(styles)(CardBar);
+export default CardBar;

@@ -1,29 +1,25 @@
 {
   "name": "@pie-element/ebsr",
-  "version": "12.3.2",
+  "version": "13.0.0-beta.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-element/multiple-choice": "^11.4.2",
+    "@pie-element/multiple-choice": "12.0.0-beta.0",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/translator": "^2.23.1",
+    "@pie-lib/translator": "2.23.2-next.172",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.11"
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "7879a67078db250e4b7e8fdc869638024600411d",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
-  }
+  "module": "src/index.js"
 }

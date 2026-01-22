@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Circle, Group, Rect } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles';
 import ImageComponent from './image-konva-tooltip';
 import { faCorrect, faWrong } from './icons';
 
@@ -44,7 +43,6 @@ class CircleComponent extends React.Component {
 
   render() {
     const {
-      classes,
       radius,
       hotspotColor,
       isCorrect,
@@ -105,7 +103,6 @@ class CircleComponent extends React.Component {
           />
         )}
         <Circle
-          classes={classes.base}
           radius={radius}
           fill={selected && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
@@ -117,6 +114,7 @@ class CircleComponent extends React.Component {
           onMouseEnter={this.handleMouseEnter}
           x={x}
           y={y}
+          opacity={0.5}
         />
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
@@ -124,16 +122,7 @@ class CircleComponent extends React.Component {
   }
 }
 
-const styles = () => ({
-  base: {
-    cursor: 'pointer',
-    opacity: 0.5,
-    position: 'relative',
-  },
-});
-
 CircleComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
   radius: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
@@ -161,4 +150,4 @@ CircleComponent.defaultProps = {
   scale: 1,
 };
 
-export default withStyles(styles)(CircleComponent);
+export default CircleComponent;

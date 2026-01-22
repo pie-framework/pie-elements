@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Main from './main';
 import { CalculatorLayout } from './draggable-calculator';
 
@@ -10,13 +10,17 @@ export default class Calculator extends HTMLElement {
     super();
     this._model = null;
     this._session = null;
+    this._root = null;
 
     this._rerender = () => {
       if (this._model) {
         let elem = React.createElement(Main, {
           model: this._model,
         });
-        ReactDOM.render(elem, this);
+        if (!this._root) {
+          this._root = createRoot(this);
+        }
+        this._root.render(elem);
       }
     };
   }
@@ -28,5 +32,11 @@ export default class Calculator extends HTMLElement {
 
   connectedCallback() {
     this._rerender();
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

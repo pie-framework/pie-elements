@@ -7,7 +7,8 @@ import {
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { renderMath } from '@pie-lib/math-rendering';
 import Main from './main';
 import debug from 'debug';
 import defaults from 'lodash/defaults';
@@ -37,6 +38,7 @@ export default class DragInTheBlank extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = DragInTheBlank.prepareModel();
     this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
@@ -146,6 +148,19 @@ export default class DragInTheBlank extends HTMLElement {
       },
     });
 
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+
+    setTimeout(() => {
+      renderMath(this);
+    }, 0);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

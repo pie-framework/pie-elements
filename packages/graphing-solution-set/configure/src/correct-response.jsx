@@ -1,122 +1,37 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import { GraphContainer as Graph } from '@pie-lib/graphing-solution-set';
 import { AlertDialog } from '@pie-lib/config-ui';
 import { set } from 'lodash';
-import { RadioGroup, Typography } from '@material-ui/core';
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { RadioGroup, Typography } from '@mui/material';
+import Radio from '@mui/material/Radio';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { findSectionsInSolutionSet, pointInsidePolygon, checkIfLinesAreAdded } from './utils';
 
-const styles = (theme) => ({
-  column: {
-    flex: 1,
-  },
-  graphingTools: {
-    color: theme.palette.grey['A200'],
-  },
-  availableTool: {
-    cursor: 'pointer',
-    margin: theme.spacing.unit,
-    padding: theme.spacing.unit,
-    border: `2px solid ${theme.palette.common.white}`,
-    textTransform: 'capitalize',
-    '&:hover': {
-      color: theme.palette.grey[800],
-    },
-  },
-  selectedTool: {
-    background: theme.palette.grey['A100'],
-    border: `2px solid ${theme.palette.grey['A200']}`,
-  },
-  container: {
-    border: `2px solid ${theme.palette.grey['A200']}`,
-    borderRadius: '4px',
-    padding: `0 ${theme.spacing.unit * 4}px ${theme.spacing.unit * 2}px`,
-    background: theme.palette.grey[50],
-  },
-  button: {
-    margin: `${theme.spacing.unit * 2.5}px 0`,
-    cursor: 'pointer',
-    background: theme.palette.grey[200],
-    padding: theme.spacing.unit * 1.5,
-    width: 'fit-content',
-    borderRadius: '4px',
-    '&:hover': {
-      background: theme.palette.grey['A100'],
-    },
-  },
-  responseTitle: {
-    display: 'flex',
-    alignItems: 'center',
-    marginTop: theme.spacing.unit * 2.5,
-  },
-  iconButton: {
-    marginLeft: '6px',
-    color: theme.palette.grey[600],
-    '&:hover': {
-      cursor: 'pointer',
-      color: theme.palette.common.black,
-    },
-  },
-  name: {
-    marginBottom: theme.spacing.unit / 2,
-  },
-  tooltip: {
-    fontSize: theme.typography.fontSize - 2,
-    whiteSpace: 'pre',
-    maxWidth: '500px',
-  },
-  subtitleText: {
-    marginTop: theme.spacing.unit * 1.5,
-    marginBottom: theme.spacing.unit,
-  },
-  toolsHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  defaultTool: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '300px',
-  },
-  defaultToolSelect: {
-    marginLeft: theme.spacing.unit,
-    textTransform: 'uppercase',
-    color: theme.palette.grey[800],
-  },
-  menuItem: {
-    textTransform: 'uppercase',
-  },
-  noDefaultTool: {
-    padding: theme.spacing.unit / 2,
-  },
-  error: {
-    color: theme.palette.error.main,
-  },
-  errorMessage: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    marginTop: theme.spacing.unit,
-  },
-  graphError: {
-    border: `2px solid ${theme.palette.error.main}`,
-  },
-  radioButtonClass: {
-    height: '20px',
-    width: 'fit-content',
-    padding: '.5rem 0',
-  },
-  radioButton: {
-    color: '#000000 !important',
-  },
+const SubtitleText = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(1.5),
+  marginBottom: theme.spacing(1),
+}));
+
+const RadioButtonClass = styled(FormControlLabel)({
+  height: '20px',
+  width: 'fit-content',
+  padding: '.5rem 0',
 });
+
+const StyledRadio = styled(Radio)({
+  color: '#000000 !important',
+});
+
+const ErrorMessage = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 export class CorrectResponse extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     errors: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -156,9 +71,9 @@ export class CorrectResponse extends React.Component {
     }
     if (marks.length === 0) {
       gssLineData.selectedTool = 'lineA';
-      set(model, `gssLineData`, gssLineData);
+      set(model, 'gssLineData', gssLineData);
     }
-    set(model, `answers.correctAnswer.marks`, marks);
+    set(model, 'answers.correctAnswer.marks', marks);
     onChange(model);
   };
 
@@ -172,15 +87,15 @@ export class CorrectResponse extends React.Component {
       dialog: {
         open: true,
         title: 'Warning',
-        text: `This will remove all the elements added on the graph and reset graph to original state. Are you sure you want to continue?`,
+        text: 'This will remove all the elements added on the graph and reset graph to original state. Are you sure you want to continue?',
         onConfirm: () => {
           // Reset the graph to original state
           answers.correctAnswer.marks = [];
           gssLineData.selectedTool = 'lineA';
           gssLineData.lineA.lineType = 'Solid';
           if (gssLineData.lineB) gssLineData.lineB.lineType = 'Solid';
-          set(model, `answers`, answers);
-          set(model, `gssLineData`, gssLineData);
+          set(model, 'answers', answers);
+          set(model, 'gssLineData', gssLineData);
           onChange(model);
           this.handleAlertDialog(false);
         },
@@ -202,7 +117,7 @@ export class CorrectResponse extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `Changing number of lines after adding solution set will remove added solution set. Are you sure you want to continue?`,
+          text: 'Changing number of lines after adding solution set will remove added solution set. Are you sure you want to continue?',
           onConfirm: () => {
             this.changeLine(e, value);
             this.handleAlertDialog(false);
@@ -240,8 +155,8 @@ export class CorrectResponse extends React.Component {
       };
     }
     //reset solution set
-    set(model, `answers`, answers);
-    set(model, `gssLineData`, gssLineData);
+    set(model, 'answers', answers);
+    set(model, 'gssLineData', gssLineData);
     onChange(model);
   };
 
@@ -269,7 +184,7 @@ export class CorrectResponse extends React.Component {
         break;
       }
     }
-    set(model, `answers`, answers);
+    set(model, 'answers', answers);
     onChange(model);
   };
 
@@ -290,7 +205,7 @@ export class CorrectResponse extends React.Component {
           dialog: {
             open: true,
             title: 'Warning',
-            text: `Please define the line(s) and then select a solution set for the item.`,
+            text: 'Please define the line(s) and then select a solution set for the item.',
             onConfirm: () => this.handleAlertDialog(false),
           },
         });
@@ -306,7 +221,7 @@ export class CorrectResponse extends React.Component {
           dialog: {
             open: true,
             title: 'Warning',
-            text: `Changing a line after adding a solution set will clear your selected solution set. Click 'Clear Solution Set' to change the line. Otherwise, click 'Cancel'.`,
+            text: 'Changing a line after adding a solution set will clear your selected solution set. Click \'Clear Solution Set\' to change the line. Otherwise, click \'Cancel\'.',
             onConfirm: () => {
               answers.correctAnswer.marks = answers.correctAnswer.marks.filter((mark) => mark.type !== 'polygon');
               this.handleGssLineDataChange(gssLineData, answers);
@@ -349,7 +264,7 @@ export class CorrectResponse extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `Please add Line A to the graph before adding Line B`,
+          text: 'Please add Line A to the graph before adding Line B',
           onConfirm: () => this.handleAlertDialog(false),
         },
       });
@@ -365,14 +280,14 @@ export class CorrectResponse extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `Please add Line B to the graph before switching to Line A`,
+          text: 'Please add Line B to the graph before switching to Line A',
           onConfirm: () => this.handleAlertDialog(false),
         },
       });
       gssLineData.selectedTool = 'lineB';
     }
-    set(model, `gssLineData`, gssLineData);
-    set(model, `answers`, answers);
+    set(model, 'gssLineData', gssLineData);
+    set(model, 'answers', answers);
     onChange(model);
   };
 
@@ -392,7 +307,7 @@ export class CorrectResponse extends React.Component {
    * Render the component
    * */
   render() {
-    const { classes, errors, model, mathMlOptions = {} } = this.props;
+    const { errors, model, mathMlOptions = {} } = this.props;
     const { dialog } = this.state;
     //get the default values to GssLineData
     const {
@@ -412,38 +327,35 @@ export class CorrectResponse extends React.Component {
       range,
       title,
       titleEnabled,
-      marks,
       answers,
     } = model || {};
     const { correctAnswerErrors = '' } = errors || {};
     return (
       <div>
-        <Typography component="div" variant="subheading">
+        <Typography component="div" variant="h6">
           Define Line Type(s) and Correct Response
         </Typography>
-        <Typography component="div" variant="body1" className={classes.subtitleText}>
+        <SubtitleText component="div" variant="body1">
           Use this interface to choose how many lines students will be able to draw, and to define the correct answer.
-        </Typography>
-        <Typography component="div" variant="body1" className={classes.subtitleText}>
+        </SubtitleText>
+        <SubtitleText component="div" variant="body1">
           Choose Number of Lines
-        </Typography>
+        </SubtitleText>
         <RadioGroup name="numberOfLines" value={gssLineData.numberOfLines} onChange={this.changeNumberOfLines}>
-          <FormControlLabel
-            className={classes.radioButtonClass}
+          <RadioButtonClass
             value="1"
-            control={<Radio checked={gssLineData.numberOfLines === 1} className={classes.radioButton} />}
+            control={<StyledRadio checked={gssLineData.numberOfLines === 1} />}
             label="One"
           />
-          <FormControlLabel
-            className={classes.radioButtonClass}
+          <RadioButtonClass
             value="2"
-            control={<Radio checked={gssLineData.numberOfLines === 2} className={classes.radioButton} />}
+            control={<StyledRadio checked={gssLineData.numberOfLines === 2} />}
             label="Two"
           />
         </RadioGroup>
         <React.Fragment>
           <Graph
-            className={correctAnswerErrors['correctAnswer'] && classes.graphError}
+            style={correctAnswerErrors['correctAnswer'] && { border: '2px solid red' }}
             axesSettings={{ includeArrows: arrows }}
             backgroundMarks={[]}
             coordinatesOnHover={coordinatesOnHover}
@@ -467,7 +379,7 @@ export class CorrectResponse extends React.Component {
             mathMlOptions={mathMlOptions}
           />
           {correctAnswerErrors['correctAnswer'] && (
-            <div className={classes.errorMessage}>{correctAnswerErrors['correctAnswer']}</div>
+            <ErrorMessage>{correctAnswerErrors['correctAnswer']}</ErrorMessage>
           )}
         </React.Fragment>
         <AlertDialog
@@ -483,4 +395,4 @@ export class CorrectResponse extends React.Component {
   }
 }
 
-export default withStyles(styles)(CorrectResponse);
+export default CorrectResponse;

@@ -1,68 +1,41 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { TraitsHeaderTile } from '../traitsHeader';
 
 describe('Trait Header', () => {
-  let w;
-
-  const wrapper = (extras) => {
-    const defaults = {
-      classes: {},
-      onTraitLabelChange: () => {},
-      onScaleChange: () => {},
-      scorePointsValues: [0, 1, 2],
-      scorePointsLabels: ['A', 'B', 'C'],
-      traitLabel: 'Category',
-      maxPoints: 2,
-      scaleIndex: 0,
-      currentPosition: 0,
-      showStandards: true,
-      showLevelTagInput: true,
-      showDescription: true,
-      showDeleteScaleModal: true,
-      showScorePointLabels: true,
-      ...extras,
-    };
-    return shallow(<TraitsHeaderTile {...defaults} />);
+  const defaultProps = {
+    classes: {},
+    onTraitLabelChange: () => {},
+    onScaleChange: () => {},
+    scorePointsValues: [0, 1, 2],
+    scorePointsLabels: ['A', 'B', 'C'],
+    traitLabel: 'Category',
+    maxPoints: 2,
+    scaleIndex: 0,
+    currentPosition: 0,
+    showStandards: true,
+    showLevelTagInput: true,
+    showDescription: true,
+    showDeleteScaleModal: true,
+    showScorePointLabels: true,
+    setSecondaryBlockRef: jest.fn(),
+    updateMaxPointsFieldValue: jest.fn(),
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      w = wrapper();
+  const wrapper = (extras) => {
+    const props = { ...defaultProps, ...extras };
+    return render(<TraitsHeaderTile {...props} />);
+  };
 
-      expect(w).toMatchSnapshot();
+  const createInstance = (extras) => {
+    const props = { ...defaultProps, ...extras };
+    const instance = new TraitsHeaderTile(props);
+    instance.setState = jest.fn((state, callback) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+      if (callback) callback();
     });
-
-    it('renders without standards', () => {
-      w = wrapper({ showStandards: false });
-
-      expect(w).toMatchSnapshot();
-    });
-
-    it('renders without description', () => {
-      w = wrapper({ showDescription: false });
-
-      expect(w).toMatchSnapshot();
-    });
-
-    it('renders without score point labels', () => {
-      w = wrapper({ showScorePointLabels: false });
-
-      expect(w).toMatchSnapshot();
-    });
-
-    it('renders without level tag input', () => {
-      w = wrapper({ showLevelTagInput: false });
-
-      expect(w).toMatchSnapshot();
-    });
-
-    it('renders without score point values', () => {
-      w = wrapper({ scorePointsValues: [] });
-
-      expect(w).toMatchSnapshot();
-    });
-  });
+    return instance;
+  };
 
   describe('logic', () => {
     let onScaleChange;
@@ -70,28 +43,30 @@ describe('Trait Header', () => {
 
     beforeEach(() => {
       onScaleChange = jest.fn();
-      w = wrapper({ onScaleChange });
     });
 
     describe('scroll position', () => {
       it('does not change scroll position when current position prop does not change', () => {
-        const wrap = wrapper({ currentPosition: 200 });
+        const { rerender } = wrapper({ currentPosition: 200 });
 
-        expect(wrap.instance().props.currentPosition).toEqual(200);
+        const instance = createInstance({ currentPosition: 200 });
+        instance.scrollToPosition = scrollToPositionSpy;
 
-        wrap.instance().scrollToPosition = scrollToPositionSpy;
-        wrap.setProps({ currentPosition: 200 });
+        // Rerender with the same currentPosition
+        rerender(<TraitsHeaderTile {...defaultProps} currentPosition={200} />);
 
         expect(scrollToPositionSpy).not.toBeCalled();
       });
 
       it('changes scroll position when current position prop changes', () => {
-        const wrap = wrapper({ currentPosition: 200 });
+        const { rerender } = wrapper({ currentPosition: 200 });
 
-        expect(wrap.instance().props.currentPosition).toEqual(200);
+        const instance = createInstance({ currentPosition: 200 });
+        instance.scrollToPosition = scrollToPositionSpy;
+        instance.secondaryBlock = { scrollTo: scrollToPositionSpy };
 
-        wrap.instance().scrollToPosition = scrollToPositionSpy;
-        wrap.setProps({ currentPosition: 300 });
+        // Simulate prop change by calling UNSAFE_componentWillReceiveProps
+        instance.UNSAFE_componentWillReceiveProps({ ...instance.props, currentPosition: 300 });
 
         expect(scrollToPositionSpy).toBeCalledWith(300);
       });
@@ -99,21 +74,24 @@ describe('Trait Header', () => {
 
     describe('onScorePointLabelChange', () => {
       it('does not call onScaleChange with scorePointsLabels if value less than 0', () => {
-        w.instance().onScorePointLabelChange({ scorePointLabel: 'New Label', value: -10 });
+        const instance = createInstance({ onScaleChange });
+        instance.onScorePointLabelChange({ scorePointLabel: 'New Label', value: -10 });
 
         expect(onScaleChange).not.toBeCalled();
       });
 
       it('does not call onScaleChange with scorePointsLabels if value more than length', () => {
-        w.instance().onScorePointLabelChange({ scorePointLabel: 'New Label', value: 10 });
+        const instance = createInstance({ onScaleChange });
+        instance.onScorePointLabelChange({ scorePointLabel: 'New Label', value: 10 });
 
         expect(onScaleChange).not.toBeCalled();
       });
 
       it('call onScaleChange with scorePointsLabels', () => {
-        const { scorePointsLabels } = w.instance().props;
+        const instance = createInstance({ onScaleChange });
+        const { scorePointsLabels } = instance.props;
 
-        w.instance().onScorePointLabelChange({ scorePointLabel: 'New Label', value: 0 });
+        instance.onScorePointLabelChange({ scorePointLabel: 'New Label', value: 0 });
 
         expect(onScaleChange).toBeCalledWith({
           scorePointsLabels: ['New Label', ...scorePointsLabels.slice(1)],

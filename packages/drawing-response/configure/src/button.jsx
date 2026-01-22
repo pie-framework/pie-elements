@@ -1,43 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import Button from '@material-ui/core/Button';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
-const RawButton = ({ classes, className, label, onClick, disabled }) => (
-  <Button
+const StyledButton = styled(Button)({
+  marginLeft: 8,
+});
+
+const CustomButton = ({ label, onClick, disabled }) => (
+  <StyledButton
     onClick={onClick}
     disabled={disabled}
-    className={classNames(classes.addButton, className)}
     size="small"
-    variant="contained"
-    color="default"
-  >
+    variant="contained">
     {label}
-  </Button>
+  </StyledButton>
 );
 
-RawButton.propTypes = {
-  classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
+CustomButton.propTypes = {
   disabled: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,
 };
 
-RawButton.defaultProps = {
+CustomButton.defaultProps = {
   className: '',
   disabled: false,
   label: 'Add',
-  onClick: () => {},
+  onClick: () => { },
 };
 
-const styles = () => ({
-  addButton: {
-    marginLeft: 8,
-  },
-});
-
-const ButtonStyled = withStyles(styles)(RawButton);
-
-export default ButtonStyled;
+export default CustomButton;

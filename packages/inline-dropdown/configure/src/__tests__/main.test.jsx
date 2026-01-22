@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { Main } from '../main';
@@ -20,6 +20,7 @@ jest.mock('@pie-lib/config-ui', () => ({
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
   InputContainer: (props) => <div>{props.children}</div>,
+  AlertDialog: (props) => <div>{props.children}</div>,
 }));
 
 const model = {
@@ -123,35 +124,43 @@ describe('Main', () => {
     };
     const props = { ...defaults };
 
-    return shallow(<Main {...props} />, { disableLifecycleMethods: true });
+    return render(<Main {...props} />);
   };
 
-  describe('snapshot', () => {
-    it('renders with teacher instructions, prompt and rationale even if not set', () => {
-      expect(wrapper()).toMatchSnapshot();
+  const createInstance = (extras) => {
+    onModelChanged = jest.fn();
+    onConfigurationChanged = jest.fn();
+
+    const defaults = {
+      onModelChanged,
+      onConfigurationChanged,
+      classes: {},
+      model: prepareModel({
+        ...model,
+        ...extras,
+      }),
+      configuration: sensibleDefaults.configuration,
+    };
+    const instance = new Main(defaults);
+
+    // Mock setState to execute updates immediately for testing
+    instance.setState = jest.fn((state) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
     });
 
-    it('renders without teacher instructions, prompt and rationale', () => {
-      expect(
-        wrapper({
-          promptEnabled: false,
-          teacherInstructionsEnabled: false,
-          rationaleEnabled: false,
-        }),
-      ).toMatchSnapshot();
-    });
-  });
+    return instance;
+  };
 
   describe('logic', () => {
     let w;
 
     beforeEach(() => {
-      w = wrapper();
+      w = createInstance();
     });
 
     describe('onModelChange', () => {
       it('changes the model', () => {
-        w.instance().onModelChange({ promptEnabled: false });
+        w.onModelChange({ promptEnabled: false });
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
@@ -162,7 +171,7 @@ describe('Main', () => {
 
     describe('onPromptChanged', () => {
       it('changes the prompt value', () => {
-        w.instance().onPromptChanged('This is the new prompt');
+        w.onPromptChanged('This is the new prompt');
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
@@ -173,7 +182,7 @@ describe('Main', () => {
 
     describe('onRationaleChanged', () => {
       it('changes the rationale value', () => {
-        w.instance().onRationaleChanged('New Rationale');
+        w.onRationaleChanged('New Rationale');
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
@@ -184,7 +193,7 @@ describe('Main', () => {
 
     describe('onTeacherInstructionsChanged', () => {
       it('changes the teacher instructions value', () => {
-        w.instance().onTeacherInstructionsChanged('New Teacher Instructions');
+        w.onTeacherInstructionsChanged('New Teacher Instructions');
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
@@ -198,7 +207,7 @@ describe('Main', () => {
         const slateMarkup =
           '<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped</p>';
 
-        w.instance().onMarkupChanged(slateMarkup);
+        w.onMarkupChanged(slateMarkup);
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
@@ -215,8 +224,8 @@ describe('Main', () => {
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>.</p></div>`;
 
-        w.instance().setState({ respAreaChoices: newChoices });
-        w.instance().onChange(newMarkup);
+        w.setState({ respAreaChoices: newChoices });
+        w.onChange(newMarkup);
 
         // TODO do we have to test what happens if clicking on OK/Cancel? How?
         expect(onModelChanged).not.toBeCalled();
@@ -245,8 +254,8 @@ describe('Main', () => {
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>.</p></div>`;
 
-        w.instance().setState({ respAreaChoices: newChoices });
-        w.instance().onChange(newMarkup);
+        w.setState({ respAreaChoices: newChoices });
+        w.onChange(newMarkup);
 
         // TODO do we have to test what happens if clicking on OK/Cancel? How?
         expect(onModelChanged).not.toBeCalled();
@@ -266,8 +275,8 @@ describe('Main', () => {
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>.</p></div>`;
 
-        w.instance().setState({ respAreaChoices: newChoices });
-        w.instance().onChange(newMarkup);
+        w.setState({ respAreaChoices: newChoices });
+        w.onChange(newMarkup);
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
@@ -277,7 +286,7 @@ describe('Main', () => {
       });
 
       it('New Response Area: slateMarkup and choices are updated', () => {
-        const oldModel = w.instance().props.model;
+        const oldModel = w.props.model;
         const newChoices = {
           ...model.choices,
           3: [
@@ -300,8 +309,8 @@ describe('Main', () => {
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>, <span data-type="inline_dropdown" data-index="3" data-value="A"></span>.</p></div>`;
 
-        w.instance().setState({ respAreaChoices: newChoices });
-        w.instance().onChange(newMarkup);
+        w.setState({ respAreaChoices: newChoices });
+        w.onChange(newMarkup);
 
         expect(onModelChanged).toBeCalledWith({
           ...oldModel,
@@ -311,15 +320,15 @@ describe('Main', () => {
       });
 
       it('Removing choices (keeping at least 2): slateMarkup and choices are updated', () => {
-        const oldModel = w.instance().props.model;
+        const oldModel = w.props.model;
         const newChoices = {
           ...model.choices,
           0: model.choices['0'].slice(0, 2),
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>.</p></div>`;
 
-        w.instance().setState({ respAreaChoices: newChoices });
-        w.instance().onChange(newMarkup);
+        w.setState({ respAreaChoices: newChoices });
+        w.onChange(newMarkup);
 
         expect(onModelChanged).toBeCalledWith({
           ...oldModel,
@@ -331,7 +340,7 @@ describe('Main', () => {
 
     describe('onChoiceRationaleChanged', () => {
       it('changes the choice level rationale value', () => {
-        w.instance().onChoiceRationaleChanged(0, {
+        w.onChoiceRationaleChanged(0, {
           label: 'cow',
           value: '0',
           correct: true,
@@ -402,27 +411,27 @@ describe('Main', () => {
 
     describe('onAddChoice', () => {
       beforeEach(() => {
-        w.instance().setState({ respAreaChoices: model.choices });
+        w.setState({ respAreaChoices: model.choices });
       });
 
       it('Does not add duplicates', () => {
-        w.instance().onAddChoice('0', 'cow');
+        w.onAddChoice('0', 'cow');
 
         expect(onModelChanged).not.toBeCalled();
 
-        w.instance().onAddChoice('1', 'over');
+        w.onAddChoice('1', 'over');
 
         expect(onModelChanged).not.toBeCalled();
 
-        w.instance().onAddChoice('1', 'under');
+        w.onAddChoice('1', 'under');
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('Adds a new choice', () => {
-        const currentModel = cloneDeep(w.instance().props.model);
+        const currentModel = cloneDeep(w.props.model);
 
-        w.instance().onAddChoice('0', 'bird');
+        w.onAddChoice('0', 'bird');
 
         expect(onModelChanged).toBeCalledWith({
           ...currentModel,
@@ -432,7 +441,7 @@ describe('Main', () => {
           },
         });
 
-        w.instance().onAddChoice('2', 'star');
+        w.onAddChoice('2', 'star');
         expect(onModelChanged).toBeCalledWith({
           ...currentModel,
           choices: {
@@ -446,7 +455,7 @@ describe('Main', () => {
 
     describe('onRemoveChoice', () => {
       beforeEach(() => {
-        w.instance().setState({
+        w.setState({
           respAreaChoices: {
             0: [
               { label: 'cow', value: '0', correct: true },
@@ -458,7 +467,7 @@ describe('Main', () => {
       });
 
       it('Removes choices', () => {
-        w.instance().onRemoveChoice(0, '0');
+        w.onRemoveChoice(0, '0');
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
@@ -471,7 +480,7 @@ describe('Main', () => {
           }),
         );
 
-        w.instance().onRemoveChoice(0, '0');
+        w.onRemoveChoice(0, '0');
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
@@ -481,7 +490,7 @@ describe('Main', () => {
           }),
         );
 
-        w.instance().onRemoveChoice(0, '0');
+        w.onRemoveChoice(0, '0');
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
@@ -495,7 +504,7 @@ describe('Main', () => {
 
     describe('onSelectChoice', () => {
       beforeEach(() => {
-        w.instance().setState({
+        w.setState({
           respAreaChoices: {
             0: [
               { label: 'cow', value: '0', correct: true },
@@ -507,7 +516,7 @@ describe('Main', () => {
       });
 
       it('Updates correct choice', () => {
-        w.instance().onSelectChoice(0, 1);
+        w.onSelectChoice(0, 1);
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
@@ -521,7 +530,7 @@ describe('Main', () => {
           }),
         );
 
-        w.instance().onSelectChoice(0, 0);
+        w.onSelectChoice(0, 0);
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({

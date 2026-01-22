@@ -49,13 +49,11 @@ export function Stack(domain) {
     let { type, position } = el;
 
     switch (type) {
-      case 'point': {
+      case 'point':
         return { left: position, right: position };
-      }
-      case 'line': {
+      case 'line':
         return position;
-      }
-      case 'ray': {
+      case 'ray':
         if (el.direction === 'positive') {
           return {
             left: position,
@@ -67,7 +65,8 @@ export function Stack(domain) {
             right: position,
           };
         }
-      }
+      default:
+        return null;
     }
   };
 }

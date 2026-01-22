@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormSection, InputContainer, AlertDialog, settings, layout } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import NumberTextField from './number-text-field';
 import CardBar from './card-bar';
@@ -10,10 +10,10 @@ import Domain from './domain';
 import Arrows from './arrows';
 import PointConfig from './point-config';
 import cloneDeep from 'lodash/cloneDeep';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 import Ticks from './ticks';
 import { model as defaultModel } from './defaults';
 import { generateValidationMessage } from './utils';
@@ -35,57 +35,55 @@ let minorLimits = {};
 let minorValues = {};
 let majorValues = {};
 
-const styles = (theme) => ({
-  maxNumberOfPoints: {
-    width: '150px',
-  },
-  checkbox: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  row: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    '& > *': {
-      paddingRight: theme.spacing.unit * 2,
-    },
-  },
-  pointTypeChooser: {
-    margin: `${theme.spacing.unit * 2.5}px 0`,
-  },
-  promptContainer: {
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  title: {
-    marginBottom: theme.spacing.unit * 4,
-  },
-  tooltip: {
-    fontSize: theme.typography.fontSize - 2,
-    whiteSpace: 'pre',
-    maxWidth: '500px',
-  },
-  inlineFlexContainer: {
-    display: 'inline-flex',
-  },
-  resetButton: {
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-  flexRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-  },
-  description: {
-    marginBottom: theme.spacing.unit * 2.5,
-  },
+const StyledNumberTextField = styled(NumberTextField)({
+  width: '150px',
 });
+
+
+
+const Row = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
+  '& > *': {
+    paddingRight: theme.spacing(2),
+  },
+}));
+
+const PointTypeChooser = styled('div')(({ theme }) => ({
+  margin: `${theme.spacing(2.5)}px 0`,
+}));
+
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  width: '100%',
+}));
+
+const StyledFormSection = styled(FormSection)(({ theme }) => ({
+  marginBottom: theme.spacing(4),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
+const FlexRow = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+});
+
+const FlexRowFormSection = styled(FormSection)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+});
+
+const Description = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(2.5),
+}));
 
 export const toPointType = (response) => {
   function rest(response) {
@@ -105,7 +103,6 @@ export const toPointType = (response) => {
 
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
@@ -447,8 +444,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, onChange, configuration, onConfigurationChanged, uploadSoundSupport, imageSupport } =
-      this.props;
+    const { model, onChange, configuration, onConfigurationChanged, uploadSoundSupport, imageSupport } = this.props;
     const {
       baseInputConfiguration = {},
       contentDimensions = {},
@@ -528,14 +524,13 @@ export class Main extends React.Component {
           />
         }
       >
-        <Typography component="div" type="body1" className={classes.description}>
+        <Description component="div" type="body1">
           {instruction.label}
-        </Typography>
+        </Description>
 
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
+          <StyledInputContainer label={teacherInstructions.label}>
             <EditableHtml
-              className={classes.teacherInstructions}
               markup={model.teacherInstructions || ''}
               onChange={(teacherInstructions) => onChange({ teacherInstructions })}
               nonEmpty={false}
@@ -549,14 +544,13 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptContainer}>
+          <StyledInputContainer label={prompt.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.prompt || ''}
               onChange={(prompt) => onChange({ prompt })}
               nonEmpty={false}
@@ -570,19 +564,27 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         <CardBar
           header="Set Up Number Line"
           info={
             <Tooltip
-              classes={{ tooltip: classes.tooltip }}
               disableFocusListener
               disableTouchListener
               placement={'right'}
               title={validationMessage}
+              slotProps={{
+                tooltip: {
+                  sx: (theme) => ({
+                    fontSize: theme.typography.fontSize - 2,
+                    whiteSpace: 'pre',
+                    maxWidth: '500px',
+                  }),
+                },
+              }}
             >
               <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }} />
             </Tooltip>
@@ -592,12 +594,12 @@ export class Main extends React.Component {
           can be edited or removed by clicking on the label.
         </CardBar>
 
-        <div className={classes.row}>
+        <Row>
           <Domain domain={graph.domain} errors={errors} onChange={(domain) => this.graphChange({ domain })} />
-        </div>
+        </Row>
 
-        {maxError && <div className={classes.errorText}>{maxError}</div>}
-        {domainError && <div className={classes.errorText}>{domainError}</div>}
+        {maxError && <ErrorText>{maxError}</ErrorText>}
+        {domainError && <ErrorText>{domainError}</ErrorText>}
 
         <div>
           <FormSection>
@@ -611,7 +613,7 @@ export class Main extends React.Component {
           </FormSection>
         </div>
 
-        <div className={classes.flexRow}>
+        <FlexRow>
           {model.widthEnabled && (
             <Size
               size={graph}
@@ -623,9 +625,9 @@ export class Main extends React.Component {
           )}
           <div></div>
           <Arrows arrows={graph.arrows} onChange={this.changeArrows} />
-        </div>
+        </FlexRow>
 
-        {widthError && <div className={classes.errorText}>{widthError}</div>}
+        {widthError && <ErrorText>{widthError}</ErrorText>}
 
         <NumberLineComponent
           onMoveElement={() => {}}
@@ -640,7 +642,7 @@ export class Main extends React.Component {
         />
 
         {titleEnabled && (
-          <FormSection label={title?.label || 'Title'} className={classes.title}>
+          <StyledFormSection label={title?.label || 'Title'}>
             <EditableHtml
               markup={graph.title || ''}
               onChange={this.changeGraphTitle}
@@ -663,7 +665,7 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-          </FormSection>
+          </StyledFormSection>
         )}
 
         {!graph.exhibitOnly && (
@@ -677,27 +679,26 @@ export class Main extends React.Component {
               Click on the input options to be displayed to the students. All inputs will display by default.
             </CardBar>
 
-            <div className={classes.pointTypeChooser}>
+            <PointTypeChooser>
               <PointConfig
                 onSelectionChange={this.availableTypesChange}
                 selection={graph.availableTypes}
                 availableTools={availableTools}
                 hideButtons={hidePointConfigButtons}
               />
-            </div>
+            </PointTypeChooser>
 
-            <FormSection className={classes.flexRow}>
+            <FlexRowFormSection>
               <label>Max No of Elements</label>
-              <NumberTextField
-                className={classes.maxNumberOfPoints}
+              <StyledNumberTextField
                 min={1}
                 max={maxMaxElements}
                 onlyIntegersAllowed={true}
                 value={graph.maxNumberOfPoints}
                 onChange={this.changeMaxNoOfPoints}
               />
-              {pointsError && <div className={classes.errorText}>{pointsError}</div>}
-            </FormSection>
+              {pointsError && <ErrorText>{pointsError}</ErrorText>}
+            </FlexRowFormSection>
 
             <label>Correct Answer</label>
 
@@ -713,7 +714,7 @@ export class Main extends React.Component {
               //strip feedback for this model
               model={trimModel(model)}
             />
-            {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+            {correctResponseError && <ErrorText>{correctResponseError}</ErrorText>}
           </React.Fragment>
         )}
         <AlertDialog
@@ -742,9 +743,8 @@ export class Main extends React.Component {
           onCloseText={'Cancel'}
         />
         {rationaleEnabled && (
-          <InputContainer label={rationale.label || 'Rationale'} className={classes.promptContainer}>
+          <StyledInputContainer label={rationale.label || 'Rationale'}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.rationale || ''}
               onChange={(rationale) => onChange({ rationale })}
               error={rationaleError}
@@ -756,12 +756,12 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
-          </InputContainer>
+            {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+          </StyledInputContainer>
         )}
       </layout.ConfigLayout>
     );
   }
 }
 
-export default withStyles(styles, { name: 'Main' })(Main);
+export default Main;

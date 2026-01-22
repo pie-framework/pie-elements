@@ -2,13 +2,46 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layer, Stage } from 'react-konva';
 import cloneDeep from 'lodash/cloneDeep';
-import { withStyles } from '@material-ui/core/styles/index';
+import { styled } from '@mui/material/styles';
 
 import Rectangle from './hotspot-rectangle';
 import Polygon from './hotspot-polygon';
 import Circle from './hotspot-circle';
 import { getUpdatedShapes, updateImageDimensions } from './utils';
 import { RectangleShape, CircleShape, PolygonShape, SUPPORTED_SHAPES, SHAPE_GROUPS } from './shapes';
+
+const BaseContainer = styled('div')({
+  position: 'relative',
+});
+
+const ImageContainer = styled('div')({
+  position: 'relative',
+  width: 'fit-content',
+});
+
+const Image = styled('img')({
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+const ResizeHandle = styled('div')({
+  borderBottom: '1px solid #727272',
+  borderRight: '1px solid #727272',
+  bottom: '-10px',
+  cursor: 'se-resize',
+  height: '10px',
+  position: 'absolute',
+  right: '-10px',
+  width: '10px',
+});
+
+const StyledStage = styled(Stage)({
+  left: 0,
+  top: 0,
+  position: 'absolute',
+});
+
 const IMAGE_MAX_WIDTH = 800;
 
 export class Drawable extends React.Component {
@@ -373,7 +406,6 @@ export class Drawable extends React.Component {
 
   render() {
     const {
-      classes,
       imageUrl,
       dimensions: { height, width },
       hotspotColor,
@@ -392,11 +424,10 @@ export class Drawable extends React.Component {
     const shapesToUse = stateShapes || shapes;
 
     return (
-      <div className={classes.base}>
+      <BaseContainer>
         {imageUrl && (
-          <div className={classes.imageContainer}>
-            <img
-              className={classes.image}
+          <ImageContainer>
+            <Image
               onLoad={this.handleOnImageLoad}
               ref={(ref) => {
                 this.image = ref;
@@ -404,17 +435,15 @@ export class Drawable extends React.Component {
               src={imageUrl}
               {...(height && width ? { style: { height, width } } : {})}
             />
-            <div
+            <ResizeHandle
               ref={(ref) => {
                 this.resize = ref;
               }}
-              className={classes.resize}
             />
-          </div>
+          </ImageContainer>
         )}
 
-        <Stage
-          className={classes.stage}
+        <StyledStage
           height={heightFromState || height}
           width={widthFromState || width}
           onMouseDown={this.handleOnMouseDown}
@@ -469,44 +498,13 @@ export class Drawable extends React.Component {
               );
             })}
           </Layer>
-        </Stage>
-      </div>
+        </StyledStage>
+      </BaseContainer>
     );
   }
 }
 
-const styles = () => ({
-  base: {
-    position: 'relative',
-  },
-  image: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  imageContainer: {
-    position: 'relative',
-    width: 'fit-content',
-  },
-  resize: {
-    borderBottom: '1px solid #727272',
-    borderRight: '1px solid #727272',
-    bottom: '-10px',
-    cursor: 'se-resize',
-    height: '10px',
-    position: 'absolute',
-    right: '-10px',
-    width: '10px',
-  },
-  stage: {
-    left: 0,
-    top: 0,
-    position: 'absolute',
-  },
-});
-
 Drawable.propTypes = {
-  classes: PropTypes.object.isRequired,
   disableDrag: PropTypes.func.isRequired,
   dimensions: PropTypes.object.isRequired,
   enableDrag: PropTypes.func.isRequired,
@@ -526,4 +524,4 @@ Drawable.propTypes = {
   preserveAspectRatioEnabled: PropTypes.bool,
 };
 
-export default withStyles(styles)(Drawable);
+export default Drawable;

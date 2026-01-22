@@ -6,66 +6,62 @@ import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
 import { decodeHTML, getAdjustedLength } from './markupUtils';
 import { generateValidationMessage } from './utils';
-import classnames from 'classnames';
 
 const { toggle, Panel, dropdown } = settings;
 
-const styles = (theme) => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  markup: {
+const PromptHolder = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(1),
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const MarkupContainer = styled(EditableHtml)(({ theme }) => ({
+  minHeight: '100px',
+  paddingTop: theme.spacing(1),
+  width: '100%',
+  '& [data-slate-editor="true"]': {
     minHeight: '100px',
-    paddingTop: theme.spacing.unit,
-    width: '100%',
-    '& [data-slate-editor="true"]': {
-      minHeight: '100px',
-    },
   },
-  choiceConfiguration: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-  },
-  switchElement: {
-    justifyContent: 'space-between',
-    margin: 0,
-  },
-  addButton: {
-    float: 'right',
-  },
-  text: {
-    fontSize: theme.typography.fontSize + 2,
-  },
-  tooltip: {
+}));
+
+const StyledText = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize + 2,
+}));
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
     fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-  flexContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  responseHeader: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit,
-  },
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
+const FlexContainer = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
 });
+
+const ResponseHeader = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize + 2,
+  marginTop: theme.spacing(3),
+  marginBottom: theme.spacing(1),
+}));
 
 const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
@@ -81,7 +77,6 @@ export class Main extends React.Component {
     disableSidePanel: PropTypes.bool,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -238,13 +233,13 @@ export class Main extends React.Component {
         if (!newChoices[keyForNode] && newCachedChoices[keyForNode]) {
           Object.assign(newChoices, pick(newCachedChoices, keyForNode));
 
-          if (newCachedChoices.hasOwnProperty(keyForNode)) {
+          if (Object.prototype.hasOwnProperty.call(newCachedChoices, keyForNode)) {
             delete newCachedChoices[keyForNode];
           }
         } else {
           Object.assign(newCachedChoices, pick(newChoices, keyForNode));
 
-          if (newChoices.hasOwnProperty(keyForNode)) {
+          if (Object.prototype.hasOwnProperty.call(newChoices, keyForNode)) {
             delete newChoices[keyForNode];
           }
         }
@@ -259,7 +254,7 @@ export class Main extends React.Component {
   );
 
   render() {
-    const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
+    const { model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
 
     const {
       baseInputConfiguration = {},
@@ -352,9 +347,9 @@ export class Main extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <PromptHolder label={teacherInstructions.label}>
             <EditableHtml
-              className={classes.prompt}
+              className="prompt"
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
@@ -370,14 +365,14 @@ export class Main extends React.Component {
               mathMlOptions={mathMlOptions}
               autoWidthToolbar
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </PromptHolder>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
+          <PromptHolder label={prompt.label}>
             <EditableHtml
-              className={classes.prompt}
+              className="prompt"
               markup={model.prompt}
               onChange={this.onPromptChanged}
               imageSupport={imageSupport}
@@ -394,26 +389,25 @@ export class Main extends React.Component {
               mathMlOptions={mathMlOptions}
               autoWidthToolbar
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </PromptHolder>
         )}
 
-        <div className={classes.flexContainer}>
-          <Typography className={classes.text} component="div">
+        <FlexContainer>
+          <StyledText component="div">
             Define Template, Choices, and Correct Responses
-          </Typography>
-          <Tooltip
-            classes={{ tooltip: classes.tooltip }}
+          </StyledText>
+          <StyledTooltip
             disableFocusListener
             disableTouchListener
             placement={'right'}
             title={validationMessage}
           >
             <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }} />
-          </Tooltip>
-        </div>
+          </StyledTooltip>
+        </FlexContainer>
 
-        <EditableHtml
+        <MarkupContainer
           activePlugins={ALL_PLUGINS}
           toolbarOpts={{ position: 'top' }}
           spellCheck={spellCheckEnabled}
@@ -442,7 +436,6 @@ export class Main extends React.Component {
             error: () => choicesErrors,
             onHandleAreaChange: this.onHandleAreaChange,
           }}
-          className={classes.markup}
           markup={model.slateMarkup}
           onChange={this.onChange}
           imageSupport={imageSupport}
@@ -456,12 +449,12 @@ export class Main extends React.Component {
           mathMlOptions={mathMlOptions}
           autoWidthToolbar
         />
-        {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+        {responseAreasError && <ErrorText>{responseAreasError}</ErrorText>}
 
         {!isEmpty(model.choices) && (
-          <Typography className={classnames(classes.text, classes.responseHeader)}>
+          <ResponseHeader>
             {`Define Alternates ${maxLengthPerChoiceEnabled ? 'and Character Limits' : ''}`}
-          </Typography>
+          </ResponseHeader>
         )}
         <AlternateResponses
           model={model}
@@ -474,9 +467,9 @@ export class Main extends React.Component {
         />
 
         {rationaleEnabled && (
-          <InputContainer label={rationale.label} className={classes.promptHolder}>
+          <PromptHolder label={rationale.label}>
             <EditableHtml
-              className={classes.prompt}
+              className="prompt"
               markup={model.rationale || ''}
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
@@ -491,14 +484,12 @@ export class Main extends React.Component {
               mathMlOptions={mathMlOptions}
               autoWidthToolbar
             />
-            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
-          </InputContainer>
+            {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+          </PromptHolder>
         )}
       </layout.ConfigLayout>
     );
   }
 }
 
-const Styled = withStyles(styles)(Main);
-
-export default Styled;
+export default Main;

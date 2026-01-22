@@ -1,25 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { renderMath } from '@pie-lib/math-rendering';
 
-const styles = (theme) => ({
-  responseArea: {
-    paddingBottom: theme.spacing.unit * 2.5,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
+const ResponseArea = styled('div')(({ theme }) => ({
+  paddingBottom: theme.spacing(2.5),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 class ResponseAreaComponent extends React.Component {
   static propTypes = {
     editableHtmlProps: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
     responseAreasError: PropTypes.string,
     responseAreaChoicesError: PropTypes.string,
   };
@@ -32,16 +30,16 @@ class ResponseAreaComponent extends React.Component {
   }
 
   render() {
-    const { editableHtmlProps, responseAreasError, responseAreaChoicesError, classes } = this.props;
+    const { editableHtmlProps, responseAreasError, responseAreaChoicesError } = this.props;
 
     return (
-      <div className={classes.responseArea}>
+      <ResponseArea>
         <EditableHtml {...editableHtmlProps} />
-        {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-        {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
-      </div>
+        {responseAreasError && <ErrorText>{responseAreasError}</ErrorText>}
+        {responseAreaChoicesError && <ErrorText>{responseAreaChoicesError}</ErrorText>}
+      </ResponseArea>
     );
   }
 }
 
-export default withStyles(styles)(ResponseAreaComponent);
+export default ResponseAreaComponent;

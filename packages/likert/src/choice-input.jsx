@@ -1,53 +1,38 @@
 import React from 'react';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 
 import { color } from '@pie-lib/render-ui';
-import Radio from '@material-ui/core/Radio';
+import Radio from '@mui/material/Radio';
 import { LIKERT_ORIENTATION } from './likertEntities';
 
-const radioStyles = {
-  root: {
-    color: `var(--choice-input-color, ${color.text()})`,
+export const RadioStyled = styled(Radio)({
+  color: `var(--choice-input-color, ${color.text()})`,
+  '&.Mui-checked': {
+    color: `var(--choice-input-selected-color, ${color.primary()})`,
   },
-  checked: {
-    color: `var(--choice-input-selected-color, ${color.text()})`,
+  '&.Mui-disabled': {
+    color: `var(--choice-input-disabled-color, ${color.defaults.DISABLED})`,
   },
-};
-
-export const RadioStyled = withStyles(radioStyles)((props) => {
-  const { classes, checked, onChange, disabled } = props;
-
-  return (
-    <Radio
-      checked={checked}
-      onChange={onChange}
-      disabled={disabled}
-      classes={{
-        root: classes.root,
-        checked: classes.checked,
-      }}
-    />
-  );
 });
 
-const choiceInputStyles = () => ({
-  labelRoot: {
-    color: color.text(),
-    textAlign: 'center',
-    cursor: 'pointer',
-  },
-  checkboxHolderRoot: {
-    display: 'flex',
-    alignItems: 'center',
-    flex: 1,
-    padding: '0 5px',
-    '& label': {},
-  },
-  formControlLabelRoot: {
-    margin: 0,
-  },
+const LabelRoot = styled('p')({
+  color: color.text(),
+  textAlign: 'center',
+  cursor: 'pointer',
+});
+
+const CheckboxHolderRoot = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  flex: 1,
+  padding: '0 5px',
+  '& label': {},
+});
+
+const StyledFormControlLabel = styled(FormControlLabel)({
+  margin: 0,
 });
 
 export class ChoiceInput extends React.Component {
@@ -58,7 +43,6 @@ export class ChoiceInput extends React.Component {
     likertOrientation: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.number.isRequired,
-    classes: PropTypes.object,
   };
 
   static defaultProps = {
@@ -73,20 +57,19 @@ export class ChoiceInput extends React.Component {
   };
 
   render() {
-    const { disabled, label, checked, likertOrientation, classes } = this.props;
+    const { disabled, label, checked, likertOrientation } = this.props;
     const flexDirection = likertOrientation === LIKERT_ORIENTATION.vertical ? 'row' : 'column';
 
     return (
-      <div className={classes.checkboxHolderRoot} style={{ flexDirection }}>
-        <FormControlLabel
+      <CheckboxHolderRoot style={{ flexDirection }}>
+        <StyledFormControlLabel
           disabled={disabled}
-          className={classes.formControlLabelRoot}
-          control={<RadioStyled checked={checked} onChange={this.onToggleChoice} />}
+          control={<RadioStyled checked={checked} onChange={this.onToggleChoice} disabled={disabled} />}
         />
-        <p className={classes.labelRoot} onClick={this.onToggleChoice} dangerouslySetInnerHTML={{ __html: label }} />
-      </div>
+        <LabelRoot onClick={this.onToggleChoice} dangerouslySetInnerHTML={{ __html: label }} />
+      </CheckboxHolderRoot>
     );
   }
 }
 
-export default withStyles(choiceInputStyles)(ChoiceInput);
+export default ChoiceInput;
