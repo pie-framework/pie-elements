@@ -36,7 +36,7 @@ jest.mock('@pie-framework/mathquill', () => ({
   getInterface: jest.fn().mockReturnThis(),
 }));
 
-jest.mock('@pie-lib/editable-html', () => (props) => <div data-testid="editable-html" {...props} />);
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div data-testid="editable-html" {...props} />);
 
 jest.mock('../response', () => (props) => <div data-testid="response" {...props} />);
 

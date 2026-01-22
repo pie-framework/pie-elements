@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { ECRToolbar } from '../ecr-toolbar';
 
-jest.mock('@pie-lib/editable-html', () => ({
+jest.mock('@pie-lib/editable-html-tip-tap', () => ({
   __esModule: true,
   default: ({ markup, onChange }) => (
     <div data-testid="editable-html" onClick={() => onChange && onChange('test')}>
@@ -18,9 +18,15 @@ const theme = createTheme();
 describe('ECRToolbar', () => {
   let onChangeResponse = jest.fn();
   let onToolbarDone = jest.fn();
+  let editor;
 
   beforeEach(() => {
     jest.clearAllMocks();
+    editor = {
+      commands: {
+        updateAttributes: jest.fn()
+      }
+    };
   });
 
   const renderToolbar = () => {
@@ -41,20 +47,7 @@ describe('ECRToolbar', () => {
           toJSON: jest.fn(),
         },
       },
-      value: {
-        change: jest.fn().mockReturnValue({
-          setNodeByKey: jest.fn().mockReturnValue({
-            moveFocusTo: jest.fn().mockReturnValue({
-              moveAnchorTo: jest.fn(),
-            }),
-          }),
-        }),
-        document: {
-          getNextText: jest.fn().mockReturnValue({
-            key: 1,
-          }),
-        },
-      },
+      editor,
       correctChoice: { value: '0', label: 'moon' },
     };
     const props = { ...defaults };
@@ -85,6 +78,7 @@ describe('ECRToolbar', () => {
             toJSON: jest.fn(),
           },
         },
+        editor,
         value: {
           change: jest.fn().mockReturnValue({
             setNodeByKey: jest.fn().mockReturnValue({
@@ -125,6 +119,7 @@ describe('ECRToolbar', () => {
             toJSON: jest.fn(),
           },
         },
+        editor,
         value: {
           change: jest.fn().mockReturnValue({
             setNodeByKey: jest.fn().mockReturnValue({

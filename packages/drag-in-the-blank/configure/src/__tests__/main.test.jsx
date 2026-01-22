@@ -26,7 +26,7 @@ jest.mock('@pie-lib/render-ui', () => ({
   InputContainer: (props) => <div data-testid="input-container">{props.children}</div>,
 }));
 
-jest.mock('@pie-lib/editable-html', () => ({
+jest.mock('@pie-lib/editable-html-tip-tap', () => ({
   __esModule: true,
   default: ({ markup, onChange }) => (
     <div

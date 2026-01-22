@@ -45,7 +45,7 @@ jest.mock('../correct-response', () => ({
   default: (props) => <div data-testid="correct-response" {...props} />,
 }));
 
-jest.mock('@pie-lib/editable-html', () => ({
+jest.mock('@pie-lib/editable-html-tip-tap', () => ({
   __esModule: true,
   default: (props) => <div data-testid="editable-html" {...props} />,
 }));

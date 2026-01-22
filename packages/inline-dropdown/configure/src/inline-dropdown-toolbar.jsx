@@ -265,6 +265,8 @@ class RespAreaToolbar extends React.Component {
   onRemoveChoice = (val, index) => {
     const { node, editor, onToolbarDone, onRemoveChoice } = this.props;
 
+    console.log('LOGGING', val, node.attrs.value, isEqual(val, node.attrs.value));
+
     if (isEqual(val, node.attrs.value)) {
       editor.commands.updateAttributes('explicit_constructed_response', { value: null });
       onToolbarDone(false);

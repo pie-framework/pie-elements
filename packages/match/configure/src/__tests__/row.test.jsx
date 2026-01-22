@@ -12,7 +12,7 @@ jest.mock('@pie-lib/render-ui', () => ({
     tertiary: () => '#999',
   },
 }));
-jest.mock('@pie-lib/editable-html', () => {
+jest.mock('@pie-lib/editable-html-tip-tap', () => {
   const React = require('react');
   return {
     __esModule: true,
