@@ -8,8 +8,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pie-lib/controller-utils": "0.22.3-next.163",
-    "@pie-lib/translator": "2.23.2-next.172",
+    "@pie-lib/controller-utils": "1.1.0-next.0",
+    "@pie-lib/translator": "3.1.0-next.0",
     "debug": "^3.1.0",
     "he": "^1.2.0",
     "lodash": "^4.17.15",

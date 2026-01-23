@@ -9,7 +9,7 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "0.22.3-next.163",
+    "@pie-lib/controller-utils": "1.1.0-next.0",
     "debug": "^4.1.1",
     "lodash": "^4.17.15"
   },
