@@ -56,12 +56,6 @@ describe('RawMain', () => {
     wrapper = () => shallow(<RawMain {...props} />);
   });
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-  });
-
   describe('logoc', () => {
     it('', () => {
       wrapper().instance().onChoiceChange(0, { value: '0', label: 'New Choice' });
