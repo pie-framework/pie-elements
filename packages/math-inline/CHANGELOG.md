@@ -3,17 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [10.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@10.3.2...@pie-element/math-inline@10.3.3) (2025-11-27)
-
-
-### Bug Fixes
-
-* bump libs PD-5274, PD-5211, PD-5248 ([7610b25](https://github.com/pie-framework/pie-elements/commit/7610b25423956b6492f33322513b3430051fca77))
-
-
-
-
-
 ## [10.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@10.3.1...@pie-element/math-inline@10.3.2) (2025-10-22)
 
 

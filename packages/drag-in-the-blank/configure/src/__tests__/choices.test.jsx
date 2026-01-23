@@ -32,7 +32,7 @@ jest.mock('@pie-lib/config-ui', () => ({
   ),
 }));
 
-jest.mock('@pie-lib/editable-html', () => ({
+jest.mock('@pie-lib/editable-html-tip-tap', () => ({
   __esModule: true,
   default: ({ markup, onChange }) => (
     <div

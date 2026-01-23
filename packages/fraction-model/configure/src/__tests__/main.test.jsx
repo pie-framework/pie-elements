@@ -38,7 +38,7 @@ jest.mock('../card-bar', () => {
   };
 });
 
-jest.mock('@pie-lib/editable-html', () => {
+jest.mock('@pie-lib/editable-html-tip-tap', () => {
   const React = require('react');
   return {
     __esModule: true,

@@ -29,7 +29,7 @@ jest.mock('@pie-lib/config-ui', () => ({
     dropdown: jest.fn(),
   },
 }));
-jest.mock('@pie-lib/editable-html', () => () => <div />);
+jest.mock('@pie-lib/editable-html-tip-tap', () => () => <div />);
 
 export const defaultProps = {
   model: {

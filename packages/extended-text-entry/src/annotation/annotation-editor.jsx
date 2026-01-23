@@ -14,7 +14,7 @@ import {
 } from './annotation-utils';
 import FreeformEditor from './freeform-editor';
 import AnnotationMenu from './annotation-menu';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { InputContainer } from '@pie-lib/config-ui';
 
 const TextContainer = styled('div')({

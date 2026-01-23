@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';

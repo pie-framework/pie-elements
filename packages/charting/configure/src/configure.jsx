@@ -5,7 +5,7 @@ import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@mui/material/Typography';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';

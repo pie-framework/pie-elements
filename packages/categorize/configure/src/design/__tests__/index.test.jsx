@@ -48,7 +48,7 @@ jest.mock('@pie-lib/drag', () => ({
   },
 }));
 
-jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div {...props} />);
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
 jest.mock('@pie-lib/translator', () => {
   const translator = {

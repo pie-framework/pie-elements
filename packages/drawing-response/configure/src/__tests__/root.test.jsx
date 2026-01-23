@@ -18,7 +18,7 @@ jest.mock('@pie-lib/config-ui', () => ({
   InputContainer: (props) => <div {...props}>{props.children}</div>,
 }));
 
-jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div {...props} />);
 
 jest.mock('../image-container', () => (props) => <div data-testid="image-container" {...props} />);
 
