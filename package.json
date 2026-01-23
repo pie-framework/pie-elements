@@ -19,7 +19,11 @@
     "publish:beta:minor": "lerna publish preminor --dist-tag beta --preid beta --force-publish --ignore-scripts",
     "publish:beta:prerelease": "lerna publish prerelease --dist-tag beta --preid beta --force-publish --ignore-scripts",
     "postinstall": "lerna bootstrap && git config --local include.path ../.gitconfig",
-    "clean-install": "git clean -xdf . && yarn install && lerna bootstrap && ./scripts/build babel"
+    "clean-install": "git clean -xdf . && yarn install && lerna bootstrap && ./scripts/build babel",
+    "health:scan": "pie-health scan packages",
+    "health:report": "pie-health report",
+    "health:serve": "pie-health serve",
+    "health:check": "pie-health check packages"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -31,6 +35,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@pie-framework/build-helper": "^5.2.9",
+    "@pie-framework/pie-code-health": "git+ssh://git@github.com/pie-framework/pie-code-health.git#main",
     "@pie-lib/test-utils": "0.22.3-next.0",
     "@pslb/pslb": "^4.4.1",
     "@testing-library/dom": "^10.4.1",
