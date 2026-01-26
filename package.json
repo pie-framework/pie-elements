@@ -27,9 +27,12 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@pie-framework/build-helper": "^5.2.9",
     "@pie-lib/test-utils": "1.1.0-next.0",
     "@pslb/pslb": "^4.4.1",
@@ -56,10 +59,11 @@
     "minimist": "^1.2.0",
     "pacote": "^9.5.0",
     "postcss": "8.4.31",
-    "prettier": "^2.2.1",
+    "prettier": "^3.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rimraf": "^2.6.2",
+    "rollup-plugin-analyzer": "^4.0.0",
     "semver": "^5.6.0",
     "yarn": "^1.22.0"
   },
@@ -69,13 +73,6 @@
     "packages/*/controller",
     "packages/*/print"
   ],
-  "dependencies": {
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@rollup/plugin-commonjs": "^20.0.0",
-    "express": "^4.17.1",
-    "rollup-plugin-analyzer": "^4.0.0"
-  },
   "resolutions": {
     "jest": "29.7.0",
     "jest-config": "29.7.0",
