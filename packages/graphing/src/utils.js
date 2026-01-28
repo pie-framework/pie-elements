@@ -20,3 +20,5 @@ const completeMark = {
   sine: completeRootEdge,
   polygon: completePoints,
 };
+
+export { completeMark };
