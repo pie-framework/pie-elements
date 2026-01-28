@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "1.1.0-next.0",
-    "@pie-lib/translator": "3.1.0-next.0",
+    "@pie-lib/controller-utils": "1.1.0-next.4",
+    "@pie-lib/translator": "3.1.0-next.4",
     "lodash": "^4.17.15"
   },
   "author": "",
