@@ -6,7 +6,7 @@ import defaults from '../defaults';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import MultipleChoice from '../index';
 
-jest.mock('@pie-lib/editable-html', () => (props) => (
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => (
   <div data-testid="editable-html">{props.markup}</div>
 ));
 

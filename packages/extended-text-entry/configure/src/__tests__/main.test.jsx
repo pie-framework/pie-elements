@@ -20,7 +20,7 @@ jest.mock('@pie-lib/config-ui', () => ({
   FeedbackSelector: (props) => <div data-testid="feedback-selector" />,
 }));
 
-jest.mock('@pie-lib/editable-html', () => ({
+jest.mock('@pie-lib/editable-html-tip-tap', () => ({
   __esModule: true,
   default: ({ markup, onChange }) => (
     <div data-testid="editable-html" onClick={() => onChange && onChange('new value')}>

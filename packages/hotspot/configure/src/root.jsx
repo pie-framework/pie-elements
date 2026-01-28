@@ -1,7 +1,7 @@
 import React from 'react';
 import { settings, layout, InputContainer, NumberTextField } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Info from '@mui/icons-material/Info';

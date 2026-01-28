@@ -10,7 +10,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
 import { InputContainer, settings, layout } from '@pie-lib/config-ui';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 const { dropdown } = settings;
 
 import Response from './response';

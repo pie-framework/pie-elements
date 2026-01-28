@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { AlternateSection, Choice } from '../alternateSection';
 
-jest.mock('@pie-lib/editable-html', () => ({
+jest.mock('@pie-lib/editable-html-tip-tap', () => ({
   __esModule: true,
   default: ({ markup, onChange }) => (
     <div data-testid="editable-html" onClick={() => onChange && onChange('test')}>

@@ -10,7 +10,7 @@ import Info from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
 
 import { FeedbackConfig, FormSection, InputContainer, settings, layout } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { DragProvider } from '@pie-lib/drag';
 
 import ChoiceEditor from './choice-editor';

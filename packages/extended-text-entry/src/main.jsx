@@ -6,7 +6,7 @@ import debug from 'debug';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { color, Feedback, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 
 import AnnotationEditor from './annotation/annotation-editor';

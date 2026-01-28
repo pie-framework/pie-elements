@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormSection, InputContainer, AlertDialog, settings, layout } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import NumberTextField from './number-text-field';
 import CardBar from './card-bar';

@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import GeneralConfigBlock from './general-config-block';
 import { getPluginProps, ResponseTypes } from './utils';
 

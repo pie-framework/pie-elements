@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -151,7 +151,7 @@ export class Main extends React.Component {
     let { maxLengthPerChoice } = model;
     const newValLength = decodeHTML(newVal || '').length;
 
-    if (!choices[index]) {
+    if (!choices[index] || !choices[index].length) {
       choices[index] = [{ label: newVal || '', value: '0' }];
 
       // add default values for missing choices up to the new index position
@@ -228,7 +228,7 @@ export class Main extends React.Component {
       const newCachedChoices = cachedChoices ? cloneDeep(cachedChoices) : {};
 
       nodes.forEach((node) => {
-        const keyForNode = node.data.get('index');
+        const keyForNode = node.index;
 
         if (!newChoices[keyForNode] && newCachedChoices[keyForNode]) {
           Object.assign(newChoices, pick(newCachedChoices, keyForNode));
@@ -418,14 +418,14 @@ export class Main extends React.Component {
               duplicates: true,
             },
             maxResponseAreas: maxResponseAreas,
-            respAreaToolbar: (node, value, onToolbarDone) => {
+            respAreaToolbar: (node, editor, onToolbarDone) => {
               const { model } = this.props;
-              const correctChoice = (model.choices[node.data.get('index')] || [])[0];
+              const correctChoice = (model.choices[node.attrs.index] || [])[0];
               return () => (
                 <ECRToolbar
-                  onChangeResponse={(newVal) => this.onChangeResponse(node.data.get('index'), newVal)}
+                  onChangeResponse={(newVal) => this.onChangeResponse(node.attrs.index, newVal)}
                   node={node}
-                  value={value}
+                  editor={editor}
                   onToolbarDone={onToolbarDone}
                   correctChoice={correctChoice}
                   maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}

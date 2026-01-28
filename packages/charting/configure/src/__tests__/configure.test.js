@@ -54,7 +54,7 @@ jest.mock('@pie-lib/charting', () => ({
   },
 }));
 
-jest.mock('@pie-lib/editable-html', () => ({
+jest.mock('@pie-lib/editable-html-tip-tap', () => ({
   __esModule: true,
   default: (props) => <div>{props.children}</div>,
 }));

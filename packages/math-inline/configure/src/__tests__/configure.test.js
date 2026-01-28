@@ -4,7 +4,7 @@ import Configure, { Configure as ConfigureNotStyled } from '../configure';
 import { InputContainer, InputCheckbox } from '@pie-lib/config-ui';
 import Response from '../response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 
 import { FeedbackConfig, layout, settings } from '@pie-lib/config-ui';
 
@@ -36,7 +36,7 @@ jest.mock('@pie-framework/mathquill', () => ({
   getInterface: jest.fn().mockReturnThis(),
 }));
 
-jest.mock('@pie-lib/editable-html', () => (props) => <div data-testid="editable-html" {...props} />);
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div data-testid="editable-html" {...props} />);
 
 jest.mock('../response', () => (props) => <div data-testid="response" {...props} />);
 
