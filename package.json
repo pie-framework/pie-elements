@@ -23,7 +23,11 @@
     "check-pie-lib-updates": "lerna exec -- npm-check-updates '@pie-lib/*' --pre --target prerelease",
     "update-pie-lib": "lerna exec -- npm-check-updates '@pie-lib/*' --pre --target prerelease -u",
     "check-pie-lib-next": "lerna exec -- npm-check-updates '@pie-lib/*' --pre --target prerelease --preid next",
-    "update-pie-lib-next": "lerna exec -- npm-check-updates '@pie-lib/*' --pre --target prerelease --preid next -u"
+    "update-pie-lib-next": "lerna exec -- npm-check-updates '@pie-lib/*' --pre --target prerelease --preid next -u",
+    "health:scan": "pie-health scan packages",
+    "health:report": "pie-health report",
+    "health:serve": "pie-health serve",
+    "health:check": "pie-health check packages"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -38,6 +42,7 @@
     "@babel/preset-react": "^7.0.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@pie-framework/build-helper": "^5.2.9",
+    "@pie-framework/pie-code-health": "git+ssh://git@github.com/pie-framework/pie-code-health.git#main",
     "@pie-lib/test-utils": "1.1.0-next.4",
     "@pslb/pslb": "^4.4.1",
     "@testing-library/dom": "^10.4.1",
