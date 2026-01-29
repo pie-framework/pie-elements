@@ -8,7 +8,7 @@
     "@pie-lib/translator": "3.1.0-next.4",
     "lodash": "^4.17.15"
   },
-  "version": "9.0.0-beta.0",
+  "version": "9.0.0-beta.1",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/complex-rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "6.0.0-beta.1",
+  "version": "6.0.0-beta.2",
   "publishConfig": {
     "access": "public"
   },
@@ -10,8 +10,8 @@
     "@emotion/style": "^0.8.0",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
-    "@pie-element/multi-trait-rubric": "7.0.0-beta.0",
-    "@pie-element/rubric": "7.0.0-beta.0",
+    "@pie-element/multi-trait-rubric": "^7.0.0-beta.1",
+    "@pie-element/rubric": "^7.0.0-beta.1",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/rubric": "1.1.0-next.5",
     "classnames": "^2.2.5",
