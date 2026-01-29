@@ -2,7 +2,7 @@ import { getPluginProps } from './utils';
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { FeedbackConfig, settings, layout, InputContainer, AlertDialog } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import GeneralConfigBlock from './general-config-block';

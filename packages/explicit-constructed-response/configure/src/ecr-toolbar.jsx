@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { stripHtmlTags } from './markupUtils';
 
 const findSlateNode = (key) => {
@@ -27,6 +27,7 @@ export class ECRToolbar extends React.Component {
         getNextText: PropTypes.func.isRequired,
       }),
     }),
+    editor: PropTypes.object,
     maxLengthPerChoiceEnabled: PropTypes.bool,
     pluginProps: PropTypes.object,
     spellCheck: PropTypes.bool,
@@ -38,15 +39,15 @@ export class ECRToolbar extends React.Component {
   };
 
   componentDidMount() {
-    const { correctChoice, node } = this.props;
+    const { correctChoice, node, editor } = this.props;
     const choice = correctChoice || {};
 
-    const domNode = findSlateNode(node.key);
+    const domNode = editor.view.nodeDOM(editor.state.selection.from);
 
-    if (domNode) {
+    if (domNode?.nodeType === 1) {
       //eslint-disable-next-line
       const domNodeRect = domNode.getBoundingClientRect();
-      const editor = domNode.closest('[data-slate-editor]');
+      const editor = domNode.closest('.tiptap');
       const editorRect = editor.getBoundingClientRect();
       const top = domNodeRect.top - editorRect.top;
       const left = domNodeRect.left - editorRect.left;
@@ -55,8 +56,10 @@ export class ECRToolbar extends React.Component {
         markup: choice.label,
         toolbarStyle: {
           position: 'absolute',
-          top: `${top + domNodeRect.height + 17}px`,
-          left: `${left + 20}px`,
+          // top: `${top + domNodeRect.height + 17}px`,
+          top: 0,
+          // left: `${left + 20}px`,
+          left: 0,
           width: `${domNodeRect.width - 4}px`,
         },
       });
@@ -64,16 +67,13 @@ export class ECRToolbar extends React.Component {
   }
 
   onDone = (markup) => {
-    const { node, value, onToolbarDone, onChangeResponse } = this.props;
+    const { node, editor, onToolbarDone, onChangeResponse } = this.props;
     const sanitizedMarkup = stripHtmlTags(markup);
     this.setState({ markup: sanitizedMarkup });
 
-    const updatedData = { ...node.data.toJSON(), value: sanitizedMarkup };
-    const change = value.change().setNodeByKey(node.key, { data: updatedData });
-    const nextText = value.document.getNextText(node.key);
+    editor.commands.updateAttributes('explicit_constructed_response', { value: sanitizedMarkup });
 
-    change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
-    onToolbarDone(change, true);
+    onToolbarDone(true);
     onChangeResponse(sanitizedMarkup);
   };
 
@@ -83,7 +83,7 @@ export class ECRToolbar extends React.Component {
 
   onKeyDown = (event) => {
     if (event.key === 'Enter') {
-      return false;
+      return true;
     }
   };
 

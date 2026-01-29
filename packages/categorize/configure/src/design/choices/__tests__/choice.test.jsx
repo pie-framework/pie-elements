@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Choice from '../choice';
 
-jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div {...props} />);
 jest.mock('@pie-lib/config-ui', () => ({
   NumberTextField: (props) => <input type="number" {...props} />,
 }));

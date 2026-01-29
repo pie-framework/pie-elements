@@ -14,7 +14,7 @@ import {
   removeChoiceFromAlternate,
   verifyAllowMultiplePlacements,
 } from '@pie-lib/categorize';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { DragProvider, uid } from '@pie-lib/drag';
 import { renderMath } from '@pie-lib/math-rendering';
 

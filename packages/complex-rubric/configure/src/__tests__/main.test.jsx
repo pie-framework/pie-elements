@@ -14,6 +14,13 @@ jest.mock('@pie-lib/config-ui', () => ({
 jest.mock('@pie-lib/render-ui', () => ({
   color: {
     tertiary: jest.fn(() => '#146EB3'),
+    text: jest.fn(() => '#000000'),
+    background: jest.fn(() => '#ffffff'),
+    primaryLight: jest.fn(() => '#e3f2fd'),
+    primary: jest.fn(() => '#1976d2'),
+    disabled: jest.fn(() => '#999999'),
+    correct: jest.fn(() => '#00c853'),
+    incorrect: jest.fn(() => '#d32f2f'),
   },
 }));
 

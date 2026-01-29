@@ -9,7 +9,7 @@ import RemoveCircle from '@mui/icons-material/RemoveCircle';
 import { styled } from '@mui/material/styles';
 
 import { color } from '@pie-lib/render-ui';
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 

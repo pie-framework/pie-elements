@@ -43,6 +43,10 @@ const getFeedback = (value) => {
 
 // also used in configure/src/markupUtils.js
 const getAdjustedLength = (length) => {
+  if (Math.abs(length) === Infinity) {
+    return 2;
+  }
+
   if (length <= 2) {
     return length + 2;
   }

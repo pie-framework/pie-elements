@@ -13,7 +13,7 @@ module.exports = {
 
   // Transform ES modules from these packages
   transformIgnorePatterns: [
-    'node_modules/(?!(@mui|@emotion|@testing-library|@dnd-kit|@hello-pangea|@tiptap|konva|react-konva)/)',
+    'node_modules/(?!(@mui|@emotion|@testing-library|@dnd-kit|@hello-pangea|@tiptap|konva|react-konva|d3-.*|internmap|@mapbox/point-geometry)(/|$))',
   ],
 
   // Custom resolver to handle node: protocol imports
