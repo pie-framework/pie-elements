@@ -19,7 +19,7 @@
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2"
   },
-  "gitHead": "f7801e8a2cd1bdc01ef1da55f9157f0989714bdc",
+  "gitHead": "052dc31d77fd3f6cb54ec2ac34ed84858e8672c9",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
