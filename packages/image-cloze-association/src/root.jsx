@@ -438,16 +438,20 @@ const WarningMessage = styled('span')(({ theme }) => ({
   userSelect: 'none',
 }));
 
-const WarningInfo = ({ message }) => (
-  <TransitionGroup>
-    <CSSTransition classNames={'fb'} key="fb" timeout={300}>
-      <WarningContainer key="panel">
-        <NotInterestedIcon color={'secondary'} fontSize={'small'} />
-        <WarningMessage dangerouslySetInnerHTML={{ __html: message }} />
-      </WarningContainer>
-    </CSSTransition>
-  </TransitionGroup>
-);
+const WarningInfo = ({ message }) => {
+  const nodeRef = React.useRef(null);
+
+  return (
+    <TransitionGroup>
+      <CSSTransition classNames={'fb'} key="fb" timeout={300} nodeRef={nodeRef}>
+        <WarningContainer ref={nodeRef} key="panel">
+          <NotInterestedIcon color={'secondary'} fontSize={'small'} />
+          <WarningMessage dangerouslySetInnerHTML={{ __html: message }} />
+        </WarningContainer>
+      </CSSTransition>
+    </TransitionGroup>
+  );
+};
 
 WarningInfo.propTypes = {
   message: PropTypes.string,

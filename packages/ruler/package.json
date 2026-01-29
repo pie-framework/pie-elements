@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/ruler",
-  "version": "8.3.3",
+  "version": "9.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },
@@ -14,12 +14,12 @@
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/tools": "0.43.0-mui-update.0",
+    "@pie-lib/tools": "1.1.0-next.4",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "f7170c384c729616bce308c461c7443d6bc65ccc",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

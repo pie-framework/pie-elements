@@ -2,13 +2,13 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/categorize": "0.42.0-mui-update.0",
-    "@pie-lib/controller-utils": "0.36.0-mui-update.0",
-    "@pie-lib/feedback": "0.38.0-mui-update.0",
-    "@pie-lib/translator": "2.38.0-mui-update.0",
+    "@pie-lib/categorize": "1.1.0-next.9",
+    "@pie-lib/controller-utils": "1.1.0-next.4",
+    "@pie-lib/feedback": "1.1.0-next.4",
+    "@pie-lib/translator": "3.1.0-next.4",
     "lodash": "^4.17.15"
   },
-  "version": "8.3.3",
+  "version": "9.0.0-beta.0",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

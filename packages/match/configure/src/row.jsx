@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Delete from '@mui/icons-material/Delete';
 import { useDraggable, useDroppable } from '@dnd-kit/core';
 import debug from 'debug';
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-element:categorize:configure:choice');

@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/multi-trait-rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "6.3.3",
+  "version": "7.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },
@@ -11,21 +11,17 @@
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "3.40.0-mui-update.0",
-    "@pie-lib/render-ui": "4.49.0-mui-update.0",
+    "@pie-lib/math-rendering": "4.1.0-next.4",
+    "@pie-lib/render-ui": "5.1.0-next.5",
     "clsx": "^1.1.1",
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "c47957cb243457f62111caf9d07deaad04b39545",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "exports": {
-    ".": "./src/index.js",
-    "./configure/lib": "./configure/lib/index.js"
-  }
+  "module": "src/index.js"
 }

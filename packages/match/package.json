@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "10.3.3",
+  "version": "11.0.0-beta.0",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
@@ -16,10 +16,10 @@
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "2.39.0-mui-update.0",
-    "@pie-lib/math-rendering": "3.40.0-mui-update.0",
-    "@pie-lib/render-ui": "4.49.0-mui-update.0",
-    "@pie-lib/test-utils": "0.36.0-mui-update.0",
+    "@pie-lib/correct-answer-toggle": "3.1.0-next.5",
+    "@pie-lib/math-rendering": "4.1.0-next.4",
+    "@pie-lib/render-ui": "5.1.0-next.5",
+    "@pie-lib/test-utils": "1.1.0-next.4",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.10",
@@ -29,6 +29,6 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "c47957cb243457f62111caf9d07deaad04b39545",
   "module": "src/index.js"
 }

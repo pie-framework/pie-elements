@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import cloneDeep from 'lodash/cloneDeep';
 import { settings, layout } from '@pie-lib/config-ui';
 import { InputContainer } from '@pie-lib/render-ui'
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 
 const { Panel, toggle } = settings;
 

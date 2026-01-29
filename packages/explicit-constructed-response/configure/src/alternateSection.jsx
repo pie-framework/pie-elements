@@ -10,7 +10,7 @@ import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import max from 'lodash/max';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { stripHtmlTags, getAdjustedLength, decodeHTML } from './markupUtils';
 
 const DesignContainer = styled('div')(({ theme }) => ({
@@ -111,6 +111,12 @@ export class Choice extends React.Component {
     this.updateText(strippedValue);
   };
 
+  onKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      return true;
+    }
+  };
+
   render() {
     const { value } = this.state;
     const { onDelete, spellCheck, error, showMaxLength, pluginProps } = this.props;
@@ -123,6 +129,7 @@ export class Choice extends React.Component {
             hasError={!!error}
             disableUnderline
             onChange={this.onChange}
+            onKeyDown={this.onKeyDown}
             markup={value || ''}
             activePlugins={['languageCharacters']}
             pluginProps={pluginProps}

@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/protractor",
-  "version": "6.3.3",
+  "version": "7.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },
@@ -13,11 +13,11 @@
     "@emotion/style": "^0.8.0",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
-    "@pie-lib/tools": "0.43.0-mui-update.0",
+    "@pie-lib/tools": "1.1.0-next.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "028605f2d7b2b3b7e5b8840078c0d2c5d9a562e0",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

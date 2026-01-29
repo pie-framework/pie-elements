@@ -1,7 +1,7 @@
 import { getPluginProps } from '../utils';
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { InputContainer } from '@pie-lib/render-ui';
 
 const RowLabelContainer = styled(InputContainer)(({ theme }) => ({

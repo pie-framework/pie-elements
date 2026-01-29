@@ -13,7 +13,6 @@ NEXT.CHANGELOG.md
 NEXT.CHANGELOG.json
 packages/shared-*
 packages/**/module
-packages/**/esm
 playground/**
 .yalc
 yarn-error.log

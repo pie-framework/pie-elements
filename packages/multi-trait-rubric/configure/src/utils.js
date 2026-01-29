@@ -1,4 +1,4 @@
-import { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import { DEFAULT_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { excludeZeroTypes } from './modals';
 
 export const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(

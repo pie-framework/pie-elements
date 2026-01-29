@@ -1,33 +1,25 @@
 {
   "name": "@pie-element/ebsr",
-  "version": "12.3.3",
+  "version": "13.0.0-beta.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-element/multiple-choice": "11.2.0-mui-update.4",
+    "@pie-element/multiple-choice": "12.0.0-beta.0",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/translator": "2.38.0-mui-update.0",
+    "@pie-lib/translator": "3.1.0-next.4",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.11"
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "7879a67078db250e4b7e8fdc869638024600411d",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js",
-    "./esm": "./esm/element.js",
-    "./configure/esm": "./esm/configure.js",
-    "./controller/esm": "./esm/controller.js",
-    "./print/esm": "./esm/print.js"
-  }
+  "module": "src/index.js"
 }

@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "11.4.3",
+  "version": "12.0.0-beta.0",
   "publishConfig": {
     "access": "public"
   },
@@ -11,10 +11,10 @@
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "2.39.0-mui-update.0",
-    "@pie-lib/math-rendering": "3.40.0-mui-update.0",
-    "@pie-lib/render-ui": "4.49.0-mui-update.0",
-    "@pie-lib/translator": "2.38.0-mui-update.0",
+    "@pie-lib/correct-answer-toggle": "3.1.0-next.5",
+    "@pie-lib/math-rendering": "4.1.0-next.4",
+    "@pie-lib/render-ui": "5.1.0-next.5",
+    "@pie-lib/translator": "3.1.0-next.4",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.10",
@@ -23,19 +23,10 @@
     "react-dom": "18.2.0",
     "react-transition-group": "^2.3.1"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "7879a67078db250e4b7e8fdc869638024600411d",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js",
-    "./configure/lib": "./configure/lib/index.js",
-    "./esm": "./esm/element.js",
-    "./configure/esm": "./esm/configure.js",
-    "./controller/esm": "./esm/controller.js",
-    "./print/esm": "./esm/print.js"
-  }
+  "module": "src/index.js"
 }
