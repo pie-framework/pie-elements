@@ -23,7 +23,7 @@
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-draggable": "^3.0.5"
+    "react-draggable": "^3.3.0"
   },
   "gitHead": "f63dcdd0432cb3ab6f6c6887b362381472247628",
   "main": "lib/index.js",
