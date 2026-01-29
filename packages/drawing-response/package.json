@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/drawing-response",
-  "version": "11.0.0-beta.0",
+  "version": "11.0.0-beta.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -26,7 +26,7 @@
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "028605f2d7b2b3b7e5b8840078c0d2c5d9a562e0",
+  "gitHead": "cc08ba0f4d031351d6c0dbeb26403f6ed193a1d5",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

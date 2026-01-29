@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/placement-ordering",
-  "version": "13.0.0-beta.0",
+  "version": "13.0.0-beta.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -29,7 +29,7 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "c47957cb243457f62111caf9d07deaad04b39545",
+  "gitHead": "38eb4b4700ca4eaad440566dfc50623ff8876a92",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

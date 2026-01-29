@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "12.0.0-beta.0",
+  "version": "12.0.0-beta.1",
   "publishConfig": {
     "access": "public"
   },
@@ -23,7 +23,7 @@
     "react-dom": "18.2.0",
     "react-transition-group": "^2.3.1"
   },
-  "gitHead": "7879a67078db250e4b7e8fdc869638024600411d",
+  "gitHead": "9aff2ae5a32f35f8aec517c42cd95e3caecbab0f",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

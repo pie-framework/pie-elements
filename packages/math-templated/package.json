@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "6.0.0-beta.0",
+  "version": "6.0.0-beta.1",
   "description": "",
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -23,7 +23,7 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "f7170c384c729616bce308c461c7443d6bc65ccc",
+  "gitHead": "052dc31d77fd3f6cb54ec2ac34ed84858e8672c9",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

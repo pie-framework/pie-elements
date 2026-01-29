@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "11.0.0-beta.0",
+  "version": "11.0.0-beta.1",
   "description": "",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
@@ -26,7 +26,7 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "d122562838e319cebb58d61b3eedd952fc9ad960",
+  "gitHead": "052dc31d77fd3f6cb54ec2ac34ed84858e8672c9",
   "main": "lib/index.js",
   "module": "src/index.js"
 }
