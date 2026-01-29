@@ -25,7 +25,7 @@
     "react-dom": "18.2.0",
     "react-draggable": "^3.3.0"
   },
-  "gitHead": "f63dcdd0432cb3ab6f6c6887b362381472247628",
+  "gitHead": "f7801e8a2cd1bdc01ef1da55f9157f0989714bdc",
   "main": "lib/index.js",
   "module": "src/index.js"
 }
