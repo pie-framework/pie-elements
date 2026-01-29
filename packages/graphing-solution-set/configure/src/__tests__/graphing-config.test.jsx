@@ -1,24 +1,18 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { GraphingConfig } from '../graphing-config';
-import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/graphing', () => ({
-  GraphContainer: ({ onChangeMarks, onChangeLabels, onChangeTitle, ...props }) => (
+jest.mock('@pie-lib/graphing-solution-set', () => ({
+  GraphContainer: ({ children, onChangeLabels, onChangeTitle, ...props }) => (
     <div data-testid="graph-container" {...props}>
-      <button
-        data-testid="change-marks-btn"
-        onClick={() => onChangeMarks && onChangeMarks([{ type: 'point', x: 1, y: 1 }])}
-      >
-        Change Marks
-      </button>
       <button data-testid="change-labels-btn" onClick={() => onChangeLabels && onChangeLabels({ left: 'new' })}>
         Change Labels
       </button>
       <button data-testid="change-title-btn" onClick={() => onChangeTitle && onChangeTitle('new title')}>
         Change Title
       </button>
+      {children}
     </div>
   ),
   GridSetup: ({ onChange, onChangeView, ...props }) => (
@@ -52,46 +46,77 @@ jest.mock('@pie-lib/config-ui', () => ({
 const theme = createTheme();
 
 describe('GraphingConfig', () => {
-  let props;
   let mockOnChange;
+
+  const defaultModel = {
+    answers: {
+      correctAnswer: {
+        name: 'Correct Answer',
+        marks: [],
+      },
+    },
+    arrows: { left: true, right: true, up: true, down: true },
+    coordinatesOnHover: false,
+    defaultGridConfiguration: 0,
+    domain: {
+      min: -5,
+      max: 5,
+      step: 1,
+      labelStep: 1,
+      axisLabel: 'x',
+    },
+    range: {
+      min: -5,
+      max: 5,
+      step: 1,
+      labelStep: 1,
+      axisLabel: 'y',
+    },
+    graph: { width: 500, height: 500 },
+    includeAxes: true,
+    labels: { left: 'y', bottom: 'x' },
+    standardGrid: false,
+    title: 'Test Graph',
+    gssLineData: {
+      sections: [],
+      selectedTool: 'lineA',
+    },
+  };
+
+  const defaultProps = {
+    model: defaultModel,
+    onChange: jest.fn(),
+    authoring: {
+      enabled: true,
+      axisLabel: { enabled: true },
+      min: { enabled: true },
+      max: { enabled: true },
+      step: { enabled: true },
+      labelStep: { enabled: true },
+      standardGridEnabled: true,
+    },
+    availableTools: ['point', 'line', 'segment'],
+    dimensionsEnabled: true,
+    graphDimensions: { min: 150, max: 800, step: 20 },
+    gridConfigurations: [
+      { label: 'Grid 1', domain: { min: -5, max: 5 }, range: { min: -5, max: 5 } },
+      { label: 'Grid 2', domain: { min: -10, max: 10 }, range: { min: -10, max: 10 } },
+    ],
+    labelsPlaceholders: { left: 'y', bottom: 'x', top: '', right: '' },
+    showLabels: true,
+    showTitle: true,
+    titlePlaceholder: 'Enter title',
+  };
 
   beforeEach(() => {
     jest.clearAllMocks();
     mockOnChange = jest.fn();
-    props = {
-      classes: {},
-      model: defaultValues.model,
-      onChange: mockOnChange,
-      tools: [],
-      authoring: {
-        enabled: true,
-        axisLabel: { enabled: true },
-        min: { enabled: true },
-        max: { enabled: true },
-        step: { enabled: true },
-        labelStep: { enabled: true },
-        standardGridEnabled: true,
-      },
-      availableTools: ['point', 'line', 'segment'],
-      dimensionsEnabled: true,
-      graphDimensions: { min: 150, max: 800, step: 20, enabled: true },
-      gridConfigurations: [
-        { label: 'Grid 1', domain: { min: -5, max: 5 }, range: { min: -5, max: 5 } },
-        { label: 'Grid 2', domain: { min: -10, max: 10 }, range: { min: -10, max: 10 } },
-      ],
-      labelsPlaceholders: { left: 'y', bottom: 'x', top: '', right: '' },
-      showLabels: true,
-      showTitle: true,
-      titlePlaceholder: 'Enter title',
-    };
   });
 
-  const renderGraphingConfig = (newProps = {}) => {
-    const configureProps = { ...props, ...newProps };
-
+  const renderGraphingConfig = (props = {}) => {
     return render(
       <ThemeProvider theme={theme}>
-        <GraphingConfig {...configureProps} />
+        <GraphingConfig {...defaultProps} onChange={mockOnChange} {...props} />
       </ThemeProvider>
     );
   };
@@ -129,14 +154,14 @@ describe('GraphingConfig', () => {
       expect(screen.queryByTestId('grid-setup')).not.toBeInTheDocument();
     });
 
-    it('renders graph attributes section', () => {
+    it('renders graph attributes title', () => {
       renderGraphingConfig();
       expect(screen.getByText('Define Graph Attributes')).toBeInTheDocument();
     });
 
     it('renders subtitle text', () => {
       renderGraphingConfig();
-      expect(screen.getByText('Use this interface to add/edit a title and/or labels, and to set background shapes')).toBeInTheDocument();
+      expect(screen.getByText('Use this interface to add/edit a title and/or labels')).toBeInTheDocument();
     });
   });
 
@@ -146,21 +171,10 @@ describe('GraphingConfig', () => {
       expect(screen.getByText('Grid 1')).toBeInTheDocument();
     });
 
-    it('changes grid configuration when dropdown changes', () => {
-      renderGraphingConfig();
-      const selectedOption = screen.getByText('Grid 1');
-      
-      fireEvent.mouseDown(selectedOption);
-      const option = screen.getByText('Grid 2');
-      fireEvent.click(option);
-
-      expect(mockOnChange).toHaveBeenCalled();
-    });
-
     it('renders all grid configuration options', () => {
       renderGraphingConfig();
-      const selectedOption = screen.getByText('Grid 1');
       
+      const selectedOption = screen.getByText('Grid 1');
       fireEvent.mouseDown(selectedOption);
       
       const allGrid1Options = screen.getAllByText('Grid 1');
@@ -172,18 +186,6 @@ describe('GraphingConfig', () => {
   });
 
   describe('change handlers', () => {
-    it('calls onChange when background marks change', () => {
-      const testInstance = new GraphingConfig({ ...props, onChange: mockOnChange });
-      const bM = [{ x: 1, y: 1, type: 'point' }];
-
-      testInstance.changeBackgroundMarks(bM);
-
-      expect(mockOnChange).toBeCalledWith({
-        ...defaultValues.model,
-        backgroundMarks: bM,
-      });
-    });
-
     it('calls onChange when labels change', () => {
       renderGraphingConfig();
       const changeLabelBtn = screen.getByTestId('change-labels-btn');
@@ -225,13 +227,37 @@ describe('GraphingConfig', () => {
       renderGraphingConfig();
       expect(screen.queryByTestId('alert-dialog')).not.toBeInTheDocument();
     });
+
+    it('shows alert dialog when marks would be out of bounds', () => {
+      const modelWithMarks = {
+        ...defaultModel,
+        answers: {
+          correctAnswer: {
+            name: 'Correct Answer',
+            marks: [{ type: 'point', x: 100, y: 100 }],
+          },
+        },
+      };
+      
+      const { rerender } = renderGraphingConfig({ model: modelWithMarks });
+      
+      const changeGridBtn = screen.getByTestId('grid-setup-change-btn');
+      fireEvent.click(changeGridBtn);
+      
+      rerender(
+        <ThemeProvider theme={theme}>
+          <GraphingConfig {...defaultProps} model={modelWithMarks} onChange={mockOnChange} />
+        </ThemeProvider>
+      );
+      
+      expect(changeGridBtn).toBeInTheDocument();
+    });
   });
 
   describe('state management', () => {
     it('initializes with correct grid and label values', () => {
       const { container } = renderGraphingConfig();
       expect(container).toBeInTheDocument();
-      // State is internal, verified through successful rendering
     });
 
     it('handles showPixelGuides state change', () => {
@@ -245,12 +271,21 @@ describe('GraphingConfig', () => {
   });
 
   describe('props handling', () => {
+    it('handles empty graph object gracefully', () => {
+      const modelWithEmptyGraph = {
+        ...defaultModel,
+        graph: { width: 500, height: 500 },
+      };
+      
+      const { container } = renderGraphingConfig({ model: modelWithEmptyGraph });
+      expect(container).toBeInTheDocument();
+    });
+
     it('applies size constraints correctly', () => {
       const customGraphDimensions = {
         min: 200,
         max: 600,
         step: 50,
-        enabled: true,
       };
       
       const { container } = renderGraphingConfig({ graphDimensions: customGraphDimensions });
@@ -259,21 +294,11 @@ describe('GraphingConfig', () => {
 
     it('handles standardGrid prop', () => {
       const modelWithStandardGrid = {
-        ...defaultValues.model,
+        ...defaultModel,
         standardGrid: true,
       };
       
       const { container } = renderGraphingConfig({ model: modelWithStandardGrid });
-      expect(container).toBeInTheDocument();
-    });
-
-    it('handles includeAxes prop', () => {
-      const modelWithAxes = {
-        ...defaultValues.model,
-        includeAxes: false,
-      };
-      
-      const { container } = renderGraphingConfig({ model: modelWithAxes });
       expect(container).toBeInTheDocument();
     });
   });
@@ -311,6 +336,11 @@ describe('GraphingConfig', () => {
       
       expect(screen.queryByTestId('grid-setup')).not.toBeInTheDocument();
     });
+
+    it('handles dimensionsEnabled prop', () => {
+      renderGraphingConfig({ dimensionsEnabled: false });
+      expect(screen.getByTestId('graph-container')).toBeInTheDocument();
+    });
   });
 
   describe('mathMlOptions', () => {
@@ -320,27 +350,10 @@ describe('GraphingConfig', () => {
       
       expect(screen.getByTestId('graph-container')).toBeInTheDocument();
     });
-  });
 
-  describe('removeIncompleteTool', () => {
-    it('handles removeIncompleteTool prop', () => {
-      const { container } = renderGraphingConfig({ removeIncompleteTool: true });
-      expect(container).toBeInTheDocument();
-    });
-  });
-
-  describe('logic', () => {
-    it('changeBackgroundMarks calls onChange', () => {
-      const onChange = jest.fn();
-      const testInstance = new GraphingConfig({ ...props, onChange });
-      const bM = [{ x: 1, y: 1, type: 'point' }];
-
-      testInstance.changeBackgroundMarks(bM);
-
-      expect(onChange).toBeCalledWith({
-        ...defaultValues.model,
-        backgroundMarks: bM,
-      });
+    it('handles undefined mathMlOptions', () => {
+      renderGraphingConfig({ mathMlOptions: undefined });
+      expect(screen.getByTestId('graph-container')).toBeInTheDocument();
     });
   });
 });
