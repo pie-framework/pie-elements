@@ -4,7 +4,7 @@ import React from 'react';
 import AnnotationEditor from '../annotation-editor';
 import * as utils from '../annotation-utils';
 
-jest.mock('@pie-lib/editable-html', () => ({
+jest.mock('@pie-lib/editable-html-tip-tap', () => ({
   __esModule: true,
   default: ({ markup, onChange, disabled }) => (
     <div data-testid="editable-html" onClick={() => !disabled && onChange && onChange('new value')}>

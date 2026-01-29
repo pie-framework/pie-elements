@@ -9,7 +9,7 @@ import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } fro
 import Chip from '@mui/material/Chip';
 import Info from '@mui/icons-material/Info';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import Tooltip from '@mui/material/Tooltip';
 import { generateValidationMessage } from './utils';
 

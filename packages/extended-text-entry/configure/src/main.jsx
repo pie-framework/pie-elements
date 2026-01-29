@@ -3,7 +3,7 @@ import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/con
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 
 const { Panel, toggle, numberFields, dropdown } = settings;
 

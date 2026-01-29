@@ -13,14 +13,15 @@ jest.mock('@pie-lib/config-ui', () => ({
 
 jest.mock('@pie-lib/render-ui', () => ({
   color: {
-    text: jest.fn(() => '#000'),
-    background: jest.fn(() => '#fff'),
-    primaryLight: jest.fn(() => '#ccc'),
-    correct: jest.fn(() => '#00ff00'),
-    incorrect: jest.fn(() => '#ff0000'),
+    text: jest.fn(() => '#000000'),
+    background: jest.fn(() => '#ffffff'),
+    primaryLight: jest.fn(() => '#e3f2fd'),
+    primary: jest.fn(() => '#1976d2'),
     secondary: jest.fn(() => '#888'),
     tertiary: jest.fn(() => '#146EB3'),
-    disabled: jest.fn(() => '#999'),
+    disabled: jest.fn(() => '#999999'),
+    correct: jest.fn(() => '#00c853'),
+    incorrect: jest.fn(() => '#d32f2f'),
   },
   Collapsible: (props) => <div data-testid="collapsible">{props.children}</div>,
   Readable: (props) => <div data-testid="readable">{props.children}</div>,

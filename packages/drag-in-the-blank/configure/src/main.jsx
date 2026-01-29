@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { layout, settings } from '@pie-lib/config-ui';
 import { InputContainer } from '@pie-lib/render-ui';
 import { DragProvider } from '@pie-lib/drag';

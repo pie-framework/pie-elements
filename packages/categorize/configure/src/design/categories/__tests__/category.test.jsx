@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Category } from '../category';
 
-jest.mock('@pie-lib/editable-html', () => (props) => <div {...props} />);
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div {...props} />);
 jest.mock('../droppable-placeholder', () => (props) => <div {...props} />);
 
 const theme = createTheme();

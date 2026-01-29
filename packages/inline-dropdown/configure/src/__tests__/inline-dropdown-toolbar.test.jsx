@@ -24,6 +24,13 @@ describe('Main', () => {
     },
   };
 
+  const editor = {
+    commands: {
+      updateAttributes: jest.fn(),
+      refreshResponseArea: jest.fn(),
+    }
+  };
+
   const wrapper = () => {
     const defaults = {
       onAddChoice,
@@ -31,18 +38,13 @@ describe('Main', () => {
       onSelectChoice,
       node: {
         key: '1',
-        data: {
-          toJSON: jest.fn(),
-          get: (key) => {
-            if (key === 'index') {
-              return '0';
-            }
-
-            return 'cow';
-          },
+        attrs: {
+          index: '0',
+          value: 'cow'
         },
       },
       value,
+      editor,
       onToolbarDone,
       choices: [
         {
@@ -74,18 +76,13 @@ describe('Main', () => {
       onSelectChoice,
       node: {
         key: '1',
-        data: {
-          toJSON: jest.fn(),
-          get: (key) => {
-            if (key === 'index') {
-              return '0';
-            }
-
-            return 'cow';
-          },
+        attrs: {
+          index: '0',
+          value: 'cow',
         },
       },
       value,
+      editor,
       onToolbarDone,
       choices: [
         {

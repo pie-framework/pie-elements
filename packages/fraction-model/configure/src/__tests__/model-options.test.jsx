@@ -14,7 +14,7 @@ jest.mock('@pie-lib/config-ui', () => {
   };
 });
 
-jest.mock('@pie-lib/editable-html', () => {
+jest.mock('@pie-lib/editable-html-tip-tap', () => {
   const React = require('react');
   return {
     EditableHtml: (props) => React.createElement('div', { ...props }),

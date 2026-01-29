@@ -50,7 +50,7 @@ jest.mock('@pie-element/number-line', () => ({
   },
 }));
 
-jest.mock('@pie-lib/editable-html', () => (props) => (
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => (
   <div data-testid="editable-html">{props.markup}</div>
 ));
 
