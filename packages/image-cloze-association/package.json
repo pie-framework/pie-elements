@@ -26,7 +26,7 @@
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "f37f1794773111d727c28a39378fb26b1c2c3072",
+  "gitHead": "a15dd0ea81626703eb753bc0ab4c81bb2a96d58d",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
