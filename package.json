@@ -100,7 +100,6 @@
     "@pie-lib/controller-utils": "1.1.0-next.4",
     "@pie-lib/correct-answer-toggle": "3.1.0-next.5",
     "@pie-lib/drag": "3.1.0-next.5",
-    "@pie-lib/editable-html": "12.1.0-next.5",
     "@pie-lib/editable-html-tip-tap": "1.1.0-next.5",
     "@pie-lib/feedback": "1.1.0-next.4",
     "@pie-lib/graphing-solution-set": "3.1.0-next.25",
