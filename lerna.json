@@ -1,5 +1,4 @@
 {
-  "lerna": "3.13.1",
   "packages": ["packages/*", "packages/*/configure", "packages/*/controller"],
   "version": "independent",
   "npmClient": "yarn",
