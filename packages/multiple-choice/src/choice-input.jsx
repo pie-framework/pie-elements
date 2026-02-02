@@ -297,10 +297,10 @@ export class ChoiceInput extends React.Component {
         {displayKey && !isSelectionButtonBelow ? (
           <Row component="span">
             {displayKey}.{'\u00A0'}
-            <PreviewPrompt className="label" prompt={label} tagName="span" />
+            <PreviewPrompt className="prompt-label" prompt={label} tagName="span" />
           </Row>
         ) : (
-          <PreviewPrompt className="label" prompt={label} tagName="span" />
+          <PreviewPrompt className="prompt-label" prompt={label} tagName="span" />
         )}
       </>
     );
