@@ -21,7 +21,7 @@
     "prop-types": "^15.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-transition-group": "^2.3.1"
+    "react-transition-group": "^4.4.5"
   },
   "gitHead": "9aff2ae5a32f35f8aec517c42cd95e3caecbab0f",
   "scripts": {
