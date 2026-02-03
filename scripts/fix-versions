@@ -33,6 +33,7 @@ dirs
       const versions = _(rows)
         .filter((r) => r.startsWith(`${pkg.name}@`))
         .map((r) => r.replace(`${pkg.name}@`, ''))
+        .filter(semver.valid)
         .sort(semver.compare)
         .value();
       // const versions = rows
