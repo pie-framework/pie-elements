@@ -12,7 +12,7 @@
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "11.36.0-mui-update.0",
     "@pie-lib/editable-html": "11.28.0-mui-update.0",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.8.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   }

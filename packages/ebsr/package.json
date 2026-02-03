@@ -12,7 +12,7 @@
     "@pie-lib/translator": "3.1.0-next.4",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.23"
   },
   "author": "pie framework developers",
   "license": "ISC",

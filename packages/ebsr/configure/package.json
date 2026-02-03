@@ -14,8 +14,8 @@
     "@pie-element/multiple-choice": "^12.0.0-beta.1",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "12.1.0-next.5",
-    "lodash": "^4.17.15",
-    "prop-types": "^15.6.2",
+    "lodash": "^4.17.23",
+    "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
