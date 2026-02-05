@@ -39,7 +39,13 @@ const PassageAuthor = styled('div')({
 const TabStyled = styled(Tab)(({ theme }) => ({
   background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
   fontSize: 'inherit',
+  fontFamily: 'Roboto, sans-serif',
+  opacity: 0.7,
   color: theme.palette.common.black, // remove when PD-2801 is DONE
+  '&.Mui-selected': {
+    opacity: 1,
+    color: theme.palette.common.black,
+  }
 }));
 
 class StimulusTabs extends React.Component {
@@ -217,7 +223,16 @@ class StimulusTabs extends React.Component {
           ) : (
             <>
               <Tabs
-                sx={{ position: 'sticky', top: 0, background: color.background(), color: color.text() }}
+                sx={{ 
+                  position: 'sticky', 
+                  top: 0, 
+                  background: color.background(), 
+                  color: color.text(),
+                  fontFamily: 'Roboto, sans-serif',
+                  '& .MuiTabs-indicator': {
+                    backgroundColor: '#f50057',
+                  }
+                }}
                 value={activeTab}
                 onChange={this.handleChange}
               >
