@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debug from 'debug';
+import { useTheme } from '@mui/material/styles';
 import { useDroppable } from '@dnd-kit/core';
 import { PlaceHolder } from '@pie-lib/drag';
+import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-ui:categorize:droppable-placeholder');
 
@@ -12,8 +14,10 @@ const DroppablePlaceholder = ({
   disabled,
   choiceBoard,
   minRowHeight,
-  id
+  id,
+  correct
 }) => {
+  const theme = useTheme();
   const { setNodeRef, isOver } = useDroppable({
     id,
     data: {
@@ -22,6 +26,26 @@ const DroppablePlaceholder = ({
     },
     disabled,
   });
+
+  const extraStyles = {
+    padding: theme.spacing(0.5),
+    borderRadius: theme.spacing(0.5),
+    gridColumnGap: 0,
+    gridRowGap: 0,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'flex-start',
+    width: '100%',
+    height: '100%',
+    ...(correct === false && {
+      border: `solid 2px ${color.incorrect()}`,
+    }),
+    ...(correct === true && {
+      border: `solid 2px ${color.correct()}`,
+    }),
+  };
 
   return (
     <div
@@ -38,6 +62,7 @@ const DroppablePlaceholder = ({
         disabled={disabled}
         choiceBoard={choiceBoard}
         isCategorize
+        extraStyles={extraStyles}
       >
         {children}
       </PlaceHolder>
@@ -52,7 +77,8 @@ DroppablePlaceholder.propTypes = {
   disabled: PropTypes.bool,
   minRowHeight: PropTypes.string,
   onDropChoice: PropTypes.func,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  correct: PropTypes.bool
 };
 
 export default DroppablePlaceholder;
