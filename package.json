@@ -54,7 +54,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^29.7.0",
     "babel-loader": "^8.4.1",
-    "baseline-browser-mapping": "^2.9.19",
     "chalk": "^4.1.2",
     "debug": "^4.1.1",
     "eslint": "^8.57.0",
