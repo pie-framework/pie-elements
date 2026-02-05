@@ -18,7 +18,7 @@
     "@pie-lib/math-rendering": "4.1.0-next.4",
     "@pie-lib/render-ui": "5.1.0-next.5",
     "debug": "^4.1.1",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^5.2.1"

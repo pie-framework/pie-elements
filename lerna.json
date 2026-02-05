@@ -1,9 +1,7 @@
 {
-  "lerna": "3.13.1",
   "packages": ["packages/*", "packages/*/configure", "packages/*/controller"],
   "version": "independent",
   "npmClient": "yarn",
-  "useWorkspaces": true,
   "command": {
     "publish": {
       "ignoreChanges": ["CHANGELOG.md", "CHANGELOG.json", "yarn.lock"],

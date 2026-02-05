@@ -45,20 +45,28 @@ exports.getPackageFiles = () => {
 
 const getSatisfyingVersions = async (name, range) => {
   const p = await pacote.packument(`${name}@latest`);
+  const satisfying = Object.keys(p.versions)
+    .filter(semver.valid)
+    .filter((v) => semver.satisfies(v, range));
 
-  const satisfying = Object.keys(p.versions).filter((v) => semver.satisfies(v, range));
   log(name, range, 'satisfying:', satisfying);
   return satisfying;
 };
 
 const getLatestSatisfying = async (name, nextResolved) => {
   const baseVersion = semver.coerce(nextResolved);
+
+  if (!baseVersion) {
+    return undefined;
+  }
+
   const range = new semver.Range(`^${baseVersion.toString()}`);
   const satisfying = await getSatisfyingVersions(name, range.raw);
 
   if (satisfying.length === 0) {
     return undefined;
   }
+
   satisfying.sort((a, b) => (semver.gt(a, b) ? 1 : semver.eq(a, b) ? 0 : -1));
 
   const latest = satisfying[satisfying.length - 1];

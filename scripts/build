@@ -89,16 +89,25 @@ class ElementsCommands extends Commands {
     return super.build().then(() => this.sharedBuild());
   }
 
-  babel() {
-    return Promise.all(
-      getElementPackages(join(this.projectRoot, 'packages'))
-        .filter((p) => pathExistsSync(join(p.dir, 'src')))
-        .map((p) => {
+  async babel() {
+    const packages = getElementPackages(join(this.projectRoot, 'packages'))
+      .filter((p) => pathExistsSync(join(p.dir, 'src')));
+    
+    // Process packages in batches to avoid OOM in CI environments
+    // Each babel process spawns a new Node.js process, so running
+    // all in parallel can exhaust memory. Batches of 3 balance speed and memory.
+    const batchSize = 3;
+    const batches = _.chunk(packages, batchSize);
+    
+    for (const batch of batches) {
+      await Promise.all(
+        batch.map((p) => {
           const cwd = resolve(__dirname, '..', p.dir);
           const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
           return this.runCmd(cmd, { cwd });
         })
-    );
+      );
+    }
   }
 }
 

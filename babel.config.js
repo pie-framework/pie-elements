@@ -4,9 +4,9 @@ module.exports = (api) => {
   return {
     presets: ['@babel/preset-env', '@babel/preset-react'],
     plugins: [
-      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-transform-class-properties',
       '@babel/plugin-proposal-export-default-from',
-      '@babel/plugin-proposal-export-namespace-from',
+      '@babel/plugin-transform-export-namespace-from',
       '@babel/plugin-transform-runtime',
     ],
     // Don't ignore node_modules in test mode so ES modules can be transformed
