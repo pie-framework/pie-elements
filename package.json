@@ -1,9 +1,7 @@
 {
+  "name": "pie-elements",
   "private": true,
-  "browserslist": [
-    ">0.5%",
-    "not dead"
-  ],
+  "license": "MIT",
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx packages",
     "test": "scripts/build test",
@@ -28,6 +26,10 @@
     "health:report": "pie-health report",
     "health:serve": "pie-health serve",
     "health:check": "pie-health check packages"
+  },
+  "dependencies": {
+    "core-js": "^3.40.0",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.6",
@@ -74,16 +76,6 @@
     "semver": "^7.3.2",
     "yarn": "^1.22.22"
   },
-  "workspaces": [
-    "packages/*",
-    "packages/*/configure",
-    "packages/*/controller",
-    "packages/*/print"
-  ],
-  "dependencies": {
-    "core-js": "^3.40.0",
-    "express": "^4.17.1"
-  },
   "resolutions": {
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -122,5 +114,15 @@
     "@pie-lib/text-select": "2.1.1-next.0",
     "@pie-lib/tools": "1.1.1-next.0",
     "@pie-lib/translator": "3.1.1-next.0"
-  }
+  },
+  "browserslist": [
+    ">0.5%",
+    "not dead"
+  ],
+  "workspaces": [
+    "packages/*",
+    "packages/*/configure",
+    "packages/*/controller",
+    "packages/*/print"
+  ]
 }
