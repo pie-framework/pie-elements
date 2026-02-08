@@ -40,7 +40,7 @@
     "@babel/preset-env": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
     "@pie-framework/build-helper": "^5.2.9",
-    "@pie-framework/pie-code-health": "git+ssh://git@github.com/pie-framework/pie-code-health.git#main",
+    "@pie-framework/pie-code-health": "https://github.com/pie-framework/pie-code-health.git#main",
     "@pie-lib/test-utils": "1.1.1-next.0",
     "@pslb/pslb": "^4.4.1",
     "@rollup/plugin-commonjs": "^20.0.0",
