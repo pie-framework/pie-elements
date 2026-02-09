@@ -24,12 +24,16 @@
     "he": "^1.2.0",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "author": "",
   "license": "ISC",
   "gitHead": "38eb4b4700ca4eaad440566dfc50623ff8876a92",
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
+  }
 }
