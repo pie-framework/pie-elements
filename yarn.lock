@@ -2669,7 +2669,7 @@
     react-draggable "^3.3.0"
     react-input-autosize "^2.2.1"
 
-"@pie-lib/config-ui@12.1.1-next.0":
+"@pie-lib/config-ui@12.1.1-next.0", "@pie-lib/config-ui@12.1.1-next.1":
   version "12.1.1-next.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-12.1.1-next.0.tgz#69a1514e09e39febdf39f78cad620853ee33868c"
   integrity sha512-OlX8BQ6bYCZmLgDAxylJJcFykK4VGbJbrFt6RDIa+wRNwXL7GX48kxjYkbxsUvYyr6n6/gIrozdvWsbbqviVvA==
@@ -2731,7 +2731,7 @@
     prop-types "^15.7.2"
     react "^18.2.0"
 
-"@pie-lib/editable-html-tip-tap@1.1.1-next.0", "@pie-lib/editable-html-tip-tap@^1.1.1-next.0":
+"@pie-lib/editable-html-tip-tap@1.1.1-next.0", "@pie-lib/editable-html-tip-tap@1.1.1-next.1", "@pie-lib/editable-html-tip-tap@^1.1.1-next.0":
   version "1.1.1-next.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html-tip-tap/-/editable-html-tip-tap-1.1.1-next.0.tgz#7e2a7bb3c058efa1ebc5149207a97c02df0f2f1a"
   integrity sha512-ylg1XkSPvVS4BNkGP1vh66xWGTF9gB9+eWZNvdwL6mOL7OZaLyUx+7cKSIGeU9xWRNNYDy6XkO9uYqjdKVK4hw==
@@ -2918,7 +2918,7 @@
     "@mui/material" "^7.3.4"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@2.1.1-next.0":
+"@pie-lib/mask-markup@2.1.1-next.0", "@pie-lib/mask-markup@2.1.1-next.1":
   version "2.1.1-next.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-2.1.1-next.0.tgz#d1f60b73a7af117e25725cbe4233cbde44f213fe"
   integrity sha512-DRc99VAgeXqZOvqf8rgst2l0yp6T3Rva1LoysDM55XBgwpjw5jRvlhMhAHr3sglbu4XJ0LZsAPL+rKFqlAfydw==

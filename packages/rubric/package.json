@@ -3,6 +3,10 @@
   "version": "7.0.0-beta.1",
   "main": "lib/index.js",
   "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
+  },
   "description": "Rubric Scoring Interaction",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {

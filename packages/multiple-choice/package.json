@@ -19,8 +19,8 @@
     "debug": "^4.1.1",
     "lodash-es": "^4.17.23",
     "prop-types": "^15.8.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-transition-group": "^4.4.5"
   },
   "gitHead": "9aff2ae5a32f35f8aec517c42cd95e3caecbab0f",
@@ -28,5 +28,9 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
+  }
 }

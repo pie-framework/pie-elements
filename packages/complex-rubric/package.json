@@ -25,6 +25,10 @@
   },
   "main": "lib/index.js",
   "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
+  },
   "description": "Complex Rubric Scoring Interaction",
   "author": "pie framework developers",
   "license": "ISC"

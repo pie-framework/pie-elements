@@ -16,7 +16,7 @@
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/categorize": "1.1.1-next.0",
-    "@pie-lib/config-ui": "12.1.1-next.0",
+    "@pie-lib/config-ui": "12.1.1-next.1",
     "@pie-lib/correct-answer-toggle": "3.1.1-next.0",
     "@pie-lib/drag": "3.1.1-next.0",
     "@pie-lib/math-rendering": "4.1.1-next.0",
@@ -25,8 +25,8 @@
     "debug": "^4.1.1",
     "lodash-es": "^4.17.23",
     "prop-types": "^15.6.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "gitHead": "9aff2ae5a32f35f8aec517c42cd95e3caecbab0f",
   "scripts": {
