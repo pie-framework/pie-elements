@@ -2611,9 +2611,9 @@
     unist-util-modify-children "^1.0.0"
     unist-util-visit-children "^1.0.0"
 
-"@pie-framework/pie-code-health@git+ssh://git@github.com/pie-framework/pie-code-health.git#main":
+"@pie-framework/pie-code-health@https://github.com/pie-framework/pie-code-health.git#main":
   version "1.0.0"
-  resolved "git+ssh://git@github.com/pie-framework/pie-code-health.git#47fd9453c9702376eae0507f31dbce53acc8f67d"
+  resolved "https://github.com/pie-framework/pie-code-health.git#47fd9453c9702376eae0507f31dbce53acc8f67d"
   dependencies:
     chalk "^5.3.0"
     commander "^11.1.0"
