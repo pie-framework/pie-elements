@@ -10,7 +10,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Main from './main';
 import debug from 'debug';
-import defaults from 'lodash/defaults';
+import { defaults } from 'lodash-es';
 
 import sensibleDefaults from './defaults';
 import { processMarkup, createSlateMarkup } from './markupUtils';

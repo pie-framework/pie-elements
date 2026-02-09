@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import isObject from 'lodash/isObject';
-import isArray from 'lodash/isArray';
+import { isArray,isObject } from 'lodash-es';
 import { AnswerArea } from '../answer-area';
 import { model, answer } from '../../docs/demo/config';
 

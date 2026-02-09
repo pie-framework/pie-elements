@@ -1,5 +1,5 @@
 import debug from 'debug';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';

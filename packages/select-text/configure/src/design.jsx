@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
-import cloneDeep from 'lodash/cloneDeep';
-import debounce from 'lodash/debounce';
+import { cloneDeep, debounce } from 'lodash-es';
 import { Tokenizer } from '@pie-lib/text-select';
 import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } from '@pie-lib/config-ui';
 import Chip from '@mui/material/Chip';
@@ -342,38 +341,23 @@ export class Design extends React.Component {
 
         {tokens.settings && (
           <TokenizerContainer label={tokens.label || ''}>
-            <StyledTooltip
-              disableFocusListener
-              disableTouchListener
-              placement={'right'}
-              title={validationMessage}
-            >
+            <StyledTooltip disableFocusListener disableTouchListener placement={'right'} title={validationMessage}>
               <Info fontSize={'small'} color={'primary'} style={{ position: 'absolute', left: '48px', top: '-3px' }} />
             </StyledTooltip>
 
-            <StyledTokenizer
-              text={model.text}
-              tokens={tokensModel}
-              onChange={this.changeTokens}
-            />
+            <StyledTokenizer text={model.text} tokens={tokensModel} onChange={this.changeTokens} />
           </TokenizerContainer>
         )}
         {tokensError && <ErrorText>{tokensError}</ErrorText>}
         {selectionsError && <ErrorText>{selectionsError}</ErrorText>}
 
         <TokensDetails>
-          {mode.settings && (
-            <StyledChip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} />
-          )}
+          {mode.settings && <StyledChip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} />}
 
-          {selections.settings && (
-            <StyledChip label={`${selections.label}: ${tokensModel.length}`} />
-          )}
+          {selections.settings && <StyledChip label={`${selections.label}: ${tokensModel.length}`} />}
 
           {correctAnswer.settings && (
-            <StyledChip
-              label={`${correctAnswer.label}: ${tokensModel.filter((t) => t.correct).length}`}
-            />
+            <StyledChip label={`${correctAnswer.label}: ${tokensModel.filter((t) => t.correct).length}`} />
           )}
 
           {selectionCount.settings && (

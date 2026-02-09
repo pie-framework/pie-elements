@@ -1,4 +1,4 @@
-import escape from 'lodash/escape';
+import { escape } from 'lodash-es';
 
 // do not remove \t from \times, \triangle, \tan, \theta or \therefore
 const tSymbols = 'imes|riangle|an|heta|herefore';

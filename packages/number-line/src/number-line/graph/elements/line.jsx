@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import isEqual from 'lodash/isEqual';
-import isNumber from 'lodash/isNumber';
+import { isEqual, isNumber } from 'lodash-es';
 import { color } from '@pie-lib/render-ui';
 import { Draggable } from '../../../draggable';
 
@@ -116,16 +115,7 @@ export class Line extends React.Component {
   }
 
   render() {
-    const {
-      interval,
-      empty,
-      position,
-      domain,
-      y,
-      selected,
-      disabled,
-      correct,
-    } = this.props;
+    const { interval, empty, position, domain, y, selected, disabled, correct } = this.props;
 
     const { xScale } = this.context;
 
@@ -196,14 +186,7 @@ export class Line extends React.Component {
         onMouseDown={onMouseDown}
         onDragEnd={onLineDragStop}
       >
-        {({
-          setNodeRef,
-          attributes,
-          listeners,
-          translateX,
-          isDragging,
-          onMouseDown: handleMouseDown,
-        }) => (
+        {({ setNodeRef, attributes, listeners, translateX, isDragging, onMouseDown: handleMouseDown }) => (
           <StyledLineGroup
             ref={setNodeRef}
             $disabled={disabled}

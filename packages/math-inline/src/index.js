@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import debug from 'debug';
-import _ from 'lodash';
+import { debounce } from 'lodash-es';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 
 import defaults from '../configure/lib/defaults';
@@ -16,7 +16,7 @@ export default class MathInline extends HTMLElement {
     super();
     this._root = null;
     this._configuration = defaults.configuration;
-    this.sessionChangedEventCaller = _.debounce(() => {
+    this.sessionChangedEventCaller = debounce(() => {
       this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), true));
     }, 1000);
   }

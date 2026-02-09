@@ -11,7 +11,7 @@ import {
 import debug from 'debug';
 
 import defaultValues from './defaults';
-import defaults from 'lodash/defaults';
+import { defaults } from 'lodash-es';
 
 const log = debug('pie-elements:graph-lines:configure');
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { InlineDropdown as DropDown } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';

@@ -4,7 +4,7 @@ import { Config } from '../configure';
 import AnswerConfigBlock from '../answer-config-block';
 import GeneralConfigBlock from '../general-config-block';
 import { styles } from '../answer-config-block';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import defaultValues from '../defaults';
 
 jest.mock('@mui/material', () => ({

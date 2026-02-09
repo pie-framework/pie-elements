@@ -7,7 +7,9 @@ import { isComplete } from '../index';
 
 jest.useFakeTimers();
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
-jest.mock('lodash/debounce', () => jest.fn((fn) => fn));
+jest.mock('lodash-es', () => ({
+  debounce: jest.fn((fn) => fn),
+}));
 
 // Mock the render-ui PreviewLayout
 jest.mock('@pie-lib/render-ui', () => ({

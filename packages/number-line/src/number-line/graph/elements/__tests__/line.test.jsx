@@ -1,19 +1,20 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import _ from 'lodash';
+import { merge } from 'lodash-es';
 import { stubContext } from './utils';
 import { Line } from '../line';
 
 // Mock Draggable to avoid dnd-kit dependencies
 jest.mock('../../../../draggable', () => ({
-  Draggable: ({ children }) => children({
-    setNodeRef: jest.fn(),
-    attributes: {},
-    listeners: {},
-    translateX: 0,
-    isDragging: false,
-    onMouseDown: jest.fn()
-  }),
+  Draggable: ({ children }) =>
+    children({
+      setNodeRef: jest.fn(),
+      attributes: {},
+      listeners: {},
+      translateX: 0,
+      isDragging: false,
+      onMouseDown: jest.fn(),
+    }),
 }));
 
 // Mock Point component
@@ -50,7 +51,7 @@ describe('line', () => {
       onDragStop,
     };
 
-    props = _.merge(defaults, props);
+    props = merge(defaults, props);
 
     // Create a wrapper component that provides context
     const LineWrapper = () => {

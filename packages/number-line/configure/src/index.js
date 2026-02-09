@@ -10,7 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import * as defaults from './defaults';
 import * as math from 'mathjs';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 
 // this function is duplicated in controller; at some point, use the same shared function
 const updateTicks = (model) => {

@@ -12,7 +12,7 @@
     "@pie-lib/controller-utils": "1.1.1-next.0",
     "@pie-lib/feedback": "1.1.1-next.0",
     "debug": "^4.1.1",
-    "lodash": "^4.17.15"
+    "lodash-es": "^4.17.23"
   },
   "devDependencies": {
     "babel-jest": "^29.7.0",

@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import { merge } from 'lodash-es';
 import { render } from '@testing-library/react';
 import { NumberLine, Graph } from '../index';
 
@@ -23,7 +23,7 @@ describe('NumberLine', () => {
       onAddElement,
     };
 
-    props = _.merge(defaults, props);
+    props = merge(defaults, props);
     return render(<NumberLine {...props} />);
   };
 

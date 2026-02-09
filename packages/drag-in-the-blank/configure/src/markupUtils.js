@@ -1,4 +1,4 @@
-import escape from 'lodash/escape';
+import { escape } from 'lodash-es';
 
 export const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');

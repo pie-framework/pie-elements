@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
-import defaults from 'lodash/defaults';
+import { defaults } from 'lodash-es';
 import Main from './main';
 
 import sensibleDefaults from './defaults';
@@ -104,7 +104,7 @@ export default class EbsrConfigure extends HTMLElement {
 
       // check if the language is already included in the languageChoices.options array
       // and if not, then add it.
-      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
         this._configuration.languageChoices.options.push({
           value: this._model.language,
           label: this._model.language,

@@ -18,7 +18,10 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
 }));
 
-jest.mock('lodash/debounce', () => (fn) => fn);
+jest.mock('lodash-es', () => ({
+  debounce: jest.fn((fn) => fn),
+  cloneDeep: jest.fn((value) => JSON.parse(JSON.stringify(value))),
+}));
 
 describe('design', () => {
   let w;

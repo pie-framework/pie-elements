@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Main } from '../main';
 
-jest.mock('lodash/uniq', () => {
-  return () => [];
-});
+jest.mock('lodash-es', () => ({
+  uniq: jest.fn(() => []),
+}));
 
 jest.mock('@pie-lib/charting', () => ({
   Chart: (props) => <div data-testid="chart">{props.children}</div>,
@@ -74,7 +74,7 @@ describe('Main', () => {
     return render(
       <ThemeProvider theme={theme}>
         <Main {...combinedProps} />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
   };
 

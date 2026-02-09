@@ -1,5 +1,5 @@
 import { flattenCorrect, score, pairwiseCombinationScore, illegalArgumentError } from '../scoring';
-import _ from 'lodash';
+import { cloneDeep, merge } from 'lodash-es';
 
 describe('pairwiseCombinationScore', () => {
   const assertScore = (correctResponse, opts) => (answer, expectedScore) => {
@@ -113,7 +113,7 @@ describe('score', () => {
   };
 
   describe('partial scoring', () => {
-    let question = _.merge(_.cloneDeep(baseQuestion), {
+    let question = merge(cloneDeep(baseQuestion), {
       partialScoring: true,
     });
 

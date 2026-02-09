@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import { NChoice, InputCheckbox } from '@pie-lib/config-ui';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-import range from 'lodash/range';
+import { range } from 'lodash-es';
 import Box from './box';
 import PropTypes from 'prop-types';
 

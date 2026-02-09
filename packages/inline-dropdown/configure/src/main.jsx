@@ -5,12 +5,7 @@ import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { color } from '@pie-lib/render-ui';
-import cloneDeep from 'lodash/cloneDeep';
-import isEqual from 'lodash/isEqual';
-import isUndefined from 'lodash/isUndefined';
-import isEmpty from 'lodash/isEmpty';
-import reduce from 'lodash/reduce';
-import max from 'lodash/max';
+import { cloneDeep, isEmpty, isEqual, isUndefined, max, reduce } from 'lodash-es';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
@@ -395,16 +390,16 @@ export class Main extends React.Component {
                     }}
                   />
                   <ChoiceRationaleHolder>
-                      <EditableHtml
-                        markup={choice.rationale || ''}
-                        spellCheck={spellCheckEnabled}
-                        onChange={(c) => this.onChoiceRationaleChanged(key, { ...choice, rationale: c })}
-                        imageSupport={imageSupport}
-                        maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                        maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                        uploadSoundSupport={uploadSoundSupport}
-                        mathMlOptions={mathMlOptions}
-                      />
+                    <EditableHtml
+                      markup={choice.rationale || ''}
+                      spellCheck={spellCheckEnabled}
+                      onChange={(c) => this.onChoiceRationaleChanged(key, { ...choice, rationale: c })}
+                      imageSupport={imageSupport}
+                      maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                      maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                      uploadSoundSupport={uploadSoundSupport}
+                      mathMlOptions={mathMlOptions}
+                    />
                   </ChoiceRationaleHolder>
                 </React.Fragment>
               ))}
@@ -470,57 +465,50 @@ export class Main extends React.Component {
       >
         {teacherInstructionsEnabled && (
           <PromptHolder label={teacherInstructions.label}>
-              <EditableHtml
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                error={teacherInstructionsError}
-                toolbarOpts={toolbarOpts}
-                pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                mathMlOptions={mathMlOptions}
-              />
-              {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+            <EditableHtml
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
           </PromptHolder>
         )}
 
         {promptEnabled && (
           <PromptHolder label={prompt.label}>
-              <EditableHtml
-                markup={model.prompt}
-                onChange={this.onPromptChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                disableUnderline
-                error={promptError}
-                toolbarOpts={toolbarOpts}
-                pluginProps={getPluginProps(prompt?.inputConfiguration)}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={defaultImageMaxWidth}
-                maxImageHeight={defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                mathMlOptions={mathMlOptions}
-              />
-              {promptError && <ErrorText>{promptError}</ErrorText>}
+            <EditableHtml
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              disableUnderline
+              error={promptError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {promptError && <ErrorText>{promptError}</ErrorText>}
           </PromptHolder>
         )}
 
         <FlexContainer>
-          <StyledTypography component={'div'}>
-            Define Template, Choices, and Correct Responses
-          </StyledTypography>
-          <StyledTooltip
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
+          <StyledTypography component={'div'}>Define Template, Choices, and Correct Responses</StyledTypography>
+          <StyledTooltip disableFocusListener disableTouchListener placement={'right'} title={validationMessage}>
             <Info fontSize={'small'} color={'primary'} />
           </StyledTooltip>
         </FlexContainer>
@@ -590,21 +578,21 @@ export class Main extends React.Component {
 
         {rationaleEnabled && (
           <PromptHolder label={rationale.label}>
-              <EditableHtml
-                markup={model.rationale || ''}
-                onChange={this.onRationaleChanged}
-                imageSupport={imageSupport}
-                error={rationaleError}
-                toolbarOpts={toolbarOpts}
-                pluginProps={getPluginProps(rationale?.inputConfiguration)}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                mathMlOptions={mathMlOptions}
-              />
-              {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+            <EditableHtml
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChanged}
+              imageSupport={imageSupport}
+              error={rationaleError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
           </PromptHolder>
         )}
 

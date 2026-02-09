@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import _ from 'lodash';
+import { merge } from 'lodash-es';
 import { stubContext } from './utils';
 import { Ray } from '../ray';
 
@@ -28,7 +28,7 @@ describe('ray', () => {
       onToggleSelect: onToggleSelect,
     };
 
-    props = _.merge(defaults, props);
+    props = merge(defaults, props);
 
     // Create a wrapper component that provides context
     const RayWrapper = () => {
@@ -108,7 +108,7 @@ describe('ray', () => {
         onToggleSelect: onToggleSelect,
       };
 
-      props = _.merge(defaults, props);
+      props = merge(defaults, props);
       const instance = new Ray(props);
       instance.context = stubContext;
       instance.setState = jest.fn((state) => {

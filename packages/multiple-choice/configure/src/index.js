@@ -11,7 +11,7 @@ import {
 
 import Main from './main';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
-import defaults from 'lodash/defaults';
+import { defaults } from 'lodash-es';
 
 import sensibleDefaults from './defaults';
 
@@ -179,7 +179,7 @@ export default class MultipleChoice extends HTMLElement {
     log('_render - Model:', this._model ? 'present' : 'missing');
     log('_render - Configuration:', this._configuration ? 'present' : 'missing');
     log('_render - Root exists:', !!this._root);
-    
+
     try {
       let element = React.createElement(Main, {
         model: this._model,
@@ -200,19 +200,19 @@ export default class MultipleChoice extends HTMLElement {
       if (!this._root) {
         console.log('🔧 [multiple-choice-configure] _render - Creating React container');
         log('_render - Creating React container');
-        
+
         // Create a container div for React to render into
         this._reactContainer = document.createElement('div');
         this._reactContainer.className = 'pie-configure-wrapper';
         this.appendChild(this._reactContainer);
-        
+
         console.log('🔧 [multiple-choice-configure] _render - Creating new React root');
         log('_render - Creating new React root');
         this._root = createRoot(this._reactContainer);
         console.log('✅ [multiple-choice-configure] _render - React root created successfully');
         log('_render - React root created successfully');
       }
-      
+
       console.log('🔧 [multiple-choice-configure] _render - Calling root.render()');
       log('_render - Calling root.render()');
       this._root.render(element);

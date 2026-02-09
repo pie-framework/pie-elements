@@ -42,14 +42,21 @@ jest.mock('@pie-lib/editable-html-tip-tap', () => {
   const React = require('react');
   return {
     __esModule: true,
-    default: ({ markup, onChange }) => React.createElement('div', { 'data-testid': 'editable-html', onClick: () => onChange && onChange('test') }, markup),
+    default: ({ markup, onChange }) =>
+      React.createElement(
+        'div',
+        { 'data-testid': 'editable-html', onClick: () => onChange && onChange('test') },
+        markup,
+      ),
     ALL_PLUGINS: [],
   };
 });
 
 const theme = createTheme();
 
-jest.mock('lodash/debounce', () => (fn) => fn);
+jest.mock('lodash-es', () => ({
+  debounce: jest.fn((fn) => fn),
+}));
 
 jest.spyOn(Math, 'random').mockReturnValue(0);
 
@@ -93,7 +100,7 @@ describe('Main', () => {
           imageSupport={imageSupport}
           {...props}
         />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
   };
 
