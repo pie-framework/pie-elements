@@ -109,7 +109,6 @@ class CircleComponent extends React.Component {
           onTransformEnd={this.onResizeEnd}
           x={x}
           y={y}
-          opacity={0.5}
           cursor="pointer"
         />
 
