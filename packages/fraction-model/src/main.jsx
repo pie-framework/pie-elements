@@ -6,7 +6,7 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import FractionModelChart from './fraction-model-chart';
 import { AlertDialog } from '@pie-lib/config-ui';
 import { PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 
 const ModelPreview = styled('div')({
   padding: '16px',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import compact from 'lodash/compact';
+import { compact } from 'lodash-es';
 import debug from 'debug';
 import { renderMath } from '@pie-lib/math-rendering';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';

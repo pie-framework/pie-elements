@@ -158,7 +158,6 @@ class PolygonComponent extends React.Component {
           strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
-          opacity={0.5}
           cursor='pointer'
           position='relative'
         />

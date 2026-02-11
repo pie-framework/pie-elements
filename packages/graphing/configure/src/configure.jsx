@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import intersection from 'lodash/intersection';
+import { intersection } from 'lodash-es';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 

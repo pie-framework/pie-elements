@@ -1,5 +1,5 @@
 import defaults from './defaults';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 
 export const createDefaultModel = (model = {}) => new Promise((resolve) => resolve({ ...defaults, ...model }));
 

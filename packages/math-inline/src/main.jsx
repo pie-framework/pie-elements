@@ -7,11 +7,10 @@ import { renderMath } from '@pie-lib/math-rendering';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import { ResponseTypes } from './utils';
-import isEqual from 'lodash/isEqual';
+import { isEmpty, isEqual } from 'lodash-es';
 import SimpleQuestionBlock from './simple-question-block';
 import MathQuill from '@pie-framework/mathquill';
 import { color } from '@pie-lib/render-ui';
-import isEmpty from 'lodash/isEmpty';
 import Translator from '@pie-lib/translator';
 import ReactDOM from 'react-dom';
 const { translator } = Translator;
@@ -637,9 +636,7 @@ export class Main extends React.Component {
         {viewMode &&
           showTeacherInstructions &&
           (!animationsDisabled ? (
-            <StyledCollapsible
-              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-            >
+            <StyledCollapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
               <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
             </StyledCollapsible>
           ) : (
@@ -776,9 +773,7 @@ export class Main extends React.Component {
           </Readable>
         )}
 
-        {viewMode && displayNote && (
-          <Note dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }} />
-        )}
+        {viewMode && displayNote && <Note dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }} />}
 
         {viewMode &&
           showRationale &&
@@ -1009,13 +1004,10 @@ const ResponseContainer = styled('div')(({ theme }) => ({
 }));
 
 const Expression = styled('div', {
-  shouldForwardProp: (prop) => !['isIncorrect', 'isCorrect', 'showCorrectness', 'correctAnswerShown', 'printCorrect'].includes(prop),
+  shouldForwardProp: (prop) =>
+    !['isIncorrect', 'isCorrect', 'showCorrectness', 'correctAnswerShown', 'printCorrect'].includes(prop),
 })(({ theme, isIncorrect, isCorrect, showCorrectness, correctAnswerShown, printCorrect }) => {
-  const borderColor = isIncorrect
-    ? color.incorrect()
-    : isCorrect
-      ? color.correct()
-      : undefined;
+  const borderColor = isIncorrect ? color.incorrect() : isCorrect ? color.correct() : undefined;
 
   return {
     maxWidth: 'fit-content',
@@ -1023,9 +1015,10 @@ const Expression = styled('div', {
     ...(showCorrectness && {
       border: borderColor ? `2px solid ${borderColor} !important` : '2px solid',
     }),
-    ...(!showCorrectness && borderColor && {
-      borderColor: `${borderColor} !important`,
-    }),
+    ...(!showCorrectness &&
+      borderColor && {
+        borderColor: `${borderColor} !important`,
+      }),
     ...(correctAnswerShown && {
       padding: theme.spacing(1),
       letterSpacing: '0.5px',

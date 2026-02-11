@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
-import lodash from 'lodash';
+import { set } from 'lodash-es';
 import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { DragProvider } from '@pie-lib/drag';
 
@@ -141,19 +141,19 @@ class AnswerConfigBlock extends React.Component {
 
   onChange =
     (name, isBoolean) =>
-      ({ target }) => {
-        const { model, onChange } = this.props;
-        let value;
+    ({ target }) => {
+      const { model, onChange } = this.props;
+      let value;
 
-        if (isBoolean) {
-          value = target.checked;
-        } else {
-          value = target.value;
-        }
+      if (isBoolean) {
+        value = target.checked;
+      } else {
+        value = target.value;
+      }
 
-        lodash.set(model, name, value);
-        onChange(model, name);
-      };
+      set(model, name, value);
+      onChange(model, name);
+    };
 
   onHeaderChange = (headerIndex) => (value) => {
     const { model, onChange } = this.props;
@@ -171,8 +171,7 @@ class AnswerConfigBlock extends React.Component {
   };
 
   render() {
-    const { model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
-      this.props;
+    const { model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } = this.props;
     const {
       baseInputConfiguration = {},
       headers = {},
@@ -200,9 +199,7 @@ class AnswerConfigBlock extends React.Component {
               Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
             </Typography>
 
-            <RowTable
-              style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}
-            >
+            <RowTable style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}>
               <RowContainer>
                 {headers.settings &&
                   (model.headers || []).map((header, idx) => (
@@ -211,19 +208,23 @@ class AnswerConfigBlock extends React.Component {
                       className={cx({
                         questionText: idx === 0,
                       })}
-                      sx={idx === 0 ? {
-                        flex: 2,
-                        display: 'flex',
-                        justifyContent: 'flex-start',
-                        marginRight: 1,
-                        '&> div': {
-                          width: '100%',
-                          padding: 0,
-                          maxWidth: 'unset',
-                          textAlign: 'left',
-                          minWidth: '200px',
-                        },
-                      } : {}}
+                      sx={
+                        idx === 0
+                          ? {
+                              flex: 2,
+                              display: 'flex',
+                              justifyContent: 'flex-start',
+                              marginRight: 1,
+                              '&> div': {
+                                width: '100%',
+                                padding: 0,
+                                maxWidth: 'unset',
+                                textAlign: 'left',
+                                minWidth: '200px',
+                              },
+                            }
+                          : {}
+                      }
                     >
                       <EditableHtml
                         onChange={this.onHeaderChange(idx)}
@@ -238,9 +239,7 @@ class AnswerConfigBlock extends React.Component {
                         languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                         error={columnsErrors && columnsErrors[idx]}
                       />
-                      {columnsErrors && columnsErrors[idx] && (
-                        <ColumnErrorText>{columnsErrors[idx]}</ColumnErrorText>
-                      )}
+                      {columnsErrors && columnsErrors[idx] && <ColumnErrorText>{columnsErrors[idx]}</ColumnErrorText>}
                     </RowItem>
                   ))}
                 <DeleteIcon />

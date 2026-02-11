@@ -1,5 +1,5 @@
 import debug from 'debug';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import Translator from '@pie-lib/translator';
 import * as mv from '@pie-framework/math-validation';
 

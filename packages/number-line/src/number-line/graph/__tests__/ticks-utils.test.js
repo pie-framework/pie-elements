@@ -1,7 +1,7 @@
 import * as mod from '../tick-utils';
 import * as math from 'mathjs';
 import { AssertionError } from 'assert';
-import isObject from 'lodash/isObject';
+import { isObject } from 'lodash-es';
 
 const domain = (min, max) => ({ min, max });
 const ticks = (minor, major) => ({ minor, major });

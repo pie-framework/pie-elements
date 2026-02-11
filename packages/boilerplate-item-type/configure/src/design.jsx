@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import { settings, layout } from '@pie-lib/config-ui';
 import { InputContainer } from '@pie-lib/render-ui'
 import EditableHtml from '@pie-lib/editable-html-tip-tap';

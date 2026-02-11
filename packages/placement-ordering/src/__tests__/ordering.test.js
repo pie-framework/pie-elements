@@ -1,5 +1,5 @@
 import { buildState, reducer } from '../ordering';
-import _ from 'lodash';
+import { chunk, take } from 'lodash-es';
 
 describe('ordering', () => {
   const toLabel = (a) => `${a[0]}->${a[1]}`;
@@ -57,7 +57,7 @@ describe('ordering', () => {
       `${i.tiles.map((t) => t.id)} + ${actions.map(toLabel).join(', ')} = ${e}`;
 
     const assertMoveLabel = (i, actions, expected) => {
-      const tiles = _.take(i.tiles, 4).map((t) => t.id);
+      const tiles = take(i.tiles, 4).map((t) => t.id);
 
       return `${tiles} + ${actions.map(toLabel)} = ${expected.choices.map((c) => c || '_')}|${expected.targets.map(
         (t) => t || '_',
@@ -140,7 +140,7 @@ describe('ordering', () => {
         const label = assertMoveLabel(state, actions, expected);
 
         it(label, () => {
-          let [choiceTiles, targetTiles] = _.chunk(state.tiles, 4);
+          let [choiceTiles, targetTiles] = chunk(state.tiles, 4);
 
           expect(choiceTiles.map((t) => t.id)).toEqual(expected.choices);
           expect(targetTiles.map((t) => t.id)).toEqual(expected.targets);

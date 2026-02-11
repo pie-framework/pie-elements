@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Configure from './configure';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,

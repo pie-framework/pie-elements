@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import React from 'react';
 
 import { Main } from '../main';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import sensibleDefaults from '../defaults';
 import { createSlateMarkup, processMarkup } from '../markupUtils';
 

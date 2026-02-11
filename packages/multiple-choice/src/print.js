@@ -1,7 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import debounce from 'lodash/debounce';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep, debounce } from 'lodash-es';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';

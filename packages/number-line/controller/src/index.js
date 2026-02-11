@@ -1,9 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
-import find from 'lodash/find';
-import isEmpty from 'lodash/isEmpty';
-import isEqualWith from 'lodash/isEqualWith';
-import merge from 'lodash/merge';
-import omitBy from 'lodash/omitBy';
+import { cloneDeep, find, isEmpty, isEqualWith, merge, omitBy } from 'lodash-es';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
 import * as math from 'mathjs';

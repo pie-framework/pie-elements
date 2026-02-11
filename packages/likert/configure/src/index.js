@@ -4,7 +4,7 @@ import debug from 'debug';
 import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
-import defaults from 'lodash/defaults';
+import { defaults } from 'lodash-es';
 
 import sensibleDefaults from './defaults';
 

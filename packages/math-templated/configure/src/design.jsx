@@ -6,9 +6,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Info from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
-import cloneDeep from 'lodash/cloneDeep';
-import pick from 'lodash/pick';
-import throttle from 'lodash/throttle';
+import { cloneDeep, pick, throttle } from 'lodash-es';
 import { InputContainer, settings, layout } from '@pie-lib/config-ui';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 const { dropdown } = settings;
@@ -408,15 +406,8 @@ export class Design extends React.Component {
           </StyledInputContainer>
         )}
         <TooltipContainer>
-          <StyledTitle component={'div'}>
-            Response Template
-          </StyledTitle>
-          <StyledTooltip
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
+          <StyledTitle component={'div'}>Response Template</StyledTitle>
+          <StyledTooltip disableFocusListener disableTouchListener placement={'right'} title={validationMessage}>
             <Info fontSize={'small'} color={'primary'} />
           </StyledTooltip>
         </TooltipContainer>
@@ -450,7 +441,7 @@ export class Design extends React.Component {
 
         <StyledSelectContainer label="Response Template Equation Editor">
           <StyledSelect
-            MenuProps={{transitionDuration: { enter: 225, exit: 195 } }}
+            MenuProps={{ transitionDuration: { enter: 225, exit: 195 } }}
             onChange={(event) => this.handleChange('equationEditor', event.target.value)}
             value={equationEditor}
           >

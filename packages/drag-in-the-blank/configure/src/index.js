@@ -11,7 +11,7 @@ import { createRoot } from 'react-dom/client';
 import { renderMath } from '@pie-lib/math-rendering';
 import Main from './main';
 import debug from 'debug';
-import defaults from 'lodash/defaults';
+import { defaults } from 'lodash-es';
 
 import sensibleDefaults from './defaults';
 import { processMarkup, createSlateMarkup } from './markupUtils';

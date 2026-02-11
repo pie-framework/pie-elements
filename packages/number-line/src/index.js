@@ -9,7 +9,7 @@ import NumberLineComponent from './number-line';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import RootComponent from './number-line';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import { renderMath } from '@pie-lib/math-rendering';
 
 //Expose some additional modules for configuration
