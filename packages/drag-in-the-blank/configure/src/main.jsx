@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Info from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
 import { DragOverlay } from '@dnd-kit/core';
-import { restrictToFirstScrollableAncestor } from '@dnd-kit/modifiers';
 
 import Choice from './choice';
 import Choices from './choices';
