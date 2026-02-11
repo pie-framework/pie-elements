@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import Arrow from '../arrow';
 import Point from './point';
 import { basePropTypes } from './base';
-import isNumber from 'lodash/isNumber';
+import { isNumber } from 'lodash-es';
 
 const StyledRayGroup = styled('g')(({ $selected, $correct }) => ({
   '& line': {

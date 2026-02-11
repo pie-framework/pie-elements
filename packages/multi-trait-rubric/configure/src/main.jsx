@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import cloneDeep from 'lodash/cloneDeep';
-import isEmpty from 'lodash/isEmpty';
-import debounce from 'lodash/debounce';
+import { cloneDeep, debounce, isEmpty } from 'lodash-es';
 
 import { styled } from '@mui/material/styles';
 
@@ -20,7 +18,7 @@ const MIN_WIDTH = '650px';
 const StyledDiv = styled('div')(({ theme }) => ({
   fontFamily: 'Cerebri Sans',
   fontSize: theme.typography.fontSize,
-  padding: '16px 0'
+  padding: '16px 0',
 }));
 
 const ShowModal = ({ showExcludeZeroDialog, excludeZero, changeExcludeZero, cancel }) => {

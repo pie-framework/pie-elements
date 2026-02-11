@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import { renderMath } from '@pie-lib/math-rendering';
 import FractionModelChart from './fraction-model-chart';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import FreePathDrawable from '../drawable-free-path';
 import LineDrawable from '../drawable-line';
 import RectangleDrawable from '../drawable-rectangle';

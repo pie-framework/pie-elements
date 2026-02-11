@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import isEmpty from 'lodash/isEmpty';
-import isUndefined from 'lodash/isUndefined';
-import reduce from 'lodash/reduce';
+import { isEmpty, isUndefined, reduce } from 'lodash-es';
 
 import Arrow from './arrow';
 import DragAndDropAnswer from './answer';

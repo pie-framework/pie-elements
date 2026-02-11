@@ -1,7 +1,4 @@
-import isEqual from 'lodash/isEqual';
-import lodash from 'lodash';
-import uniqWith from 'lodash/uniqWith';
-import differenceWith from 'lodash/differenceWith';
+import { differenceWith, isEqual, uniq, uniqWith } from 'lodash-es';
 import {
   getAmplitudeAndFreq,
   pointsToABC,
@@ -98,7 +95,7 @@ export const equalLine = (line1, line2) => {
     return false;
   }
 
-  return lodash.uniq(proportions).length === 1;
+  return uniq(proportions).length === 1;
 
   // (y2 - y1)/(x2 - x1) = (y4 - y3)/(x4 - x3);
   // return ((Math.abs((line1.to.y - line1.from.y) / (line1.to.x - line1.from.x))) === (Math.abs((line2.to.y - line2.from.y) / (line2.to.x - line2.from.x))));

@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Domain from './domain';
 import Arrows from './arrows';
 import PointConfig from './point-config';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Info from '@mui/icons-material/Info';

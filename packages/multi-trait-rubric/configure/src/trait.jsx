@@ -1,7 +1,7 @@
 import React from 'react';
 import debug from 'debug';
 import PropTypes from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import { useDraggable, useDroppable } from '@dnd-kit/core';
 
 import { styled } from '@mui/material/styles';
@@ -75,7 +75,13 @@ function TraitTile({
   const [anchorEl, setAnchorEl] = React.useState(null);
   const secondaryBlockRef = React.useRef(null);
 
-  const { attributes, listeners, setNodeRef: setDragRef, transform, isDragging } = useDraggable({
+  const {
+    attributes,
+    listeners,
+    setNodeRef: setDragRef,
+    transform,
+    isDragging,
+  } = useDraggable({
     id: `trait-${index}`,
     data: {
       type: 'trait',
@@ -93,7 +99,11 @@ function TraitTile({
   });
 
   React.useEffect(() => {
-    if (currentPosition !== undefined && secondaryBlockRef.current && secondaryBlockRef.current.scrollLeft !== currentPosition) {
+    if (
+      currentPosition !== undefined &&
+      secondaryBlockRef.current &&
+      secondaryBlockRef.current.scrollLeft !== currentPosition
+    ) {
       scrollToPosition(currentPosition);
     }
   }, [currentPosition]);
@@ -125,10 +135,12 @@ function TraitTile({
     handleClose();
   };
 
-  const dragStyle = transform ? {
-    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-    opacity: isDragging ? 0.5 : 1,
-  } : {};
+  const dragStyle = transform
+    ? {
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        opacity: isDragging ? 0.5 : 1,
+      }
+    : {};
 
   return (
     <div ref={setDropRef} style={dragStyle}>
@@ -146,7 +158,8 @@ function TraitTile({
               aria-controls="long-menu"
               aria-haspopup="true"
               onClick={handleClick}
-              size="large">
+              size="large"
+            >
               <MoreVertIcon />
             </Options>
 
@@ -159,9 +172,7 @@ function TraitTile({
               transitionDuration={{ enter: 225, exit: 195 }}
             >
               <MenuItem onClick={openMenu}>
-                <RemoveLabel
-                  dangerouslySetInnerHTML={{ __html: `Remove ${name || traitLabel}` }}
-                />
+                <RemoveLabel dangerouslySetInnerHTML={{ __html: `Remove ${name || traitLabel}` }} />
               </MenuItem>
             </Menu>
           </Controls>

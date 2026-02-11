@@ -9,7 +9,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'lodash-es';
 import { ResponseTypes, generateValidationMessage, getPluginProps } from './utils';
 import MathQuill from '@pie-framework/mathquill';
 import Info from '@mui/icons-material/Info';

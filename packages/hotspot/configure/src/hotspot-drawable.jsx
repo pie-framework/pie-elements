@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Layer, Stage } from 'react-konva';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import { styled } from '@mui/material/styles';
 
 import Rectangle from './hotspot-rectangle';

@@ -1,5 +1,5 @@
 import debug from 'debug';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import { getActualFeedbackForCorrectness } from '@pie-lib/feedback';
 
 import { ResponseTypes } from './utils';

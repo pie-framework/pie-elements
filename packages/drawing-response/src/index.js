@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import { renderMath } from '@pie-lib/math-rendering';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { GraphContainer as Graph } from '@pie-lib/graphing-solution-set';
 import { AlertDialog } from '@pie-lib/config-ui';
-import { set } from 'lodash';
+import { set } from 'lodash-es';
 import { RadioGroup, Typography } from '@mui/material';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';

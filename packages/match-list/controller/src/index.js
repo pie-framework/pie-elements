@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';

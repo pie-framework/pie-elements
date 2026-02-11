@@ -232,7 +232,6 @@ class PolComponent extends React.Component {
           onDragEnd={(e) => this.handleOnDragEnd(e, true)}
           x={x}
           y={y}
-          opacity={0.5}
         />
 
         {showPoints &&

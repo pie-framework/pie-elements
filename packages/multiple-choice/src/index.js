@@ -1,7 +1,7 @@
 import Main from './main';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import debounce from 'lodash/debounce';
+import { debounce } from 'lodash-es';
 import debug from 'debug';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';

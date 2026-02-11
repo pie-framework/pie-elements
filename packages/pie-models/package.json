@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/command-line-args": "^5.0.0",
     "@types/fs-extra": "^5.0.4",
-    "@types/lodash": "^4.14.119",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^10.12.18",
     "change-case": "^3.1.0",
     "command-line-args": "^5.0.2",
@@ -30,7 +30,7 @@
     "fs-extra": "^7.0.1",
     "json-schema-deref-sync": "^0.7.0",
     "json-schema-to-markdown": "^1.0.3",
-    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.23",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
     "typescript-json-schema": "^0.34.0",

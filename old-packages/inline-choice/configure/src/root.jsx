@@ -1,8 +1,7 @@
 import React from 'react';
 import Main from './main';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep, max } from 'lodash-es';
 import PropTypes from 'prop-types';
-import max from 'lodash/max';
 
 export default class Root extends React.Component {
   static propTypes = {

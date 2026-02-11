@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import { SHAPE_GROUPS } from './shapes';
 
 const updateImageDimensions = (initialDim, nextDim, keepAspectRatio, resizeType) => {

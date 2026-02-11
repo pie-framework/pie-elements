@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import _ from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { get, set } from 'nested-property';
 import { Design } from '../design';
@@ -48,8 +48,8 @@ describe('Placement Ordering', () => {
   beforeEach(() => {
     onModelChanged = jest.fn();
     onConfigurationChanged = jest.fn();
-    model = _.cloneDeep(defaultValues.model);
-    configuration = _.cloneDeep(defaultValues.configuration);
+    model = cloneDeep(defaultValues.model);
+    configuration = cloneDeep(defaultValues.configuration);
   });
 
   describe('logic', () => {

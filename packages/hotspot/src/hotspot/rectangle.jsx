@@ -131,7 +131,6 @@ class RectComponent extends React.Component {
           strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
-          opacity={0.5}
           cursor="pointer"
         />
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}

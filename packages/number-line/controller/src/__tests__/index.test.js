@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { isFunction, merge } from 'lodash-es';
 import { defaults } from '@pie-lib/feedback';
 import * as controller from '../index';
 import { normalize } from '../index';
@@ -272,14 +272,14 @@ describe('controller', () => {
   describe('model', () => {
     const assertModel = (msg, question, session, env, expected) => {
       question = mkQuestion(question);
-      session = _.merge(session, {});
-      env = _.merge(env, {});
+      session = merge(session, {});
+      env = merge(env, {});
 
       it(msg, () => {
         return controller
           .model(question, session, env)
           .then((o) => {
-            if (_.isFunction(expected)) {
+            if (isFunction(expected)) {
               expected(o);
             } else {
               expect(o).toMatchObject(expected);

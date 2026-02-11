@@ -47,7 +47,10 @@ jest.mock('../number-text-field', () => {
 
 const theme = createTheme();
 
-jest.mock('lodash/debounce', () => (fn) => fn);
+jest.mock('lodash-es', () => ({
+  debounce: jest.fn((fn) => fn),
+  cloneDeep: jest.fn((value) => JSON.parse(JSON.stringify(value))),
+}));
 
 export const defaultProps = {
   model: {
@@ -73,7 +76,7 @@ describe('Model Options', () => {
     return render(
       <ThemeProvider theme={theme}>
         <ModelOptions {...configProps} />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
   };
 
