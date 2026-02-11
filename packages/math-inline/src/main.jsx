@@ -789,7 +789,15 @@ export class Main extends React.Component {
 
     if (tooltipModeEnabled && (showCorrectAnswerToggle || showTeacherInstructions || showRationale || feedback)) {
       return (
-        <UiLayout extraCSSRules={extraCSSRules}>
+        <StyledUiLayout
+          extraCSSRules={extraCSSRules}
+          ref={(r) => {
+            // eslint-disable-next-line react/no-find-dom-node
+            const domNode = ReactDOM.findDOMNode(r);
+
+            this.root = domNode || this.root;
+          }}
+        >
           <StyledTooltip
             interactive
             enterTouchDelay={0}
@@ -875,14 +883,14 @@ export class Main extends React.Component {
               </div>
             }
           >
-            <MainContainer ref={(r) => (this.root = r || this.root)}>{midContent}</MainContainer>
+            {midContent}
           </StyledTooltip>
-        </UiLayout>
+        </StyledUiLayout>
       );
     }
 
     return (
-      <UiLayout
+      <StyledUiLayout
         id={id}
         extraCSSRules={extraCSSRules}
         ref={(r) => {
@@ -892,8 +900,8 @@ export class Main extends React.Component {
           this.root = domNode || this.root;
         }}
       >
-        <MainContainer>{midContent}</MainContainer>
-      </UiLayout>
+        {midContent}
+      </StyledUiLayout>
     );
   }
 }
@@ -960,11 +968,11 @@ if (typeof document !== 'undefined') {
   }
 }
 
-const MainContainer = styled('div')({
+const StyledUiLayout = styled(UiLayout)(() => ({
   color: color.text(),
   backgroundColor: color.background(),
   display: 'inline-block',
-});
+}));
 
 const StyledTooltip = styled(Tooltip)({
   // Styles applied via slotProps.sx below
