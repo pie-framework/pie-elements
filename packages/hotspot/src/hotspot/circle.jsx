@@ -114,7 +114,6 @@ class CircleComponent extends React.Component {
           onMouseEnter={this.handleMouseEnter}
           x={x}
           y={y}
-          opacity={0.5}
         />
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
