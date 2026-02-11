@@ -119,7 +119,6 @@ class RectComponent extends React.Component {
           onTransformEnd={this.onResizeEnd}
           x={x}
           y={y}
-          opacity={0.5}
           cursor="pointer"
         />
         {!this.state.isDragging && this.state.hovered && (

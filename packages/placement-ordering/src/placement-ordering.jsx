@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import debug from 'debug';
 import { difference, isEqual, uniqueId } from 'lodash-es';
 import { styled } from '@mui/material/styles';
+import { closestCenter } from '@dnd-kit/core';
 
 import { Collapsible, color, Feedback, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
@@ -323,7 +324,7 @@ export class PlacementOrdering extends React.Component {
     };
 
     return (
-      <DragProvider onDragStart={() => {}} onDragEnd={this.onDragEnd}>
+      <DragProvider onDragStart={() => { }} onDragEnd={this.onDragEnd} collisionDetection={closestCenter}>
         <PlacementOrderingContainer>
           <UiLayout extraCSSRules={extraCSSRules} style={containerStyle}>
             {showTeacherInstructions && (
@@ -340,7 +341,6 @@ export class PlacementOrdering extends React.Component {
             </StyledPrompt>
 
             <StyledToggle
-              className="toggle"
               show={showToggle}
               toggled={showingCorrect}
               onToggle={this.toggleCorrect}

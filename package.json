@@ -1,9 +1,7 @@
 {
+  "name": "pie-elements",
   "private": true,
-  "browserslist": [
-    ">0.5%",
-    "not dead"
-  ],
+  "license": "MIT",
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx packages",
     "test": "scripts/build test",
@@ -29,6 +27,10 @@
     "health:serve": "pie-health serve",
     "health:check": "pie-health check packages"
   },
+  "dependencies": {
+    "core-js": "^3.40.0",
+    "express": "^4.17.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.28.6",
     "@babel/core": "^7.28.6",
@@ -40,7 +42,7 @@
     "@babel/preset-env": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
     "@pie-framework/build-helper": "^5.2.9",
-    "@pie-framework/pie-code-health": "git+ssh://git@github.com/pie-framework/pie-code-health.git#main",
+    "@pie-framework/pie-code-health": "https://github.com/pie-framework/pie-code-health.git#main",
     "@pie-lib/test-utils": "1.1.1-next.0",
     "@pslb/pslb": "^4.4.1",
     "@rollup/plugin-commonjs": "^20.0.0",
@@ -73,16 +75,6 @@
     "rollup-plugin-analyzer": "^4.0.0",
     "semver": "^7.3.2",
     "yarn": "^1.22.22"
-  },
-  "workspaces": [
-    "packages/*",
-    "packages/*/configure",
-    "packages/*/controller",
-    "packages/*/print"
-  ],
-  "dependencies": {
-    "core-js": "^3.40.0",
-    "express": "^4.17.1"
   },
   "resolutions": {
     "react": "18.3.1",
@@ -122,5 +114,15 @@
     "@pie-lib/text-select": "2.1.1-next.0",
     "@pie-lib/tools": "1.1.1-next.0",
     "@pie-lib/translator": "3.1.1-next.0"
-  }
+  },
+  "browserslist": [
+    ">0.5%",
+    "not dead"
+  ],
+  "workspaces": [
+    "packages/*",
+    "packages/*/configure",
+    "packages/*/controller",
+    "packages/*/print"
+  ]
 }

@@ -29,43 +29,58 @@ Holder.propTypes = {
   disabled: PropTypes.bool,
 };
 
-const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, outcome, label }) => ({
-  cursor: 'pointer',
+const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, outcome, label, type }) => ({
+  cursor: disabled ? 'not-allowed' : 'grab',
   width: '100%',
   height: '100%',
   padding: '10px',
   boxSizing: 'border-box',
   overflow: 'hidden',
-  border: `1px solid ${theme.palette.grey[400]}`,
-  backgroundColor: color.background(),
-  transition: 'opacity 200ms linear',
+  border: (type === 'choice') ? `1px solid ${theme.palette.grey[400]}` : '1px solid transparent',
+  backgroundColor: (type === 'choice') ? color.background() : 'transparent',
+  transition: (type === 'choice') ? 'background-color 150ms ease, border-color 150ms ease, opacity 150ms ease' : 'none',
   pointerEvents: 'none',
-  '&:hover': {
-    backgroundColor: color.secondary(),
-  },
+  userSelect: 'none',
 
-  // Apply conditional styles based on props
-  ...(isOver && !disabled && {
-    opacity: 0.2,
-  }),
-
-  ...(isDragging && !disabled && {
-    opacity: 0.5,
-    backgroundColor: color.secondaryLight(),
-  }),
-
-  ...(disabled && {
-    cursor: 'not-allowed',
+  ...((type === 'choice') && {
     '&:hover': {
-      backgroundColor: color.background(),
+      backgroundColor: disabled ? color.background() : color.secondary(),
+      borderColor: disabled ? theme.palette.grey[400] : theme.palette.primary.main,
+      transform: disabled ? 'none' : 'scale(1.02)',
     },
   }),
 
-  ...(outcome === 'incorrect' && {
+  // Apply conditional styles based on props (only if not empty spacing tile)
+  ...((type === 'choice') && isOver && !disabled && {
+    opacity: 0.4,
+    backgroundColor: color.primaryLight(),
+    borderColor: theme.palette.primary.main,
+    borderStyle: 'dashed',
+    transform: 'scale(1.05)',
+  }),
+
+  ...((type === 'choice') && isDragging && !disabled && {
+    opacity: 0.6,
+    backgroundColor: color.secondaryLight(),
+    transform: 'scale(1.05) rotate(2deg)',
+    boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
+    cursor: 'grabbing',
+  }),
+
+  ...((type === 'choice') && disabled && {
+    opacity: 0.6,
+    cursor: 'not-allowed',
+    '&:hover': {
+      backgroundColor: color.background(),
+      transform: 'none',
+    },
+  }),
+
+  ...((type === 'choice') && outcome === 'incorrect' && {
     border: `1px solid ${color.incorrect()}`,
   }),
 
-  ...(outcome === 'correct' && {
+  ...((type === 'choice') && outcome === 'correct' && {
     border: `1px solid ${color.correct()}`,
   }),
 
@@ -83,8 +98,10 @@ const TileContent = (props) => {
   if (empty) {
     return <Holder type={type} index={guideIndex} isOver={isOver} disabled={disabled} />;
   } else {
+    console.log('TileContent render, props: ', props);
     return (
       <StyledTileContent
+        type={type}
         isDragging={isDragging}
         isOver={isOver}
         disabled={disabled}
@@ -173,10 +190,14 @@ export const Tile = (props) => {
   const style = {
     transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
     boxSizing: 'border-box',
-    overflow: 'hidden',
+    overflow: 'visible',
     padding: 0,
     margin: 0,
     textAlign: 'center',
+    pointerEvents: 'auto',
+    cursor: disabled ? 'not-allowed' : (isDragging ? 'grabbing' : 'grab'),
+    zIndex: isDragging ? 1000 : 'auto',
+    willChange: isDragging ? 'transform' : 'auto',
   };
 
   return (
