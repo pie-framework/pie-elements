@@ -10,9 +10,6 @@
   "repository": "pie-framework/pie-elements",
   "main": "lib/index.js",
   "module": "src/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "@pie-lib/controller-utils": "1.1.1-next.0",
     "@pie-lib/feedback": "1.1.1-next.0",
