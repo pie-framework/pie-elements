@@ -10,7 +10,7 @@ import Main from './design';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import defaultValues from './defaults';
-import defaults from 'lodash/defaults';
+import { defaults } from 'lodash-es';
 
 const prepareCustomizationObject = (config, model) => {
   const configuration = defaults(config, defaultValues.configuration);
@@ -118,7 +118,7 @@ export default class PlacementOrdering extends HTMLElement {
 
       // check if the language is already included in the languageChoices.options array
       // and if not, then add it.
-      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
         this._configuration.languageChoices.options.push({
           value: this._model.language,
           label: this._model.language,

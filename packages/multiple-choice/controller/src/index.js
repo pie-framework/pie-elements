@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import { isResponseCorrect } from './utils';
 import defaults from './defaults';
 import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';

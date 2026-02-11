@@ -1,4 +1,4 @@
-import { isEmpty, set } from 'lodash';
+import { isEmpty, set } from 'lodash-es';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Configure from './configure';
@@ -11,7 +11,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 
 const log = debug('pie-elements:match:configure');
 
@@ -95,7 +95,7 @@ export default class MatchConfigure extends HTMLElement {
      * if rows.inputConfiguration is not defined we try to default to the old enableImages flag
      * This flag 'enableImages' will be removed in the future
      */
-    
+
     if (isEmpty(c?.rows?.inputConfiguration)) {
       set(this._configuration.rows, 'inputConfiguration.image.disabled', !this._model?.enableImages);
       set(this._configuration.rows, 'inputConfiguration.video.disabled', true);

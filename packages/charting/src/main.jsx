@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
 import { Chart, chartTypes, KeyLegend } from '@pie-lib/charting';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'lodash-es';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
 const StyledUiLayout = styled(UiLayout)({

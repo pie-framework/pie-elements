@@ -1,9 +1,6 @@
 import React from 'react';
 import Toggle from '@pie-lib/correct-answer-toggle';
-import cloneDeep from 'lodash/cloneDeep';
-import isArray from 'lodash/isArray';
-import isNumber from 'lodash/isNumber';
-import isEqual from 'lodash/isEqual';
+import { cloneDeep, isArray, isEqual, isNumber } from 'lodash-es';
 import Translator from '@pie-lib/translator';
 import { Collapsible, color, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { styled } from '@mui/material/styles';

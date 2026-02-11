@@ -16,7 +16,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Info from '@mui/icons-material/Info';
-import merge from 'lodash/merge';
+import { merge } from 'lodash-es';
 import { generateValidationMessage } from './utils';
 
 const { Panel, toggle, radio, dropdown } = settings;

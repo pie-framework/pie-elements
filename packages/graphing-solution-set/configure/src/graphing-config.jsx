@@ -5,7 +5,7 @@ import { AlertDialog } from '@pie-lib/config-ui';
 import { MenuItem, Select, Typography, OutlinedInput } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { applyConstraints, filterPlotableMarks, getGridValues, getLabelValues } from './utils';
-import { isEqual, cloneDeep } from 'lodash';
+import { isEqual, cloneDeep } from 'lodash-es';
 
 const Container = styled('div')(({ theme }) => ({
   display: 'flex',

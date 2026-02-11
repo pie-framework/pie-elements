@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
-import shuffle from 'lodash/shuffle';
-import isEqual from 'lodash/isEqual';
+import { isEqual, shuffle } from 'lodash-es';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { InputContainer } from '@pie-lib/render-ui';
@@ -218,17 +217,11 @@ class ChoiceEditor extends React.Component {
         </StyledVTiler>
         {orderError && <ErrorText>{orderError}</ErrorText>}
         <StyledControls>
-          <StyledAddButton
-            onClick={this.shuffleChoices}
-            size="small"
-            variant="contained">
+          <StyledAddButton onClick={this.shuffleChoices} size="small" variant="contained">
             {`SHUFFLE ${pluralChoiceLabel}`.toUpperCase()}
           </StyledAddButton>
 
-          <StyledAddButton
-            onClick={this.addChoice}
-            size="small"
-            variant="contained">
+          <StyledAddButton onClick={this.addChoice} size="small" variant="contained">
             {`ADD ${singularChoiceLabel}`.toUpperCase()}
           </StyledAddButton>
         </StyledControls>

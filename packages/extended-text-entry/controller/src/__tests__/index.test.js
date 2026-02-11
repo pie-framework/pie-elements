@@ -1,5 +1,5 @@
 import { model } from '../index';
-import isFunction from 'lodash/isFunction';
+import { isFunction } from 'lodash-es';
 
 import defaultValues from '../defaults';
 

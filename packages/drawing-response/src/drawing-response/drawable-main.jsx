@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash/omit';
-import cloneDeep from 'lodash/cloneDeep';
-import isEqual from 'lodash/isEqual';
+import { cloneDeep, isEqual, omit } from 'lodash-es';
 import { Layer, Stage } from 'react-konva';
 import { styled } from '@mui/material/styles';
 import Translator from '@pie-lib/translator';

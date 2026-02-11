@@ -1,7 +1,6 @@
 const { execSync } = require('child_process');
 
 const { readdirSync, readJsonSync, writeJsonSync, readFileSync, pathExistsSync } = require('fs-extra');
-const _ = require('lodash');
 const debug = require('debug');
 const chalk = require('chalk');
 const minimist = require('minimist');
@@ -29,18 +28,17 @@ const pkgInfo = (dir) => {
 exports.getPackageFiles = () => {
   const root = resolve(__dirname, '..', '..', 'packages');
   const dirs = readdirSync(root);
-  return _(
-    dirs.map((d) => {
-      const out = [];
-      out.push(pkgInfo(join(root, d)));
-      out.push(pkgInfo(join(root, d, 'controller')));
-      out.push(pkgInfo(join(root, d, 'configure')));
-      return out;
-    }),
-  )
-    .flatten()
-    .compact()
-    .value();
+
+  return dirs
+    .map((d) => {
+      const base = pkgInfo(join(root, d));
+      const controller = pkgInfo(join(root, d, 'controller'));
+      const configure = pkgInfo(join(root, d, 'configure'));
+
+      return [base, controller, configure];
+    })
+    .flat()
+    .filter(Boolean);
 };
 
 const getSatisfyingVersions = async (name, range) => {
@@ -103,7 +101,14 @@ exports.checkDependencies = async (lock, i) => {
     }),
   );
 
-  const groups = _.groupBy(_.compact(results), (r) => (r.version ? 'fixable' : 'notFixable'));
+  const groups = results.filter(Boolean).reduce(
+    (acc, r) => {
+      const key = r.version ? 'fixable' : 'notFixable';
+      acc[key].push(r);
+      return acc;
+    },
+    { fixable: [], notFixable: [] },
+  );
 
   groups.fixable = groups.fixable
     ? groups.fixable.reduce((acc, d) => {
@@ -118,5 +123,6 @@ exports.checkDependencies = async (lock, i) => {
         return acc;
       }, {})
     : undefined;
+
   return { ...i, ...groups };
 };
