@@ -3,9 +3,13 @@ import { render } from '@testing-library/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Main } from '../main';
 
-jest.mock('lodash-es', () => ({
-  uniq: jest.fn(() => []),
-}));
+jest.mock('lodash-es', () => {
+  const lodash = require('lodash');
+  return {
+    ...lodash,
+    uniq: jest.fn(() => []),
+  };
+});
 
 jest.mock('@pie-lib/charting', () => ({
   Chart: (props) => <div data-testid="chart">{props.children}</div>,
