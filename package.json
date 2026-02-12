@@ -63,7 +63,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "lerna": "^8.2.4",
+    "lerna": "^9.0.4",
     "minimist": "^1.2.8",
     "npm-check-updates": "^17.1.18",
     "pacote": "^9.5.12",
