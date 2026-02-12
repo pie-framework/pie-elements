@@ -15,10 +15,14 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
 }));
 
-jest.mock('lodash-es', () => ({
-  debounce: jest.fn((fn) => fn),
-  cloneDeep: jest.fn((value) => JSON.parse(JSON.stringify(value))),
-}));
+jest.mock('lodash-es', () => {
+  const lodash = require('lodash');
+  return {
+    ...lodash,
+    debounce: jest.fn((fn) => fn),
+    cloneDeep: jest.fn((value) => JSON.parse(JSON.stringify(value))),
+  };
+});
 
 const theme = createTheme();
 

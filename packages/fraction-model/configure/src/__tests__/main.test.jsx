@@ -54,9 +54,13 @@ jest.mock('@pie-lib/editable-html-tip-tap', () => {
 
 const theme = createTheme();
 
-jest.mock('lodash-es', () => ({
-  debounce: jest.fn((fn) => fn),
-}));
+jest.mock('lodash-es', () => {
+  const lodash = require('lodash');
+  return {
+    ...lodash,
+    debounce: jest.fn((fn) => fn),
+  };
+});
 
 jest.spyOn(Math, 'random').mockReturnValue(0);
 
