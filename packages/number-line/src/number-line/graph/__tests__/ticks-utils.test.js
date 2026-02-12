@@ -111,7 +111,6 @@ describe('ticks', () => {
         //...
         const result = mod.buildTickData({ min, max }, width, { minor, major }, { limit: opts.limit });
 
-        // console.log('result', result);
         Object.keys(expected).forEach((i) => {
           const a = expected[i];
           const index = parseInt(i, 10);
@@ -195,7 +194,6 @@ describe('ticks', () => {
           math.fraction(interval),
           math.fraction(value),
         );
-        // console.log('result:', result);
         expect(result).toEqual(math.fraction(expected));
       });
     };
