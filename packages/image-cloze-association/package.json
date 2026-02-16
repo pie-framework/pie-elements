@@ -1,8 +1,11 @@
 {
   "name": "@pie-element/image-cloze-association",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pie-framework/pie-elements"
+  },
   "version": "9.0.0-next.2",
   "description": "",
-  "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },

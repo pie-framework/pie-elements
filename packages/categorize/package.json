@@ -1,6 +1,9 @@
 {
   "name": "@pie-element/categorize",
-  "repository": "pie-framework/pie-elements",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pie-framework/pie-elements"
+  },
   "publishConfig": {
     "access": "public"
   },
