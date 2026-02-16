@@ -1,7 +1,11 @@
 {
   "name": "pie-elements",
-  "private": true,
   "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pie-framework/pie-elements"
+  },
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx packages",
     "test": "scripts/build test",
