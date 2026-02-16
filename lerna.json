@@ -1,11 +1,20 @@
 {
-  "packages": ["packages/*", "packages/*/configure", "packages/*/controller"],
+  "packages": [
+    "packages/*",
+    "packages/*/configure",
+    "packages/*/controller"
+  ],
   "version": "independent",
   "npmClient": "yarn",
   "command": {
     "publish": {
-      "ignoreChanges": ["CHANGELOG.md", "CHANGELOG.json", "yarn.lock"],
+      "ignoreChanges": [
+        "CHANGELOG.md",
+        "CHANGELOG.json",
+        "yarn.lock"
+      ],
       "message": "[ci skip] chore: publish"
     }
-  }
+  },
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
