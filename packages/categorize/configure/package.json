@@ -25,8 +25,8 @@
     "debug": "^4.1.1",
     "lodash-es": "^4.17.23",
     "prop-types": "^15.6.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "gitHead": "a53e5e851a76da9c1d1a919b277ca0c4c8a8bff2"
 }
