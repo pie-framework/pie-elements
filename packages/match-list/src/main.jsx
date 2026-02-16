@@ -45,29 +45,35 @@ export class Main extends React.Component {
   onPlaceAnswer = (event) => {
     const { active, over } = event;
 
-    if (!over || !active) {
+    if (!active) {
       return;
     }
 
     const activeData = active.data.current;
-    const overData = over.data.current;
+    const overData = over?.data.current;
 
-    if (activeData && overData) {
-      const { session, onSessionChange, model } = this.props;
-      const {
-        config: { duplicates },
-      } = model;
+    if (!activeData) {
+      return;
+    }
 
-      if (isUndefined(session.value)) {
-        session.value = {};
-      }
+    const { session, onSessionChange, model } = this.props;
+    const {
+      config: { duplicates },
+    } = model;
 
-      const answerId = activeData.id;
+    if (isUndefined(session.value)) {
+      session.value = {};
+    }
+
+    const answerId = activeData.id;
+    const sourcePromptId = activeData.promptId;
+
+    // Handle dropping onto a drop zone
+    if (overData && overData.type === 'drop-zone' && overData.promptId != null) {
       const targetPromptId = overData.promptId;
 
-      // only allow dropping choices (not already placed answers) onto drop zones
-      if (activeData.type === 'choice' && overData.type === 'drop-zone' && targetPromptId) {
-        // check if this choice is already placed somewhere
+      // Handle dropping a choice onto a drop zone
+      if (activeData.type === 'choice') {
         const existingPlacement = findKey(session.value, (val) => val === answerId);
 
         if (existingPlacement && !duplicates) {
@@ -77,9 +83,33 @@ export class Main extends React.Component {
           // place answer
           session.value[targetPromptId] = answerId;
         }
-
-        onSessionChange(session);
       }
+      // Handle moving a placed item (target) to another drop zone
+      else if (activeData.type === 'target' && sourcePromptId != null) {
+        // If moving to a different placeholder
+        if (sourcePromptId !== targetPromptId) {
+          const targetHasItem = session.value[targetPromptId] != null;
+
+          if (targetHasItem && !duplicates) {
+            // swap items between placeholders
+            const temp = session.value[targetPromptId];
+            session.value[targetPromptId] = answerId;
+            session.value[sourcePromptId] = temp;
+          } else if (!targetHasItem) {
+            // move item to empty placeholder
+            session.value[targetPromptId] = answerId;
+            delete session.value[sourcePromptId];
+          }
+        }
+      }
+
+      onSessionChange(session);
+    }
+    // Handle dropping outside (remove from placeholder if it's a target)
+    else if (activeData.type === 'target' && sourcePromptId != null) {
+      // Remove item from its current placement
+      delete session.value[sourcePromptId];
+      onSessionChange(session);
     }
   };
 
