@@ -1,9 +1,6 @@
 {
   "name": "@pie-element/select-text",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pie-framework/pie-elements"
-  },
+  "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
@@ -34,14 +31,5 @@
   "exports": {
     ".": "./src/index.js",
     "./print": "./src/print.js"
-  },
-  "files": [
-    "lib",
-    "controller/lib",
-    "controller/package.json",
-    "configure/lib",
-    "configure/package.json",
-    "CHANGELOG.md",
-    "CHANGELOG.json"
-  ]
+  }
 }
