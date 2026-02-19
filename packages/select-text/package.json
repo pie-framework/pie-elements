@@ -34,5 +34,14 @@
   "exports": {
     ".": "./src/index.js",
     "./print": "./src/print.js"
-  }
+  },
+  "files": [
+    "lib",
+    "controller/lib",
+    "controller/package.json",
+    "configure/lib",
+    "configure/package.json",
+    "CHANGELOG.md",
+    "CHANGELOG.json"
+  ]
 }

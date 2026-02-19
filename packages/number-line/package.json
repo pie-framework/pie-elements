@@ -37,5 +37,14 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "files": [
+    "lib",
+    "controller/lib",
+    "controller/package.json",
+    "configure/lib",
+    "configure/package.json",
+    "CHANGELOG.md",
+    "CHANGELOG.json"
+  ]
 }
