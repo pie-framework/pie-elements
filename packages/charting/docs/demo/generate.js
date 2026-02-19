@@ -42,9 +42,9 @@ exports.model = (id, element) => ({
       editable: false,
     },
   ],
-  domain: {
-    label: 'Characters',
-  },
+  // domain: {
+  //   label: 'Characters',
+  // },
   graph: {
     width: 480,
     height: 480,
@@ -58,6 +58,6 @@ exports.model = (id, element) => ({
     min: 0,
     labelStep: 1,
   },
-  title: 'This is a chart!',
+  // title: 'This is a chart!',
   rubricEnabled: false,
 });

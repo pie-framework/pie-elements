@@ -2835,7 +2835,7 @@
     debug "^4.1.1"
     lodash-es "^4.17.23"
 
-"@pie-lib/charting@6.1.1-next.1", "@pie-lib/charting@6.2.0-next.0":
+"@pie-lib/charting@6.1.1-next.1", "@pie-lib/charting@6.2.0-next.2":
   version "6.1.1-next.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-6.1.1-next.1.tgz#921dc82b5e679d5e6c4ad7a4d9c055c9950b5423"
   integrity sha512-ObPno+EqrKUppYMA5X7qpxOuS83da2GW28orW2CMD4Fzg37S1CMzGie+3EQzKN+xA1WQR5WQ9nKLB2QMEIkdzw==
@@ -2866,7 +2866,7 @@
     react-draggable "^3.3.0"
     react-input-autosize "^2.2.1"
 
-"@pie-lib/config-ui@12.1.1-next.3", "@pie-lib/config-ui@12.2.0-next.0":
+"@pie-lib/config-ui@12.1.1-next.3", "@pie-lib/config-ui@12.2.0-next.2":
   version "12.1.1-next.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-12.1.1-next.3.tgz#9022639ef2fce5be137202c7737b658ebf054654"
   integrity sha512-qTv8xFrmJmJ7/vlczwI49MOcdeUVAcT807DK8u+Xhr3OSd4ULZUMb6whkpEfGPqhv33GMWL8V+CBCp4IICLQkQ==
@@ -2928,7 +2928,7 @@
     prop-types "^15.7.2"
     react "^18.2.0"
 
-"@pie-lib/editable-html-tip-tap@1.1.1-next.3", "@pie-lib/editable-html-tip-tap@1.2.0-next.0", "@pie-lib/editable-html-tip-tap@^1.1.1-next.3":
+"@pie-lib/editable-html-tip-tap@1.1.1-next.3", "@pie-lib/editable-html-tip-tap@1.2.0-next.2", "@pie-lib/editable-html-tip-tap@^1.1.1-next.3":
   version "1.1.1-next.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html-tip-tap/-/editable-html-tip-tap-1.1.1-next.3.tgz#428d4657b40c7d178e2b65729041c2d17831077d"
   integrity sha512-5W83b6uNaIvlrjDEl5rfyYEkA7QZGrc6AjUVOBSe1uvovc7CV754UR55pOT4JqJKsObNwrN5Up8JzQW+yvOsCg==
@@ -3014,7 +3014,7 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-1.1.1-next.1.tgz#ac614801289e7e038c210ca27e8ecda0dc7346b0"
   integrity sha512-2Bwawb65iEgBPeFTulWFsPMMW4P7ojI0SyjsXfcd206fvSmSv38KR2z092D6xF2uQalOoUY+BVUTmmJseD9S1g==
 
-"@pie-lib/graphing-solution-set@3.1.1-next.1", "@pie-lib/graphing-solution-set@3.2.0-next.0":
+"@pie-lib/graphing-solution-set@3.1.1-next.1", "@pie-lib/graphing-solution-set@3.2.0-next.2":
   version "3.1.1-next.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing-solution-set/-/graphing-solution-set-3.1.1-next.1.tgz#dcd398026e1d86f6327df342c4cd4679cb3fa602"
   integrity sha512-uP6aZxr8bhiW2pTsU+GoYv3XvTugXOubcjkN2H3034EGAPXo2ZqgAUfkCNmUng/Wp///q0yRcWKSNTT876cLOQ==
@@ -3064,7 +3064,7 @@
     debug "^4.1.1"
     lodash-es "^4.17.23"
 
-"@pie-lib/graphing@3.1.1-next.1", "@pie-lib/graphing@3.2.0-next.0":
+"@pie-lib/graphing@3.1.1-next.1", "@pie-lib/graphing@3.2.0-next.2":
   version "3.1.1-next.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-3.1.1-next.1.tgz#3012961227890feb7a97d9ec47ecee03ce8af6b0"
   integrity sha512-bTkLd5IG86aH2NJE8ZRGiIw5a7v+zg6SRcy2GqeXIUQUmCTYr51QvqWOIuxjYwL4bdKagidvfu6ae+zWdFttYQ==
@@ -3115,7 +3115,7 @@
     "@mui/material" "^7.3.4"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@2.1.1-next.3", "@pie-lib/mask-markup@2.2.0-next.0":
+"@pie-lib/mask-markup@2.1.1-next.3", "@pie-lib/mask-markup@2.2.0-next.2":
   version "2.1.1-next.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-2.1.1-next.3.tgz#8f0438a3658925b926736ba740337a9a8b91d6d1"
   integrity sha512-dFwf+AzYwjW/sG3Cgn580sjbZWETEC/oVL9Fi+qKSnfaAWYytTbZhRP8CfUg83lKoMqHktvFfVCVFIR03Cphcw==
@@ -3240,7 +3240,7 @@
     prop-types "^15.7.2"
     react-transition-group "^4.4.5"
 
-"@pie-lib/rubric@1.1.1-next.1", "@pie-lib/rubric@1.2.0-next.0":
+"@pie-lib/rubric@1.1.1-next.1", "@pie-lib/rubric@1.2.0-next.2":
   version "1.1.1-next.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-1.1.1-next.1.tgz#e1ea844f27059bc866adefcfe7133bb53daddde1"
   integrity sha512-5Pd2RuyMC47As6M5ubQ3jumsPlHu11//Bj+UkijEIxG6EiUGQ8uqX9MxzA+x4DnOenykGonAd6HiFAany3pxsg==
@@ -15206,7 +15206,7 @@ string-length@^4.0.1:
     char-regex "^1.0.2"
     strip-ansi "^6.0.0"
 
-"string-width-cjs@npm:string-width@^4.2.0", "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -15223,6 +15223,15 @@ string-width@^1.0.1:
     code-point-at "^1.0.0"
     is-fullwidth-code-point "^1.0.0"
     strip-ansi "^3.0.0"
+
+"string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
+  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.1"
 
 string-width@^2.0.0, string-width@^2.1.1:
   version "2.1.1"
@@ -15323,7 +15332,7 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -15343,6 +15352,13 @@ strip-ansi@^4.0.0:
   integrity sha512-4XaJ2zQdCzROZDivEVIDPkcQn8LMFSa8kj8Gxb/Lnwzv9A8VctNZ+lfivC/sV3ivW8ElJTERXZoPBRrZKkNKow==
   dependencies:
     ansi-regex "^3.0.0"
+
+strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  dependencies:
+    ansi-regex "^5.0.1"
 
 strip-ansi@^7.0.1, strip-ansi@^7.1.0:
   version "7.1.2"
@@ -16509,7 +16525,7 @@ wordwrap@^1.0.0:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
   integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -16530,6 +16546,15 @@ wrap-ansi@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-6.2.0.tgz#e9393ba07102e6c91a3b221478f0257cd2856e53"
   integrity sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+
+wrap-ansi@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
   dependencies:
     ansi-styles "^4.0.0"
     string-width "^4.1.0"
