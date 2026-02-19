@@ -183,7 +183,7 @@ export class Row extends React.Component {
       (p) => p !== 'bulleted-list' && p !== 'numbered-list',
     );
 
-    const content = (
+    return (
       <div style={{ width: '100%' }}>
         <DragHandleStyled itemID={'handle'} onMouseDown={this.onMouseDownOnHandle}>
           <DragHandle color={'primary'} />
@@ -207,8 +207,7 @@ export class Row extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               error={error && error !== 'No correct response defined.'}
-              mathMlOptions={mathMlOptions}
-            />
+              mathMlOptions={mathMlOptions} />
           </QuestionText>
 
           {row.values.map((rowValue, rowIdx) => (
@@ -217,15 +216,13 @@ export class Row extends React.Component {
                 <RadioButtonStyled
                   error={error?.includes('No correct response defined.')}
                   onChange={this.onRowValueChange(idx, rowIdx)}
-                  checked={rowValue === true}
-                />
+                  checked={rowValue === true} />
               ) : (
                 <Checkbox
                   onChange={this.onRowValueChange(idx, rowIdx)}
                   checked={rowValue === true}
                   label={''}
-                  error={error?.includes('No correct response defined.')}
-                />
+                  error={error?.includes('No correct response defined.')} />
               )}
             </RowItem>
           ))}
@@ -244,12 +241,9 @@ export class Row extends React.Component {
           open={dialog.open}
           title="Warning"
           text={dialog.text}
-          onConfirm={() => this.setState({ dialog: { open: false } })}
-        />
+          onConfirm={() => this.setState({ dialog: { open: false } })} />
       </div>
     );
-
-    return content;
   }
 }
 
@@ -290,9 +284,38 @@ function DraggableRow(props) {
     backgroundColor: isOver ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
   };
 
+  // edit listeners to prevent dragging when interacting with editable-html element
+  const filteredListeners = {
+    ...listeners,
+    onKeyDown: (e) => {
+      const target = e.target;
+      if (
+        target.closest('[contenteditable]') ||
+        target.closest('input') ||
+        target.closest('textarea') ||
+        target.isContentEditable
+      ) {
+        return;
+      }
+      listeners?.onKeyDown?.(e);
+    },
+    onPointerDown: (e) => {
+      const target = e.target;
+      if (
+        target.closest('[contenteditable]') ||
+        target.closest('input') ||
+        target.closest('textarea') ||
+        target.isContentEditable
+      ) {
+        return;
+      }
+      listeners?.onPointerDown?.(e);
+    },
+  };
+
   return (
     <div ref={setDropRef} style={style}>
-      <div ref={setDragRef} {...listeners} {...attributes}>
+      <div ref={setDragRef} {...filteredListeners} {...attributes}>
         <Row {...props} />
       </div>
     </div>
