@@ -157,6 +157,7 @@ export class Main extends React.Component {
             minHeight={height && height.toString()}
             maxHeight={maxHeight}
             disabled={disabled}
+            editorBackgroundColor={color.defaults.BACKGROUND_LIGHT}
             highlightShape={true}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
