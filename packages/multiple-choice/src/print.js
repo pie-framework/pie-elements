@@ -68,7 +68,9 @@ export default class MultipleChoicePrint extends HTMLElement {
             this._root = createRoot(this);
           }
           this._root.render(element);
-          queueMicrotask(() => {
+          // Use requestAnimationFrame to ensure DOM is fully painted before rendering math
+          // This is especially important for nested components like PreviewPrompt (rationale, choice labels)
+          requestAnimationFrame(() => {
             log('render complete - render math');
             renderMath(this);
           });
