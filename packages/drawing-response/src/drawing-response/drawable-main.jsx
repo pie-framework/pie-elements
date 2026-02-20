@@ -111,7 +111,13 @@ export class DrawableMain extends React.Component {
     const { newDrawable, textIsSelected } = this.state;
     const { toolActive, fillColor, outlineColor, scale } = this.props;
 
-    if (newDrawable.length === 0 && !textIsSelected) {
+    // Check if the event target is a text element or transformer
+    const targetName = e.target.name();
+    const targetClassName = e.target.getClassName();
+    const isTextElement = targetName && targetName.startsWith('text_');
+    const isTransformer = targetClassName === 'Transformer';
+
+    if (newDrawable.length === 0 && !isTextElement && !isTransformer) {
       const stage = e.target.getStage();
       if (!stage) return;
 
