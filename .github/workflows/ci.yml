@@ -42,7 +42,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: yarn
       - run: yarn install
-      - run: scripts/build release --next
+      - run: scripts/build release --next --lernaLogLevel verbose
 
   build-release:
     needs: test
