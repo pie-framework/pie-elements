@@ -111,7 +111,6 @@ export class DrawableMain extends React.Component {
     const { newDrawable, textIsSelected } = this.state;
     const { toolActive, fillColor, outlineColor, scale } = this.props;
 
-
     if (newDrawable.length === 0 && !textIsSelected) {
       const stage = e.target.getStage();
       if (!stage) return;
