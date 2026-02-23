@@ -163,7 +163,7 @@ function DragAndDropAnswer(props) {
 
   const dragId = `${type || 'answer'}-${id}`;
   // droppable only if promptId exists
-  const dropId = promptId ? `drop-${promptId}` : undefined;
+  const dropId = promptId !== undefined && promptId !== null ? `drop-${promptId}` : undefined;
 
   const {
     attributes,

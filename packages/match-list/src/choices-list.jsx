@@ -3,20 +3,10 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { find, isEmpty, isUndefined } from 'lodash-es';
 import DragAndDropAnswer from './answer';
-import { MatchDroppablePlaceholder } from '@pie-lib/drag';
+import { DroppablePlaceholder } from './droppable-placeholder';
 
 const ChoicesContainer = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(2),
-}));
-
-const AnswersContainer = styled('div')(({ theme }) => ({
-  alignItems: 'center',
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  justifyContent: 'space-between',
-  marginTop: theme.spacing(1),
-  marginBottom: theme.spacing(1),
 }));
 
 export class ChoicesList extends React.Component {
@@ -55,13 +45,9 @@ export class ChoicesList extends React.Component {
 
     return (
       <ChoicesContainer>
-        {MatchDroppablePlaceholder ? (
-          <MatchDroppablePlaceholder disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
-            {filteredAnswers}
-          </MatchDroppablePlaceholder>
-        ) : (
-          <AnswersContainer>{filteredAnswers}</AnswersContainer>
-        )}
+        <DroppablePlaceholder id="choices-pool" disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
+          {filteredAnswers}
+        </DroppablePlaceholder>
       </ChoicesContainer>
     );
   }
