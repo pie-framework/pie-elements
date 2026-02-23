@@ -181,9 +181,16 @@ export class Main extends React.Component {
               textAlign: {
                 disabled: true,
               },
+              h3: {
+                disabled: true,
+              },
+              'bulleted-list': {
+                disabled: true,
+              },
+              'numbered-list': {
+                disabled: true,
+              },
               separateParagraphs: { disabled: false },
-              ul_list: { disabled: true },
-              ol_list: { disabled: true },
             }}
             languageCharactersProps={languageCharactersProps}
           />
