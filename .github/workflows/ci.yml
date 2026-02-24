@@ -2,19 +2,21 @@ name: PIE Elements CI
 
 on:
   push:
-    branches:
-      - develop
-      - master
+    branches: [develop, master]
   pull_request:
-    branches:
-      - develop
-      - master
+    branches: [develop, master]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # REQUIRED for lerna version
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -34,14 +36,17 @@ jobs:
       id-token: write   # REQUIRED for npm trusted publishing
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # REQUIRED for lerna version
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
           cache: yarn
-      - run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@noreply.github.com"
       - run: yarn install
       - run: scripts/release --next --loglevel verbose
 
@@ -56,13 +61,16 @@ jobs:
       id-token: write   # REQUIRED for npm trusted publishing
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # REQUIRED for lerna version
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
           cache: yarn
-      - run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@noreply.github.com"
       - run: yarn install
       - run: scripts/release --loglevel verbose
