@@ -67,18 +67,21 @@ export class Main extends React.Component {
     this.setState({ draggingElement: null });
     const { active, over } = event;
 
-    if (!over || !active) {
+    if (!active) {
       return;
     }
 
     const activeData = active.data.current;
-    const overData = over.data.current;
+    const overData = over?.data.current;
 
-    if (activeData && overData) {
-      const { session, onSessionChange, model } = this.props;
-      const {
-        config: { duplicates },
-      } = model;
+    if (!activeData) {
+      return;
+    }
+
+    const { session, onSessionChange, model } = this.props;
+    const {
+      config: { duplicates },
+    } = model;
 
       if (isUndefined(session.value)) {
         session.value = {};
@@ -91,7 +94,11 @@ export class Main extends React.Component {
         return;
       }
 
-      const answerId = activeData.id;
+    const answerId = activeData.id;
+    const sourcePromptId = activeData.promptId;
+
+    // Handle dropping onto a drop zone
+    if (overData && overData.type === 'drop-zone' && overData.promptId != null) {
       const targetPromptId = overData.promptId;
 
       if (activeData.type === 'choice' && overData.type === 'drop-zone' && targetPromptId !== undefined) {
@@ -105,6 +112,25 @@ export class Main extends React.Component {
           // place answer
           session.value[targetPromptId] = answerId;
         }
+      }
+      // Handle moving a placed item (target) to another drop zone
+      else if (activeData.type === 'target' && sourcePromptId != null) {
+        // If moving to a different placeholder
+        if (sourcePromptId !== targetPromptId) {
+          const targetHasItem = session.value[targetPromptId] != null;
+
+          if (targetHasItem && !duplicates) {
+            // swap items between placeholders
+            const temp = session.value[targetPromptId];
+            session.value[targetPromptId] = answerId;
+            session.value[sourcePromptId] = temp;
+          } else if (!targetHasItem) {
+            // move item to empty placeholder
+            session.value[targetPromptId] = answerId;
+            delete session.value[sourcePromptId];
+          }
+        }
+      }
 
         onSessionChange(session);
       }
