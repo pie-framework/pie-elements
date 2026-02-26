@@ -593,12 +593,6 @@ class AnnotationEditor extends React.Component {
               h3: {
                 disabled: true,
               },
-              'bulleted-list': {
-                disabled: true,
-              },
-              'numbered-list': {
-                disabled: true,
-              },
             }}
           />
         </CommentContainer>
