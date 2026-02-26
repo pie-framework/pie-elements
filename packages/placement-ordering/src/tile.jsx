@@ -36,13 +36,13 @@ const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, 
   padding: '10px',
   boxSizing: 'border-box',
   overflow: 'hidden',
-  border: (type === 'choice') ? `1px solid ${theme.palette.grey[400]}` : '1px solid transparent',
-  backgroundColor: (type === 'choice') ? color.background() : 'transparent',
-  transition: (type === 'choice') ? 'background-color 150ms ease, border-color 150ms ease, opacity 150ms ease' : 'none',
+  border: (type === 'choice' || type === 'target') ? `1px solid ${theme.palette.grey[400]}` : '1px solid transparent',
+  backgroundColor: (type === 'choice' || type === 'target') ? color.background() : 'transparent',
+  transition: (type === 'choice' || type === 'target') ? 'background-color 150ms ease, border-color 150ms ease, opacity 150ms ease' : 'none',
   pointerEvents: 'none',
   userSelect: 'none',
 
-  ...((type === 'choice') && {
+  ...((type === 'choice' || type === 'target') && {
     '&:hover': {
       backgroundColor: disabled ? color.background() : color.secondary(),
       borderColor: disabled ? theme.palette.grey[400] : theme.palette.primary.main,
@@ -51,7 +51,7 @@ const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, 
   }),
 
   // Apply conditional styles based on props (only if not empty spacing tile)
-  ...((type === 'choice') && isOver && !disabled && {
+  ...((type === 'choice' || type === 'target') && isOver && !disabled && {
     opacity: 0.4,
     backgroundColor: color.primaryLight(),
     borderColor: theme.palette.primary.main,
@@ -59,7 +59,7 @@ const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, 
     transform: 'scale(1.05)',
   }),
 
-  ...((type === 'choice') && isDragging && !disabled && {
+  ...((type === 'choice' || type === 'target') && isDragging && !disabled && {
     opacity: 0.6,
     backgroundColor: color.secondaryLight(),
     transform: 'scale(1.05) rotate(2deg)',
@@ -67,7 +67,7 @@ const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, 
     cursor: 'grabbing',
   }),
 
-  ...((type === 'choice') && disabled && {
+  ...((type === 'choice' || type === 'target') && disabled && {
     opacity: 0.6,
     cursor: 'not-allowed',
     '&:hover': {
@@ -76,11 +76,11 @@ const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, 
     },
   }),
 
-  ...((type === 'choice') && outcome === 'incorrect' && {
+  ...((type === 'choice' || type === 'target') && outcome === 'incorrect' && {
     border: `1px solid ${color.incorrect()}`,
   }),
 
-  ...((type === 'choice') && outcome === 'correct' && {
+  ...((type === 'choice' || type === 'target') && outcome === 'correct' && {
     border: `1px solid ${color.correct()}`,
   }),
 
@@ -98,7 +98,6 @@ const TileContent = (props) => {
   if (empty) {
     return <Holder type={type} index={guideIndex} isOver={isOver} disabled={disabled} />;
   } else {
-    console.log('TileContent render, props: ', props);
     return (
       <StyledTileContent
         type={type}
@@ -125,7 +124,15 @@ export const Tile = (props) => {
     guideIndex,
     instanceId,
     draggable,
+    tileIndex,
   } = props;
+
+  // Use type + tileIndex in the IDs to guarantee uniqueness in all modes.
+  // In includeTargets mode, a choice (id:'c1', type:'choice') and a target (id:'c1', type:'target')
+  // can coexist — the type differentiates them.
+  // tileIndex (array position from tiler) ensures empty placeholders are also unique.
+  const dragId = `tile-${type}-${id != null ? id : 'empty'}-${tileIndex}-${instanceId}`;
+  const dropId = `drop-${type}-${id != null ? id : 'empty'}-${tileIndex}-${instanceId}`;
 
   const {
     attributes,
@@ -134,7 +141,7 @@ export const Tile = (props) => {
     transform,
     isDragging,
   } = useDraggable({
-    id: `tile-${id}-${instanceId}`,
+    id: dragId,
     data: {
       id,
       type,
@@ -149,7 +156,7 @@ export const Tile = (props) => {
     setNodeRef: setDropRef,
     isOver: dropIsOver,
   } = useDroppable({
-    id: `drop-tile-${id ? id : index}-${instanceId}`,
+    id: dropId,
     data: {
       id,
       type,
@@ -157,6 +164,9 @@ export const Tile = (props) => {
       value: label,
       index
     },
+    // Disable droppable on the tile currently being dragged so closestCenter
+    // cannot pick it as the drop target (prevents self-collision and wrong matches).
+    disabled: isDragging,
   });
 
   const ref = React.useRef(null);
@@ -234,6 +244,7 @@ Tile.propTypes = {
   guideIndex: PropTypes.number,
   instanceId: PropTypes.any,
   draggable: PropTypes.bool,
+  tileIndex: PropTypes.number,
 };
 
 export default Tile;
