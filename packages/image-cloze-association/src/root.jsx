@@ -136,18 +136,23 @@ export class ImageClozeAssociationComponent extends React.Component {
 
     if (!draggingElement.id) return null;
 
-    if (draggingElement.id) {
-      return (
-        <PossibleResponse
-          key={draggingElement.id}
-          data={draggingElement}
-          answerChoiceTransparency={model.answerChoiceTransparency}
-          containerStyle={{ margin: '4px' }}
-        />
-      );
-    }
+    // check if the response contains an image
+    const imgRegex = /<img[^>]+src="([^">]+)"/;
+    const containsImage = imgRegex.test(draggingElement.value);
 
-    return null;
+    return (
+      <PossibleResponse
+        key={draggingElement.id}
+        canDrag={false}
+        data={draggingElement}
+        onDragBegin={() => {}}
+        isOverlay
+        containerStyle={{
+          ...(model.answerChoiceTransparency ? { opacity: '0.8' } : {}),
+          ...(!containsImage ? { padding: '0 10px', margin: '4px 6px !important' } : {}),
+        }}
+      />
+    );
   };
 
   filterPossibleAnswers = (possibleResponses, answer) =>
