@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@9.1.0-next.2...@pie-element/image-cloze-association@9.1.1-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **categorize, image-cloze-association:** enable snap back visual only for invalid drop zones PD-5495 ([211ab92](https://github.com/pie-framework/pie-elements/commit/211ab9260a76bbfbeb87f1fc85eb68ba833ded7c))
+- **image-cloze-association:** fix PossibleResponse dragging style PD-5515 ([35d7ea0](https://github.com/pie-framework/pie-elements/commit/35d7ea0ef6893b4e76317b28367b4ced1ee1527f))
+
 # [9.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@9.1.0-next.1...@pie-element/image-cloze-association@9.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association

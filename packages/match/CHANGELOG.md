@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.0-next.2...@pie-element/match@11.1.1-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **match:** filter drag listeners for editable elements ([0d6ee3a](https://github.com/pie-framework/pie-elements/commit/0d6ee3a8736b07c2ed51ec9c2f1417a6cab5a25a))
+- **match:** overwrite mui default colors to reflect correctness PD-5523 ([a83fe93](https://github.com/pie-framework/pie-elements/commit/a83fe933fe8cfc7f54eb831c731a9c8710648730))
+
 # [11.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.0-next.1...@pie-element/match@11.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/match

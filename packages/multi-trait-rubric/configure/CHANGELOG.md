@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.1.0-next.2...@pie-element/multi-trait-rubric-configure@6.1.1-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **multi-trait-rubric:** fix broken ui PD-5594 ([f56919a](https://github.com/pie-framework/pie-elements/commit/f56919aea24d17cbf7a2ed9d2817b17059402e7b))
+
 # [6.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.1.0-next.1...@pie-element/multi-trait-rubric-configure@6.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
