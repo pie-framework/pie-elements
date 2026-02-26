@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@10.1.0-next.2...@pie-element/drawing-response-configure@10.1.0-next.3) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
 # [10.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@10.1.0-next.1...@pie-element/drawing-response-configure@10.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/drawing-response-configure
