@@ -219,7 +219,6 @@ export default class TextDrawable {
         };
 
         newStage.on('click', stageClickHandler);
-
         this.eventListenersDetachArray.push(() => newStage.off('click', stageClickHandler));
       }
 
@@ -241,11 +240,38 @@ export default class TextDrawable {
           onDblTap: (e) => this.handleDblClick(e, text),
           onTransform: (e) => this.handleTransform(e, textNode),
           onTransformEnd: this.props.handleSessionChange,
-          onMouseDown: this.handleMouseDown,
-          onTouchStart: this.handleMouseDown,
-          onMouseUp: this.handleMouseUp,
-          onTouchEnd: this.handleMouseUp,
-          onDragEnd: this.props.handleSessionChange,
+
+          onMouseDown: (e) => {
+            e.cancelBubble = true;
+            this.props.toggleTextSelected(true);
+          },
+          onTouchStart: (e) => {
+            e.cancelBubble = true;
+            this.props.toggleTextSelected(true);
+          },
+
+          onDragStart: (e) => {
+            e.cancelBubble = true;
+            this.props.toggleTextSelected(true);
+          },
+          onDragMove: (e) => {
+            e.cancelBubble = true;
+          },
+          onDragEnd: (e) => {
+            e.cancelBubble = true;
+            this.props.toggleTextSelected(false);
+            this.props.handleSessionChange();
+          },
+
+          onMouseUp: (e) => {
+            e.cancelBubble = true;
+            this.props.toggleTextSelected(false);
+          },
+          onTouchEnd: (e) => {
+            e.cancelBubble = true;
+            this.props.toggleTextSelected(false);
+          },
+
           onMouseEnter: this.props.onMouseOverElement,
           onMouseLeave: this.props.onMouseOutElement,
         };
