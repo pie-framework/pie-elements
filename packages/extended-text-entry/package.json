@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/extended-text-entry",
   "repository": "pie-framework/pie-elements",
-  "version": "14.1.0-next.5",
+  "version": "14.1.1-next.0",
   "description": "",
   "publishConfig": {
     "access": "public"
