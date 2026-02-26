@@ -31,8 +31,10 @@ class RectComponent extends React.Component {
   };
 
   handleMouseLeave = () => {
-    this.setState({ hovered: false });
-    document.body.style.cursor = 'default';
+    if (!this.state.isDragging) {
+      this.setState({ hovered: false });
+      document.body.style.cursor = 'default';
+    }
   };
 
   handleOnDragEnd = (e) => {
