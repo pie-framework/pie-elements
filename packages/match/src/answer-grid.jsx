@@ -159,6 +159,16 @@ export class AnswerGrid extends React.Component {
                           '&:hover': {
                             color: disabled ? color.disabled() : color.primaryLight(),
                           },
+                          '&.Mui-disabled': {
+                            color: `${(showCorrect && rowItem === true) ||
+                                  (evaluate && this.answerIsCorrect(row.id, rowItem, answerIndex)) 
+                                  ? color.correct() :
+                                  evaluate && this.answerIsIncorrect(row.id, rowItem, answerIndex)
+                                  ? color.incorrect() :
+                                  rowItem === true && !evaluate
+                                  ? color.primary() :
+                                  color.disabled()}`,
+                          },
                         }}
                         disabled={disabled}
                         onChange={this.onRowValueChange(row.id, answerIndex)}
