@@ -132,20 +132,7 @@ export class Main extends React.Component {
         }
       }
 
-        onSessionChange(session);
-      }
-
-      // moving an answer between drop zones
-      if (activeData.type === 'target' && overData.type === 'drop-zone' && targetPromptId !== undefined && activeData.promptId !== undefined) {
-        const sourcePromptId = activeData.promptId;
-
-        if (sourcePromptId !== targetPromptId) {
-          const temp = session.value[targetPromptId];
-          session.value[targetPromptId] = session.value[sourcePromptId];
-          session.value[sourcePromptId] = temp;
-          onSessionChange(session);
-        }
-      }
+      onSessionChange(session);
     }
   };
 
