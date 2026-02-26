@@ -162,8 +162,8 @@ function DragAndDropAnswer(props) {
   const { id, instanceId, promptId, draggable = true, disabled = false, type } = props;
 
   const dragId = `${type || 'answer'}-${id}`;
-  // droppable only if promptId exists (use != null to check for both null and undefined, since 0 is a valid id)
-  const dropId = promptId != null ? `drop-${promptId}` : undefined;
+  // droppable only if promptId exists
+  const dropId = promptId !== undefined && promptId !== null ? `drop-${promptId}` : undefined;
 
   const {
     attributes,
