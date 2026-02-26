@@ -62,7 +62,7 @@ const FlexContainer = styled('div')({
 const AlternateBar = styled('div')({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
+  justifyContent: 'flex-start',
 });
 
 const ErrorText = styled('div')(({ theme }) => ({
