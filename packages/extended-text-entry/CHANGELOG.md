@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.1.0-next.2...@pie-element/extended-text-entry@14.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- disable text editor tools in extended-text-entry gather mode PD-5581 ([bf1e457](https://github.com/pie-framework/pie-elements/commit/bf1e4570cdd300ae4f982e5116b6ba5bcf9b4222))
+
 # [14.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.1.0-next.1...@pie-element/extended-text-entry@14.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry

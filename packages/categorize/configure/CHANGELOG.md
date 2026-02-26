@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.1.0-next.2...@pie-element/categorize-configure@10.1.1-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **categorize:** resolve crash when adding new category and implement auto-focus PD-5588 ([39b7a9b](https://github.com/pie-framework/pie-elements/commit/39b7a9b7aed3abcb4c6023829f1b2448631ed23b))
+
 # [10.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.1.0-next.1...@pie-element/categorize-configure@10.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/categorize-configure

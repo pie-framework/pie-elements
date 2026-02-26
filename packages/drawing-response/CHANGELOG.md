@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@11.1.0-next.2...@pie-element/drawing-response@11.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **drawing-response:** avoid drawing when text element is moved PD-5593 ([5a506cb](https://github.com/pie-framework/pie-elements/commit/5a506cbe516e4b4479693a8ff6e76cff21725eee))
+- **drawing-response:** avoid drawing when text element is moved PD-5593 ([dd1b590](https://github.com/pie-framework/pie-elements/commit/dd1b5907c2d72d1fb661756d208df81c8f0842ac))
+- **drawing-response:** avoid drwinf when text element is moved PD-5593 ([d853a26](https://github.com/pie-framework/pie-elements/commit/d853a26c320153e4207582c57851c8271cd56c02))
+
 # [11.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@11.1.0-next.1...@pie-element/drawing-response@11.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/drawing-response

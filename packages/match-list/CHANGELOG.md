@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.1.0-next.2...@pie-element/match-list@6.1.1-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- conflicts ([1b783fc](https://github.com/pie-framework/pie-elements/commit/1b783fcc5e6c0678a3cc57ce4321f07bc18f7734))
+- **match-list:** add drag overaly, fix placeholder component and enhance drag-and-drop functionality PD-5525 ([0a50dde](https://github.com/pie-framework/pie-elements/commit/0a50dde4e4dfadc7622e299e95abd61539a76b3d))
+- **match-list:** consider placeholder 0 valid, allow drag back to choices, allow choices movement between placeholders PD-5524 ([f49b34b](https://github.com/pie-framework/pie-elements/commit/f49b34b997fedde56a4dfb271c2171acb28b9fb7))
+
 # [6.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.1.0-next.1...@pie-element/match-list@6.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/match-list

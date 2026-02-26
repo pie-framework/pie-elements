@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.0-next.2...@pie-element/multiple-choice@12.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **multiple-choice:** wait dom to be fully painted until calling renderMath requestAnimFrame PD-5619 ([057d5dc](https://github.com/pie-framework/pie-elements/commit/057d5dccbb76f7e2c3ea14402344a1ba13a10200))
+
 # [12.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.0-next.1...@pie-element/multiple-choice@12.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/multiple-choice
