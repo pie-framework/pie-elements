@@ -79,7 +79,8 @@ export default class MultipleChoice extends HTMLElement {
             this._root = createRoot(this);
           }
           this._root.render(element);
-          queueMicrotask(() => {
+          // Use requestAnimationFrame to ensure DOM is fully painted before rendering math
+          requestAnimationFrame(() => {
             log('render complete - render math');
             renderMath(this);
           });
