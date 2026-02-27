@@ -5,8 +5,18 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
+    ".": {
+      "import": "./src/index.js",
+      "default": "./lib/index.js"
+    },
+    "./print": {
+      "import": "./src/print.js",
+      "default": "./lib/print.js"
+    },
+    "./configure/lib": {
+      "require": "./configure/lib/index.js",
+      "default": "./configure/lib/index.js"
+    }
   },
   "description": "Rubric Scoring Interaction",
   "publishConfig": {
