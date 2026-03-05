@@ -24,6 +24,8 @@ const buildTiles = (props) => {
     tile.instanceId = props.instanceId;
     tile.disabled = props.disabled;
     tile.guideIndex = props.addGuide ? tile.index + 1 : undefined;
+    // unique key for dnd-kit IDs
+    tile.tileIndex = index;
 
     if (props.includeTargets) {
       return <Tile {...tile} key={index} />;
