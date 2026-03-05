@@ -1,46 +1,45 @@
 import React from 'react';
-import { FormSection, layout, AlertDialog } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { FormSection, layout, AlertDialog } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
+import { FractionModelChart } from '@pie-element/fraction-model';
+import Tooltip from '@mui/material/Tooltip';
+import Info from '@mui/icons-material/Info';
+import { styled } from '@mui/material/styles';
+
 import CardBar from './card-bar';
 import ModelOptions from './model-options';
-import { FractionModelChart } from '@pie-element/fraction-model';
-import Tooltip from '@material-ui/core/Tooltip';
-import Info from '@material-ui/icons/Info';
 
-const styles = (theme) => ({
-  label: {
-    marginBottom: theme.spacing.unit * 4,
-  },
-  tooltip: {
+const StyledFormSection = styled(FormSection)(({ theme }) => ({
+  marginBottom: theme.spacing(4),
+}));
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
     fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-  flexRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-  },
-  errorMessage: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    marginTop: theme.spacing.unit,
-  },
-  modelError: {
+}));
+
+const ErrorMessage = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  marginTop: theme.spacing(1),
+}));
+
+const ModelErrorContainer = styled('div')(({ theme, hasError }) => ({
+  ...(hasError && {
     border: `2px solid ${theme.palette.error.main}`,
-  },
-});
+  }),
+}));
+
+const Label = styled('label')(({ theme }) => ({
+  marginBottom: theme.spacing(4),
+}));
 
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
@@ -99,7 +98,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, onChange, configuration, imageSupport, uploadSoundSupport } = this.props;
+    const { model, onChange, configuration, imageSupport, uploadSoundSupport } = this.props;
     const {
       baseInputConfiguration = {},
       contentDimensions = {},
@@ -128,9 +127,8 @@ export class Main extends React.Component {
       <layout.ConfigLayout extraCSSRules={extraCSSRules} dimensions={contentDimensions} hideSettings={true}>
         <CardBar header="Set Up"></CardBar>
 
-        <FormSection label={title?.label || 'Title'} className={classes.label}>
+        <StyledFormSection label={title?.label || 'Title'}>
           <EditableHtml
-            className={classes.title}
             markup={model.title || ''}
             onChange={(title) => onChange({ title })}
             toolbarOpts={toolbarOpts}
@@ -151,9 +149,9 @@ export class Main extends React.Component {
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             mathMlOptions={mathMlOptions}
           />
-        </FormSection>
+        </StyledFormSection>
 
-        <FormSection label={prompt?.label || 'Question'} className={classes.label}>
+        <StyledFormSection label={prompt?.label || 'Question'}>
           <EditableHtml
             markup={model.prompt || ''}
             minHeight={60}
@@ -166,35 +164,33 @@ export class Main extends React.Component {
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             mathMlOptions={mathMlOptions}
           />
-        </FormSection>
+        </StyledFormSection>
 
         <FormSection>
           <ModelOptions model={model} onChange={this.onModelOptionsChange} modelOptions={modelOptions} />
         </FormSection>
 
-        <FormSection>
-          <CardBar
+        <FormSection>            <CardBar
             header="Correct Answer"
             info={
-              <Tooltip
-                classes={{ tooltip: classes.tooltip }}
+              <StyledTooltip
                 disableFocusListener
                 disableTouchListener
                 placement={'right'}
                 title={'The correct answer should include no more than one partially-filled model'}
               >
                 <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }} />
-              </Tooltip>
+              </StyledTooltip>
             }
           ></CardBar>
 
           <br />
-          <label className={classes.label}>
+          <Label>
             Click/touch the number of parts to represent the correct fraction model
-          </label>
+          </Label>
           <br />
 
-          <div className={errors.correctResponse && classes.modelError}>
+          <ModelErrorContainer hasError={!!errors.correctResponse}>
             <FractionModelChart
               key={fractionModelChartKey}
               value={model.correctResponse}
@@ -204,9 +200,9 @@ export class Main extends React.Component {
               showLabel={model.showGraphLabels}
               onChange={this.onCorrectAnswerChange}
             ></FractionModelChart>
-          </div>
+          </ModelErrorContainer>
 
-          {errors.correctResponse && <div className={classes.errorMessage}>{errors.correctResponse}</div>}
+          {errors.correctResponse && <ErrorMessage>{errors.correctResponse}</ErrorMessage>}
         </FormSection>
 
         <AlertDialog
@@ -234,4 +230,4 @@ export class Main extends React.Component {
   }
 }
 
-export default withStyles(styles, { name: 'Main' })(Main);
+export default Main;

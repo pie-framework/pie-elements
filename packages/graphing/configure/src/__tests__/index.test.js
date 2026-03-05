@@ -1,6 +1,21 @@
 import defaultValues from '../defaults';
 import GraphLinesConfigure from '../index';
 
+jest.mock('@pie-lib/graphing', () => ({
+  GraphContainer: (props) => <div data-testid="graph-container" {...props} />,
+  GridSetup: (props) => <div data-testid="grid-setup" {...props} />,
+  tools: {
+    polygon: () => ({
+      Component: () => <div />,
+      type: 'polygon',
+    }),
+    line: () => ({
+      Component: () => <div />,
+      type: 'line',
+    }),
+  },
+}));
+
 jest.mock('@pie-lib/config-ui', () => ({
   InputContainer: (props) => <div>{props.children}</div>,
   InputCheckbox: (props) => <div>{props.children}</div>,

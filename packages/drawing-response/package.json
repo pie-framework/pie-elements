@@ -1,31 +1,32 @@
 {
   "name": "@pie-element/drawing-response",
-  "version": "10.3.3",
-  "description": "",
   "repository": "pie-framework/pie-elements",
+  "version": "11.1.2-next.2",
+  "description": "",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.3",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
     "@mdi/js": "^3.6.95",
     "@mdi/react": "^1.1.1",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "3.22.1",
-    "@pie-lib/render-ui": "4.35.2",
-    "@pie-lib/translator": "2.23.1",
-    "classnames": "^2.2.6",
-    "enzyme-to-json": "^3.3.5",
-    "konva": "^3.4.1",
-    "lodash": "^4.17.11",
+    "@pie-lib/math-rendering": "4.2.0-next.3",
+    "@pie-lib/render-ui": "5.2.0-next.4",
+    "@pie-lib/translator": "3.2.0-next.3",
+    "konva": "8.3.0",
+    "lodash-es": "^4.17.23",
     "prop-types": "^15.6.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-konva": "^16.10.1-0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-konva": "^18.2.14"
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "cc08ba0f4d031351d6c0dbeb26403f6ed193a1d5",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

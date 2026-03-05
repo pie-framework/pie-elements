@@ -1,22 +1,18 @@
 {
   "name": "@pie-element/number-line-controller",
   "private": true,
-  "version": "7.3.3",
+  "version": "8.1.1-next.1",
   "description": "Controller logic for @pie-ui/number-line",
   "keywords": [
     "pie",
     "number-line"
   ],
-  "repository": "pie-framework/pie-elements",
   "main": "lib/index.js",
   "module": "src/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
-    "@pie-lib/controller-utils": "0.22.2",
-    "@pie-lib/feedback": "0.24.1",
-    "lodash": "^4.17.15",
+    "@pie-lib/controller-utils": "1.2.0-next.3",
+    "@pie-lib/feedback": "1.2.0-next.3",
+    "lodash-es": "^4.17.23",
     "mathjs": "^7.5.1"
   },
   "author": "",

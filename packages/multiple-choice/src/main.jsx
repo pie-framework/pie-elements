@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import { PreviewLayout } from '@pie-lib/render-ui';
 import MultipleChoice from './multiple-choice';
-
-const styles = () => ({});
 
 class Main extends React.Component {
   static propTypes = {
@@ -12,7 +9,6 @@ class Main extends React.Component {
     session: PropTypes.object,
     options: PropTypes.object,
     onChoiceChanged: PropTypes.func,
-    classes: PropTypes.object.isRequired,
     onShowCorrectToggle: PropTypes.func,
     extraCSSRules: PropTypes.shape({
       names: PropTypes.arrayOf(PropTypes.string),
@@ -24,9 +20,6 @@ class Main extends React.Component {
     model: {},
     session: {},
   };
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { model, onChoiceChanged, session, onShowCorrectToggle, options } = this.props;
@@ -34,7 +27,7 @@ class Main extends React.Component {
 
     // model.partLabel is a property used for ebsr
     return (
-      <PreviewLayout extraCSSRules={extraCSSRules} fontSizeFactor={fontSizeFactor}>
+      <PreviewLayout extraCSSRules={extraCSSRules} fontSizeFactor={fontSizeFactor} classes={{}}>
         <MultipleChoice
           {...model}
           options={options}
@@ -47,10 +40,4 @@ class Main extends React.Component {
   }
 }
 
-const Styled = withStyles(styles, { name: 'Main' })(Main);
-
-const Root = (props) => (
-    <Styled {...props} />
-);
-
-export default Root;
+export default Main;

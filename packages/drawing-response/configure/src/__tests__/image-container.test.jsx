@@ -1,5 +1,6 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { ImageContainer } from '../image-container';
 
@@ -15,38 +16,69 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
 }));
 
+const theme = createTheme();
+
 describe('ImageContainer', () => {
   const onUpdateImageDimension = jest.fn();
   const onImageUpload = jest.fn();
-  let wrapper;
 
   beforeEach(() => {
-    const props = {
-      classes: {},
+    jest.clearAllMocks();
+  });
+
+  const renderImageContainer = (props = {}) => {
+    const defaultProps = {
       imageUrl: 'url',
       onUpdateImageDimension,
       onImageUpload,
+      ...props,
     };
-    wrapper = () => shallow(<ImageContainer {...props} />);
-  });
+    return render(
+      <ThemeProvider theme={theme}>
+        <ImageContainer {...defaultProps} />
+      </ThemeProvider>
+    );
+  };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
+  describe('rendering', () => {
+    it('renders "Replace Image" button when imageUrl is provided', () => {
+      renderImageContainer({ imageUrl: 'http://example.com/image.png' });
+      expect(screen.getByRole('button', { name: /replace image/i })).toBeInTheDocument();
+    });
+
+    it('renders "Upload Image" button when no imageUrl', () => {
+      renderImageContainer({ imageUrl: '' });
+      // Should have two "Upload Image" buttons - one in toolbar, one in center
+      const uploadButtons = screen.getAllByRole('button', { name: /upload image/i });
+      expect(uploadButtons.length).toBeGreaterThanOrEqual(1);
+    });
+
+    it('shows drag and drop instruction when no image', () => {
+      renderImageContainer({ imageUrl: '' });
+      expect(screen.getByText(/drag and drop or upload image from computer/i)).toBeInTheDocument();
+    });
+
+    it('renders the image when imageUrl is provided', () => {
+      const { container } = renderImageContainer({ imageUrl: 'http://example.com/test.png' });
+      // Image has alt="" so it has role="presentation", query by tag instead
+      const image = container.querySelector('img');
+      expect(image).toBeInTheDocument();
+      expect(image).toHaveAttribute('src', 'http://example.com/test.png');
+    });
+
+    it('does not show drag and drop instruction when image exists', () => {
+      renderImageContainer({ imageUrl: 'http://example.com/image.png' });
+      expect(screen.queryByText(/drag and drop or upload image from computer/i)).not.toBeInTheDocument();
     });
   });
 
   describe('logic', () => {
-    let w;
     let oldFileReader;
+    let dummyFileReader;
 
     beforeAll(() => {
-      const dummyFileReader = {};
-
-      w = wrapper();
-      w.instance().resize = { addEventListener: jest.fn() };
-
       oldFileReader = window.FileReader;
+      dummyFileReader = {};
 
       dummyFileReader.readAsDataURL = (result) => {
         dummyFileReader.result = result;
@@ -55,22 +87,35 @@ describe('ImageContainer', () => {
       window.FileReader = jest.fn(() => dummyFileReader);
     });
 
+    afterAll(() => {
+      window.FileReader = oldFileReader;
+    });
+
     it('handleFileRead calls onImageUpload', () => {
-      w.instance().handleFileRead('file');
+      const testInstance = new ImageContainer({ imageUrl: 'url', onUpdateImageDimension, onImageUpload });
+      testInstance.resize = { addEventListener: jest.fn() };
+
+      testInstance.handleFileRead('file');
 
       expect(onImageUpload).toBeCalled();
       expect(onImageUpload).toHaveBeenCalledTimes(1);
     });
 
     it('handleUploadImage calls handleFileRead which calls onImageUpload', () => {
-      w.instance().handleUploadImage({ target: { files: ['file'] }, preventDefault: jest.fn() });
+      const testInstance = new ImageContainer({ imageUrl: 'url', onUpdateImageDimension, onImageUpload });
+      testInstance.resize = { addEventListener: jest.fn() };
+
+      testInstance.handleUploadImage({ target: { files: ['file'] }, preventDefault: jest.fn() });
 
       expect(onImageUpload).toBeCalled();
-      expect(onImageUpload).toHaveBeenCalledTimes(2);
+      expect(onImageUpload).toHaveBeenCalledTimes(1);
     });
 
     it('handleOnDrop calls handleFileRead which calls onImageUpload if item is file and image', () => {
-      w.instance().handleOnDrop({
+      const testInstance = new ImageContainer({ imageUrl: 'url', onUpdateImageDimension, onImageUpload });
+      testInstance.resize = { addEventListener: jest.fn() };
+
+      testInstance.handleOnDrop({
         preventDefault: jest.fn(),
         dataTransfer: {
           items: [
@@ -84,11 +129,14 @@ describe('ImageContainer', () => {
       });
 
       expect(onImageUpload).toBeCalledWith({ type: 'image', key: 'item' });
-      expect(onImageUpload).toHaveBeenCalledTimes(3);
+      expect(onImageUpload).toHaveBeenCalledTimes(1);
     });
 
     it("handleOnDrop calls handleFileRead which doesn't call onImageUpload if item is file but not image", () => {
-      w.instance().handleOnDrop({
+      const testInstance = new ImageContainer({ imageUrl: 'url', onUpdateImageDimension, onImageUpload });
+      testInstance.resize = { addEventListener: jest.fn() };
+
+      testInstance.handleOnDrop({
         preventDefault: jest.fn(),
         dataTransfer: {
           items: [
@@ -101,12 +149,16 @@ describe('ImageContainer', () => {
         },
       });
 
-      // same times number as in previous test, meaning that is was not called again
-      expect(onImageUpload).toHaveBeenCalledTimes(3);
+      // Should not be called since 'jpg' doesn't start with 'image'
+      expect(onImageUpload).not.toHaveBeenCalled();
     });
 
     it('handleOnDrop calls handleFileRead which calls onImageUpload if item is not file, but file is image', () => {
-      w.instance().handleOnDrop({
+      jest.clearAllMocks();
+      const testInstance = new ImageContainer({ imageUrl: 'url', onUpdateImageDimension, onImageUpload });
+      testInstance.resize = { addEventListener: jest.fn() };
+
+      testInstance.handleOnDrop({
         preventDefault: jest.fn(),
         dataTransfer: {
           items: [
@@ -120,11 +172,15 @@ describe('ImageContainer', () => {
       });
 
       expect(onImageUpload).toBeCalledWith({ type: 'image', key: 'file' });
-      expect(onImageUpload).toHaveBeenCalledTimes(4);
+      expect(onImageUpload).toHaveBeenCalledTimes(1);
     });
 
     it("handleOnDrop calls handleFileRead which doesn't call onImageUpload if item is not file and file is not image", () => {
-      w.instance().handleOnDrop({
+      jest.clearAllMocks();
+      const testInstance = new ImageContainer({ imageUrl: 'url', onUpdateImageDimension, onImageUpload });
+      testInstance.resize = { addEventListener: jest.fn() };
+
+      testInstance.handleOnDrop({
         preventDefault: jest.fn(),
         dataTransfer: {
           items: [
@@ -137,12 +193,15 @@ describe('ImageContainer', () => {
         },
       });
 
-      // same times number as in previous test, meaning that is was not called again
-      expect(onImageUpload).toHaveBeenCalledTimes(4);
+      // Should not be called since file type is 'something else', not 'image'
+      expect(onImageUpload).not.toHaveBeenCalled();
     });
 
     it('handleOnImageLoad calls onUpdateImageDimension', () => {
-      w.instance().handleOnImageLoad({
+      const testInstance = new ImageContainer({ imageUrl: 'url', onUpdateImageDimension, onImageUpload });
+      testInstance.resize = { addEventListener: jest.fn() };
+
+      testInstance.handleOnImageLoad({
         target: { offsetHeight: 50, offsetWidth: 50, naturalWidth: 50, naturalHeight: 50 },
       });
 
@@ -152,16 +211,21 @@ describe('ImageContainer', () => {
       });
     });
 
-    it('stopResizing calls onUpdateImageDimension', () => {
-      w.instance().handleOnImageLoad({
-        target: { offsetHeight: 50, offsetWidth: 50, naturalWidth: 50, naturalHeight: 50 },
+    it('stopResizing calls onUpdateImageDimension with state dimensions', () => {
+      jest.clearAllMocks();
+      const testInstance = new ImageContainer({ imageUrl: 'url', onUpdateImageDimension, onImageUpload });
+      testInstance.resize = { addEventListener: jest.fn() };
+
+      // Set state dimensions directly
+      testInstance.state = { ...testInstance.state, dimensions: { height: 75, width: 100 } };
+
+      // Call stopResizing which should use the dimensions from state
+      testInstance.stopResizing();
+
+      expect(onUpdateImageDimension).toHaveBeenCalledWith({
+        height: 75,
+        width: 100,
       });
-
-      expect(onUpdateImageDimension).toHaveBeenCalledWith(w.instance().state.dimensions);
-    });
-
-    afterAll(() => {
-      window.FileReader = oldFileReader;
     });
   });
 });

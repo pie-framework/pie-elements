@@ -1,35 +1,35 @@
 {
   "name": "@pie-element/complex-rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "5.3.3",
+  "version": "6.1.2-next.3",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@pie-element/multi-trait-rubric": "^6.3.3",
-    "@pie-element/rubric": "^6.3.3",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
+    "@pie-element/multi-trait-rubric": "^7.1.2-next.2",
+    "@pie-element/rubric": "^7.1.1-next.3",
     "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/rubric": "1.2.0-next.12",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
-    "lodash": "^4.17.11",
+    "lodash-es": "^4.17.23",
     "prop-types": "^15.7.2"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "a15dd0ea81626703eb753bc0ab4c81bb2a96d58d",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
   "module": "src/index.js",
-  "description": "Complex Rubric Scoring Interaction",
-  "author": "pie framework developers",
-  "license": "ISC",
   "exports": {
     ".": "./src/index.js",
-    "./print": "./src/print.js",
-    "./esm": "./esm/element.js",
-    "./configure/esm": "./esm/configure.js",
-    "./controller/esm": "./esm/controller.js",
-    "./print/esm": "./esm/print.js"
-  }
+    "./print": "./src/print.js"
+  },
+  "description": "Complex Rubric Scoring Interaction",
+  "author": "pie framework developers",
+  "license": "ISC"
 }

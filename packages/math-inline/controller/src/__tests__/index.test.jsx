@@ -367,11 +367,6 @@ describe('model', () => {
     expect(result.correctness.score).toEqual('100%');
   });
 
-  describe('evaluate - incorrect', () => {
-    beforeEach(async () => {
-      env = { mode: 'evaluate' };
-    });
-  });
 });
 
 describe('outcome', () => {

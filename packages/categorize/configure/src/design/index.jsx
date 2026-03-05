@@ -1,15 +1,28 @@
 import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
+import { DragOverlay } from '@dnd-kit/core';
 import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/categorize';
-import EditableHtml from '@pie-lib/editable-html';
-import { uid, withDragContext } from '@pie-lib/drag';
+import {
+  countInAnswer,
+  ensureNoExtraChoicesInAnswer,
+  ensureNoExtraChoicesInAlternate,
+  moveChoiceToCategory,
+  moveChoiceToAlternate,
+  removeChoiceFromCategory,
+  removeChoiceFromAlternate,
+  verifyAllowMultiplePlacements,
+} from '@pie-lib/categorize';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
+import { DragProvider, uid } from '@pie-lib/drag';
+import { renderMath } from '@pie-lib/math-rendering';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
 import Choices from './choices';
+import Choice from './choices/choice';
+import ChoicePreview from './categories/choice-preview';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
 import { getMaxCategoryChoices, multiplePlacements } from '../utils';
@@ -20,9 +33,39 @@ const { translator } = Translator;
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
 
+// Simple wrapper to render math in DragOverlay portal
+class DragPreviewWrapper extends React.Component {
+  containerRef = React.createRef();
+
+  componentDidMount() {
+    if (this.containerRef.current) {
+      setTimeout(() => renderMath(this.containerRef.current), 0);
+    }
+  }
+
+  render() {
+    return <div ref={this.containerRef}>{this.props.children}</div>;
+  }
+}
+
+const StyledHeader = styled(Header)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
 export class Design extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     configuration: PropTypes.object,
     className: PropTypes.string,
     onConfigurationChanged: PropTypes.func,
@@ -42,6 +85,9 @@ export class Design extends React.Component {
   constructor(props) {
     super(props);
     this.uid = props.uid || uid.generateId();
+    this.state = {
+      activeDragItem: null,
+    };
   }
 
   updateModel = (props) => {
@@ -171,8 +217,237 @@ export class Design extends React.Component {
     this.updateModel({ maxChoicesPerCategory: maxChoices });
   };
 
+  onDragStart = (event) => {
+    const { active } = event;
+    const draggedItem = active.data.current;
+
+    this.setState({
+      activeDragItem: draggedItem,
+    });
+  };
+
+  onDragEnd = (event) => {
+    const { active, over } = event;
+
+    this.setState({ activeDragItem: null });
+
+    if (!over || !active) {
+      return;
+    }
+
+    const { model } = this.props;
+    const { allowAlternateEnabled } = model;
+    const activeData = active.data.current;
+    const overData = over.data.current;
+
+    // moving a choice between categories (correct response)
+    if (activeData.type === 'choice-preview' && overData.type === 'category') {
+      // Extract original choice.id - if DraggableChoice uses the unique id in data, extract the first part
+      // Format: ${choice.id}-${categoryId}-${choiceIndex} or ${choice.id}-${categoryId}-${choiceIndex}-alt-${alternateResponseIndex}
+      const choiceId =
+        activeData.choice?.id || (typeof activeData.id === 'string' ? activeData.id.split('-')[0] : activeData.id);
+      this.moveChoice(choiceId, activeData.categoryId, overData.id, activeData.choiceIndex || 0);
+    }
+
+    // placing a choice into a category (correct response)
+    if (activeData.type === 'choice' && overData.type === 'category') {
+      this.addChoiceToCategory({ id: activeData.id }, overData.id);
+    }
+
+    // moving a choice between categories (alternate response)
+    if (activeData.type === 'choice-preview' && overData.type === 'category-alternate') {
+      const toAlternateIndex = overData.alternateResponseIndex;
+      // Extract original choice.id - if DraggableChoice uses the unique id in data, extract the first part
+      const choiceId =
+        activeData.choice?.id || (typeof activeData.id === 'string' ? activeData.id.split('-')[0] : activeData.id);
+      this.moveChoiceInAlternate(
+        choiceId,
+        activeData.categoryId,
+        overData.id,
+        activeData.choiceIndex || 0,
+        toAlternateIndex,
+      );
+    }
+
+    // placing a choice into a category (alternate response)
+    if (allowAlternateEnabled && activeData.type === 'choice' && overData.type === 'category-alternate') {
+      const choiceId = activeData.id;
+      const categoryId = overData.id;
+      const toAlternateResponseIndex = overData.alternateResponseIndex;
+      this.addChoiceToAlternateCategory({ id: choiceId }, categoryId, toAlternateResponseIndex);
+    }
+  };
+
+  addChoiceToCategory = (addedChoice, categoryId) => {
+    const { model } = this.props;
+    let { choices = [], correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
+    const choice = (choices || []).find((choice) => choice.id === addedChoice.id);
+
+    let newCorrectResponse = moveChoiceToCategory(addedChoice.id, undefined, categoryId, 0, correctResponse);
+
+    if (choice.categoryCount !== 0) {
+      newCorrectResponse = verifyAllowMultiplePlacements(addedChoice, categoryId, newCorrectResponse);
+    }
+    const maxCategoryChoices = getMaxCategoryChoices(model);
+
+    this.updateModel({
+      correctResponse: newCorrectResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
+  };
+
+  deleteChoiceFromCategory = (category, choice, choiceIndex) => {
+    const { model } = this.props;
+    const correctResponse = removeChoiceFromCategory(choice.id, category.id, choiceIndex, model.correctResponse);
+
+    this.updateModel({ correctResponse });
+  };
+
+  moveChoice = (choiceId, from, to, choiceIndex) => {
+    const { model } = this.props;
+    let { choices, correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
+    const choice = (choices || []).find((choice) => choice.id === choiceId);
+    if (to === from || !choice) {
+      return;
+    }
+    if (choice.categoryCount !== 0) {
+      correctResponse = moveChoiceToCategory(choice.id, from, to, choiceIndex, correctResponse);
+      correctResponse = verifyAllowMultiplePlacements(choice, to, correctResponse);
+    } else if (choice.categoryCount === 0) {
+      correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, correctResponse);
+    }
+    const maxCategoryChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    this.updateModel({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
+  };
+
+  // methods for alternate responses
+  addChoiceToAlternateCategory = (addedChoice, categoryId, altIndex) => {
+    const { model } = this.props;
+    const { correctResponse, choices, maxChoicesPerCategory = 0 } = model;
+
+    const choice = choices.find((c) => c.id === addedChoice.id);
+
+    correctResponse.forEach((a) => {
+      if (a.category === categoryId) {
+        a.alternateResponses = a.alternateResponses || [];
+
+        if (a.alternateResponses[altIndex] === undefined) {
+          a.alternateResponses[altIndex] = [];
+        }
+
+        a.alternateResponses[altIndex].push(addedChoice.id);
+        if (choice.categoryCount && choice.categoryCount !== 0) {
+          a.alternateResponses[altIndex] = a.alternateResponses[altIndex].reduce((acc, currentValue) => {
+            if (currentValue === choice.id) {
+              const foundIndex = acc.findIndex((c) => c === choice.id);
+              if (foundIndex === -1) {
+                acc.push(currentValue);
+              }
+            } else {
+              acc.push(currentValue);
+            }
+
+            return acc;
+          }, []);
+        }
+
+        return a;
+      } else {
+        if (a.alternateResponses[altIndex] && choice.categoryCount !== 0) {
+          a.alternateResponses[altIndex] = a.alternateResponses[altIndex].filter((c) => c !== addedChoice.id);
+          return a;
+        }
+      }
+
+      return a;
+    });
+
+    const maxCategoryChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    this.updateModel({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
+  };
+
+  moveChoiceInAlternate = (choiceId, from, to, choiceIndex, alternateIndex) => {
+    const { model } = this.props;
+    let { choices, correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
+    const choice = (choices || []).find((choice) => choice.id === choiceId);
+    correctResponse = moveChoiceToAlternate(
+      choiceId,
+      from,
+      to,
+      choiceIndex,
+      correctResponse,
+      alternateIndex,
+      choice?.categoryCount,
+    );
+
+    const maxCategoryChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    this.updateModel({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
+  };
+
+  deleteChoiceFromAlternateCategory = (category, choice, choiceIndex, altIndex) => {
+    const { model } = this.props;
+
+    const correctResponse = removeChoiceFromAlternate(
+      choice.id,
+      category.id,
+      choiceIndex,
+      altIndex,
+      model.correctResponse,
+    );
+
+    this.updateModel({ correctResponse });
+  };
+
+  renderDragOverlay = () => {
+    const { activeDragItem } = this.state;
+    const { model, configuration } = this.props;
+
+    if (!activeDragItem) return null;
+
+    if (activeDragItem.type === 'choice') {
+      const choice = model.choices?.find((c) => c.id === activeDragItem.id);
+      if (!choice) return null;
+
+      return <Choice choice={choice} configuration={configuration} />;
+    } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex === undefined) {
+      const choice = model.choices?.find((c) => c.id === activeDragItem.id);
+      if (!choice) return null;
+      return <ChoicePreview choice={choice} />;
+    } else if (activeDragItem.type === 'choice-preview' && activeDragItem.alternateResponseIndex !== undefined) {
+      const choice = model.choices?.find((c) => c.id === activeDragItem.id);
+      if (!choice) return null;
+      return <ChoicePreview choice={choice} alternateResponseIndex={activeDragItem.alternateResponseIndex} />;
+    }
+
+    return null;
+  };
+
   render() {
-    const { classes, configuration, imageSupport, model, uploadSoundSupport, onConfigurationChanged } = this.props;
+    const { configuration, imageSupport, model, uploadSoundSupport, onConfigurationChanged } = this.props;
     const {
       allowAlternate = {},
       allowMultiplePlacements = {},
@@ -300,189 +575,166 @@ export class Design extends React.Component {
     });
 
     return (
-      <IdProvider value={this.uid}>
-        <layout.ConfigLayout
-          extraCSSRules={extraCSSRules}
-          dimensions={contentDimensions}
-          hideSettings={settingsPanelDisabled}
-          settings={
-            <Panel
-              model={model}
-              onChangeModel={this.updateModel}
-              configuration={configuration}
-              onChangeConfiguration={onConfigurationChanged}
-              groups={{
-                Settings: panelSettings,
-                Properties: panelProperties,
-              }}
-              modal={
-                <AlertDialog
-                  title={'Warning'}
-                  text={alertMaxChoicesMsg}
-                  open={isOpened}
-                  onClose={this.onAlertModalCancel}
+      <DragProvider onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
+        <IdProvider value={this.uid}>
+          <layout.ConfigLayout
+            extraCSSRules={extraCSSRules}
+            dimensions={contentDimensions}
+            hideSettings={settingsPanelDisabled}
+            settings={
+              <Panel
+                model={model}
+                onChangeModel={this.updateModel}
+                configuration={configuration}
+                onChangeConfiguration={onConfigurationChanged}
+                groups={{
+                  Settings: panelSettings,
+                  Properties: panelProperties,
+                }}
+                modal={
+                  <AlertDialog
+                    title={'Warning'}
+                    text={alertMaxChoicesMsg}
+                    open={isOpened}
+                    onClose={this.onAlertModalCancel}
+                  />
+                }
+              />
+            }
+          >
+            {teacherInstructionsEnabled && (
+              <StyledInputContainer label={teacherInstructions.label}>
+                <EditableHtml
+                  markup={model.teacherInstructions || ''}
+                  onChange={this.changeTeacherInstructions}
+                  imageSupport={imageSupport}
+                  error={teacherInstructionsError}
+                  nonEmpty={false}
+                  toolbarOpts={toolbarOpts}
+                  pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
+                  spellCheck={spellCheckEnabled}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                  mathMlOptions={mathMlOptions}
                 />
-              }
+                {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+              </StyledInputContainer>
+            )}
+
+            {promptEnabled && (
+              <StyledInputContainer label={prompt.label}>
+                <EditableHtml
+                  markup={model.prompt || ''}
+                  onChange={this.onPromptChanged}
+                  imageSupport={imageSupport}
+                  error={promptError}
+                  nonEmpty={false}
+                  disableUnderline
+                  toolbarOpts={toolbarOpts}
+                  pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
+                  spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+                  maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                  uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                  mathMlOptions={mathMlOptions}
+                />
+                {promptError && <ErrorText>{promptError}</ErrorText>}
+              </StyledInputContainer>
+            )}
+
+            <Categories
+              imageSupport={imageSupport}
+              uploadSoundSupport={uploadSoundSupport}
+              model={model}
+              categories={categories || []}
+              onModelChanged={this.updateModel}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              configuration={configuration}
+              defaultImageMaxWidth={defaultImageMaxWidth}
+              defaultImageMaxHeight={defaultImageMaxHeight}
+              mathMlOptions={mathMlOptions}
             />
-          }
-        >
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
-              <EditableHtml
-                className={classes.input}
-                markup={model.teacherInstructions || ''}
-                onChange={this.changeTeacherInstructions}
-                imageSupport={imageSupport}
-                error={teacherInstructionsError}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-                pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                mathMlOptions={mathMlOptions}
-              />
-              {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-            </InputContainer>
-          )}
 
-          {promptEnabled && (
-            <InputContainer label={prompt.label} className={classes.inputContainer}>
-              <EditableHtml
-                className={classes.input}
-                markup={model.prompt || ''}
-                onChange={this.onPromptChanged}
-                imageSupport={imageSupport}
-                error={promptError}
-                nonEmpty={false}
-                disableUnderline
-                toolbarOpts={toolbarOpts}
-                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
-                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                mathMlOptions={mathMlOptions}
-              />
-              {promptError && <div className={classes.errorText}>{promptError}</div>}
-            </InputContainer>
-          )}
-
-          <Categories
-            imageSupport={imageSupport}
-            uploadSoundSupport={uploadSoundSupport}
-            model={model}
-            categories={categories || []}
-            onModelChanged={this.updateModel}
-            toolbarOpts={toolbarOpts}
-            spellCheck={spellCheckEnabled}
-            configuration={configuration}
-            defaultImageMaxWidth={defaultImageMaxWidth}
-            defaultImageMaxHeight={defaultImageMaxHeight}
-            mathMlOptions={mathMlOptions}
-          />
-
-          <Choices
-            imageSupport={imageSupport}
-            uploadSoundSupport={uploadSoundSupport}
-            choices={choices}
-            model={model}
-            onModelChanged={this.updateModel}
-            toolbarOpts={toolbarOpts}
-            spellCheck={spellCheckEnabled}
-            configuration={configuration}
-            defaultImageMaxWidth={defaultImageMaxWidth}
-            defaultImageMaxHeight={defaultImageMaxHeight}
-          />
-
-          {allowAlternateEnabled && (
-            <Header
-              className={classes.alternatesHeader}
-              label="Alternate Responses"
-              buttonLabel="ADD AN ALTERNATE RESPONSE"
-              onAdd={this.onAddAlternateResponse}
+            <Choices
+              imageSupport={imageSupport}
+              uploadSoundSupport={uploadSoundSupport}
+              choices={choices}
+              model={model}
+              onModelChanged={this.updateModel}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              configuration={configuration}
+              defaultImageMaxWidth={defaultImageMaxWidth}
+              defaultImageMaxHeight={defaultImageMaxHeight}
             />
-          )}
-          {allowAlternateEnabled &&
-            alternateResponses.map((categoriesList, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <Header
-                    className={classes.alternatesHeader}
-                    variant={'subtitle1'}
-                    label="Alternate Response"
-                    buttonLabel="REMOVE ALTERNATE RESPONSE"
-                    onAdd={() => this.onRemoveAlternateResponse(index)}
-                  />
-                  <AlternateResponses
-                    altIndex={index}
-                    imageSupport={imageSupport}
-                    model={model}
-                    configuration={configuration}
-                    categories={categoriesList}
-                    onModelChanged={this.updateModel}
-                    uploadSoundSupport={uploadSoundSupport}
-                    mathMlOptions={mathMlOptions}
-                  />
-                </React.Fragment>
-              );
-            })}
 
-          {rationaleEnabled && (
-            <InputContainer label={rationale.label} className={classes.inputContainer}>
-              <EditableHtml
-                className={classes.input}
-                markup={model.rationale || ''}
-                onChange={this.changeRationale}
-                imageSupport={imageSupport}
-                error={rationaleError}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                mathMlOptions={mathMlOptions}
+            {allowAlternateEnabled && (
+              <StyledHeader
+                label="Alternate Responses"
+                buttonLabel="ADD AN ALTERNATE RESPONSE"
+                onAdd={this.onAddAlternateResponse}
               />
-              {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
-            </InputContainer>
-          )}
+            )}
+            {allowAlternateEnabled &&
+              alternateResponses.map((categoriesList, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <StyledHeader
+                      variant={'subtitle1'}
+                      label="Alternate Response"
+                      buttonLabel="REMOVE ALTERNATE RESPONSE"
+                      onAdd={() => this.onRemoveAlternateResponse(index)}
+                    />
+                    <AlternateResponses
+                      altIndex={index}
+                      imageSupport={imageSupport}
+                      model={model}
+                      configuration={configuration}
+                      categories={categoriesList}
+                      onModelChanged={this.updateModel}
+                      uploadSoundSupport={uploadSoundSupport}
+                      mathMlOptions={mathMlOptions}
+                    />
+                  </React.Fragment>
+                );
+              })}
 
-          {feedbackEnabled && (
-            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
-          )}
-        </layout.ConfigLayout>
-      </IdProvider>
+            {rationaleEnabled && (
+              <StyledInputContainer label={rationale.label}>
+                <EditableHtml
+                  markup={model.rationale || ''}
+                  onChange={this.changeRationale}
+                  imageSupport={imageSupport}
+                  error={rationaleError}
+                  nonEmpty={false}
+                  toolbarOpts={toolbarOpts}
+                  pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
+                  spellCheck={spellCheckEnabled}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                  mathMlOptions={mathMlOptions}
+                />
+                {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+              </StyledInputContainer>
+            )}
+
+            {feedbackEnabled && (
+              <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
+            )}
+          </layout.ConfigLayout>
+          <DragOverlay>
+            <DragPreviewWrapper>{this.renderDragOverlay()}</DragPreviewWrapper>
+          </DragOverlay>
+        </IdProvider>
+      </DragProvider>
     );
   }
 }
 
-const styles = (theme) => ({
-  alternatesHeader: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  text: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-  },
-  inputContainer: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  title: {
-    marginBottom: theme.spacing.unit * 4,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
-
-export default withDragContext(withStyles(styles)(Design));
+export default Design;

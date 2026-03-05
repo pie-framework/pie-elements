@@ -1,7 +1,5 @@
 import * as math from 'mathjs';
-import uniqWith from 'lodash/uniqWith';
-import isObject from 'lodash/isObject';
-import isNumber from 'lodash/isNumber';
+import { isNumber, isObject, uniqWith } from 'lodash-es';
 
 // All these functions are duplicated in  src/number-line/graph/tick-utils
 

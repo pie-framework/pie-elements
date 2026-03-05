@@ -1,13 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import cn from 'classnames';
+import { styled } from '@mui/material/styles';
 import { InputCheckbox } from '@pie-lib/config-ui';
+
+const FlexRow = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+});
+
+const ArrowsContainer = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+  display: 'flex',
+  gap: theme.spacing(2),
+  alignItems: 'center',
+  '& > *': {
+    flexShrink: 0,
+  },
+  '& label': {
+    whiteSpace: 'nowrap',
+    overflow: 'visible',
+    textOverflow: 'clip',
+  },
+  '& .MuiFormControlLabel-root': {
+    margin: 0,
+    marginRight: 0,
+  },
+  '& .MuiFormControlLabel-label': {
+    whiteSpace: 'nowrap',
+    overflow: 'visible',
+    textOverflow: 'clip',
+    maxWidth: 'none',
+    width: 'auto',
+    flexShrink: 0,
+  },
+}));
 
 export class Arrows extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
     arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool }).isRequired,
     onChange: PropTypes.func,
   };
@@ -27,32 +57,21 @@ export class Arrows extends React.Component {
   }
 
   render() {
-    const { classes, className, arrows } = this.props;
+    const { arrows } = this.props;
     return (
-      <div className={classes.flexRow}>
+      <FlexRow>
         <label>Arrows</label>
-        <div className={cn(classes.arrows, className)}>
-          <InputCheckbox className={classes.checkbox} label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
-          &nbsp;
+        <ArrowsContainer>
+          <InputCheckbox label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
           <InputCheckbox
-            className={classes.checkbox}
             label={'Right'}
             checked={arrows.right}
             onChange={this.changeRight}
           />
-        </div>
-      </div>
+        </ArrowsContainer>
+      </FlexRow>
     );
   }
 }
-const styles = (theme) => ({
-  arrows: {
-    paddingTop: theme.spacing.unit * 2,
-  },
-  flexRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-  },
-});
-export default withStyles(styles)(Arrows);
+
+export default Arrows;

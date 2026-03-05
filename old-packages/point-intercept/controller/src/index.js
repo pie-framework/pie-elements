@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
 const getResponseCorrectness = (correctResponseWithLabels, points, graph, partialScores) => {
