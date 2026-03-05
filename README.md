@@ -7,10 +7,11 @@ A collection of pies. These packages are pie packages in that they have an optio
 ```shell
 yarn install # install monorepo dependencies
 lerna bootstrap # symlinks any dependencies, uses yarn workspaces to speed up install
+
+```shell
+yarn install # yarn workspaces will install dependencies and link packages automatically
 ```
-
 ### pie global
-
 For some of the scripts you'll need the pie cli installed (note that you must use npm to install this)
 
 ```shell
@@ -68,5 +69,7 @@ yarn lerna publish --canary --dist-tag $TAG --preid $TAG --force-publish
 ### CI
 
 We use circleci - see .circleci/config.yml
+
+##
 
 ##

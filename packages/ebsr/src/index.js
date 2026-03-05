@@ -1,6 +1,6 @@
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import MultipleChoice from '@pie-element/multiple-choice';
-import get from 'lodash/get';
+import { get } from 'lodash-es';
 import debug from 'debug';
 
 const SESSION_CHANGED = SessionChangedEvent.TYPE;

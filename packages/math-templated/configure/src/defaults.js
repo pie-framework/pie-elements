@@ -19,12 +19,12 @@ export default {
   },
   configuration: {
     ignoreOrder: {
-      settings: false,
+      settings: true,
       label: 'Ignore Order',
       enabled: true,
     },
     allowTrailingZeros: {
-      settings: false,
+      settings: true,
       label: 'Allow Trailing Zeros',
       enabled: true,
     },
@@ -60,7 +60,7 @@ export default {
     },
     editSource: {
       label: 'Edit Source',
-      settings: false,
+      settings: true,
       enabled: false,
     },
     playerSpellCheck: {

@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import { DragSource } from 'react-dnd';
-import { uid } from '@pie-lib/drag';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import { color } from '@pie-lib/render-ui';
 import debug from 'debug';
+import { styled } from '@mui/material/styles';
+import { useDraggable } from '@dnd-kit/core';
+import { uid } from '@pie-lib/drag';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-ui:categorize:choice');
 
@@ -16,142 +15,90 @@ export const ChoiceType = {
   id: PropTypes.string,
 };
 
+const ChoiceContainer = styled('div', {
+  shouldForwardProp: (prop) => !['isDragging', 'disabled', 'correct'].includes(prop),
+})(({ isDragging, disabled, correct }) => ({
+  direction: 'initial',
+  cursor: disabled ? 'not-allowed' : isDragging ? 'move' : 'pointer',
+  width: '100%',
+  borderRadius: '6px',
+  ...(correct === true && {
+    border: `solid 2px ${color.correct()}`,
+  }),
+  ...(correct === false && {
+    border: `solid 2px ${color.incorrect()}`,
+  }),
+}));
+
+const StyledCard = styled(Card)({
+  color: color.text(),
+  backgroundColor: color.background(),
+  width: '100%',
+});
+
+const StyledCardContent = styled(CardContent)(({ theme }) => ({
+  color: color.text(),
+  backgroundColor: color.white(),
+  '&:last-child': {
+    paddingBottom: theme.spacing(2),
+  },
+  borderRadius: '4px',
+  border: '1px solid',
+}));
+
 export class Layout extends React.Component {
   static propTypes = {
     ...ChoiceType,
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
     disabled: PropTypes.bool,
     correct: PropTypes.bool,
+    isDragging: PropTypes.bool,
   };
   static defaultProps = {};
   render() {
-    const { classes, className, content, isDragging, disabled, correct } = this.props;
+    const { content, isDragging, disabled, correct } = this.props;
 
-    const rootNames = classNames(
-      correct === true && 'correct',
-      correct === false && 'incorrect',
-      classes.choice,
-      isDragging && classes.dragging,
-      disabled && classes.disabled,
-      className,
-    );
-    const cardNames = classNames(classes.card);
     return (
-      <div className={rootNames}>
-        <Card className={cardNames}>
-          <CardContent classes={{ root: classes.cardRoot }} dangerouslySetInnerHTML={{ __html: content }} />
-        </Card>
-      </div>
+      <ChoiceContainer isDragging={isDragging} disabled={disabled} correct={correct}>
+        <StyledCard>
+          <StyledCardContent dangerouslySetInnerHTML={{ __html: content }} />
+        </StyledCard>
+      </ChoiceContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  choice: {
-    direction: 'initial',
-    cursor: 'pointer',
-    width: '100%',
-    '&.correct': {
-      border: `solid 2px ${color.correct()}`,
-    },
-    '&.incorrect': {
-      border: `solid 2px ${color.incorrect()}`,
-    },
-    borderRadius: '6px',
-  },
-  cardRoot: {
-    color: color.text(),
-    backgroundColor: color.white(),
-    '&:last-child': {
-      paddingBottom: theme.spacing.unit * 2,
-    },
-    borderRadius: '4px',
-    border: '1px solid',
-  },
-  disabled: {
-    cursor: 'not-allowed',
-  },
-  dragging: {
-    cursor: 'move',
-  },
-  card: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    width: '100%',
-    // Added for touch devices, for image content.
-    // This will prevent the context menu from appearing and not allowing other interactions with the image.
-    pointerEvents: 'none',
-  },
-});
+const DraggableChoice = ({ id, content, disabled, correct, extraStyle, categoryId, choiceIndex }) => {
+  // Generate unique draggable ID for each instance
+  // If in choices board (categoryId is undefined), use 'board' suffix
+  // If in a category, include categoryId and choiceIndex to make it unique
+  const draggableId = categoryId !== undefined ? `choice-${id}-${categoryId}-${choiceIndex}` : `choice-${id}-board`;
 
-const Styled = withStyles(styles)(Layout);
-
-export class Choice extends React.Component {
-  static propTypes = {
-    ...ChoiceType,
-    extraStyle: PropTypes.object,
-    connectDragSource: PropTypes.func.isRequired,
-  };
-
-  componentDidMount() {
-    if (this.ref) {
-      this.ref.addEventListener('touchstart', this.handleTouchStart, { passive: false });
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.ref) {
-      this.ref.removeEventListener('touchstart', this.handleTouchStart);
-    }
-  }
-
-  handleTouchStart = (e) => {
-    e.preventDefault();
-  };
-
-  render() {
-    const { connectDragSource, id, content, disabled, isDragging, correct, extraStyle } = this.props;
-
-    return connectDragSource(
-      <div style={{ margin: '4px', ...extraStyle }} ref={(ref) => (this.ref = ref)} draggable={!disabled}>
-        <Styled id={id} content={content} disabled={disabled} correct={correct} isDragging={isDragging} />
-      </div>,
-    );
-  }
-}
-
-export const spec = {
-  canDrag: (props) => !props.disabled,
-  beginDrag: (props) => {
-    const out = {
-      id: props.id,
-      categoryId: props.categoryId,
-      choiceIndex: props.choiceIndex,
-      value: props.content,
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+    id: draggableId,
+    data: {
+      id,
+      categoryId,
+      choiceIndex,
+      value: content,
       itemType: 'categorize',
-    };
-    log('[beginDrag] out:', out);
-    return out;
-  },
-  endDrag: (props, monitor) => {
-    if (!monitor.didDrop()) {
-      const item = monitor.getItem();
-      if (item.categoryId) {
-        log('wasnt droppped - what to do?');
-        props.onRemoveChoice(item);
-      }
-    }
-  },
+      type: 'choice',
+    },
+    disabled,
+  });
+
+  return (
+    <div ref={setNodeRef} style={{ margin: '4px', ...extraStyle }} {...listeners} {...attributes}>
+      <Layout id={id} content={content} disabled={disabled} correct={correct} isDragging={isDragging} />
+    </div>
+  );
 };
 
-const DraggableChoice = DragSource(
-  ({ uid }) => uid,
-  spec,
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
-  }),
-)(Choice);
+DraggableChoice.propTypes = {
+  ...ChoiceType,
+  extraStyle: PropTypes.object,
+  categoryId: PropTypes.string,
+  choiceIndex: PropTypes.number,
+  onRemoveChoice: PropTypes.func,
+};
 
 export default uid.withUid(DraggableChoice);

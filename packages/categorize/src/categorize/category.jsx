@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
+
 import Choice from './choice';
 import PlaceHolder from './droppable-placeholder';
-import { color } from '@pie-lib/render-ui';
 
 export const CategoryType = {
   id: PropTypes.string.isRequired,
@@ -16,7 +15,6 @@ export class Category extends React.Component {
     ...CategoryType,
     className: PropTypes.string,
     disabled: PropTypes.bool,
-    classes: PropTypes.object.isRequired,
     onDropChoice: PropTypes.func,
     onRemoveChoice: PropTypes.func,
     minRowHeight: PropTypes.string,
@@ -26,7 +24,6 @@ export class Category extends React.Component {
 
   render() {
     const {
-      classes,
       className,
       choices = [],
       disabled,
@@ -37,19 +34,13 @@ export class Category extends React.Component {
       minRowHeight,
     } = this.props;
 
-    const names = classNames(classes.category, className);
-    const placeholderNames = classNames(
-      classes.placeholder,
-      correct === false && classes.incorrect,
-      correct === true && classes.correct,
-    );
-
     return (
-      <div className={names}>
+      <StyledDiv className={className} id={id}>
         <PlaceHolder
+          id={id}
           onDropChoice={onDropChoice}
           disabled={disabled}
-          className={placeholderNames}
+          correct={correct}
           minRowHeight={minRowHeight}
         >
           {choices.map((c, index) => (
@@ -63,34 +54,15 @@ export class Category extends React.Component {
             />
           ))}
         </PlaceHolder>
-      </div>
+      </StyledDiv>
     );
   }
 }
 
-const styles = (theme) => ({
-  incorrect: {
-    border: `solid 2px ${color.incorrect()}`,
-  },
-  correct: {
-    border: `solid 2px ${color.correct()}`,
-  },
-  placeholder: {
-    padding: theme.spacing.unit / 2,
-    borderRadius: theme.spacing.unit / 2,
-    gridColumnGap: 0,
-    gridRowGap: 0,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'flex-start',
-  },
-  category: {
-    display: 'flex',
-    flexDirection: 'column',
-    flex: 2,
-  },
-});
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 2,
+}));
 
-export default withStyles(styles)(Category);
+export default Category;

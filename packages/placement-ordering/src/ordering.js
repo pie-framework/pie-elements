@@ -1,8 +1,5 @@
-import cloneDeep from 'lodash/cloneDeep';
+import { assign, cloneDeep, isEmpty, map } from 'lodash-es';
 import debug from 'debug';
-import isEmpty from 'lodash/isEmpty';
-import map from 'lodash/map';
-import assign from 'lodash/assign';
 
 const log = debug('pie-elements:placement-ordering:ordering');
 

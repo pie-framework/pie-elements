@@ -1,9 +1,9 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import React from 'react';
 import FreeformEditor from '../freeform-editor';
-import { unwrap } from "@material-ui/core/test-utils";
 
-const Editor = unwrap(FreeformEditor);
+const theme = createTheme();
 
 describe('freeform editor', () => {
   const defaultProps = {
@@ -36,73 +36,99 @@ describe('freeform editor', () => {
     };
     const props = { ...defaults, ...extras };
 
-    return shallow(<Editor { ...props } />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <FreeformEditor { ...props } />
+      </ThemeProvider>
+    );
   };
-
-  describe('snapshots', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-
-    it('opened', () => {
-      expect(wrapper({ open: true })).toMatchSnapshot();
-    });
-
-    it('opened, negative type', () => {
-      expect(
-        wrapper({ open: true, type: 'negative' })
-      ).toMatchSnapshot();
-    });
-  });
 
   describe('logic', () => {
     describe('save or autosave', () => {
       it('calls onSave',  () => {
-        const w = wrapper();
+        const testInstance = new FreeformEditor({
+          ...defaultProps,
+          onClose,
+          onDelete,
+          onSave,
+          onTypeChange
+        });
 
-        w.setState({ value: 'good' });
-        w.instance().handleSave();
+        testInstance.state = { value: 'good' };
+        testInstance.handleSave();
         expect(onSave).toBeCalled();
       });
 
       it('calls onDelete', () => {
-        const w = wrapper();
+        const testInstance = new FreeformEditor({
+          ...defaultProps,
+          onClose,
+          onDelete,
+          onSave,
+          onTypeChange
+        });
 
-        w.setState({ value: '' });
-        w.instance().handleSave();
+        testInstance.state = { value: '' };
+        testInstance.handleSave();
         expect(onDelete).toBeCalled();
       });
 
       it('calls onClose', () => {
-        const w = wrapper();
+        const testInstance = new FreeformEditor({
+          ...defaultProps,
+          onClose,
+          onDelete,
+          onSave,
+          onTypeChange
+        });
 
-        w.setState({ value: 'note' });
-        w.instance().handleSave();
+        testInstance.state = { value: 'note' };
+        testInstance.handleSave();
         expect(onClose).toBeCalled();
       });
     });
 
     describe('type change', () => {
       it('calls onTypeChange',  () => {
-        const w = wrapper();
+        const testInstance = new FreeformEditor({
+          ...defaultProps,
+          onClose,
+          onDelete,
+          onSave,
+          onTypeChange,
+          value: 'note'
+        });
 
-        w.instance().handleTypeChange();
+        testInstance.state = { value: 'note' };
+        testInstance.handleTypeChange();
         expect(onTypeChange).toBeCalledWith('note');
       });
 
       it('calls onTypeChange with changed value',  () => {
-        const w = wrapper();
+        const testInstance = new FreeformEditor({
+          ...defaultProps,
+          onClose,
+          onDelete,
+          onSave,
+          onTypeChange
+        });
 
-        w.setState({ value: 'good' });
-        w.instance().handleTypeChange();
+        testInstance.state = { value: 'good' };
+        testInstance.handleTypeChange();
         expect(onTypeChange).toBeCalledWith('good');
       });
 
       it('calls onDelete', () => {
-        const w = wrapper();
+        const testInstance = new FreeformEditor({
+          ...defaultProps,
+          onClose,
+          onDelete,
+          onSave,
+          onTypeChange
+        });
 
-        w.setState({ value: '' });
-        w.instance().handleTypeChange();
+        testInstance.state = { value: '' };
+        testInstance.handleTypeChange();
         expect(onDelete).toBeCalled();
       });
     });

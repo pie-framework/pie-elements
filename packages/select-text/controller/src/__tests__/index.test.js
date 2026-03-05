@@ -1,5 +1,5 @@
 import { getPartialScore, getCorrectness, model, outcome, createCorrectResponseSession } from '../index';
-import isFunction from 'lodash/isFunction';
+import { isFunction } from 'lodash-es';
 
 jest.mock('@pie-lib/text-select', () => ({
   prepareText: jest.fn(),
@@ -124,7 +124,6 @@ describe('correct response', () => {
 describe('outcome', () => {
   it('handles empty session', async () => {
     const result = await outcome({ tokens: [] }, { id: '1' }, { mode: 'evaluate' });
-    console.log('result:', result);
     expect(result).toEqual({ score: 0 });
   });
 

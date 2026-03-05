@@ -1,60 +1,10 @@
 import React from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Popover, TextField } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Popover, TextField } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const styles = theme =>({
-  wrapper: {
-    width: '200px',
-    overflow: 'hidden',
-    borderRadius: '4px',
-    backgroundColor: '#ffffff',
-    border: `4px solid ${theme.palette.grey[100]}`,
-    '&.negative': {
-      borderColor: 'rgb(255, 204, 238) !important',
-    },
-    '&.positive': {
-      borderColor: 'rgb(153, 255, 153) !important',
-    },
-  },
-  holder: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    borderTop: `2px solid ${theme.palette.grey[100]}`,
-  },
-  positive: {
-    backgroundColor: 'rgb(153, 255, 153) !important',
-    '&:hover': {
-      filter: 'brightness(85%)',
-    },
-  },
-  negative: {
-    backgroundColor: 'rgb(255, 204, 238) !important',
-    '&:hover': {
-      filter: 'brightness(85%)',
-    },
-  },
-  button: {
-    flexGrow: 1,
-    width: '28%',
-    textAlign: 'center',
-    padding: '4px',
-    cursor: 'pointer',
-    '&:not(:nth-child(3n))': {
-      borderRight: `1px solid ${theme.palette.grey[100]}`,
-    },
-    '&:hover': {
-      backgroundColor: theme.palette.grey[100],
-    },
-    '&.negative:hover': {
-      backgroundColor: 'rgb(153, 255, 153) !important',
-    },
-    '&.positive:hover': {
-      backgroundColor: 'rgb(255, 204, 238) !important',
-    },
-  },
-  arrow: {
+const StyledPopover = styled(Popover)(({ theme, annotationType }) => ({
+  '& .MuiPaper-root': {
     overflowX: 'unset',
     overflowY: 'unset',
     marginLeft: '16px',
@@ -70,14 +20,74 @@ const styles = theme =>({
       borderWidth: '7px',
       borderRightColor: theme.palette.grey[100],
     },
-    '&.negative::before': {
-      borderRightColor: 'rgb(255, 204, 238) !important',
-    },
-    '&.positive::before': {
-      borderRightColor: 'rgb(153, 255, 153) !important',
-    },
+    ...(annotationType === 'negative' && {
+      '&::before': {
+        borderRightColor: 'rgb(255, 204, 238) !important',
+      },
+    }),
+    ...(annotationType === 'positive' && {
+      '&::before': {
+        borderRightColor: 'rgb(153, 255, 153) !important',
+      },
+    }),
   },
-});
+}));
+
+const Wrapper = styled('div')(({ theme, annotationType }) => ({
+  width: '200px',
+  overflow: 'hidden',
+  borderRadius: '4px',
+  backgroundColor: '#ffffff',
+  border: `4px solid ${theme.palette.grey[100]}`,
+  ...(annotationType === 'negative' && {
+    borderColor: 'rgb(255, 204, 238) !important',
+  }),
+  ...(annotationType === 'positive' && {
+    borderColor: 'rgb(153, 255, 153) !important',
+  }),
+}));
+
+const Holder = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
+  borderTop: `2px solid ${theme.palette.grey[100]}`,
+}));
+
+const Button = styled('div')(({ theme, variant, annotationType }) => ({
+  flexGrow: 1,
+  width: '28%',
+  textAlign: 'center',
+  padding: '4px',
+  cursor: 'pointer',
+  '&:not(:nth-child(3n))': {
+    borderRight: `1px solid ${theme.palette.grey[100]}`,
+  },
+  '&:hover': {
+    backgroundColor: theme.palette.grey[100],
+  },
+  ...(variant === 'positive' && {
+    backgroundColor: 'rgb(153, 255, 153) !important',
+    '&:hover': {
+      filter: 'brightness(85%)',
+    },
+  }),
+  ...(variant === 'negative' && {
+    backgroundColor: 'rgb(255, 204, 238) !important',
+    '&:hover': {
+      filter: 'brightness(85%)',
+    },
+  }),
+  ...(variant === 'typeChange' && annotationType === 'negative' && {
+    '&:hover': {
+      backgroundColor: 'rgb(153, 255, 153) !important',
+    },
+  }),
+  ...(variant === 'typeChange' && annotationType === 'positive' && {
+    '&:hover': {
+      backgroundColor: 'rgb(255, 204, 238) !important',
+    },
+  }),
+}));
 
 class FreeformEditor extends React.Component {
   static propTypes = {
@@ -138,17 +148,18 @@ class FreeformEditor extends React.Component {
   };
 
   render() {
-    const { anchorEl, classes, offset, onDelete, open, type } = this.props;
+    const { anchorEl, offset, onDelete, open, type } = this.props;
     const { value } = this.state;
 
     return (
-      <Popover
+      <StyledPopover
         anchorEl={anchorEl}
         elevation={2}
         open={open}
         onClose={this.handleSave}
-        classes={{ paper: classNames(classes.arrow, type) }}
+        annotationType={type}
         style={{ marginTop: `${offset}px`, transition: 'margin-top 2s ease-out' }}
+        transitionDuration={{ enter: 225, exit: 195 }}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -158,7 +169,7 @@ class FreeformEditor extends React.Component {
           horizontal: 'left',
         }}
       >
-        <div className={classNames(classes.wrapper, type)}>
+        <Wrapper annotationType={type}>
           <TextField
             id="annotation-editor"
             style={{
@@ -168,26 +179,26 @@ class FreeformEditor extends React.Component {
             autoFocus
             multiline
             rows={1}
-            rowsMax={4}
+            maxRows={4}
             value={value}
             onChange={this.onValueChange}
             InputProps={{ disableUnderline: true }}
           />
-          <div className={classes.holder}>
-            <div className={classes.button} onClick={onDelete}>
+          <Holder>
+            <Button onClick={onDelete}>
               Delete
-            </div>
-            <div className={classNames(classes.button, type)} onClick={this.handleTypeChange}>
+            </Button>
+            <Button variant="typeChange" annotationType={type} onClick={this.handleTypeChange}>
               {type === 'negative' ? 'Green' : 'Pink'}
-            </div>
-            <div className={classes.button} onClick={this.handleSave}>
+            </Button>
+            <Button onClick={this.handleSave}>
               Save
-            </div>
-          </div>
-        </div>
-      </Popover>
+            </Button>
+          </Holder>
+        </Wrapper>
+      </StyledPopover>
     );
   }
 }
 
-export default withStyles(styles)(FreeformEditor);
+export default FreeformEditor;

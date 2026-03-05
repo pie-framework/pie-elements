@@ -1,7 +1,5 @@
 import * as math from 'mathjs';
-import uniqWith from 'lodash/uniqWith';
-import isObject from 'lodash/isObject';
-import isNumber from 'lodash/isNumber';
+import { isNumber, isObject, uniqWith } from 'lodash-es';
 
 // All these functions are duplicated in  controller/src/tickUtils
 
@@ -76,7 +74,16 @@ export const fractionRange = (start, end, interval) => {
   if (direction === 'positive' && math.smallerEq(end, start)) {
     throw new Error('start must be < end when doing increments');
   }
-  const compareFn = direction === 'positive' ? math.smallerEq : math.equal(e, end) ? math.largerEq : math.larger;
+
+  let compareFn;
+  if (direction === 'positive') {
+    compareFn = math.smallerEq;
+  } else if (math.equal(e, end)) {
+    compareFn = math.largerEq;
+  } else {
+    compareFn = math.larger;
+  }
+
   const out = [];
 
   let next = start;

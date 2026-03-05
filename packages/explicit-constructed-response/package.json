@@ -1,32 +1,35 @@
 {
   "name": "@pie-element/explicit-constructed-response",
+  "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
-  "repository": "pie-framework/pie-elements",
-  "version": "9.3.3",
+  "version": "10.1.1-next.2",
   "description": "",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "2.25.2",
-    "@pie-lib/mask-markup": "1.33.2",
-    "@pie-lib/math-rendering": "3.22.1",
-    "@pie-lib/render-ui": "4.35.2",
-    "@pie-lib/translator": "2.23.1",
+    "@pie-lib/correct-answer-toggle": "3.2.0-next.4",
+    "@pie-lib/mask-markup": "2.2.0-next.12",
+    "@pie-lib/math-rendering": "4.2.0-next.3",
+    "@pie-lib/render-ui": "5.2.0-next.4",
+    "@pie-lib/translator": "3.2.0-next.3",
     "classnames": "^2.2.5",
     "he": "^1.2.0",
-    "lodash": "^4.17.10",
+    "lodash-es": "^4.17.23",
     "prop-types": "^15.6.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "38eb4b4700ca4eaad440566dfc50623ff8876a92",
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {

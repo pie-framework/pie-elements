@@ -1,6 +1,6 @@
 import BoilerplateItemType from '..';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 
 import { renderMath } from '@pie-lib/math-rendering';
@@ -13,18 +13,25 @@ jest.mock('react', () => ({
   createElement: jest.fn(),
 }));
 
-jest.mock('react-dom', () => ({
-  render: jest.fn((r, el, cb) => {
-    cb();
-  }),
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: mockRender,
+    unmount: mockUnmount,
+  })),
 }));
 
 describe('boilerplate-item-type', () => {
   let c;
   beforeEach(() => {
-    c = new BoilerplateItemType();
+    // Register the custom element before instantiation
+    if (!customElements.get('boilerplate-item-type')) {
+      customElements.define('boilerplate-item-type', BoilerplateItemType);
+    }
+
+    c = document.createElement('boilerplate-item-type');
     c.dispatchEvent = jest.fn();
-    c.tagName = 'boilerplate-item-type';
     c.model = {};
     c.session = {};
   });
@@ -33,11 +40,13 @@ describe('boilerplate-item-type', () => {
     it('calls createElement', () => {
       expect(React.createElement).toBeCalled();
     });
-    it('calls render', () => {
-      expect(ReactDOM.render).toBeCalledWith(undefined, expect.anything(), expect.any(Function));
+    it('calls createRoot and render', () => {
+      expect(createRoot).toHaveBeenCalled();
+      expect(mockRender).toHaveBeenCalledWith(undefined);
     });
 
-    it('calls renderMath', () => {
+    it('calls renderMath', async () => {
+      await new Promise(resolve => setTimeout(resolve, 0));
       expect(renderMath).toHaveBeenCalled();
     });
   });

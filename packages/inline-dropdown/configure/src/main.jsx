@@ -1,24 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { color } from '@pie-lib/render-ui';
-import cloneDeep from 'lodash/cloneDeep';
-import isEqual from 'lodash/isEqual';
-import isUndefined from 'lodash/isUndefined';
-import isEmpty from 'lodash/isEmpty';
-import reduce from 'lodash/reduce';
-import max from 'lodash/max';
-import { withStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Info from '@material-ui/icons/Info';
+import { cloneDeep, isEmpty, isEqual, isUndefined, max, reduce } from 'lodash-es';
+import { styled } from '@mui/material/styles';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Info from '@mui/icons-material/Info';
 
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
@@ -26,65 +21,62 @@ import ResponseAreaComponent from './response-area';
 
 const { toggle, Panel, dropdown } = settings;
 
-const styles = (theme) => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  choiceRationaleHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit / 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  markup: {
-    minHeight: '100px',
-    width: '100%',
-    '& [data-slate-editor="true"]': {
-      minHeight: '100px',
-    },
-  },
-  choiceConfiguration: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-  },
-  text: {
-    fontSize: theme.typography.fontSize + 2,
-    marginRight: theme.spacing.unit,
-  },
-  rationaleLabel: {
-    display: 'flex',
-    alignItems: 'center',
-    whiteSpace: 'break-spaces',
-    color: color.disabled(),
-    padding: 0,
-    fontSize: theme.typography.fontSize - 2,
-    lineHeight: 1,
-  },
-  rationaleChoices: {
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  panelDetails: {
-    display: 'block',
-    paddingTop: 0,
-    paddingBottom: 0,
-  },
-  flexContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: theme.spacing.unit,
-  },
-  tooltip: {
+const PromptHolder = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const ChoiceRationaleHolder = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(0.5),
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize + 2,
+  marginRight: theme.spacing(1),
+}));
+
+const RationaleLabel = styled('span')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  whiteSpace: 'break-spaces',
+  color: color.disabled(),
+  padding: 0,
+  fontSize: theme.typography.fontSize - 2,
+  lineHeight: 1,
+}));
+
+const RationaleChoices = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2.5),
+}));
+
+const StyledAccordionDetails = styled(AccordionDetails)({
+  display: 'block',
+  paddingTop: 0,
+  paddingBottom: 0,
+});
+
+const FlexContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: theme.spacing(1),
+}));
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
     fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
@@ -101,7 +93,6 @@ export class Main extends React.Component {
     disableSidePanel: PropTypes.bool,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -231,23 +222,12 @@ export class Main extends React.Component {
     });
 
     if (shouldWarn) {
-      this.setState({
-        warning: {
-          open: true,
-          text: 'Response areas with under 2 options or with no correct answers will be discarded.',
-          onClose: () => {
-            this.setState({ warning: { open: false } });
-          },
-          onConfirm: () => {
-            this.setState({ warning: { open: false } }, () =>
-              this.onModelChange({
-                choices: cloneDeep(newRespAreaChoices),
-                slateMarkup: domMarkup.innerHTML,
-              }),
-            );
-          },
-        },
-      });
+      this.onCheck(() =>
+        this.onModelChange({
+          choices: cloneDeep(newRespAreaChoices),
+          slateMarkup: domMarkup.innerHTML,
+        }),
+      );
     } else {
       this.onModelChange({
         choices: cloneDeep(newRespAreaChoices),
@@ -260,11 +240,11 @@ export class Main extends React.Component {
     const { respAreaChoices } = this.state;
     const { maxResponseAreaChoices } = this.props.configuration;
 
-    if (respAreaChoices[index] && respAreaChoices[index].length >= maxResponseAreaChoices) {
+    const showWarning = (message) =>
       this.setState({
         warning: {
           open: true,
-          text: `There are only ${maxResponseAreaChoices} answers allowed per choice.`,
+          text: message,
           onClose: undefined,
           onConfirm: () => {
             this.setState({ warning: { open: false } });
@@ -272,6 +252,8 @@ export class Main extends React.Component {
         },
       });
 
+    if (respAreaChoices[index] && respAreaChoices[index].length >= maxResponseAreaChoices) {
+      showWarning(`There are only ${maxResponseAreaChoices} answers allowed per choice.`);
       return;
     }
 
@@ -279,20 +261,11 @@ export class Main extends React.Component {
       respAreaChoices[index] = [];
     }
 
+
+
     // check for duplicate answer, but exclude the one that is currently edited
     if ((respAreaChoices[index] || []).find((r, idx) => r.label === label && idx !== choiceIndex)) {
-      // show warning for duplicated answers
-      this.setState({
-        warning: {
-          open: true,
-          text: 'Duplicate answers are not allowed.',
-          onClose: undefined,
-          onConfirm: () => {
-            this.setState({ warning: { open: false } });
-          },
-        },
-      });
-
+      showWarning('Duplicate answers are not allowed.');
       return;
     }
 
@@ -337,7 +310,7 @@ export class Main extends React.Component {
 
   render() {
     const { warning } = this.state;
-    const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
+    const { model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
       baseInputConfiguration = {},
       choiceRationale = {},
@@ -384,24 +357,22 @@ export class Main extends React.Component {
 
     const renderChoiceRationale = () =>
       (Object.keys(choices) || []).map((key, index) => (
-        <div key={key} className={classes.rationaleChoices}>
-          <ExpansionPanel>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className={classes.text}>{`Rationale for response area #${index + 1}`}</Typography>
-            </ExpansionPanelSummary>
+        <RationaleChoices key={key}>
+          <Accordion slotProps={{ transition: { timeout: { enter: 225, exit: 195 } } }}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <StyledTypography component={'div'}>{`Rationale for response area #${index + 1}`}</StyledTypography>
+            </AccordionSummary>
 
-            <ExpansionPanelDetails className={classes.panelDetails}>
+            <StyledAccordionDetails>
               {(choices[key] || []).map((choice) => (
                 <React.Fragment key={choice.label}>
-                  <span
-                    className={classes.rationaleLabel}
+                  <RationaleLabel
                     dangerouslySetInnerHTML={{
                       __html: `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`,
                     }}
                   />
-                  <InputContainer className={classes.choiceRationaleHolder}>
+                  <ChoiceRationaleHolder>
                     <EditableHtml
-                      className={classes.prompt}
                       markup={choice.rationale || ''}
                       spellCheck={spellCheckEnabled}
                       onChange={(c) => this.onChoiceRationaleChanged(key, { ...choice, rationale: c })}
@@ -411,12 +382,12 @@ export class Main extends React.Component {
                       uploadSoundSupport={uploadSoundSupport}
                       mathMlOptions={mathMlOptions}
                     />
-                  </InputContainer>
+                  </ChoiceRationaleHolder>
                 </React.Fragment>
               ))}
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        </div>
+            </StyledAccordionDetails>
+          </Accordion>
+        </RationaleChoices>
       ));
 
     const toolbarOpts = {
@@ -447,7 +418,18 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
-        extraCSSRules={extraCSSRules}
+        extraCSSRules={{
+          names: ['red', 'blue'],
+          rules: `
+      .red {
+        color: red !important;
+      }
+
+      .blue {
+        color: blue !important;
+      }
+    `,
+        }}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
@@ -464,9 +446,8 @@ export class Main extends React.Component {
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <PromptHolder label={teacherInstructions.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
@@ -481,14 +462,13 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </PromptHolder>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
+          <PromptHolder label={prompt.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.prompt}
               onChange={this.onPromptChanged}
               imageSupport={imageSupport}
@@ -504,24 +484,16 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </PromptHolder>
         )}
 
-        <div className={classes.flexContainer}>
-          <Typography className={classes.text} component={'div'}>
-            Define Template, Choices, and Correct Responses
-          </Typography>
-          <Tooltip
-            classes={{ tooltip: classes.tooltip }}
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
+        <FlexContainer>
+          <StyledTypography component={'div'}>Define Template, Choices, and Correct Responses</StyledTypography>
+          <StyledTooltip disableFocusListener disableTouchListener placement={'right'} title={validationMessage}>
             <Info fontSize={'small'} color={'primary'} />
-          </Tooltip>
-        </div>
+          </StyledTooltip>
+        </FlexContainer>
 
         <ResponseAreaComponent
           responseAreasError={responseAreasError}
@@ -530,25 +502,37 @@ export class Main extends React.Component {
             pluginProps: getPluginProps(template?.inputConfiguration),
             activePlugins: ALL_PLUGINS,
             toolbarOpts: { position: 'top' },
+            extraCSSRules: {
+              names: ['red', 'blue'],
+              rules: `
+      .red {
+        color: red !important;
+      }
+
+      .blue {
+        color: blue !important;
+      }
+    `,
+            },
             responseAreaProps: {
               type: 'inline-dropdown',
               options: {
                 duplicates: true,
               },
               maxResponseAreas: maxResponseAreas,
-              respAreaToolbar: (node, value, onToolbarDone) => {
+              respAreaToolbar: (node, editor, onToolbarDone) => {
                 const { respAreaChoices } = this.state;
 
                 return () => (
                   <InlineDropdownToolbar
                     onAddChoice={this.onAddChoice}
                     onCheck={this.onCheck}
-                    onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
-                    onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
+                    onRemoveChoice={(index) => this.onRemoveChoice(node.attrs.index, index)}
+                    onSelectChoice={(index) => this.onSelectChoice(node.attrs.index, index)}
                     node={node}
-                    value={value}
+                    editor={editor}
                     onToolbarDone={onToolbarDone}
-                    choices={respAreaChoices[node.data.get('index')]}
+                    choices={respAreaChoices[node.attrs.index]}
                     spellCheck={spellCheckEnabled}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
@@ -559,7 +543,6 @@ export class Main extends React.Component {
               },
             },
             spellCheck: spellCheckEnabled,
-            className: classes.markup,
             markup: model.slateMarkup || '',
             onChange: this.onChange,
             imageSupport: imageSupport,
@@ -576,9 +559,8 @@ export class Main extends React.Component {
         {choiceRationaleEnabled && renderChoiceRationale()}
 
         {rationaleEnabled && (
-          <InputContainer label={rationale.label} className={classes.promptHolder}>
+          <PromptHolder label={rationale.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.rationale || ''}
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
@@ -592,8 +574,8 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
-          </InputContainer>
+            {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+          </PromptHolder>
         )}
 
         <AlertDialog
@@ -602,12 +584,13 @@ export class Main extends React.Component {
           text={warning.text}
           onClose={warning.onClose}
           onConfirm={warning.onConfirm}
+          disableAutoFocus={true}
+          disableEnforceFocus={true}
+          disableRestoreFocus={true}
         />
       </layout.ConfigLayout>
     );
   }
 }
 
-const Styled = withStyles(styles)(Main);
-
-export default Styled;
+export default Main;

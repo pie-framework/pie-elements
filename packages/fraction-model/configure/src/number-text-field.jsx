@@ -1,38 +1,32 @@
 import { NumberTextField as NTF } from '@pie-lib/config-ui';
-import PropTypes from 'prop-types';
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import cn from 'classnames';
+import { styled } from '@mui/material/styles';
+
+const StyledNTF = styled(NTF)(({ theme }) => ({
+  marginLeft: theme.spacing(1),
+}));
+
+const MiniStyledNTF = styled(NTF)({
+  maxWidth: '120px',
+  width: '120px',
+  marginTop: '0',
+  '& [class^="MuiInputBase-root"]': {
+    height: 40,
+    fontSize: '14px',
+  },
+});
 
 export class NumberTextField extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+  static propTypes = {};
 
   render() {
-    const { classes } = this.props;
-    const props = { ...this.props, classes: undefined };
-    return <NTF {...props} className={cn(classes.textField, props.className)} variant="outlined" />;
+    const props = { ...this.props };
+    return <StyledNTF {...props} variant="outlined" />;
   }
 }
 
-const styles = (theme) => ({
-  textField: {
-    marginLeft: theme.spacing.unit,
-  },
-});
+export const MiniField = React.forwardRef((props, ref) => (
+  <MiniStyledNTF {...props} ref={ref} variant="outlined" />
+));
 
-const miniStyles = () => ({
-  textField: {
-    maxWidth: '120px',
-    width: '120px',
-    marginTop: '0',
-    '& [class^="MuiInputBase-root"]': {
-      height: 40,
-      fontSize: '14px',
-    },
-  },
-});
-export const MiniField = withStyles(miniStyles)(NumberTextField);
-
-export default withStyles(styles)(NumberTextField);
+export default NumberTextField;

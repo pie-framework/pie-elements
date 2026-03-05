@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 
 export const buildCategories = (categories, choices, correctResponse) => {
   const clonedCategories = cloneDeep(categories);

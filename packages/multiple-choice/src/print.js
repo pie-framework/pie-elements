@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import debounce from 'lodash/debounce';
-import cloneDeep from 'lodash/cloneDeep';
+import { createRoot } from 'react-dom/client';
+import { cloneDeep, debounce } from 'lodash-es';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';
@@ -51,6 +50,7 @@ export default class MultipleChoicePrint extends HTMLElement {
     this._options = null;
     this._model = null;
     this._session = [];
+    this._root = null;
     this._rerender = debounce(
       () => {
         if (this._model && this._session) {
@@ -64,9 +64,16 @@ export default class MultipleChoicePrint extends HTMLElement {
               options: this._options,
             });
 
-          ReactDOM.render(element, this, () => {
-            log('render complete - render math');
-            renderMath(this);
+          if (!this._root) {
+            this._root = createRoot(this);
+          }
+          this._root.render(element);
+          // Use double requestAnimationFrame so React has committed to the DOM before we render math
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              log('render complete - render math');
+              renderMath(this);
+            });
           });
         } else {
           log('skip');
@@ -86,4 +93,10 @@ export default class MultipleChoicePrint extends HTMLElement {
   }
 
   connectedCallback() {}
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
+  }
 }

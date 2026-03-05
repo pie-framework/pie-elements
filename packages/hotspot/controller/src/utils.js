@@ -1,5 +1,4 @@
-import isEqual from 'lodash/isEqual';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty, isEqual } from 'lodash-es';
 
 export const getCorrectResponse = (choices) =>
   choices
