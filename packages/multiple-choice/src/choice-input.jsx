@@ -130,7 +130,6 @@ export const StyledCheckbox = (props) => {
     <StyledCheckboxBase
       id={id}
       slotProps={{ input: { ref: inputRef } }}
-      aria-checked={checked}
       onKeyDown={onKeyDown}
       disableRipple
       {...miniProps}
@@ -168,7 +167,6 @@ export const StyledRadio = (props) => {
     <StyledRadioBase
       id={id}
       slotProps={{ input: { ref: inputRef } }}
-      aria-checked={checked}
       disableRipple
       {...miniProps}
       correctness={correctness}
