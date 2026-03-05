@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "12.1.2-next.0",
+  "version": "12.1.2-next.2",
   "publishConfig": {
     "access": "public"
   },
@@ -30,7 +30,17 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
+    ".": {
+      "import": "./src/index.js",
+      "default": "./lib/index.js"
+    },
+    "./print": {
+      "import": "./src/print.js",
+      "default": "./lib/print.js"
+    },
+    "./configure/lib": {
+      "require": "./configure/lib/index.js",
+      "default": "./configure/lib/index.js"
+    }
   }
 }

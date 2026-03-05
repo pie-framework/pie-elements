@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@9.1.0-next.2...@pie-element/hotspot-configure@9.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **hotspot:** leave hover state while resizing PD-5601 ([96f5ddd](https://github.com/pie-framework/pie-elements/commit/96f5dddd346959c0061882cc82bc282a71280b73))
+
 # [9.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@9.1.0-next.1...@pie-element/hotspot-configure@9.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure

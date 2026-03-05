@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.0-next.2...@pie-element/categorize@12.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **categorize, image-cloze-association:** enable snap back visual only for invalid drop zones PD-5495 ([211ab92](https://github.com/pie-framework/pie-elements/commit/211ab9260a76bbfbeb87f1fc85eb68ba833ded7c))
+- **categorize:** resolve crash when adding new category and implement auto-focus PD-5588 ([39b7a9b](https://github.com/pie-framework/pie-elements/commit/39b7a9b7aed3abcb4c6023829f1b2448631ed23b))
+
 # [12.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.0-next.1...@pie-element/categorize@12.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/categorize

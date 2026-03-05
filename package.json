@@ -32,7 +32,6 @@
     "health:check": "pie-health check packages"
   },
   "dependencies": {
-    "core-js": "^3.48.0",
     "express": "^4.22.1"
   },
   "devDependencies": {
@@ -85,7 +84,6 @@
     "react-dom": "18.3.1",
     "jest": "29.7.0",
     "jest-config": "29.7.0",
-    "core-js": "^3.40.0",
     "d3-scale": "4.0.2",
     "d3-selection": "3.0.0",
     "@jest/test-sequencer": "29.7.0",

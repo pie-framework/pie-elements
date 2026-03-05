@@ -235,6 +235,7 @@ class RespAreaToolbar extends React.Component {
 
   onDone = (val) => {
     const { choices, node, editor, onAddChoice, onToolbarDone } = this.props;
+
     const { editedChoiceIndex } = this.state;
     const onlyText = createElementFromHTML(val).textContent.trim();
 
@@ -282,11 +283,17 @@ class RespAreaToolbar extends React.Component {
 
   onKeyDown = (event) => {
     if (event.key === 'Enter') {
-      this.preventDone = false;
-      this.onAddChoice();
+      const html = event.target?.innerHTML || '';
+
+      this.onDone(html);
+      this.preventDone = true;
+      this.focusInput();
+
       // Cancelling event
-      return false;
+      return true;
     }
+
+    return false;
   };
 
   onBlur = () => {

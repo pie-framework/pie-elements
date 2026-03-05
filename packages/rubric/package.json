@@ -1,12 +1,22 @@
 {
   "name": "@pie-element/rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "7.1.1-next.0",
+  "version": "7.1.1-next.2",
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
+    ".": {
+      "import": "./src/index.js",
+      "default": "./lib/index.js"
+    },
+    "./print": {
+      "import": "./src/print.js",
+      "default": "./lib/print.js"
+    },
+    "./configure/lib": {
+      "require": "./configure/lib/index.js",
+      "default": "./configure/lib/index.js"
+    }
   },
   "description": "Rubric Scoring Interaction",
   "publishConfig": {

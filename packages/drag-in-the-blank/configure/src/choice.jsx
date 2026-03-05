@@ -8,8 +8,8 @@ import { choiceIsEmpty } from './markupUtils';
 
 const GripIcon = ({ style }) => (
   <span style={style}>
-    <MoreVert style={{ margin: '0 -16px' }}/>
-    <MoreVert/>
+    <MoreVert style={{ margin: '0 -16px' }} />
+    <MoreVert />
   </span>
 );
 
@@ -32,7 +32,11 @@ const StyledChoice = styled('div', {
   cursor: 'grab',
   border: `1px solid ${error ? '#f44336' : '#C0C3CF'}`,
   '& img': {
-    display: 'flex'
+    display: 'flex',
+  },
+  // browser adds extra marrgin for p tags by default
+  '& p': {
+    margin: 0,
   },
   '& mjx-frac': {
     fontSize: '120% !important',
@@ -53,12 +57,7 @@ const StyledDeleteIcon = styled(Delete)(({ theme }) => ({
 
 export const BlankContent = (props) => {
   const { choice, onClick, onRemoveChoice, error, instanceId, disabled } = props;
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    isDragging,
-  } = useDraggable({
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: `choice-${choice.id}-${instanceId || 'default'}`,
     data: {
       type: 'drag-in-the-blank-choice',
@@ -67,7 +66,6 @@ export const BlankContent = (props) => {
       instanceId: instanceId,
     },
     disabled: disabled || choiceIsEmpty(choice),
-
   });
 
   const handleDragStart = (e) => {

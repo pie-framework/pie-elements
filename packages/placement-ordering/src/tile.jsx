@@ -68,7 +68,6 @@ const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, 
   }),
 
   ...((type === 'choice' || type === 'target') && disabled && {
-    opacity: 0.6,
     cursor: 'not-allowed',
     '&:hover': {
       backgroundColor: color.background(),
