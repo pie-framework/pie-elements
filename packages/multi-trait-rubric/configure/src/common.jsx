@@ -117,6 +117,7 @@ export const Block = styled('div')(({ theme }) => ({
 const StyledSecondaryBlock = styled('div')({
   display: 'flex',
   overflowX: 'hidden',
+  overflowY: 'hidden',
   alignItems: 'flex-end',
   // this is needed to show the editor toolbar!!!
   paddingBottom: '30px',
