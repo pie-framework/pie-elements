@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.1.1-next.1...@pie-element/inline-dropdown@9.1.1-next.2) (2026-03-05)
+
+### Bug Fixes
+
+- **inline-dropdown:** handle Enter key PD-5602 ([49348f8](https://github.com/pie-framework/pie-elements/commit/49348f815e6b99a6aaf2fa45af8eca598ef44c93))
+
 ## [9.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.1.0-next.2...@pie-element/inline-dropdown@9.1.1-next.1) (2026-02-26)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

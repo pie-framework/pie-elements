@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.2...@pie-element/multiple-choice@12.1.2-next.3) (2026-03-05)
+
+### Bug Fixes
+
+- **multiple-choice, placement-ordering:** use observer to render math content PD-5638 ([4c2a662](https://github.com/pie-framework/pie-elements/commit/4c2a662a56b20550168929faeaf9c1eb5b9a8ca1))
+- **multiple-choice:** remove explicit aria-checked from radio and checkbox, Material UI 7 handles aria-checked automatically based on the checked prop ([31c917c](https://github.com/pie-framework/pie-elements/commit/31c917ca669504bb79aa60537a40e89147d236a8))
+
 ## [12.1.2-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.1...@pie-element/multiple-choice@12.1.2-next.2) (2026-03-03)
 
 ### Bug Fixes
