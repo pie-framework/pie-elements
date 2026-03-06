@@ -523,8 +523,9 @@ export class Main extends React.Component {
               respAreaToolbar: (node, editor, onToolbarDone) => {
                 const { respAreaChoices } = this.state;
 
-                return () => (
+                return props => (
                   <InlineDropdownToolbar
+                    {...props}
                     onAddChoice={this.onAddChoice}
                     onCheck={this.onCheck}
                     onRemoveChoice={(index) => this.onRemoveChoice(node.attrs.index, index)}

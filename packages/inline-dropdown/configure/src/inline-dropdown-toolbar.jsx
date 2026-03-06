@@ -177,6 +177,7 @@ class RespAreaToolbar extends React.Component {
     choices: PropTypes.array,
     onAddChoice: PropTypes.func.isRequired,
     onCheck: PropTypes.func,
+    editorCallback: PropTypes.func,
     onRemoveChoice: PropTypes.func.isRequired,
     onSelectChoice: PropTypes.func.isRequired,
     onToolbarDone: PropTypes.func.isRequired,
@@ -283,11 +284,10 @@ class RespAreaToolbar extends React.Component {
 
   onKeyDown = (event) => {
     if (event.key === 'Enter') {
-      const html = event.target?.innerHTML || '';
+      const html = this.editorRef.getHTML() || '';
 
       this.onDone(html);
       this.preventDone = true;
-      this.focusInput();
 
       // Cancelling event
       return true;
@@ -321,16 +321,6 @@ class RespAreaToolbar extends React.Component {
     this.clickedInside = true;
   };
 
-  focusInput = () => {
-    // we need to focus the input so that math is saved even without pressing the green checkmark
-    const slateEditorRef = this.editorRef && this.editorRef.rootRef && this.editorRef.rootRef.slateEditor;
-    const inputRef = slateEditorRef && slateEditorRef.editorRef && slateEditorRef.editorRef.element;
-
-    if (inputRef) {
-      inputRef.focus();
-    }
-  };
-
   render() {
     const {
       choices,
@@ -356,9 +346,10 @@ class RespAreaToolbar extends React.Component {
       >
         <ItemBuilder>
           <RespArea
-            ref={(ref) => {
+            editorRef={(ref) => {
               if (ref) {
                 this.editorRef = ref;
+                this.props.editorCallback?.(ref);
               }
             }}
             autoFocus={true}
@@ -407,7 +398,6 @@ class RespAreaToolbar extends React.Component {
             mathMlOptions={mathMlOptions}
           />
           <AddButton
-            onMouseDown={() => this.focusInput()}
             onClick={() => this.onAddChoice()}
             size="small"
             aria-label="Add"
