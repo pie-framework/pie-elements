@@ -286,6 +286,7 @@ export class Categorize extends React.Component {
             choicePosition={choicePosition}
             onDropChoice={this.dropChoice}
             onRemoveChoice={this.removeChoice}
+            correct={correct}
           />
         </StyledCategorize>
         {displayNote && (
