@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.4...@pie-element/multiple-choice@12.1.2-next.5) (2026-03-09)
+
+### Bug Fixes
+
+- **multiple-choice:** padding calculations PD-5579 ([695bc9f](https://github.com/pie-framework/pie-elements/commit/695bc9f057a0f1b0e3d7b9f93bbecce55bda9a9f))
+- **multiple-choice:** update module exports to point to lib directory - for ebsr dependency ([8f6bc61](https://github.com/pie-framework/pie-elements/commit/8f6bc61282da842a706fe53c970438c591e067fb))
+
 ## [12.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.3...@pie-element/multiple-choice@12.1.2-next.4) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

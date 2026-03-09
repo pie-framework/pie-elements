@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.3...@pie-element/categorize@12.1.2-next.4) (2026-03-09)
+
+### Bug Fixes
+
+- **categorize:** category box border color fix PD-5546 ([d87a9a3](https://github.com/pie-framework/pie-elements/commit/d87a9a3a9f0587ca61e6a4104cee89cfd02bb017))
+
 ## [12.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.2...@pie-element/categorize@12.1.2-next.3) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/categorize

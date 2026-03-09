@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.3...@pie-element/number-line@12.1.1-next.4) (2026-03-09)
+
+### Bug Fixes
+
+- **number-line:** show correct answer only when correct response is defined PD-5375 ([df876f2](https://github.com/pie-framework/pie-elements/commit/df876f2fb55637272b93e5ce2330db6ded52995a))
+
 ## [12.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.2...@pie-element/number-line@12.1.1-next.3) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/number-line

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@9.1.2-next.3...@pie-element/image-cloze-association@9.1.2-next.4) (2026-03-09)
+
+### Bug Fixes
+
+- **image-cloze:** clear touchmove issues PD-5416 ([3ebaf9b](https://github.com/pie-framework/pie-elements/commit/3ebaf9b44500240ce604e13a77a90d91266753dd))
+
 ## [9.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@9.1.2-next.2...@pie-element/image-cloze-association@9.1.2-next.3) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.1.1-next.3...@pie-element/inline-dropdown@9.1.1-next.4) (2026-03-09)
+
+### Bug Fixes
+
+- editor instance handling on the response area PD-5603-PD-5603-PD-5605 ([7478bad](https://github.com/pie-framework/pie-elements/commit/7478bada32bed1d87dba4d7e408b5457cc7c0c86))
+
 ## [9.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.1.1-next.2...@pie-element/inline-dropdown@9.1.1-next.3) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

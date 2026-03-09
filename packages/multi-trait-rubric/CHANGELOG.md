@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@7.1.2-next.3...@pie-element/multi-trait-rubric@7.2.0-next.0) (2026-03-09)
+
+### Bug Fixes
+
+- **multi-trait-rubric:** improve scroll handling in Scale and TraitTile components PD-5659 ([a25efd7](https://github.com/pie-framework/pie-elements/commit/a25efd7ed8aad2d0146f20ee60f44666c73fca36))
+
+### Features
+
+- **multi-trait-rurbic:** add autoWidthToolbar to components PD-5657 ([f4bab78](https://github.com/pie-framework/pie-elements/commit/f4bab783e29514ecf17ff161a984e6ca0abfe79f))
+
 ## [7.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@7.1.2-next.2...@pie-element/multi-trait-rubric@7.1.2-next.3) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric
