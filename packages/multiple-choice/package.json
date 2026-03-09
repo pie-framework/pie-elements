@@ -31,14 +31,17 @@
   "module": "src/index.js",
   "exports": {
     ".": {
-      "import": "./src/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib/index.js",
       "default": "./lib/index.js"
     },
     "./print": {
-      "import": "./src/print.js",
+      "import": "./lib/print.js",
+      "require": "./lib/print.js",
       "default": "./lib/print.js"
     },
     "./configure/lib": {
+      "import": "./configure/lib/index.js",
       "require": "./configure/lib/index.js",
       "default": "./configure/lib/index.js"
     }
