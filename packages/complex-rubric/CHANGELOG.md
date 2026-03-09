@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.2-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@6.1.2-next.5...@pie-element/complex-rubric@6.1.2-next.6) (2026-03-09)
+
+### Bug Fixes
+
+- rubric & complex rubric tests ([6bf76e6](https://github.com/pie-framework/pie-elements/commit/6bf76e6e36c0bd8c0f5b2a6d1a7027c46930dacb))
+
 ## [6.1.2-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@6.1.2-next.4...@pie-element/complex-rubric@6.1.2-next.5) (2026-03-09)
 
 **Note:** Version bump only for package @pie-element/complex-rubric

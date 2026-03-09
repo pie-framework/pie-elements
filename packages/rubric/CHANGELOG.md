@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@7.1.1-next.4...@pie-element/rubric@7.1.1-next.5) (2026-03-09)
+
+### Bug Fixes
+
+- rubric & complex rubric tests ([6bf76e6](https://github.com/pie-framework/pie-elements/commit/6bf76e6e36c0bd8c0f5b2a6d1a7027c46930dacb))
+
 ## [7.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@7.1.1-next.3...@pie-element/rubric@7.1.1-next.4) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/rubric
