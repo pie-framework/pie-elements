@@ -88,7 +88,7 @@ const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, answerCh
 
     node.addEventListener('touchstart', handleTouchStart, { passive: false });
     node.addEventListener('touchend', handleTouchEnd);
-    node.addEventListener('touchmove', handleTouchMove);
+    node.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
       node.removeEventListener('touchstart', handleTouchStart);
