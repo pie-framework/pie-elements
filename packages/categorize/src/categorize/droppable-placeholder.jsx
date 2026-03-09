@@ -39,10 +39,10 @@ const DroppablePlaceholder = ({
     alignContent: 'flex-start',
     width: '100%',
     height: '100%',
-    ...(correct === false && {
+    ...(correct === false && !choiceBoard && {
       border: `solid 2px ${color.incorrect()}`,
     }),
-    ...(correct === true && {
+    ...(correct === true && !choiceBoard && {
       border: `solid 2px ${color.correct()}`,
     }),
   };
