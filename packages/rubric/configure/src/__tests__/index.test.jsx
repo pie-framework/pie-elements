@@ -3,6 +3,10 @@ import defaults from '../defaults';
 import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-framework/pie-configure-events';
 import React from 'react';
 
+jest.mock('@pie-lib/rubric', () => ({
+  Authoring: (props) => <div data-testid="authoring" {...props} />,
+}));
+
 jest.mock('react-dom/client', () => ({
   createRoot: jest.fn(() => ({
     render: jest.fn(),
