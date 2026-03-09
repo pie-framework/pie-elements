@@ -3,6 +3,14 @@ import { createRoot } from 'react-dom/client';
 
 import defaults from '../defaults';
 
+jest.mock('@pie-lib/rubric', () => ({
+  RUBRIC_TYPES: {
+    SIMPLE_RUBRIC: 'simpleRubric',
+    MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
+    RUBRICLESS: 'rubricless',
+  },
+}));
+
 jest.mock('@pie-lib/config-ui', () => ({
   settings: {
     Panel: (props) => <div {...props} />,
