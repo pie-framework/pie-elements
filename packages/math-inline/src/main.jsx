@@ -131,7 +131,7 @@ export class Main extends React.Component {
 
   UNSAFE_componentWillMount() {
     if (typeof window !== 'undefined') {
-      let MQ = MathQuill.getInterface(2);
+      let MQ = MathQuill.getInterface(3);
 
       if (!registered) {
         MQ.registerEmbed('answerBlock', (data) => {
@@ -165,7 +165,7 @@ export class Main extends React.Component {
         // const correct = model.correctness && model.correctness.correct;
 
         if (el) {
-          let MQ = MathQuill.getInterface(2);
+          let MQ = MathQuill.getInterface(3);
           const answer = answers[answerId];
 
           el.textContent = (answer && answer.value) || '';

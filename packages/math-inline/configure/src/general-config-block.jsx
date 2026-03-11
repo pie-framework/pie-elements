@@ -223,7 +223,7 @@ class GeneralConfigBlock extends React.Component {
   UNSAFE_componentWillMount() {
     if (typeof window !== 'undefined') {
       // const MathQuill = require('@pie-framework/mathquill');
-      let MQ = MathQuill.getInterface(2);
+      let MQ = MathQuill.getInterface(3);
 
       if (!registered) {
         MQ.registerEmbed('answerBlock', (data) => {
@@ -281,7 +281,7 @@ class GeneralConfigBlock extends React.Component {
 
               if (el) {
                 // const MathQuill = require('@pie-framework/mathquill');
-                let MQ = MathQuill.getInterface(2);
+                let MQ = MathQuill.getInterface(3);
                 // We no longer have individual answers, so we cannot set text content of blocks
                 // el.textContent = response.answer;
                 MQ.StaticMath(el);
