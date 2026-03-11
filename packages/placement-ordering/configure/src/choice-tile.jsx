@@ -18,7 +18,8 @@ const StyledChoiceTile = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   display: 'flex',
   flexDirection: 'column',
-  cursor: 'move'
+  cursor: 'move',
+  touchAction: 'none',
 }));
 
 const StyledEditableHtml = styled(EditableHtml)(({ theme, isTargetPrompt }) => ({

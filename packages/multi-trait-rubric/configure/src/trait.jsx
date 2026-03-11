@@ -26,6 +26,7 @@ const StyledPrimaryBlock = styled(PrimaryBlock)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
   marginBottom: theme.spacing(5),
+  touchAction: 'none',
 }));
 
 const Controls = styled('div')({
