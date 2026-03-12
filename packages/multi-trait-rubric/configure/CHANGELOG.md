@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.2.0-next.0...@pie-element/multi-trait-rubric-configure@6.2.0-next.1) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
 # [6.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.1.2-next.3...@pie-element/multi-trait-rubric-configure@6.2.0-next.0) (2026-03-09)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.1-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@9.1.1-next.5...@pie-element/drag-in-the-blank@9.1.1-next.6) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
 ## [9.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@9.1.1-next.4...@pie-element/drag-in-the-blank@9.1.1-next.5) (2026-03-09)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

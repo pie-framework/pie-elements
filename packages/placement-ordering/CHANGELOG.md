@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.1.1-next.3...@pie-element/placement-ordering@13.1.1-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+- **placement-ordering:** prevent dragging when editing content PD-5788 ([4523606](https://github.com/pie-framework/pie-elements/commit/452360638540351e74506da0c1723ab587538800))
+
 ## [13.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.1.1-next.2...@pie-element/placement-ordering@13.1.1-next.3) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/placement-ordering

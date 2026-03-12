@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.2-next.3...@pie-element/match@11.1.2-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
 ## [11.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.2-next.2...@pie-element/match@11.1.2-next.3) (2026-03-06)
 
 **Note:** Version bump only for package @pie-element/match

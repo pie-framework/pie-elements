@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.4...@pie-element/categorize@12.1.2-next.5) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+- **categorize:** add missing prop validation ([847df67](https://github.com/pie-framework/pie-elements/commit/847df67bf234bbecb5c5f17f29d84bdd25c2e0d5))
+
 ## [12.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.3...@pie-element/categorize@12.1.2-next.4) (2026-03-09)
 
 ### Bug Fixes

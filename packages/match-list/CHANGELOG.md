@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.1.1-next.1...@pie-element/match-list@6.1.1-next.2) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+
 ## [6.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.1.0-next.2...@pie-element/match-list@6.1.1-next.1) (2026-02-26)
 
 ### Bug Fixes
