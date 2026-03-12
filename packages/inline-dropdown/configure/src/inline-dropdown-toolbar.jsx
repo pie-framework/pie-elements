@@ -48,6 +48,10 @@ const ValueHolder = styled('div')(({ theme, correct }) => ({
   ...(correct && {
     background: color.correctSecondary(),
   }),
+  '& p': {
+    // browser adds extra margin for p tags by default
+    margin: 0,
+  },
 }));
 
 const ActionButtons = styled('div')(({ theme }) => ({
@@ -269,7 +273,7 @@ class RespAreaToolbar extends React.Component {
     console.log('LOGGING', val, node.attrs.value, isEqual(val, node.attrs.value));
 
     if (isEqual(val, node.attrs.value)) {
-      editor.commands.updateAttributes('explicit_constructed_response', { value: null });
+      editor.commands.updateAttributes('inline_dropdown', { value: null });
       onToolbarDone(false);
     }
 

@@ -88,9 +88,7 @@ export const ChoiceTile = (props) => {
     },
   });
 
-  const {
-    setNodeRef: setDropRef,
-  } = useDroppable({
+  const { setNodeRef: setDropRef } = useDroppable({
     id: droppableId,
     data: {
       id: choice.id,
@@ -110,13 +108,36 @@ export const ChoiceTile = (props) => {
     width: '100%',
   };
 
-  const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
-    (p) => p !== 'bulleted-list' && p !== 'numbered-list',
-  );
+  const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter((p) => p !== 'bulleted-list' && p !== 'numbered-list');
+
+  const isEditableElement = (target) =>
+    target.closest('[contenteditable]') ||
+    target.closest('input') ||
+    target.closest('textarea') ||
+    target.isContentEditable;
+
+  // edit listeners to prevent dragging when interacting with editable-html element
+  const filteredListeners = {
+    ...listeners,
+    onKeyDown: (e) => {
+      if (isEditableElement(e.target)) {
+        return;
+      }
+
+      listeners?.onKeyDown?.(e);
+    },
+    onPointerDown: (e) => {
+      if (isEditableElement(e.target)) {
+        return;
+      }
+
+      listeners?.onPointerDown?.(e);
+    },
+  };
 
   return (
     <div ref={setDropRef}>
-      <div ref={setDragRef} {...listeners} {...attributes}>
+      <div ref={setDragRef} {...filteredListeners} {...attributes}>
         <StyledChoiceTile style={style}>
           <div style={{ width: '100%', display: 'flex' }}>
             <CardActions>
