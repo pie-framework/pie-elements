@@ -18,6 +18,10 @@ const { translator } = Translator;
 const log = debug('@pie-ui:categorize');
 
 class DragPreviewWrapper extends React.Component {
+  static propTypes = {
+    children: PropTypes.node,
+  };
+  
   containerRef = React.createRef();
 
   componentDidMount() {
@@ -319,6 +323,22 @@ export class Categorize extends React.Component {
 }
 
 class CategorizeProvider extends React.Component {
+  static propTypes = {
+    model: PropTypes.object,
+    session: PropTypes.shape({
+      answers: PropTypes.arrayOf(
+        PropTypes.shape({
+          choice: PropTypes.string,
+          category: PropTypes.string,
+        }),
+      ),
+    }),
+    onAnswersChange: PropTypes.func.isRequired,
+    onShowCorrectToggle: PropTypes.func.isRequired,
+    pauseMathObserver: PropTypes.func,
+    resumeMathObserver: PropTypes.func,
+  };
+
   constructor(props) {
     super(props);
     this.uid = uid.generateId();
