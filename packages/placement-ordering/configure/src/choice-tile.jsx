@@ -19,6 +19,7 @@ const StyledChoiceTile = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   cursor: 'move',
+  touchAction: 'none',
 }));
 
 const StyledEditableHtml = styled(EditableHtml)(({ theme, isTargetPrompt }) => ({

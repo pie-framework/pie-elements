@@ -53,7 +53,8 @@ const DroppablePlaceholder = ({
       style={{
         flex: 1,
         minHeight: minRowHeight || '80px',
-        position: 'relative'
+        position: 'relative',
+        touchAction: 'none',
       }}
     >
       <PlaceHolder

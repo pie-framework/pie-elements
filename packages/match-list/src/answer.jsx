@@ -55,6 +55,7 @@ const AnswerContentContainer = styled('div')(({ theme, isDragging, isOver, disab
   transition: 'opacity 200ms linear',
   wordBreak: 'break-word',
   opacity: isDragging && !disabled ? 0.5 : isOver && !disabled ? 0.2 : 1,
+  touchAction: 'none'
 }));
 
 const AnswerContent = (props) => {
