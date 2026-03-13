@@ -411,7 +411,6 @@ export class Main extends React.Component {
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
-
     const getPluginProps = (props = {}) => ({
       ...baseInputConfiguration,
       ...props,
