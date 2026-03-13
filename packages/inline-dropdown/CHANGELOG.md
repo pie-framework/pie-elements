@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.1-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.1.1-next.6...@pie-element/inline-dropdown@9.1.1-next.7) (2026-03-13)
+
+### Bug Fixes
+
+- made sure rationale for choices does not have text align [PD-5569] ([d5bda58](https://github.com/pie-framework/pie-elements/commit/d5bda586b64388f6d76f20d74306c1b6a2161d6f))
+
 ## [9.1.1-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.1.1-next.5...@pie-element/inline-dropdown@9.1.1-next.6) (2026-03-12)
 
 ### Bug Fixes
