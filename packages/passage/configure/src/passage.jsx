@@ -84,7 +84,7 @@ export class PassageComponent extends React.Component {
 
     const getPluginProps = (customConfiguration) => ({ ...baseInputConfiguration, ...customConfiguration });
 
-    const basicPlugins = ALL_PLUGINS.filter(plugin => ![
+    const basicPlugins = (ALL_PLUGINS || []).filter(plugin => ![
       'math',
       'table',
       'bulleted-list',
