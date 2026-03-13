@@ -375,6 +375,7 @@ export class Main extends React.Component {
                     <EditableHtml
                       markup={choice.rationale || ''}
                       spellCheck={spellCheckEnabled}
+                      pluginProps={getPluginProps(rationale?.inputConfiguration)}
                       onChange={(c) => this.onChoiceRationaleChanged(key, { ...choice, rationale: c })}
                       imageSupport={imageSupport}
                       maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
