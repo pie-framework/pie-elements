@@ -13,6 +13,7 @@ import MathQuill from '@pie-framework/mathquill';
 import { color } from '@pie-lib/render-ui';
 import Translator from '@pie-lib/translator';
 import ReactDOM from 'react-dom';
+import { background } from '@pie-lib/render-ui/lib/color';
 const { translator } = Translator;
 let registered = false;
 
@@ -1026,13 +1027,13 @@ const Expression = styled('div', {
     ...(printCorrect && {
       border: `2px solid ${color.correct()} !important`,
     }),
-    '& > .mq-math-mode': {
-      '& > .mq-root-block': {
+    '& .mq-math-mode': {
+      '& .mq-root-block': {
         paddingRight: '0 !important',
         paddingLeft: '0 !important',
-        '& > .mq-editable-field': {
+        '& .mq-editable-field': {
           minWidth: '10px',
-          padding: theme.spacing(0.25),
+          padding: theme.spacing(0.4),
         },
       },
       '& sup': {
