@@ -18,6 +18,53 @@ export default class NumberLine extends HTMLElement {
   constructor() {
     super();
     this._root = null;
+    this._mathObserver = null;
+    this._mathRenderPending = false;
+  }
+
+  _scheduleMathRender = () => {
+    if (this._mathRenderPending) return;
+    this._mathRenderPending = true;
+
+    requestAnimationFrame(() => {
+      if (this._mathObserver) {
+        this._mathObserver.disconnect();
+      }
+
+      renderMath(this);
+      this._mathRenderPending = false;
+
+      setTimeout(() => {
+        if (this._mathObserver) {
+          this._mathObserver.observe(this, {
+            childList: true,
+            subtree: true,
+            characterData: false,
+          });
+        }
+      }, 50);
+    });
+  };
+
+  _initMathObserver() {
+    if (this._mathObserver) return;
+
+    this._mathObserver = new MutationObserver(() => {
+      this._scheduleMathRender();
+    });
+
+    this._mathObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      characterData: false,
+    });
+  }
+
+  _disconnectMathObserver() {
+    if (this._mathObserver) {
+      this._mathObserver.disconnect();
+      this._mathObserver = null;
+    }
   }
 
   set model(m) {
@@ -38,6 +85,7 @@ export default class NumberLine extends HTMLElement {
   }
 
   connectedCallback() {
+    this._initMathObserver();
     this._render();
   }
 
@@ -152,13 +200,14 @@ export default class NumberLine extends HTMLElement {
         this._root = createRoot(this);
       }
       this._root.render(el);
-      queueMicrotask(() => {
-        renderMath(this);
-      });
+
+      // schedule math rendering via observer pipeline (for initial render as well)
+      this._scheduleMathRender();
     }
   }
 
   disconnectedCallback() {
+    this._disconnectMathObserver();
     if (this._root) {
       this._root.unmount();
     }
