@@ -13,7 +13,6 @@ import MathQuill from '@pie-framework/mathquill';
 import { color } from '@pie-lib/render-ui';
 import Translator from '@pie-lib/translator';
 import ReactDOM from 'react-dom';
-import { background } from '@pie-lib/render-ui/lib/color';
 const { translator } = Translator;
 let registered = false;
 
