@@ -475,7 +475,7 @@ describe('controller', () => {
           sessionValue,
         );
 
-        expect(result).toEqual(expected);
+        expect(result).toEqual(expect.objectContaining(expected));
       });
     };
 
@@ -509,7 +509,7 @@ describe('controller', () => {
       it(`empty: true when session is ${JSON.stringify(session)}`, async () => {
         const m = await outcome(question, session);
 
-        expect(m).toEqual(expect.objectContaining({ score: 0, empty: true }));
+        expect(m).toEqual({ score: 0, empty: true, traceLog: ['Student did not fill any response areas. Score: 0.'] });
       });
     };
 
