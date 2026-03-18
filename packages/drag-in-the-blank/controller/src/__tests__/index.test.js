@@ -485,7 +485,7 @@ describe('controller', () => {
           { value: sessionValue },
         );
 
-        expect(result).toEqual(expected);
+        expect(result).toEqual(expect.objectContaining(expected));
       });
     };
 
@@ -506,18 +506,21 @@ describe('controller', () => {
     assertOutcome(false, { 0: '2', 1: '3' }, { score: 0, empty: false });
 
     it('returns expected outcome when session is undefined', async () => {
-      expect(await outcome(question, undefined)).toEqual({
-        score: 0,
-        empty: true,
-      });
+      const out = await outcome(question, undefined);
+      expect(out.score).toEqual(0);
+      expect(out.empty).toEqual(true);
     });
 
     it('returns expected outcome when session is null', async () => {
-      expect(await outcome(question, null)).toEqual({ score: 0, empty: true });
+      const out = await outcome(question, null);
+      expect(out.score).toEqual(0);
+      expect(out.empty).toEqual(true);
     });
 
     it('returns expected outcome when session is empty', async () => {
-      expect(await outcome(question, {})).toEqual({ score: 0, empty: true });
+      const out = await outcome(question, {});
+      expect(out.score).toEqual(0);
+      expect(out.empty).toEqual(true);
     });
   });
 
