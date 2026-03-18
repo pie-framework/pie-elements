@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.1-next.5...@pie-element/explicit-constructed-response@10.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test snapshots ([27e730e](https://github.com/pie-framework/pie-elements/commit/27e730e2f5a597270abe1f85e7cb17758a49013d))
+
+### Features
+
+- **explicit-constructed-response:** add scoring trace in outcome function result PD-5449. Fix some rendering issues in player ([8cdcc8f](https://github.com/pie-framework/pie-elements/commit/8cdcc8f691aa58a815949026cf5d228f3ee5470f))
+
 ## [10.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.1-next.4...@pie-element/explicit-constructed-response@10.1.1-next.5) (2026-03-12)
 
 ### Bug Fixes

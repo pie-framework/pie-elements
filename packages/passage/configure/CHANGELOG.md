@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@4.1.1-next.4...@pie-element/passage-configure@4.1.1-next.5) (2026-03-18)
+
+### Bug Fixes
+
+- **passage:** ensure ALL_PLUGINS is defined before filtering basic plugins ([7d75830](https://github.com/pie-framework/pie-elements/commit/7d75830ec987457f26106174b78fd7759b976309))
+- **passage:** use basic plugin filtering and add math rendering observer PD-5789 ([8a4ac21](https://github.com/pie-framework/pie-elements/commit/8a4ac213977a3ddda2a73abb9586fb765eaa8c50))
+
 ## [4.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@4.1.1-next.3...@pie-element/passage-configure@4.1.1-next.4) (2026-03-12)
 
 ### Bug Fixes
