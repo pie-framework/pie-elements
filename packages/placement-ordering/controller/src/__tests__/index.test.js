@@ -236,8 +236,14 @@ describe('index', () => {
         expect(controller.outcome(question, session, env)).rejects.toThrow(controller.questionError()));
     };
     const assertOutcomeSessionNotset = (session) => {
-      it(`return score: 0 and empty: true if session is ${JSON.stringify(session)}`, () =>
-        expect(controller.outcome({}, session, { mode: 'evaluate' })).resolves.toEqual({ score: 0, empty: true }));
+      it(`return score: 0 and empty: true if session is ${JSON.stringify(
+        session
+      )}`, () =>
+        expect(
+          controller.outcome({}, session, { mode: 'evaluate' })
+        ).resolves.toEqual({
+          score: 0, empty: true, logTrace: ["Student did not interact with the placement-ordering item."]
+        }));
     };
 
     assertOutcomeError(null, { value: [] }, {});
