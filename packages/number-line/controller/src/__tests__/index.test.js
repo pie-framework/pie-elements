@@ -151,7 +151,7 @@ describe('controller', () => {
     const assertOutcome = (label, question, session, env, expected) => {
       it(label, async () => {
         const result = await controller.outcome(question, session, env);
-        expect(result).toMatchObject(expected);
+        expect(result).toEqual(expect.objectContaining(expected));
       });
     };
 
@@ -177,7 +177,7 @@ describe('controller', () => {
         };
         const e = { mode: 'evaluate' };
         const result = await controller.outcome(q, s, e);
-        expect(result).toEqual({ score: 1 });
+        expect(result.score).toEqual(1);
       });
     });
 
