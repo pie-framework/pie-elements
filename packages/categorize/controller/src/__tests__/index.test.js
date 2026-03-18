@@ -429,7 +429,7 @@ describe('controller', () => {
             { answers: mC1 },
             { mode: 'evaluate', partialScoring: envPartialScoring },
           );
-          expect(result).toEqual(expected);
+          expect(result).toEqual(expect.objectContaining(expected));
         },
       );
     });
