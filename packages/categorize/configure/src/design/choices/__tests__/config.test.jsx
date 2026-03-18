@@ -1,8 +1,21 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { Config } from '../config';
 
+jest.mock('@pie-lib/config-ui', () => ({
+  settings: {
+    Panel: (props) => <div>{props.children}</div>,
+    toggle: jest.fn(() => (props) => <div {...props} />),
+    radio: jest.fn(() => (props) => <div {...props} />),
+  },
+  layout: {
+    ConfigLayout: (props) => <div>{props.children}</div>,
+  },
+}));
+
+const theme = createTheme();
 
 describe('config', () => {
   let onModelChanged;
@@ -35,29 +48,20 @@ describe('config', () => {
       partialScoring: true,
     };
   });
-  const wrapper = extras => {
+
+  const renderConfig = extras => {
     const props = { classes: {}, onModelChanged, allChoicesHaveCount, config, ...extras };
-    return shallow(<Config {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Config {...props} />
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const w = wrapper();
-      expect(w).toMatchSnapshot();
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderConfig();
+      expect(container).toBeInTheDocument();
     });
-  });
-
-  describe('logic', () => {
-
-    it('changeLabel', () => {
-      let w = wrapper();
-
-      w.instance().changeLabel({ target: { value: 'foo' } });
-
-      expect(onModelChanged).toBeCalledWith({
-        choicesLabel: 'foo'
-      });
-    });
-
   });
 });

@@ -1,16 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import compact from 'lodash/compact';
+import { createRoot } from 'react-dom/client';
+import { compact } from 'lodash-es';
 import debug from 'debug';
 import { renderMath } from '@pie-lib/math-rendering';
-import { withDragContext } from '@pie-lib/drag';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
-import { swap } from './ordering';
 
 const log = debug('pie-elements:placement-ordering');
-
-export { withDragContext, swap };
 
 export const isValidSession = ({ model, session }) => {
   const { config } = model;
@@ -24,6 +20,44 @@ export const isValidSession = ({ model, session }) => {
 };
 
 export default class Ordering extends HTMLElement {
+  constructor() {
+    super();
+    this._root = null;
+    this._mathObserver = null;
+    this._mathRenderPending = false;
+  }
+
+  _scheduleMathRender = () => {
+    if (this._mathRenderPending) return;
+    this._mathRenderPending = true;
+
+    requestAnimationFrame(() => {
+      if (this._mathObserver) {
+        this._mathObserver.disconnect();
+      }
+      renderMath(this);
+      this._mathRenderPending = false;
+      setTimeout(() => {
+        if (this._mathObserver) {
+          this._mathObserver.observe(this, { childList: true, subtree: true });
+        }
+      }, 50);
+    });
+  };
+
+  _initMathObserver() {
+    if (this._mathObserver) return;
+    this._mathObserver = new MutationObserver(this._scheduleMathRender);
+    this._mathObserver.observe(this, { childList: true, subtree: true });
+  }
+
+  _disconnectMathObserver() {
+    if (this._mathObserver) {
+      this._mathObserver.disconnect();
+      this._mathObserver = null;
+    }
+  }
+
   isComplete = (value) => value && compact(value).length === this._model.completeLength;
 
   sessionChange = (session) => {
@@ -62,15 +96,29 @@ export default class Ordering extends HTMLElement {
       log('[render] session: ', this._session.value);
       log('[render] model: ', this._model);
 
+      this._initMathObserver();
+
       const element = React.createElement(Main, {
         model: this._model,
         session: this._session,
         onSessionChange: this.sessionChange,
       });
 
-      ReactDOM.render(element, this, () => {
-        renderMath(this);
-      });
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(element);
+    }
+  }
+
+  connectedCallback() {
+    this._initMathObserver();
+  }
+
+  disconnectedCallback() {
+    this._disconnectMathObserver();
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

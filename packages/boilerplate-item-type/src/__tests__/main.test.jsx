@@ -1,20 +1,30 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Main from '../main';
 
 jest.mock('@pie-lib/text-select', () => ({
   prepareText: jest.fn(),
 }));
 
+const theme = createTheme();
+
 describe('main', () => {
-  const getWrapper = (props) => {
-    return shallow(<Main onSessionChange={jest.fn()} model={{}} session={{}} classes={{}} {...props} />);
+  const renderMain = (props = {}) => {
+    return render(
+      <ThemeProvider theme={theme}>
+        <Main
+          onSessionChange={jest.fn()}
+          model={{}}
+          session={{}}
+          {...props}
+        />
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const w = getWrapper();
-      expect(w).toMatchSnapshot();
-    });
+  it('renders without crashing', () => {
+    const { container } = renderMain();
+    expect(container).toBeInTheDocument();
   });
 });

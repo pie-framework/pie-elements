@@ -1,7 +1,7 @@
 import Main from './main';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import debounce from 'lodash/debounce';
+import { createRoot } from 'react-dom/client';
+import { debounce } from 'lodash-es';
 import debug from 'debug';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
@@ -54,6 +54,9 @@ export default class MultipleChoice extends HTMLElement {
     this._boundHandleKeyDown = this.handleKeyDown.bind(this);
     this._keyboardEventsEnabled = false;
     this._audioInitialized = false;
+    this._root = null;
+    this._mathObserver = null;
+    this._mathRenderPending = false;
 
     this._rerender = debounce(
       () => {
@@ -74,10 +77,12 @@ export default class MultipleChoice extends HTMLElement {
           this.setAttribute('role', 'region');
           this.setLangAttribute();
 
-          ReactDOM.render(element, this, () => {
-            log('render complete - render math');
-            renderMath(this);
-          });
+          this._initMathObserver();
+
+          if (!this._root) {
+            this._root = createRoot(this);
+          }
+          this._root.render(element);
 
           if (this._model.keyboardEventsEnabled === true && !this._keyboardEventsEnabled) {
             this.enableKeyboardEvents();
@@ -112,6 +117,38 @@ export default class MultipleChoice extends HTMLElement {
       50,
       { leading: false, trailing: true },
     );
+  }
+
+  _scheduleMathRender = () => {
+    if (this._mathRenderPending) return;
+    this._mathRenderPending = true;
+
+    requestAnimationFrame(() => {
+      if (this._mathObserver) {
+        this._mathObserver.disconnect();
+      }
+      log('render complete - render math');
+      renderMath(this);
+      this._mathRenderPending = false;
+      setTimeout(() => {
+        if (this._mathObserver) {
+          this._mathObserver.observe(this, { childList: true, subtree: true });
+        }
+      }, 50);
+    });
+  };
+
+  _initMathObserver() {
+    if (this._mathObserver) return;
+    this._mathObserver = new MutationObserver(this._scheduleMathRender);
+    this._mathObserver.observe(this, { childList: true, subtree: true });
+  }
+
+  _disconnectMathObserver() {
+    if (this._mathObserver) {
+      this._mathObserver.disconnect();
+      this._mathObserver = null;
+    }
   }
 
   onShowCorrectToggle() {
@@ -186,6 +223,7 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   connectedCallback() {
+    this._initMathObserver();
     this._rerender();
 
     // Observation:  audio in Chrome will have the autoplay attribute,
@@ -275,6 +313,7 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   disconnectedCallback() {
+    this._disconnectMathObserver();
     if (this._keyboardEventsEnabled) {
       window.removeEventListener('keydown', this._boundHandleKeyDown);
       this._keyboardEventsEnabled = false;
@@ -286,6 +325,10 @@ export default class MultipleChoice extends HTMLElement {
       this._audio.removeEventListener('playing', this._handlePlaying);
       this._audio.removeEventListener('ended', this._handleEnded);
       this._audio = null;
+    }
+
+    if (this._root) {
+      this._root.unmount();
     }
   }
 

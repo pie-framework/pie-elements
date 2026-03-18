@@ -7,7 +7,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import debug from 'debug';
 
 import Root from './root';
@@ -23,6 +23,7 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = ImageClozeAssociationConfigure.createDefaultModel();
     this.onModelChanged = this.onModelChanged.bind(this);
     this._configuration = sensibleDefaults.configuration;
@@ -99,6 +100,15 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
       },
     });
 
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

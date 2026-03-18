@@ -1,9 +1,24 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Root } from '../root';
 import defaultValues from '../defaults';
 
+jest.mock('react-konva', () => {
+  const React = require('react');
+  return {
+    Stage: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'stage', ...props }, children),
+    Layer: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'layer', ...props }, children),
+    Rect: (props) => React.createElement('div', { 'data-testid': 'rect', ...props }),
+    Circle: (props) => React.createElement('div', { 'data-testid': 'circle', ...props }),
+    Line: (props) => React.createElement('div', { 'data-testid': 'line', ...props }),
+    Group: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'group', ...props }, children),
+    Image: (props) => React.createElement('div', { 'data-testid': 'image', ...props }),
+  };
+});
+
 jest.mock('@pie-lib/config-ui', () => ({
+  InputContainer: (props) => <div {...props}>{props.children}</div>,
+  NumberTextField: (props) => <input type="number" {...props} />,
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
   },
@@ -11,6 +26,7 @@ jest.mock('@pie-lib/config-ui', () => ({
     Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
     radio: jest.fn(),
+    dropdown: jest.fn(),
   },
   layout: {
     ConfigLayout: ({ children }) => <div>{children}</div>,
@@ -103,72 +119,53 @@ const model = () => ({
 describe('Root', () => {
   let initialModel = model();
 
-  describe('render', () => {
-    it('renders', () => {
+  describe('logic', () => {
+    let onColorChanged = jest.fn();
+
+    const createInstance = (config, onUpdateImageDimension, onUpdateShapes) => {
       const props = {
         classes: {},
-        configuration: defaultValues.configuration,
-        model: initialModel,
-      };
-
-      expect(shallow(<Root {...props} />)).toMatchSnapshot();
-    });
-  });
-
-  describe('logic', () => {
-    let w,
-      onColorChanged = jest.fn();
-
-    beforeEach(() => {
-      w = (config, onUpdateImageDimension, onUpdateShapes) => {
-        const props = {
-          classes: {},
-          configuration: config || defaultValues.configuration,
-          model: {
-            ...initialModel,
-            dimensions: { width: 200, height: 300 },
-            shapes: {
-              rectangles: [{ x: 10, y: 10, height: 100, width: 100 }],
-              polygons: [
-                {
-                  points: [
-                    { x: 0, y: 200 },
-                    { x: 200, y: 200 },
-                    { x: 100, y: 300 },
-                  ],
-                },
-              ],
-            },
+        configuration: config || defaultValues.configuration,
+        model: {
+          ...initialModel,
+          dimensions: { width: 200, height: 300 },
+          shapes: {
+            rectangles: [{ x: 10, y: 10, height: 100, width: 100 }],
+            polygons: [
+              {
+                points: [
+                  { x: 0, y: 200 },
+                  { x: 200, y: 200 },
+                  { x: 100, y: 300 },
+                ],
+              },
+            ],
           },
-          onColorChanged,
-          onUpdateImageDimension,
-          onUpdateShapes,
-        };
-
-        return shallow(<Root {...props} />);
+        },
+        onColorChanged,
+        onUpdateImageDimension,
+        onUpdateShapes,
       };
-    });
+
+      return new Root(props);
+    };
 
     describe('handleColorChange', () => {
       it('calls onColorChanged', () => {
-        let wrapper = w();
-        wrapper.instance().handleColorChange('type', 'color');
+        const instance = createInstance();
+        instance.handleColorChange('type', 'color');
 
         expect(onColorChanged).toHaveBeenLastCalledWith('typeColor', 'color');
       });
     });
 
     describe('KEEP IMAGE ASPECT RATIO: handleOnUpdateImageDimensions: calls onUpdateImageDimension & onUpdateShapes', () => {
-      let wrapper;
       let onUpdateImageDimension = jest.fn();
       let onUpdateShapes = jest.fn();
 
-      beforeEach(() => {
-        wrapper = w(undefined, onUpdateImageDimension, onUpdateShapes);
-      });
-
       it('increase width with 100%:', () => {
-        wrapper.instance().handleOnUpdateImageDimensions(400, 'width');
+        const instance = createInstance(undefined, onUpdateImageDimension, onUpdateShapes);
+        instance.handleOnUpdateImageDimensions(400, 'width');
 
         expect(onUpdateImageDimension).toBeCalledWith({
           width: 400,
@@ -191,7 +188,8 @@ describe('Root', () => {
       });
 
       it('decrease width with 50%', () => {
-        wrapper.instance().handleOnUpdateImageDimensions(100, 'width');
+        const instance = createInstance(undefined, onUpdateImageDimension, onUpdateShapes);
+        instance.handleOnUpdateImageDimensions(100, 'width');
 
         expect(onUpdateImageDimension).toBeCalledWith({
           width: 100,
@@ -214,7 +212,8 @@ describe('Root', () => {
       });
 
       it('increase height with 50%:', () => {
-        wrapper.instance().handleOnUpdateImageDimensions(450, 'height');
+        const instance = createInstance(undefined, onUpdateImageDimension, onUpdateShapes);
+        instance.handleOnUpdateImageDimensions(450, 'height');
 
         expect(onUpdateImageDimension).toBeCalledWith({
           width: 300,
@@ -237,7 +236,8 @@ describe('Root', () => {
       });
 
       it('decrease height with 10%', () => {
-        wrapper.instance().handleOnUpdateImageDimensions(270, 'height');
+        const instance = createInstance(undefined, onUpdateImageDimension, onUpdateShapes);
+        instance.handleOnUpdateImageDimensions(270, 'height');
 
         expect(onUpdateImageDimension).toBeCalledWith({
           width: 180,
@@ -261,12 +261,11 @@ describe('Root', () => {
     });
 
     describe('DO NOT KEEP IMAGE ASPECT RATIO: handleOnUpdateImageDimensions: calls onUpdateImageDimension & onUpdateShapes', () => {
-      let wrapper;
       let onUpdateImageDimension = jest.fn();
       let onUpdateShapes = jest.fn();
 
-      beforeEach(() => {
-        wrapper = w(
+      it('increase width with 100%:', () => {
+        const instance = createInstance(
           {
             ...defaultValues.configuration,
             preserveAspectRatio: {
@@ -276,10 +275,7 @@ describe('Root', () => {
           onUpdateImageDimension,
           onUpdateShapes,
         );
-      });
-
-      it('increase width with 100%:', () => {
-        wrapper.instance().handleOnUpdateImageDimensions(400, 'width');
+        instance.handleOnUpdateImageDimensions(400, 'width');
 
         expect(onUpdateImageDimension).toBeCalledWith({
           width: 400,
@@ -302,7 +298,17 @@ describe('Root', () => {
       });
 
       it('decrease width with 50%', () => {
-        wrapper.instance().handleOnUpdateImageDimensions(100, 'width');
+        const instance = createInstance(
+          {
+            ...defaultValues.configuration,
+            preserveAspectRatio: {
+              enabled: false,
+            },
+          },
+          onUpdateImageDimension,
+          onUpdateShapes,
+        );
+        instance.handleOnUpdateImageDimensions(100, 'width');
 
         expect(onUpdateImageDimension).toBeCalledWith({
           width: 100,
@@ -325,7 +331,17 @@ describe('Root', () => {
       });
 
       it('increase height with 50%:', () => {
-        wrapper.instance().handleOnUpdateImageDimensions(450, 'height');
+        const instance = createInstance(
+          {
+            ...defaultValues.configuration,
+            preserveAspectRatio: {
+              enabled: false,
+            },
+          },
+          onUpdateImageDimension,
+          onUpdateShapes,
+        );
+        instance.handleOnUpdateImageDimensions(450, 'height');
 
         expect(onUpdateImageDimension).toBeCalledWith({
           width: 200,
@@ -348,7 +364,17 @@ describe('Root', () => {
       });
 
       it('decrease height with 10%', () => {
-        wrapper.instance().handleOnUpdateImageDimensions(270, 'height');
+        const instance = createInstance(
+          {
+            ...defaultValues.configuration,
+            preserveAspectRatio: {
+              enabled: false,
+            },
+          },
+          onUpdateImageDimension,
+          onUpdateShapes,
+        );
+        instance.handleOnUpdateImageDimensions(270, 'height');
 
         expect(onUpdateImageDimension).toBeCalledWith({
           width: 200,

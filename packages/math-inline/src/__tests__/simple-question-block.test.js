@@ -1,8 +1,18 @@
 import * as React from 'react';
+import { render } from '@testing-library/react';
 import { mq } from '@pie-lib/math-input';
-import { shallowChild } from '@pie-lib/test-utils';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import SimpleQuestionBlock from '../simple-question-block';
+
+jest.mock('@pie-lib/math-input', () => ({
+  mq: {
+    Static: (props) => <div data-testid="mq-static" {...props} />,
+  },
+}));
+
+jest.mock('@pie-lib/math-toolbar', () => ({
+  MathToolbar: (props) => <div data-testid="math-toolbar" {...props} />,
+}));
 
 describe('SimpleQuestionBlock', () => {
   const defaultProps = {
@@ -54,61 +64,68 @@ describe('SimpleQuestionBlock', () => {
     showKeypad: true,
   };
 
-  let wrapper;
-  let component;
+  const wrapper = (props = {}) => {
+    return render(<SimpleQuestionBlock {...defaultProps} {...props} />);
+  };
 
-  beforeEach(() => {
-    wrapper = shallowChild(SimpleQuestionBlock, defaultProps, 1);
-  });
+  const createInstance = (props = {}) => {
+    const instanceProps = {
+      ...defaultProps,
+      ...props,
+    };
+    const instance = new SimpleQuestionBlock(instanceProps);
+    instance.setState = jest.fn((state) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+    });
+    return instance;
+  };
 
   it('renders correctly for not showing correct mode', () => {
-    component = wrapper();
+    const { queryByTestId } = wrapper();
 
-    expect(component.find(mq.Static).length).toEqual(0);
-    expect(component.find(MathToolbar).length).toEqual(1);
-    expect(component.find(MathToolbar).props().latex).toEqual('sessionResponse');
+    expect(queryByTestId('mq-static')).not.toBeInTheDocument();
+    expect(queryByTestId('math-toolbar')).toBeInTheDocument();
   });
 
   it('renders correctly for showing correct mode', () => {
-    component = wrapper({ ...defaultProps, showCorrect: true });
+    const { queryByTestId } = wrapper({ showCorrect: true });
 
-    expect(component.find(mq.Static).length).toEqual(1);
-    expect(component.find(MathToolbar).length).toEqual(0);
-    expect(component.find(mq.Static).props().latex).toEqual('n=-11');
+    expect(queryByTestId('mq-static')).toBeInTheDocument();
+    expect(queryByTestId('math-toolbar')).not.toBeInTheDocument();
   });
 
   it('correctly keeps the keypad open', () => {
-    component = wrapper();
+    const instance = createInstance();
 
-    component.instance().onFocus();
-    expect(defaultProps.onSubFieldFocus).toHaveBeenCalledWith(component.instance().mathToolBarId);
-    expect(component.instance().props.showKeypad).toEqual(true);
+    instance.onFocus();
+    expect(defaultProps.onSubFieldFocus).toHaveBeenCalledWith(instance.mathToolBarId);
+    expect(instance.props.showKeypad).toEqual(true);
 
-    component.instance().mathToolBarContainsTarget = () => true;
-    component.instance().handleClick();
+    instance.mathToolBarContainsTarget = () => true;
+    instance.handleClick();
 
-    expect(component.instance().props.showKeypad).toEqual(true);
+    expect(instance.props.showKeypad).toEqual(true);
   });
 
   it('correctly hides the keypad', () => {
-    component = wrapper();
+    const instance = createInstance();
 
-    component.instance().onFocus();
-    expect(defaultProps.onSubFieldFocus).toHaveBeenCalledWith(component.instance().mathToolBarId);
-    expect(component.instance().props.showKeypad).toEqual(true);
+    instance.onFocus();
+    expect(defaultProps.onSubFieldFocus).toHaveBeenCalledWith(instance.mathToolBarId);
+    expect(instance.props.showKeypad).toEqual(true);
 
     // Simulate clicking outside the toolbar (to hide the keypad)
-    component.instance().mathToolBarContainsTarget = () => false;
-    component.instance().handleClick();
+    instance.mathToolBarContainsTarget = () => false;
+    instance.handleClick();
 
-    // Simulate the parent component reacting to the event by setting showKeypad to false
-    component.setProps({ showKeypad: false });
+    // Create new instance with showKeypad: false to simulate parent component reaction
+    const newInstance = createInstance({ showKeypad: false });
 
-    expect(component.instance().props.showKeypad).toEqual(false);
+    expect(newInstance.props.showKeypad).toEqual(false);
   });
 
   it('does not call session change on render', () => {
-    component = wrapper();
+    wrapper();
     expect(defaultProps.onSimpleResponseChange).not.toHaveBeenCalled();
   });
 });

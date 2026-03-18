@@ -1,22 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import { NumberTextFieldCustom } from '@pie-lib/config-ui';
+
+const FlexRow = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+});
+
+const FlexCol = styled('div')({
+  display: 'flex',
+  flexFlow: 'column',
+});
+
+const MinMaxLabel = styled('label')({
+  fontSize: 'small',
+  color: 'gray',
+});
+
+const StyledNumberTextFieldCustom = styled(NumberTextFieldCustom)({
+  '& input': {
+    cursor: 'default',
+  },
+});
 
 const Size = (props) => {
   // Setting default value if not passed in configuration properties.
-  const { classes, size = { width: 500 }, min = 150, max = 800, step = 20, onChange } = props;
+  const { size = { width: 500 }, min = 150, max = 800, step = 20, onChange } = props;
   const changeWidth = (e, width) => onChange({ ...props.size, width });
   return (
-    <div className={classes.flexRow}>
-      <div className={classes.flexCol}>
+    <FlexRow>
+      <FlexCol>
         <label>Width (px)</label>
-        <label className={classes.minMaxLabel}>
+        <MinMaxLabel>
           Min {min}, Max {max}
-        </label>
-      </div>
-      <NumberTextFieldCustom
-        inputClassName={classes.numberTextField}
+        </MinMaxLabel>
+      </FlexCol>
+      <StyledNumberTextFieldCustom
         value={size.width}
         min={min}
         max={max}
@@ -25,12 +46,11 @@ const Size = (props) => {
         onChange={changeWidth}
         variant={'outlined'}
       />
-    </div>
+    </FlexRow>
   );
 };
 
 Size.propTypes = {
-  classes: PropTypes.object.isRequired,
   size: PropTypes.shape({
     width: PropTypes.number,
     height: PropTypes.number,
@@ -41,23 +61,4 @@ Size.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-const styles = () => ({
-  class: {},
-  flexRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-  },
-  flexCol: {
-    display: 'flex',
-    'flex-flow': 'column',
-  },
-  minMaxLabel: {
-    'font-size': 'small',
-    color: 'gray',
-  },
-  numberTextField: {
-    cursor: 'default',
-  },
-});
-export default withStyles(styles)(Size);
+export default Size;

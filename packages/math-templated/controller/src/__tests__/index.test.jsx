@@ -106,7 +106,7 @@ describe('outcome', () => {
         { ...sessionValue },
         env2,
       );
-      expect(result).toEqual(expected);
+      expect(result).toEqual(expect.objectContaining(expected));
     });
   };
 

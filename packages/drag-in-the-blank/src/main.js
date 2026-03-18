@@ -2,15 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { DragInTheBlank } from '@pie-lib/mask-markup';
-import { withDragContext } from '@pie-lib/drag';
 import { color, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 
-const DraggableDragInTheBlank = withDragContext(DragInTheBlank);
+const StyledUiLayout = styled(UiLayout)({
+  color: color.text(),
+  backgroundColor: color.background(),
+  '& tr > td': {
+    color: color.text(),
+  },
+  position: 'relative',
+});
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const StyledRationale = styled(Collapsible)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+}));
 
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     model: PropTypes.object,
     value: PropTypes.object,
     feedback: PropTypes.object,
@@ -39,7 +52,7 @@ export class Main extends React.Component {
 
   render() {
     const { showCorrectAnswer } = this.state;
-    const { model, onChange, value, classes } = this.props;
+    const { model, onChange, value } = this.props;
     const { extraCSSRules, prompt, mode, language, fontSizeFactor, autoplayAudioEnabled, customAudioButton } = model;
     const modelWithValue = { ...model, value };
     const showCorrectAnswerToggle = mode === 'evaluate';
@@ -49,19 +62,17 @@ export class Main extends React.Component {
       model.teacherInstructions && (hasText(model.teacherInstructions) || hasMedia(model.teacherInstructions));
 
     return (
-      <UiLayout
+      <StyledUiLayout
         extraCSSRules={extraCSSRules}
         id={'main-container'}
-        className={classes.mainContainer}
         fontSizeFactor={fontSizeFactor}
       >
         {showTeacherInstructions && (
-          <Collapsible
-            className={classes.collapsible}
+          <StyledCollapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
           >
             <PreviewPrompt prompt={model.teacherInstructions} />
-          </Collapsible>
+          </StyledCollapsible>
         )}
 
         {prompt && (
@@ -80,33 +91,16 @@ export class Main extends React.Component {
           language={language}
         />
 
-        <DraggableDragInTheBlank {...modelWithValue} onChange={onChange} showCorrectAnswer={showCorrectAnswer} />
+        <DragInTheBlank {...modelWithValue} onChange={onChange} showCorrectAnswer={showCorrectAnswer} />
 
         {showRationale && (
-          <Collapsible className={classes.rationale} labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
+          <StyledRationale labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={model.rationale} />
-          </Collapsible>
+          </StyledRationale>
         )}
-      </UiLayout>
+      </StyledUiLayout>
     );
   }
 }
 
-const styles = (theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-    '& tr > td': {
-      color: color.text(),
-    },
-    position: 'relative',
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  rationale: {
-    marginTop: theme.spacing.unit * 2,
-  },
-});
-
-export default withStyles(styles)(Main);
+export default Main;

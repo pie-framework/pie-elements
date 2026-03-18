@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { styled } from '@mui/material/styles';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-import { withDragContext } from '@pie-lib/drag';
-import { color } from '@pie-lib/render-ui';
+import { DragProvider } from '@pie-lib/drag';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';
@@ -15,26 +14,13 @@ import { DecreaseMaxPoints, DeleteScale, DeleteTrait, InfoDialog } from './modal
 
 const AdjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
 
-const styles = (theme) => ({
-  scaleWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    wordBreak: 'break-word',
-    position: 'relative',
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  maxPoints: {
-    width: '300px',
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 4,
-  },
-  trait: {
-    background: color.secondaryBackground(),
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2,
-  },
-});
+const ScaleWrapper = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  wordBreak: 'break-word',
+  position: 'relative',
+  marginBottom: theme.spacing(2.5),
+}));
 
 export class Scale extends React.Component {
   state = {
@@ -52,7 +38,7 @@ export class Scale extends React.Component {
 
   componentDidMount() {
     if (this.state.showRight === null && this.secondaryBlockRef) {
-      this.setState({ showRight: this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth });
+      this.setState({ showRight: this.getMaxScroll() });
     }
   }
 
@@ -62,7 +48,7 @@ export class Scale extends React.Component {
       prevProps.showDescription !== this.props.showDescription ||
       prevProps.excludeZero !== this.props.excludeZero
     ) {
-      this.setState({ showRight: this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth });
+      this.setState({ showRight: this.getMaxScroll() });
     }
   }
 
@@ -75,7 +61,7 @@ export class Scale extends React.Component {
       this.setState({
         currentPosition: 0,
         showLeft: false,
-        showRight: this.secondaryBlockRef && this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
+        showRight: this.getMaxScroll(),
       });
     }
   }
@@ -90,7 +76,7 @@ export class Scale extends React.Component {
     this.setState({
       currentPosition: 0,
       showLeft: false,
-      showRight: this.secondaryBlockRef && this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
+      showRight: this.getMaxScroll(),
     });
 
     if (numberValue < maxPoints) {
@@ -190,45 +176,79 @@ export class Scale extends React.Component {
     }
   };
 
-  onTraitDropped = (source, newIndex) => {
-    const { scale, scaleIndex, onScaleChanged } = this.props || {};
-    const { traits } = scale || {};
-    const { index: oldIndex } = source;
-    const cup = traits[oldIndex];
+  onTraitDropped = (event) => {
+    const { active, over } = event;
+    
+    if (!over || !active) return;
+    
+    const activeData = active.data.current;
+    const overData = over.data.current;
+    
+    if (activeData?.type === 'trait' && overData?.type === 'trait') {
+      const oldIndex = activeData.index;
+      const newIndex = overData.index;
+      
+      if (oldIndex === newIndex) return;
+      
+      const { scale, scaleIndex, onScaleChanged } = this.props || {};
+      const { traits } = scale || {};
+      
+      const cup = traits[oldIndex];
+      const remainingTraits = traits.filter((item, index) => index !== oldIndex);
+      const newTraits = [...remainingTraits.slice(0, newIndex), cup, ...remainingTraits.slice(newIndex)];
 
-    const remainingTraits = traits.filter((item, index) => index !== oldIndex);
-
-    const newTraits = [...remainingTraits.slice(0, newIndex), cup, ...remainingTraits.slice(newIndex)];
-
-    onScaleChanged(scaleIndex, { traits: newTraits });
+      onScaleChanged(scaleIndex, { traits: newTraits });
+    }
   };
 
   decreasePosition = () => {
     const { currentPosition } = this.state;
-    const decreasedPosition =
-      currentPosition - (currentPosition === AdjustedBlockWidth / 2 ? AdjustedBlockWidth / 2 : AdjustedBlockWidth);
+    const decreasedPosition = Math.max(currentPosition - AdjustedBlockWidth, 0);
+    const maxScroll = this.getMaxScroll();
 
     this.setState({
       currentPosition: decreasedPosition,
-      showRight: decreasedPosition < this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
+      showRight: decreasedPosition < maxScroll,
       showLeft: decreasedPosition > 0,
     });
   };
 
+  getMaxScroll = () => {
+    if (!this.secondaryBlockRef) return 0;
+
+    // block count * BlockWidth
+    // the header may have slightly larger scrollWidth due to inner component styling (borders, padding),
+    // so we use the minimum to keep header and trait rows aligned.
+    const headerScrollWidth = this.secondaryBlockRef.scrollWidth;
+    const numberOfBlocks = this.getNumberOfBlocks();
+    const expectedContentWidth = numberOfBlocks * BlockWidth;
+    const scrollWidth = Math.min(headerScrollWidth, expectedContentWidth);
+
+    return Math.max(0, scrollWidth - this.secondaryBlockRef.offsetWidth);
+  };
+
+  getNumberOfBlocks = () => {
+    const { scale, showStandards, showDescription, excludeZero } = this.props;
+    const { maxPoints } = scale || {};
+    const scorePointCount = maxPoints - (excludeZero ? 1 : 0) + 1;
+
+    return (showStandards ? 1 : 0) + (showDescription ? 1 : 0) + scorePointCount;
+  };
+
   increasePosition = () => {
     const { currentPosition } = this.state;
-    const increasedPosition = currentPosition + (currentPosition === 0 ? AdjustedBlockWidth / 2 : AdjustedBlockWidth);
+    const maxScroll = this.getMaxScroll();
+    const increasedPosition = Math.min(currentPosition + AdjustedBlockWidth, maxScroll);
 
     this.setState({
       currentPosition: increasedPosition,
-      showRight: increasedPosition < this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
+      showRight: increasedPosition < maxScroll,
       showLeft: increasedPosition > 0,
     });
   };
 
   render() {
     const {
-      classes,
       errors,
       scale,
       scaleIndex,
@@ -276,13 +296,13 @@ export class Scale extends React.Component {
     }
 
     return (
-      <div
-        key={`scale-${scaleIndex}`}
-        className={classes.scaleWrapper}
-        ref={(ref) => {
-          this.scaleWrapper = ref;
-        }}
-      >
+      <DragProvider onDragEnd={this.onTraitDropped}>
+        <ScaleWrapper
+          key={`scale-${scaleIndex}`}
+          ref={(ref) => {
+            this.scaleWrapper = ref;
+          }}
+        >
         <TraitsHeader
           setSecondaryBlockRef={(ref) => {
             if (ref) {
@@ -327,7 +347,6 @@ export class Scale extends React.Component {
             scorePointsLabels={scorePointsLabels}
             onTraitRemoved={() => this.showDeleteTraitModal(index)}
             onTraitChanged={(trait) => this.onTraitChanged(index, trait)}
-            onTraitDropped={this.onTraitDropped}
             showStandards={showStandards}
             showDescription={showDescription}
             maxPoints={maxPoints}
@@ -385,13 +404,13 @@ export class Scale extends React.Component {
           traitLabel={traitLabel.toLowerCase()}
         />
         <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
-      </div>
+        </ScaleWrapper>
+      </DragProvider>
     );
   }
 }
 
 Scale.propTypes = {
-  classes: PropTypes.object,
   errors: PropTypes.object,
   scale: PropTypes.shape({
     maxPoints: PropTypes.number,
@@ -421,4 +440,4 @@ Scale.propTypes = {
   labelPluginProps: PropTypes.object,
 };
 
-export default withDragContext(withStyles(styles)(Scale));
+export default Scale;
