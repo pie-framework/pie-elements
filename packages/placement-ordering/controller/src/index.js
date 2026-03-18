@@ -1,13 +1,11 @@
 import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 
-import _ from 'lodash';
+import { every, isArray, isEmpty, isEqual, map, reduce } from 'lodash-es';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 import defaults from './defaults';
-import isEqual from 'lodash/isEqual';
-import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:placement-ordering:controller');
 import Translator from '@pie-lib/translator';
@@ -18,11 +16,11 @@ export const questionError = () => new Error('Question is missing required array
 
 export function outcome(question, session, env) {
   return new Promise((resolve, reject) => {
-    if (!session || _.isEmpty(session)) {
+    if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     }
 
-    if (!question || !question.correctResponse || _.isEmpty(question.correctResponse)) {
+    if (!question || !question.correctResponse || isEmpty(question.correctResponse)) {
       reject(questionError());
     } else {
       try {
@@ -63,111 +61,106 @@ export const normalize = (question) => ({
  * @param {*} session
  * @param {*} env
  */
-export function model(question, session, env) {
-  return new Promise(async (resolve) => {
-    const normalizedQuestion = normalize(question);
-    const base = {};
+export async function model(question, session, env) {
+  const normalizedQuestion = normalize(question);
+  const base = {};
 
-    if (question.alternateResponses && _.every(question.alternateResponses, _.isArray)) {
-      log('Deprecated structure of alternateResponses is in use');
-      // eslint-disable-next-line no-console
-      console.error('Deprecated structure of alternateResponses is in use');
+  if (question.alternateResponses && every(question.alternateResponses, isArray)) {
+    log('Deprecated structure of alternateResponses is in use');
+    // eslint-disable-next-line no-console
+    console.error('Deprecated structure of alternateResponses is in use');
+  }
+
+  base.env = env;
+  base.extraCSSRules = normalizedQuestion.extraCSSRules;
+  base.outcomes = [];
+  base.completeLength = (normalizedQuestion.correctResponse || []).length;
+  base.choices = (normalizedQuestion.choices || []).filter((choice) => choice.label);
+  base.note = normalizedQuestion.note;
+  base.showNote = normalizedQuestion.alternateResponses && normalizedQuestion.alternateResponses.length > 0;
+  base.language = normalizedQuestion.language;
+
+  log('[model] removing tileSize for the moment.');
+
+  base.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
+  base.config = {
+    orientation: normalizedQuestion.orientation || 'vertical',
+    includeTargets: normalizedQuestion.placementArea,
+    choiceLabelEnabled: normalizedQuestion.choiceLabelEnabled,
+    targetLabel: normalizedQuestion.targetLabel,
+    choiceLabel: normalizedQuestion.choiceLabel,
+    showOrdering: normalizedQuestion.numberedGuides,
+    allowSameChoiceInTargets: !normalizedQuestion.removeTilesAfterPlacing,
+  };
+
+  base.disabled = env.mode !== 'gather';
+
+  if (!base.note) {
+    base.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
+  }
+
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    base.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+    base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+      ? normalizedQuestion.teacherInstructions
+      : null;
+  } else {
+    base.rationale = null;
+    base.teacherInstructions = null;
+  }
+
+  if (env.mode === 'evaluate') {
+    const value = (session && session.value) || [];
+    const allCorrectResponses = getAllCorrectResponses(normalizedQuestion);
+
+    const bestSetOfResponses = allCorrectResponses.reduce(
+      (info, cr) => {
+        const currentScore = reduce(value, (acc, c, idx) => acc + (Array.isArray(cr) && cr[idx] === c ? 1 : 0), 0);
+
+        if (currentScore > info.score) {
+          return {
+            arr: cr,
+            score: currentScore,
+          };
+        }
+
+        return info;
+      },
+      { arr: [], score: 0 },
+    );
+
+    base.outcomes = map(value, (c, idx) => {
+      return {
+        id: c,
+        outcome: bestSetOfResponses.arr[idx] === c ? 'correct' : 'incorrect',
+      };
+    });
+
+    const isResponseCorrect = allCorrectResponses.some((response) => isEqual(response, value));
+    const responseScore = score(question, session);
+    const isCorrect = responseScore === 1;
+    const isPartialCorrect = !isCorrect && partialScoring.enabled(normalizedQuestion, env || {}) && responseScore !== 0;
+
+    base.correctness = isCorrect ? 'correct' : isPartialCorrect ? 'partial' : 'incorrect';
+
+    if (!isResponseCorrect) {
+      base.correctResponse = flattenCorrect(normalizedQuestion);
     }
 
-    base.env = env;
-    base.extraCSSRules = normalizedQuestion.extraCSSRules;
-    base.outcomes = [];
-    base.completeLength = (normalizedQuestion.correctResponse || []).length;
-    base.choices = (normalizedQuestion.choices || []).filter((choice) => choice.label);
-    base.note = normalizedQuestion.note;
-    base.showNote = normalizedQuestion.alternateResponses && normalizedQuestion.alternateResponses.length > 0;
-    base.language = normalizedQuestion.language;
-
-    log('[model] removing tileSize for the moment.');
-
-    base.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
-    base.config = {
-      orientation: normalizedQuestion.orientation || 'vertical',
-      includeTargets: normalizedQuestion.placementArea,
-      choiceLabelEnabled: normalizedQuestion.choiceLabelEnabled,
-      targetLabel: normalizedQuestion.targetLabel,
-      choiceLabel: normalizedQuestion.choiceLabel,
-      showOrdering: normalizedQuestion.numberedGuides,
-      allowSameChoiceInTargets: !normalizedQuestion.removeTilesAfterPlacing,
-    };
-
-    base.disabled = env.mode !== 'gather';
-
-    if (!base.note) {
-      base.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
+    // requirement made in PD-2182
+    if (!normalizedQuestion.feedback) {
+      normalizedQuestion.feedbackEnabled = false;
     }
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      base.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
-        ? normalizedQuestion.teacherInstructions
-        : null;
-    } else {
-      base.rationale = null;
-      base.teacherInstructions = null;
-    }
+    const feedback = normalizedQuestion.feedbackEnabled
+      ? await getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback)
+      : undefined;
 
-    if (env.mode === 'evaluate') {
-      const value = (session && session.value) || [];
-      const allCorrectResponses = getAllCorrectResponses(normalizedQuestion);
-
-      const bestSetOfResponses = allCorrectResponses.reduce(
-        (info, cr) => {
-          const currentScore = _.reduce(value, (acc, c, idx) => acc + (Array.isArray(cr) && cr[idx] === c ? 1 : 0), 0);
-
-          if (currentScore > info.score) {
-            return {
-              arr: cr,
-              score: currentScore,
-            };
-          }
-
-          return info;
-        },
-        { arr: [], score: 0 },
-      );
-
-      base.outcomes = _.map(value, (c, idx) => {
-        return {
-          id: c,
-          outcome: bestSetOfResponses.arr[idx] === c ? 'correct' : 'incorrect',
-        };
-      });
-
-      const isResponseCorrect = allCorrectResponses.some((response) => _.isEqual(response, value));
-      const responseScore = score(question, session);
-      const isCorrect = responseScore === 1;
-      const isPartialCorrect =
-        !isCorrect && partialScoring.enabled(normalizedQuestion, env || {}) && responseScore !== 0;
-
-      base.correctness = isCorrect ? 'correct' : isPartialCorrect ? 'partial' : 'incorrect';
-
-      if (!isResponseCorrect) {
-        base.correctResponse = flattenCorrect(normalizedQuestion);
-      }
-
-      // requirement made in PD-2182
-      if (!normalizedQuestion.feedback) {
-        normalizedQuestion.feedbackEnabled = false;
-      }
-
-      const fb = normalizedQuestion.feedbackEnabled
-        ? getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback)
-        : Promise.resolve(undefined);
-
-      fb.then((feedback) => {
-        base.feedback = feedback;
-        resolve(base);
-      });
-    } else {
-      resolve(base);
-    }
-  });
+    base.feedback = feedback;
+    return base;
+  } else {
+    return base;
+  }
 }
 
 export const createCorrectResponseSession = (question, env) => {

@@ -18,6 +18,7 @@ export default {
   },
   configuration: {
     baseInputConfiguration: {
+      h3: { disabled: true },
       html: { disabled: true },
       audio: { disabled: false },
       video: { disabled: false },

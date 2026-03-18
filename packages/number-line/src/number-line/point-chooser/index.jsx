@@ -1,18 +1,28 @@
 import React from 'react';
 
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
-import styles from './styles';
+import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import Button from './button';
 import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 
-const DeleteIcon = ({ classes }) => {
+const iconHeight = 41;
+const iconWidth = 42;
+import img from './img';
+
+const StyledDeleteIcon = styled('svg')({
+  fill: 'black',
+  cursor: 'pointer',
+  transition: 'opacity 100ms linear',
+  '&:hover': {
+    opacity: '0.5',
+  },
+});
+
+const DeleteIcon = () => {
   return (
-    <svg
-      className={classes.deleteIcon}
+    <StyledDeleteIcon
       fill="#000000"
       height="24"
       viewBox="0 0 24 24"
@@ -21,20 +31,50 @@ const DeleteIcon = ({ classes }) => {
     >
       <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
       <path d="M0 0h24v24H0z" fill="none" />
-    </svg>
+    </StyledDeleteIcon>
   );
 };
 
-DeleteIcon.propTypes = {
-  classes: PropTypes.object,
+const iconIndexMap = {
+  pf: 0,
+  lff: 1,
+  lef: 2,
+  lfe: 3,
+  lee: 4,
+  rfn: 5,
+  rfp: 6,
+  ren: 7,
+  rep: 8,
 };
 
+const StyledPointLink = styled('a')(({ $iconIndex, $active }) => ({
+  display: 'inline-block',
+  width: iconWidth,
+  height: iconHeight,
+  position: 'relative',
+  top: '1px',
+  cursor: 'pointer',
+  background: `url(${img}) -${$iconIndex * iconWidth}px 0px`,
+  ...($active && {
+    backgroundPosition: `-${$iconIndex * iconWidth}px -${2 * iconHeight}px`,
+  }),
+  '&:hover': {
+    textDecoration: 'none',
+    backgroundPosition: `-${$iconIndex * iconWidth}px -${iconHeight}px`,
+  },
+  ...($active && {
+    '&:hover': {
+      backgroundPosition: `-${$iconIndex * iconWidth}px -${2 * iconHeight}px`,
+    },
+  }),
+}));
+
 const RawPoint = (props) => {
-  const { iconKey, active, classes, onClick } = props;
-  const names = classNames(classes[iconKey], { active });
+  const { iconKey, active, onClick } = props;
+  const iconIndex = iconIndexMap[iconKey.toLowerCase()] ?? 0;
   return (
     <span role="presentation" key={iconKey} onClick={onClick}>
-      <a className={names}>&nbsp;</a>
+      <StyledPointLink $iconIndex={iconIndex} $active={active}>&nbsp;</StyledPointLink>
     </span>
   );
 };
@@ -42,28 +82,55 @@ const RawPoint = (props) => {
 RawPoint.propTypes = {
   iconKey: PropTypes.string.isRequired,
   active: PropTypes.bool,
-  classes: PropTypes.object,
   onClick: PropTypes.func,
 };
 
-export const Point = injectSheet(styles)(RawPoint);
+export const Point = RawPoint;
 
-const Points = ({ selectPoint, classes, selected, icons }) => {
+const ElementSelector = styled('div')({
+  width: '55%',
+  padding: '1px',
+  '-webkit-touch-callout': 'none',
+  '-webkit-user-select': 'none',
+  '-khtml-user-select': 'none',
+  '-moz-user-select': 'none',
+  '-ms-user-select': 'none',
+  'user-select': 'none',
+});
+
+const Points = ({ selectPoint, selected, icons }) => {
   const iconTags = icons.map((key) => {
     let active = key === selected;
     let onClick = active ? () => {} : selectPoint.bind(null, key);
-    return <Point key={key.toLowerCase()} iconKey={key.toLowerCase()} active={active} onClick={onClick} />; //icon(key, active);
+    return <Point key={key.toLowerCase()} iconKey={key.toLowerCase()} active={active} onClick={onClick} />;
   });
 
-  return <div className={classes.elementSelector}>{iconTags}</div>;
+  return <ElementSelector>{iconTags}</ElementSelector>;
 };
 
 Points.propTypes = {
   selectPoint: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
   selected: PropTypes.string,
   icons: PropTypes.array,
 };
+
+const PointChooserContainer = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  borderRadius: '4px',
+  padding: '1px',
+});
+
+const Controls = styled('div')({
+  display: 'flex',
+  paddingTop: '7px',
+});
+
+const DeleteIconHolder = styled('span')({
+  position: 'relative',
+  top: '3px',
+  width: '30px',
+});
 
 export class PointChooser extends React.Component {
   static defaultProps = {
@@ -73,7 +140,6 @@ export class PointChooser extends React.Component {
   };
 
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     elementType: PropTypes.string,
     showDeleteButton: PropTypes.bool,
     onDeleteClick: PropTypes.func.isRequired,
@@ -92,36 +158,33 @@ export class PointChooser extends React.Component {
       onUndoElement,
       onClearElements,
       icons,
-      classes,
       onElementType,
       language,
     } = this.props;
 
     return (
-      <div className={classes.pointChooser}>
-        <Points selected={elementType} classes={classes} selectPoint={onElementType} icons={icons} />
-        <div className={classes.controls}>
+      <PointChooserContainer>
+        <Points selected={elementType} selectPoint={onElementType} icons={icons} />
+        <Controls>
           {showDeleteButton && (
-            <span className={classes.deleteIconHolder} onClick={onDeleteClick}>
-              <DeleteIcon classes={classes} />
-            </span>
+            <DeleteIconHolder onClick={onDeleteClick}>
+              <DeleteIcon />
+            </DeleteIconHolder>
           )}
           <Button
-            className={classes.buttonText}
             onClick={onUndoElement}
             label={translator.t('common:undo', { lng: language })}
           />
           <Button
-            className={classes.buttonText}
             onClick={onClearElements}
             label={translator.t('numberLine.clearAll', { lng: language })}
           />
-        </div>
-      </div>
+        </Controls>
+      </PointChooserContainer>
     );
   }
 }
 
-export default injectSheet(styles)(PointChooser);
+export default PointChooser;
 
 PointChooser.DEFAULT_TYPE = 'pf';

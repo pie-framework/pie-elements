@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import cloneDeep from 'lodash/cloneDeep';
-import isEmpty from 'lodash/isEmpty';
-import debounce from 'lodash/debounce';
+import { cloneDeep, debounce, isEmpty } from 'lodash-es';
 
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 
-import { withDragContext } from '@pie-lib/drag';
 import { layout, settings } from '@pie-lib/config-ui';
 
 import Scale from './scale';
@@ -18,12 +15,11 @@ import { addOrRemoveScaleColumn } from './utils';
 const { Panel, toggle } = settings;
 const MIN_WIDTH = '650px';
 
-const styles = (theme) => ({
-  design: {
-    fontFamily: 'Cerebri Sans',
-    fontSize: theme.typography.fontSize,
-  },
-});
+const StyledDiv = styled('div')(({ theme }) => ({
+  fontFamily: 'Cerebri Sans',
+  fontSize: theme.typography.fontSize + 2, // current font size is 14px, so this will make it 16px
+  padding: '16px 0',
+}));
 
 const ShowModal = ({ showExcludeZeroDialog, excludeZero, changeExcludeZero, cancel }) => {
   if (showExcludeZeroDialog && !excludeZero) {
@@ -348,7 +344,7 @@ export class Main extends React.Component {
         }
       >
         <div style={{ width: '100%' }} ref={this.divRef} />
-        <div style={{ width: width || adjustedWidth }}>
+        <StyledDiv style={{ width: width || adjustedWidth }}>
           {(scales || []).map((scale, scaleIndex) => (
             <Scale
               key={`scale-${scaleIndex}`}
@@ -371,7 +367,6 @@ export class Main extends React.Component {
               minNoOfTraits={minNoOfTraits}
               imageSupport={imageSupport}
               {...this.props}
-              classes={{}}
               mathMlOptions={mathMlOptions}
               maxMaxPoints={maxMaxPoints}
               expandedPluginProps={getPluginProps(expandedInput?.inputConfiguration)}
@@ -379,7 +374,7 @@ export class Main extends React.Component {
             />
           ))}
           {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
-        </div>
+        </StyledDiv>
 
         <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
       </layout.ConfigLayout>
@@ -388,7 +383,6 @@ export class Main extends React.Component {
 }
 
 Main.propTypes = {
-  classes: PropTypes.object,
   model: PropTypes.object,
   uploadSoundSupport: PropTypes.object,
   configuration: PropTypes.object,
@@ -400,4 +394,4 @@ Main.propTypes = {
   }),
 };
 
-export default withDragContext(withStyles(styles)(Main));
+export default Main;

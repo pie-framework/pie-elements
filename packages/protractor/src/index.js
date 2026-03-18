@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Main from './main';
 
 export default class Protractor extends HTMLElement {
   constructor() {
     super();
+    this._root = null;
   }
 
   connectedCallback() {
@@ -18,6 +19,15 @@ export default class Protractor extends HTMLElement {
 
   render() {
     const el = React.createElement(Main, {});
-    ReactDOM.render(el, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(el);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

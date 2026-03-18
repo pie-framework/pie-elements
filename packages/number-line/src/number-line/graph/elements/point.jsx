@@ -1,52 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import { styled } from '@mui/material/styles';
 import { color } from '@pie-lib/render-ui';
 
-import Draggable from '../../../draggable';
+import { Draggable } from '../../../draggable';
 
 const duration = '150ms';
 
-const style = {
-  point: {
-    cursor: 'pointer',
-    transition: `r ${duration} linear,  
-    opacity ${duration} linear, 
-    fill ${duration} linear,
-    stroke ${duration} linear`,
-
-    stroke: color.primary(),
-    fill: color.primary(),
-    '&.react-draggable-dragging': {
-      opacity: 0.25,
-      r: '10px',
-    },
-    '&:hover': {
-      stroke: color.primaryDark(),
-    },
+const StyledCircle = styled('circle')(({ $selected, $disabled, $correct, $empty }) => ({
+  cursor: 'pointer',
+  transition: `r ${duration} linear,  
+  opacity ${duration} linear, 
+  fill ${duration} linear,
+  stroke ${duration} linear`,
+  stroke: color.primary(),
+  fill: color.primary(),
+  // was ".react-draggable-dragging"
+  '&.dnd-kit-dragging': {
+    opacity: 0.25,
+    r: '10px',
   },
-  selected: {
+  '&:hover': {
     stroke: color.primaryDark(),
   },
-  disabled: {
+  ...($selected && {
+    stroke: color.primaryDark(),
+  }),
+  ...($disabled && {
     cursor: 'not-allowed',
     opacity: 0.8,
-  },
-  correct: {
+  }),
+  ...($correct === true && {
     cursor: 'inherit',
     stroke: color.correct(),
     fill: color.correct(),
-  },
-  incorrect: {
+  }),
+  ...($correct === false && {
     cursor: 'inherit',
     stroke: color.incorrect(),
     fill: color.incorrect(),
-  },
-  empty: {
+  }),
+  ...($empty && {
     fill: 'white',
-  },
-};
+  }),
+}));
 
 export class Point extends React.Component {
   static defaultProps = {
@@ -74,7 +71,6 @@ export class Point extends React.Component {
     onDrag: PropTypes.func,
     onDragStop: PropTypes.func,
     onDragStart: PropTypes.func,
-    classes: PropTypes.object.isRequired,
   };
 
   static contextTypes = {
@@ -97,93 +93,117 @@ export class Point extends React.Component {
       disabled,
       correct,
       empty,
-      classes,
     } = this.props;
 
     const { snapValue, xScale } = this.context;
 
-    const dragPosition = (x) => {
-      const normalized = x + xScale(0);
+    // same as old `is`
+    const step = xScale(interval) - xScale(0);
+
+    const dragPosition = (deltaX) => {
+      const normalized = deltaX + xScale(0);
       const inverted = xScale.invert(normalized);
       return snapValue(position + inverted);
     };
 
-    const onStart = (e) => {
-      this.setState({ startX: e.clientX });
+    // bounds in px (same as old scaledBounds)
+    const scaledBounds = bounds
+      ? {
+          left: (bounds.left / interval) * step,
+          right: (bounds.right / interval) * step,
+        }
+      : null;
+
+    const handleMouseDown = (e) => e.nativeEvent.preventDefault();
+
+    // called when drag starts (via LocalDraggableDndKit)
+    const handleDragStart = () => {
       if (onDragStart) {
         onDragStart();
       }
     };
 
-    const onStop = (e, dd) => {
-      if (onDragStop) {
-        onDragStop();
-      }
-
-      const endX = e.clientX;
-      const startX = this.state.startX;
-      const deltaX = Math.abs(endX - startX);
-
-      if (deltaX < is / 10) {
-        if (onClick) {
-          onClick();
-          this.setState({ startX: null });
-        }
-      } else {
-        const newPosition = dragPosition(dd.lastX);
-        onMove(newPosition);
-      }
-    };
-
-    //prevent the text select icon from rendering.
-    const onMouseDown = (e) => e.nativeEvent.preventDefault();
-
-    const is = xScale(interval) - xScale(0);
-    const scaledBounds = {
-      left: (bounds.left / interval) * is,
-      right: (bounds.right / interval) * is,
-    };
-
-    const onDrag = (e, dd) => {
-      const p = dragPosition(dd.x);
+    // called continuously while dragging (snapped+clamped deltaX in px)
+    const handleDragMove = (deltaX) => {
+      const p = dragPosition(deltaX);
       if (onDragCallback) {
         onDragCallback(p);
       }
     };
 
-    const circleClass = classNames(classes.point, {
-      [classes.disabled]: disabled,
-      [classes.selected]: selected,
-      [classes.correct]: correct === true,
-      [classes.incorrect]: correct === false,
-      [classes.empty]: empty === true,
-    });
+    // called when drag ends (snapped+clamped deltaX in px)
+    const handleDragEnd = (deltaX) => {
+      if (onDragStop) {
+        onDragStop();
+      }
+
+      const deltaAbs = Math.abs(deltaX);
+
+      // click vs drag, same threshold as before: is / 10
+      if (deltaAbs < step / 10) {
+        if (onClick) {
+          onClick();
+        }
+        return;
+      }
+
+      const newPosition = dragPosition(deltaX);
+      onMove(newPosition);
+    };
+
+    const id = `point-${position}-${y}`;
 
     return (
-      <Draggable
+      <Draggable  
+        id={id}
         disabled={disabled}
-        onMouseDown={onMouseDown}
-        onStart={onStart}
-        onDrag={onDrag}
-        onStop={onStop}
-        axis="x"
-        grid={[is]}
+        grid={[step]}
         bounds={scaledBounds}
+        onMouseDown={handleMouseDown}
+        onDragStart={handleDragStart}
+        onDragMove={handleDragMove}
+        onDragEnd={handleDragEnd}
       >
-        <g>
-          <circle
-            r="20"
-            strokeWidth="3"
-            style={{ fill: 'transparent', pointerEvents: 'visibleStroke' }}
-            cx={xScale(position)}
-            cy={y}
-            stroke={selected ? color.primaryDark() : 'none'}
-          />
-          <circle r="5" strokeWidth="3" className={circleClass} cx={xScale(position)} cy={y} />
-        </g>
-      </Draggable>
+        {({
+          setNodeRef,
+          attributes,
+          listeners,
+          translateX,
+          isDragging,
+          onMouseDown,
+        }) => (
+          <g
+            ref={setNodeRef}
+            onMouseDown={onMouseDown}
+            // axis="x": only horizontal translate
+            transform={`translate(${translateX}, 0)`}
+            {...attributes}
+            {...listeners}
+          >
+            <circle
+              r="20"
+              strokeWidth="3"
+              style={{ fill: 'transparent', pointerEvents: 'visibleStroke' }}
+              cx={xScale(position)}
+              cy={y}
+              stroke={selected ? color.primaryDark() : 'none'}
+            />
+            <StyledCircle
+              r="5"
+              strokeWidth="3"
+              cx={xScale(position)}
+              cy={y}
+              $selected={selected}
+              $disabled={disabled}
+              $correct={correct}
+              $empty={empty}
+              className={isDragging ? 'dnd-kit-dragging' : undefined}
+            />
+          </g>
+        )}
+      </ Draggable>
     );
   }
 }
 
-export default injectSheet(style)(Point);
+export default Point;

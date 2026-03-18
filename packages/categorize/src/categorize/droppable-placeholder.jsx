@@ -1,61 +1,85 @@
 import React from 'react';
-import { PlaceHolder } from '@pie-lib/drag';
 import PropTypes from 'prop-types';
-import { DropTarget } from 'react-dnd';
-import { uid } from '@pie-lib/drag';
 import debug from 'debug';
+import { useTheme } from '@mui/material/styles';
+import { useDroppable } from '@dnd-kit/core';
+import { PlaceHolder } from '@pie-lib/drag';
+import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-ui:categorize:droppable-placeholder');
 
-export class DroppablePlaceholder extends React.Component {
-  static propTypes = {
-    choiceBoard: PropTypes.bool,
-    connectDropTarget: PropTypes.func.isRequired,
-    isOver: PropTypes.bool,
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-    className: PropTypes.string,
-    grid: PropTypes.object,
-    disabled: PropTypes.bool,
-    minRowHeight: PropTypes.string,
+const DroppablePlaceholder = ({
+  children,
+  grid,
+  disabled,
+  choiceBoard,
+  minRowHeight,
+  id,
+  correct
+}) => {
+  const theme = useTheme();
+  const { setNodeRef, isOver } = useDroppable({
+    id,
+    data: {
+      itemType: 'categorize',
+      categoryId: id
+    },
+    disabled,
+  });
+
+  const extraStyles = {
+    padding: theme.spacing(0.5),
+    borderRadius: theme.spacing(0.5),
+    gridColumnGap: 0,
+    gridRowGap: 0,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'flex-start',
+    width: '100%',
+    height: '100%',
+    ...(correct === false && !choiceBoard && {
+      border: `solid 2px ${color.incorrect()}`,
+    }),
+    ...(correct === true && !choiceBoard && {
+      border: `solid 2px ${color.correct()}`,
+    }),
   };
-  render() {
-    const { children, connectDropTarget, isOver, className, grid, disabled, choiceBoard, minRowHeight } = this.props;
 
-    return connectDropTarget(
-      <div style={{ flex: 1, minHeight: minRowHeight || '80px' }}>
-        <PlaceHolder
-          className={className}
-          isOver={isOver}
-          grid={grid}
-          disabled={disabled}
-          choiceBoard={choiceBoard}
-          isCategorize
-        >
-          {children}
-        </PlaceHolder>
-      </div>,
-    );
-  }
-}
-
-export const spec = {
-  drop: (props, monitor) => {
-    log('[drop] props: ', props);
-    const item = monitor.getItem();
-    props.onDropChoice(item);
-  },
-  canDrop: (props /*, monitor*/) => {
-    return !props.disabled;
-  },
+  return (
+    <div
+      ref={setNodeRef}
+      style={{
+        flex: 1,
+        minHeight: minRowHeight || '80px',
+        position: 'relative',
+        touchAction: 'none',
+      }}
+    >
+      <PlaceHolder
+        isOver={isOver}
+        grid={grid}
+        disabled={disabled}
+        choiceBoard={choiceBoard}
+        isCategorize
+        extraStyles={extraStyles}
+      >
+        {children}
+      </PlaceHolder>
+    </div>
+  );
 };
 
-const WithTarget = DropTarget(
-  ({ uid }) => uid,
-  spec,
-  (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-  }),
-)(DroppablePlaceholder);
+DroppablePlaceholder.propTypes = {
+  choiceBoard: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  grid: PropTypes.object,
+  disabled: PropTypes.bool,
+  minRowHeight: PropTypes.string,
+  onDropChoice: PropTypes.func,
+  id: PropTypes.string.isRequired,
+  correct: PropTypes.bool
+};
 
-export default uid.withUid(WithTarget);
+export default DroppablePlaceholder;

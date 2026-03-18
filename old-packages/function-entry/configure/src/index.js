@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Configure from './configure';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
@@ -16,6 +16,7 @@ export default class FunctionEntryConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = FunctionEntryConfigure.createDefaultModel();
   }
 
@@ -36,7 +37,16 @@ export default class FunctionEntryConfigure extends HTMLElement {
         onModelChanged: this.onModelChanged.bind(this),
         model: this._model,
       });
-      ReactDOM.render(el, this);
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

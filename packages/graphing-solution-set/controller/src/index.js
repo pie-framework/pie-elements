@@ -1,7 +1,5 @@
 import debug from 'debug';
-import cloneDeep from 'lodash/cloneDeep';
-import uniqWith from 'lodash/uniqWith';
-import isEmpty from 'lodash/isEmpty';
+import { cloneDeep, isEmpty, uniqWith } from 'lodash-es';
 import defaults from './defaults';
 import { equalMarks, sortedAnswers, removeInvalidAnswers } from './utils';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Main from './main';
 import {
   ModelUpdatedEvent,
@@ -37,6 +37,7 @@ export default class FractionModelConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = FractionModelConfigure.createDefaultModel();
     this._configuration = defaultValues.configuration;
   }
@@ -161,7 +162,16 @@ export default class FractionModelConfigure extends HTMLElement {
         },
       });
 
-      ReactDOM.render(el, this);
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(el);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

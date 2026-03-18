@@ -6,7 +6,6 @@ const { execSync } = require('child_process');
 const minimist = require('minimist');
 const args = minimist(process.argv.slice(2));
 const semver = require('semver');
-const _ = require('lodash');
 console.log('fix versions');
 
 const dirs = fs.readdirSync('packages');
@@ -30,17 +29,11 @@ dirs
     if (index >= 0) {
       console.log(pkg.name, pkg.version, 'needs fixing');
 
-      const versions = _(rows)
+      const versions = rows
         .filter((r) => r.startsWith(`${pkg.name}@`))
         .map((r) => r.replace(`${pkg.name}@`, ''))
-        .sort(semver.compare)
-        .value();
-      // const versions = rows
-      //   .filter((r) => {
-      //     return r.startsWith(`${pkg.name}@`);
-      //   })
-      //   .map((r) => r.replace(`${pkg.name}@`, ''))
-      //   .sort();
+        .filter(semver.valid)
+        .sort(semver.compare);
 
       const last = versions[versions.length - 1];
 

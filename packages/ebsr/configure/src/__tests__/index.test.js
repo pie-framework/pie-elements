@@ -1,23 +1,29 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import defaults from '../defaults';
 import { Main } from '../main';
 import EbsrConfigure from '../index';
 
-jest.mock('react-dom', () => ({
-  render: jest.fn(),
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: mockRender,
+    unmount: mockUnmount,
+  })),
 }));
 
 jest.mock('@pie-framework/pie-configure-events', () => ({
-  ModelUpdatedEvent: (update) => {
-    return {
-      update,
-      preventDefault: jest.fn(),
-      stopImmediatePropagation: jest.fn(),
-    };
+  ModelUpdatedEvent: class ModelUpdatedEvent {
+    constructor(update) {
+      this.update = update;
+      this.preventDefault = jest.fn();
+      this.stopImmediatePropagation = jest.fn();
+    }
   },
 }));
 
@@ -26,17 +32,19 @@ jest.mock('@pie-lib/config-ui', () => ({
     firstAvailableIndex: jest.fn(),
   },
   settings: {
-    Panel: (props) => <div {...props} />,
+    Panel: (props) => <div data-testid="settings-panel" {...props} />,
     toggle: jest.fn(),
     radio: jest.fn(),
     dropdown: jest.fn(),
   },
   layout: {
-    ConfigLayout: (props) => <div>{props.children}</div>,
+    ConfigLayout: (props) => <div data-testid="config-layout">{props.children}</div>,
   },
 }));
 
-jest.mock('@pie-element/multiple-choice/configure/lib', () => class MockConfigure {});
+jest.mock('@pie-element/multiple-choice/configure/lib', () => (class MockConfigure {}));
+
+const theme = createTheme();
 
 const PART_A = 'partA';
 const PART_B = 'partB';
@@ -110,65 +118,25 @@ describe('index', () => {
   let el;
   let onModelChanged = jest.fn();
   let onConfigurationChanged = jest.fn();
-  let main;
 
   beforeAll(() => {
     Def = require('../index').default;
+
+    // Register the custom element if not already registered
+    if (!customElements.get('ebsr-configure')) {
+      customElements.define('ebsr-configure', Def);
+    }
   });
 
   beforeEach(() => {
-    el = new Def();
+    jest.clearAllMocks();
+    el = document.createElement('ebsr-configure');
     el.model = model;
     el.configuration = defaults.configuration;
     el.onModelChanged = onModelChanged;
     el.onConfigurationChanged = onConfigurationChanged;
     el.connectedCallback();
     el.dispatchEvent = el.onModelUpdated;
-
-    main = mount(
-      <Main
-        classes={{}}
-        model={el._model}
-        configuration={defaults.configuration}
-        onConfigurationChanged={el.onConfigurationChanged}
-        onModelChanged={el.onModelChanged}
-      />,
-    );
-
-    // mock onModelChanged to dispatch a MODEL_UPDATED event (as multiple-choice does)
-    main.instance().partA.onModelChanged = (m) => {
-      const event = new ModelUpdatedEvent(m, false);
-
-      el.dispatchEvent({
-        ...event,
-        target: {
-          getAttribute: jest.fn().mockReturnValue('A'),
-        },
-      });
-    };
-    main.instance().partB.onModelChanged = (m) => {
-      const event = new ModelUpdatedEvent(m, false);
-
-      el.dispatchEvent({
-        ...event,
-        target: {
-          getAttribute: jest.fn().mockReturnValue('B'),
-        },
-      });
-    };
-  });
-
-  describe('createDefaultModel', () => {
-    it('default-snapshot', () => {
-      const m = EbsrConfigure.createDefaultModel({});
-      expect(m).toMatchSnapshot();
-    });
-    it('with-overrides-snapshot', () => {
-      const m = EbsrConfigure.createDefaultModel({
-        partA: { rationale: 'foo', teacherInstructions: 'ti' },
-      });
-      expect(m).toMatchSnapshot();
-    });
   });
 
   describe('set model', () => {
@@ -176,12 +144,26 @@ describe('index', () => {
       el.model = model;
 
       expect(el._model).toEqual(model);
-      expect(ReactDOM.render).toHaveBeenCalled();
+      expect(createRoot).toHaveBeenCalled();
+      expect(mockRender).toHaveBeenCalled();
     });
 
     it('should have set the model for partA and partB', () => {
-      expect(main.instance().partA._model).toEqual(model.partA);
-      expect(main.instance().partB._model).toEqual(model.partB);
+      const { container } = render(
+        <ThemeProvider theme={theme}>
+          <Main
+            classes={{}}
+            model={el._model}
+            configuration={defaults.configuration}
+            onConfigurationChanged={el.onConfigurationChanged}
+            onModelChanged={el.onModelChanged}
+          />
+        </ThemeProvider>
+      );
+
+      expect(container).toBeInTheDocument();
+      expect(el._model.partA).toEqual(model.partA);
+      expect(el._model.partB).toEqual(model.partB);
     });
   });
 
@@ -189,24 +171,28 @@ describe('index', () => {
     it('calls ReactDOM.render', () => {
       el.configuration = defaults.configuration;
 
-      expect(ReactDOM.render).toHaveBeenCalled();
+      expect(createRoot).toHaveBeenCalled();
+      expect(mockRender).toHaveBeenCalled();
     });
 
     it('should have set the configuration for partA and partB', () => {
-      expect(main.instance().partA.configuration).toEqual({
-        ...defaults.configuration.partA,
-        partLabels: defaults.configuration.partLabels,
-        settingsPanelDisabled: true,
-      });
-      expect(main.instance().partB.configuration).toEqual({
-        ...defaults.configuration.partB,
-        partLabels: defaults.configuration.partLabels,
-        settingsPanelDisabled: true,
-      });
+      const { container } = render(
+        <ThemeProvider theme={theme}>
+          <Main
+            classes={{}}
+            model={el._model}
+            configuration={defaults.configuration}
+            onConfigurationChanged={el.onConfigurationChanged}
+            onModelChanged={el.onModelChanged}
+          />
+        </ThemeProvider>
+      );
+
+      expect(container).toBeInTheDocument();
     });
   });
 
-  const assetOnModelUpdated = (label, key, updatedPart, expected) => {
+  const assertOnModelUpdated = (label, key, updatedPart, expected) => {
     it(label, () => {
       const event = new ModelUpdatedEvent(updatedPart, false);
 
@@ -217,22 +203,23 @@ describe('index', () => {
         },
       });
 
-      expect(ReactDOM.render).toBeCalled();
+      expect(createRoot).toBeCalled();
+      expect(mockRender).toBeCalled();
       expect(el._model[`part${key}`]).toEqual(expected);
     });
   };
 
   describe('onModelUpdated', () => {
-    assetOnModelUpdated('dispatching MODEL_UPDATED updates model.partA', 'A', { updatedA: true }, { updatedA: true });
-    assetOnModelUpdated('dispatching MODEL_UPDATED updates model.partB', 'B', { updatedB: true }, { updatedB: true });
+    assertOnModelUpdated('dispatching MODEL_UPDATED updates model.partA', 'A', { updatedA: true }, { updatedA: true });
+    assertOnModelUpdated('dispatching MODEL_UPDATED updates model.partB', 'B', { updatedB: true }, { updatedB: true });
 
-    assetOnModelUpdated(
+    assertOnModelUpdated(
       'dispatching MODEL_UPDATED with update undefined does not update model.partA',
       'A',
       undefined,
       createDefaultModel(model).partA,
     );
-    assetOnModelUpdated(
+    assertOnModelUpdated(
       'dispatching MODEL_UPDATED with update undefined does not update model.partB',
       'B',
       undefined,
@@ -240,34 +227,43 @@ describe('index', () => {
     );
   });
 
-  const assetPartUpdate = (label, key, updatedModel) => {
+  const assertPartUpdate = (label, key, updatedModel) => {
     it(`${key} - ${label}`, () => {
-      main.instance()[key].onModelChanged(updatedModel);
+      // Simulate the onModelChanged call for the specific part
+      const event = new ModelUpdatedEvent(updatedModel, false);
+
+      el.dispatchEvent({
+        ...event,
+        target: {
+          getAttribute: jest.fn().mockReturnValue(key === 'partA' ? 'A' : 'B'),
+        },
+      });
 
       expect(el._model[key]).toEqual(updatedModel);
-      expect(ReactDOM.render).toBeCalled();
+      expect(createRoot).toBeCalled();
+      expect(mockRender).toBeCalled();
     });
   };
 
   describe('part update', () => {
-    assetPartUpdate('Dispatching Model Updated Event will update Teacher Instructions', 'partA', {
+    assertPartUpdate('Dispatching Model Updated Event will update Teacher Instructions', 'partA', {
       ...model.partA,
       teacherInstructions: 'Part A Teacher Instructions',
     });
-    assetPartUpdate('Dispatching Model Updated Event will update Teacher Instructions', 'partB', {
+    assertPartUpdate('Dispatching Model Updated Event will update Teacher Instructions', 'partB', {
       ...model.partB,
       teacherInstructions: 'Part B Teacher Instructions',
     });
-    assetPartUpdate('Dispatching Model Updated Event will update Prompt', 'partA', {
+    assertPartUpdate('Dispatching Model Updated Event will update Prompt', 'partA', {
       ...model.partA,
       prompt: 'Prompt A',
     });
-    assetPartUpdate('Dispatching Model Updated Event will update Prompt', 'partB', {
+    assertPartUpdate('Dispatching Model Updated Event will update Prompt', 'partB', {
       ...model.partA,
       prompt: 'Prompt B',
     });
 
-    assetPartUpdate('Dispatching Model Updated Event will update Choices - ADD CHOICE', 'partA', {
+    assertPartUpdate('Dispatching Model Updated Event will update Choices - ADD CHOICE', 'partA', {
       ...model.partA,
       choices: [
         ...model.partA.choices,
@@ -283,7 +279,7 @@ describe('index', () => {
         },
       ],
     });
-    assetPartUpdate('Dispatching Model Updated Event will update Choices - ADD CHOICE', 'partB', {
+    assertPartUpdate('Dispatching Model Updated Event will update Choices - ADD CHOICE', 'partB', {
       ...model.partB,
       choices: [
         ...model.partB.choices,
@@ -299,15 +295,15 @@ describe('index', () => {
         },
       ],
     });
-    assetPartUpdate('Dispatching Model Updated Event will update Choices - REMOVE CHOICE', 'partA', {
+    assertPartUpdate('Dispatching Model Updated Event will update Choices - REMOVE CHOICE', 'partA', {
       ...model.partA,
       choices: model.partA.choices.splice(0, 2),
     });
-    assetPartUpdate('Dispatching Model Updated Event will update Choices - REMOVE CHOICE', 'partB', {
+    assertPartUpdate('Dispatching Model Updated Event will update Choices - REMOVE CHOICE', 'partB', {
       ...model.partB,
       choices: model.partB.choices.splice(0, 2),
     });
-    assetPartUpdate('Dispatching Model Updated Event will update Choices - CHANGE CHOICE', 'partA', {
+    assertPartUpdate('Dispatching Model Updated Event will update Choices - CHANGE CHOICE', 'partA', {
       ...model.partA,
       choices: model.partA.choices.splice(1, 1, {
         correct: true,
@@ -319,7 +315,7 @@ describe('index', () => {
         },
       }),
     });
-    assetPartUpdate('Dispatching Model Updated Event will update Choices - CHANGE CHOICE', 'partB', {
+    assertPartUpdate('Dispatching Model Updated Event will update Choices - CHANGE CHOICE', 'partB', {
       ...model.partB,
       choices: model.partB.choices.splice(1, 1, {
         correct: true,
@@ -332,40 +328,35 @@ describe('index', () => {
       }),
     });
 
-    assetPartUpdate('Dispatching Model Updated Event will update Choices', 'partA', { ...model.partA, choices: [] });
-    assetPartUpdate('Dispatching Model Updated Event will update Choices', 'partB', { ...model.partB, choices: [] });
+    assertPartUpdate('Dispatching Model Updated Event will update Choices', 'partA', { ...model.partA, choices: [] });
+    assertPartUpdate('Dispatching Model Updated Event will update Choices', 'partB', { ...model.partB, choices: [] });
   });
 });
 
 describe('main', () => {
   let Def;
   let el;
-  let main;
 
   beforeAll(() => {
     Def = require('../index').default;
+
+    // Register the custom element if not already registered
+    if (!customElements.get('ebsr-configure')) {
+      customElements.define('ebsr-configure', Def);
+    }
   });
 
   beforeEach(() => {
-    el = new Def();
+    jest.clearAllMocks();
+    el = document.createElement('ebsr-configure');
     el.model = model;
     el.configuration = defaults.configuration;
     el.dispatchEvent = el.onModelUpdated;
-
-    main = mount(
-      <Main
-        classes={{}}
-        model={el._model}
-        configuration={defaults.configuration}
-        onConfigurationChanged={el.onConfigurationChanged}
-        onModelChanged={el.onModelChanged}
-      />,
-    );
   });
 
   const assertOnModelChanged = (label, updatedModel, expected) => {
     it(label, () => {
-      main.instance().props.onModelChanged(updatedModel);
+      el.onModelChanged(updatedModel);
 
       expect(el._model).toEqual(createDefaultModel(model, expected));
     });

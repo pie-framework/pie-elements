@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import isEmpty from 'lodash/isEmpty';
-import isUndefined from 'lodash/isUndefined';
-import find from 'lodash/find';
-import { DragAnswer } from './answer';
-import { MatchDroppablePlaceholder } from '@pie-lib/drag';
+import { styled } from '@mui/material/styles';
+import { find, isEmpty, isUndefined } from 'lodash-es';
+import DragAndDropAnswer from './answer';
+import { DroppablePlaceholder } from './droppable-placeholder';
+
+const ChoicesContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
 
 export class ChoicesList extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
     session: PropTypes.object.isRequired,
     instanceId: PropTypes.string.isRequired,
     model: PropTypes.object.isRequired,
@@ -18,7 +19,7 @@ export class ChoicesList extends React.Component {
   };
 
   render() {
-    const { model, classes, disabled, session, instanceId, onRemoveAnswer } = this.props;
+    const { model, disabled, session, instanceId, onRemoveAnswer } = this.props;
     const { config } = model;
     const { duplicates } = config;
 
@@ -31,10 +32,9 @@ export class ChoicesList extends React.Component {
           isUndefined(find(session.value, (val) => val === answer.id)),
       )
       .map((answer) => (
-        <DragAnswer
+        <DragAndDropAnswer
           key={answer.id}
           instanceId={instanceId}
-          className={classes.choice}
           draggable={true}
           disabled={disabled}
           session={session}
@@ -44,38 +44,13 @@ export class ChoicesList extends React.Component {
       ));
 
     return (
-      <div className={classes.choicesContainer}>
-        {MatchDroppablePlaceholder ? (
-          <MatchDroppablePlaceholder disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
-            {filteredAnswers}
-          </MatchDroppablePlaceholder>
-        ) : (
-          <div className={classes.answersContainer}>{filteredAnswers}</div>
-        )}
-      </div>
+      <ChoicesContainer>
+        <DroppablePlaceholder id="choices-pool" disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
+          {filteredAnswers}
+        </DroppablePlaceholder>
+      </ChoicesContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  choicesContainer: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  answersContainer: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit,
-  },
-  choice: {
-    minHeight: '40px',
-    minWidth: '200px',
-    height: 'initial',
-    margin: theme.spacing.unit / 2,
-  },
-});
-
-export default withStyles(styles)(ChoicesList);
+export default ChoicesList;

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Scale from './scale';
-import Link from '@material-ui/core/Link';
-import Collapse from '@material-ui/core/Collapse';
+import Link from '@mui/material/Link';
+import Collapse from '@mui/material/Collapse';
 import { color, UiLayout } from '@pie-lib/render-ui';
 
 class Main extends React.Component {
@@ -64,7 +64,7 @@ class Main extends React.Component {
         <Link style={{ backgroundColor: color.background() }} href={this.dudUrl} onClick={this.toggleRubric}>
           {this.state.linkPrefix} Rubric
         </Link>
-        <Collapse style={{ marginTop: '16px' }} in={this.state.rubricOpen} timeout="auto">
+        <Collapse style={{ marginTop: '16px' }} in={this.state.rubricOpen} timeout={{ enter: 225, exit: 195 }}>
           {rubricItem}
         </Collapse>
       </UiLayout>
