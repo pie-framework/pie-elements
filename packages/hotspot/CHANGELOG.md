@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@10.1.2-next.4...@pie-element/hotspot@10.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **hotspot:** add trace log for scoring in outcome function PD-5439 ([5950d30](https://github.com/pie-framework/pie-elements/commit/5950d30444c2112720ba99d8b3f11c887a3a5e26))
+
 ## [10.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@10.1.2-next.3...@pie-element/hotspot@10.1.2-next.4) (2026-03-12)
 
 ### Bug Fixes

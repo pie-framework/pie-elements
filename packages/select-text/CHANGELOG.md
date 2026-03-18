@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@12.1.1-next.4...@pie-element/select-text@12.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **select-text:** add scoring trace in outcome function PD-5464 ([fd195fb](https://github.com/pie-framework/pie-elements/commit/fd195fb2139b5b763b6008831a3cc66c94dc202b))
+
 ## [12.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@12.1.1-next.3...@pie-element/select-text@12.1.1-next.4) (2026-03-12)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@8.1.1-next.1...@pie-element/select-text-controller@8.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **select-text:** add scoring trace in outcome function PD-5464 ([fd195fb](https://github.com/pie-framework/pie-elements/commit/fd195fb2139b5b763b6008831a3cc66c94dc202b))
+
 ## [8.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@8.1.0-next.1...@pie-element/select-text-controller@8.1.1-next.1) (2026-02-26)
 
 **Note:** Version bump only for package @pie-element/select-text-controller
