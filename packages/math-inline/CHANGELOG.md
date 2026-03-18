@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.0...@pie-element/math-inline@11.2.0-next.1) (2026-03-18)
+
+### Bug Fixes
+
+- **main.jsx:** remove unused import for background color ([a5e8484](https://github.com/pie-framework/pie-elements/commit/a5e84846d44635046a5d53ed0068b6fdac43e83b))
+- **math-inline:** fix style PD-5526 ([e0a5b49](https://github.com/pie-framework/pie-elements/commit/e0a5b49a26f1b5b26a5fb7cb9e552c0939d7ffc4))
+
 # [11.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.1.2-next.4...@pie-element/math-inline@11.2.0-next.0) (2026-03-18)
 
 ### Bug Fixes

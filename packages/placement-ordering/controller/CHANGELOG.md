@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@10.1.1-next.1...@pie-element/placement-ordering-controller@10.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- tests ([bcea404](https://github.com/pie-framework/pie-elements/commit/bcea40428ae344270edf703186cbe83b85b1ead2))
+
+### Features
+
+- **placement-ordering:** add scoring trace in outcome function PD-5459 ([ddaeeea](https://github.com/pie-framework/pie-elements/commit/ddaeeea858dde5a462225798bdca4acc90cd7a39))
+
 ## [10.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@10.1.0-next.2...@pie-element/placement-ordering-controller@10.1.1-next.1) (2026-02-26)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-controller

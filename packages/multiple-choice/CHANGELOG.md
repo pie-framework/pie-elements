@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.2.0-next.0...@pie-element/multiple-choice@12.2.0-next.1) (2026-03-18)
+
+### Bug Fixes
+
+- **multiple-choice:** adjust margin and padding for CheckboxHolder to maintain consistency with previous versions PD-5579 ([f786617](https://github.com/pie-framework/pie-elements/commit/f7866172fbdad2868b16fe87a5c87516a09915d2))
+
 # [12.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.6...@pie-element/multiple-choice@12.2.0-next.0) (2026-03-18)
 
 ### Bug Fixes

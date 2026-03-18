@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.2.0-next.0...@pie-element/number-line@12.2.0-next.1) (2026-03-18)
+
+### Bug Fixes
+
+- **number-line:** use observer to render math PD-5563 ([0b5833f](https://github.com/pie-framework/pie-elements/commit/0b5833fc929ce67a8e3811e161ddafccf046b1c2))
+
 # [12.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.5...@pie-element/number-line@12.2.0-next.0) (2026-03-18)
 
 ### Bug Fixes
