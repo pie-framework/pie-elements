@@ -1026,13 +1026,13 @@ const Expression = styled('div', {
     ...(printCorrect && {
       border: `2px solid ${color.correct()} !important`,
     }),
-    '& > .mq-math-mode': {
-      '& > .mq-root-block': {
+    '& .mq-math-mode': {
+      '& .mq-root-block': {
         paddingRight: '0 !important',
         paddingLeft: '0 !important',
-        '& > .mq-editable-field': {
+        '& .mq-editable-field': {
           minWidth: '10px',
-          padding: theme.spacing(0.25),
+          padding: theme.spacing(0.4),
         },
       },
       '& sup': {
