@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@13.1.2-next.6...@pie-element/ebsr@13.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **ebsr:** add trace log for scoring in outcome function PD-5456 ([c83e1c2](https://github.com/pie-framework/pie-elements/commit/c83e1c29c8a0e7a03e3479cd00e9321b1e3f9edc))
+
 ## [13.1.2-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@13.1.2-next.5...@pie-element/ebsr@13.1.2-next.6) (2026-03-12)
 
 ### Bug Fixes

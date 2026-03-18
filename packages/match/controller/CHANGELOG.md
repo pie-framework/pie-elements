@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@9.1.1-next.1...@pie-element/match-controller@9.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **match:** add scoring trace in outcome function PD-5465 ([d5406c7](https://github.com/pie-framework/pie-elements/commit/d5406c7825380da25d14e1db97036a0225bfaa4a))
+
 ## [9.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@9.1.0-next.1...@pie-element/match-controller@9.1.1-next.1) (2026-02-26)
 
 **Note:** Version bump only for package @pie-element/match-controller

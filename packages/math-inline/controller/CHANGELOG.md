@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@9.1.1-next.1...@pie-element/math-inline-controller@9.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- tests ([f46f1f9](https://github.com/pie-framework/pie-elements/commit/f46f1f9845ef96bbf7fefbc4f9ffafc48a19f5f6))
+
+### Features
+
+- **math-inline:** add scoring trace in outcome function PD-5467 ([1eeafce](https://github.com/pie-framework/pie-elements/commit/1eeafcecc12adb0e2d1f6415a0daf7178e3799c0))
+
 ## [9.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@9.1.0-next.2...@pie-element/math-inline-controller@9.1.1-next.1) (2026-02-26)
 
 **Note:** Version bump only for package @pie-element/math-inline-controller

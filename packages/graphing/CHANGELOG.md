@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@9.1.1-next.5...@pie-element/graphing@9.2.0-next.0) (2026-03-18)
+
+### Features
+
+- add getLogTrace summary ([53a48f0](https://github.com/pie-framework/pie-elements/commit/53a48f0492e7707f28a07ee4491fd0177a7e5006))
+- **graphing:** add scoring trace in outcome function PD-5457 ([346f6b3](https://github.com/pie-framework/pie-elements/commit/346f6b36e6d6e4128093119680fdd748c6783d46))
+
 ## [9.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@9.1.1-next.4...@pie-element/graphing@9.1.1-next.5) (2026-03-12)
 
 ### Bug Fixes

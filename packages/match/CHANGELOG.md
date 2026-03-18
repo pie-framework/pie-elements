@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.2-next.4...@pie-element/match@11.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **match:** add scoring trace in outcome function PD-5465 ([d5406c7](https://github.com/pie-framework/pie-elements/commit/d5406c7825380da25d14e1db97036a0225bfaa4a))
+
 ## [11.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.2-next.3...@pie-element/match@11.1.2-next.4) (2026-03-12)
 
 ### Bug Fixes

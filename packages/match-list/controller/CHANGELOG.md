@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@5.1.1-next.1...@pie-element/match-list-controller@5.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **match-list:** add scoring trace in outcome function PD-5466 ([53ddb48](https://github.com/pie-framework/pie-elements/commit/53ddb48bea283c1e5fba7e8f563ef75875c4e635))
+
 ## [5.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@5.1.0-next.1...@pie-element/match-list-controller@5.1.1-next.1) (2026-02-26)
 
 **Note:** Version bump only for package @pie-element/match-list-controller

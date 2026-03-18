@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.6...@pie-element/multiple-choice@12.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test ([be07920](https://github.com/pie-framework/pie-elements/commit/be07920477def42dc240d032783be437400b7e93))
+
+### Features
+
+- **multiple-choice:** add trace log for scoring in outcome function PD-5434 ([0f49930](https://github.com/pie-framework/pie-elements/commit/0f49930da8d4098ad0bec74fc462942ddf031172))
+
 ## [12.1.2-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.5...@pie-element/multiple-choice@12.1.2-next.6) (2026-03-12)
 
 ### Bug Fixes

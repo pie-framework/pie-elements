@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@7.1.1-next.1...@pie-element/multiple-choice-controller@7.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test ([be07920](https://github.com/pie-framework/pie-elements/commit/be07920477def42dc240d032783be437400b7e93))
+
+### Features
+
+- **multiple-choice:** add trace log for scoring in outcome function PD-5434 ([0f49930](https://github.com/pie-framework/pie-elements/commit/0f49930da8d4098ad0bec74fc462942ddf031172))
+
 ## [7.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@7.1.0-next.1...@pie-element/multiple-choice-controller@7.1.1-next.1) (2026-02-26)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-controller

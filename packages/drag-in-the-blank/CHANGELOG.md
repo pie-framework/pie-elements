@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@9.1.1-next.6...@pie-element/drag-in-the-blank@9.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test ([3117bc7](https://github.com/pie-framework/pie-elements/commit/3117bc7c72a1b7ce495e0ce2f8c60503911054ac))
+
+### Features
+
+- **drag-in-the-blank:** add trace log for scoring in outcome function PD-5435 ([6af6124](https://github.com/pie-framework/pie-elements/commit/6af612455507a3e2f2ed93b622a2f9d5ff3edaff))
+
 ## [9.1.1-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@9.1.1-next.5...@pie-element/drag-in-the-blank@9.1.1-next.6) (2026-03-12)
 
 ### Bug Fixes

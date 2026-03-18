@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.1.2-next.4...@pie-element/math-inline@11.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- tests ([f46f1f9](https://github.com/pie-framework/pie-elements/commit/f46f1f9845ef96bbf7fefbc4f9ffafc48a19f5f6))
+
+### Features
+
+- **math-inline:** add scoring trace in outcome function PD-5467 ([1eeafce](https://github.com/pie-framework/pie-elements/commit/1eeafcecc12adb0e2d1f6415a0daf7178e3799c0))
+
 ## [11.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.1.2-next.3...@pie-element/math-inline@11.1.2-next.4) (2026-03-12)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.1.1-next.4...@pie-element/charting@11.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **charting:** add scoring trace in outcome function PD-5455 ([098ed62](https://github.com/pie-framework/pie-elements/commit/098ed625ad8640008920b7c8e22897c8ceee9040))
+
 ## [11.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.1.1-next.3...@pie-element/charting@11.1.1-next.4) (2026-03-12)
 
 ### Bug Fixes

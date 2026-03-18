@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.5...@pie-element/number-line@12.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test ([223f696](https://github.com/pie-framework/pie-elements/commit/223f696635273950e1726b4a9f15120d73019d20))
+
+### Features
+
+- **number-line:** add scoring trace in outcome function PD-5458 ([c5c4513](https://github.com/pie-framework/pie-elements/commit/c5c451393559dcf67086bc1564c546126beb3cae))
+
 ## [12.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.4...@pie-element/number-line@12.1.1-next.5) (2026-03-12)
 
 ### Bug Fixes

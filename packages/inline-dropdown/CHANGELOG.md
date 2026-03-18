@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.1.1-next.7...@pie-element/inline-dropdown@9.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **inline-dropdown:** add trace log for scoring in outcome function PD-5436 ([dc30bd8](https://github.com/pie-framework/pie-elements/commit/dc30bd827db10273e71419acd06fe52572952fb8))
+
 ## [9.1.1-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.1.1-next.6...@pie-element/inline-dropdown@9.1.1-next.7) (2026-03-13)
 
 ### Bug Fixes
