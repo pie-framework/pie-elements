@@ -3,12 +3,32 @@ import PropTypes from 'prop-types';
 import { TextSelect, Legend } from '@pie-lib/text-select';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import generateModel from './utils';
 
 import debug from 'debug';
 
 const log = debug('@pie-ui:select-text');
+
+const StyledUiLayout = styled(UiLayout)({
+  color: color.text(),
+  backgroundColor: color.background(),
+});
+
+const StyledTextSelect = styled(TextSelect)(({ theme }) => ({
+  marginBottom: theme.spacing(1),
+  marginTop: theme.spacing(2),
+  whiteSpace: 'normal',
+}));
+
+const Prompt = styled('div')(({ theme }) => ({
+  verticalAlign: 'middle',
+  marginBottom: theme.spacing(1),
+}));
+
+const StyledCollapsible = styled(Collapsible)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
 
 const Types = {
   model: PropTypes.object,
@@ -17,7 +37,7 @@ const Types = {
 };
 
 export class Main extends React.Component {
-  static propTypes = { ...Types, classes: PropTypes.object.isRequired };
+  static propTypes = Types;
 
   static defaultProps = {};
 
@@ -48,7 +68,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { session, onSelectionChange, classes } = this.props;
+    const { session, onSelectionChange } = this.props;
     const { showCorrectAnswer, model } = this.state;
     const { env, extraCSSRules } = model;
     const { mode } = env || {};
@@ -61,24 +81,23 @@ export class Main extends React.Component {
     log('[render] selectedTokens:', selectedTokens);
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
+      <StyledUiLayout extraCSSRules={extraCSSRules}>
         {showTeacherInstructions &&
           (!model.animationsDisabled ? (
-            <Collapsible
+            <StyledCollapsible
               labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              className={classes.collapsible}
             >
               <PreviewPrompt prompt={model.teacherInstructions} />
-            </Collapsible>
+            </StyledCollapsible>
           ) : (
-            <div className={classes.prompt}>
+            <Prompt>
               <PreviewPrompt prompt={model.teacherInstructions} />
-            </div>
+            </Prompt>
           ))}
 
-        <div className={classes.prompt}>
+        <Prompt>
           <PreviewPrompt prompt={model.prompt} />
-        </div>
+        </Prompt>
 
         {!model.alwaysShowCorrect && (
           <CorrectAnswerToggle
@@ -89,8 +108,7 @@ export class Main extends React.Component {
           />
         )}
 
-        <TextSelect
-          className={classes.textSelect}
+        <StyledTextSelect
           disabled={model.disabled}
           text={model.text}
           tokens={model.tokens}
@@ -117,44 +135,24 @@ export class Main extends React.Component {
 
         {showRationale &&
           (!model.animationsDisabled ? (
-            <Collapsible
+            <StyledCollapsible
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-              className={classes.collapsible}
             >
               <PreviewPrompt prompt={model.rationale} />
-            </Collapsible>
+            </StyledCollapsible>
           ) : (
-            <div className={classes.prompt}>
+            <Prompt>
               <PreviewPrompt prompt={model.rationale} />
-            </div>
+            </Prompt>
           ))}
 
         {model.correctness && model.feedback && !showCorrectAnswer && (
           <Feedback correctness={model.correctness} feedback={model.feedback} />
         )}
-      </UiLayout>
+      </StyledUiLayout>
     );
   }
 }
-
-const StyledMain = withStyles((theme) => ({
-  mainContainer: {
-    color: color.text(),
-    backgroundColor: color.background(),
-  },
-  textSelect: {
-    marginBottom: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 2,
-    whiteSpace: 'normal',
-  },
-  prompt: {
-    verticalAlign: 'middle',
-    marginBottom: theme.spacing.unit,
-  },
-  collapsible: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-}))(Main);
 
 export default class Stateful extends React.Component {
   static propTypes = Types;
@@ -180,6 +178,6 @@ export default class Stateful extends React.Component {
 
   render() {
     const { model, session } = this.state;
-    return <StyledMain model={model} session={session} onSelectionChange={this.change} />;
+    return <Main model={model} session={session} onSelectionChange={this.change} />;
   }
 }

@@ -1,5 +1,17 @@
-jest.mock('@pie-element/rubric', () => jest.fn());
-jest.mock('@pie-element/multi-trait-rubric', () => jest.fn());
+jest.mock('@pie-element/rubric', () => {
+  class MockRubric {
+    constructor() {}
+  }
+  return MockRubric;
+});
+
+jest.mock('@pie-element/multi-trait-rubric', () => {
+  class MockMultiTraitRubric {
+    constructor() {}
+  }
+  return MockMultiTraitRubric;
+});
+
 jest.mock('@pie-lib/rubric', () => ({
   RUBRIC_TYPES: {
     SIMPLE_RUBRIC: 'simpleRubric',
@@ -204,14 +216,21 @@ describe('complex-rubric', () => {
 
   beforeAll(() => {
     Def = require('../index').default;
+    // Register the custom element for testing
+    if (!customElements.get('complex-rubric-test')) {
+      customElements.define('complex-rubric-test', Def);
+    }
   });
 
   beforeEach(() => {
-    el = new Def();
-    el.connectedCallback();
+    el = document.createElement('complex-rubric-test');
+
+    // Mock _render to avoid innerHTML issues in jsdom
+    el._render = jest.fn();
+
     complexRubric = {
-      simpleRubric: new HTMLElement(),
-      multiTraitRubric: new HTMLElement(),
+      simpleRubric: document.createElement('div'),
+      multiTraitRubric: document.createElement('div'),
     };
     el.querySelector = jest.fn((s) => {
       if (s === '#simpleRubric') {
@@ -220,7 +239,6 @@ describe('complex-rubric', () => {
         return complexRubric.multiTraitRubric;
       }
     });
-    el.tagName = 'complex-rubric-element';
     el.model = defaultModel;
   });
 

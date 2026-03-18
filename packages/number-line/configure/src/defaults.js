@@ -31,6 +31,7 @@ export const model = {
 
 export const configuration = {
   baseInputConfiguration: {
+    h3: { disabled: true },
     audio: { disabled: false },
     video: { disabled: false },
     image: { disabled: false },

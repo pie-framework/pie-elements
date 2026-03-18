@@ -1,6 +1,6 @@
 import Main from './main';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import {
   ModelUpdatedEvent,
   InsertSoundEvent,
@@ -10,7 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import * as defaults from './defaults';
 import * as math from 'mathjs';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 
 // this function is duplicated in controller; at some point, use the same shared function
 const updateTicks = (model) => {
@@ -60,6 +60,7 @@ export default class NumberLine extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._model = NumberLine.createDefaultModel();
     this._configuration = defaults.configuration;
   }
@@ -174,6 +175,15 @@ export default class NumberLine extends HTMLElement {
       },
     });
 
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

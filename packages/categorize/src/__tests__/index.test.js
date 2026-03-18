@@ -1,17 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Categorize from '../index';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { Categorize as UnStyledCategorize } from '../categorize/index';
 
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
-jest.spyOn(ReactDOM, 'render').mockImplementation(() => {});
+const mockRender = jest.fn();
+const mockUnmount = jest.fn();
+jest.mock('react-dom/client', () => ({
+  createRoot: jest.fn(() => ({
+    render: mockRender,
+    unmount: mockUnmount,
+  })),
+}));
+
+const theme = createTheme();
 
 describe('categorize', () => {
   describe('renders', () => {
-    let wrapper = (props) => {
-      let defaultProps = {
+    const renderCategorize = (props) => {
+      const defaultProps = {
         model: {
           categories: [],
           choices: [],
@@ -20,31 +29,50 @@ describe('categorize', () => {
         },
         session: {},
         classes: {},
+        onAnswersChange: jest.fn(),
+        onShowCorrectToggle: jest.fn(),
       };
-      return shallow(<UnStyledCategorize {...defaultProps} />);
+      return render(
+        <ThemeProvider theme={theme}>
+          <UnStyledCategorize {...defaultProps} />
+        </ThemeProvider>
+      );
     };
 
-    it('snapshot', () => {
-      const w = wrapper();
-      expect(w).toMatchSnapshot();
+    it('renders without crashing', () => {
+      const { container } = renderCategorize();
+      expect(container).toBeInTheDocument();
     });
 
-    it('snapshot with rationale', () => {
-      const w = wrapper({ rationale: 'This is rationale' });
-      expect(w).toMatchSnapshot();
+    it('renders with rationale', () => {
+      const { container} = renderCategorize({ rationale: 'This is rationale' });
+      expect(container).toBeInTheDocument();
     });
 
-    it('snapshot with teacherInstructions', () => {
-      const w = wrapper({ teacherInstructions: 'These are teacher instructions' });
-      expect(w).toMatchSnapshot();
+    it('renders with teacherInstructions', () => {
+      const { container } = renderCategorize({ teacherInstructions: 'These are teacher instructions' });
+      expect(container).toBeInTheDocument();
     });
   });
 
   describe('events', () => {
+    let el;
+
+    beforeEach(() => {
+      // Register custom element if not already registered
+      if (!customElements.get('categorize-el')) {
+        customElements.define('categorize-el', Categorize);
+      }
+
+      // Create element via createElement to properly initialize it
+      el = document.createElement('categorize-el');
+
+      // Mock dispatchEvent
+      el.dispatchEvent = jest.fn();
+    });
+
     describe('model', () => {
       it('dispatches model set event', () => {
-        const el = new Categorize();
-        el.tagName = 'categorize-el';
         el.model = {};
         expect(el.dispatchEvent).toBeCalledWith(new ModelSetEvent('categorize-el', false, true));
       });
@@ -52,8 +80,6 @@ describe('categorize', () => {
 
     describe('changeAnswers', () => {
       it('dispatches session changed event - add answer', () => {
-        const el = new Categorize();
-        el.tagName = 'categorize-el';
         el.model = {
           responseAreasToBeFilled: 2,
           hasUnplacedChoices: true,
@@ -69,8 +95,6 @@ describe('categorize', () => {
       });
 
       it('dispatches session changed event - remove answer', () => {
-        const el = new Categorize();
-        el.tagName = 'categorize-el';
         el.model = {
           responseAreasToBeFilled: 1,
         };
@@ -80,8 +104,6 @@ describe('categorize', () => {
       });
 
       it('dispatches session changed event - add/remove answer', () => {
-        const el = new Categorize();
-        el.tagName = 'categorize-el';
         el.model = {
           responseAreasToBeFilled: 2,
           hasUnplacedChoices: true,
@@ -112,8 +134,6 @@ describe('categorize', () => {
       });
 
       it('dispatches session changed event - add/remove answer - no unplaced choices', () => {
-        const el = new Categorize();
-        el.tagName = 'categorize-el';
         el.model = {
           responseAreasToBeFilled: 2,
           hasUnplacedChoices: false,

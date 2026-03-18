@@ -1,10 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
-import { withStyles } from '@material-ui/core/styles';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
+import { styled } from '@mui/material/styles';
 
 const { Panel, toggle, dropdown } = settings;
+
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 export class Root extends React.Component {
   onTeacherInstructionsChanged = (teacherInstructions) => {
@@ -12,7 +24,7 @@ export class Root extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration, onModelChanged, onConfigurationChanged, imageSupport, uploadSoundSupport } =
+    const { model, configuration, onModelChanged, onConfigurationChanged, imageSupport, uploadSoundSupport } =
       this.props;
     const {
       baseInputConfiguration = {},
@@ -61,9 +73,8 @@ export class Root extends React.Component {
         }
       >
         {model && model.teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <StyledInputContainer label={teacherInstructions.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
@@ -77,8 +88,8 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </StyledInputContainer>
         )}
 
         <div>Image cloze association</div>
@@ -87,21 +98,7 @@ export class Root extends React.Component {
   }
 }
 
-const styles = (theme) => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
-
 Root.propTypes = {
-  classes: PropTypes.object.isRequired,
   onModelChanged: PropTypes.func,
   onConfigurationChanged: PropTypes.func,
   model: PropTypes.object.isRequired,
@@ -116,4 +113,4 @@ Root.propTypes = {
   }),
 };
 
-export default withStyles(styles)(Root);
+export default Root;

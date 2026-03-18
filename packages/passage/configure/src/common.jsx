@@ -1,43 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogActions from '@material-ui/core/DialogActions';
+import { styled } from '@mui/material/styles';
+import { Button } from '@mui/material';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogActions from '@mui/material/DialogActions';
 
-export const RemoveAddButton = ({ classes, label, type = 'add', onClick }) => {
+export const RemoveAddButton = ({ label, type = 'add', onClick }) => {
   const Tag = type === 'add' ? AddCircleIcon : RemoveCircleIcon;
   return (
-    <Button color="primary" size="small" className={classes.root} onClick={onClick}>
-      <Tag fontSize={'small'} color={'primary'} className={classes.icon} />
+    <Button color="primary" size="small" onClick={onClick}>
+      <Tag fontSize="small" color="primary" style={{ marginRight: 4 }} />
       {label}
     </Button>
   );
-}
+};
 
-export const PassageButton = withStyles((theme) => ({
-  root: {
+export const PassageButton = styled(RemoveAddButton)({
+  textDecoration: 'underline',
+  '&:hover': {
     textDecoration: 'underline',
-    '&:hover': {
-      textDecoration: 'underline',
-      backgroundColor: 'transparent',
-    },
+    backgroundColor: 'transparent',
   },
-  label: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  icon: {
-    marginRight: theme.spacing.unit / 2,
-  },
-}))(RemoveAddButton);
+  display: 'flex',
+  alignItems: 'center',
+});
 
-export const ConfimationDialog = ({ content, cancel, title, ok, open, onOk, onCancel }) => (
+export const ConfirmationDialog = ({ content, cancel, title, ok, open, onOk, onCancel }) => (
   <Dialog open={open}>
     <DialogTitle>{title}</DialogTitle>
 
@@ -60,7 +53,7 @@ export const ConfimationDialog = ({ content, cancel, title, ok, open, onOk, onCa
   </Dialog>
 );
 
-ConfimationDialog.propTypes = {
+ConfirmationDialog.propTypes = {
   content: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   cancel: PropTypes.string.isRequired,

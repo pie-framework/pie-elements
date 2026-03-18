@@ -1,82 +1,93 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { InputContainer, settings, layout, NumberTextField } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
-import merge from 'lodash/merge';
+import { styled } from '@mui/material/styles';
+import { merge } from 'lodash-es';
 import { LIKERT_TYPE, LIKERT_SCALE, LIKERT_ORIENTATION } from './likertEntities';
 import generateChoices from './choiceGenerator';
 import { color } from '@pie-lib/render-ui';
 
 const { Panel, toggle, radio } = settings;
 
-const styles = (theme) => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  radioButtonsWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  radioButtonsColumnHeader: {
-    color: theme.palette.grey[400],
-    fontSize: theme.typography.fontSize - 2,
-  },
-  likertLabelHolder: {
-    display: 'flex',
-    width: '100%',
-    alignItems: 'flex-start',
-    marginBottom: theme.spacing.unit * 2,
-  },
-  likertOptionsHolder: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-around',
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  likertLabelInput: {
-    width: 'calc(100% - 200px)',
-    marginRight: 0,
-  },
-  errorMessage: {
-    color: theme.palette.error.main,
-    fontSize: theme.typography.fontSize - 2,
-  },
-  width100: {
-    width: '100%',
-  },
-  flexRow: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  likertValueHolder: {
-    paddingLeft: theme.spacing.unit * 2.5,
-    width: '150px',
-  },
-  likertLabelEditableHtml: {
-    paddingTop: theme.spacing.unit * 2,
-  },
-  inputFormGroupIndex: {
-    width: '30px',
-    paddingTop: theme.spacing.unit * 4,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-  customColor: {
-    color: `${color.tertiary()} !important`,
-  },
+const PromptHolder = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const RadioButtonsWrapper = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
 });
 
-const LikertOrientation = withStyles(styles)((props) => {
-  const { classes, model, onChangeModel } = props;
+const RadioButtonsColumnHeader = styled('p')(({ theme }) => ({
+  color: theme.palette.grey[400],
+  fontSize: theme.typography.fontSize - 2,
+}));
+
+const LikertLabelHolder = styled('div')(({ theme }) => ({
+  display: 'flex',
+  width: '100%',
+  alignItems: 'flex-start',
+  marginBottom: theme.spacing(2),
+}));
+
+const LikertOptionsHolder = styled('div')(({ theme }) => ({
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'space-around',
+  marginBottom: theme.spacing(2.5),
+}));
+
+const LikertLabelInput = styled(InputContainer)({
+  width: 'calc(100% - 200px)',
+  marginRight: 0,
+});
+
+const ErrorMessage = styled('p')(({ theme }) => ({
+  color: theme.palette.error.main,
+  fontSize: theme.typography.fontSize - 2,
+}));
+
+const StyledNumberTextField = styled(NumberTextField)({
+  width: '100%',
+});
+
+const FlexRow = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+});
+
+const LikertValueHolder = styled('div')(({ theme }) => ({
+  paddingLeft: theme.spacing(2.5),
+  width: '150px',
+}));
+
+const StyledEditableHtml = styled(EditableHtml)(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+}));
+
+const InputFormGroupIndex = styled('span')(({ theme }) => ({
+  width: '30px',
+  paddingTop: theme.spacing(4),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
+const CustomColorRadio = styled(Radio)({
+  color: `${color.tertiary()} !important`,
+});
+
+const LikertOrientation = (props) => {
+  const { model, onChangeModel } = props;
 
   const onChangeLikertOrientation = (e) => {
     const likertOrientation = e.target.value;
@@ -85,31 +96,23 @@ const LikertOrientation = withStyles(styles)((props) => {
   };
 
   return (
-    <div className={classes.radioButtonsWrapper}>
-      <p className={classes.radioButtonsColumnHeader}>Likert Orientation</p>
+    <RadioButtonsWrapper>
+      <RadioButtonsColumnHeader>Likert Orientation</RadioButtonsColumnHeader>
       <RadioGroup
         aria-label="likertOrientation"
         name="likertOrientation"
         value={model.likertOrientation}
         onChange={onChangeLikertOrientation}
       >
-        <FormControlLabel
-          value={LIKERT_ORIENTATION.horizontal}
-          control={<Radio className={classes.customColor} />}
-          label="Horizontal"
-        />
-        <FormControlLabel
-          value={LIKERT_ORIENTATION.vertical}
-          control={<Radio className={classes.customColor} />}
-          label="Vertical"
-        />
+        <FormControlLabel value={LIKERT_ORIENTATION.horizontal} control={<CustomColorRadio />} label="Horizontal" />
+        <FormControlLabel value={LIKERT_ORIENTATION.vertical} control={<CustomColorRadio />} label="Vertical" />
       </RadioGroup>
-    </div>
+    </RadioButtonsWrapper>
   );
-});
+};
 
-const LikertScale = withStyles(styles)((props) => {
-  const { classes, model, onChangeModel } = props;
+const LikertScale = (props) => {
+  const { model, onChangeModel } = props;
   const onChangeLikertScale = (e) => {
     const likertScale = e.target.value;
 
@@ -121,31 +124,19 @@ const LikertScale = withStyles(styles)((props) => {
   };
 
   return (
-    <div className={classes.radioButtonsWrapper}>
-      <p className={classes.radioButtonsColumnHeader}>Likert Scale</p>
+    <RadioButtonsWrapper>
+      <RadioButtonsColumnHeader>Likert Scale</RadioButtonsColumnHeader>
       <RadioGroup aria-label="likertScale" name="likertScale" value={model.likertScale} onChange={onChangeLikertScale}>
-        <FormControlLabel
-          value={LIKERT_SCALE.likert3}
-          control={<Radio className={classes.customColor} />}
-          label="Likert 3"
-        />
-        <FormControlLabel
-          value={LIKERT_SCALE.likert5}
-          control={<Radio className={classes.customColor} />}
-          label="Likert 5"
-        />
-        <FormControlLabel
-          value={LIKERT_SCALE.likert7}
-          control={<Radio className={classes.customColor} />}
-          label="Likert 7"
-        />
+        <FormControlLabel value={LIKERT_SCALE.likert3} control={<CustomColorRadio />} label="Likert 3" />
+        <FormControlLabel value={LIKERT_SCALE.likert5} control={<CustomColorRadio />} label="Likert 5" />
+        <FormControlLabel value={LIKERT_SCALE.likert7} control={<CustomColorRadio />} label="Likert 7" />
       </RadioGroup>
-    </div>
+    </RadioButtonsWrapper>
   );
-});
+};
 
-const LikertType = withStyles(styles)((props) => {
-  const { classes, model, onChangeModel } = props;
+const LikertType = (props) => {
+  const { model, onChangeModel } = props;
   const onChangeLikertType = (e) => {
     const likertType = e.target.value;
 
@@ -157,31 +148,19 @@ const LikertType = withStyles(styles)((props) => {
   };
 
   return (
-    <div className={classes.radioButtonsWrapper}>
-      <p className={classes.radioButtonsColumnHeader}>Label Type</p>
+    <RadioButtonsWrapper>
+      <RadioButtonsColumnHeader>Label Type</RadioButtonsColumnHeader>
 
-      <div className={classes.flexRow}>
+      <FlexRow>
         <RadioGroup
           aria-label="likertLabelType"
           name="likertLabelType"
           value={model.likertType}
           onChange={onChangeLikertType}
         >
-          <FormControlLabel
-            value={LIKERT_TYPE.agreement}
-            control={<Radio className={classes.customColor} />}
-            label="Agreement"
-          />
-          <FormControlLabel
-            value={LIKERT_TYPE.frequency}
-            control={<Radio className={classes.customColor} />}
-            label="Frequency"
-          />
-          <FormControlLabel
-            value={LIKERT_TYPE.yesNo}
-            control={<Radio className={classes.customColor} />}
-            label="Yes/No"
-          />
+          <FormControlLabel value={LIKERT_TYPE.agreement} control={<CustomColorRadio />} label="Agreement" />
+          <FormControlLabel value={LIKERT_TYPE.frequency} control={<CustomColorRadio />} label="Frequency" />
+          <FormControlLabel value={LIKERT_TYPE.yesNo} control={<CustomColorRadio />} label="Yes/No" />
         </RadioGroup>
 
         <RadioGroup
@@ -190,22 +169,14 @@ const LikertType = withStyles(styles)((props) => {
           value={model.likertType}
           onChange={onChangeLikertType}
         >
-          <FormControlLabel
-            value={LIKERT_TYPE.importance}
-            control={<Radio className={classes.customColor} />}
-            label="Importance"
-          />
-          <FormControlLabel
-            value={LIKERT_TYPE.likelihood}
-            control={<Radio className={classes.customColor} />}
-            label="Likelihood"
-          />
-          <FormControlLabel value={LIKERT_TYPE.like} control={<Radio className={classes.customColor} />} label="Like" />
+          <FormControlLabel value={LIKERT_TYPE.importance} control={<CustomColorRadio />} label="Importance" />
+          <FormControlLabel value={LIKERT_TYPE.likelihood} control={<CustomColorRadio />} label="Likelihood" />
+          <FormControlLabel value={LIKERT_TYPE.like} control={<CustomColorRadio />} label="Like" />
         </RadioGroup>
-      </div>
-    </div>
+      </FlexRow>
+    </RadioButtonsWrapper>
   );
-});
+};
 
 const buildValuesMap = (model) =>
   model.choices.reduce((acc, choice) => {
@@ -219,9 +190,8 @@ const buildValuesMap = (model) =>
     return { ...accClone, [choiceValue]: accClone[choiceValue] + 1 };
   }, {});
 
-const Design = withStyles(styles)((props) => {
+const Design = (props) => {
   const {
-    classes,
     configuration,
     imageSupport,
     model,
@@ -279,9 +249,8 @@ const Design = withStyles(styles)((props) => {
       }
     >
       {teacherInstructionsEnabled && (
-        <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+        <PromptHolder label={teacherInstructions.label}>
           <EditableHtml
-            className={classes.prompt}
             markup={model.teacherInstructions || ''}
             onChange={onTeacherInstructionsChanged}
             imageSupport={imageSupport}
@@ -291,13 +260,12 @@ const Design = withStyles(styles)((props) => {
             uploadSoundSupport={uploadSoundSupport}
             pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
           />
-          {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-        </InputContainer>
+          {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+        </PromptHolder>
       )}
 
-      <InputContainer label={prompt.label} className={classes.promptHolder}>
+      <PromptHolder label={prompt.label}>
         <EditableHtml
-          className={classes.prompt}
           markup={model.prompt}
           onChange={onPromptChanged}
           imageSupport={imageSupport}
@@ -308,21 +276,20 @@ const Design = withStyles(styles)((props) => {
           uploadSoundSupport={uploadSoundSupport}
           pluginProps={getPluginProps(prompt?.inputConfiguration)}
         />
-        {promptError && <div className={classes.errorText}>{promptError}</div>}
-      </InputContainer>
+        {promptError && <ErrorText>{promptError}</ErrorText>}
+      </PromptHolder>
 
-      <div className={classes.likertOptionsHolder}>
+      <LikertOptionsHolder>
         <LikertScale model={model} onChangeModel={onChangeModel} />
         <LikertType model={model} onChangeModel={onChangeModel} />
         <LikertOrientation model={model} onChangeModel={onChangeModel} />
-      </div>
+      </LikertOptionsHolder>
 
       {model.choices.map((choice, index) => (
-        <div key={`choice-${index}`} className={classes.likertLabelHolder}>
-          <span className={classes.inputFormGroupIndex}>{index + 1}.</span>
-          <InputContainer key={`likert-label-${index}`} label={'Likert Label'} className={classes.likertLabelInput}>
-            <EditableHtml
-              className={classes.likertLabelEditableHtml}
+        <LikertLabelHolder key={`choice-${index}`}>
+          <InputFormGroupIndex>{index + 1}.</InputFormGroupIndex>
+          <LikertLabelInput key={`likert-label-${index}`} label={'Likert Label'}>
+            <StyledEditableHtml
               markup={choice.label || ''}
               onChange={(c) => onChoiceChanged(index, { ...choice, label: c })}
               imageSupport={imageSupport}
@@ -330,13 +297,12 @@ const Design = withStyles(styles)((props) => {
               uploadSoundSupport={uploadSoundSupport}
               pluginProps={getPluginProps(likertChoice?.inputConfiguration)}
             />
-          </InputContainer>
+          </LikertLabelInput>
 
-          <div className={classes.likertValueHolder}>
-            <NumberTextField
+          <LikertValueHolder>
+            <StyledNumberTextField
               label={'Likert Value'}
               value={choice.value}
-              className={classes.width100}
               max={100}
               min={-100}
               onChange={(e, t) => {
@@ -345,14 +311,14 @@ const Design = withStyles(styles)((props) => {
               imageSupport={imageSupport}
             />
             {valuesMap[choice.value] && valuesMap[choice.value] > 1 && (
-              <p className={classes.errorMessage}>Value should be unique</p>
+              <ErrorMessage>Value should be unique</ErrorMessage>
             )}
-          </div>
-        </div>
+          </LikertValueHolder>
+        </LikertLabelHolder>
       ))}
     </layout.ConfigLayout>
   );
-});
+};
 
 export class Main extends React.Component {
   static propTypes = {
@@ -360,7 +326,6 @@ export class Main extends React.Component {
     disableSidePanel: PropTypes.bool,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -397,6 +362,4 @@ export class Main extends React.Component {
   }
 }
 
-const Styled = withStyles(styles)(Main);
-
-export default Styled;
+export default Main;

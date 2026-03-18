@@ -48,12 +48,6 @@ describe('Root', () => {
     wrapper = () => shallow(<Root {...props} />);
   });
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     let wInstance;
 

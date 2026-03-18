@@ -2,28 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DraggableCalculator from './draggable-calculator';
 import CalculatorIcon from './calculator-icon';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 
-const styles = (theme) => ({
-  icon: {
-    transition: 'fill 200ms',
-    cursor: 'pointer',
-    verticalAlign: 'middle',
-    fill: theme.palette.grey[600],
-    '&:hover': {
-      fill: theme.palette.common.black,
-    },
-  },
-  active: {
+const StyledCalculatorIcon = styled(CalculatorIcon)(({ theme, active }) => ({
+  transition: 'fill 200ms',
+  cursor: 'pointer',
+  verticalAlign: 'middle',
+  fill: active ? theme.palette.common.black : theme.palette.grey[600],
+  '&:hover': {
     fill: theme.palette.common.black,
   },
-});
+}));
 
 class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -37,12 +30,11 @@ class Main extends React.Component {
   render() {
     const { show } = this.state;
     const { mode } = this.props.model;
-    const { classes } = this.props;
 
     return (
       <div>
-        <CalculatorIcon
-          className={classNames(classes.icon, { [classes.active]: show })}
+        <StyledCalculatorIcon
+          active={show}
           onClick={() => this.onToggleShow()}
         />
         <DraggableCalculator mode={mode} show={show} onClose={this.onClickClose} />
@@ -51,4 +43,4 @@ class Main extends React.Component {
   }
 }
 
-export default withStyles(styles)(Main);
+export default Main;

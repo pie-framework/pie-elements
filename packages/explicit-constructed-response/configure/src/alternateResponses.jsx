@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
-import map from 'lodash/map';
-import reduce from 'lodash/reduce';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep, isEqual, map, reduce } from 'lodash-es';
 
 import AlternateSection from './alternateSection';
 
@@ -15,7 +12,7 @@ export class AlternateResponses extends React.Component {
     onLengthChange: PropTypes.func.isRequired,
     maxLengthPerChoiceEnabled: PropTypes.bool.isRequired,
     spellCheck: PropTypes.bool,
-    pluginProps: PropTypes.object
+    pluginProps: PropTypes.object,
   };
 
   state = { maxLengthPerChoice: cloneDeep(this.props.model.maxLengthPerChoice) };
@@ -169,7 +166,7 @@ export class AlternateResponses extends React.Component {
       model: { maxLengthPerChoice, maxLengthPerChoiceEnabled },
       spellCheck,
       choicesErrors,
-      pluginProps
+      pluginProps,
     } = this.props;
 
     return (

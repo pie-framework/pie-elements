@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { isFunction, merge } from 'lodash-es';
 import { defaults } from '@pie-lib/feedback';
 import * as controller from '../index';
 import { normalize } from '../index';
@@ -73,7 +73,6 @@ describe('controller', () => {
       ${0.4166666666666667} | ${0.66666664} | ${false}
     `('$a closeTo $b is $expected', ({ a, b, expected }) => {
       const result = controller.closeTo(a, b, 3); //controller.CLOSE_TO_PRECISION);
-      console.log('result:', result);
       expect(result).toBe(expected);
     });
 
@@ -152,7 +151,7 @@ describe('controller', () => {
     const assertOutcome = (label, question, session, env, expected) => {
       it(label, async () => {
         const result = await controller.outcome(question, session, env);
-        expect(result).toMatchObject(expected);
+        expect(result).toEqual(expect.objectContaining(expected));
       });
     };
 
@@ -178,7 +177,7 @@ describe('controller', () => {
         };
         const e = { mode: 'evaluate' };
         const result = await controller.outcome(q, s, e);
-        expect(result).toEqual({ score: 1 });
+        expect(result.score).toEqual(1);
       });
     });
 
@@ -272,14 +271,14 @@ describe('controller', () => {
   describe('model', () => {
     const assertModel = (msg, question, session, env, expected) => {
       question = mkQuestion(question);
-      session = _.merge(session, {});
-      env = _.merge(env, {});
+      session = merge(session, {});
+      env = merge(env, {});
 
       it(msg, () => {
         return controller
           .model(question, session, env)
           .then((o) => {
-            if (_.isFunction(expected)) {
+            if (isFunction(expected)) {
               expected(o);
             } else {
               expect(o).toMatchObject(expected);

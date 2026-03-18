@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { layout, TwoChoice } from '@pie-lib/config-ui';
 import { CalculatorLayout } from '@pie-element/calculator';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
 const MainTypes = {
   model: PropTypes.object.isRequired,

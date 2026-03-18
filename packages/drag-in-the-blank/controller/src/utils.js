@@ -1,5 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
-import reduce from 'lodash/reduce';
+import { cloneDeep, reduce } from 'lodash-es';
 
 const replaceHtmlRegex = /<(?!img)[^>]*>?/gm;
 

@@ -1,31 +1,31 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { Main } from '../design';
 
 jest.mock('@pie-lib/config-ui', () => ({
   layout: {
-    ConfigLayout: (props) => <div className="mockConfigLayout">{props.children}</div>,
+    ConfigLayout: (props) => <div data-testid="config-layout">{props.children}</div>,
   },
   settings: {
-    Panel: (props) => <div className="mockPanel" onClick={props.onChange} />,
+    Panel: (props) => <div data-testid="settings-panel" onClick={props.onChange} />,
     toggle: (label, defaultVal = false) => true,
     dropdown: jest.fn(),
   },
 }));
 
 jest.mock('../common', () => ({
-  ConfimationDialog: (props) => <div className="mockDialog" {...props} />,
+  ConfirmationDialog: (props) => <div data-testid="confirmation-dialog" {...props} />,
   PassageButton: (props) => (
-    <button className="mockPassageButton" onClick={props.onClick}>
+    <button data-testid="passage-button" onClick={props.onClick}>
       {props.label}
     </button>
   ),
 }));
 
-jest.mock('../passage', () => (props) => <div className="mockPassage" {...props} />);
+jest.mock('../passage', () => (props) => <div data-testid="passage" {...props} />);
 
 describe('Main Component - Unit Method Tests', () => {
-  let wrapper, instance, onModelChanged;
+  let onModelChanged;
 
   const basePassage = {
     teacherInstructions: '',
@@ -49,7 +49,7 @@ describe('Main Component - Unit Method Tests', () => {
     text: { label: 'Text', settings: true },
   };
 
-  const props = {
+  const defaultProps = {
     model: baseModel,
     configuration,
     imageSupport: {},
@@ -59,13 +59,22 @@ describe('Main Component - Unit Method Tests', () => {
     onConfigurationChanged: jest.fn(),
   };
 
+  const createInstance = (props = {}) => {
+    const mergedProps = { ...defaultProps, ...props };
+    const instance = new Main(mergedProps);
+    instance.setState = jest.fn((state, callback) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+      if (callback) callback();
+    });
+    return instance;
+  };
+
   beforeEach(() => {
     onModelChanged = jest.fn();
-    wrapper = shallow(<Main {...props} onModelChanged={onModelChanged} />);
-    instance = wrapper.instance();
   });
 
   it('getInnerText removes HTML tags', () => {
+    const instance = createInstance();
     expect(instance.getInnerText('<p>Test <strong>123</strong></p>')).toBe('Test 123');
     expect(instance.getInnerText('')).toBe('');
     expect(instance.getInnerText(null)).toBe('');
@@ -73,6 +82,7 @@ describe('Main Component - Unit Method Tests', () => {
   });
 
   it('addAdditionalPassage adds an empty passage and calls onModelChanged', () => {
+    const instance = createInstance({ onModelChanged });
     instance.addAdditionalPassage();
 
     expect(onModelChanged).toHaveBeenCalledWith({
@@ -87,10 +97,9 @@ describe('Main Component - Unit Method Tests', () => {
       passages: [basePassage, basePassage],
     };
 
-    wrapper.setProps({ model: modelWithTwo });
-    instance = wrapper.instance();
-
+    const instance = createInstance({ model: modelWithTwo, onModelChanged });
     const onDeleteSpy = jest.spyOn(instance, 'onDelete');
+
     instance.removeAdditionalPassage(1);
 
     expect(onDeleteSpy).toHaveBeenCalledWith(modelWithTwo, 1, onModelChanged);
@@ -102,10 +111,10 @@ describe('Main Component - Unit Method Tests', () => {
       passages: [basePassage, { ...basePassage, teacherInstructions: '<p>Filled</p>' }],
     };
 
-    wrapper.setProps({ model: modelWithContent });
+    const instance = createInstance({ model: modelWithContent });
     instance.removeAdditionalPassage(1);
 
-    expect(wrapper.state()).toEqual({
+    expect(instance.state).toEqual({
       showConfirmationDialog: true,
       indexToRemove: 1,
     });
@@ -117,7 +126,7 @@ describe('Main Component - Unit Method Tests', () => {
       passages: [{ teacherInstructions: 'Keep' }, { teacherInstructions: 'Remove' }],
     };
 
-    wrapper.setProps({ model: modelWithTwo });
+    const instance = createInstance({ model: modelWithTwo, onModelChanged });
     instance.onDelete(modelWithTwo, 1, onModelChanged);
 
     expect(onModelChanged).toHaveBeenCalledWith({
@@ -125,7 +134,7 @@ describe('Main Component - Unit Method Tests', () => {
       passages: [{ teacherInstructions: 'Keep' }],
     });
 
-    expect(wrapper.state()).toEqual({
+    expect(instance.state).toEqual({
       showConfirmationDialog: false,
       indexToRemove: -1,
     });
