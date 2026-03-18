@@ -1,9 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { InputContainer } from '@pie-lib/config-ui';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { styled } from '@mui/material/styles';
+
+const BaseContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  display: 'flex',
+}));
+
+const StyledInputContainer = styled(InputContainer)({
+  flex: 1,
+  width: '90%',
+});
+
+const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+  borderRadius: '2px',
+  height: '22px',
+  marginLeft: theme.spacing(2),
+  marginRight: theme.spacing(2),
+  marginTop: theme.spacing(2),
+}));
 
 class Palette extends React.Component {
   onChange = (name) => (event) => {
@@ -18,59 +36,49 @@ class Palette extends React.Component {
   };
 
   render() {
-    const { classes, hotspotColor, outlineColor, hotspotList, outlineList } = this.props;
+    const { hotspotColor, outlineColor, hotspotList, outlineList } = this.props;
 
     return (
-      <div className={classes.base}>
-        <InputContainer label="Hot Spot" className={classes.input}>
-          <Select className={classes.select} onChange={this.onChange('hotspot')} value={hotspotColor}>
+      <BaseContainer>
+        <StyledInputContainer label="Hot Spot">
+          <Select 
+            onChange={this.onChange('hotspot')} 
+            value={hotspotColor}
+            variant='standard'
+            MenuProps={{ transitionDuration: { enter: 225, exit: 195 } }}
+            >
             {hotspotList.map((hotspot) => (
-              <MenuItem key={hotspot} value={hotspot} className={classes.item} style={{ backgroundColor: hotspot }}>
+              <StyledMenuItem key={hotspot} value={hotspot} style={{ backgroundColor: hotspot }}>
                 {hotspot}
-              </MenuItem>
+              </StyledMenuItem>
             ))}
           </Select>
-        </InputContainer>
+        </StyledInputContainer>
 
-        <InputContainer label="Response Outline" className={classes.input}>
-          <Select className={classes.select} onChange={this.onChange('outline')} value={outlineColor}>
+        <StyledInputContainer label="Response Outline">
+          <Select 
+            onChange={this.onChange('outline')} 
+            value={outlineColor} 
+            variant='standard'
+            MenuProps={{ transitionDuration: { enter: 225, exit: 195 } }}
+          >
             {outlineList.map((outline) => (
-              <MenuItem
+              <StyledMenuItem
                 key={outline}
                 value={outline}
-                className={classes.item}
                 style={{ border: `2px solid ${outline}` }}
               >
                 {outline}
-              </MenuItem>
+              </StyledMenuItem>
             ))}
           </Select>
-        </InputContainer>
-      </div>
+        </StyledInputContainer>
+      </BaseContainer>
     );
   }
 }
 
-const styles = (theme) => ({
-  base: {
-    marginTop: theme.spacing.unit * 2,
-    display: 'flex',
-  },
-  input: {
-    flex: 1,
-    width: '90%',
-  },
-  item: {
-    borderRadius: '2px',
-    height: '22px',
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-  },
-});
-
 Palette.propTypes = {
-  classes: PropTypes.object.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   hotspotList: PropTypes.array.isRequired,
   onHotspotColorChange: PropTypes.func.isRequired,
@@ -79,4 +87,4 @@ Palette.propTypes = {
   outlineList: PropTypes.array.isRequired,
 };
 
-export default withStyles(styles)(Palette);
+export default Palette;

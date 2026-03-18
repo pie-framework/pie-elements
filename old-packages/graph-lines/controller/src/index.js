@@ -1,7 +1,7 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { lineUtils as utils } from '@pie-lib/charting';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash-es';
 
 const log = debug('@pie-element:graph-lines:controller');
 

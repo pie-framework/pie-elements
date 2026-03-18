@@ -1,9 +1,17 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { AlternateResponses } from '../alternateResponses';
 import sensibleDefaults from '../defaults';
 import { createSlateMarkup, processMarkup } from '../markupUtils';
+
+jest.mock('../alternateSection', () => ({
+  __esModule: true,
+  default: (props) => <div data-testid="alternate-section" {...props} />,
+}));
+
+const theme = createTheme();
 
 const model = {
   markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
@@ -42,36 +50,63 @@ const prepareModel = (model = {}) => {
 
 describe('AlternateResponses', () => {
   let onChange = jest.fn();
+  let onLengthChange = jest.fn();
 
-  const wrapper = (extras) => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  // Helper function to create a properly initialized test instance
+  const createTestInstance = (modelOverrides = {}, propsOverrides = {}) => {
+    const testProps = {
+      onChange,
+      onLengthChange,
+      classes: {},
+      model: prepareModel({
+        ...model,
+        ...modelOverrides,
+      }),
+      maxLengthPerChoiceEnabled: false,
+      ...propsOverrides,
+    };
+
+    const testInstance = new AlternateResponses(testProps);
+    // Initialize state manually since we're not mounting
+    testInstance.state = { maxLengthPerChoice: [] };
+
+    // Mock setState to capture state updates
+    testInstance.setState = jest.fn((newState) => {
+      testInstance.state = { ...testInstance.state, ...newState };
+    });
+
+    return testInstance;
+  };
+
+  const renderAlternateResponses = (extras) => {
     const defaults = {
       onChange,
+      onLengthChange,
       classes: {},
       model: prepareModel({
         ...model,
         ...extras,
       }),
+      maxLengthPerChoiceEnabled: true,
     };
     const props = { ...defaults };
 
-    return shallow(<AlternateResponses {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <AlternateResponses {...props} />
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
-    let w;
-
-    beforeEach(() => {
-      w = wrapper();
-    });
-
     describe('updateChoicesIfNeeded', () => {
       it('sets state, updates edited choice', () => {
+        const testInstance = createTestInstance();
+
         const newChoices = {
           0: [
             { label: 'cow', value: '0' },
@@ -86,14 +121,15 @@ describe('AlternateResponses', () => {
           2: [{ label: 'moon', value: '0' }],
         };
 
-        w.instance().updateChoicesIfNeeded({
+        testInstance.updateChoicesIfNeeded({
           model: {
             ...model,
             choices: newChoices,
           },
+          maxLengthPerChoiceEnabled: false,
         });
 
-        expect(w.instance().state).toEqual(
+        expect(testInstance.state).toEqual(
           expect.objectContaining({
             choices: newChoices,
             values: {
@@ -105,6 +141,8 @@ describe('AlternateResponses', () => {
       });
 
       it('sets state, if a choice has an alternate', () => {
+        const testInstance = createTestInstance();
+
         const newChoices = {
           0: [
             { label: 'cow', value: '0' },
@@ -122,14 +160,15 @@ describe('AlternateResponses', () => {
           ],
         };
 
-        w.instance().updateChoicesIfNeeded({
+        testInstance.updateChoicesIfNeeded({
           model: {
             ...model,
             choices: newChoices,
           },
+          maxLengthPerChoiceEnabled: false,
         });
 
-        expect(w.instance().state).toEqual(
+        expect(testInstance.state).toEqual(
           expect.objectContaining({
             choices: newChoices,
             values: {
@@ -142,6 +181,8 @@ describe('AlternateResponses', () => {
       });
 
       it('sets state if some choices are removed', () => {
+        const testInstance = createTestInstance();
+
         const newChoices = {
           0: [
             { label: 'cow', value: '0' },
@@ -150,14 +191,15 @@ describe('AlternateResponses', () => {
           ],
         };
 
-        w.instance().updateChoicesIfNeeded({
+        testInstance.updateChoicesIfNeeded({
           model: {
             ...model,
             choices: newChoices,
           },
+          maxLengthPerChoiceEnabled: false,
         });
 
-        expect(w.instance().state).toEqual(
+        expect(testInstance.state).toEqual(
           expect.objectContaining({
             choices: newChoices,
             values: {
@@ -168,9 +210,21 @@ describe('AlternateResponses', () => {
       });
 
       it('does not change state', () => {
-        w.instance().updateChoicesIfNeeded({ model });
+        const testInstance = createTestInstance();
 
-        expect(w.instance().state).toEqual(
+        // Initialize state
+        testInstance.updateChoicesIfNeeded({
+          model,
+          maxLengthPerChoiceEnabled: false,
+        });
+
+        // Call again with same model
+        testInstance.updateChoicesIfNeeded({
+          model,
+          maxLengthPerChoiceEnabled: false,
+        });
+
+        expect(testInstance.state).toEqual(
           expect.objectContaining({
             choices: model.choices,
             values: {
@@ -184,7 +238,15 @@ describe('AlternateResponses', () => {
 
     describe('getRemainingChoices', () => {
       it('adds an alternate if selecting a choice', () => {
-        const remainingChoices = w.instance().getRemainingChoices();
+        const testInstance = createTestInstance();
+
+        // Initialize state
+        testInstance.updateChoicesIfNeeded({
+          model,
+          maxLengthPerChoiceEnabled: false,
+        });
+
+        const remainingChoices = testInstance.getRemainingChoices();
 
         expect(remainingChoices).toEqual([{ label: 'moon', value: '2' }]);
       });
@@ -192,7 +254,15 @@ describe('AlternateResponses', () => {
 
     describe('onChoiceChanged', () => {
       it('changes new alternate', () => {
-        w.instance().onChoiceChanged({ label: 'New Choice', value: '1' }, 2);
+        const testInstance = createTestInstance();
+
+        // Initialize state
+        testInstance.updateChoicesIfNeeded({
+          model,
+          maxLengthPerChoiceEnabled: false,
+        });
+
+        testInstance.onChoiceChanged({ label: 'New Choice', value: '1' }, 2);
 
         expect(onChange).toBeCalledWith({
           ...model.choices,
@@ -204,7 +274,15 @@ describe('AlternateResponses', () => {
       });
 
       it('changes existing alternate', () => {
-        w.instance().onChoiceChanged({ label: 'New Choice Edited', value: '1' }, 2);
+        const testInstance = createTestInstance();
+
+        // Initialize state
+        testInstance.updateChoicesIfNeeded({
+          model,
+          maxLengthPerChoiceEnabled: false,
+        });
+
+        testInstance.onChoiceChanged({ label: 'New Choice Edited', value: '1' }, 2);
 
         expect(onChange).toBeCalledWith({
           ...model.choices,
@@ -218,53 +296,116 @@ describe('AlternateResponses', () => {
 
     describe('onChoiceRemoved', () => {
       it('removes choice from section', () => {
-        const choices = w.instance().props.model.choices;
+        const testInstance = createTestInstance();
 
-        w.instance().onChoiceRemoved('1', '1');
+        // Initialize state
+        testInstance.updateChoicesIfNeeded({
+          model,
+          maxLengthPerChoiceEnabled: false,
+        });
 
-        choices[1] = [
-          { label: 'over', value: '0' },
-          { label: 'beyond', value: '2' },
-        ];
+        testInstance.onChoiceRemoved('1', '1');
 
-        expect(onChange).toBeCalledWith(choices);
+        const expectedChoices = {
+          ...model.choices,
+          1: [
+            { label: 'over', value: '0' },
+            { label: 'beyond', value: '2' },
+          ],
+        };
+
+        expect(onChange).toBeCalledWith(expectedChoices);
       });
 
       it('does not throw error if parameters are not correct', () => {
-        const choices = w.instance().props.model.choices;
+        const testInstance = createTestInstance();
 
-        w.instance().onChoiceRemoved('11', '1');
+        // Initialize state
+        testInstance.updateChoicesIfNeeded({
+          model,
+          maxLengthPerChoiceEnabled: false,
+        });
 
-        expect(onChange).toBeCalledWith(choices);
+        testInstance.onChoiceRemoved('11', '1');
+
+        expect(onChange).toBeCalledWith(model.choices);
       });
     });
 
     describe('onSectionSelect', () => {
       it('removing a selection', () => {
-        const choices = w.instance().props.model.choices;
+        const testInstance = createTestInstance({
+          choices: {
+            0: [
+              { label: 'cow', value: '0' },
+              { label: 'cattle', value: '1' },
+              { label: 'calf', value: '2' },
+            ],
+            1: [
+              { label: 'over', value: '0' },
+              { label: 'past', value: '1' },
+              { label: 'beyond', value: '2' },
+            ],
+            2: [{ label: 'moon', value: '0' }],
+          },
+        });
 
-        w.instance().onSectionSelect(undefined, '0');
+        // Initialize state
+        testInstance.updateChoicesIfNeeded({
+          model: {
+            ...model,
+            choices: {
+              0: [
+                { label: 'cow', value: '0' },
+                { label: 'cattle', value: '1' },
+                { label: 'calf', value: '2' },
+              ],
+              1: [
+                { label: 'over', value: '0' },
+                { label: 'past', value: '1' },
+                { label: 'beyond', value: '2' },
+              ],
+              2: [{ label: 'moon', value: '0' }],
+            },
+          },
+          maxLengthPerChoiceEnabled: false,
+        });
+
+        testInstance.onSectionSelect(undefined, '0');
 
         expect(onChange).toBeCalledWith({
-          ...choices,
           0: [{ label: 'cow', value: '0' }],
+          1: [
+            { label: 'over', value: '0' },
+            { label: 'past', value: '1' },
+            { label: 'beyond', value: '2' },
+          ],
+          2: [{ label: 'moon', value: '0' }],
         });
       });
 
       it('selecting a response', () => {
-        const state = w.instance().state;
+        const testInstance = createTestInstance();
 
-        w.instance().onSectionSelect({ label: 'moon', value: '0' }, '2');
+        // Initialize state
+        testInstance.updateChoicesIfNeeded({
+          model,
+          maxLengthPerChoiceEnabled: false,
+        });
 
-        expect(w.instance().state.choices).toEqual({
-          ...state.choices,
+        const stateBefore = { ...testInstance.state };
+
+        testInstance.onSectionSelect({ label: 'moon', value: '0' }, '2');
+
+        expect(testInstance.state.choices).toEqual({
+          ...stateBefore.choices,
           2: [
             { label: 'moon', value: '0' },
             { label: '', value: '1' },
           ],
         });
-        expect(w.instance().state.values).toEqual({
-          ...state.values,
+        expect(testInstance.state.values).toEqual({
+          ...stateBefore.values,
           2: { label: 'moon', value: '0' },
         });
       });

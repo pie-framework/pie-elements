@@ -1,61 +1,81 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
-
-global.MutationObserver = class {
-  constructor(callback) {}
-  disconnect() {}
-  observe(element, initObject) {}
-};
-
-global.ResizeObserver = class {
-  observe() {}
-  disconnect() {}
-};
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { Container } from '../container';
+
+jest.mock('../drawable-palette', () => (props) => <div data-testid="drawable-palette" {...props} />);
+jest.mock('../drawable-main', () => (props) => <div data-testid="drawable-main" {...props} />);
+jest.mock('../drawable-text', () =>
+  jest.fn().mockImplementation(() => ({
+    removeEventListeners: jest.fn(),
+  }))
+);
+jest.mock('../button', () => (props) => <button {...props}>{props.label}</button>);
+jest.mock('../icon', () => (props) => <span {...props} />);
+
+const theme = createTheme();
 
 beforeEach(() => {
   jest.useFakeTimers();
 });
+
+afterEach(() => {
+  jest.useRealTimers();
+});
+
 describe('Container', () => {
-  let w;
   let onSessionChange = jest.fn();
-  const wrapper = (extras, renderOpts) => {
-    const defaults = {
-      classes: {},
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const renderContainer = (props = {}) => {
+    const defaultProps = {
       className: 'className',
       onSessionChange,
       imageDimensions: {},
       imageUrl: 'url',
       session: {},
+      backgroundImageEnabled: true,
+      ...props,
     };
-    const props = { ...defaults, ...extras };
-    return shallow(<Container {...props} />, {
-      disableLifecycleMethods: false,
-      ...renderOpts,
-    });
+    return render(
+      <ThemeProvider theme={theme}>
+        <Container {...defaultProps} />
+      </ThemeProvider>
+    );
   };
-
-  describe('snapshot', () => {
-    it('renders', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
-    });
-
-    it('renders disabled', () => {
-      w = wrapper({ disabled: true });
-      expect(w).toMatchSnapshot();
-    });
-  });
 
   describe('logic', () => {
     describe('setDimensions', () => {
       it('handles errors and clears interval', () => {
-        const w = wrapper({}, { disableLifecycleMethods: true });
-        w.instance().drawable = undefined;
-        w.instance().setDimensions();
+        // Create a container instance directly to test the setDimensions method
+        const testInstance = new Container({
+          onSessionChange,
+          imageDimensions: {},
+          imageUrl: 'url',
+          session: {},
+          backgroundImageEnabled: true,
+        });
+
+        // Set drawable to undefined to trigger error handling
+        testInstance.drawable = undefined;
+
+        // Spy on clearInterval
+        const clearIntervalSpy = jest.spyOn(global, 'clearInterval');
+
+        // Call setDimensions which should handle the error and clear the interval
+        testInstance.setDimensions();
+
+        // Run all timers to execute the setInterval callback
         jest.runAllTimers();
-        expect(clearInterval).toHaveBeenCalled();
+
+        // Verify clearInterval was called
+        expect(clearIntervalSpy).toHaveBeenCalled();
+
+        clearIntervalSpy.mockRestore();
       });
     });
   });

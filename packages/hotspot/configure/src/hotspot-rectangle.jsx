@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Rect, Group, Transformer } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles/index';
 import DeleteWidget from './DeleteWidget';
 
 class RectComponent extends React.Component {
@@ -32,8 +31,10 @@ class RectComponent extends React.Component {
   };
 
   handleMouseLeave = () => {
-    this.setState({ hovered: false });
-    document.body.style.cursor = 'default';
+    if (!this.state.isDragging) {
+      this.setState({ hovered: false });
+      document.body.style.cursor = 'default';
+    }
   };
 
   handleOnDragEnd = (e) => {
@@ -75,7 +76,6 @@ class RectComponent extends React.Component {
 
   render() {
     const {
-      classes,
       correct,
       height,
       hotspotColor,
@@ -92,7 +92,7 @@ class RectComponent extends React.Component {
     const { hovered } = this.state;
 
     return (
-      <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
+      <Group onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter} padding={12}>
         {hoverOutlineColor && hovered && (
           <Rect
             x={x}
@@ -106,7 +106,6 @@ class RectComponent extends React.Component {
         )}
 
         <Rect
-          classes={classes.base}
           ref={this.shapeRef}
           width={width}
           height={height}
@@ -122,6 +121,7 @@ class RectComponent extends React.Component {
           onTransformEnd={this.onResizeEnd}
           x={x}
           y={y}
+          cursor="pointer"
         />
         {!this.state.isDragging && this.state.hovered && (
           <DeleteWidget id={id} height={height} width={width} x={x} y={y} handleWidgetClick={this.handleDelete} />
@@ -144,19 +144,7 @@ class RectComponent extends React.Component {
   }
 }
 
-const styles = () => ({
-  base: {
-    cursor: 'pointer',
-    opacity: 0.5,
-  },
-
-  group: {
-    padding: '12px',
-  },
-});
-
 RectComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
   correct: PropTypes.bool,
   isDrawing: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
@@ -178,4 +166,4 @@ RectComponent.defaultProps = {
   correct: false,
 };
 
-export default withStyles(styles)(RectComponent);
+export default RectComponent;

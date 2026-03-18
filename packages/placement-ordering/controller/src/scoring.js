@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { differenceWith, isEqual, uniq } from 'lodash-es';
 import { combination } from 'js-combinatorics';
 import debug from 'debug';
 
@@ -9,15 +9,15 @@ export const illegalArgumentError = (answer) =>
 export const pairwiseCombinationScore = (correct, answer, opts) => {
   opts = { allowDuplicates: false, orderMustBeComplete: false, ...opts };
 
-  if (!opts.allowDuplicates && !_.isEqual(_.uniq(correct), correct)) {
+  if (!opts.allowDuplicates && !isEqual(uniq(correct), correct)) {
     throw illegalArgumentError(answer);
   }
 
-  if (opts.allowDuplicates === false && answer.length !== _.uniq(answer).length) {
+  if (opts.allowDuplicates === false && answer.length !== uniq(answer).length) {
     return 0;
   }
 
-  answer = opts.allowDuplicates !== false ? answer : _.uniq(answer);
+  answer = opts.allowDuplicates !== false ? answer : uniq(answer);
 
   log('answer:', answer);
   if (!Array.isArray(correct) || correct.length === 0) {
@@ -25,7 +25,7 @@ export const pairwiseCombinationScore = (correct, answer, opts) => {
   }
 
   if (correct.length === 1) {
-    return _.isEqual(correct, answer) ? 1 : 0;
+    return isEqual(correct, answer) ? 1 : 0;
   }
 
   if (!Array.isArray(answer) || answer.length < 2) {
@@ -43,7 +43,7 @@ export const pairwiseCombinationScore = (correct, answer, opts) => {
   const correctCombo = combination(correct, 2).toArray();
   const answerCombo = combination(answer, 2).toArray();
 
-  const diff = _.differenceWith(answerCombo, correctCombo, _.isEqual);
+  const diff = differenceWith(answerCombo, correctCombo, isEqual);
 
   const comboLengthDiff = correctCombo.length - answerCombo.length;
 
@@ -67,13 +67,15 @@ export const flattenCorrect = (question) =>
  * @param question - array
  */
 export const getAllCorrectResponses = (question) => {
-  const alternates = (question.alternateResponses || []).map((alternate) => {
-    if (Array.isArray(alternate)) {
-      return alternate;
-    }
+  const alternates = (question.alternateResponses || [])
+    .map((alternate) => {
+      if (Array.isArray(alternate)) {
+        return alternate;
+      }
 
-    return alternate.response;
-  }).filter(item => item !== undefined);
+      return alternate.response;
+    })
+    .filter((item) => item !== undefined);
 
   return [flattenCorrect(question), ...alternates];
 };

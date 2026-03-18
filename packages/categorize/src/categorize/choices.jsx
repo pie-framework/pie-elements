@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import Choice, { ChoiceType } from './choice';
 import DroppablePlaceholder from './droppable-placeholder';
 export { ChoiceType };
 
-const Blank = () => <div />;
+const Wrapper = styled('div')({
+  flex: 1,
+  touchAction: 'none',
+});
+
+const LabelHolder = styled('div')(({ theme }) => ({
+  margin: '0 auto',
+  textAlign: 'center',
+  paddingTop: theme.spacing(1),
+}));
 
 export class Choices extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.shape(ChoiceType), PropTypes.shape({ empty: PropTypes.bool })]),
     ),
@@ -21,6 +29,7 @@ export class Choices extends React.Component {
     choicePosition: PropTypes.string,
     onDropChoice: PropTypes.func,
     onRemoveChoice: PropTypes.func,
+    correct: PropTypes.boolean,
   };
 
   static defaultProps = {
@@ -31,7 +40,7 @@ export class Choices extends React.Component {
   };
 
   render() {
-    const { classes, choices = [], model, disabled, onDropChoice, onRemoveChoice, choicePosition } = this.props;
+    const { choices = [], model, disabled, onDropChoice, onRemoveChoice, choicePosition, correct } = this.props;
 
     let style = {
       textAlign: 'center',
@@ -42,24 +51,25 @@ export class Choices extends React.Component {
     }
 
     return (
-      <div className={classes.wrapper}>
+      <Wrapper>
         <DroppablePlaceholder
+          id="choices-board"
           onDropChoice={onDropChoice}
           onRemoveChoice={onRemoveChoice}
           disabled={disabled}
           style={{ background: 'none' }}
           choiceBoard={true}
+          correct={correct}
         >
           {model.choicesLabel && model.choicesLabel !== '' && (
-            <div className={classes.labelHolder} dangerouslySetInnerHTML={{ __html: model.choicesLabel }}></div>
+            <LabelHolder dangerouslySetInnerHTML={{ __html: model.choicesLabel }} />
           )}
           {choices.map((c, index) => {
             return c.empty ? (
-              <Blank key={index} />
+              <div key={index} />
             ) : (
               <Choice
                 disabled={disabled}
-                className={classes.choice}
                 key={index}
                 extraStyle={{ maxWidth: `${95 / model.categoriesPerRow}%` }}
                 {...c}
@@ -67,27 +77,9 @@ export class Choices extends React.Component {
             );
           })}
         </DroppablePlaceholder>
-      </div>
+      </Wrapper>
     );
   }
 }
 
-const styles = (theme) => ({
-  wrapper: {
-    flex: 1,
-    touchAction: 'none',
-  },
-  choices: {
-    padding: theme.spacing.unit / 2,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  labelHolder: {
-    margin: '0 auto',
-    textAlign: 'center',
-    paddingTop: theme.spacing.unit,
-  },
-});
-
-export default withStyles(styles)(Choices);
+export default Choices;

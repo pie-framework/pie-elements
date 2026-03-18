@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { InputContainer, settings, layout } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import MatrixColumnsSizeHeaderInput from './MatrixColumnsSizeHeaderInput';
 import MatrixRowsSizeHeaderInput from './MatrixRowsSizeHeaderInput';
 import MatrixLabelTypeHeaderInput from './MatrixLabelTypeHeaderInput';
@@ -10,29 +10,29 @@ import MatrixValues from './MatrixValues';
 
 const { Panel, toggle, radio } = settings;
 
-const styles = (theme) => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  matrixHeaderOptionsHolder: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    width: '100%',
-    paddingBottom: theme.spacing.unit * 2.5,
-    justifyContent: 'space-around',
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(1),
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
 
-const Design = withStyles(styles)((props) => {
+const MatrixHeaderOptionsHolder = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
+  width: '100%',
+  paddingBottom: theme.spacing(2.5),
+  justifyContent: 'space-around',
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
+
+const Design = (props) => {
   const {
-    classes,
     model,
     configuration,
     onPromptChanged,
@@ -83,9 +83,8 @@ const Design = withStyles(styles)((props) => {
       }
     >
       {teacherInstructionsEnabled && (
-        <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+        <StyledInputContainer label={teacherInstructions.label}>
           <EditableHtml
-            className={classes.prompt}
             markup={model.teacherInstructions || ''}
             onChange={onTeacherInstructionsChanged}
             imageSupport={imageSupport}
@@ -95,13 +94,12 @@ const Design = withStyles(styles)((props) => {
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
           />
-          {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-        </InputContainer>
+          {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+        </StyledInputContainer>
       )}
 
-      <InputContainer label={prompt.label} className={classes.promptHolder}>
+      <StyledInputContainer label={prompt.label}>
         <EditableHtml
-          className={classes.prompt}
           markup={model.prompt}
           onChange={onPromptChanged}
           imageSupport={imageSupport}
@@ -112,19 +110,19 @@ const Design = withStyles(styles)((props) => {
           uploadSoundSupport={uploadSoundSupport}
           disableUnderline
         />
-        {promptError && <div className={classes.errorText}>{promptError}</div>}
-      </InputContainer>
+        {promptError && <ErrorText>{promptError}</ErrorText>}
+      </StyledInputContainer>
 
-      <div className={classes.matrixHeaderOptionsHolder}>
+      <MatrixHeaderOptionsHolder>
         <MatrixRowsSizeHeaderInput model={model} onChangeModel={onChangeModel} />
         <MatrixColumnsSizeHeaderInput model={model} onChangeModel={onChangeModel} />
         <MatrixLabelTypeHeaderInput model={model} onChangeModel={onChangeModel} />
-      </div>
+      </MatrixHeaderOptionsHolder>
 
       <MatrixValues model={model} onChangeModel={onChangeModel} />
     </layout.ConfigLayout>
   );
-});
+};
 
 export class Main extends React.Component {
   static propTypes = {
@@ -132,7 +130,6 @@ export class Main extends React.Component {
     disableSidePanel: PropTypes.bool,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -163,6 +160,4 @@ export class Main extends React.Component {
   }
 }
 
-const Styled = withStyles(styles)(Main);
-
-export default Styled;
+export default Main;

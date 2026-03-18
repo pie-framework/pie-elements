@@ -1,34 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import Icon from './icon';
-import IconButton from '@material-ui/core/IconButton';
-import classNames from 'classnames';
+import IconButton from '@mui/material/IconButton';
 
-const iconStyles = (theme) => ({
-  icon: {
-    '& path': {
-      transition: 'fill 200ms',
-      fill: theme.palette.grey[600],
-    },
-    '& rect': {
-      transition: 'fill 200ms',
-      fill: theme.palette.grey[600],
-    },
+const StyledIcon = styled(Icon)(({ theme, active }) => ({
+  '& path': {
     transition: 'fill 200ms',
-    '&:hover': {
-      '& path': {
-        fill: theme.palette.common.black,
-      },
-      '& rect': {
-        fill: theme.palette.common.black,
-      },
-    },
-    cursor: 'pointer',
-    verticalAlign: 'middle',
-    fill: theme.palette.grey[600],
+    fill: active ? theme.palette.common.black : theme.palette.grey[600],
   },
-  active: {
+  '& rect': {
+    transition: 'fill 200ms',
+    fill: active ? theme.palette.common.black : theme.palette.grey[600],
+  },
+  transition: 'fill 200ms',
+  '&:hover': {
     '& path': {
       fill: theme.palette.common.black,
     },
@@ -36,18 +22,20 @@ const iconStyles = (theme) => ({
       fill: theme.palette.common.black,
     },
   },
-});
+  cursor: 'pointer',
+  verticalAlign: 'middle',
+  fill: theme.palette.grey[600],
+}));
 
-const RawToggle = ({ active, onToggle, classes }) => (
-  <IconButton onClick={onToggle}>
-    <Icon className={classNames(classes.icon, active && classes.active)} />
+const Toggle = ({ active, onToggle }) => (
+  <IconButton onClick={onToggle} size="large">
+    <StyledIcon active={active} />
   </IconButton>
 );
 
-RawToggle.propTypes = {
+Toggle.propTypes = {
   active: PropTypes.bool,
   onToggle: PropTypes.func,
-  classes: PropTypes.object,
 };
-const Toggle = withStyles(iconStyles)(RawToggle);
+
 export default Toggle;

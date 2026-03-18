@@ -492,7 +492,7 @@ describe('outcome', () => {
   `('returns score: 0 and empty: true if session is $session', async ({ session }) => {
     const o = await outcome({}, session, { mode: 'evaluate' });
 
-    expect(o).toEqual({ score: 0, empty: true });
+    expect(o).toEqual({ score: 0, empty: true, logTrace: ['Student did not interact with the graph.'] });
   });
 
   it('Lines are correctly scored (ch3729)', async () => {

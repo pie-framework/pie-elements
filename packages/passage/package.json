@@ -1,24 +1,26 @@
 {
   "name": "@pie-element/passage",
-  "version": "5.3.3",
+  "repository": "pie-framework/pie-elements",
+  "version": "6.1.1-next.4",
   "publishConfig": {
     "access": "public"
   },
-  "repository": "pie-framework/pie-elements",
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/style": "^0.8.0",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "3.22.1",
-    "@pie-lib/render-ui": "4.35.2",
-    "classnames": "^2.2.5",
-    "prop-types": "^15.6.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "@pie-lib/math-rendering": "4.2.0-next.3",
+    "@pie-lib/render-ui": "5.2.0-next.4",
+    "prop-types": "^15.8.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "052dc31d77fd3f6cb54ec2ac34ed84858e8672c9",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
@@ -26,10 +28,6 @@
   "module": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./print": "./src/print.js",
-    "./esm": "./esm/element.js",
-    "./configure/esm": "./esm/configure.js",
-    "./controller/esm": "./esm/controller.js",
-    "./print/esm": "./esm/print.js"
+    "./print": "./src/print.js"
   }
 }
