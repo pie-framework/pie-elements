@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@9.1.2-next.5...@pie-element/image-cloze-association@9.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test - include trace log in score response for empty placements ([4a46588](https://github.com/pie-framework/pie-elements/commit/4a46588819250b6efb11b458ed415c6346e70c94))
+
+### Features
+
+- **image-cloze-association:** add trace log for scoring in outcome function PD-5437 ([c9e8e27](https://github.com/pie-framework/pie-elements/commit/c9e8e279113f144b9f316b2de833dbf9264884fd))
+
 ## [9.1.2-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@9.1.2-next.4...@pie-element/image-cloze-association@9.1.2-next.5) (2026-03-12)
 
 ### Bug Fixes
