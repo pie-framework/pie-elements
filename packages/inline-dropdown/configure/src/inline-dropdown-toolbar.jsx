@@ -270,8 +270,6 @@ class RespAreaToolbar extends React.Component {
   onRemoveChoice = (val, index) => {
     const { node, editor, onToolbarDone, onRemoveChoice } = this.props;
 
-    console.log('LOGGING', val, node.attrs.value, isEqual(val, node.attrs.value));
-
     if (isEqual(val, node.attrs.value)) {
       editor.commands.updateAttributes('inline_dropdown', { value: null });
       onToolbarDone(false);
@@ -375,7 +373,7 @@ class RespAreaToolbar extends React.Component {
               this.onRespAreaChange(respAreaMarkup);
             }}
             onDone={(val) => {
-              if (this.preventDone) {
+              if (this.preventDone || this.clickedInside) {
                 return;
               }
 
