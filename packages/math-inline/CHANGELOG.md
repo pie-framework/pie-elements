@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.1...@pie-element/math-inline@11.2.0-next.2) (2026-03-19)
+
+### Bug Fixes
+
+- **math-inline:** adjust response template style PD-5665 ([a58656e](https://github.com/pie-framework/pie-elements/commit/a58656e91c2e988339af5825864d331491f4ac32))
+
 # [11.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.0...@pie-element/math-inline@11.2.0-next.1) (2026-03-18)
 
 ### Bug Fixes

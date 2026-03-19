@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.1-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.6...@pie-element/inline-dropdown-configure@8.1.1-next.7) (2026-03-19)
+
+### Bug Fixes
+
+- made sure inline dropdown choices are editable [PD-5838] ([4cccb70](https://github.com/pie-framework/pie-elements/commit/4cccb70e950677ff80ba06f947b4103c238b7e61))
+
 ## [8.1.1-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.5...@pie-element/inline-dropdown-configure@8.1.1-next.6) (2026-03-13)
 
 ### Bug Fixes
