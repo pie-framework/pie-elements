@@ -20,6 +20,12 @@ const DeleteIconButton = styled(IconButton)({
   color: `${color.tertiary()} !important`,
 });
 
+const StyledDraggableChoice = styled(DraggableChoice)({
+  '& > p': {
+    margin: '0px !important',
+  },
+});
+
 export class ChoicePreview extends React.Component {
   static propTypes = {
     alternateResponseIndex: PropTypes.number,
@@ -50,8 +56,7 @@ export class ChoicePreview extends React.Component {
     return (
       <ChoicePreviewContainer>
         {choice ? (
-          <DraggableChoice
-            alternateResponseIndex={alternateResponseIndex}
+          <StyledDraggableChoice
             category={category}
             choice={choice}
             choiceIndex={choiceIndex}
@@ -61,7 +66,7 @@ export class ChoicePreview extends React.Component {
             categoryId={categoryId}
           >
             <HtmlAndMath html={choice?.content} />
-          </DraggableChoice>
+          </StyledDraggableChoice>
         ) : null}
         <DeleteIconButton aria-label="delete" onClick={this.delete} size="large">
           <RemoveCircleOutlineIcon />
