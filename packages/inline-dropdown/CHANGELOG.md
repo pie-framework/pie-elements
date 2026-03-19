@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.2...@pie-element/inline-dropdown@9.2.0-next.3) (2026-03-19)
+
+### Bug Fixes
+
+- made sure bluring the editor works [PD-5838] ([4c18a84](https://github.com/pie-framework/pie-elements/commit/4c18a84ecfb8bbccfe139add2392f862a73f5264))
+
 # [9.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.1...@pie-element/inline-dropdown@9.2.0-next.2) (2026-03-19)
 
 ### Features
