@@ -534,6 +534,101 @@ describe('RespAreaToolbar', () => {
 
         expect(instance.state.editedChoiceIndex).toBe(index);
       });
+
+      it('should set preventDone to true', () => {
+        const instance = createInstance();
+        const value = 'dog';
+        const index = 1;
+
+        instance.preventDone = false;
+        instance.onEditChoice(value, index);
+
+        expect(instance.preventDone).toBe(true);
+      });
+
+      it('should save current edit before starting a new edit', () => {
+        const localOnAddChoice = jest.fn();
+        const localEditor = {
+          ...editor,
+          commands: {
+            ...editor.commands,
+            refreshResponseArea: jest.fn(),
+          },
+        };
+        const instance = createInstance({
+          onAddChoice: localOnAddChoice,
+          editor: localEditor,
+        });
+        instance.editorRef = {
+          getHTML: jest.fn().mockReturnValue('<div>modified dog</div>'),
+        };
+
+        // Start editing first choice
+        instance.onEditChoice('dog', 1);
+        expect(instance.state.editedChoiceIndex).toBe(1);
+
+        // Start editing second choice without finishing the first
+        instance.onEditChoice('cat', 2);
+
+        // Should have called onDone with the previous edit
+        expect(localOnAddChoice).toHaveBeenCalledWith('0', '<div>modified dog</div>', 1);
+        expect(instance.state.editedChoiceIndex).toBe(2);
+        expect(instance.state.respAreaMarkup).toBe('cat');
+      });
+
+      it('should not call onDone if no choice is currently being edited', () => {
+        const localOnAddChoice = jest.fn();
+        const localEditor = {
+          ...editor,
+          commands: {
+            ...editor.commands,
+            refreshResponseArea: jest.fn(),
+          },
+        };
+        const instance = createInstance({
+          onAddChoice: localOnAddChoice,
+          editor: localEditor,
+        });
+        instance.editorRef = {
+          getHTML: jest.fn().mockReturnValue('<div>test</div>'),
+        };
+
+        // editedChoiceIndex is -1 (no choice being edited)
+        instance.state.editedChoiceIndex = -1;
+        instance.onEditChoice('dog', 1);
+
+        // Should not have called onDone
+        expect(localOnAddChoice).not.toHaveBeenCalled();
+        expect(instance.state.editedChoiceIndex).toBe(1);
+      });
+
+      it('should handle empty HTML when saving previous edit', () => {
+        const localOnAddChoice = jest.fn();
+        const localEditor = {
+          ...editor,
+          commands: {
+            ...editor.commands,
+            refreshResponseArea: jest.fn(),
+          },
+        };
+        const instance = createInstance({
+          onAddChoice: localOnAddChoice,
+          editor: localEditor,
+        });
+        instance.editorRef = {
+          getHTML: jest.fn().mockReturnValue(''),
+        };
+
+        // Start editing first choice
+        instance.onEditChoice('dog', 1);
+
+        // Start editing second choice with empty content in first
+        instance.onEditChoice('cat', 2);
+
+        // Should not call onAddChoice for empty content
+        expect(localOnAddChoice).not.toHaveBeenCalled();
+        expect(instance.state.editedChoiceIndex).toBe(2);
+      });
     });
   });
 
@@ -839,12 +934,12 @@ describe('RespAreaToolbar', () => {
       expect(localEditor.commands.refreshResponseArea).toHaveBeenCalled();
     });
 
-    it('should prevent onDone when clicking inside', () => {
+    it('should handle switching between editing choices without finishing', () => {
       const localOnAddChoice = jest.fn();
       const localEditor = {
         ...editor,
         commands: {
-          ...editor.commands,
+          updateAttributes: jest.fn(),
           refreshResponseArea: jest.fn(),
         },
       };
@@ -852,13 +947,61 @@ describe('RespAreaToolbar', () => {
         onAddChoice: localOnAddChoice,
         editor: localEditor,
       });
-      instance.clickedInside = true;
 
-      instance.onDone('<div>test</div>');
+      // Mock editor with HTML content
+      instance.editorRef = {
+        getHTML: jest.fn()
+          .mockReturnValueOnce('<div>modified dog</div>')
+          .mockReturnValueOnce('<div>modified cat</div>'),
+      };
 
-      // onDone should still proceed - the clickedInside check is in the EditableHtml callback
-      // This test verifies the method doesn't crash when called
-      expect(localOnAddChoice).toHaveBeenCalled();
+      // Start editing first choice
+      instance.onEditChoice('dog', 1);
+      expect(instance.state.editedChoiceIndex).toBe(1);
+      expect(instance.state.respAreaMarkup).toBe('dog');
+
+      // Switch to editing second choice without explicitly calling onDone
+      localOnAddChoice.mockClear();
+      instance.onEditChoice('cat', 2);
+
+      // Should have auto-saved the previous edit
+      expect(localOnAddChoice).toHaveBeenCalledWith('0', '<div>modified dog</div>', 1);
+      expect(instance.state.editedChoiceIndex).toBe(2);
+      expect(instance.state.respAreaMarkup).toBe('cat');
+    });
+
+    it('should handle editing the correct choice and switching to another', () => {
+      const localOnAddChoice = jest.fn();
+      const localEditor = {
+        ...editor,
+        commands: {
+          updateAttributes: jest.fn(),
+          refreshResponseArea: jest.fn(),
+        },
+      };
+      const localOnToolbarDone = jest.fn();
+      const instance = createInstance({
+        onAddChoice: localOnAddChoice,
+        editor: localEditor,
+        onToolbarDone: localOnToolbarDone,
+      });
+
+      // Mock editor with HTML content
+      instance.editorRef = {
+        getHTML: jest.fn().mockReturnValue('<div>modified cow</div>'),
+      };
+
+      // Start editing the correct choice (index 0)
+      instance.onEditChoice('cow', 0);
+      expect(instance.state.editedChoiceIndex).toBe(0);
+
+      // Switch to editing another choice
+      instance.onEditChoice('dog', 1);
+
+      // Should have auto-saved and updated attributes since it was the correct choice
+      expect(localEditor.commands.updateAttributes).toHaveBeenCalledWith('inline_dropdown', { value: '<div>modified cow</div>' });
+      expect(localOnToolbarDone).toHaveBeenCalledWith(false);
+      expect(instance.state.editedChoiceIndex).toBe(1);
     });
   });
 
@@ -1175,6 +1318,10 @@ describe('MenuItem Integration Tests', () => {
       ];
 
       const instance = createToolbar(choices);
+      // Mock editorRef to prevent errors when auto-saving
+      instance.editorRef = {
+        getHTML: jest.fn().mockReturnValue(''),
+      };
       const rendered = render(<>{instance.render()}</>);
 
       const editButtons = rendered.getAllByLabelText('Edit');
@@ -1336,6 +1483,10 @@ describe('MenuItem Integration Tests', () => {
       ];
 
       const instance = createToolbar(choices);
+      // Mock editorRef to prevent errors when auto-saving
+      instance.editorRef = {
+        getHTML: jest.fn().mockReturnValue(''),
+      };
       const rendered = render(<>{instance.render()}</>);
 
       const editButtons = rendered.getAllByLabelText('Edit');
@@ -1344,6 +1495,58 @@ describe('MenuItem Integration Tests', () => {
       expect(instance.state.editedChoiceIndex).toBe(0);
 
       fireEvent.click(editButtons[1]);
+      expect(instance.state.editedChoiceIndex).toBe(1);
+    });
+
+    it('should auto-save when switching between editing choices', () => {
+      const localOnAddChoice = jest.fn();
+      const localEditor = {
+        ...editor,
+        commands: {
+          updateAttributes: jest.fn(),
+          refreshResponseArea: jest.fn(),
+        },
+      };
+
+      const choices = [
+        { label: 'choice1', correct: false },
+        { label: 'choice2', correct: false },
+      ];
+
+      const props = {
+        onAddChoice: localOnAddChoice,
+        onRemoveChoice,
+        onSelectChoice,
+        onToolbarDone,
+        node: {
+          key: '1',
+          attrs: { index: '0', value: 'cow' },
+        },
+        editor: localEditor,
+        choices,
+      };
+
+      const instance = new RespAreaToolbar(props);
+      instance.props = props;
+      instance.setState = jest.fn((state) => {
+        if (typeof state === 'function') {
+          instance.state = { ...instance.state, ...state(instance.state) };
+        } else {
+          instance.state = { ...instance.state, ...state };
+        }
+      });
+      instance.editorRef = {
+        getHTML: jest.fn().mockReturnValue('<div>modified choice1</div>'),
+      };
+      instance.componentDidMount();
+
+      // Start editing first choice directly
+      instance.onEditChoice('choice1', 0);
+      expect(instance.state.editedChoiceIndex).toBe(0);
+
+      // Start editing second choice - should auto-save first choice
+      instance.onEditChoice('choice2', 1);
+      expect(localOnAddChoice).toHaveBeenCalledWith('0', '<div>modified choice1</div>', 0);
       expect(instance.state.editedChoiceIndex).toBe(1);
     });
 

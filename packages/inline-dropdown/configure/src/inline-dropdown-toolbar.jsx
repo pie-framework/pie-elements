@@ -280,6 +280,16 @@ class RespAreaToolbar extends React.Component {
   };
 
   onEditChoice = (val, index) => {
+    const { editedChoiceIndex } = this.state;
+
+    this.preventDone = true;
+
+    if (editedChoiceIndex >= 0) {
+      const html = this.editorRef.getHTML() || '';
+
+      this.onDone(html);
+    }
+
     this.onRespAreaChange(val);
     this.setState({ editedChoiceIndex: index });
   };
@@ -373,7 +383,8 @@ class RespAreaToolbar extends React.Component {
               this.onRespAreaChange(respAreaMarkup);
             }}
             onDone={(val) => {
-              if (this.preventDone || this.clickedInside) {
+              if (this.preventDone) {
+                this.preventDone = false;
                 return;
               }
 
