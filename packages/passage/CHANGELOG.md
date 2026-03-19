@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.1-next.5...@pie-element/passage@6.2.0-next.0) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
 ## [6.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.1-next.4...@pie-element/passage@6.1.1-next.5) (2026-03-18)
 
 ### Bug Fixes

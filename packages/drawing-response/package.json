@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/drawing-response",
   "repository": "pie-framework/pie-elements",
-  "version": "11.1.2-next.4",
+  "version": "11.2.0-next.0",
   "description": "",
   "publishConfig": {
     "access": "public"
