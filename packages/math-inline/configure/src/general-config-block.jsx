@@ -61,6 +61,50 @@ const SelectContainer = styled(InputContainer)(({ theme }) => ({
 const ResponseTemplate = styled('div')({
   display: 'flex',
   flexDirection: 'column',
+
+  '.block-container': {
+    margin: '8px',
+    display: 'inline-flex',
+    border: '2px solid grey',
+
+    '.mq-cursor': {
+      visibility: 'hidden',
+    },
+  },
+  '.block-container-generic': {
+    margin: '4px',
+  },
+
+  '.block-response': {
+    flex: 2,
+    color: 'grey',
+    background: '#f5f5f5',
+    fontSize: '0.8rem',
+    padding: '4px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRight: '2px solid grey',
+  },
+  '.block-response-generic': {
+    borderRight: 0,
+  },
+
+  '.response-editor ': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    maxWidth: '900px',
+    height: 'auto',
+    minHeight: '130px',
+    textAlign: 'left',
+    padding: '8px',
+  },
+
+  '.math-toolbar': {
+    maxWidth: '900px',
+  },
 });
 
 const StyledTooltip = styled(Tooltip)(({ theme }) => ({
@@ -85,51 +129,6 @@ const PromptHolder = styled(InputContainer)(({ theme }) => ({
 const AdvancedResponse = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(2.5),
 }));
-
-// CSS for block classes used in HTML string generation
-// These need to be injected as global styles since they're used in dynamically generated HTML
-if (typeof document !== 'undefined') {
-  const styleId = 'math-inline-block-styles';
-  if (!document.getElementById(styleId)) {
-    const style = document.createElement('style');
-    style.id = styleId;
-    style.textContent = `
-      .block-container {
-        margin: 8px;
-        display: inline-flex;
-        border: 2px solid grey;
-      }
-      .block-container-generic {
-        margin: 4px;
-      }
-      .block-response {
-        flex: 2;
-        color: grey;
-        background: #f5f5f5;
-        font-size: 0.8rem;
-        padding: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-right: 2px solid grey;
-      }
-      .block-response-generic {
-        border-right: 0;
-      }
-      .response-editor {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        max-width: inherit;
-        height: auto;
-        min-height: 130px;
-        text-align: left;
-        padding: 8px;
-      }
-    `;
-    document.head.appendChild(style);
-  }
-}
 
 const REGEX = /{{response}}/gm;
 const TEMPORARY_RESPONSE_FIELD = /\\%response\\%/gm;
@@ -227,10 +226,10 @@ class GeneralConfigBlock extends React.Component {
 
       if (!registered) {
         MQ.registerEmbed('answerBlock', (data) => {
-          const classNames = getBlockClassNames();
-          const genericAnswerBlock = `<div class="${cx(classNames.blockContainer, classNames.blockContainerGeneric)}">
-                <div class="${cx(classNames.blockResponse, classNames.blockResponseGeneric)}" id="${data}Index">Response</div>
-              </div>`;
+          const genericAnswerBlock = `
+            <div class="block-container block-container-generic">
+              <div class="block-response block-response-generic" id="${data}Index">Response</div>
+            </div>`;
 
           return {
             htmlString: genericAnswerBlock,
@@ -329,15 +328,8 @@ class GeneralConfigBlock extends React.Component {
   };
 
   render() {
-    const {
-      model,
-      imageSupport,
-      uploadSoundSupport,
-      configuration,
-      promptEnabled,
-      rationaleEnabled,
-      toolbarOpts,
-    } = this.props;
+    const { model, imageSupport, uploadSoundSupport, configuration, promptEnabled, rationaleEnabled, toolbarOpts } =
+      this.props;
     const { showKeypad } = this.state;
     const {
       prompt,
@@ -369,17 +361,13 @@ class GeneralConfigBlock extends React.Component {
 
     const classNames = {
       editor: 'response-editor',
+      mathToolbar: 'math-toolbar',
     };
 
     const responsesToUse = responseType === ResponseTypes.advanced ? responses : responses.slice(0, 1);
 
     const validationTooltip = (
-      <StyledTooltip
-        disableFocusListener
-        disableTouchListener
-        placement={'right'}
-        title={validationMessage}
-      >
+      <StyledTooltip disableFocusListener disableTouchListener placement={'right'} title={validationMessage}>
         <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
       </StyledTooltip>
     );
@@ -415,14 +403,11 @@ class GeneralConfigBlock extends React.Component {
               {validationTooltip}
             </FlexContainer>
 
-            <SelectContainer
-              key="templateEditorType"
-              label="Response Template Equation Editor"
-            >
+            <SelectContainer key="templateEditorType" label="Response Template Equation Editor">
               <Select
                 onChange={this.onChange('promptEquationEditor')}
                 value={promptEquationEditor}
-                MenuProps={{transitionDuration: { enter: 225, exit: 195 } }}
+                MenuProps={{ transitionDuration: { enter: 225, exit: 195 } }}
               >
                 <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
                 <MenuItem value="integers">Numeric - Integers</MenuItem>
@@ -466,7 +451,11 @@ class GeneralConfigBlock extends React.Component {
         </FlexContainer>
 
         <SelectContainer label="Equation Editor">
-          <Select onChange={this.onChange('equationEditor')} value={equationEditor} MenuProps={{transitionDuration: { enter: 225, exit: 195 } }}>
+          <Select
+            onChange={this.onChange('equationEditor')}
+            value={equationEditor}
+            MenuProps={{ transitionDuration: { enter: 225, exit: 195 } }}
+          >
             <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
             <MenuItem value="integers">Numeric - Integers</MenuItem>
             <MenuItem value="decimals">Numeric - Decimals</MenuItem>
