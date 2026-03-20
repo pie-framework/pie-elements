@@ -57,6 +57,7 @@ export class ChoicePreview extends React.Component {
       <ChoicePreviewContainer>
         {choice ? (
           <StyledDraggableChoice
+            alternateResponseIndex={alternateResponseIndex}
             category={category}
             choice={choice}
             choiceIndex={choiceIndex}
