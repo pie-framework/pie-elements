@@ -101,6 +101,7 @@ describe('RespAreaToolbar', () => {
         value: 'cow',
       },
     },
+    pos: 0,
     editor,
     choices: [
       {
@@ -1195,6 +1196,7 @@ describe('MenuItem Integration Tests', () => {
         key: '1',
         attrs: { index: '0', value: 'cow' },
       },
+      pos: 0,
       editor,
       choices,
     };
@@ -1284,6 +1286,7 @@ describe('MenuItem Integration Tests', () => {
           key: '1',
           attrs: { index: '0', value: 'cow' },
         },
+        pos: 0,
         editor: localEditor,
         choices,
       };
@@ -1522,6 +1525,7 @@ describe('MenuItem Integration Tests', () => {
           key: '1',
           attrs: { index: '0', value: 'cow' },
         },
+        pos: 0,
         editor: localEditor,
         choices,
       };
