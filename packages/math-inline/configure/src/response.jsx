@@ -41,6 +41,10 @@ const ResponseContainer = styled(Card)(({ theme }) => ({
     width: '100%',
     maxWidth: '900px',
   },
+
+  '.mq-math-mode .mq-root-block': {
+    width: 'fit-content',
+  },
 }));
 
 const StyledCardContent = styled(CardContent)(({ theme }) => ({
