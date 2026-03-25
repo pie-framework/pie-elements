@@ -105,4 +105,118 @@ describe('Design', () => {
       expect(container).toBeInTheDocument();
     });
   });
+
+  describe('onDragEnd', () => {
+    const createInstance = (modelExtras = {}) => {
+      const instance = new Design({
+        model: model({
+          allowAlternateEnabled: true,
+          ...modelExtras,
+        }),
+        onChange,
+      });
+
+      instance.setState = jest.fn();
+      instance.removeChoiceFromSource = jest.fn();
+      instance.moveChoice = jest.fn();
+      instance.addChoiceToCategory = jest.fn();
+      instance.moveChoiceInAlternate = jest.fn();
+      instance.addChoiceToAlternateCategory = jest.fn();
+
+      return instance;
+    };
+
+    const eventFor = ({ activeData, overData }) => ({
+      active: activeData ? { data: { current: activeData } } : null,
+      over: overData ? { data: { current: overData } } : null,
+    });
+
+    it('routes choice-preview with no target to removeChoiceFromSource', () => {
+      const instance = createInstance();
+      const activeData = {
+        type: 'choice-preview',
+        id: 'c1-cat1-0',
+        categoryId: '1',
+        choiceIndex: 0,
+      };
+
+      instance.onDragEnd(eventFor({ activeData }));
+
+      expect(instance.removeChoiceFromSource).toHaveBeenCalledWith(
+        activeData,
+        0,
+        expect.objectContaining({
+          allowAlternateEnabled: true,
+          categories: expect.any(Array),
+          choices: expect.any(Array),
+        }),
+      );
+    });
+
+    it('routes choice-preview dropped on choice pool to removeChoiceFromSource', () => {
+      const instance = createInstance();
+      const activeData = {
+        type: 'choice-preview',
+        id: 'c1-cat1-0',
+        categoryId: '1',
+        choiceIndex: 0,
+      };
+      const overData = { type: 'choice' };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.removeChoiceFromSource).toHaveBeenCalled();
+      expect(instance.moveChoice).not.toHaveBeenCalled();
+    });
+
+    it('routes choice-preview dropped on category to moveChoice', () => {
+      const instance = createInstance();
+      const activeData = {
+        type: 'choice-preview',
+        id: 'c1-cat1-0',
+        categoryId: '1',
+        choiceIndex: 2,
+      };
+      const overData = { type: 'category', id: '2' };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.moveChoice).toHaveBeenCalledWith('c1', '1', '2', 2);
+    });
+
+    it('routes new choice dropped on category to addChoiceToCategory', () => {
+      const instance = createInstance();
+      const activeData = { type: 'choice', id: '9' };
+      const overData = { type: 'category', id: '2' };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.addChoiceToCategory).toHaveBeenCalledWith({ id: '9' }, '2');
+    });
+
+    it('routes choice-preview dropped on category-alternate to moveChoiceInAlternate', () => {
+      const instance = createInstance();
+      const activeData = {
+        type: 'choice-preview',
+        id: 'c1-cat1-0',
+        categoryId: '1',
+        choiceIndex: 1,
+      };
+      const overData = { type: 'category-alternate', id: '2', alternateResponseIndex: 3 };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.moveChoiceInAlternate).toHaveBeenCalledWith('c1', '1', '2', 1, 3);
+    });
+
+    it('routes new choice dropped on category-alternate to addChoiceToAlternateCategory', () => {
+      const instance = createInstance({ allowAlternateEnabled: true });
+      const activeData = { type: 'choice', id: '11' };
+      const overData = { type: 'category-alternate', id: '2', alternateResponseIndex: 4 };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.addChoiceToAlternateCategory).toHaveBeenCalledWith({ id: '11' }, '2', 4);
+    });
+  });
 });

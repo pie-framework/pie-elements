@@ -25,7 +25,33 @@ describe('ECRToolbar', () => {
     editor = {
       commands: {
         updateAttributes: jest.fn()
-      }
+      },
+      state: {
+        selection: {
+          from: 0,
+        },
+        tr: {
+          setNodeMarkup: jest.fn(),
+        },
+      },
+      view: {
+        dispatch: jest.fn(),
+        nodeDOM: jest.fn().mockReturnValue({
+          nodeType: 1,
+          getBoundingClientRect: jest.fn().mockReturnValue({
+            top: 100,
+            left: 50,
+            width: 200,
+            height: 30,
+          }),
+          closest: jest.fn().mockReturnValue({
+            getBoundingClientRect: jest.fn().mockReturnValue({
+              top: 0,
+              left: 0,
+            }),
+          }),
+        }),
+      },
     };
   });
 
@@ -36,6 +62,10 @@ describe('ECRToolbar', () => {
       classes: {},
       node: {
         key: 1,
+        attrs: {
+          index: '2',
+          value: 'moon',
+        },
         data: {
           get: (prop) => {
             if (prop === 'index') {
@@ -47,6 +77,7 @@ describe('ECRToolbar', () => {
           toJSON: jest.fn(),
         },
       },
+      pos: 5,
       editor,
       correctChoice: { value: '0', label: 'moon' },
     };
@@ -62,12 +93,26 @@ describe('ECRToolbar', () => {
   describe('logic', () => {
     it('onDone: calls onToolbarDone and onChangeResponse', () => {
       // Create an instance to test the internal method
+      const mockTr = {
+        setNodeMarkup: jest.fn(),
+      };
+      const testEditor = {
+        ...editor,
+        state: {
+          ...editor.state,
+          tr: mockTr,
+        },
+      };
       const testInstance = new ECRToolbar({
         onChangeResponse,
         onToolbarDone,
         classes: {},
         node: {
           key: 1,
+          attrs: {
+            index: '2',
+            value: 'moon',
+          },
           data: {
             get: (prop) => {
               if (prop === 'index') {
@@ -78,7 +123,8 @@ describe('ECRToolbar', () => {
             toJSON: jest.fn(),
           },
         },
-        editor,
+        pos: 5,
+        editor: testEditor,
         value: {
           change: jest.fn().mockReturnValue({
             setNodeByKey: jest.fn().mockReturnValue({
@@ -96,10 +142,15 @@ describe('ECRToolbar', () => {
         correctChoice: { value: '0', label: 'moon' },
       });
 
-      testInstance.onDone();
+      testInstance.onDone('test markup');
 
-      expect(onToolbarDone).toBeCalled();
-      expect(onChangeResponse).toBeCalled();
+      expect(mockTr.setNodeMarkup).toHaveBeenCalledWith(5, undefined, {
+        index: '2',
+        value: 'test markup',
+      });
+      expect(testEditor.view.dispatch).toHaveBeenCalledWith(mockTr);
+      expect(onToolbarDone).toHaveBeenCalledWith(true);
+      expect(onChangeResponse).toHaveBeenCalledWith('test markup');
     });
 
     it('onRespAreaChange updates state', () => {
@@ -109,6 +160,10 @@ describe('ECRToolbar', () => {
         classes: {},
         node: {
           key: 1,
+          attrs: {
+            index: '2',
+            value: 'moon',
+          },
           data: {
             get: (prop) => {
               if (prop === 'index') {
@@ -119,6 +174,7 @@ describe('ECRToolbar', () => {
             toJSON: jest.fn(),
           },
         },
+        pos: 5,
         editor,
         value: {
           change: jest.fn().mockReturnValue({
