@@ -109,6 +109,7 @@ class StimulusTabs extends React.Component {
 
     if (newTabIndex !== -1) {
       event.preventDefault();
+      event.stopPropagation();
       this.handleChange(event, tabs[newTabIndex].id);
       document.getElementById(`button-${tabs[newTabIndex].id}`).focus();
     }
@@ -249,7 +250,6 @@ class StimulusTabs extends React.Component {
                     tabIndex={activeTab === tab.id ? 0 : -1}
                     aria-controls={`tabpanel-${tab.id}`}
                     aria-selected={activeTab === tab.id}
-                    onFocus={() => this.handleChange(null, tab.id)}
                     onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
                   />
                 ))}
