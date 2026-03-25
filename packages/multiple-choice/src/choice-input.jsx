@@ -24,7 +24,7 @@ const CheckboxHolder = styled(Box)({
   backgroundColor: color.background(),
   flex: 1,
   '& .MuiFormControlLabel-root': {
-    marginLeft: '-14px', // to be consistent to previous versions before MUI v5 upgrade  
+    marginLeft: '-14px', // to be consistent to previous versions before MUI v5 upgrade
   },
   '& label': {
     color: color.text(),
@@ -32,7 +32,7 @@ const CheckboxHolder = styled(Box)({
       fontSize: 'inherit',
     },
     '& > .MuiButtonBase-root': {
-      padding: '12px', // to be consistent to previous versions before MUI v5 upgrade  
+      padding: '12px', // to be consistent to previous versions before MUI v5 upgrade
     },
   },
 });
@@ -42,7 +42,7 @@ const BelowSelectionComponent = styled('span')(({ theme }) => ({
   alignItems: 'center',
   '& > span': {
     // visually reduce right padding, but maintain accessibility padding for checkbox indicators to be circles
-    marginLeft: `-${theme.spacing(1)}px`,
+    marginLeft: `-${theme.spacing(1)}`,
   },
 }));
 

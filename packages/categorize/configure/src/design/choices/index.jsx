@@ -15,8 +15,8 @@ const ChoiceHolder = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(1),
   paddingBottom: theme.spacing(1),
   display: 'grid',
-  gridRowGap: `${theme.spacing(1)}px`,
-  gridColumnGap: `${theme.spacing(1)}px`,
+  gridRowGap: theme.spacing(1),
+  gridColumnGap: theme.spacing(1),
 }));
 
 const ErrorText = styled('div')(({ theme }) => ({

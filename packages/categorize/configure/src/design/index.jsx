@@ -54,7 +54,8 @@ const StyledHeader = styled(Header)(({ theme }) => ({
 
 const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
   width: '100%',
-  paddingTop: theme.spacing(2),
+  paddingTop: theme.spacing(1),
+  marginTop: theme.spacing(1),
   marginBottom: theme.spacing(2),
 }));
 
