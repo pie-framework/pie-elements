@@ -520,7 +520,8 @@ export class Main extends React.Component {
                 duplicates: true,
               },
               maxResponseAreas: maxResponseAreas,
-              respAreaToolbar: (node, editor, onToolbarDone) => {
+              respAreaToolbar: (nodeInfo, editor, onToolbarDone) => {
+                const [node, pos] = nodeInfo;
                 const { respAreaChoices } = this.state;
 
                 return props => (
@@ -531,6 +532,7 @@ export class Main extends React.Component {
                     onRemoveChoice={(index) => this.onRemoveChoice(node.attrs.index, index)}
                     onSelectChoice={(index) => this.onSelectChoice(node.attrs.index, index)}
                     node={node}
+                    pos={pos}
                     editor={editor}
                     onToolbarDone={onToolbarDone}
                     choices={respAreaChoices[node.attrs.index]}
