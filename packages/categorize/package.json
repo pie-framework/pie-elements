@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "12.2.0-next.2",
+  "version": "12.2.0-next.3",
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",

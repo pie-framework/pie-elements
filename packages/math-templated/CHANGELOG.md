@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@6.2.0-next.1...@pie-element/math-templated@6.2.0-next.2) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/math-templated
+
 # [6.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@6.2.0-next.0...@pie-element/math-templated@6.2.0-next.1) (2026-03-19)
 
 ### Features

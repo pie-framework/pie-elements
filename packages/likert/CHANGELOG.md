@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@3.2.0-next.0...@pie-element/likert@3.2.0-next.1) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/likert
+
 # [3.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@3.1.1-next.4...@pie-element/likert@3.2.0-next.0) (2026-03-19)
 
 ### Features
