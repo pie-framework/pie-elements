@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.1...@pie-element/explicit-constructed-response@10.2.0-next.2) (2026-03-25)
+
+### Bug Fixes
+
+- made sure ecr fields are properly saved, adapted the response area toolbar callback for inline-dropdown [PD-5787] ([f27b87d](https://github.com/pie-framework/pie-elements/commit/f27b87dd3dbee51e034bfbf9f16c82bc75f9cc7b))
+
 # [10.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.0...@pie-element/explicit-constructed-response@10.2.0-next.1) (2026-03-19)
 
 ### Features

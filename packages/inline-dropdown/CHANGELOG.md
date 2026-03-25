@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.3...@pie-element/inline-dropdown@9.2.0-next.4) (2026-03-25)
+
+### Bug Fixes
+
+- made sure ecr fields are properly saved, adapted the response area toolbar callback for inline-dropdown [PD-5787] ([f27b87d](https://github.com/pie-framework/pie-elements/commit/f27b87dd3dbee51e034bfbf9f16c82bc75f9cc7b))
+
 # [9.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.2...@pie-element/inline-dropdown@9.2.0-next.3) (2026-03-19)
 
 ### Bug Fixes

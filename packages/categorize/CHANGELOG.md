@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.1...@pie-element/categorize@12.2.0-next.2) (2026-03-25)
+
+### Bug Fixes
+
+- **categorize:** unset margin for p in case of editor two lines PD-5669 ([4c774c5](https://github.com/pie-framework/pie-elements/commit/4c774c597288dea51118c6c16bc0951b0f744584))
+- **categorize:** add tests for new onDrag extension, handle invalid target student PD-5514 ([6b6d151](https://github.com/pie-framework/pie-elements/commit/6b6d151a73d93199e57a08690ff4dfefe0189bc2))
+- **categorize:** handle drag targets correctly PD-5514 ([34a4c98](https://github.com/pie-framework/pie-elements/commit/34a4c982b26f534eee21d800387761138aa0be8d))
+- **categorize:** set back needed props PD-5669 ([9e2fe48](https://github.com/pie-framework/pie-elements/commit/9e2fe488118c04a2c0afd1360e7220a82e5ed7a9))
+- **categorize:** set back old model from docs PD-5514 ([d08c28f](https://github.com/pie-framework/pie-elements/commit/d08c28fdc1aead7a4ed58a79309177467f1cacd0))
+
 # [12.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.0...@pie-element/categorize@12.2.0-next.1) (2026-03-19)
 
 ### Features

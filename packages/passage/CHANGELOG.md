@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.2.0-next.0...@pie-element/passage@6.2.0-next.1) (2026-03-25)
+
+### Bug Fixes
+
+- **passage:** add styling for blockquote in player component to reflect styling in editable-html PD-5850 ([0d9e95b](https://github.com/pie-framework/pie-elements/commit/0d9e95b3e75017088e5bb204c847ef931c14ed3c))
+- **passage:** prevent event propagation on tab change PD-5859 ([f633f68](https://github.com/pie-framework/pie-elements/commit/f633f68f785dd0d5e2247c7608fb838fe777b280))
+
 # [6.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.1-next.5...@pie-element/passage@6.2.0-next.0) (2026-03-19)
 
 ### Features
