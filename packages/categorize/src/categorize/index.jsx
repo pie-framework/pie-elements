@@ -21,7 +21,7 @@ class DragPreviewWrapper extends React.Component {
   static propTypes = {
     children: PropTypes.node,
   };
-  
+
   containerRef = React.createRef();
 
   componentDidMount() {
@@ -371,15 +371,10 @@ class CategorizeProvider extends React.Component {
     // Check if drop is valid
     const draggedItem = active?.data?.current;
     const overData = over?.data?.current;
-    const isValidDrop = 
-      over && 
-      active && 
-      draggedItem && 
-      draggedItem.type === 'choice' && 
-      overData && 
-      overData.itemType === 'categorize';
+    const isValidDrop =
+      over && active && draggedItem && draggedItem.type === 'choice' && overData && overData.itemType === 'categorize';
 
-    this.setState({ 
+    this.setState({
       activeDragItem: null,
       isValidDrop: isValidDrop,
     });
@@ -388,30 +383,36 @@ class CategorizeProvider extends React.Component {
       resumeMathObserver();
     }
 
-    if (!over || !active) {
+    if (!active || !draggedItem || draggedItem.type !== 'choice') {
       return;
     }
 
-    if (draggedItem && draggedItem.type === 'choice') {
-      const choiceData = {
-        id: draggedItem.id,
-        categoryId: draggedItem.categoryId,
-        choiceIndex: draggedItem.choiceIndex,
-        value: draggedItem.value,
-        itemType: draggedItem.itemType,
-      };
+    const choiceData = {
+      id: draggedItem.id,
+      categoryId: draggedItem.categoryId,
+      choiceIndex: draggedItem.choiceIndex,
+      value: draggedItem.value,
+      itemType: draggedItem.itemType,
+    };
 
-      if (over.id === 'choices-board') {
-        if (this.categorizeRef && this.categorizeRef.removeChoice && draggedItem.categoryId) {
-          this.categorizeRef.removeChoice(choiceData);
-        }
-      } else {
-        const categoryId = over.id;
-
-        if (this.categorizeRef && this.categorizeRef.dropChoice) {
-          this.categorizeRef.dropChoice(categoryId, choiceData);
-        }
+    // Dropped outside a valid/known target: remove from source category,
+    // which returns the choice to the choices pool.
+    if (!over) {
+      if (this.categorizeRef && this.categorizeRef.removeChoice && draggedItem.categoryId) {
+        this.categorizeRef.removeChoice(choiceData);
       }
+      return;
+    }
+
+    if (over.id === 'choices-board') {
+      if (this.categorizeRef && this.categorizeRef.removeChoice && draggedItem.categoryId) {
+        this.categorizeRef.removeChoice(choiceData);
+      }
+      return;
+    }
+
+    if (this.categorizeRef && this.categorizeRef.dropChoice) {
+      this.categorizeRef.dropChoice(over.id, choiceData);
     }
   };
 
@@ -436,7 +437,7 @@ class CategorizeProvider extends React.Component {
     // Disable drop animation for valid drops to prevent visual snap-back
     // Keep default animation for invalid drops to show visual feedback
     const dropAnimation = isValidDrop ? null : undefined;
-    
+
     return (
       <DragProvider onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
         <uid.Provider value={this.uid}>
