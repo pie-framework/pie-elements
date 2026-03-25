@@ -22,6 +22,12 @@ const Passage = styled('div')(({ theme }) => ({
   backgroundColor: color.background(),
   color: color.text(),
   padding: theme.spacing(2),
+  '& blockquote': {
+    background: '#f9f9f9',
+    borderLeft: '5px solid #ccc',
+    margin: '1.5em 10px',
+    padding: '.5em 10px',
+  },
 }));
 
 const PassageTitle = styled('div')({
