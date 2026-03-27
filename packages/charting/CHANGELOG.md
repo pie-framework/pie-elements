@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.2.0-next.1...@pie-element/charting@11.2.0-next.2) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/charting
+
+# [11.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.2.0-next.0...@pie-element/charting@11.2.0-next.1) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [11.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.1.1-next.4...@pie-element/charting@11.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **charting:** add scoring trace in outcome function PD-5455 ([098ed62](https://github.com/pie-framework/pie-elements/commit/098ed625ad8640008920b7c8e22897c8ceee9040))
+
+## [11.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.1.1-next.3...@pie-element/charting@11.1.1-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [11.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.1.1-next.2...@pie-element/charting@11.1.1-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/charting
+
+## [11.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.1.1-next.1...@pie-element/charting@11.1.1-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/charting
+
+## [11.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.1.0-next.2...@pie-element/charting@11.1.1-next.1) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/charting
+
 # [11.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@11.1.0-next.1...@pie-element/charting@11.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/charting

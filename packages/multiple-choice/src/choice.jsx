@@ -9,9 +9,9 @@ const ChoiceContainer = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'noBorder' && prop !== 'horizontalLayout',
 })(({ theme, noBorder, horizontalLayout }) => ({
   paddingTop: theme.spacing(2.5),
-  paddingBottom: theme.spacing(1) + 2,
-  paddingLeft: theme.spacing(1) + 2,
-  paddingRight: theme.spacing(1) + 2,
+  paddingBottom: `calc(${theme.spacing(1)} + 2px)`,
+  paddingLeft: `calc(${theme.spacing(1)} + 2px)`,
+  paddingRight: `calc(${theme.spacing(1)} + 2px)`,
   borderBottom: noBorder ? 'none' : `1px solid ${theme.palette.grey[300]}`,
   ...(horizontalLayout && {
     paddingRight: theme.spacing(2.5),

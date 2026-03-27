@@ -135,7 +135,7 @@ describe('controller', () => {
     const returnOutcome = (session) => {
       it(`returns score of 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
         const result = await outcome(question, session);
-        expect(result).toEqual({ score: 0, empty: true });
+        expect(result).toEqual({ score: 0, empty: true, traceLog: ['Student did not place any images into placement containers. Score is 0.'] });
       });
     };
 

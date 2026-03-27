@@ -64,16 +64,88 @@ const getOutComeScore = (question, env, answers) => {
   return correctness === 'correct' ? 1 : correctness === 'partial' && true ? getPartialScore(question, answers) : 0;
 };
 
+/**
+ * Generates detailed trace log for match-list scoring evaluation
+ * @param {Object} question
+ * @param {Object} session
+ * @param {Object} env
+ * @returns {Array<string>} traceLog
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+
+  const prompts = question?.prompts || [];
+  const answers = session?.value || {};
+
+  if (!answers || Object.keys(answers).length === 0) {
+    traceLog.push('Student did not provide any answer.');
+    return traceLog;
+  }
+
+  const totalPrompts = prompts.length;
+  traceLog.push(`Match-list item contains ${totalPrompts} question(s).`);
+
+  let correctCount = 0;
+  let answeredCount = 0;
+
+  prompts.forEach((prompt) => {
+    const expectedAnswer = prompt.relatedAnswer;
+    const studentAnswer = answers[prompt.id];
+
+    if (studentAnswer !== undefined) {
+      answeredCount += 1;
+
+      if (studentAnswer === expectedAnswer) {
+        correctCount += 1;
+        traceLog.push(`Question ${prompt.id}: correctly matched.`);
+      } else {
+        traceLog.push(
+          `Question ${prompt.id}: incorrectly matched (selected '${studentAnswer}', expected '${expectedAnswer}').`,
+        );
+      }
+    } else {
+      traceLog.push(`Question ${prompt.id}: no answer provided.`);
+    }
+  });
+
+  traceLog.push(
+    `Student correctly matched ${correctCount} out of ${totalPrompts} question(s).`,
+  );
+
+  const partialScoringEnabled = partialScoring.enabled(question, env);
+
+  if (partialScoringEnabled) {
+    traceLog.push('Score calculated using partial scoring.');
+    traceLog.push(
+      'Score is the number of correct matches divided by the total number of questions.',
+    );
+  } else {
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+    traceLog.push(
+      'Student must match all questions correctly to receive full credit.',
+    );
+  }
+
+  const rawScore = getOutComeScore(question, env, answers);
+  const finalScore = partialScoringEnabled ? rawScore : rawScore === 1 ? 1 : 0;
+
+  traceLog.push(`Final score: ${finalScore}.`);
+
+  return traceLog;
+};
+
 export const outcome = (question, session, env) => {
   return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
-      resolve({ score: undefined, completed: undefined });
+      resolve({ score: undefined, completed: undefined, logTrace: [] });
     } else {
       if (!session || isEmpty(session)) {
-        resolve({ score: 0, empty: true });
+        resolve({ score: 0, empty: true, logTrace: ['Student did not provide any answer.'] });
       } else {
         const out = {
           score: getOutComeScore(question, env, session.value),
+          empty: false,
+          logTrace: getLogTrace(question, session, env),
         };
 
         resolve(out);

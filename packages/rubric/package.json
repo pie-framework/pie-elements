@@ -1,12 +1,22 @@
 {
   "name": "@pie-element/rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "7.1.0-next.2",
+  "version": "7.2.0-next.1",
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js",
-    "./print": "./src/print.js"
+    ".": {
+      "import": "./src/index.js",
+      "default": "./lib/index.js"
+    },
+    "./print": {
+      "import": "./src/print.js",
+      "default": "./lib/print.js"
+    },
+    "./configure/lib": {
+      "require": "./configure/lib/index.js",
+      "default": "./configure/lib/index.js"
+    }
   },
   "description": "Rubric Scoring Interaction",
   "publishConfig": {
@@ -18,7 +28,7 @@
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
     "@pie-lib/math-rendering": "4.2.0-next.3",
-    "@pie-lib/render-ui": "5.2.0-next.4",
+    "@pie-lib/render-ui": "5.2.0-next.7",
     "prop-types": "^15.8.1"
   },
   "author": "pie framework developers",

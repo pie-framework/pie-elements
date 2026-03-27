@@ -139,19 +139,121 @@ const getScore = (config, session, env = {}) => {
   return str < 0 ? 0 : parseFloat(str);
 };
 
+  /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+  const { answers } = session || {};
+  const { shapes } = model || {};
+  
+  const allShapes = [];
+  if (shapes) {
+    if (shapes.rectangles) allShapes.push(...shapes.rectangles);
+    if (shapes.polygons) allShapes.push(...shapes.polygons);
+    if (shapes.circles) allShapes.push(...shapes.circles);
+  }
+  
+  const correctShapes = allShapes.filter(shape => shape.correct);
+  const totalShapes = allShapes.length;
+  
+  traceLog.push(`Total of ${totalShapes} hotspot(s) defined, ${correctShapes.length} correct.`);
+  
+  if (answers && answers.length > 0) {
+    traceLog.push(`Student selected ${answers.length} hotspot(s).`);
+    
+    let correctSelections = 0;
+    let incorrectSelections = 0;
+    
+    answers.forEach(answer => {
+      const shape = allShapes.find(s => s.id === answer.id);
+      if (shape && shape.correct) {
+        correctSelections++;
+      } else {
+        incorrectSelections++;
+      }
+    });
+    
+    const missedCorrect = correctShapes.filter(correctShape => 
+      !answers.some(answer => answer.id === correctShape.id)
+    ).length;
+    
+    if (correctSelections > 0) {
+      traceLog.push(`${correctSelections} correct hotspot(s) selected.`);
+    }
+    if (incorrectSelections > 0) {
+      traceLog.push(`${incorrectSelections} incorrect hotspot(s) selected.`);
+    }
+    if (missedCorrect > 0) {
+      traceLog.push(`${missedCorrect} correct hotspot(s) missed.`);
+    }
+  } else {
+    traceLog.push('No hotspots selected.');
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(model, env);
+  
+  if (partialScoringEnabled) {
+    traceLog.push(`Score calculated using partial scoring.`);
+    
+    if (answers && answers.length > 0) {
+      let correctSelections = 0;
+      let incorrectSelections = 0;
+      
+      answers.forEach(answer => {
+        const shape = allShapes.find(s => s.id === answer.id);
+        if (shape && shape.correct) {
+          correctSelections++;
+        } else {
+          incorrectSelections++;
+        }
+      });
+      
+      const totalCorrectAvailable = correctShapes.length;
+      traceLog.push(`Partial scoring calculation: ${correctSelections} correct selections out of ${totalCorrectAvailable} available.`);
+      
+      if (incorrectSelections > totalCorrectAvailable) {
+        const extraSelections = incorrectSelections - (totalCorrectAvailable - correctSelections);
+        traceLog.push(`${extraSelections} extra incorrect selection(s) beyond required amount are deducted from score.`);
+      }
+    }
+  } else {
+    traceLog.push(`Score calculated using all-or-nothing scoring.`);
+  }
+
+  const score = getScore(model, session, env);
+  traceLog.push(`Score: ${score}.`);
+
+  return traceLog;
+}
+
 export function outcome(config, session, env = {}) {
   return new Promise((resolve) => {
     log('outcome...');
 
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
-    }
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        traceLog: ['No hotspots selected. Score: 0.'] 
+      });
+    } 
 
     if (session.answers) {
+      const traceLog = getLogTrace(config, session, env);
       const score = getScore(config, session, env);
-      resolve({ score });
+
+      resolve({ score, empty: false, traceLog });
     } else {
-      resolve({ score: 0, empty: true });
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        traceLog: ['No hotspots selected. Score: 0.'] 
+      });
     }
   });
 }

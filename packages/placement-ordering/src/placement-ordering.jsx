@@ -210,7 +210,7 @@ export class PlacementOrdering extends React.Component {
 
   onDropChoice = (target, source, ordering) => {
     const { onSessionChange, session } = this.props;
-    const from = ordering.tiles.find((t) => t.id === source.id && t.type === source.type);
+    const from = ordering.tiles.find((t) => t.id === source.id && t.type === source.type && t.index === source.index);
     const to = target;
     log('[onDropChoice] ', from, to);
     const update = reducer({ type: 'move', from, to }, ordering);

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@5.1.1-next.1...@pie-element/math-templated-controller@5.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- remove extra space ([55be82c](https://github.com/pie-framework/pie-elements/commit/55be82c9ecc2cd00881fcaad732ae8403637486f))
+
+### Features
+
+- **math-templated:** add scoring trace in outcome function PD-5468 ([8e80d77](https://github.com/pie-framework/pie-elements/commit/8e80d77babf46784d62a5b11b1575d6a8d433691))
+
+## [5.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@5.1.0-next.2...@pie-element/math-templated-controller@5.1.1-next.1) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/math-templated-controller
+
 # [5.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@5.1.0-next.1...@pie-element/math-templated-controller@5.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/math-templated-controller

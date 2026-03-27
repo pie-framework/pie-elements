@@ -47,7 +47,7 @@ describe('outcome', () => {
   const returnCorrectness = (sess) => {
     it(`returns empty: true and score: 0 if session is ${JSON.stringify(sess)}`, async () => {
       const result = await outcome(defaultModel, sess, { mode: 'evaluate' });
-      expect(result).toEqual({ score: 0, empty: true });
+      expect(result).toEqual({ score: 0, empty: true, logTrace: ['Student did not provide any answer.'] });
     });
   };
 

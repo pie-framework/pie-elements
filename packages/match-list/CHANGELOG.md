@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.2.0-next.1...@pie-element/match-list@6.2.0-next.2) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+# [6.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.2.0-next.0...@pie-element/match-list@6.2.0-next.1) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [6.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.1.1-next.2...@pie-element/match-list@6.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **match-list:** add scoring trace in outcome function PD-5466 ([53ddb48](https://github.com/pie-framework/pie-elements/commit/53ddb48bea283c1e5fba7e8f563ef75875c4e635))
+
+## [6.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.1.1-next.1...@pie-element/match-list@6.1.1-next.2) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+
+## [6.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.1.0-next.2...@pie-element/match-list@6.1.1-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- conflicts ([1b783fc](https://github.com/pie-framework/pie-elements/commit/1b783fcc5e6c0678a3cc57ce4321f07bc18f7734))
+- **match-list:** add drag overaly, fix placeholder component and enhance drag-and-drop functionality PD-5525 ([0a50dde](https://github.com/pie-framework/pie-elements/commit/0a50dde4e4dfadc7622e299e95abd61539a76b3d))
+- **match-list:** consider placeholder 0 valid, allow drag back to choices, allow choices movement between placeholders PD-5524 ([f49b34b](https://github.com/pie-framework/pie-elements/commit/f49b34b997fedde56a4dfb271c2171acb28b9fb7))
+
 # [6.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.1.0-next.1...@pie-element/match-list@6.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/match-list

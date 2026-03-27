@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.2.0-next.1...@pie-element/match@11.2.0-next.2) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/match
+
+# [11.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.2.0-next.0...@pie-element/match@11.2.0-next.1) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [11.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.2-next.4...@pie-element/match@11.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **match:** add scoring trace in outcome function PD-5465 ([d5406c7](https://github.com/pie-framework/pie-elements/commit/d5406c7825380da25d14e1db97036a0225bfaa4a))
+
+## [11.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.2-next.3...@pie-element/match@11.1.2-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [11.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.2-next.2...@pie-element/match@11.1.2-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/match
+
+## [11.1.2-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.2-next.1...@pie-element/match@11.1.2-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/match
+
+## [11.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.0-next.2...@pie-element/match@11.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **match:** filter drag listeners for editable elements ([0d6ee3a](https://github.com/pie-framework/pie-elements/commit/0d6ee3a8736b07c2ed51ec9c2f1417a6cab5a25a))
+- **match:** overwrite mui default colors to reflect correctness PD-5523 ([a83fe93](https://github.com/pie-framework/pie-elements/commit/a83fe933fe8cfc7f54eb831c731a9c8710648730))
+
 # [11.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.1.0-next.1...@pie-element/match@11.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/match

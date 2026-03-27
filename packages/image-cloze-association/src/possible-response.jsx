@@ -50,11 +50,11 @@ const StyledSpan = styled(StaticHTMLSpan)(() => ({
   },
 }));
 
-const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, answerChoiceTransparency }) => {
+const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, answerChoiceTransparency, isOverlay }) => {
   const rootRef = useRef(null);
   const longPressTimer = useRef(null);
 
-  const { setNodeRef, attributes, listeners } = useDraggable({
+  const { setNodeRef, attributes, listeners, isDragging } = useDraggable({
     id: `possible-response-${data.id}`,
     data: {
       id: data.id,
@@ -88,7 +88,7 @@ const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, answerCh
 
     node.addEventListener('touchstart', handleTouchStart, { passive: false });
     node.addEventListener('touchend', handleTouchEnd);
-    node.addEventListener('touchmove', handleTouchMove);
+    node.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
       node.removeEventListener('touchstart', handleTouchStart);
@@ -110,9 +110,9 @@ const PossibleResponse = ({ canDrag, containerStyle, data, onDragBegin, answerCh
   const containsImage = imgRegex.test(data.value);
 
   const containerClassNames = classNames({
-    answerChoiceTransparency,
+    answerChoiceTransparency: answerChoiceTransparency && !isDragging,
     [correctnessClass]: !!correctnessClass,
-    textAnswerChoiceStyle: !containsImage,
+    textAnswerChoiceStyle: !containsImage && !isOverlay,
   });
 
   const promptClassNames = classNames({ hiddenSpan: data.hidden });
@@ -140,11 +140,13 @@ PossibleResponse.propTypes = {
   data: PropTypes.object.isRequired,
   onDragBegin: PropTypes.func.isRequired,
   answerChoiceTransparency: PropTypes.bool,
+  isOverlay: PropTypes.bool,
 };
 
 PossibleResponse.defaultProps = {
   containerStyle: {},
   answerChoiceTransparency: false,
+  isOverlay: false,
 };
 
 export default PossibleResponse;

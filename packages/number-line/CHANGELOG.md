@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.2.0-next.2...@pie-element/number-line@12.2.0-next.3) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+# [12.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.2.0-next.1...@pie-element/number-line@12.2.0-next.2) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [12.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.2.0-next.0...@pie-element/number-line@12.2.0-next.1) (2026-03-18)
+
+### Bug Fixes
+
+- **number-line:** use observer to render math PD-5563 ([0b5833f](https://github.com/pie-framework/pie-elements/commit/0b5833fc929ce67a8e3811e161ddafccf046b1c2))
+
+# [12.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.5...@pie-element/number-line@12.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test ([223f696](https://github.com/pie-framework/pie-elements/commit/223f696635273950e1726b4a9f15120d73019d20))
+
+### Features
+
+- **number-line:** add scoring trace in outcome function PD-5458 ([c5c4513](https://github.com/pie-framework/pie-elements/commit/c5c451393559dcf67086bc1564c546126beb3cae))
+
+## [12.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.4...@pie-element/number-line@12.1.1-next.5) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [12.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.3...@pie-element/number-line@12.1.1-next.4) (2026-03-09)
+
+### Bug Fixes
+
+- **number-line:** show correct answer only when correct response is defined PD-5375 ([df876f2](https://github.com/pie-framework/pie-elements/commit/df876f2fb55637272b93e5ce2330db6ded52995a))
+
+## [12.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.2...@pie-element/number-line@12.1.1-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+## [12.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.1-next.1...@pie-element/number-line@12.1.1-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+## [12.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.0-next.2...@pie-element/number-line@12.1.1-next.1) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/number-line
+
 # [12.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.1.0-next.1...@pie-element/number-line@12.1.0-next.2) (2026-02-24)
 
 ### Bug Fixes

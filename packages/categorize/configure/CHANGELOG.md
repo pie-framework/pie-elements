@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.2.0-next.1...@pie-element/categorize-configure@10.2.0-next.2) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+# [10.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.2.0-next.0...@pie-element/categorize-configure@10.2.0-next.1) (2026-03-25)
+
+### Bug Fixes
+
+- **categorize:** add tests for new onDrag extension, handle invalid target student PD-5514 ([6b6d151](https://github.com/pie-framework/pie-elements/commit/6b6d151a73d93199e57a08690ff4dfefe0189bc2))
+- **categorize:** handle drag targets correctly PD-5514 ([34a4c98](https://github.com/pie-framework/pie-elements/commit/34a4c982b26f534eee21d800387761138aa0be8d))
+
+# [10.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.1.1-next.4...@pie-element/categorize-configure@10.2.0-next.0) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+## [10.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.1.1-next.3...@pie-element/categorize-configure@10.1.1-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [10.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.1.1-next.2...@pie-element/categorize-configure@10.1.1-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+## [10.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.1.1-next.1...@pie-element/categorize-configure@10.1.1-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+## [10.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.1.0-next.2...@pie-element/categorize-configure@10.1.1-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **categorize:** resolve crash when adding new category and implement auto-focus PD-5588 ([39b7a9b](https://github.com/pie-framework/pie-elements/commit/39b7a9b7aed3abcb4c6023829f1b2448631ed23b))
+
 # [10.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@10.1.0-next.1...@pie-element/categorize-configure@10.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/categorize-configure

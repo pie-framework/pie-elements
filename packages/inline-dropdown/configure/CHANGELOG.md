@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.2.0-next.2...@pie-element/inline-dropdown-configure@8.2.0-next.3) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+# [8.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.2.0-next.1...@pie-element/inline-dropdown-configure@8.2.0-next.2) (2026-03-25)
+
+### Bug Fixes
+
+- made sure ecr fields are properly saved, adapted the response area toolbar callback for inline-dropdown [PD-5787] ([f27b87d](https://github.com/pie-framework/pie-elements/commit/f27b87dd3dbee51e034bfbf9f16c82bc75f9cc7b))
+
+# [8.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.2.0-next.0...@pie-element/inline-dropdown-configure@8.2.0-next.1) (2026-03-19)
+
+### Bug Fixes
+
+- made sure bluring the editor works [PD-5838] ([4c18a84](https://github.com/pie-framework/pie-elements/commit/4c18a84ecfb8bbccfe139add2392f862a73f5264))
+
+# [8.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.7...@pie-element/inline-dropdown-configure@8.2.0-next.0) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+## [8.1.1-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.6...@pie-element/inline-dropdown-configure@8.1.1-next.7) (2026-03-19)
+
+### Bug Fixes
+
+- made sure inline dropdown choices are editable [PD-5838] ([4cccb70](https://github.com/pie-framework/pie-elements/commit/4cccb70e950677ff80ba06f947b4103c238b7e61))
+
+## [8.1.1-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.5...@pie-element/inline-dropdown-configure@8.1.1-next.6) (2026-03-13)
+
+### Bug Fixes
+
+- made sure rationale for choices does not have text align [PD-5569] ([d5bda58](https://github.com/pie-framework/pie-elements/commit/d5bda586b64388f6d76f20d74306c1b6a2161d6f))
+
+## [8.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.4...@pie-element/inline-dropdown-configure@8.1.1-next.5) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+- **inline-dropdown:** adjust UI ([7447d0e](https://github.com/pie-framework/pie-elements/commit/7447d0e9ab4e741a6ea47b21ef9b9dfa43470aca))
+
+## [8.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.3...@pie-element/inline-dropdown-configure@8.1.1-next.4) (2026-03-09)
+
+### Bug Fixes
+
+- editor instance handling on the response area PD-5603-PD-5603-PD-5605 ([7478bad](https://github.com/pie-framework/pie-elements/commit/7478bada32bed1d87dba4d7e408b5457cc7c0c86))
+
+## [8.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.2...@pie-element/inline-dropdown-configure@8.1.1-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+## [8.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.1-next.1...@pie-element/inline-dropdown-configure@8.1.1-next.2) (2026-03-05)
+
+### Bug Fixes
+
+- **inline-dropdown:** handle Enter key PD-5602 ([49348f8](https://github.com/pie-framework/pie-elements/commit/49348f815e6b99a6aaf2fa45af8eca598ef44c93))
+
+## [8.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.0-next.2...@pie-element/inline-dropdown-configure@8.1.1-next.1) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
 # [8.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.1.0-next.1...@pie-element/inline-dropdown-configure@8.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-configure

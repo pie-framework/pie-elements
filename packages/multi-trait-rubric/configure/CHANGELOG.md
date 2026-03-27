@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.2.0-next.2...@pie-element/multi-trait-rubric-configure@6.2.0-next.3) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+# [6.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.2.0-next.1...@pie-element/multi-trait-rubric-configure@6.2.0-next.2) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [6.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.2.0-next.0...@pie-element/multi-trait-rubric-configure@6.2.0-next.1) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+# [6.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.1.2-next.3...@pie-element/multi-trait-rubric-configure@6.2.0-next.0) (2026-03-09)
+
+### Bug Fixes
+
+- **multi-trait-rubric:** improve scroll handling in Scale and TraitTile components PD-5659 ([a25efd7](https://github.com/pie-framework/pie-elements/commit/a25efd7ed8aad2d0146f20ee60f44666c73fca36))
+
+### Features
+
+- **multi-trait-rurbic:** add autoWidthToolbar to components PD-5657 ([f4bab78](https://github.com/pie-framework/pie-elements/commit/f4bab783e29514ecf17ff161a984e6ca0abfe79f))
+
+## [6.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.1.2-next.2...@pie-element/multi-trait-rubric-configure@6.1.2-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+## [6.1.2-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.1.2-next.1...@pie-element/multi-trait-rubric-configure@6.1.2-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+## [6.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.1.0-next.2...@pie-element/multi-trait-rubric-configure@6.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **multi-trait-rubric:** fix broken ui PD-5594 ([f56919a](https://github.com/pie-framework/pie-elements/commit/f56919aea24d17cbf7a2ed9d2817b17059402e7b))
+
 # [6.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@6.1.0-next.1...@pie-element/multi-trait-rubric-configure@6.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric-configure

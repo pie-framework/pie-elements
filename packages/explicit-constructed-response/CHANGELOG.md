@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.2...@pie-element/explicit-constructed-response@10.2.0-next.3) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+# [10.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.1...@pie-element/explicit-constructed-response@10.2.0-next.2) (2026-03-25)
+
+### Bug Fixes
+
+- made sure ecr fields are properly saved, adapted the response area toolbar callback for inline-dropdown [PD-5787] ([f27b87d](https://github.com/pie-framework/pie-elements/commit/f27b87dd3dbee51e034bfbf9f16c82bc75f9cc7b))
+
+# [10.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.0...@pie-element/explicit-constructed-response@10.2.0-next.1) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [10.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.1-next.5...@pie-element/explicit-constructed-response@10.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test snapshots ([27e730e](https://github.com/pie-framework/pie-elements/commit/27e730e2f5a597270abe1f85e7cb17758a49013d))
+
+### Features
+
+- **explicit-constructed-response:** add scoring trace in outcome function result PD-5449. Fix some rendering issues in player ([8cdcc8f](https://github.com/pie-framework/pie-elements/commit/8cdcc8f691aa58a815949026cf5d228f3ee5470f))
+
+## [10.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.1-next.4...@pie-element/explicit-constructed-response@10.1.1-next.5) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [10.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.1-next.3...@pie-element/explicit-constructed-response@10.1.1-next.4) (2026-03-09)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+## [10.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.1-next.2...@pie-element/explicit-constructed-response@10.1.1-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+## [10.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.1-next.1...@pie-element/explicit-constructed-response@10.1.1-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+## [10.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.0-next.2...@pie-element/explicit-constructed-response@10.1.1-next.1) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
 # [10.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.1.0-next.1...@pie-element/explicit-constructed-response@10.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

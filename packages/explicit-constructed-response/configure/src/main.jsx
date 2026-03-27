@@ -408,13 +408,15 @@ export class Main extends React.Component {
               duplicates: true,
             },
             maxResponseAreas: maxResponseAreas,
-            respAreaToolbar: (node, editor, onToolbarDone) => {
+            respAreaToolbar: (nodeInfo, editor, onToolbarDone) => {
+              const [node, pos] = nodeInfo;
               const { model } = this.props;
               const correctChoice = (model.choices[node.attrs.index] || [])[0];
               return () => (
                 <ECRToolbar
                   onChangeResponse={(newVal) => this.onChangeResponse(node.attrs.index, newVal)}
                   node={node}
+                  pos={pos}
                   editor={editor}
                   onToolbarDone={onToolbarDone}
                   correctChoice={correctChoice}

@@ -75,6 +75,7 @@ export class ImageClozeAssociationComponent extends React.Component {
       })),
       maxResponsePerZone: maxResponsePerZone || 1,
       showCorrect: false,
+      isValidDrop: false,
     };
   }
 
@@ -84,20 +85,36 @@ export class ImageClozeAssociationComponent extends React.Component {
     if (active?.data?.current) {
       this.setState({
         draggingElement: active.data.current,
+        isValidDrop: false,
       });
     }
   };
 
   onDragEnd = (event) => {
     const { active, over } = event;
+    const { model } = this.props;
+    const { duplicateResponses } = model || {};
 
-    this.setState({ draggingElement: { id: '', value: '' } });
+    // Check if drop is valid
+    const draggedItem = active?.data?.current;
+    const responseArea = over?.data?.current;
+    const isValidDrop =
+      over &&
+      active &&
+      draggedItem &&
+      responseArea &&
+      responseArea.containerIndex !== undefined;
+
+    const shouldDisableAnimation = isValidDrop && duplicateResponses;
+
+    this.setState({
+      draggingElement: { id: '', value: '' },
+      isValidDrop: shouldDisableAnimation,
+    });
 
     if (!over || !active) {
       return;
     }
-
-    const draggedItem = active.data.current;
 
     if (!draggedItem) {
       return;
@@ -107,8 +124,6 @@ export class ImageClozeAssociationComponent extends React.Component {
       this.handleOnAnswerRemove(draggedItem);
       return;
     }
-
-    const responseArea = over.data.current;
 
     if (responseArea) {
       this.handleOnAnswerSelect(draggedItem, responseArea.containerIndex);
@@ -121,18 +136,23 @@ export class ImageClozeAssociationComponent extends React.Component {
 
     if (!draggingElement.id) return null;
 
-    if (draggingElement.id) {
-      return (
-        <PossibleResponse
-          key={draggingElement.id}
-          data={draggingElement}
-          answerChoiceTransparency={model.answerChoiceTransparency}
-          containerStyle={{ margin: '4px' }}
-        />
-      );
-    }
+    // check if the response contains an image
+    const imgRegex = /<img[^>]+src="([^">]+)"/;
+    const containsImage = imgRegex.test(draggingElement.value);
 
-    return null;
+    return (
+      <PossibleResponse
+        key={draggingElement.id}
+        canDrag={false}
+        data={draggingElement}
+        onDragBegin={() => {}}
+        isOverlay
+        containerStyle={{
+          ...(model.answerChoiceTransparency ? { opacity: '0.8' } : {}),
+          ...(!containsImage ? { padding: '0 10px', margin: '4px 6px !important' } : {}),
+        }}
+      />
+    );
   };
 
   filterPossibleAnswers = (possibleResponses, answer) =>
@@ -283,6 +303,7 @@ export class ImageClozeAssociationComponent extends React.Component {
       maxResponsePerZone,
       maxResponsePerZoneWarning,
       showCorrect,
+      isValidDrop,
     } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showToggle = isEvaluateMode && !responseCorrect;
@@ -411,7 +432,11 @@ export class ImageClozeAssociationComponent extends React.Component {
             </StyledRationale>
           )}
         </StyledUiLayout>
-        <DragOverlay>{this.renderDragOverlay()}</DragOverlay>
+        {/* Disable drop animation for valid drops to prevent visual snap-back */}
+        {/* Keep default animation for invalid drops to show visual feedback */}
+        <DragOverlay dropAnimation={isValidDrop ? null : undefined}>
+          {this.renderDragOverlay()}
+        </DragOverlay>
       </DragProvider>
     );
   }

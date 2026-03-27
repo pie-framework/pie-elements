@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.2...@pie-element/categorize@12.2.0-next.3) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+# [12.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.1...@pie-element/categorize@12.2.0-next.2) (2026-03-25)
+
+### Bug Fixes
+
+- **categorize:** unset margin for p in case of editor two lines PD-5669 ([4c774c5](https://github.com/pie-framework/pie-elements/commit/4c774c597288dea51118c6c16bc0951b0f744584))
+- **categorize:** add tests for new onDrag extension, handle invalid target student PD-5514 ([6b6d151](https://github.com/pie-framework/pie-elements/commit/6b6d151a73d93199e57a08690ff4dfefe0189bc2))
+- **categorize:** handle drag targets correctly PD-5514 ([34a4c98](https://github.com/pie-framework/pie-elements/commit/34a4c982b26f534eee21d800387761138aa0be8d))
+- **categorize:** set back needed props PD-5669 ([9e2fe48](https://github.com/pie-framework/pie-elements/commit/9e2fe488118c04a2c0afd1360e7220a82e5ed7a9))
+- **categorize:** set back old model from docs PD-5514 ([d08c28f](https://github.com/pie-framework/pie-elements/commit/d08c28fdc1aead7a4ed58a79309177467f1cacd0))
+
+# [12.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.0...@pie-element/categorize@12.2.0-next.1) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [12.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.5...@pie-element/categorize@12.2.0-next.0) (2026-03-18)
+
+### Features
+
+- **categorize:** add trace log for scoring in outcome function PD-5438 ([53200b5](https://github.com/pie-framework/pie-elements/commit/53200b58af33e81808f6626acbec9e14e631a71d))
+
+## [12.1.2-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.4...@pie-element/categorize@12.1.2-next.5) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+- **categorize:** add missing prop validation ([847df67](https://github.com/pie-framework/pie-elements/commit/847df67bf234bbecb5c5f17f29d84bdd25c2e0d5))
+
+## [12.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.3...@pie-element/categorize@12.1.2-next.4) (2026-03-09)
+
+### Bug Fixes
+
+- **categorize:** category box border color fix PD-5546 ([d87a9a3](https://github.com/pie-framework/pie-elements/commit/d87a9a3a9f0587ca61e6a4104cee89cfd02bb017))
+
+## [12.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.2...@pie-element/categorize@12.1.2-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+## [12.1.2-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.2-next.1...@pie-element/categorize@12.1.2-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+## [12.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.0-next.2...@pie-element/categorize@12.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **categorize, image-cloze-association:** enable snap back visual only for invalid drop zones PD-5495 ([211ab92](https://github.com/pie-framework/pie-elements/commit/211ab9260a76bbfbeb87f1fc85eb68ba833ded7c))
+- **categorize:** resolve crash when adding new category and implement auto-focus PD-5588 ([39b7a9b](https://github.com/pie-framework/pie-elements/commit/39b7a9b7aed3abcb4c6023829f1b2448631ed23b))
+
 # [12.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.1.0-next.1...@pie-element/categorize@12.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/categorize

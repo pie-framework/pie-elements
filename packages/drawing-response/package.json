@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/drawing-response",
   "repository": "pie-framework/pie-elements",
-  "version": "11.1.0-next.2",
+  "version": "11.2.0-next.1",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -15,7 +15,7 @@
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/math-rendering": "4.2.0-next.3",
-    "@pie-lib/render-ui": "5.2.0-next.4",
+    "@pie-lib/render-ui": "5.2.0-next.7",
     "@pie-lib/translator": "3.2.0-next.3",
     "konva": "8.3.0",
     "lodash-es": "^4.17.23",

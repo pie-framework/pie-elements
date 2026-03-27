@@ -29,6 +29,7 @@ export class Choices extends React.Component {
     choicePosition: PropTypes.string,
     onDropChoice: PropTypes.func,
     onRemoveChoice: PropTypes.func,
+    correct: PropTypes.boolean,
   };
 
   static defaultProps = {
@@ -39,7 +40,7 @@ export class Choices extends React.Component {
   };
 
   render() {
-    const { choices = [], model, disabled, onDropChoice, onRemoveChoice, choicePosition } = this.props;
+    const { choices = [], model, disabled, onDropChoice, onRemoveChoice, choicePosition, correct } = this.props;
 
     let style = {
       textAlign: 'center',
@@ -58,6 +59,7 @@ export class Choices extends React.Component {
           disabled={disabled}
           style={{ background: 'none' }}
           choiceBoard={true}
+          correct={correct}
         >
           {model.choicesLabel && model.choicesLabel !== '' && (
             <LabelHolder dangerouslySetInnerHTML={{ __html: model.choicesLabel }} />

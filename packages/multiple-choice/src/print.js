@@ -68,9 +68,12 @@ export default class MultipleChoicePrint extends HTMLElement {
             this._root = createRoot(this);
           }
           this._root.render(element);
-          queueMicrotask(() => {
-            log('render complete - render math');
-            renderMath(this);
+          // Use double requestAnimationFrame so React has committed to the DOM before we render math
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              log('render complete - render math');
+              renderMath(this);
+            });
           });
         } else {
           log('skip');

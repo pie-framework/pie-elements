@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@8.2.0-next.0...@pie-element/graphing-configure@8.2.0-next.1) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+# [8.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@8.1.1-next.5...@pie-element/graphing-configure@8.2.0-next.0) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+## [8.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@8.1.1-next.4...@pie-element/graphing-configure@8.1.1-next.5) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [8.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@8.1.1-next.3...@pie-element/graphing-configure@8.1.1-next.4) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+## [8.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@8.1.1-next.2...@pie-element/graphing-configure@8.1.1-next.3) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+## [8.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@8.1.1-next.1...@pie-element/graphing-configure@8.1.1-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+## [8.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@8.1.0-next.2...@pie-element/graphing-configure@8.1.1-next.1) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
 # [8.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@8.1.0-next.1...@pie-element/graphing-configure@8.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/graphing-configure

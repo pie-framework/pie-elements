@@ -94,21 +94,118 @@ export const getPartialScore = (question, session) => {
   return 1;
 };
 
+/**
+ * Generates detailed trace log for math-templated scoring evaluation
+ * @param {Object} question
+ * @param {Object} session
+ * @param {Object} env
+ * @returns {Array<string>} traceLog
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+
+  if (!session || !session.answers || Object.keys(session.answers).length === 0) {
+    traceLog.push('Student did not enter a response.');
+    return traceLog;
+  }
+
+  const answers = session.answers;
+  const responseIds = Object.keys(question.responses || {});
+  const totalAreas = responseIds.length;
+
+  traceLog.push(`${totalAreas} response area(s) defined in this question.`);
+
+  let answeredCount = 0;
+  let correctCount = 0;
+
+  responseIds.forEach((responseId, index) => {
+    const answerItem = answers[`r${responseId}`];
+    const studentValue = answerItem?.value?.trim();
+    const correctResponse = question.responses[responseId] || {};
+
+    const cleanStudentAnswer = studentValue ? studentValue.replace(/\\/g, '') : '';
+
+    if (studentValue) {
+      answeredCount++;
+      traceLog.push(`Response area ${index + 1}: student entered ${cleanStudentAnswer}.`);
+    } else {
+      traceLog.push(`Response area ${index + 1}: no response entered.`);
+    }
+
+    const validation = correctResponse.validation || question.validationDefault;
+    traceLog.push(`Validation mode: ${validation}.`);
+    
+    if (validation === 'literal') {
+      const allowTrailingZeros = correctResponse.allowTrailingZeros || false;
+      const ignoreOrder = correctResponse.ignoreOrder || false;
+      
+      traceLog.push(`Allow trailing zeros: ${allowTrailingZeros ? 'enabled' : 'disabled'}.`);
+      traceLog.push(`Ignore order: ${ignoreOrder ? 'enabled' : 'disabled'}.`);
+    }
+    
+    const acceptedValues = [correctResponse.answer].concat(
+      Object.values(correctResponse.alternates || {})
+    );
+    
+    if (acceptedValues.length > 1) {
+      traceLog.push(`Accepted answers: ${acceptedValues.length} (including alternates).`);
+    }
+
+    if (studentValue) {
+      const isCorrect = getIsAnswerCorrect(correctResponse, answerItem);
+      if (isCorrect) {
+        correctCount++;
+        traceLog.push(`Response area ${index + 1} is correct.`);
+      } else {
+        traceLog.push(`Response area ${index + 1} is incorrect.`);
+      }
+    }
+  });
+
+  traceLog.push(`${correctCount} out of ${totalAreas} response area(s) are correct.`);
+
+  const partialScoringEnabled = partialScoring.enabled(question, env);
+  traceLog.push(
+    `Scoring method: ${partialScoringEnabled ? 'partial scoring' : 'all-or-nothing scoring'}.`
+  );
+
+  if (partialScoringEnabled) {
+    traceLog.push('Each correct response area contributes to the score.');
+  } else {
+    traceLog.push('Student must answer all response areas correctly to receive full credit.');
+  }
+
+  const correctness = getCorrectness(question, env, session);
+  traceLog.push(`Overall correctness: ${correctness.correctness}.`);
+  traceLog.push(`Final score: ${correctness.score}.`);
+
+  return traceLog;
+};
+
 export const outcome = (question, session, env) =>
   new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        logTrace: ['Student did not enter a response.'] 
+      });
+      return;
     }
+    
     const partialScoringEnabled = partialScoring.enabled(question, env);
     session = normalizeSession(session);
 
     if (env.mode !== 'evaluate') {
-      resolve({ score: undefined, completed: undefined });
+      resolve({ score: undefined, completed: undefined, logTrace: [] });
     } else {
       const correctness = getCorrectness(question, env, session, true);
       const score = correctness.score;
 
-      resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+      resolve({ 
+        score: partialScoringEnabled ? score : score === 1 ? 1 : 0,
+        logTrace: getLogTrace(question, session, env)
+      });
     }
   });
 

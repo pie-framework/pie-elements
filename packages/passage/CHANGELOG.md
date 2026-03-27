@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.2.0-next.1...@pie-element/passage@6.2.0-next.2) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/passage
+
+# [6.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.2.0-next.0...@pie-element/passage@6.2.0-next.1) (2026-03-25)
+
+### Bug Fixes
+
+- **passage:** add styling for blockquote in player component to reflect styling in editable-html PD-5850 ([0d9e95b](https://github.com/pie-framework/pie-elements/commit/0d9e95b3e75017088e5bb204c847ef931c14ed3c))
+- **passage:** prevent event propagation on tab change PD-5859 ([f633f68](https://github.com/pie-framework/pie-elements/commit/f633f68f785dd0d5e2247c7608fb838fe777b280))
+
+# [6.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.1-next.5...@pie-element/passage@6.2.0-next.0) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+## [6.1.1-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.1-next.4...@pie-element/passage@6.1.1-next.5) (2026-03-18)
+
+### Bug Fixes
+
+- **passage:** ensure ALL_PLUGINS is defined before filtering basic plugins ([7d75830](https://github.com/pie-framework/pie-elements/commit/7d75830ec987457f26106174b78fd7759b976309))
+- **passage:** use basic plugin filtering and add math rendering observer PD-5789 ([8a4ac21](https://github.com/pie-framework/pie-elements/commit/8a4ac213977a3ddda2a73abb9586fb765eaa8c50))
+
+## [6.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.1-next.3...@pie-element/passage@6.1.1-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [6.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.1-next.2...@pie-element/passage@6.1.1-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/passage
+
+## [6.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.1-next.1...@pie-element/passage@6.1.1-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/passage
+
+## [6.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.0-next.2...@pie-element/passage@6.1.1-next.1) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/passage
+
 # [6.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.1.0-next.1...@pie-element/passage@6.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/passage

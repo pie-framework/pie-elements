@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.2.0-next.2...@pie-element/multiple-choice@12.2.0-next.3) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+# [12.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.2.0-next.1...@pie-element/multiple-choice@12.2.0-next.2) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [12.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.2.0-next.0...@pie-element/multiple-choice@12.2.0-next.1) (2026-03-18)
+
+### Bug Fixes
+
+- **multiple-choice:** adjust margin and padding for CheckboxHolder to maintain consistency with previous versions PD-5579 ([f786617](https://github.com/pie-framework/pie-elements/commit/f7866172fbdad2868b16fe87a5c87516a09915d2))
+
+# [12.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.6...@pie-element/multiple-choice@12.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- test ([be07920](https://github.com/pie-framework/pie-elements/commit/be07920477def42dc240d032783be437400b7e93))
+
+### Features
+
+- **multiple-choice:** add trace log for scoring in outcome function PD-5434 ([0f49930](https://github.com/pie-framework/pie-elements/commit/0f49930da8d4098ad0bec74fc462942ddf031172))
+
+## [12.1.2-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.5...@pie-element/multiple-choice@12.1.2-next.6) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [12.1.2-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.4...@pie-element/multiple-choice@12.1.2-next.5) (2026-03-09)
+
+### Bug Fixes
+
+- **multiple-choice:** padding calculations PD-5579 ([695bc9f](https://github.com/pie-framework/pie-elements/commit/695bc9f057a0f1b0e3d7b9f93bbecce55bda9a9f))
+- **multiple-choice:** update module exports to point to lib directory - for ebsr dependency ([8f6bc61](https://github.com/pie-framework/pie-elements/commit/8f6bc61282da842a706fe53c970438c591e067fb))
+
+## [12.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.3...@pie-element/multiple-choice@12.1.2-next.4) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+## [12.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.2...@pie-element/multiple-choice@12.1.2-next.3) (2026-03-05)
+
+### Bug Fixes
+
+- **multiple-choice, placement-ordering:** use observer to render math content PD-5638 ([4c2a662](https://github.com/pie-framework/pie-elements/commit/4c2a662a56b20550168929faeaf9c1eb5b9a8ca1))
+- **multiple-choice:** remove explicit aria-checked from radio and checkbox, Material UI 7 handles aria-checked automatically based on the checked prop ([31c917c](https://github.com/pie-framework/pie-elements/commit/31c917ca669504bb79aa60537a40e89147d236a8))
+
+## [12.1.2-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.2-next.1...@pie-element/multiple-choice@12.1.2-next.2) (2026-03-03)
+
+### Bug Fixes
+
+- **ebsr/complex-rubric:** update package exports to include import and default fields for multiple-choice and rubric packages ([e96603c](https://github.com/pie-framework/pie-elements/commit/e96603c9f21271bf7ef394d3feda37b3a44996c6))
+
+## [12.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.0-next.2...@pie-element/multiple-choice@12.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **multiple-choice:** wait dom to be fully painted until calling renderMath requestAnimFrame PD-5619 ([057d5dc](https://github.com/pie-framework/pie-elements/commit/057d5dccbb76f7e2c3ea14402344a1ba13a10200))
+
 # [12.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.1.0-next.1...@pie-element/multiple-choice@12.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

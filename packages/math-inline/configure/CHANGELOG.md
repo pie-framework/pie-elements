@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.2.0-next.0...@pie-element/math-inline-configure@10.2.0-next.1) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+# [10.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.1.2-next.5...@pie-element/math-inline-configure@10.2.0-next.0) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+## [10.1.2-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.1.2-next.4...@pie-element/math-inline-configure@10.1.2-next.5) (2026-03-19)
+
+### Bug Fixes
+
+- **math-inline:** adjust response template style PD-5665 ([a58656e](https://github.com/pie-framework/pie-elements/commit/a58656e91c2e988339af5825864d331491f4ac32))
+
+## [10.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.1.2-next.3...@pie-element/math-inline-configure@10.1.2-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [10.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.1.2-next.2...@pie-element/math-inline-configure@10.1.2-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+## [10.1.2-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.1.2-next.1...@pie-element/math-inline-configure@10.1.2-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+## [10.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.1.0-next.2...@pie-element/math-inline-configure@10.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- **math-inline:** position Remove button near Alternate label in edit UI PD-5613 ([d391299](https://github.com/pie-framework/pie-elements/commit/d391299335c1932a37d5b13076d46ec7c47f70ea))
+
 # [10.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.1.0-next.1...@pie-element/math-inline-configure@10.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure

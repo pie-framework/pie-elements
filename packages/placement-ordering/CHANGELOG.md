@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.2.0-next.1...@pie-element/placement-ordering@13.2.0-next.2) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+# [13.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.2.0-next.0...@pie-element/placement-ordering@13.2.0-next.1) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+# [13.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.1.1-next.4...@pie-element/placement-ordering@13.2.0-next.0) (2026-03-18)
+
+### Bug Fixes
+
+- tests ([bcea404](https://github.com/pie-framework/pie-elements/commit/bcea40428ae344270edf703186cbe83b85b1ead2))
+
+### Features
+
+- **placement-ordering:** add scoring trace in outcome function PD-5459 ([ddaeeea](https://github.com/pie-framework/pie-elements/commit/ddaeeea858dde5a462225798bdca4acc90cd7a39))
+
+## [13.1.1-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.1.1-next.3...@pie-element/placement-ordering@13.1.1-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- add touchAction none to various styled components for improved touch handling drag and drop PD-5811 ([bc5a8af](https://github.com/pie-framework/pie-elements/commit/bc5a8afab27ee254608c55ecc7e7c7130a191f38))
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+- **placement-ordering:** prevent dragging when editing content PD-5788 ([4523606](https://github.com/pie-framework/pie-elements/commit/452360638540351e74506da0c1723ab587538800))
+
+## [13.1.1-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.1.1-next.2...@pie-element/placement-ordering@13.1.1-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+## [13.1.1-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.1.1-next.1...@pie-element/placement-ordering@13.1.1-next.2) (2026-03-05)
+
+### Bug Fixes
+
+- **multiple-choice, placement-ordering:** use observer to render math content PD-5638 ([4c2a662](https://github.com/pie-framework/pie-elements/commit/4c2a662a56b20550168929faeaf9c1eb5b9a8ca1))
+- **placement-ordering:** fix drag-and-drop functionality for target area PD-5652 ([165d52e](https://github.com/pie-framework/pie-elements/commit/165d52e280b96ffa0c388158bdce07bde3eb94a4))
+- **placement-ordering:** remove opacity style for disabled choice tiles PD-5668 ([e8d2329](https://github.com/pie-framework/pie-elements/commit/e8d232942da35936ef1b03400eca8911e059ed36))
+
+## [13.1.1-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.1.0-next.2...@pie-element/placement-ordering@13.1.1-next.1) (2026-02-26)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
 # [13.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@13.1.0-next.1...@pie-element/placement-ordering@13.1.0-next.2) (2026-02-24)
 
 **Note:** Version bump only for package @pie-element/placement-ordering

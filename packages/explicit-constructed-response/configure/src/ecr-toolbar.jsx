@@ -18,6 +18,7 @@ export class ECRToolbar extends React.Component {
   static propTypes = {
     correctChoice: PropTypes.object,
     node: PropTypes.object,
+    pos: PropTypes.number,
     onDone: PropTypes.func,
     onChangeResponse: PropTypes.func.isRequired,
     onToolbarDone: PropTypes.func.isRequired,
@@ -67,11 +68,15 @@ export class ECRToolbar extends React.Component {
   }
 
   onDone = (markup) => {
-    const { node, editor, onToolbarDone, onChangeResponse } = this.props;
+    const { editor, node, onToolbarDone, onChangeResponse, pos } = this.props;
     const sanitizedMarkup = stripHtmlTags(markup);
     this.setState({ markup: sanitizedMarkup });
 
-    editor.commands.updateAttributes('explicit_constructed_response', { value: sanitizedMarkup });
+    const { tr } = editor.state;
+
+    // Merge old and new attributes
+    tr.setNodeMarkup(pos, undefined, { ...node.attrs, value: sanitizedMarkup });
+    editor.view.dispatch(tr);
 
     onToolbarDone(true);
     onChangeResponse(sanitizedMarkup);

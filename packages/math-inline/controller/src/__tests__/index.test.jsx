@@ -391,7 +391,7 @@ describe('outcome', () => {
     it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
       let outcomeResult = await outcome(question, session, env);
 
-      expect(outcomeResult).toEqual({ score: 0, empty: true });
+      expect(outcomeResult).toEqual({ score: 0, empty: true, logTrace: ['Student did not enter a response.']  });
     });
   };
 
@@ -651,7 +651,7 @@ describe('6456 - outcome', () => {
     latexEqual.mockReturnValueOnce(false);
     const env = { mode: 'evaluate' };
     const result = await outcome(question, session, env);
-    expect(result).toEqual({ score: 0 });
+    expect(result.score).toEqual(0);
   });
 
   it('scores 1', async () => {
@@ -663,7 +663,7 @@ describe('6456 - outcome', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(question, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 });
 
@@ -696,7 +696,7 @@ describe('6371', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(question, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 });
 
@@ -729,7 +729,7 @@ describe('3826', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(question, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 });
 
@@ -785,7 +785,7 @@ describe('PD-66', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(question, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 });
 
@@ -860,7 +860,7 @@ describe('PD-205', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(question, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 });
 
@@ -897,7 +897,7 @@ describe('PD-610', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_01, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   it('scores 0', async () => {
@@ -910,7 +910,7 @@ describe('PD-610', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_01, session, env);
-    expect(result).toEqual({ score: 0 });
+    expect(result.score).toEqual(0);
   });
 
   const equation_02 = {
@@ -945,7 +945,7 @@ describe('PD-610', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_02, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   it('scores 0', async () => {
@@ -958,7 +958,7 @@ describe('PD-610', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_02, session, env);
-    expect(result).toEqual({ score: 0 });
+    expect(result.score).toEqual(0);
   });
 
   const equation_03 = {
@@ -993,7 +993,7 @@ describe('PD-610', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_03, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   it('scores 0', async () => {
@@ -1006,7 +1006,7 @@ describe('PD-610', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_03, session, env);
-    expect(result).toEqual({ score: 0 });
+    expect(result.score).toEqual(0);
   });
 });
 
@@ -1043,7 +1043,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_01, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   const expression_02 = {
@@ -1078,7 +1078,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_02, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   const expression_03 = {
@@ -1113,7 +1113,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_03, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   const expression_04 = {
@@ -1148,7 +1148,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_04, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   const expression_05 = {
@@ -1183,7 +1183,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_05, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   it('scores 1', async () => {
@@ -1195,7 +1195,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_05, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   it('scores 1', async () => {
@@ -1207,7 +1207,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_05, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   const expression_06 = {
@@ -1242,7 +1242,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_06, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   it('scores 1', async () => {
@@ -1254,7 +1254,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_06, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   it('scores 1', async () => {
@@ -1266,7 +1266,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_06, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   const expression_07 = {
@@ -1301,7 +1301,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_07, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   const expression_08 = {
@@ -1336,7 +1336,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(expression_08, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   const equation_01 = {
@@ -1371,7 +1371,7 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_01, session, env);
-    expect(result).toEqual({ score: 1 });
+    expect(result.score).toEqual(1);
   });
 
   it('scores 0', async () => {
@@ -1384,6 +1384,6 @@ describe('PD-1031', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_01, session, env);
-    expect(result).toEqual({ score: 0 });
+    expect(result.score).toEqual(0);
   });
 });

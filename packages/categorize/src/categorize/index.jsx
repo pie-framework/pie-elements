@@ -18,6 +18,10 @@ const { translator } = Translator;
 const log = debug('@pie-ui:categorize');
 
 class DragPreviewWrapper extends React.Component {
+  static propTypes = {
+    children: PropTypes.node,
+  };
+
   containerRef = React.createRef();
 
   componentDidMount() {
@@ -286,6 +290,7 @@ export class Categorize extends React.Component {
             choicePosition={choicePosition}
             onDropChoice={this.dropChoice}
             onRemoveChoice={this.removeChoice}
+            correct={correct}
           />
         </StyledCategorize>
         {displayNote && (
@@ -318,11 +323,28 @@ export class Categorize extends React.Component {
 }
 
 class CategorizeProvider extends React.Component {
+  static propTypes = {
+    model: PropTypes.object,
+    session: PropTypes.shape({
+      answers: PropTypes.arrayOf(
+        PropTypes.shape({
+          choice: PropTypes.string,
+          category: PropTypes.string,
+        }),
+      ),
+    }),
+    onAnswersChange: PropTypes.func.isRequired,
+    onShowCorrectToggle: PropTypes.func.isRequired,
+    pauseMathObserver: PropTypes.func,
+    resumeMathObserver: PropTypes.func,
+  };
+
   constructor(props) {
     super(props);
     this.uid = uid.generateId();
     this.state = {
       activeDragItem: null,
+      isValidDrop: false,
     };
   }
 
@@ -337,6 +359,7 @@ class CategorizeProvider extends React.Component {
     if (active?.data?.current) {
       this.setState({
         activeDragItem: active.data.current,
+        isValidDrop: false,
       });
     }
   };
@@ -345,38 +368,51 @@ class CategorizeProvider extends React.Component {
     const { active, over } = event;
     const { resumeMathObserver } = this.props;
 
-    this.setState({ activeDragItem: null });
+    // Check if drop is valid
+    const draggedItem = active?.data?.current;
+    const overData = over?.data?.current;
+    const isValidDrop =
+      over && active && draggedItem && draggedItem.type === 'choice' && overData && overData.itemType === 'categorize';
+
+    this.setState({
+      activeDragItem: null,
+      isValidDrop: isValidDrop,
+    });
 
     if (resumeMathObserver) {
       resumeMathObserver();
     }
 
-    if (!over || !active) {
+    if (!active || !draggedItem || draggedItem.type !== 'choice') {
       return;
     }
 
-    const draggedItem = active.data.current;
+    const choiceData = {
+      id: draggedItem.id,
+      categoryId: draggedItem.categoryId,
+      choiceIndex: draggedItem.choiceIndex,
+      value: draggedItem.value,
+      itemType: draggedItem.itemType,
+    };
 
-    if (draggedItem && draggedItem.type === 'choice') {
-      const choiceData = {
-        id: draggedItem.id,
-        categoryId: draggedItem.categoryId,
-        choiceIndex: draggedItem.choiceIndex,
-        value: draggedItem.value,
-        itemType: draggedItem.itemType,
-      };
-
-      if (over.id === 'choices-board') {
-        if (this.categorizeRef && this.categorizeRef.removeChoice && draggedItem.categoryId) {
-          this.categorizeRef.removeChoice(choiceData);
-        }
-      } else {
-        const categoryId = over.id;
-
-        if (this.categorizeRef && this.categorizeRef.dropChoice) {
-          this.categorizeRef.dropChoice(categoryId, choiceData);
-        }
+    // Dropped outside a valid/known target: remove from source category,
+    // which returns the choice to the choices pool.
+    if (!over) {
+      if (this.categorizeRef && this.categorizeRef.removeChoice && draggedItem.categoryId) {
+        this.categorizeRef.removeChoice(choiceData);
       }
+      return;
+    }
+
+    if (over.id === 'choices-board') {
+      if (this.categorizeRef && this.categorizeRef.removeChoice && draggedItem.categoryId) {
+        this.categorizeRef.removeChoice(choiceData);
+      }
+      return;
+    }
+
+    if (this.categorizeRef && this.categorizeRef.dropChoice) {
+      this.categorizeRef.dropChoice(over.id, choiceData);
     }
   };
 
@@ -397,11 +433,16 @@ class CategorizeProvider extends React.Component {
   };
 
   render() {
+    const { isValidDrop } = this.state;
+    // Disable drop animation for valid drops to prevent visual snap-back
+    // Keep default animation for invalid drops to show visual feedback
+    const dropAnimation = isValidDrop ? null : undefined;
+
     return (
       <DragProvider onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
         <uid.Provider value={this.uid}>
           <Categorize ref={(ref) => (this.categorizeRef = ref)} {...this.props} />
-          <DragOverlay>
+          <DragOverlay dropAnimation={dropAnimation}>
             <DragPreviewWrapper>{this.renderDragOverlay()}</DragPreviewWrapper>
           </DragOverlay>
         </uid.Provider>

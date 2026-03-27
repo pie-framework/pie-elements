@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { swap } from '@pie-lib/drag';
-import { DndContext } from '@dnd-kit/core';
+import { DndContext, DragOverlay } from '@dnd-kit/core';
+import { restrictToFirstScrollableAncestor } from '@dnd-kit/modifiers';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Feedback, PreviewPrompt } from '@pie-lib/render-ui';
 import { styled } from '@mui/material/styles';
 import { findKey, isUndefined, uniqueId } from 'lodash-es';
 import AnswerArea from './answer-area';
 import ChoicesList from './choices-list';
+import { Answer } from './answer';
 
 const MainContainer = styled('div')({
   display: 'flex',
@@ -31,6 +33,7 @@ export class Main extends React.Component {
     this.instanceId = uniqueId();
     this.state = {
       showCorrectAnswer: false,
+      draggingElement: null,
     };
   }
 
@@ -42,31 +45,63 @@ export class Main extends React.Component {
     onSessionChange(session);
   }
 
+  onDragStart = (event) => {
+    const { active } = event;
+
+    if (active?.data?.current) {
+      let rect = null;
+      const node = active.node?.current;
+
+      if (node) {
+        const { width, height } = node.getBoundingClientRect();
+        rect = { width, height };
+      }
+
+      this.setState({
+        draggingElement: { ...active.data.current, rect },
+      });
+    }
+  };
+
   onPlaceAnswer = (event) => {
+    this.setState({ draggingElement: null });
     const { active, over } = event;
 
-    if (!over || !active) {
+    if (!active) {
       return;
     }
 
     const activeData = active.data.current;
-    const overData = over.data.current;
+    const overData = over?.data.current;
 
-    if (activeData && overData) {
-      const { session, onSessionChange, model } = this.props;
-      const {
-        config: { duplicates },
-      } = model;
+    if (!activeData) {
+      return;
+    }
+
+    const { session, onSessionChange, model } = this.props;
+    const {
+      config: { duplicates },
+    } = model;
 
       if (isUndefined(session.value)) {
         session.value = {};
       }
 
-      const answerId = activeData.id;
+      // dropping a placed answer back to the choices pool = remove it
+      if (overData.type === 'choices-pool' && activeData.promptId !== undefined) {
+        session.value[activeData.promptId] = undefined;
+        onSessionChange(session);
+        return;
+      }
+
+    const answerId = activeData.id;
+    const sourcePromptId = activeData.promptId;
+
+    // Handle dropping onto a drop zone
+    if (overData && overData.type === 'drop-zone' && overData.promptId != null) {
       const targetPromptId = overData.promptId;
 
-      // only allow dropping choices (not already placed answers) onto drop zones
-      if (activeData.type === 'choice' && overData.type === 'drop-zone' && targetPromptId) {
+      if (activeData.type === 'choice' && overData.type === 'drop-zone' && targetPromptId !== undefined) {
         // check if this choice is already placed somewhere
         const existingPlacement = findKey(session.value, (val) => val === answerId);
 
@@ -77,14 +112,52 @@ export class Main extends React.Component {
           // place answer
           session.value[targetPromptId] = answerId;
         }
-
-        onSessionChange(session);
       }
+      // Handle moving a placed item (target) to another drop zone
+      else if (activeData.type === 'target' && sourcePromptId != null) {
+        // If moving to a different placeholder
+        if (sourcePromptId !== targetPromptId) {
+          const targetHasItem = session.value[targetPromptId] != null;
+
+          if (targetHasItem && !duplicates) {
+            // swap items between placeholders
+            const temp = session.value[targetPromptId];
+            session.value[targetPromptId] = answerId;
+            session.value[sourcePromptId] = temp;
+          } else if (!targetHasItem) {
+            // move item to empty placeholder
+            session.value[targetPromptId] = answerId;
+            delete session.value[sourcePromptId];
+          }
+        }
+      }
+
+      onSessionChange(session);
     }
   };
 
   toggleShowCorrect = () => {
     this.setState({ showCorrectAnswer: !this.state.showCorrectAnswer });
+  };
+
+  renderDragOverlay = () => {
+    const { draggingElement } = this.state;
+
+    if (!draggingElement) return null;
+
+    return (
+      <Answer
+        id={draggingElement.id}
+        title={draggingElement.value}
+        disabled={false}
+        isDragging={false}
+        style={
+          draggingElement.rect
+            ? { width: draggingElement.rect.width, height: draggingElement.rect.height, boxSizing: 'border-box' }
+            : {}
+        }
+      />
+    );
   };
 
   render() {
@@ -94,7 +167,11 @@ export class Main extends React.Component {
     const { prompt, language } = config;
 
     return (
-      <DndContext onDragEnd={this.onPlaceAnswer}>
+      <DndContext
+        onDragStart={this.onDragStart}
+        onDragEnd={this.onPlaceAnswer}
+        modifiers={[restrictToFirstScrollableAncestor]}
+      >
         <MainContainer>
           <PreviewPrompt className="prompt" prompt={prompt} />
 
@@ -126,6 +203,7 @@ export class Main extends React.Component {
             <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />
           )}
         </MainContainer>
+        <DragOverlay>{this.renderDragOverlay()}</DragOverlay>
       </DndContext>
     );
   }
