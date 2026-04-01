@@ -425,6 +425,8 @@ export class Main extends React.Component {
   };
 
   onClick = (data) => {
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
     const c = this.toNodeData(data);
 
     if (c.type === 'clear') {
@@ -444,6 +446,10 @@ export class Main extends React.Component {
     }
 
     this.input.focus();
+    requestAnimationFrame(() => {
+      window.scrollTo(scrollX, scrollY);
+      requestAnimationFrame(() => window.scrollTo(scrollX, scrollY));
+    });
   };
 
   callOnSessionChange = () => {
@@ -462,6 +468,8 @@ export class Main extends React.Component {
     updateSpans();
 
     if (name) {
+      const scrollX = window.scrollX;
+      const scrollY = window.scrollY;
       this.setState(
         (state) => ({
           session: {
@@ -473,7 +481,12 @@ export class Main extends React.Component {
             },
           },
         }),
-        this.callOnSessionChange,
+        () => {
+          this.callOnSessionChange();
+          requestAnimationFrame(() => {
+            window.scrollTo(scrollX, scrollY);
+          });
+        },
       );
     }
   };
