@@ -227,8 +227,22 @@ export class Design extends React.Component {
   };
 
   onDragEnd = ({ active, over }) => {
+    // scrolls back to the original draggable element (scrollIntoViewIfNeeded).
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+
     this.setState({ activeDragItem: null });
-    if (!active) return;
+    if (!active) {
+      return;
+    }
+
+    // Restore scroll position after dnd-kit's drop animation fires scrollIntoViewIfNeeded.
+    // Two rAF frames are needed: dnd-kit uses one rAF internally for focus/scroll restoration.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo(scrollX, scrollY);
+      });
+    });
 
     const { model } = this.props;
     const { allowAlternateEnabled, categories = [], choices = [] } = model;
