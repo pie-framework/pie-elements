@@ -116,7 +116,7 @@
     "@pie-lib/text-select": "2.2.0-next.7",
     "@pie-lib/tools": "1.2.0-next.4",
     "@pie-lib/translator": "3.2.0-next.3",
-    "@pie-framework/mathquill": "1.2.1-beta.0"
+    "@pie-framework/mathquill": "1.2.1-beta.1"
   },
   "browserslist": [
     ">0.5%",
