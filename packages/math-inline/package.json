@@ -15,7 +15,7 @@
     "@emotion/style": "^0.8.0",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
-    "@pie-framework/mathquill": "1.2.1-beta.0",
+    "@pie-framework/mathquill": "1.2.1-beta.1",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/correct-answer-toggle": "3.2.0-next.7",
     "@pie-lib/math-input": "7.2.0-next.11",
