@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "6.2.0-next.2",
+  "version": "6.2.0-next.3",
   "description": "",
   "dependencies": {
     "@emotion/react": "^11.14.0",
