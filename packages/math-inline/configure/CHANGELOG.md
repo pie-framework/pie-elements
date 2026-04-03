@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.2.0-next.2...@pie-element/math-inline-configure@10.2.0-next.3) (2026-04-03)
+
+### Bug Fixes
+
+- **math-input:** bump @pie-framework/mathquill to 1.2.1-beta.1 with jQuery shim fixes PIE-16 PIE-20 ([3ca8fd1](https://github.com/pie-framework/pie-elements/commit/3ca8fd120876c759eef86913bb813954eabbc31f))
+
 # [10.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@10.2.0-next.1...@pie-element/math-inline-configure@10.2.0-next.2) (2026-04-03)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.4...@pie-element/explicit-constructed-response@10.2.0-next.5) (2026-04-03)
+
+### Bug Fixes
+
+- add type check in onDone method to prevent error when deleting resp area from markup ([48d553d](https://github.com/pie-framework/pie-elements/commit/48d553da086dbd229ebbb0d0f72e216bc9d4bcc2))
+
 # [10.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.3...@pie-element/explicit-constructed-response@10.2.0-next.4) (2026-04-03)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

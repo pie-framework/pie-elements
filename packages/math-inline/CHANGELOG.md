@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.5...@pie-element/math-inline@11.2.0-next.6) (2026-04-03)
+
+### Bug Fixes
+
+- **math inline:** avoid scroll position to be changed suring typing PIE-15 ([1ffca6b](https://github.com/pie-framework/pie-elements/commit/1ffca6bb9f93604914fa9361f8140dbc86d25b9e))
+- **math-input:** bump @pie-framework/mathquill to 1.2.1-beta.1 with jQuery shim fixes PIE-16 PIE-20 ([3ca8fd1](https://github.com/pie-framework/pie-elements/commit/3ca8fd120876c759eef86913bb813954eabbc31f))
+
 # [11.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.4...@pie-element/math-inline@11.2.0-next.5) (2026-04-03)
 
 **Note:** Version bump only for package @pie-element/math-inline

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.4...@pie-element/categorize@12.2.0-next.5) (2026-04-03)
+
+### Bug Fixes
+
+- **categorize:** restore scroll position after drag and drop operation PIE-17 ([87d8433](https://github.com/pie-framework/pie-elements/commit/87d84330c4bbf322b98edc6a1a5175590d4b2401))
+
 # [12.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.3...@pie-element/categorize@12.2.0-next.4) (2026-04-03)
 
 **Note:** Version bump only for package @pie-element/categorize
