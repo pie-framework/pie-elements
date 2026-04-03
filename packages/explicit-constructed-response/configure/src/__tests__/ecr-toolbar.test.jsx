@@ -95,6 +95,13 @@ describe('ECRToolbar', () => {
       // Create an instance to test the internal method
       const mockTr = {
         setNodeMarkup: jest.fn(),
+        doc: {
+          nodeAt: jest.fn().mockReturnValue({
+            isText: false,
+            isAtom: true,
+            isInline: true,
+          }),
+        },
       };
       const testEditor = {
         ...editor,
