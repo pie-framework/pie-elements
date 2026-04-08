@@ -14,6 +14,9 @@ const MiniStyledNTF = styled(NTF)({
     height: 40,
     fontSize: '14px',
   },
+  '& [class^="MuiInputBase-input"]': {
+    padding: '18.5px 14px'
+  }
 });
 
 export class NumberTextField extends React.Component {
