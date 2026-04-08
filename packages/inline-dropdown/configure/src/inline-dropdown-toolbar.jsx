@@ -354,6 +354,7 @@ class RespAreaToolbar extends React.Component {
         style={{
           ...toolbarStyle,
           backgroundColor: '#E0E1E6',
+          zIndex: 1,
         }}
         onMouseDown={this.onClickInside}
       >
