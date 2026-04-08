@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.6...@pie-element/inline-dropdown@9.2.0-next.7) (2026-04-08)
+
+### Bug Fixes
+
+- made sure response area is over all elements [PIE-35][PIE-40] ([048bc54](https://github.com/pie-framework/pie-elements/commit/048bc54bb8818f05e7ec5cff59cde316ed7e7834))
+
 # [9.2.0-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.5...@pie-element/inline-dropdown@9.2.0-next.6) (2026-04-03)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown
