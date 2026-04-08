@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@5.2.0-next.2...@pie-element/fraction-model@5.2.0-next.3) (2026-04-08)
+
+### Bug Fixes
+
+- **fraction-model:** adjust padding for number input field PIE-21 ([7e94919](https://github.com/pie-framework/pie-elements/commit/7e949193559c5af3dc14ef410bdf47784b607fd8))
+
 # [5.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@5.2.0-next.1...@pie-element/fraction-model@5.2.0-next.2) (2026-04-03)
 
 **Note:** Version bump only for package @pie-element/fraction-model
