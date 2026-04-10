@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
+import { mq, HorizontalKeypad, updateSpans, registerEmbed, applyStaticMath } from '@pie-lib/math-input';
 import { Feedback, Collapsible, Readable, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { styled } from '@mui/material/styles';
@@ -9,7 +9,6 @@ import Tooltip from '@mui/material/Tooltip';
 import { ResponseTypes } from './utils';
 import { isEmpty, isEqual } from 'lodash-es';
 import SimpleQuestionBlock from './simple-question-block';
-import MathQuill from '@pie-framework/mathquill';
 import { color } from '@pie-lib/render-ui';
 import Translator from '@pie-lib/translator';
 import ReactDOM from 'react-dom';
@@ -131,10 +130,8 @@ export class Main extends React.Component {
 
   UNSAFE_componentWillMount() {
     if (typeof window !== 'undefined') {
-      let MQ = MathQuill.getInterface(3);
-
       if (!registered) {
-        MQ.registerEmbed('answerBlock', (data) => {
+        registerEmbed('answerBlock', (data) => {
           const classNames = getBlockClassNames();
           return {
             htmlString: `<div class="${classNames.blockContainer}">
@@ -165,10 +162,9 @@ export class Main extends React.Component {
         // const correct = model.correctness && model.correctness.correct;
 
         if (el) {
-          let MQ = MathQuill.getInterface(3);
           const answer = answers[answerId];
 
-          el.textContent = (answer && answer.value) || '';
+          applyStaticMath(el, (answer && answer.value) || '');
 
           if (!model.view) {
             // for now, we're not going to be showing individual response correctness
@@ -180,8 +176,6 @@ export class Main extends React.Component {
             el.parentElement.parentElement.classList.remove('correct');
             el.parentElement.parentElement.classList.remove('incorrect');
           }
-
-          MQ.StaticMath(el);
 
           // For now, we're not going to be indexing response blocks
           // TODO go back to indexing once we support individual response correctness

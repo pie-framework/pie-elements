@@ -11,7 +11,7 @@ import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import { isEqual } from 'lodash-es';
 import { ResponseTypes, generateValidationMessage, getPluginProps } from './utils';
-import MathQuill from '@pie-framework/mathquill';
+import { registerEmbed, applyStaticMath } from '@pie-lib/math-input';
 import Info from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -221,11 +221,8 @@ class GeneralConfigBlock extends React.Component {
 
   UNSAFE_componentWillMount() {
     if (typeof window !== 'undefined') {
-      // const MathQuill = require('@pie-framework/mathquill');
-      let MQ = MathQuill.getInterface(3);
-
       if (!registered) {
-        MQ.registerEmbed('answerBlock', (data) => {
+        registerEmbed('answerBlock', (data) => {
           const genericAnswerBlock = `
             <div class="block-container block-container-generic">
               <div class="block-response block-response-generic" id="${data}Index">Response</div>
@@ -279,11 +276,7 @@ class GeneralConfigBlock extends React.Component {
               const indexEl = this.root.querySelector(`#${responseId}Index`);
 
               if (el) {
-                // const MathQuill = require('@pie-framework/mathquill');
-                let MQ = MathQuill.getInterface(3);
-                // We no longer have individual answers, so we cannot set text content of blocks
-                // el.textContent = response.answer;
-                MQ.StaticMath(el);
+                applyStaticMath(el);
                 indexEl.textContent = `R${idx + 1}`;
               }
             });
