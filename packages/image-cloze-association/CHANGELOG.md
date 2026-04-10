@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@9.2.0-next.4...@pie-element/image-cloze-association@9.2.0-next.5) (2026-04-10)
+
+### Features
+
+- **math-inline:** replace @pie-framework/mathquill with math-input helpers PIE-56, bump libs PIE-34, PIE-57, PIE-36, PIE-38, PIE-18 ([abd205e](https://github.com/pie-framework/pie-elements/commit/abd205e9c8335957b9fc2548822e4125bf1a7edb))
+
 # [9.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@9.2.0-next.3...@pie-element/image-cloze-association@9.2.0-next.4) (2026-04-08)
 
 ### Bug Fixes
