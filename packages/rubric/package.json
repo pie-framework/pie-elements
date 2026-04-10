@@ -9,10 +9,7 @@
       "import": "./src/index.js",
       "default": "./lib/index.js"
     },
-    "./print": {
-      "import": "./src/print.js",
-      "default": "./lib/print.js"
-    },
+    "./print": "./src/print.js",
     "./configure/lib": {
       "require": "./configure/lib/index.js",
       "default": "./configure/lib/index.js"

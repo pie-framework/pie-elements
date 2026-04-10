@@ -28,19 +28,16 @@ jest.mock('@pie-lib/math-toolbar', () => ({
   MathToolbar: (props) => <div data-testid="math-toolbar" {...props} />,
 }));
 
-jest.mock('@pie-framework/mathquill', () => ({
-  StaticMath: jest.fn().mockReturnValue({
-    latex: jest.fn(),
-  }),
+jest.mock('@pie-lib/math-input', () => ({
   registerEmbed: jest.fn(),
-  getInterface: jest.fn().mockReturnThis(),
+  applyStaticMath: jest.fn(),
 }));
 
 jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div data-testid="editable-html" {...props} />);
 
 jest.mock('../response', () => (props) => <div data-testid="response" {...props} />);
 
-const Mathquill = require('@pie-framework/mathquill');
+const { registerEmbed } = require('@pie-lib/math-input');
 
 const defaultProps = {
   model: {
@@ -153,7 +150,7 @@ describe('GeneralConfigBlock', () => {
     expect(container.querySelector('[data-testid="response"]')).toBeInTheDocument();
     expect(container.querySelector('[data-testid="math-toolbar"]')).toBeInTheDocument();
     expect(container.querySelector('[data-testid="editable-html"]')).toBeInTheDocument();
-    expect(Mathquill.getInterface().registerEmbed).toHaveBeenCalled();
+    expect(registerEmbed).toHaveBeenCalled();
   });
 
   it('renders correctly for Simple mode', () => {
