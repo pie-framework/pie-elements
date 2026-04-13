@@ -59,6 +59,10 @@ class ElementsCommands extends Commands {
   }
 
   async sharedBuild() {
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    const pslbConfig = require(resolve(__dirname, '../pslb/pslb.config.js'));
+    const pslbAllowed = new Set(pslbConfig.packages || []);
+
     const root = resolve(__dirname, '../packages');
     const allPackages = readdirSync(root);
     const pkgJson = await Promise.all(
@@ -68,11 +72,24 @@ class ElementsCommands extends Commands {
       }),
     );
 
-    const printPkgs = pkgJson.filter((p) => p.pkg.exports && p.pkg.exports['./print']);
+    const withPrint = pkgJson.filter((p) => p.pkg.exports && p.pkg.exports['./print']);
+    const printPkgs = withPrint.filter((p) => pslbAllowed.has(p.pkg.name));
+    const skipped = withPrint.filter((p) => !pslbAllowed.has(p.pkg.name)).map((p) => p.pkg.name);
+    if (skipped.length > 0) {
+      console.warn(
+        '[sharedBuild] skipping pslb for packages with ./print not in pslb.config.js:',
+        skipped.join(', '),
+      );
+    }
     console.log(
-      'printPkgs',
+      'printPkgs (pslb)',
       printPkgs.map((p) => p.dir),
     );
+
+    if (printPkgs.length === 0) {
+      console.warn('[sharedBuild] no pslb-eligible print packages; skipping pslb');
+      return Promise.resolve();
+    }
 
     const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs.map(toPkgFlag).join(' ')} --logLevel silly`;
 

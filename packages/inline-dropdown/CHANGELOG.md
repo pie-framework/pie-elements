@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.8...@pie-element/inline-dropdown@9.2.0-next.9) (2026-04-10)
+
+### Features
+
+- **math-inline:** replace @pie-framework/mathquill with math-input helpers PIE-56, bump libs PIE-34, PIE-57, PIE-36, PIE-38, PIE-18 ([abd205e](https://github.com/pie-framework/pie-elements/commit/abd205e9c8335957b9fc2548822e4125bf1a7edb))
+
+# [9.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.7...@pie-element/inline-dropdown@9.2.0-next.8) (2026-04-08)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-53, PIE-48, PIE-114, PIE-74, PIE-35, PIE-40, PIE-27 ([3e6682d](https://github.com/pie-framework/pie-elements/commit/3e6682db1eb23414f3a4222abe13d2dd8ae5378e))
+
+# [9.2.0-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.6...@pie-element/inline-dropdown@9.2.0-next.7) (2026-04-08)
+
+### Bug Fixes
+
+- made sure response area is over all elements [PIE-35][PIE-40] ([048bc54](https://github.com/pie-framework/pie-elements/commit/048bc54bb8818f05e7ec5cff59cde316ed7e7834))
+
+# [9.2.0-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.5...@pie-element/inline-dropdown@9.2.0-next.6) (2026-04-03)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
 # [9.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@9.2.0-next.4...@pie-element/inline-dropdown@9.2.0-next.5) (2026-03-25)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

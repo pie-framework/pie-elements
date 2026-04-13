@@ -1,20 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import Main from '../main';
-import { mq, HorizontalKeypad } from '@pie-lib/math-input';
 import { Feedback } from '@pie-lib/render-ui';
 import { CorrectAnswerToggle } from '@pie-lib/correct-answer-toggle';
 import SimpleQuestionBlock from '../simple-question-block';
-
-const Mathquill = require('@pie-framework/mathquill');
-
-jest.mock('@pie-framework/mathquill', () => ({
-  StaticMath: jest.fn().mockReturnValue({
-    latex: jest.fn(),
-  }),
-  registerEmbed: jest.fn(),
-  getInterface: jest.fn().mockReturnThis(),
-}));
 
 jest.mock('@pie-lib/render-ui', () => ({
   color: {
@@ -46,6 +35,8 @@ jest.mock('@pie-lib/math-input', () => ({
   },
   HorizontalKeypad: (props) => <div data-testid="horizontal-keypad" {...props} />,
   updateSpans: jest.fn(),
+  registerEmbed: jest.fn(),
+  applyStaticMath: jest.fn(),
 }));
 
 jest.mock('@pie-lib/math-rendering', () => ({
@@ -56,6 +47,8 @@ jest.mock('@pie-lib/translator', () => ({
   __esModule: true,
   default: (props) => <div data-testid="translator">{props.children}</div>,
 }));
+
+const { registerEmbed } = require('@pie-lib/math-input');
 
 describe('Math-Inline Main', () => {
   const defaultProps = {
@@ -146,7 +139,7 @@ describe('Math-Inline Main', () => {
         tooltipContainerRef: expect.any(Object),
       });
 
-      expect(Mathquill.getInterface().registerEmbed).toHaveBeenCalled();
+      expect(registerEmbed).toHaveBeenCalled();
     });
   });
 

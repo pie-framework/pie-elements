@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.7...@pie-element/math-inline@11.2.0-next.8) (2026-04-10)
+
+### Features
+
+- **math-inline:** replace @pie-framework/mathquill with math-input helpers PIE-56, bump libs PIE-34, PIE-57, PIE-36, PIE-38, PIE-18 ([abd205e](https://github.com/pie-framework/pie-elements/commit/abd205e9c8335957b9fc2548822e4125bf1a7edb))
+
+# [11.2.0-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.6...@pie-element/math-inline@11.2.0-next.7) (2026-04-08)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-53, PIE-48, PIE-114, PIE-74, PIE-35, PIE-40, PIE-27 ([3e6682d](https://github.com/pie-framework/pie-elements/commit/3e6682db1eb23414f3a4222abe13d2dd8ae5378e))
+
+# [11.2.0-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.5...@pie-element/math-inline@11.2.0-next.6) (2026-04-03)
+
+### Bug Fixes
+
+- **math inline:** avoid scroll position to be changed suring typing PIE-15 ([1ffca6b](https://github.com/pie-framework/pie-elements/commit/1ffca6bb9f93604914fa9361f8140dbc86d25b9e))
+- **math-input:** bump @pie-framework/mathquill to 1.2.1-beta.1 with jQuery shim fixes PIE-16 PIE-20 ([3ca8fd1](https://github.com/pie-framework/pie-elements/commit/3ca8fd120876c759eef86913bb813954eabbc31f))
+
+# [11.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.4...@pie-element/math-inline@11.2.0-next.5) (2026-04-03)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
 # [11.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.3...@pie-element/math-inline@11.2.0-next.4) (2026-03-25)
 
 **Note:** Version bump only for package @pie-element/math-inline
