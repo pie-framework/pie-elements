@@ -45,6 +45,10 @@ const applyVersion = async (p, version) => {
 };
 
 const run = async () => {
+  // eslint-disable-next-line global-require, import/no-dynamic-require
+  const pslbConfig = require(path.resolve(__dirname, '../pslb/pslb.config.js'));
+  const pslbAllowed = new Set(pslbConfig.packages || []);
+
   const root = path.resolve(__dirname, '../packages');
   const allPackages = readdirSync(root);
   const pkgJson = await Promise.all(
@@ -54,11 +58,17 @@ const run = async () => {
     })
   );
 
-  const printPkgs = pkgJson.filter(
-    (p) => p.pkg.exports && p.pkg.exports['./print']
-  );
+  const withPrint = pkgJson.filter((p) => p.pkg.exports && p.pkg.exports['./print']);
+  const printPkgs = withPrint.filter((p) => pslbAllowed.has(p.pkg.name));
+  const skipped = withPrint.filter((p) => !pslbAllowed.has(p.pkg.name)).map((p) => p.pkg.name);
+  if (skipped.length > 0) {
+    console.warn(
+      '[build-print] skipping pslb for packages with ./print not in pslb.config.js:',
+      skipped.join(', ')
+    );
+  }
   console.log(
-    'printPkgs',
+    'printPkgs (pslb)',
     printPkgs.map((p) => p.dir)
   );
 
@@ -69,6 +79,8 @@ const run = async () => {
   if (args.build) {
     if (args.dryRun) {
       console.log('build: dryRun - skip');
+    } else if (printPkgs.length === 0) {
+      console.warn('build-print: no pslb-eligible print packages; skipping pslb');
     } else {
       execSync(cmd, { stdio: 'inherit', cwd: path.resolve(__dirname, '..') });
     }
