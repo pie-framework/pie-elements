@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@4.2.0-next.4...@pie-element/graphing-solution-set-configure@4.2.0-next.5) (2026-04-13)
+
+### Bug Fixes
+
+- bump libs PIE-34 ([9f8b35a](https://github.com/pie-framework/pie-elements/commit/9f8b35a856ca1eba67d5630a358b96226cfca984))
+
 # [4.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@4.2.0-next.3...@pie-element/graphing-solution-set-configure@4.2.0-next.4) (2026-04-10)
 
 ### Features

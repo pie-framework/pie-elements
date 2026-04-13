@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.7...@pie-element/explicit-constructed-response@10.2.0-next.8) (2026-04-13)
+
+### Bug Fixes
+
+- bump libs PIE-34 ([9f8b35a](https://github.com/pie-framework/pie-elements/commit/9f8b35a856ca1eba67d5630a358b96226cfca984))
+
 # [10.2.0-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@10.2.0-next.6...@pie-element/explicit-constructed-response@10.2.0-next.7) (2026-04-10)
 
 ### Features
