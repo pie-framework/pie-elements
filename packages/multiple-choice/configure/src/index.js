@@ -171,10 +171,6 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   _render() {
-    console.log('🔧 [multiple-choice-configure] _render - Starting render');
-    console.log('🔧 [multiple-choice-configure] _render - Model:', this._model ? 'present' : 'missing');
-    console.log('🔧 [multiple-choice-configure] _render - Configuration:', this._configuration ? 'present' : 'missing');
-    console.log('🔧 [multiple-choice-configure] _render - Root exists:', !!this._root);
     log('_render - Starting render');
     log('_render - Model:', this._model ? 'present' : 'missing');
     log('_render - Configuration:', this._configuration ? 'present' : 'missing');
@@ -198,7 +194,6 @@ export default class MultipleChoice extends HTMLElement {
       });
 
       if (!this._root) {
-        console.log('🔧 [multiple-choice-configure] _render - Creating React container');
         log('_render - Creating React container');
 
         // Create a container div for React to render into
@@ -206,17 +201,13 @@ export default class MultipleChoice extends HTMLElement {
         this._reactContainer.className = 'pie-configure-wrapper';
         this.appendChild(this._reactContainer);
 
-        console.log('🔧 [multiple-choice-configure] _render - Creating new React root');
         log('_render - Creating new React root');
         this._root = createRoot(this._reactContainer);
-        console.log('✅ [multiple-choice-configure] _render - React root created successfully');
         log('_render - React root created successfully');
       }
 
-      console.log('🔧 [multiple-choice-configure] _render - Calling root.render()');
       log('_render - Calling root.render()');
       this._root.render(element);
-      console.log('✅ [multiple-choice-configure] _render - Render completed successfully');
       log('_render - Render completed successfully');
     } catch (error) {
       console.error('❌ [multiple-choice-configure] Render error:', error);
@@ -226,17 +217,14 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log('🔧 [multiple-choice-configure] connectedCallback - Component connected to DOM');
     log('connectedCallback - Component connected to DOM');
     log('connectedCallback - Model:', this._model ? 'present' : 'missing');
     log('connectedCallback - Configuration:', this._configuration ? 'present' : 'missing');
   }
 
   disconnectedCallback() {
-    console.log('🔧 [multiple-choice-configure] disconnectedCallback - Component disconnected from DOM');
     log('disconnectedCallback - Component disconnected from DOM');
     if (this._root) {
-      console.log('🔧 [multiple-choice-configure] disconnectedCallback - Unmounting React root');
       log('disconnectedCallback - Unmounting React root');
       this._root.unmount();
       this._root = null;
