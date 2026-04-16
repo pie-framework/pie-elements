@@ -44,7 +44,7 @@ const ResponseContainer = styled(Card)(({ theme }) => ({
 }));
 
 const StyledCardContent = styled(CardContent)(({ theme }) => ({
-  paddingBottom: `${theme.spacing(2)}px !important`,
+  paddingBottom: `${theme.spacing(2)} !important`,
 }));
 
 const Title = styled(Typography)({

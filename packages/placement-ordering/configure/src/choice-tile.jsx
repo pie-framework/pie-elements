@@ -14,7 +14,7 @@ import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
 const StyledChoiceTile = styled('div')(({ theme }) => ({
-  margin: `${theme.spacing(1)}px 0`,
+  margin: `${theme.spacing(1)} 0`,
   backgroundColor: theme.palette.background.paper,
   display: 'flex',
   flexDirection: 'column',

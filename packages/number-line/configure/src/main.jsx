@@ -50,7 +50,7 @@ const Row = styled('div')(({ theme }) => ({
 }));
 
 const PointTypeChooser = styled('div')(({ theme }) => ({
-  margin: `${theme.spacing(2.5)}px 0`,
+  margin: `${theme.spacing(2.5)} 0`,
 }));
 
 const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
