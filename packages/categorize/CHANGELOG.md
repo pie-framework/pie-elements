@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.8...@pie-element/categorize@12.2.0-next.9) (2026-04-16)
+
+### Bug Fixes
+
+- bump libs PIE-46, PIE-25, PIE-54, PIE-44, PIE-29, PIE-13, PIE-129 ([5c17838](https://github.com/pie-framework/pie-elements/commit/5c17838a53483437e42dc679a4361e16b7ef5e31))
+- missing spacing PD-5450 ([0d3d604](https://github.com/pie-framework/pie-elements/commit/0d3d604b73843bc0dfcd993a7a433c603f5dec52))
+
 # [12.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@12.2.0-next.7...@pie-element/categorize@12.2.0-next.8) (2026-04-13)
 
 ### Bug Fixes

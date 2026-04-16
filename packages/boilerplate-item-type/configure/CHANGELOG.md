@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-configure@5.2.0-next.5...@pie-element/boilerplate-item-type-configure@5.2.0-next.6) (2026-04-16)
+
+### Bug Fixes
+
+- bump libs PIE-46, PIE-25, PIE-54, PIE-44, PIE-29, PIE-13, PIE-129 ([5c17838](https://github.com/pie-framework/pie-elements/commit/5c17838a53483437e42dc679a4361e16b7ef5e31))
+
 # [5.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-configure@5.2.0-next.4...@pie-element/boilerplate-item-type-configure@5.2.0-next.5) (2026-04-13)
 
 ### Bug Fixes

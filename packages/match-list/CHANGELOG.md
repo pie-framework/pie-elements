@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.2.0-next.3...@pie-element/match-list@6.2.0-next.4) (2026-04-16)
+
+### Bug Fixes
+
+- bump libs PIE-46, PIE-25, PIE-54, PIE-44, PIE-29, PIE-13, PIE-129 ([5c17838](https://github.com/pie-framework/pie-elements/commit/5c17838a53483437e42dc679a4361e16b7ef5e31))
+
 # [6.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.2.0-next.2...@pie-element/match-list@6.2.0-next.3) (2026-04-03)
 
 **Note:** Version bump only for package @pie-element/match-list

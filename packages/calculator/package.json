@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/calculator",
   "repository": "pie-framework/pie-elements",
-  "version": "8.2.0-next.5",
+  "version": "8.2.0-next.6",
   "description": "A catalog tool",
   "scripts": {
     "test": "jest",
