@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.2.0-next.9...@pie-element/inline-dropdown-configure@8.2.0-next.10) (2026-04-17)
+
+### Bug Fixes
+
+- bump libs PIE-129 ([cee3e10](https://github.com/pie-framework/pie-elements/commit/cee3e109a9c1d9a68ab592781c968f6b27209846))
+
 # [8.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.2.0-next.8...@pie-element/inline-dropdown-configure@8.2.0-next.9) (2026-04-16)
 
 ### Bug Fixes
