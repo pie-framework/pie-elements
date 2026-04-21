@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.2.0-next.9...@pie-element/multiple-choice@12.2.0-next.10) (2026-04-21)
+
+### Bug Fixes
+
+- **multiple-choice:** improve screen reader experience for answer choices by removing duplicate announcements and simplifying SR output PIE-148 ([49920ad](https://github.com/pie-framework/pie-elements/commit/49920ad0de8ed9f5c21920d71298033a250fcfdf))
+
 # [12.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@12.2.0-next.8...@pie-element/multiple-choice@12.2.0-next.9) (2026-04-17)
 
 ### Bug Fixes
