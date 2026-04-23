@@ -199,6 +199,7 @@ let registered = false;
 // Define a regex pattern to match {{number}}
 const REGEX = /(\{\{\d+\}\})/gm;
 const DEFAULT_KEYPAD_VARIANT = 6;
+const KEYPAD_VIEWPORT_PADDING = 8;
 
 // !!! If you're using Chrome but have selected the "iPad" device in Chrome Developer Tools, the navigator.userAgent string may still report as
 //  Safari because Chrome on iOS actually uses the Safari rendering engine under the hood due to Apple's restrictions on third-party browser engines.
@@ -274,6 +275,60 @@ function prepareForStatic(model, state) {
   }
 }
 
+/**
+ * Popper.js v2 modifier that implements precise horizontal placement:
+ *
+ *   1. Default: left-align the keypad with the left edge of the response area.
+ *
+ *   2. Overflow: if left-aligning would push the right edge of the keypad past
+ *      the viewport's right edge, right-align the keypad so that its right edge
+ *      sits exactly at the left edge of the response area.
+ *
+ * In both cases we compute offsets.x from first principles (rather than
+ * adjusting whatever Popper already set) to avoid any upstream skew.
+ *
+ * Coordinate note:
+ *   state.rects.reference.x  — reference's left edge in offset-parent coords.
+ *   getBoundingClientRect()  — viewport-relative coords.
+ *   Both describe the same physical point, so the difference between them is
+ *   the constant offset needed to convert viewport ↔ offset-parent coords.
+ */
+const smartHorizontalPlacementModifier = {
+  name: 'smartHorizontalPlacement',
+  enabled: true,
+  phase: 'main',
+  requires: ['popperOffsets'],
+  fn: ({ state }) => {
+    const offsets = state.modifiersData.popperOffsets;
+    if (!offsets) return;
+
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const popperWidth = state.rects.popper.width;
+
+    const referenceViewportLeft = state.elements.reference.getBoundingClientRect().left;
+
+    const offsetParentEl = state.elements.popper?.offsetParent;
+    const offsetParentRect = offsetParentEl?.getBoundingClientRect?.() || { left: 0 };
+    const offsetParentScrollLeft = offsetParentEl?.scrollLeft || 0;
+    const referenceOffsetParentX = referenceViewportLeft - offsetParentRect.left + offsetParentScrollLeft;
+    const viewportLeftInOffsetParent = referenceOffsetParentX - referenceViewportLeft;
+    const minX = viewportLeftInOffsetParent + KEYPAD_VIEWPORT_PADDING;
+    const maxX = viewportLeftInOffsetParent + viewportWidth - popperWidth - KEYPAD_VIEWPORT_PADDING;
+
+    if (referenceViewportLeft + popperWidth <= viewportWidth) {
+      offsets.x = referenceOffsetParentX;
+    } else {
+      offsets.x = referenceOffsetParentX - popperWidth;
+    }
+
+    if (maxX < minX) {
+      offsets.x = minX;
+    } else {
+      offsets.x = Math.min(Math.max(offsets.x, minX), maxX);
+    }
+  },
+};
+
 export class Main extends React.Component {
   // removes {{ and }} and returns only key response. Eg: {{0}} => 0
   static getResponseKey = (response) => (response || '').replaceAll('{{', '').replaceAll('}}', '');
@@ -293,7 +348,6 @@ export class Main extends React.Component {
     const { answers: sessionAnswers } = session || {};
 
     if (markup) {
-      // build out local state model using responses declared in markup
       (markup || '').replace(REGEX, (response) => {
         const responseKey = Main.getResponseKey(response);
         const sessionAnswerForResponse = sessionAnswers && sessionAnswers[`r${responseKey}`];
@@ -426,7 +480,25 @@ export class Main extends React.Component {
   }
 
   onSubFieldFocus = (id) => {
-    this.setState({ activeAnswerBlock: id });
+    const editableFields = Array.from(this.root?.querySelectorAll('.mq-editable-field') || []);
+    const savedScroll = editableFields.map((el) => ({
+      el,
+      left: el.scrollLeft,
+      top: el.scrollTop,
+    }));
+
+    const restoreEditableScroll = () => {
+      savedScroll.forEach(({ el, left, top }) => {
+        el.scrollLeft = left;
+        el.scrollTop = top;
+      });
+    };
+
+    this.setState({ activeAnswerBlock: id }, () => {
+      restoreEditableScroll();
+      requestAnimationFrame(restoreEditableScroll);
+      setTimeout(restoreEditableScroll, 0);
+    });
   };
 
   toNodeData = (data) => {
@@ -468,7 +540,43 @@ export class Main extends React.Component {
       this.input.write(c.value);
     }
 
+    // Keep all relevant scroll containers stable when refocusing after keypad
+    // click. Browser "focus into view" can scroll horizontally back to start.
+    const fieldElement = this.input?.el?.() || this.root;
+    const scrollTargets = [];
+    let node = fieldElement;
+
+    while (node && node !== document.body && node !== document.documentElement) {
+      const isScrollable = node.scrollWidth > node.clientWidth || node.scrollHeight > node.clientHeight;
+      if (isScrollable) {
+        scrollTargets.push(node);
+      }
+      node = node.parentElement;
+    }
+
+    if (document.scrollingElement) {
+      scrollTargets.push(document.scrollingElement);
+    }
+
+    const savedScroll = scrollTargets.map((el) => ({
+      el,
+      left: el.scrollLeft,
+      top: el.scrollTop,
+    }));
+    const windowScroll = { x: window.scrollX, y: window.scrollY };
+
+    const restoreScroll = () => {
+      savedScroll.forEach(({ el, left, top }) => {
+        el.scrollLeft = left;
+        el.scrollTop = top;
+      });
+      window.scrollTo(windowScroll.x, windowScroll.y);
+    };
+
     this.input.focus();
+    restoreScroll();
+    requestAnimationFrame(restoreScroll);
+    setTimeout(restoreScroll, 0);
   };
 
   callOnSessionChange = () => {
@@ -677,30 +785,42 @@ export class Main extends React.Component {
                   slotProps={{
                     popper: {
                       container: tooltipContainerRef?.current || undefined,
-                      placement: 'bottom-end',
+                      // 'bottom-start' left-aligns the keypad with the left edge of the
+                      // response area by default. The smartHorizontalPlacement modifier
+                      // below overrides this when the keypad would overflow the viewport.
+                      placement: 'bottom-start',
                       sx: {
                         backgroundColor: 'transparent',
-                        width: '650px',
+                        width: 'auto',
                         opacity: 1,
                         '& .MuiTooltip-arrow': {
                           display: 'none',
                         },
                       },
-                      modifiers: {
-                        preventOverflow: {
+                      modifiers: [
+                        {
+                          name: 'preventOverflow',
                           enabled: true,
-                          boundariesElement: 'body',
+                          options: {
+                            boundary: 'viewport',
+                            mainAxis: false,
+                            altAxis: true,
+                          },
                         },
-                        flip: {
+                        {
+                          name: 'flip',
                           enabled: false,
                         },
-                      },
+
+                        smartHorizontalPlacementModifier,
+                      ],
                     },
                     tooltip: {
                       sx: {
                         fontSize: 'initial',
                         backgroundColor: 'transparent',
-                        width: '600px',
+                        width: 'auto',
+                        maxWidth: 'none',
                         marginTop: 0,
                         paddingTop: 0,
                         boxShadow: 'none',
