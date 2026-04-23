@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { debounce } from 'lodash-es';
+import { cloneDeep, debounce } from 'lodash-es';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 
@@ -10,25 +10,26 @@ const log = debug('pie-element:extended-text-entry:print');
 
 const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
+  const printModel = cloneDeep(model);
 
-  model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions =
-    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
-  model.showTeacherInstructions = instr;
-  model.mode = instr ? 'evaluate' : model.mode;
+  printModel.prompt = printModel.promptEnabled !== false ? printModel.prompt : undefined;
+  printModel.teacherInstructions =
+    instr && printModel.teacherInstructionsEnabled !== false ? printModel.teacherInstructions : undefined;
+  printModel.showTeacherInstructions = instr;
+  printModel.mode = instr ? 'evaluate' : printModel.mode;
 
   const defaultDimensions = { height: 100, width: 500 };
 
-  model.dimensions = {
+  printModel.dimensions = {
     ...defaultDimensions,
-    ...model.dimensions,
+    ...printModel.dimensions,
   };
 
-  model.disabled = true;
-  model.feedback = undefined;
-  model.animationsDisabled = true;
+  printModel.disabled = true;
+  printModel.feedback = undefined;
+  printModel.animationsDisabled = true;
 
-  return model;
+  return printModel;
 };
 
 export default class ExtendedTextEntryPrint extends HTMLElement {
@@ -40,19 +41,17 @@ export default class ExtendedTextEntryPrint extends HTMLElement {
     this._root = null;
     this._rerender = debounce(
       () => {
-        if (this._model && this._session) {
+        if (this._model && this._session && this._options) {
           const printModel = preparePrintModel(this._model, this._options);
 
-          const element =
-            this._options &&
-            React.createElement(Main, {
-              model: printModel,
-              session: {},
-              onChange: () => {},
-              onValueChange: () => {},
-              onAnnotationsChange: () => {},
-              onCommentChange: () => {},
-            });
+          const element = React.createElement(Main, {
+            model: printModel,
+            session: {},
+            onChange: () => {},
+            onValueChange: () => {},
+            onAnnotationsChange: () => {},
+            onCommentChange: () => {},
+          });
 
           if (!this._root) {
             this._root = createRoot(this);
@@ -72,6 +71,8 @@ export default class ExtendedTextEntryPrint extends HTMLElement {
   }
   set options(o) {
     this._options = o;
+    // re-render so role changes (student/instructor) propagate
+    this._rerender();
   }
 
   set model(s) {
