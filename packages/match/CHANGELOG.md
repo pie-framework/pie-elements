@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.2.0-next.8...@pie-element/match@11.2.0-next.9) (2026-04-23)
+
+### Bug Fixes
+
+- **match:** adjust input container style PIE-132 ([82e552d](https://github.com/pie-framework/pie-elements/commit/82e552d3d26f6644c4d7626ddaddecf6afaa9d45))
+
 # [11.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@11.2.0-next.7...@pie-element/match@11.2.0-next.8) (2026-04-17)
 
 ### Bug Fixes

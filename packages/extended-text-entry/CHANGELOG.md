@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.7...@pie-element/extended-text-entry@14.2.0-next.8) (2026-04-23)
+
+### Bug Fixes
+
+- **ebsr,extended-text-entry:** render print view correctly on role switch PIE-216 ([6f5db76](https://github.com/pie-framework/pie-elements/commit/6f5db762936561807c8040572fcaa6f844643218))
+
 # [14.2.0-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.6...@pie-element/extended-text-entry@14.2.0-next.7) (2026-04-17)
 
 ### Bug Fixes

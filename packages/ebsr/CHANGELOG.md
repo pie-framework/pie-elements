@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0-next.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@13.2.0-next.10...@pie-element/ebsr@13.2.0-next.11) (2026-04-23)
+
+### Bug Fixes
+
+- **ebsr,extended-text-entry:** render print view correctly on role switch PIE-216 ([6f5db76](https://github.com/pie-framework/pie-elements/commit/6f5db762936561807c8040572fcaa6f844643218))
+
 # [13.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@13.2.0-next.9...@pie-element/ebsr@13.2.0-next.10) (2026-04-21)
 
 **Note:** Version bump only for package @pie-element/ebsr

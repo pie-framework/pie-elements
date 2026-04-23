@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@6.2.0-next.9...@pie-element/math-templated@6.2.0-next.10) (2026-04-23)
+
+### Bug Fixes
+
+- **math-templated:** handle math keypad possition according to req, avoid kekpad move by adding content in input PIE-23 ([9769816](https://github.com/pie-framework/pie-elements/commit/9769816260a2961d20a2a9c258c784796f5bbc5f))
+
 # [6.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@6.2.0-next.8...@pie-element/math-templated@6.2.0-next.9) (2026-04-17)
 
 ### Bug Fixes

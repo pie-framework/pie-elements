@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.2.0-next.9...@pie-element/number-line@12.2.0-next.10) (2026-04-23)
+
+### Bug Fixes
+
+- **number-line:** adjust number input container PIE-134 ([b3d3908](https://github.com/pie-framework/pie-elements/commit/b3d390842de4b11159b67a927219056e04fe6a33))
+
 # [12.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@12.2.0-next.8...@pie-element/number-line@12.2.0-next.9) (2026-04-17)
 
 ### Bug Fixes
