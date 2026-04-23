@@ -173,9 +173,9 @@ class StimulusTabs extends React.Component {
 
   renderTab(tab, disabledTabs) {
     const { baseHeadingLevel } = this.props;
-    const clampedLevel = !!baseHeadingLevel ? Math.min(6, Math.max(1, baseHeadingLevel)) : undefined;
-    const TitleTag = !!baseHeadingLevel ? `h${clampedLevel}` : 'h2'; // default to h2 if no base level is provided - this was the previous behavior
-    const textLevel = !!baseHeadingLevel ? Math.min(6, Math.max(1, clampedLevel + 1)) : undefined; // promote text headings one level above title
+    const clampedLevel = baseHeadingLevel ? Math.min(6, Math.max(1, baseHeadingLevel)) : undefined;
+    const TitleTag = baseHeadingLevel ? `h${clampedLevel}` : 'h2'; // default to h2 if no base level is provided - this was the previous behavior
+    const textLevel = baseHeadingLevel ? Math.min(6, Math.max(1, clampedLevel + 1)) : undefined; // promote text headings one level above title
 
     return (
       <Passage key={tab.id} id={`tabpanel-${tab.id}`} role="tabpanel" aria-labelledby={`button-${tab.id}`}>
@@ -203,7 +203,7 @@ class StimulusTabs extends React.Component {
 
         {tab.text && (
           <Purpose purpose="passage-text">
-            <div key={tab.id} className="text" dangerouslySetInnerHTML={{ __html: !!baseHeadingLevel ? transformDataHeadings(tab.text, textLevel) : tab.text }} />
+            <div key={tab.id} className="text" dangerouslySetInnerHTML={{ __html: baseHeadingLevel ? transformDataHeadings(tab.text, textLevel) : tab.text }} />
           </Purpose>
         )}
       </Passage>
