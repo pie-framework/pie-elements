@@ -24,9 +24,12 @@ const NumberTextFieldStyled = styled(NumberTextField)({
 });
 
 const InputContainerStyled = styled('div')(({ theme }) => ({
-  width: '65%',
-  paddingTop: theme.spacing(2),
+  paddingTop: theme.spacing(1),
   paddingBottom: theme.spacing(2),
+
+  '.select-input-container': {
+    minWidth: '65%',
+  },
 }));
 
 const FlexContainer = styled('div')({
@@ -82,15 +85,8 @@ class GeneralConfigBlock extends React.Component {
     return (
       <React.Fragment>
         <FlexContainer>
-          <TitleText component={'div'}>
-            Define questions
-          </TitleText>
-          <StyledTooltip
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
+          <TitleText component={'div'}>Define questions</TitleText>
+          <StyledTooltip disableFocusListener disableTouchListener placement={'right'} title={validationMessage}>
             <Info fontSize={'small'} color={'primary'} />
           </StyledTooltip>
         </FlexContainer>
@@ -99,18 +95,16 @@ class GeneralConfigBlock extends React.Component {
           <Input>
             {layout.settings && (
               <InputContainerStyled>
-
-                <InputContainer label={layout.label} className="inputContainer">
-                  <NumberTextFieldStyled
-                    type="number"
-                    min={3}
-                    max={maxAnswers || 10}
-                    value={model.layout}
-                    onChange={(e, v) => this.onChangeColumns('layout', v)}
-                    suffix={'Columns'}
-                  />
-                </InputContainer>
-
+              <InputContainer label={layout.label} className="input-container">
+                <NumberTextFieldStyled
+                  type="number"
+                  min={3}
+                  max={maxAnswers || 10}
+                  value={model.layout}
+                  onChange={(e, v) => this.onChangeColumns('layout', v)}
+                  suffix={'Columns'}
+                />
+              </InputContainer>
               </InputContainerStyled>
             )}
           </Input>
@@ -118,7 +112,7 @@ class GeneralConfigBlock extends React.Component {
           <Input>
             {choiceMode.settings && (
               <InputContainerStyled>
-                <InputContainer label={choiceMode.label} className="inputContainer">
+                <InputContainer label={choiceMode.label} className="select-input-container">
                   <Select
                     variant="standard"
                     onChange={this.onChangeResponseType('choiceMode')}
