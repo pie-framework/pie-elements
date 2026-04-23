@@ -20,31 +20,30 @@ const log = debug('pie-element:ebsr:print');
 
 const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
+  const printModel = cloneDeep(model);
 
-  model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions =
-    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
-  model.showTeacherInstructions = instr;
-  model.alwaysShowCorrect = instr;
-  model.mode = instr ? 'evaluate' : 'gather';
+  printModel.prompt = printModel.promptEnabled !== false ? printModel.prompt : undefined;
+  printModel.teacherInstructions =
+    instr && printModel.teacherInstructionsEnabled !== false ? printModel.teacherInstructions : undefined;
+  printModel.showTeacherInstructions = instr;
+  printModel.alwaysShowCorrect = instr;
+  printModel.mode = instr ? 'evaluate' : 'gather';
 
-  model.disabled = true;
-  model.animationsDisabled = true;
-  model.lockChoiceOrder = true;
-  model.choicesLayout = model.choicesLayout || 'vertical';
+  printModel.disabled = true;
+  printModel.animationsDisabled = true;
+  printModel.lockChoiceOrder = true;
+  printModel.choicesLayout = printModel.choicesLayout || 'vertical';
 
-  const choices = cloneDeep(model.choices);
-
-  model.choices = choices.map((c) => {
-    c.rationale = instr && model.rationaleEnabled !== false ? c.rationale : undefined;
+  printModel.choices = (printModel.choices || []).map((c) => {
+    c.rationale = instr && printModel.rationaleEnabled !== false ? c.rationale : undefined;
     c.hideTick = instr;
     c.feedback = undefined;
     return c;
   });
 
-  model.keyMode = model.choicePrefix || 'letters';
+  printModel.keyMode = printModel.choicePrefix || 'letters';
 
-  return model;
+  return printModel;
 };
 
 class EbsrMC extends MultipleChoice {}
@@ -97,11 +96,7 @@ export default class Ebsr extends HTMLElement {
 
   set model(m) {
     this._model = m;
-
-    customElements.whenDefined(MC_TAG_NAME).then(() => {
-      this.setPartModel(this.partA, 'partA');
-      this.setPartModel(this.partB, 'partB');
-    });
+    this._updateParts();
   }
 
   set session(s) {
@@ -113,8 +108,15 @@ export default class Ebsr extends HTMLElement {
     });
   }
 
+  _updateParts() {
+    customElements.whenDefined(MC_TAG_NAME).then(() => {
+      this.setPartModel(this.partA, 'partA');
+      this.setPartModel(this.partB, 'partB');
+    });
+  }
+
   setPartModel(part, key) {
-    if (this._model && this._model[key] && part) {
+    if (this._model && this._model[key] && part && this._options) {
       let labels = {
         partA: undefined,
         partB: undefined,
@@ -155,6 +157,8 @@ export default class Ebsr extends HTMLElement {
 
   set options(o) {
     this._options = o;
+    // re-render parts so role changes (student/instructor) propagate to each part
+    this._updateParts();
   }
 
   setPartSession(part, key) {

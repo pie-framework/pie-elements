@@ -11,8 +11,8 @@ const CategoriesContainer = styled('div')(({ theme }) => ({
 
 const CategoriesHolder = styled('div')(({ theme }) => ({
   display: 'grid',
-  gridRowGap: `${theme.spacing(1)}px`,
-  gridColumnGap: `${theme.spacing(1)}px`,
+  gridRowGap: theme.spacing(1),
+  gridColumnGap: theme.spacing(1),
 }));
 
 const RowLabel = styled('div')({

@@ -5,8 +5,9 @@ import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { InputContainer } from '@pie-lib/render-ui';
 
 const RowLabelContainer = styled(InputContainer)(({ theme }) => ({
-  paddingTop: theme.spacing(2),
   width: '100%',
+  paddingTop: theme.spacing(1),
+  marginTop: theme.spacing(1),
 }));
 
 export const RowLabel = ({

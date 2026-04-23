@@ -11,6 +11,7 @@ const log = debug('@pie-element:categorize:configure');
 const HelperText = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   fontSize: theme.typography.fontSize - 2,
   color: `rgba(${theme.palette.common.black}, 0.4)`,
   width: '100%',
@@ -18,10 +19,6 @@ const HelperText = styled('div')(({ theme }) => ({
 }));
 
 const Helper = () => <HelperText>Drag your correct answers here</HelperText>;
-
-const DroppablePlaceholderContainer = styled('div')({
-  minHeight: '100px',
-});
 
 const Previews = ({ alternateResponseIndex, category, choices, onDeleteChoice }) => (
   <React.Fragment>
@@ -68,7 +65,6 @@ const DroppablePlaceHolder = ({
 
   return (
     <div ref={setNodeRef}>
-      <DroppablePlaceholderContainer>
         <PlaceHolder
           isOver={isOver}
           extraStyles={{
@@ -87,7 +83,6 @@ const DroppablePlaceHolder = ({
             />
           )}
         </PlaceHolder>
-      </DroppablePlaceholderContainer>
     </div>
   );
 };

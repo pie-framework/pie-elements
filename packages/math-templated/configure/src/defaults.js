@@ -60,7 +60,7 @@ export default {
     },
     editSource: {
       label: 'Edit Source',
-      settings: true,
+      settings: false,
       enabled: false,
     },
     playerSpellCheck: {

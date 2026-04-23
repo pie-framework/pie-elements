@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { execSync } = require('child_process');
+const fs = require('fs');
 const os = require('os');
 const chalk = require('chalk');
 const minimist = require('minimist');
@@ -107,12 +108,57 @@ const getCurrentBranch = () =>
   execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
 
 /**
+ * Builds print bundles under each element package's module directory (same as scripts/build sharedBuild).
+ * Only packages that both declare a ./print export and appear in pslb/pslb.config.js `packages` get pslb
+ * (blacklisted dirs like math-inline, select-text are excluded there).
+ */
+const buildPrintModules = () => {
+  // eslint-disable-next-line global-require, import/no-dynamic-require
+  const pslbConfig = require(resolve(CWD, 'pslb/pslb.config.js'));
+  const pslbAllowed = new Set(pslbConfig.packages || []);
+
+  const packagesRoot = resolve(CWD, 'packages');
+  const dirNames = fs.readdirSync(packagesRoot);
+  const withPrintExport = [];
+
+  for (const d of dirNames) {
+    const pkgPath = resolve(packagesRoot, d, 'package.json');
+    if (!fs.existsSync(pkgPath)) {
+      continue;
+    }
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+    if (pkg.exports && pkg.exports['./print']) {
+      withPrintExport.push(pkg.name);
+    }
+  }
+
+  const printPkgNames = withPrintExport.filter((n) => pslbAllowed.has(n));
+  const skipped = withPrintExport.filter((n) => !pslbAllowed.has(n));
+  if (skipped.length > 0) {
+    warn(
+      'Skipping pslb for packages with ./print but not in pslb.config.js packages list:',
+      skipped.join(', '),
+    );
+  }
+
+  if (printPkgNames.length === 0) {
+    warn('No pslb-eligible packages with ./print export; skipping pslb');
+    return;
+  }
+
+  log('print packages for pslb:', printPkgNames.join(', '));
+  const pkgFlags = printPkgNames.map((n) => `--package ${n}`).join(' ');
+  runCmd(`yarn pslb --config pslb/pslb.config.js ${pkgFlags} --logLevel silly`);
+};
+
+/**
  * Executes the build process, which consists of multiple sequential steps including:
  *
  * 1. Cleanup: Removes generated `lib` directories for all packages in the repository.
  * 2. Linting: Runs ESLint across specified source files with defined extensions.
  * 3. Transpilation: Uses Babel to build the code from source to output directories (`lib`)
  *    while generating source maps and respecting defined ignore rules.
+ * 4. Print modules: Runs pslb for packages with ./print that are listed in pslb.config.js (matches yarn build).
  */
 const build = () => {
   log(chalk.magenta('--- STEP 1: CLEANUP ---'));
@@ -129,6 +175,9 @@ const build = () => {
   runCmd(
     `${binary(`lerna`)} exec -- ${binary('babel')} --ignore \'**/__test__/**\',\'**/__tests__/**\' src -d lib --source-maps --root-mode upward`,
   );
+
+  log(chalk.magenta('--- STEP 4: PRINT MODULES (pslb) ---'));
+  buildPrintModules();
 };
 
 /**

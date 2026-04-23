@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@2.2.0-next.6...@pie-element/matrix-configure@2.2.0-next.7) (2026-04-17)
+
+### Bug Fixes
+
+- bump libs PIE-129 ([cee3e10](https://github.com/pie-framework/pie-elements/commit/cee3e109a9c1d9a68ab592781c968f6b27209846))
+
+# [2.2.0-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@2.2.0-next.5...@pie-element/matrix-configure@2.2.0-next.6) (2026-04-16)
+
+### Bug Fixes
+
+- bump libs PIE-46, PIE-25, PIE-54, PIE-44, PIE-29, PIE-13, PIE-129 ([5c17838](https://github.com/pie-framework/pie-elements/commit/5c17838a53483437e42dc679a4361e16b7ef5e31))
+
+# [2.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@2.2.0-next.4...@pie-element/matrix-configure@2.2.0-next.5) (2026-04-13)
+
+### Bug Fixes
+
+- bump libs PIE-34 ([9f8b35a](https://github.com/pie-framework/pie-elements/commit/9f8b35a856ca1eba67d5630a358b96226cfca984))
+
+# [2.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@2.2.0-next.3...@pie-element/matrix-configure@2.2.0-next.4) (2026-04-10)
+
+### Features
+
+- **math-inline:** replace @pie-framework/mathquill with math-input helpers PIE-56, bump libs PIE-34, PIE-57, PIE-36, PIE-38, PIE-18 ([abd205e](https://github.com/pie-framework/pie-elements/commit/abd205e9c8335957b9fc2548822e4125bf1a7edb))
+
+# [2.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@2.2.0-next.2...@pie-element/matrix-configure@2.2.0-next.3) (2026-04-08)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-53, PIE-48, PIE-114, PIE-74, PIE-35, PIE-40, PIE-27 ([3e6682d](https://github.com/pie-framework/pie-elements/commit/3e6682db1eb23414f3a4222abe13d2dd8ae5378e))
+
 # [2.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@2.2.0-next.1...@pie-element/matrix-configure@2.2.0-next.2) (2026-04-03)
 
 **Note:** Version bump only for package @pie-element/matrix-configure

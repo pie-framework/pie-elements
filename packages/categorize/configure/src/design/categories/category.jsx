@@ -20,9 +20,7 @@ const StyledCard = styled(Card, {
 }));
 
 const StyledCardActions = styled(CardActions)(({ theme }) => ({
-  padding: 0,
-  paddingBottom: 0,
-  paddingTop: theme.spacing(1),
+  padding: `${theme.spacing(1)} 0 0`,
 }));
 
 const CategoryHeader = styled('div')(({ theme }) => ({
@@ -97,7 +95,7 @@ export class Category extends React.Component {
       mathMlOptions = {},
     } = this.props;
     const isCategoryHeaderDisabled = !!alternateResponseIndex || alternateResponseIndex === 0;
-    
+
     return (
       <StyledCard isDuplicated={isDuplicated}>
         <span>

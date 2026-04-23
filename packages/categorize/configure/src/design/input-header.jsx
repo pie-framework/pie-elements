@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import EditableHtml from '@pie-lib/editable-html-tip-tap';
 
-const StyledEditableHtml = styled(EditableHtml)(({ theme }) => ({
+const StyledEditableHtml = styled(EditableHtml)({
   flex: '1',
-  paddingBottom: theme.spacing(1),
   maxWidth: '100%',
-}));
+});
 
-const InputHeaderContainer = styled('div')({
+const InputHeaderContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
-});
+  paddingBottom: theme.spacing(1),
+}));
 
 export class InputHeader extends React.Component {
   static propTypes = {

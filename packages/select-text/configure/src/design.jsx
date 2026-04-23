@@ -76,7 +76,7 @@ const TokensDetails = styled('div')(({ theme }) => ({
 
 const StyledNumberTextField = styled(NumberTextField)(({ theme }) => ({
   width: '180px',
-  margin: `${theme.spacing(0.5)}px auto 0`,
+  margin: `${theme.spacing(0.5)} auto 0`,
 }));
 
 const log = debug('@pie-element:select-text:configure');
