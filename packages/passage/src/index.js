@@ -5,6 +5,31 @@ import { createRoot } from 'react-dom/client';
 
 import StimulusTabs from './stimulus-tabs';
 
+function getBaseHeadingLevel(element) {
+  const player =
+    element.closest('pie-player') ||
+    element.closest('pie-item-player');
+
+  if (player) {
+    let raw = player.baseHeadingLevel;
+
+    // fallback in case someone sets via HTML attribute manually
+    if (raw == null) {
+      raw =
+        player.getAttribute('base-heading-level') ??
+        player.getAttribute('baseheadinglevel');
+    }
+
+    const playerLevel = parseInt(raw, 10);
+
+    if (Number.isFinite(playerLevel) && playerLevel >= 1 && playerLevel <= 6) {
+      return playerLevel;
+    }
+  }
+
+  return undefined;
+}
+
 export default class PiePassage extends HTMLElement {
   constructor() {
     super();
@@ -15,6 +40,7 @@ export default class PiePassage extends HTMLElement {
     this._root = null;
     this._mathObserver = null;
     this._mathRenderPending = false;
+    this._playerObserver = null;
   }
 
   setLangAttribute() {
@@ -70,6 +96,7 @@ export default class PiePassage extends HTMLElement {
     this.setAttribute('aria-label', 'Passage');
     this.setAttribute('role', 'region');
     this._initMathObserver();
+    this._initPlayerObserver();
     this._render();
   }
 
@@ -84,6 +111,8 @@ export default class PiePassage extends HTMLElement {
 
       const elem = React.createElement(StimulusTabs, {
         tabs: passagesTabs,
+        model: this._model,
+        baseHeadingLevel: getBaseHeadingLevel(this),
       });
 
       if (!this._root) {
@@ -95,8 +124,26 @@ export default class PiePassage extends HTMLElement {
     }
   }
 
+  _initPlayerObserver() {
+    const player = this.closest('pie-player') || this.closest('pie-item-player');
+    if (!player) return;
+
+    this._playerObserver = new MutationObserver(() => {
+      this._render();
+    });
+    this._playerObserver.observe(player, { attributes: true, attributeFilter: ['base-heading-level'] });
+  }
+
+  _disconnectPlayerObserver() {
+    if (this._playerObserver) {
+      this._playerObserver.disconnect();
+      this._playerObserver = null;
+    }
+  }
+
   disconnectedCallback() {
     this._disconnectMathObserver();
+    this._disconnectPlayerObserver();
     if (this._root) {
       this._root.unmount();
     }

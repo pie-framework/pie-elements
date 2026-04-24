@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
-import { Collapsible, color, PreviewPrompt, Purpose, UiLayout } from '@pie-lib/render-ui';
+import { Collapsible, color, PreviewPrompt, Purpose, UiLayout, transformDataHeadings } from '@pie-lib/render-ui';
 
 const PassagesContainer = styled('div')({
   flexGrow: 1,
@@ -172,24 +172,27 @@ class StimulusTabs extends React.Component {
   }
 
   renderTab(tab, disabledTabs) {
+    const { baseHeadingLevel } = this.props;
+    const clampedLevel = baseHeadingLevel ? Math.min(6, Math.max(1, baseHeadingLevel)) : undefined;
+    const TitleTag = baseHeadingLevel ? `h${clampedLevel}` : 'h2'; // default to h2 if no base level is provided - this was the previous behavior
+    const textLevel = baseHeadingLevel ? Math.min(6, Math.max(1, clampedLevel + 1)) : undefined; // promote text headings one level above title
+
     return (
       <Passage key={tab.id} id={`tabpanel-${tab.id}`} role="tabpanel" aria-labelledby={`button-${tab.id}`}>
         {this.renderInstructions(tab.teacherInstructions, disabledTabs)}
 
-        {(tab.title || tab.subtitle) && (
-          <h2>
-            {tab.title && (
-              <Purpose purpose="passage-title">
-                <PassageTitle dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}/>
-              </Purpose>
-            )}
-            {tab.subtitle && (
-              <Purpose purpose="passage-subtitle">
-                <PassageSubtitle dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
-                />
-              </Purpose>
-            )}
-          </h2>
+        {tab.title && (
+          <Purpose purpose="passage-title">
+            <TitleTag>
+              <PassageTitle dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />
+            </TitleTag>
+          </Purpose>
+        )}
+
+        {tab.subtitle && (
+          <Purpose purpose="passage-subtitle">
+            <PassageSubtitle dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }} />
+          </Purpose>
         )}
 
         {tab.author && (
@@ -200,11 +203,7 @@ class StimulusTabs extends React.Component {
 
         {tab.text && (
           <Purpose purpose="passage-text">
-            <div
-              key={tab.id}
-              className="text"
-              dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
-            />
+            <div key={tab.id} className="text" dangerouslySetInnerHTML={{ __html: baseHeadingLevel ? transformDataHeadings(tab.text, textLevel) : tab.text }} />
           </Purpose>
         )}
       </Passage>
@@ -283,6 +282,7 @@ StimulusTabs.propTypes = {
   ).isRequired,
   disabledTabs: PropTypes.bool,
   model: PropTypes.object,
+  baseHeadingLevel: PropTypes.number,
 };
 
 export default StimulusTabs;
