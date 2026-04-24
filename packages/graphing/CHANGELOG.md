@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@9.2.0-next.9...@pie-element/graphing@9.2.0-next.10) (2026-04-24)
+
+### Bug Fixes
+
+- bump libs PIE-428 ([a50054f](https://github.com/pie-framework/pie-elements/commit/a50054f71caaa6618fa915f40dd284af3983dfa5))
+
 # [9.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@9.2.0-next.8...@pie-element/graphing@9.2.0-next.9) (2026-04-24)
 
 ### Bug Fixes
