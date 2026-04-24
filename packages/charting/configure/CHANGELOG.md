@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@10.2.0-next.7...@pie-element/charting-configure@10.2.0-next.8) (2026-04-24)
+
+### Bug Fixes
+
+- bump dll and libs PIE-426, PIE-427 PIE-216 ([956a3c1](https://github.com/pie-framework/pie-elements/commit/956a3c1da34fda8779455589aff439cf4c9d4e51))
+- bump dLl modules and libs PIE-171, PIE-133, PIE-151, PIE-130, PIE-147, PIE-168, PIE-425 ([6b02d2a](https://github.com/pie-framework/pie-elements/commit/6b02d2abfd4027569150d347ea9f7701ce634270))
+
 # [10.2.0-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@10.2.0-next.6...@pie-element/charting-configure@10.2.0-next.7) (2026-04-17)
 
 ### Bug Fixes

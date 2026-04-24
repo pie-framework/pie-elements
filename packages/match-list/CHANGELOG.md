@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.2.0-next.4...@pie-element/match-list@6.2.0-next.5) (2026-04-24)
+
+### Bug Fixes
+
+- bump dLl modules and libs PIE-171, PIE-133, PIE-151, PIE-130, PIE-147, PIE-168, PIE-425 ([6b02d2a](https://github.com/pie-framework/pie-elements/commit/6b02d2abfd4027569150d347ea9f7701ce634270))
+
 # [6.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.2.0-next.3...@pie-element/match-list@6.2.0-next.4) (2026-04-16)
 
 ### Bug Fixes

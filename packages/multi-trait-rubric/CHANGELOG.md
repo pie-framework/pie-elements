@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@7.2.0-next.9...@pie-element/multi-trait-rubric@7.2.0-next.10) (2026-04-24)
+
+### Bug Fixes
+
+- bump dLl modules and libs PIE-171, PIE-133, PIE-151, PIE-130, PIE-147, PIE-168, PIE-425 ([6b02d2a](https://github.com/pie-framework/pie-elements/commit/6b02d2abfd4027569150d347ea9f7701ce634270))
+
 # [7.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@7.2.0-next.8...@pie-element/multi-trait-rubric@7.2.0-next.9) (2026-04-17)
 
 ### Bug Fixes

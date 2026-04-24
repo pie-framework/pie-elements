@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0-next.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@13.2.0-next.11...@pie-element/ebsr@13.2.0-next.12) (2026-04-24)
+
+### Bug Fixes
+
+- bump dLl modules and libs PIE-171, PIE-133, PIE-151, PIE-130, PIE-147, PIE-168, PIE-425 ([6b02d2a](https://github.com/pie-framework/pie-elements/commit/6b02d2abfd4027569150d347ea9f7701ce634270))
+
 # [13.2.0-next.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@13.2.0-next.10...@pie-element/ebsr@13.2.0-next.11) (2026-04-23)
 
 ### Bug Fixes

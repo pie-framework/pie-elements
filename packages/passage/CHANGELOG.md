@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.2.0-next.8...@pie-element/passage@6.2.0-next.9) (2026-04-24)
+
+### Bug Fixes
+
+- bump dLl modules and libs PIE-171, PIE-133, PIE-151, PIE-130, PIE-147, PIE-168, PIE-425 ([6b02d2a](https://github.com/pie-framework/pie-elements/commit/6b02d2abfd4027569150d347ea9f7701ce634270))
+- **stimulus-tabs:** simplify baseHeadingLevel checks in renderTab method ([500ea42](https://github.com/pie-framework/pie-elements/commit/500ea423912dc951bd517249ef3abf4c9fda463a))
+
+### Features
+
+- **passage:** add heading level handling PIE-150 ([d5c95b5](https://github.com/pie-framework/pie-elements/commit/d5c95b50075df5d12f2f4fe7542028f788d7379d))
+
 # [6.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@6.2.0-next.7...@pie-element/passage@6.2.0-next.8) (2026-04-17)
 
 ### Bug Fixes
