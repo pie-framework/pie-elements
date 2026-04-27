@@ -1,47 +1,57 @@
 import * as React from 'react';
 import { InputContainer, NumberTextField } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Info from '@mui/icons-material/Info';
+import Tooltip from '@mui/material/Tooltip';
 
 import { generateValidationMessage } from '../utils';
 
-const styles = (theme) => ({
-  container: {
-    marginTop: theme.spacing.unit * 2,
-    display: 'flex',
+const Container = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  display: 'flex',
+}));
+
+const Input = styled('div')({
+  flex: 1,
+});
+
+const NumberTextFieldStyled = styled(NumberTextField)({
+  flexDirection: 'unset',
+});
+
+const InputContainerStyled = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(2),
+
+  '.select-input-container': {
+    minWidth: '65%',
   },
-  input: {
-    flex: 1,
-  },
-  numberTextField: {
-    flexDirection: 'unset',
-  },
-  inputContainer: {
-    width: '65%',
-  },
-  flexContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  titleText: {
-    fontSize: theme.typography.fontSize + 2,
-    marginRight: theme.spacing.unit,
-  },
-  tooltip: {
+}));
+
+const FlexContainer = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const TitleText = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize + 2,
+  marginRight: theme.spacing(1),
+}));
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  '& .MuiTooltip-tooltip': {
     fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
-});
+}));
 
 class GeneralConfigBlock extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     onResponseTypeChange: PropTypes.func.isRequired,
@@ -67,59 +77,59 @@ class GeneralConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration } = this.props;
+    const { model, configuration } = this.props;
     const { layout = {}, choiceMode = {}, maxAnswers } = configuration || {};
 
     const validationMessage = generateValidationMessage(model, configuration);
 
     return (
       <React.Fragment>
-        <div className={classes.flexContainer}>
-          <Typography className={classes.titleText} component={'div'}>
-            Define questions
-          </Typography>
-          <Tooltip
-            classes={{ tooltip: classes.tooltip }}
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
+        <FlexContainer>
+          <TitleText component={'div'}>Define questions</TitleText>
+          <StyledTooltip disableFocusListener disableTouchListener placement={'right'} title={validationMessage}>
             <Info fontSize={'small'} color={'primary'} />
-          </Tooltip>
-        </div>
+          </StyledTooltip>
+        </FlexContainer>
 
-        <div className={classes.container}>
-          <div className={classes.input}>
+        <Container>
+          <Input>
             {layout.settings && (
-              <InputContainer label={layout.label} className={classes.inputContainer}>
-                <NumberTextField
+              <InputContainerStyled>
+              <InputContainer label={layout.label} className="input-container">
+                <NumberTextFieldStyled
                   type="number"
                   min={3}
                   max={maxAnswers || 10}
                   value={model.layout}
                   onChange={(e, v) => this.onChangeColumns('layout', v)}
                   suffix={'Columns'}
-                  className={classes.numberTextField}
                 />
               </InputContainer>
+              </InputContainerStyled>
             )}
-          </div>
+          </Input>
 
-          <div className={classes.input}>
+          <Input>
             {choiceMode.settings && (
-              <InputContainer label={choiceMode.label} className={classes.inputContainer}>
-                <Select onChange={this.onChangeResponseType('choiceMode')} value={model.choiceMode}>
-                  <MenuItem value="radio">Radio - One Answer</MenuItem>
-                  <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>
-                </Select>
-              </InputContainer>
+              <InputContainerStyled>
+                <InputContainer label={choiceMode.label} className="select-input-container">
+                  <Select
+                    variant="standard"
+                    onChange={this.onChangeResponseType('choiceMode')}
+                    value={model.choiceMode}
+                    MenuProps={{ transitionDuration: { enter: 225, exit: 195 } }}
+                  >
+                    <MenuItem value="radio">Radio - One Answer</MenuItem>
+                    <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>
+                  </Select>
+                </InputContainer>
+              </InputContainerStyled>
             )}
-          </div>
-        </div>
+          </Input>
+        </Container>
       </React.Fragment>
     );
   }
 }
 
-export default withStyles(styles)(GeneralConfigBlock);
+export default GeneralConfigBlock;

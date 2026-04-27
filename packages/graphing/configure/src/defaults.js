@@ -63,6 +63,7 @@ export default {
   },
   configuration: {
     baseInputConfiguration: {
+      h3: { disabled: true },
       audio: { disabled: false },
       video: { disabled: false },
       image: { disabled: false },

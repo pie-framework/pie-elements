@@ -3,3677 +3,2240 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [13.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.3.2...@pie-element/extended-text-entry@13.4.0) (2025-11-27)
-
-
-### Bug Fixes
-
-* bump libs PD-5274, PD-5211, PD-5248 ([7610b25](https://github.com/pie-framework/pie-elements/commit/7610b25423956b6492f33322513b3430051fca77))
-* tests ([4648663](https://github.com/pie-framework/pie-elements/commit/464866307e8f8dc10cd7983cc3f4429ce82c4a47))
-
+# [14.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.9...@pie-element/extended-text-entry@14.2.0-next.10) (2026-04-27)
 
 ### Features
 
-* remove list tools from extended-text-entry player view PD-5266 ([bc282d1](https://github.com/pie-framework/pie-elements/commit/bc282d1ea47c26115a6890fa72da3bab2206580d))
+- bump major libs and shared modules ([acb4bf3](https://github.com/pie-framework/pie-elements/commit/acb4bf32dafd5cd47cd1c673791b7af3c66b2938))
 
+# [14.2.0-next.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.8...@pie-element/extended-text-entry@14.2.0-next.9) (2026-04-24)
 
+### Bug Fixes
 
+- bump dLl modules and libs PIE-171, PIE-133, PIE-151, PIE-130, PIE-147, PIE-168, PIE-425 ([6b02d2a](https://github.com/pie-framework/pie-elements/commit/6b02d2abfd4027569150d347ea9f7701ce634270))
 
+# [14.2.0-next.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.7...@pie-element/extended-text-entry@14.2.0-next.8) (2026-04-23)
+
+### Bug Fixes
+
+- **ebsr,extended-text-entry:** render print view correctly on role switch PIE-216 ([6f5db76](https://github.com/pie-framework/pie-elements/commit/6f5db762936561807c8040572fcaa6f844643218))
+
+# [14.2.0-next.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.6...@pie-element/extended-text-entry@14.2.0-next.7) (2026-04-17)
+
+### Bug Fixes
+
+- bump libs PIE-129 ([cee3e10](https://github.com/pie-framework/pie-elements/commit/cee3e109a9c1d9a68ab592781c968f6b27209846))
+
+# [14.2.0-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.5...@pie-element/extended-text-entry@14.2.0-next.6) (2026-04-16)
+
+### Bug Fixes
+
+- bump libs PIE-46, PIE-25, PIE-54, PIE-44, PIE-29, PIE-13, PIE-129 ([5c17838](https://github.com/pie-framework/pie-elements/commit/5c17838a53483437e42dc679a4361e16b7ef5e31))
+
+# [14.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.4...@pie-element/extended-text-entry@14.2.0-next.5) (2026-04-13)
+
+### Bug Fixes
+
+- bump libs PIE-34 ([9f8b35a](https://github.com/pie-framework/pie-elements/commit/9f8b35a856ca1eba67d5630a358b96226cfca984))
+
+# [14.2.0-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.3...@pie-element/extended-text-entry@14.2.0-next.4) (2026-04-10)
+
+### Features
+
+- **math-inline:** replace @pie-framework/mathquill with math-input helpers PIE-56, bump libs PIE-34, PIE-57, PIE-36, PIE-38, PIE-18 ([abd205e](https://github.com/pie-framework/pie-elements/commit/abd205e9c8335957b9fc2548822e4125bf1a7edb))
+
+# [14.2.0-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.2...@pie-element/extended-text-entry@14.2.0-next.3) (2026-04-08)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-53, PIE-48, PIE-114, PIE-74, PIE-35, PIE-40, PIE-27 ([3e6682d](https://github.com/pie-framework/pie-elements/commit/3e6682db1eb23414f3a4222abe13d2dd8ae5378e))
+
+# [14.2.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.1...@pie-element/extended-text-entry@14.2.0-next.2) (2026-04-03)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+# [14.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.2.0-next.0...@pie-element/extended-text-entry@14.2.0-next.1) (2026-03-25)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+# [14.2.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.1.2-next.4...@pie-element/extended-text-entry@14.2.0-next.0) (2026-03-19)
+
+### Features
+
+- bump libs PD-5669, PD-5530, PD-5496,PD-5501, PD-5790, PD-5622, PD-5811, PD-5590, PD-5510 ([1c7cfc4](https://github.com/pie-framework/pie-elements/commit/1c7cfc4ea91dfd631b9e2ca23810b65a4a4585cf))
+
+## [14.1.2-next.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.1.2-next.3...@pie-element/extended-text-entry@14.1.2-next.4) (2026-03-12)
+
+### Bug Fixes
+
+- bump libs, update mathquill, switch interface PD-5791 ([686a7c0](https://github.com/pie-framework/pie-elements/commit/686a7c0d41ff82f5ddad7cecd93cc0c18324a81b))
+
+## [14.1.2-next.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.1.2-next.2...@pie-element/extended-text-entry@14.1.2-next.3) (2026-03-06)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+## [14.1.2-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.1.2-next.1...@pie-element/extended-text-entry@14.1.2-next.2) (2026-03-05)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+## [14.1.2-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.1.0-next.2...@pie-element/extended-text-entry@14.1.2-next.1) (2026-02-26)
+
+### Bug Fixes
+
+- disable text editor tools in extended-text-entry gather mode PD-5581 ([bf1e457](https://github.com/pie-framework/pie-elements/commit/bf1e4570cdd300ae4f982e5116b6ba5bcf9b4222))
+
+# [14.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@14.1.0-next.1...@pie-element/extended-text-entry@14.1.0-next.2) (2026-02-24)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
 
 ## [13.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.3.1...@pie-element/extended-text-entry@13.3.2) (2025-10-22)
 
-
 ### Bug Fixes
 
-* bump libs PD-5265 ([184a978](https://github.com/pie-framework/pie-elements/commit/184a978f57a2a84dc6ba87c1eba0b92d5cdd9eae))
-
-
-
-
+- bump libs PD-5265 ([184a978](https://github.com/pie-framework/pie-elements/commit/184a978f57a2a84dc6ba87c1eba0b92d5cdd9eae))
 
 ## [13.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.2.1...@pie-element/extended-text-entry@13.3.1) (2025-10-16)
 
-
 ### Bug Fixes
 
-* bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
-
-
-
-
+- bump pie-lib versions and pslb module versions ([393d39f](https://github.com/pie-framework/pie-elements/commit/393d39fb850ad055568f4d20464213e9043f208f))
 
 # [13.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.2.0...@pie-element/extended-text-entry@13.3.0) (2025-10-15)
 
-
 ### Bug Fixes
 
-* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
-
-
-
-
+- bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
 
 ## [13.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.2.0...@pie-element/extended-text-entry@13.2.1) (2025-10-14)
 
-
 ### Bug Fixes
 
-* bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
-
-
-
-
+- bump libs ([2616ab2](https://github.com/pie-framework/pie-elements/commit/2616ab24f776f4df02302f5855c381ee52527665))
 
 # [13.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@13.0.0...@pie-element/extended-text-entry@13.2.0) (2025-10-10)
 
-
 ### Features
 
-* update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
-
-
-
-
+- update libs PD-5208, PD-5211, PD-5199, PD-5218, PD-5217 ([da327fa](https://github.com/pie-framework/pie-elements/commit/da327fa501f6e9eff1c0b30b5ef092426a91f78b))
 
 # [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@12.0.0...@pie-element/extended-text-entry@13.1.0) (2025-10-07)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [13.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.10...@pie-element/extended-text-entry@13.0.0) (2025-10-02)
-
 
 ### Features
 
-* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
-
+- publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
 
 ### Performance Improvements
 
-* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
-
+- **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
 
 ### BREAKING CHANGES
 
-* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
-
-
-
-
+- **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
 
 # [12.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.10...@pie-element/extended-text-entry@12.0.0) (2025-10-01)
 
-
 ### Features
 
-* publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
-
+- publish majors to adopt pie-toolbox split without breaking legacy bundles PD-5242 ([50ede62](https://github.com/pie-framework/pie-elements/commit/50ede624eff05e2bc52fa80e453d561c505ab38d))
 
 ### Performance Improvements
 
-* **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
-
+- **multiple-choice:** adopt pie-toolbox split ([b4b8f45](https://github.com/pie-framework/pie-elements/commit/b4b8f45b68b71622b314c3d80fdc180832a640e1))
 
 ### BREAKING CHANGES
 
-* **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
-
-
-
-
+- **multiple-choice:** publish majors to carry the pie-toolbox split without breaking legacy bundles
 
 ## [11.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.9.0-beta.0...@pie-element/extended-text-entry@11.8.10) (2025-09-26)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [11.9.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.9...@pie-element/extended-text-entry@11.9.0-beta.0) (2025-09-25)
-
 
 ### Bug Fixes
 
-* **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
-* conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
-* fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
-* fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
-* merge develop ([9f997d7](https://github.com/pie-framework/pie-elements/commit/9f997d7a9813bed26b760f14fbf841e373bb0bb8))
-* merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
-* update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
-
+- **math-rendering:** move mathjax-full back to dependencies ([aba6dbf](https://github.com/pie-framework/pie-elements/commit/aba6dbf2c98da164149a881616df5e7b8e29b2f2))
+- conflicts ([5c99a5d](https://github.com/pie-framework/pie-elements/commit/5c99a5db49549422ba1e29b6c67f210e688677d8))
+- fix conflicts and update imports ([da74559](https://github.com/pie-framework/pie-elements/commit/da745596bfc0da732cdafdcfee376c84fde3cdc6))
+- fix imports PD-5126 ([3bf4684](https://github.com/pie-framework/pie-elements/commit/3bf4684871a62b3e23f50e2c010adfc9ae674919))
+- merge develop ([9f997d7](https://github.com/pie-framework/pie-elements/commit/9f997d7a9813bed26b760f14fbf841e373bb0bb8))
+- merge develop ([b5ec752](https://github.com/pie-framework/pie-elements/commit/b5ec752f6fedc576449c277308499bc853244544))
+- update pie-lib/pie-toolbox PD-5196 ([d525b88](https://github.com/pie-framework/pie-elements/commit/d525b888f16fcc2ac115c8e699ca6f249db27406))
 
 ### Features
 
-* **charting, boilerplate, calculator, extended-text-entry:** use split pie-toolbox PD-5158 ([3f500fd](https://github.com/pie-framework/pie-elements/commit/3f500fd5fb80c17505ff1e8f6b7c977d63313571))
-
-
-
-
+- **charting, boilerplate, calculator, extended-text-entry:** use split pie-toolbox PD-5158 ([3f500fd](https://github.com/pie-framework/pie-elements/commit/3f500fd5fb80c17505ff1e8f6b7c977d63313571))
 
 ## [11.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.8...@pie-element/extended-text-entry@11.8.9) (2025-09-11)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
-
-
-
-
+- update pie-lib/pie-toolbox PD-5198, PD-5187 ([f04a94c](https://github.com/pie-framework/pie-elements/commit/f04a94c62a29d77fcb17b473b7de1022ad65eeb4))
 
 ## [11.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.7...@pie-element/extended-text-entry@11.8.8) (2025-09-09)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
-
-
-
-
+- update pie-lib/pie-toolbox PD-5196 ([29ec1c8](https://github.com/pie-framework/pie-elements/commit/29ec1c80dd278b534751f3944445b91d5f9524a5))
 
 ## [11.8.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.6...@pie-element/extended-text-entry@11.8.7) (2025-09-09)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
-
-
-
-
+- update pie-lib/pie-toolboox PD-5181, PD-5187, PD-4580, PD-5198 ([9fa09cd](https://github.com/pie-framework/pie-elements/commit/9fa09cdb29fe43e292e6f3fba2b88561d8deceab))
 
 ## [11.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.5...@pie-element/extended-text-entry@11.8.6) (2025-09-02)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4579, PD-4430 ([277d2a6](https://github.com/pie-framework/pie-elements/commit/277d2a6bad2fc884ab9d980f71774ba9eca8dbb5))
 
 ## [11.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.4...@pie-element/extended-text-entry@11.8.5) (2025-08-15)
 
-
 ### Bug Fixes
 
-* PD-5084 ([78bd9ca](https://github.com/pie-framework/pie-elements/commit/78bd9ca1540c3968ddd36e0ff5cc4ac095865250))
-
-
-
-
+- PD-5084 ([78bd9ca](https://github.com/pie-framework/pie-elements/commit/78bd9ca1540c3968ddd36e0ff5cc4ac095865250))
 
 ## [11.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.3...@pie-element/extended-text-entry@11.8.4) (2025-08-14)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolboxPD-5147, PD-4579, PD-5084, PD-4918 ([ff9ec92](https://github.com/pie-framework/pie-elements/commit/ff9ec92eb659a1664729aaae54eedf3b87f6a96a))
-
-
-
-
+- update pie-lib/pie-toolboxPD-5147, PD-4579, PD-5084, PD-4918 ([ff9ec92](https://github.com/pie-framework/pie-elements/commit/ff9ec92eb659a1664729aaae54eedf3b87f6a96a))
 
 ## [11.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.2...@pie-element/extended-text-entry@11.8.3) (2025-08-14)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-5147 ([484432f](https://github.com/pie-framework/pie-elements/commit/484432fd824ebe403e8f4302f6b8cf4d026dacb5))
-
-
-
-
+- update pie-lib/pie-toolbox PD-5147 ([484432f](https://github.com/pie-framework/pie-elements/commit/484432fd824ebe403e8f4302f6b8cf4d026dacb5))
 
 ## [11.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.1...@pie-element/extended-text-entry@11.8.2) (2025-07-25)
 
-
 ### Bug Fixes
 
-* refactor PD-5132, update pie-lib/pie-toolbox PD-3797 ([7434408](https://github.com/pie-framework/pie-elements/commit/7434408416a883fd680eec13fe1109711fd7e6b5))
-* update pie-lib/pie-toolbox PD-4885, PD-5131 ([4b9859c](https://github.com/pie-framework/pie-elements/commit/4b9859c919a1a7cc8e29d6168a91cd1f7d1aafd1))
-
-
-
-
+- refactor PD-5132, update pie-lib/pie-toolbox PD-3797 ([7434408](https://github.com/pie-framework/pie-elements/commit/7434408416a883fd680eec13fe1109711fd7e6b5))
+- update pie-lib/pie-toolbox PD-4885, PD-5131 ([4b9859c](https://github.com/pie-framework/pie-elements/commit/4b9859c919a1a7cc8e29d6168a91cd1f7d1aafd1))
 
 ## [11.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.8.0...@pie-element/extended-text-entry@11.8.1) (2025-07-22)
 
-
 ### Bug Fixes
 
-* update pie-toolbox PD-4885 ([a6d439e](https://github.com/pie-framework/pie-elements/commit/a6d439e49a0082f3d5e8bf46cc73c69d1d0ae311))
-
-
-
-
+- update pie-toolbox PD-4885 ([a6d439e](https://github.com/pie-framework/pie-elements/commit/a6d439e49a0082f3d5e8bf46cc73c69d1d0ae311))
 
 # [11.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.10...@pie-element/extended-text-entry@11.8.0) (2025-07-18)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-363 ([10ce402](https://github.com/pie-framework/pie-elements/commit/10ce402bcb1c0c9c24dfc9ecff2e13c4de14a753))
-
+- update pie-lib/pie-toolbox PD-363 ([10ce402](https://github.com/pie-framework/pie-elements/commit/10ce402bcb1c0c9c24dfc9ecff2e13c4de14a753))
 
 ### Features
 
-* update pie-lib/pie toolbox PD-5082, PD-5081, PD-3797, PD-5083, revert PD-363, PD-653 ([9214466](https://github.com/pie-framework/pie-elements/commit/92144667464f18c213c7ab1d769595e43b553dab))
-* update pie-lib/pie-toolbox PD-5082, PD-5081, PD-3797, PD-5083, PD-4885, PD-5097, PD-5100, PD-5131, PD-5080 ([dc67b1c](https://github.com/pie-framework/pie-elements/commit/dc67b1c735b2adb60943e5d145e739ce4e39a428))
-
-
-
-
+- update pie-lib/pie toolbox PD-5082, PD-5081, PD-3797, PD-5083, revert PD-363, PD-653 ([9214466](https://github.com/pie-framework/pie-elements/commit/92144667464f18c213c7ab1d769595e43b553dab))
+- update pie-lib/pie-toolbox PD-5082, PD-5081, PD-3797, PD-5083, PD-4885, PD-5097, PD-5100, PD-5131, PD-5080 ([dc67b1c](https://github.com/pie-framework/pie-elements/commit/dc67b1c735b2adb60943e5d145e739ce4e39a428))
 
 ## [11.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.9...@pie-element/extended-text-entry@11.7.10) (2025-06-27)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-5064 ([f61face](https://github.com/pie-framework/pie-elements/commit/f61face71312f0a4e46a16a646aa616b9d4ed8eb))
-
-
-
-
+- update pie-lib/pie-toolbox PD-5064 ([f61face](https://github.com/pie-framework/pie-elements/commit/f61face71312f0a4e46a16a646aa616b9d4ed8eb))
 
 ## [11.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.8...@pie-element/extended-text-entry@11.7.9) (2025-06-25)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-5059 ([d6f2203](https://github.com/pie-framework/pie-elements/commit/d6f22032dcfb049ce7aeb496f94456fdd06d4139))
-
-
-
-
+- update pie-lib/pie-toolbox PD-5059 ([d6f2203](https://github.com/pie-framework/pie-elements/commit/d6f22032dcfb049ce7aeb496f94456fdd06d4139))
 
 ## [11.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.7...@pie-element/extended-text-entry@11.7.8) (2025-06-19)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-5076, PD-5063, PD-4832, PD-5059 ([16201a3](https://github.com/pie-framework/pie-elements/commit/16201a35183965fabd033bbf797ef3b438d69a85))
-
-
-
-
+- update pie-lib/pie-toolbox PD-5076, PD-5063, PD-4832, PD-5059 ([16201a3](https://github.com/pie-framework/pie-elements/commit/16201a35183965fabd033bbf797ef3b438d69a85))
 
 ## [11.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.6...@pie-element/extended-text-entry@11.7.7) (2025-06-05)
 
-
 ### Bug Fixes
 
-* add validation for audio content PD-4123 ([f0ce3f1](https://github.com/pie-framework/pie-elements/commit/f0ce3f19a12fd4cfe2d2159ca4af801d866dc8a9))
-* update pie-lib pie-toolbox PD-3756 and revert changes for PD-4810 ([1e3030b](https://github.com/pie-framework/pie-elements/commit/1e3030bfdb13d0cce7b54ce0e9a109446c5ec2a2))
-* update pie-lib-pie-toolbox PD-4810 ([6c81afc](https://github.com/pie-framework/pie-elements/commit/6c81afc6a8ad41e001bafb0bd1563164e9f32a10))
-* update pie-lib-pie-toolbox PD-4810 ([0f9dd82](https://github.com/pie-framework/pie-elements/commit/0f9dd827c474e87770fd3bd146d870dd77d296df))
-* update pie-lib/pie-toolbox PD-4888, PD-3542, PD-4873, PD-4679 ([9c3bdef](https://github.com/pie-framework/pie-elements/commit/9c3bdef1b68f128ecc6338ef74f25fb74c482aa6))
-
-
-
-
+- add validation for audio content PD-4123 ([f0ce3f1](https://github.com/pie-framework/pie-elements/commit/f0ce3f19a12fd4cfe2d2159ca4af801d866dc8a9))
+- update pie-lib pie-toolbox PD-3756 and revert changes for PD-4810 ([1e3030b](https://github.com/pie-framework/pie-elements/commit/1e3030bfdb13d0cce7b54ce0e9a109446c5ec2a2))
+- update pie-lib-pie-toolbox PD-4810 ([6c81afc](https://github.com/pie-framework/pie-elements/commit/6c81afc6a8ad41e001bafb0bd1563164e9f32a10))
+- update pie-lib-pie-toolbox PD-4810 ([0f9dd82](https://github.com/pie-framework/pie-elements/commit/0f9dd827c474e87770fd3bd146d870dd77d296df))
+- update pie-lib/pie-toolbox PD-4888, PD-3542, PD-4873, PD-4679 ([9c3bdef](https://github.com/pie-framework/pie-elements/commit/9c3bdef1b68f128ecc6338ef74f25fb74c482aa6))
 
 ## [11.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.5...@pie-element/extended-text-entry@11.7.6) (2025-05-22)
 
-
 ### Bug Fixes
 
-* conflicts ([fce1a12](https://github.com/pie-framework/pie-elements/commit/fce1a12cacfcdc0f7ded44291eb7539dc3567127))
-* tests PD-5009 ([e00ac85](https://github.com/pie-framework/pie-elements/commit/e00ac85428a335d1dd67012b99a89861926594d0))
-* update pie-lib/pie-toolbox PD-4555, PD-4561 ([a7c878c](https://github.com/pie-framework/pie-elements/commit/a7c878cc1c1440bc0f72acb8ca3ef2a023023066))
-* update pie-lib/pie-toolbox PD-5009, PD-5002 ([9d5d7a3](https://github.com/pie-framework/pie-elements/commit/9d5d7a31ea06b568c346008aee2557dfd2e9a796))
-
-
-
-
+- conflicts ([fce1a12](https://github.com/pie-framework/pie-elements/commit/fce1a12cacfcdc0f7ded44291eb7539dc3567127))
+- tests PD-5009 ([e00ac85](https://github.com/pie-framework/pie-elements/commit/e00ac85428a335d1dd67012b99a89861926594d0))
+- update pie-lib/pie-toolbox PD-4555, PD-4561 ([a7c878c](https://github.com/pie-framework/pie-elements/commit/a7c878cc1c1440bc0f72acb8ca3ef2a023023066))
+- update pie-lib/pie-toolbox PD-5009, PD-5002 ([9d5d7a3](https://github.com/pie-framework/pie-elements/commit/9d5d7a31ea06b568c346008aee2557dfd2e9a796))
 
 ## [11.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.4...@pie-element/extended-text-entry@11.7.5) (2025-05-12)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4977 ([1f864de](https://github.com/pie-framework/pie-elements/commit/1f864de43661adf716578caf4657c4c0a0384556))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4977 ([1f864de](https://github.com/pie-framework/pie-elements/commit/1f864de43661adf716578caf4657c4c0a0384556))
 
 ## [11.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.3...@pie-element/extended-text-entry@11.7.4) (2025-04-29)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4976 ([ccf7412](https://github.com/pie-framework/pie-elements/commit/ccf74123f4581fc45383bdf2c181e699588b989d))
-* update pie-lib/pie-toolbox PD-4976, PD-4980, PD-3496 ([a001d12](https://github.com/pie-framework/pie-elements/commit/a001d122ca198b23eeef9596857555eb1a76bb6b))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4976 ([ccf7412](https://github.com/pie-framework/pie-elements/commit/ccf74123f4581fc45383bdf2c181e699588b989d))
+- update pie-lib/pie-toolbox PD-4976, PD-4980, PD-3496 ([a001d12](https://github.com/pie-framework/pie-elements/commit/a001d122ca198b23eeef9596857555eb1a76bb6b))
 
 ## [11.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.2...@pie-element/extended-text-entry@11.7.3) (2025-04-18)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4967 ([cf4c095](https://github.com/pie-framework/pie-elements/commit/cf4c095f21a2e9bdf74ce5a419ad5fc8d0d7f6ca))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4967 ([cf4c095](https://github.com/pie-framework/pie-elements/commit/cf4c095f21a2e9bdf74ce5a419ad5fc8d0d7f6ca))
 
 ## [11.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.1...@pie-element/extended-text-entry@11.7.2) (2025-04-17)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4967 ([0901bff](https://github.com/pie-framework/pie-elements/commit/0901bff14ea3398cf3930d7e41809a4d9dde0ccd))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4967 ([0901bff](https://github.com/pie-framework/pie-elements/commit/0901bff14ea3398cf3930d7e41809a4d9dde0ccd))
 
 ## [11.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.7.0...@pie-element/extended-text-entry@11.7.1) (2025-04-10)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4765, PD-4947 ([56312ea](https://github.com/pie-framework/pie-elements/commit/56312ea13151cc7e5d026a112fb7d86d320e4799))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4765, PD-4947 ([56312ea](https://github.com/pie-framework/pie-elements/commit/56312ea13151cc7e5d026a112fb7d86d320e4799))
 
 # [11.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.6.0...@pie-element/extended-text-entry@11.7.0) (2025-04-01)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox PD-4938 ([4d89e6e](https://github.com/pie-framework/pie-elements/commit/4d89e6ef28c75b344b6669562f99057359bff794))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4938 ([4d89e6e](https://github.com/pie-framework/pie-elements/commit/4d89e6ef28c75b344b6669562f99057359bff794))
 
 # [11.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.9...@pie-element/extended-text-entry@11.6.0) (2025-03-27)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4895, PD-4093, PD-4888 ([7e6f1c5](https://github.com/pie-framework/pie-elements/commit/7e6f1c5d7bd0832f62ec8f048e04bcdbfe426779))
-
+- update pie-lib/pie-toolbox PD-4895, PD-4093, PD-4888 ([7e6f1c5](https://github.com/pie-framework/pie-elements/commit/7e6f1c5d7bd0832f62ec8f048e04bcdbfe426779))
 
 ### Features
 
-* updated config so line breaks are enabled in editor [PD-4093] ([2e1978d](https://github.com/pie-framework/pie-elements/commit/2e1978db22d6e39328fff7dce8af3a494f77e2e1))
-
-
-
-
+- updated config so line breaks are enabled in editor [PD-4093] ([2e1978d](https://github.com/pie-framework/pie-elements/commit/2e1978db22d6e39328fff7dce8af3a494f77e2e1))
 
 ## [11.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.8...@pie-element/extended-text-entry@11.5.9) (2025-03-21)
 
-
 ### Bug Fixes
 
-* update pie-toolbox PD-4917 ([03f3dab](https://github.com/pie-framework/pie-elements/commit/03f3dab963e2c5a55c8e44c472eaf00053bd111c))
-
-
-
-
+- update pie-toolbox PD-4917 ([03f3dab](https://github.com/pie-framework/pie-elements/commit/03f3dab963e2c5a55c8e44c472eaf00053bd111c))
 
 ## [11.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.7...@pie-element/extended-text-entry@11.5.8) (2025-03-14)
 
-
 ### Bug Fixes
 
-* update Recharts to latest stable version PD-4900 and revert PD-4093 in pie-lib/pie-toolbox ([60b5d7c](https://github.com/pie-framework/pie-elements/commit/60b5d7c799ac4457495a77c4f7d93e3fece1476e))
-
-
-
-
+- update Recharts to latest stable version PD-4900 and revert PD-4093 in pie-lib/pie-toolbox ([60b5d7c](https://github.com/pie-framework/pie-elements/commit/60b5d7c799ac4457495a77c4f7d93e3fece1476e))
 
 ## [11.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.6...@pie-element/extended-text-entry@11.5.7) (2025-03-13)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4872, PD-4093, PD-4588, PD-4812, PD-4867 ([2386fb5](https://github.com/pie-framework/pie-elements/commit/2386fb5f84cadb42305ab5a0e6248bd2b2279e0a))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4872, PD-4093, PD-4588, PD-4812, PD-4867 ([2386fb5](https://github.com/pie-framework/pie-elements/commit/2386fb5f84cadb42305ab5a0e6248bd2b2279e0a))
 
 ## [11.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.5...@pie-element/extended-text-entry@11.5.6) (2025-03-03)
 
-
 ### Bug Fixes
 
-* update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
-
-
-
-
+- update pie-lib pie-toolbox PD-4795 ([c0bc482](https://github.com/pie-framework/pie-elements/commit/c0bc48285a67aaaf6f4b81057ced62bc57ee978d))
 
 ## [11.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.4...@pie-element/extended-text-entry@11.5.5) (2025-02-27)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
-* **extended-text-entry:** disable textAlign for student-facing editor PD-4813 ([f2bee4d](https://github.com/pie-framework/pie-elements/commit/f2bee4d47e341f7ebac094bef92c03c0a551a957))
-* **extended-text-entry:** update snapshots for tests PD-4813 ([48fe7d6](https://github.com/pie-framework/pie-elements/commit/48fe7d6886b1bb21771962b4fdf83e1596ffd519))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4820, PD-4766 ([7ccdb40](https://github.com/pie-framework/pie-elements/commit/7ccdb405614f1c310efe530d97c46fe324c0a669))
+- **extended-text-entry:** disable textAlign for student-facing editor PD-4813 ([f2bee4d](https://github.com/pie-framework/pie-elements/commit/f2bee4d47e341f7ebac094bef92c03c0a551a957))
+- **extended-text-entry:** update snapshots for tests PD-4813 ([48fe7d6](https://github.com/pie-framework/pie-elements/commit/48fe7d6886b1bb21771962b4fdf83e1596ffd519))
 
 ## [11.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.3...@pie-element/extended-text-entry@11.5.4) (2025-02-19)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4168, PD-4723 ([921f1bf](https://github.com/pie-framework/pie-elements/commit/921f1bfff211979c859821bb15c369327cfacdf7))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4168, PD-4723 ([921f1bf](https://github.com/pie-framework/pie-elements/commit/921f1bfff211979c859821bb15c369327cfacdf7))
 
 ## [11.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.2...@pie-element/extended-text-entry@11.5.3) (2025-02-14)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4801 ([194e2d7](https://github.com/pie-framework/pie-elements/commit/194e2d7e86a02887ffe03e13c062f8d98d543fd9))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4801 ([194e2d7](https://github.com/pie-framework/pie-elements/commit/194e2d7e86a02887ffe03e13c062f8d98d543fd9))
 
 ## [11.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.1...@pie-element/extended-text-entry@11.5.2) (2025-02-12)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4717 ([4bc5bea](https://github.com/pie-framework/pie-elements/commit/4bc5beafe3c04efe64809ff95c5863a6142cbb02))
 
 ## [11.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.5.0...@pie-element/extended-text-entry@11.5.1) (2025-02-06)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4753, PD-4618, PD-4641 ([f73f2be](https://github.com/pie-framework/pie-elements/commit/f73f2bec76321a677fff71e575d19c0f2e5b1d9c))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4753, PD-4618, PD-4641 ([f73f2be](https://github.com/pie-framework/pie-elements/commit/f73f2bec76321a677fff71e575d19c0f2e5b1d9c))
 
 # [11.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.4.3...@pie-element/extended-text-entry@11.5.0) (2025-01-27)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3995, PD-4679 ([87dadfa](https://github.com/pie-framework/pie-elements/commit/87dadfacfae3b06690edaf0b3c4a5ea09981b153))
-
+- update pie-lib/pie-toolbox PD-3995, PD-4679 ([87dadfa](https://github.com/pie-framework/pie-elements/commit/87dadfacfae3b06690edaf0b3c4a5ea09981b153))
 
 ### Features
 
-* enabled textAlign only for passage element [PD-3995] ([600d67f](https://github.com/pie-framework/pie-elements/commit/600d67fa31fc0e19761bc78381ba18036e7f64e7))
-* updated snapshots [PD-3995] ([59702ab](https://github.com/pie-framework/pie-elements/commit/59702ab491722a24bd67a2c6dc70ad6540e3a909))
-
-
-
-
+- enabled textAlign only for passage element [PD-3995] ([600d67f](https://github.com/pie-framework/pie-elements/commit/600d67fa31fc0e19761bc78381ba18036e7f64e7))
+- updated snapshots [PD-3995] ([59702ab](https://github.com/pie-framework/pie-elements/commit/59702ab491722a24bd67a2c6dc70ad6540e3a909))
 
 ## [11.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.4.2...@pie-element/extended-text-entry@11.4.3) (2025-01-27)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4688, PD-4589, PD-4616 ([754480c](https://github.com/pie-framework/pie-elements/commit/754480c6c747fa9123d374df0287a644c8376939))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4688, PD-4589, PD-4616 ([754480c](https://github.com/pie-framework/pie-elements/commit/754480c6c747fa9123d374df0287a644c8376939))
 
 ## [11.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.4.1...@pie-element/extended-text-entry@11.4.2) (2025-01-22)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
-* **extended-text-entry:** code review changes - remode console log PD-4687 ([ffa011f](https://github.com/pie-framework/pie-elements/commit/ffa011fc2a0e7c2afb630e529051254899302d58))
-* **extended-text-entry:** fix student's view editor toolbar ([b814519](https://github.com/pie-framework/pie-elements/commit/b8145197d5209ea21138acad11f38446cb0e6a18))
-* **extended-text-entry:** updated snapshots ([0023578](https://github.com/pie-framework/pie-elements/commit/0023578de70e96fb75640825f21dd0c4b5ca0609))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4452, PD-3872, PD-4689, PD-4704, PD-4588, PD-4698, PD-4618 ([a97329c](https://github.com/pie-framework/pie-elements/commit/a97329cf73619a3a5aae8d492edb8d6e5c5730df))
+- **extended-text-entry:** code review changes - remode console log PD-4687 ([ffa011f](https://github.com/pie-framework/pie-elements/commit/ffa011fc2a0e7c2afb630e529051254899302d58))
+- **extended-text-entry:** fix student's view editor toolbar ([b814519](https://github.com/pie-framework/pie-elements/commit/b8145197d5209ea21138acad11f38446cb0e6a18))
+- **extended-text-entry:** updated snapshots ([0023578](https://github.com/pie-framework/pie-elements/commit/0023578de70e96fb75640825f21dd0c4b5ca0609))
 
 ## [11.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.4.0...@pie-element/extended-text-entry@11.4.1) (2025-01-22)
 
-
 ### Bug Fixes
 
-* build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
-* replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
-
-
-
-
+- build ([68d8029](https://github.com/pie-framework/pie-elements/commit/68d8029520e531ae0a1eae15da6371289cde4c7a))
+- replace mra package with mr, includes accessibility PD-4527 ([c83bd43](https://github.com/pie-framework/pie-elements/commit/c83bd438d3a0e94d524c04364fddd3a8edc8876e))
 
 # [11.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.3.4...@pie-element/extended-text-entry@11.4.0) (2025-01-06)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
-* **extended-text-entry:** display dimensions in settings panel based on settings prop PD-4662 ([a4b245f](https://github.com/pie-framework/pie-elements/commit/a4b245fb03c599ff6b3871c9af3f3e3b6bf6d76d))
-* tests ([bcfed51](https://github.com/pie-framework/pie-elements/commit/bcfed515344a1cf1ad01969430954d25f08348a2))
-
+- update pie-lib/pie-toolbox PD-4555, PD-4660, PD-4426, PD-4607, PD-4394, PD-4521 ([e4928b4](https://github.com/pie-framework/pie-elements/commit/e4928b4f9ac268a892b382045f76ae4eac6b458e))
+- **extended-text-entry:** display dimensions in settings panel based on settings prop PD-4662 ([a4b245f](https://github.com/pie-framework/pie-elements/commit/a4b245fb03c599ff6b3871c9af3f3e3b6bf6d76d))
+- tests ([bcfed51](https://github.com/pie-framework/pie-elements/commit/bcfed515344a1cf1ad01969430954d25f08348a2))
 
 ### Features
 
-* **extended-text-entry:** change max width from 500 to 1200px PD-4661 ([14214cc](https://github.com/pie-framework/pie-elements/commit/14214ccc8b70687e0e507d7f674902966c2f09c7))
-* **extended-text-entry:** treat width property as maxWidth and add minWidth of 100px PD-4660 ([26aa810](https://github.com/pie-framework/pie-elements/commit/26aa810c0832e427fd5bba0ff4b717649ea0a9cc))
-
-
-
-
+- **extended-text-entry:** change max width from 500 to 1200px PD-4661 ([14214cc](https://github.com/pie-framework/pie-elements/commit/14214ccc8b70687e0e507d7f674902966c2f09c7))
+- **extended-text-entry:** treat width property as maxWidth and add minWidth of 100px PD-4660 ([26aa810](https://github.com/pie-framework/pie-elements/commit/26aa810c0832e427fd5bba0ff4b717649ea0a9cc))
 
 ## [11.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.3.3...@pie-element/extended-text-entry@11.3.4) (2024-12-20)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3843, PD-4518, PD-4588, PD-4210, PD-4362, PD-4618 ([c213141](https://github.com/pie-framework/pie-elements/commit/c2131410e19605093ca77afb8234b31708db01b1))
 
 ## [11.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.3.2...@pie-element/extended-text-entry@11.3.3) (2024-12-10)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
 
 ## [11.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.3.1...@pie-element/extended-text-entry@11.3.2) (2024-12-05)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
 
 ## [11.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.3.0...@pie-element/extended-text-entry@11.3.1) (2024-11-29)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4387, PD-4388 ([0416caf](https://github.com/pie-framework/pie-elements/commit/0416caf1188a62367a893c1e2bcfd138303c1d6d))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4387, PD-4388 ([0416caf](https://github.com/pie-framework/pie-elements/commit/0416caf1188a62367a893c1e2bcfd138303c1d6d))
 
 # [11.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.2.1...@pie-element/extended-text-entry@11.3.0) (2024-11-15)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4401, PD-4441, PD-4319, PD-4394, PD-3687 ([f1f0af3](https://github.com/pie-framework/pie-elements/commit/f1f0af31f3c6fba54ca3a378dea3b8b32d8ebb87))
-
+- update pie-lib/pie-toolbox PD-4401, PD-4441, PD-4319, PD-4394, PD-3687 ([f1f0af3](https://github.com/pie-framework/pie-elements/commit/f1f0af31f3c6fba54ca3a378dea3b8b32d8ebb87))
 
 ### Features
 
-* **extended-text-entry:** disable table from editable-html toolbar PD-4329 ([5b1ad15](https://github.com/pie-framework/pie-elements/commit/5b1ad1509cfe652b26a7181d857f5906f1bebdd8))
-* **extended-text-entry:** disable table just for gathering view & update snapshots PD-4329 ([1240810](https://github.com/pie-framework/pie-elements/commit/12408104e33df0f830f5e33578527d035dde5cbf))
-
-
-
-
+- **extended-text-entry:** disable table from editable-html toolbar PD-4329 ([5b1ad15](https://github.com/pie-framework/pie-elements/commit/5b1ad1509cfe652b26a7181d857f5906f1bebdd8))
+- **extended-text-entry:** disable table just for gathering view & update snapshots PD-4329 ([1240810](https://github.com/pie-framework/pie-elements/commit/12408104e33df0f830f5e33578527d035dde5cbf))
 
 ## [11.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.2.0...@pie-element/extended-text-entry@11.2.1) (2024-11-01)
 
-
 ### Bug Fixes
 
-* update pie-lib PD-4361 ([0ed2a71](https://github.com/pie-framework/pie-elements/commit/0ed2a7156d3fef55b9c25ab9c60d0df836b86ee5))
-* update pie-lib/pie-toolbox PD-4319, PD-1460, PD-4004 ([db03ac7](https://github.com/pie-framework/pie-elements/commit/db03ac7473960cedef2c83c79920e77db06f605d))
-* update pie-lib/pie-toolbox PD-4372 ([dc73470](https://github.com/pie-framework/pie-elements/commit/dc734705a6aefa0f69eb29d3d695c57e31671ab8))
-
-
-
-
+- update pie-lib PD-4361 ([0ed2a71](https://github.com/pie-framework/pie-elements/commit/0ed2a7156d3fef55b9c25ab9c60d0df836b86ee5))
+- update pie-lib/pie-toolbox PD-4319, PD-1460, PD-4004 ([db03ac7](https://github.com/pie-framework/pie-elements/commit/db03ac7473960cedef2c83c79920e77db06f605d))
+- update pie-lib/pie-toolbox PD-4372 ([dc73470](https://github.com/pie-framework/pie-elements/commit/dc734705a6aefa0f69eb29d3d695c57e31671ab8))
 
 # [11.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.1.4...@pie-element/extended-text-entry@11.2.0) (2024-10-29)
 
-
 ### Bug Fixes
 
-* fixed all tests after updating pie-toolbox [PD-1460] ([9f5293d](https://github.com/pie-framework/pie-elements/commit/9f5293d618edc06f69fabb27a042ec5eee66e151))
-
+- fixed all tests after updating pie-toolbox [PD-1460] ([9f5293d](https://github.com/pie-framework/pie-elements/commit/9f5293d618edc06f69fabb27a042ec5eee66e151))
 
 ### Features
 
-* fixed most of the tests, waiting on PR merge to fix the rest [PD-1460] ([9b12daf](https://github.com/pie-framework/pie-elements/commit/9b12dafc8e7d8dd8cd9bef71dce37d0c62760355))
-* used configlayout, preview layout or uilayout to enable extraCSSRules inside author and player elements [PD-1460] ([eeebb02](https://github.com/pie-framework/pie-elements/commit/eeebb02f200208620c1af56366a22bf65944ba3e))
-
-
-
-
+- fixed most of the tests, waiting on PR merge to fix the rest [PD-1460] ([9b12daf](https://github.com/pie-framework/pie-elements/commit/9b12dafc8e7d8dd8cd9bef71dce37d0c62760355))
+- used configlayout, preview layout or uilayout to enable extraCSSRules inside author and player elements [PD-1460] ([eeebb02](https://github.com/pie-framework/pie-elements/commit/eeebb02f200208620c1af56366a22bf65944ba3e))
 
 ## [11.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.1.3...@pie-element/extended-text-entry@11.1.4) (2024-10-28)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4322, PD-4215, PD-4209 ([08eac95](https://github.com/pie-framework/pie-elements/commit/08eac95fd3e1a79b420fbc88cd0c7436ba284c3c))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4322, PD-4215, PD-4209 ([08eac95](https://github.com/pie-framework/pie-elements/commit/08eac95fd3e1a79b420fbc88cd0c7436ba284c3c))
 
 ## [11.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.1.2...@pie-element/extended-text-entry@11.1.3) (2024-10-22)
 
-
 ### Bug Fixes
 
-* update pie-toolbox PD-4220, PD-4194, PD-4201, PD-4189, PD-4193, PD-4018, PD-4187 ([47b14fb](https://github.com/pie-framework/pie-elements/commit/47b14fbd80a04494511bc0ae44196b4e0175f0bb))
-
-
-
-
+- update pie-toolbox PD-4220, PD-4194, PD-4201, PD-4189, PD-4193, PD-4018, PD-4187 ([47b14fb](https://github.com/pie-framework/pie-elements/commit/47b14fbd80a04494511bc0ae44196b4e0175f0bb))
 
 ## [11.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.1.1...@pie-element/extended-text-entry@11.1.2) (2024-10-15)
 
-
 ### Bug Fixes
 
-* added complexjs as dependency [PD-4200] ([da393d5](https://github.com/pie-framework/pie-elements/commit/da393d5ae8ef52f17b47ccf32967410a9263180e))
-* added resolutions in controller as well [PD-4200] ([020edc5](https://github.com/pie-framework/pie-elements/commit/020edc5f0bb5de6bf8f344efd0a3b9b0b16b9dc7))
-* added resolutions to every package [PD-4200] ([480bed5](https://github.com/pie-framework/pie-elements/commit/480bed5eddfc91ec9dbc7ca7e3f6d09b2a199e7d))
-* reverting changes since the issue is fixed in the latest complex.js [PD-4200] ([42c9f21](https://github.com/pie-framework/pie-elements/commit/42c9f216c4d29b051156489beb43fa7093667eb7))
-* update pie toolbox ([ba98798](https://github.com/pie-framework/pie-elements/commit/ba987984ebc2f856950611874436cf148a9a3963))
-* update pie-lib/pie-toolbox PD-4200 ([a41a620](https://github.com/pie-framework/pie-elements/commit/a41a62036afe6aa8ef70493900c08875cff8eec2))
-* update pie-lib/pie-toolbox PD-4241 ([b24d439](https://github.com/pie-framework/pie-elements/commit/b24d43945457792d403d0da62ce3e4b5b898ca46))
-
-
-
-
+- added complexjs as dependency [PD-4200] ([da393d5](https://github.com/pie-framework/pie-elements/commit/da393d5ae8ef52f17b47ccf32967410a9263180e))
+- added resolutions in controller as well [PD-4200] ([020edc5](https://github.com/pie-framework/pie-elements/commit/020edc5f0bb5de6bf8f344efd0a3b9b0b16b9dc7))
+- added resolutions to every package [PD-4200] ([480bed5](https://github.com/pie-framework/pie-elements/commit/480bed5eddfc91ec9dbc7ca7e3f6d09b2a199e7d))
+- reverting changes since the issue is fixed in the latest complex.js [PD-4200] ([42c9f21](https://github.com/pie-framework/pie-elements/commit/42c9f216c4d29b051156489beb43fa7093667eb7))
+- update pie toolbox ([ba98798](https://github.com/pie-framework/pie-elements/commit/ba987984ebc2f856950611874436cf148a9a3963))
+- update pie-lib/pie-toolbox PD-4200 ([a41a620](https://github.com/pie-framework/pie-elements/commit/a41a62036afe6aa8ef70493900c08875cff8eec2))
+- update pie-lib/pie-toolbox PD-4241 ([b24d439](https://github.com/pie-framework/pie-elements/commit/b24d43945457792d403d0da62ce3e4b5b898ca46))
 
 ## [11.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.1.0...@pie-element/extended-text-entry@11.1.1) (2024-10-03)
 
-
 ### Bug Fixes
 
-* update pie-toolbox and @pie-lib/pie-toolbox-module PD-4018 ([2d60730](https://github.com/pie-framework/pie-elements/commit/2d60730eb6c3ade08e522c58218cff2f6cb496cb))
-
-
-
-
+- update pie-toolbox and @pie-lib/pie-toolbox-module PD-4018 ([2d60730](https://github.com/pie-framework/pie-elements/commit/2d60730eb6c3ade08e522c58218cff2f6cb496cb))
 
 # [11.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.0.1...@pie-element/extended-text-entry@11.1.0) (2024-10-01)
 
-
 ### Bug Fixes
 
-* update pie-toolbox and @pie-lib/pie-toolbox-module ([ddb9d44](https://github.com/pie-framework/pie-elements/commit/ddb9d444243b881b3a468ecfb5bab551511a2495))
-
+- update pie-toolbox and @pie-lib/pie-toolbox-module ([ddb9d44](https://github.com/pie-framework/pie-elements/commit/ddb9d444243b881b3a468ecfb5bab551511a2495))
 
 ### Features
 
-* update documentation (languageCharachters -> characters inside inputConfiguration object ([9e7dceb](https://github.com/pie-framework/pie-elements/commit/9e7dceb5291be261df0eb0bebe1e04f932dc327d))
-
-
-
-
+- update documentation (languageCharachters -> characters inside inputConfiguration object ([9e7dceb](https://github.com/pie-framework/pie-elements/commit/9e7dceb5291be261df0eb0bebe1e04f932dc327d))
 
 ## [11.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.0.0...@pie-element/extended-text-entry@11.0.1) (2024-09-26)
 
-
 ### Bug Fixes
 
-* update pie-toolbox and @pie-lib/pie-toolbox-module ([c363be4](https://github.com/pie-framework/pie-elements/commit/c363be48f9428024d4acc1eed05cd598840ffe3a))
-* update pie-toolbox and @pie-lib/pie-toolbox-module ([fe83296](https://github.com/pie-framework/pie-elements/commit/fe83296445f9785e67c9643642221b28b4485921))
-* update pie-toolbox and @pie-lib/pie-toolbox-module ([321147b](https://github.com/pie-framework/pie-elements/commit/321147b4072f2a6200d155f7f09c712960fe078c))
-* update pie-toolbox and @pie-lib/pie-toolbox-module ([d3e24e8](https://github.com/pie-framework/pie-elements/commit/d3e24e83d74e93f0720eff8841ebac1d0493b769))
-* update pie-toolbox and @pie-lib/pie-toolbox-module ([a3dd8d6](https://github.com/pie-framework/pie-elements/commit/a3dd8d65a754acadd95134ee825b769355a08a45))
-
-
-
-
+- update pie-toolbox and @pie-lib/pie-toolbox-module ([c363be4](https://github.com/pie-framework/pie-elements/commit/c363be48f9428024d4acc1eed05cd598840ffe3a))
+- update pie-toolbox and @pie-lib/pie-toolbox-module ([fe83296](https://github.com/pie-framework/pie-elements/commit/fe83296445f9785e67c9643642221b28b4485921))
+- update pie-toolbox and @pie-lib/pie-toolbox-module ([321147b](https://github.com/pie-framework/pie-elements/commit/321147b4072f2a6200d155f7f09c712960fe078c))
+- update pie-toolbox and @pie-lib/pie-toolbox-module ([d3e24e8](https://github.com/pie-framework/pie-elements/commit/d3e24e83d74e93f0720eff8841ebac1d0493b769))
+- update pie-toolbox and @pie-lib/pie-toolbox-module ([a3dd8d6](https://github.com/pie-framework/pie-elements/commit/a3dd8d65a754acadd95134ee825b769355a08a45))
 
 # [11.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.23.6...@pie-element/extended-text-entry@11.0.0) (2024-09-25)
 
-
 ### Bug Fixes
 
-* update math-rendering-accessible ([a5588cf](https://github.com/pie-framework/pie-elements/commit/a5588cfdccb40e970e93736dea60de4b01f1a85d))
-* update pie-toolbox and @pie-lib/pie-toolbox-module ([8fa1e13](https://github.com/pie-framework/pie-elements/commit/8fa1e132d97ccc92093e789e4349610c2be21edb))
-
+- update math-rendering-accessible ([a5588cf](https://github.com/pie-framework/pie-elements/commit/a5588cfdccb40e970e93736dea60de4b01f1a85d))
+- update pie-toolbox and @pie-lib/pie-toolbox-module ([8fa1e13](https://github.com/pie-framework/pie-elements/commit/8fa1e132d97ccc92093e789e4349610c2be21edb))
 
 ### Features
 
-* update math-rendering-accessible PD-3989, PD-4103, PD-3865 ([01590fe](https://github.com/pie-framework/pie-elements/commit/01590fe0f6ac36d14983cc144ef03f9cff397dfc))
-
+- update math-rendering-accessible PD-3989, PD-4103, PD-3865 ([01590fe](https://github.com/pie-framework/pie-elements/commit/01590fe0f6ac36d14983cc144ef03f9cff397dfc))
 
 ### BREAKING CHANGES
 
-* big refactoring on the implementation of math-rendering-accessible
-
-
-
-
+- big refactoring on the implementation of math-rendering-accessible
 
 ## [10.23.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.23.5...@pie-element/extended-text-entry@10.23.6) (2024-09-16)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
 
 ## [10.23.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.23.4...@pie-element/extended-text-entry@10.23.5) (2024-09-16)
 
-
 ### Bug Fixes
 
-* experiment with mra ([d62f2b4](https://github.com/pie-framework/pie-elements/commit/d62f2b4526eeda1f90d3660d97bf278ac1ae72da))
-* experiment with mra ([d9487a5](https://github.com/pie-framework/pie-elements/commit/d9487a5394c9b71bb7d7d69a836ed629ae13f7b1))
-* experiment with mra ([a2e933c](https://github.com/pie-framework/pie-elements/commit/a2e933cd27bb052046e245672d3e01cb5ba1b518))
-* update pie-lib/pie-toolbox PD-4027, PD-4042,PD-4039, PD-4073 ([68306be](https://github.com/pie-framework/pie-elements/commit/68306be02254a6019916637fd9b75427cae1c0ed))
-
-
-
-
+- experiment with mra ([d62f2b4](https://github.com/pie-framework/pie-elements/commit/d62f2b4526eeda1f90d3660d97bf278ac1ae72da))
+- experiment with mra ([d9487a5](https://github.com/pie-framework/pie-elements/commit/d9487a5394c9b71bb7d7d69a836ed629ae13f7b1))
+- experiment with mra ([a2e933c](https://github.com/pie-framework/pie-elements/commit/a2e933cd27bb052046e245672d3e01cb5ba1b518))
+- update pie-lib/pie-toolbox PD-4027, PD-4042,PD-4039, PD-4073 ([68306be](https://github.com/pie-framework/pie-elements/commit/68306be02254a6019916637fd9b75427cae1c0ed))
 
 ## [10.23.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.23.3...@pie-element/extended-text-entry@10.23.4) (2024-09-10)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3652, PD-2451 ([8a00529](https://github.com/pie-framework/pie-elements/commit/8a00529f67a8e27e78e4c16de5d04e11ec8c4d16))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3652, PD-2451 ([8a00529](https://github.com/pie-framework/pie-elements/commit/8a00529f67a8e27e78e4c16de5d04e11ec8c4d16))
 
 ## [10.23.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.23.2...@pie-element/extended-text-entry@10.23.3) (2024-09-10)
 
-
 ### Bug Fixes
 
-* **inline-dropdown:** add all available fields in docs PD-4065 ([2c4c243](https://github.com/pie-framework/pie-elements/commit/2c4c24344d11ab66e0a67b5ccc630fa43dafc200))
-* update pie-lib/pie-toolbox: ability to disable table and lists PD-4065 ([49f1ce4](https://github.com/pie-framework/pie-elements/commit/49f1ce4000bc45d0eb8032f6538c0c780940a503))
-
-
-
-
+- **inline-dropdown:** add all available fields in docs PD-4065 ([2c4c243](https://github.com/pie-framework/pie-elements/commit/2c4c24344d11ab66e0a67b5ccc630fa43dafc200))
+- update pie-lib/pie-toolbox: ability to disable table and lists PD-4065 ([49f1ce4](https://github.com/pie-framework/pie-elements/commit/49f1ce4000bc45d0eb8032f6538c0c780940a503))
 
 ## [10.23.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.23.1...@pie-element/extended-text-entry@10.23.2) (2024-08-29)
 
-
 ### Bug Fixes
 
-* trigger build PD-4052 ([24783c4](https://github.com/pie-framework/pie-elements/commit/24783c43a97db9c9a2b665f2c784ccd4ce8511ca))
-
-
-
-
+- trigger build PD-4052 ([24783c4](https://github.com/pie-framework/pie-elements/commit/24783c43a97db9c9a2b665f2c784ccd4ce8511ca))
 
 ## [10.23.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.23.0...@pie-element/extended-text-entry@10.23.1) (2024-08-29)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-4052 ([ebbbe2d](https://github.com/pie-framework/pie-elements/commit/ebbbe2dc584829abe8f1b4d6e8a9031e27f30dce))
-
-
-
-
+- update pie-lib/pie-toolbox PD-4052 ([ebbbe2d](https://github.com/pie-framework/pie-elements/commit/ebbbe2dc584829abe8f1b4d6e8a9031e27f30dce))
 
 # [10.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.22.3...@pie-element/extended-text-entry@10.23.0) (2024-08-27)
 
-
 ### Features
 
-* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
-
-
-
-
+- update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
 
 ## [10.22.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.22.2...@pie-element/extended-text-entry@10.22.3) (2024-08-22)
 
-
 ### Bug Fixes
 
-* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
-
-
-
-
+- update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
 
 ## [10.22.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.22.1...@pie-element/extended-text-entry@10.22.2) (2024-08-19)
 
-
 ### Bug Fixes
 
-* update pie-lib PD-3855, PD-3841 ([29ed50e](https://github.com/pie-framework/pie-elements/commit/29ed50ec75c3deedfe765f776dc24a6ecd6af284))
-
-
-
-
+- update pie-lib PD-3855, PD-3841 ([29ed50e](https://github.com/pie-framework/pie-elements/commit/29ed50ec75c3deedfe765f776dc24a6ecd6af284))
 
 ## [10.22.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.22.0...@pie-element/extended-text-entry@10.22.1) (2024-08-06)
 
-
 ### Bug Fixes
 
-* update pie-lib ([6ed3619](https://github.com/pie-framework/pie-elements/commit/6ed3619e0c670165ab45518e5bdbb40586c5adf8))
-
-
-
-
+- update pie-lib ([6ed3619](https://github.com/pie-framework/pie-elements/commit/6ed3619e0c670165ab45518e5bdbb40586c5adf8))
 
 # [10.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.21.0...@pie-element/extended-text-entry@10.22.0) (2024-08-06)
 
-
 ### Features
 
-* update pie-lib PD-3996, PD-3792, Pd-3791, PD-3841, PD-3956, PD-3569, PD-3855 ([6343d1b](https://github.com/pie-framework/pie-elements/commit/6343d1b00c5a4a3d88de70ed13a8aa5c1a43002d))
-
-
-
-
+- update pie-lib PD-3996, PD-3792, Pd-3791, PD-3841, PD-3956, PD-3569, PD-3855 ([6343d1b](https://github.com/pie-framework/pie-elements/commit/6343d1b00c5a4a3d88de70ed13a8aa5c1a43002d))
 
 # [10.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.6...@pie-element/extended-text-entry@10.21.0) (2024-07-26)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
-* update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
-
-
-
-
+- update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
+- update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
 
 ## [10.20.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.5...@pie-element/extended-text-entry@10.20.6) (2024-07-19)
 
-
 ### Bug Fixes
 
-* udate pie-lib/pie-toolbox to revert PD-3630 ([7858313](https://github.com/pie-framework/pie-elements/commit/785831349bb7830a3df8f35971958ebf616527f3))
-
-
-
-
+- udate pie-lib/pie-toolbox to revert PD-3630 ([7858313](https://github.com/pie-framework/pie-elements/commit/785831349bb7830a3df8f35971958ebf616527f3))
 
 ## [10.20.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.4...@pie-element/extended-text-entry@10.20.5) (2024-07-17)
 
-
 ### Bug Fixes
 
-* udate pie-lib/pie-toolbox PD-3945, PD-3627 ([c37e8aa](https://github.com/pie-framework/pie-elements/commit/c37e8aaa6c7e561707a2ed9ec76deb313380c6ba))
-
-
-
-
+- udate pie-lib/pie-toolbox PD-3945, PD-3627 ([c37e8aa](https://github.com/pie-framework/pie-elements/commit/c37e8aaa6c7e561707a2ed9ec76deb313380c6ba))
 
 ## [10.20.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.3...@pie-element/extended-text-entry@10.20.4) (2024-07-16)
 
-
 ### Bug Fixes
 
-* removed h3 and blockquote from dragintheblank, extendedtextentry, inlinedropdown, math-templated ([49b0a8f](https://github.com/pie-framework/pie-elements/commit/49b0a8f7ba7c8c8e186e5f4b32c955dce4ad49e1))
-* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
-
-
-
-
+- removed h3 and blockquote from dragintheblank, extendedtextentry, inlinedropdown, math-templated ([49b0a8f](https://github.com/pie-framework/pie-elements/commit/49b0a8f7ba7c8c8e186e5f4b32c955dce4ad49e1))
+- udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
 
 ## [10.20.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.2...@pie-element/extended-text-entry@10.20.3) (2024-07-10)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
-* **extended-text-entry:** print not rendering because of undefined props PD-3912 ([59875ef](https://github.com/pie-framework/pie-elements/commit/59875ef4eb90e689a03f3292ae5a661f7e71d327))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
+- **extended-text-entry:** print not rendering because of undefined props PD-3912 ([59875ef](https://github.com/pie-framework/pie-elements/commit/59875ef4eb90e689a03f3292ae5a661f7e71d327))
 
 ## [10.20.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.1...@pie-element/extended-text-entry@10.20.2) (2024-07-04)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [10.20.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.0...@pie-element/extended-text-entry@10.20.1) (2024-06-26)
-
 
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3028, PD-3773 ([61bc47c](https://github.com/pie-framework/pie-elements/commit/61bc47c18d2becea321f18462f5cd486db0115e1))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3028, PD-3773 ([61bc47c](https://github.com/pie-framework/pie-elements/commit/61bc47c18d2becea321f18462f5cd486db0115e1))
 
 # [10.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.19.0...@pie-element/extended-text-entry@10.20.0) (2024-06-25)
 
-
 ### Features
 
-* **extended-text-entry,inline-dropdown:** Add dynamic language attribute to indicate content language PD-2483 ([500f285](https://github.com/pie-framework/pie-elements/commit/500f2850c4c80f7f31a6508aa48cd04ebfdbe8d4))
-
-
-
-
+- **extended-text-entry,inline-dropdown:** Add dynamic language attribute to indicate content language PD-2483 ([500f285](https://github.com/pie-framework/pie-elements/commit/500f2850c4c80f7f31a6508aa48cd04ebfdbe8d4))
 
 # [10.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.18.0...@pie-element/extended-text-entry@10.19.0) (2024-06-24)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 ([4475c65](https://github.com/pie-framework/pie-elements/commit/4475c658be5489a0f66be27af24e01c03b32b294))
-* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 - fixed tests ([ae244d6](https://github.com/pie-framework/pie-elements/commit/ae244d64a5621e0bda273b48d20b86a2fdd87ab3))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 ([4475c65](https://github.com/pie-framework/pie-elements/commit/4475c658be5489a0f66be27af24e01c03b32b294))
+- update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 - fixed tests ([ae244d6](https://github.com/pie-framework/pie-elements/commit/ae244d64a5621e0bda273b48d20b86a2fdd87ab3))
 
 # [10.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.17.0...@pie-element/extended-text-entry@10.18.0) (2024-06-24)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox ability to enabled/disable blockquote and h3 (PD-3772, PD-3771) and PD-3813 ([c2cfd9b](https://github.com/pie-framework/pie-elements/commit/c2cfd9b323acdf3d456c05806c1f97f9067bb4fe))
-
-
-
-
+- update pie-lib/pie-toolbox ability to enabled/disable blockquote and h3 (PD-3772, PD-3771) and PD-3813 ([c2cfd9b](https://github.com/pie-framework/pie-elements/commit/c2cfd9b323acdf3d456c05806c1f97f9067bb4fe))
 
 # [10.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.16.0...@pie-element/extended-text-entry@10.17.0) (2024-06-19)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox fix build ([75777e1](https://github.com/pie-framework/pie-elements/commit/75777e189786cb9041bd0d2f843c023a1ea5b8b1))
-
+- update pie-lib/pie-toolbox fix build ([75777e1](https://github.com/pie-framework/pie-elements/commit/75777e189786cb9041bd0d2f843c023a1ea5b8b1))
 
 ### Features
 
-* update pie-lib/pie-toolbox PD-3179, PD-3206, PD-3186, PD-1311, PD-3771, PD-3772, PD-3817 ([14e175c](https://github.com/pie-framework/pie-elements/commit/14e175cd62770ab4d7ba8bf83e6d0c9ad683f595))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3179, PD-3206, PD-3186, PD-1311, PD-3771, PD-3772, PD-3817 ([14e175c](https://github.com/pie-framework/pie-elements/commit/14e175cd62770ab4d7ba8bf83e6d0c9ad683f595))
 
 # [10.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.15.2...@pie-element/extended-text-entry@10.16.0) (2024-06-13)
 
-
 ### Features
 
-* update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
-
-
-
-
+- update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
 
 ## [10.15.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.15.1...@pie-element/extended-text-entry@10.15.2) (2024-06-13)
 
-
 ### Bug Fixes
 
-* update pie-toolbox PD-3180, PD-3391 ([f888f35](https://github.com/pie-framework/pie-elements/commit/f888f350468fca91379d4216c9c696c30695add3))
-
-
-
-
+- update pie-toolbox PD-3180, PD-3391 ([f888f35](https://github.com/pie-framework/pie-elements/commit/f888f350468fca91379d4216c9c696c30695add3))
 
 ## [10.15.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.15.0...@pie-element/extended-text-entry@10.15.1) (2024-06-13)
 
-
 ### Bug Fixes
 
-* update pie-toolbox PD-3839 ([dcdc0bf](https://github.com/pie-framework/pie-elements/commit/dcdc0bf9a7cc341d257de831e87915fb9425e4a2))
-
-
-
-
+- update pie-toolbox PD-3839 ([dcdc0bf](https://github.com/pie-framework/pie-elements/commit/dcdc0bf9a7cc341d257de831e87915fb9425e4a2))
 
 # [10.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.14.1...@pie-element/extended-text-entry@10.15.0) (2024-06-03)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox PD-3733, PD-2455 ([a507dcb](https://github.com/pie-framework/pie-elements/commit/a507dcb30bf2de72614aaba8ee576edf0c953d05))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3733, PD-2455 ([a507dcb](https://github.com/pie-framework/pie-elements/commit/a507dcb30bf2de72614aaba8ee576edf0c953d05))
 
 ## [10.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.14.0...@pie-element/extended-text-entry@10.14.1) (2024-06-03)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3788, PD-1273 ([f4b6aba](https://github.com/pie-framework/pie-elements/commit/f4b6aba5c741fbf6305dba71bf47d2226f39f2ee))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3788, PD-1273 ([f4b6aba](https://github.com/pie-framework/pie-elements/commit/f4b6aba5c741fbf6305dba71bf47d2226f39f2ee))
 
 # [10.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.13.2...@pie-element/extended-text-entry@10.14.0) (2024-05-27)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox PD-3736, PD-3734, PD-2488 ([3c44f06](https://github.com/pie-framework/pie-elements/commit/3c44f06d96e609246acde257a8223dc16192c2c4))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3736, PD-3734, PD-2488 ([3c44f06](https://github.com/pie-framework/pie-elements/commit/3c44f06d96e609246acde257a8223dc16192c2c4))
 
 ## [10.13.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.13.1...@pie-element/extended-text-entry@10.13.2) (2024-05-27)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3740, PD-2126 ([5573a4e](https://github.com/pie-framework/pie-elements/commit/5573a4e2f4524839525679df319bb92c7c841916))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3740, PD-2126 ([5573a4e](https://github.com/pie-framework/pie-elements/commit/5573a4e2f4524839525679df319bb92c7c841916))
 
 ## [10.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.13.0...@pie-element/extended-text-entry@10.13.1) (2024-05-14)
 
-
 ### Bug Fixes
 
-* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
-
-
-
-
+- update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
 
 # [10.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.4...@pie-element/extended-text-entry@10.13.0) (2024-05-13)
 
-
 ### Bug Fixes
 
-* **extended-text-entry:** Fixed annotations rendering ([794b3e8](https://github.com/pie-framework/pie-elements/commit/794b3e87fa0f5dbc3128844d6e6e251b6b9c8327))
-* **extended-text-entry:** Fixed multi-lines annotation that gets single-spaced PD-1583 ([b1377db](https://github.com/pie-framework/pie-elements/commit/b1377db2fe15330d45f0179bbef0f7a8274712fe))
-* **extended-text-entry:** Removed line-height that caused multi-lines annotation to get single-spaced PD-1583 ([8e67ef6](https://github.com/pie-framework/pie-elements/commit/8e67ef6fe1b57b4892e4e1f3c2eccd7e35b9f6b5))
-* **extended-text-entry:** Tighten up the right spacing PD-1587 ([914b8ba](https://github.com/pie-framework/pie-elements/commit/914b8baad1882625336cca07a932e47ab80ce290))
-
+- **extended-text-entry:** Fixed annotations rendering ([794b3e8](https://github.com/pie-framework/pie-elements/commit/794b3e87fa0f5dbc3128844d6e6e251b6b9c8327))
+- **extended-text-entry:** Fixed multi-lines annotation that gets single-spaced PD-1583 ([b1377db](https://github.com/pie-framework/pie-elements/commit/b1377db2fe15330d45f0179bbef0f7a8274712fe))
+- **extended-text-entry:** Removed line-height that caused multi-lines annotation to get single-spaced PD-1583 ([8e67ef6](https://github.com/pie-framework/pie-elements/commit/8e67ef6fe1b57b4892e4e1f3c2eccd7e35b9f6b5))
+- **extended-text-entry:** Tighten up the right spacing PD-1587 ([914b8ba](https://github.com/pie-framework/pie-elements/commit/914b8baad1882625336cca07a932e47ab80ce290))
 
 ### Features
 
-* Re-added annotation fixes after they were removed in develop branch. ([1f16518](https://github.com/pie-framework/pie-elements/commit/1f165182e1ecff26e28e76afaca1638128c56b08))
-
-
-
-
+- Re-added annotation fixes after they were removed in develop branch. ([1f16518](https://github.com/pie-framework/pie-elements/commit/1f165182e1ecff26e28e76afaca1638128c56b08))
 
 ## [10.12.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.3...@pie-element/extended-text-entry@10.12.4) (2024-05-13)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
-* **extended-text-entry:** add characters limit of 50000 PD-3709 ([9151b0e](https://github.com/pie-framework/pie-elements/commit/9151b0ea030a8ef4a34c0e335c35d288bc439fd1))
-* **extended-text-entry:** add characters limit of 50000 PD-3709 ([2579501](https://github.com/pie-framework/pie-elements/commit/25795018680edc3edb28014805a28a2f556cf62e))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
+- **extended-text-entry:** add characters limit of 50000 PD-3709 ([9151b0e](https://github.com/pie-framework/pie-elements/commit/9151b0ea030a8ef4a34c0e335c35d288bc439fd1))
+- **extended-text-entry:** add characters limit of 50000 PD-3709 ([2579501](https://github.com/pie-framework/pie-elements/commit/25795018680edc3edb28014805a28a2f556cf62e))
 
 ## [10.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.2...@pie-element/extended-text-entry@10.12.3) (2024-05-07)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
 
 ## [10.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.1...@pie-element/extended-text-entry@10.12.2) (2024-05-03)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
 
 ## [10.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.0...@pie-element/extended-text-entry@10.12.1) (2024-04-29)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3683, PD-3644 ([73734c5](https://github.com/pie-framework/pie-elements/commit/73734c50a1e4fcda6be4f67c725816d75aea222f))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3683, PD-3644 ([73734c5](https://github.com/pie-framework/pie-elements/commit/73734c50a1e4fcda6be4f67c725816d75aea222f))
 
 # [10.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.11.1...@pie-element/extended-text-entry@10.12.0) (2024-04-22)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
-
-
-
-
+- update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
 
 ## [10.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.11.0...@pie-element/extended-text-entry@10.11.1) (2024-04-22)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
 
 # [10.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.10.1...@pie-element/extended-text-entry@10.11.0) (2024-04-18)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
-
-
-
-
+- update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
 
 ## [10.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.10.0...@pie-element/extended-text-entry@10.10.1) (2024-04-01)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [10.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.9.0...@pie-element/extended-text-entry@10.10.0) (2024-04-01)
-
 
 ### Features
 
-* **inline-dropdown:** upgrade pie-toolbox PD-2465 ([828d1c1](https://github.com/pie-framework/pie-elements/commit/828d1c1bc9e9221c1e141baaa8f89a4929ad0eb9))
-
-
-
-
+- **inline-dropdown:** upgrade pie-toolbox PD-2465 ([828d1c1](https://github.com/pie-framework/pie-elements/commit/828d1c1bc9e9221c1e141baaa8f89a4929ad0eb9))
 
 # [10.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.8.0...@pie-element/extended-text-entry@10.9.0) (2024-04-01)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox PD-3567, PD-3426 ([2a706d7](https://github.com/pie-framework/pie-elements/commit/2a706d799bb000c60b7a77a790de9dc66345ebf5))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3567, PD-3426 ([2a706d7](https://github.com/pie-framework/pie-elements/commit/2a706d799bb000c60b7a77a790de9dc66345ebf5))
 
 # [10.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.7.0...@pie-element/extended-text-entry@10.8.0) (2024-03-28)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
-
+- update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
 
 ### Features
 
-* **extended-text-entry:** add required fields functionality PD-3590 ([73f441f](https://github.com/pie-framework/pie-elements/commit/73f441f9ba77dabc457fdbcf958c73261a15bc88))
-* Add configuration for custom buttons PD-3521 ([9c9ff5e](https://github.com/pie-framework/pie-elements/commit/9c9ff5e038a493a9d1e480407af6a43a5e9073ab))
-
-
-
-
+- **extended-text-entry:** add required fields functionality PD-3590 ([73f441f](https://github.com/pie-framework/pie-elements/commit/73f441f9ba77dabc457fdbcf958c73261a15bc88))
+- Add configuration for custom buttons PD-3521 ([9c9ff5e](https://github.com/pie-framework/pie-elements/commit/9c9ff5e038a493a9d1e480407af6a43a5e9073ab))
 
 # [10.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.6.0...@pie-element/extended-text-entry@10.7.0) (2024-03-26)
 
-
 ### Features
 
-* Replace math-rendering package with math-rendering-accessible-package for accessibility PD-1870 ([a416664](https://github.com/pie-framework/pie-elements/commit/a41666452b86426a35e8501ab2a4ac95f327ad53))
-
-
-
-
+- Replace math-rendering package with math-rendering-accessible-package for accessibility PD-1870 ([a416664](https://github.com/pie-framework/pie-elements/commit/a41666452b86426a35e8501ab2a4ac95f327ad53))
 
 # [10.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.5.0...@pie-element/extended-text-entry@10.6.0) (2024-03-20)
 
-
 ### Bug Fixes
 
-* Renamed the html prop to the correct math prop PD-3527 ([9207e23](https://github.com/pie-framework/pie-elements/commit/9207e23f90e482b967f5fbc13ea227062a48fc19))
-* Renamed the html prop to the correct math prop PD-3527 ([28061b6](https://github.com/pie-framework/pie-elements/commit/28061b6032817dae15837131d8a0bf5a08683b10))
-* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
-
+- Renamed the html prop to the correct math prop PD-3527 ([9207e23](https://github.com/pie-framework/pie-elements/commit/9207e23f90e482b967f5fbc13ea227062a48fc19))
+- Renamed the html prop to the correct math prop PD-3527 ([28061b6](https://github.com/pie-framework/pie-elements/commit/28061b6032817dae15837131d8a0bf5a08683b10))
+- updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
 
 ### Features
 
-* Replace math-rendering package with math-rendering-accessible-package for accessibility PD-1870 ([b6cdee8](https://github.com/pie-framework/pie-elements/commit/b6cdee8915b06e4c11b002b10437db07ce966501))
-* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
-* use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
-
-
-
-
+- Replace math-rendering package with math-rendering-accessible-package for accessibility PD-1870 ([b6cdee8](https://github.com/pie-framework/pie-elements/commit/b6cdee8915b06e4c11b002b10437db07ce966501))
+- updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+- use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
 
 # [10.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.4.2...@pie-element/extended-text-entry@10.5.0) (2024-03-15)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox SC-27890,PD-2461 ([13d94fa](https://github.com/pie-framework/pie-elements/commit/13d94faaf0cf9cf923bbc64587cdd4202154ea33))
-
-
-
-
+- update pie-lib/pie-toolbox SC-27890,PD-2461 ([13d94fa](https://github.com/pie-framework/pie-elements/commit/13d94faaf0cf9cf923bbc64587cdd4202154ea33))
 
 ## [10.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.4.1...@pie-element/extended-text-entry@10.4.2) (2024-03-13)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
 
 ## [10.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.4.0...@pie-element/extended-text-entry@10.4.1) (2024-03-12)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
 
 # [10.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.3.2...@pie-element/extended-text-entry@10.4.0) (2024-03-04)
 
-
 ### Features
 
-* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
-
-
-
-
+- update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
 
 ## [10.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.3.1...@pie-element/extended-text-entry@10.3.2) (2024-02-20)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3372, PD-3385, PD-3439 ([a79d800](https://github.com/pie-framework/pie-elements/commit/a79d800bb69af0d175793bc737282100168c4c60))
-* update pie-lib/pie-toolbox PD-3455 ([4ff9971](https://github.com/pie-framework/pie-elements/commit/4ff9971e65b680aea180c94f9e85cab7249af2fb))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3372, PD-3385, PD-3439 ([a79d800](https://github.com/pie-framework/pie-elements/commit/a79d800bb69af0d175793bc737282100168c4c60))
+- update pie-lib/pie-toolbox PD-3455 ([4ff9971](https://github.com/pie-framework/pie-elements/commit/4ff9971e65b680aea180c94f9e85cab7249af2fb))
 
 ## [10.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.3.0...@pie-element/extended-text-entry@10.3.1) (2024-02-14)
 
-
 ### Bug Fixes
 
-* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
-* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
-
-
-
-
+- pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+- update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
 
 # [10.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.2.5...@pie-element/extended-text-entry@10.3.0) (2024-02-09)
 
-
 ### Features
 
-* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
-
-
-
-
+- update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
 
 ## [10.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.2.4...@pie-element/extended-text-entry@10.2.5) (2024-02-07)
 
-
 ### Bug Fixes
 
-* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
-
-
-
-
+- update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
 
 ## [10.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.2.3...@pie-element/extended-text-entry@10.2.4) (2024-01-24)
 
-
 ### Bug Fixes
 
-* update to pie-lib/pie-toolbox 1.5.7 PD-3404 ([eae668d](https://github.com/pie-framework/pie-elements/commit/eae668d980ef4731af5eceb3e70329b7621a232b))
-
-
-
-
+- update to pie-lib/pie-toolbox 1.5.7 PD-3404 ([eae668d](https://github.com/pie-framework/pie-elements/commit/eae668d980ef4731af5eceb3e70329b7621a232b))
 
 ## [10.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.2.2...@pie-element/extended-text-entry@10.2.3) (2024-01-24)
 
-
 ### Bug Fixes
 
-* update to pie-lib/pie-toolbox 1.5.6 to fix issue introduced by fix for PD-3392 ([8d0a33f](https://github.com/pie-framework/pie-elements/commit/8d0a33f51a5ebe442eb824749cb419bf23c44d28))
-
-
-
-
+- update to pie-lib/pie-toolbox 1.5.6 to fix issue introduced by fix for PD-3392 ([8d0a33f](https://github.com/pie-framework/pie-elements/commit/8d0a33f51a5ebe442eb824749cb419bf23c44d28))
 
 ## [10.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.2.1...@pie-element/extended-text-entry@10.2.2) (2024-01-23)
 
-
 ### Bug Fixes
 
-* update to pie-lib/pie-toolbox 1.5.4 for PD-3387, PD-3384, PD-3383, PD-3392 ([2278f9a](https://github.com/pie-framework/pie-elements/commit/2278f9a3fdf1bc89ab590f240d926a857339179e))
-* update to pie-lib/pie-toolbox 1.5.5 for PD-3392 ([d4286e0](https://github.com/pie-framework/pie-elements/commit/d4286e08a060a73e6de098f87173baaaa88cc997))
-
-
-
-
+- update to pie-lib/pie-toolbox 1.5.4 for PD-3387, PD-3384, PD-3383, PD-3392 ([2278f9a](https://github.com/pie-framework/pie-elements/commit/2278f9a3fdf1bc89ab590f240d926a857339179e))
+- update to pie-lib/pie-toolbox 1.5.5 for PD-3392 ([d4286e0](https://github.com/pie-framework/pie-elements/commit/d4286e08a060a73e6de098f87173baaaa88cc997))
 
 ## [10.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.2.0...@pie-element/extended-text-entry@10.2.1) (2024-01-15)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3366, PD-3367, PD-3381 ([8c9d35f](https://github.com/pie-framework/pie-elements/commit/8c9d35ff6f0dad1a161d6a2dba203a169169e562))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3366, PD-3367, PD-3381 ([8c9d35f](https://github.com/pie-framework/pie-elements/commit/8c9d35ff6f0dad1a161d6a2dba203a169169e562))
 
 # [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.1.2...@pie-element/extended-text-entry@10.2.0) (2024-01-08)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-2068, PD-2060 ([b63f783](https://github.com/pie-framework/pie-elements/commit/b63f78371452e265f31f721dcfa5f8ba9789089c))
-* update pie-lib/pie-toolbox PD-3352 ([c40c326](https://github.com/pie-framework/pie-elements/commit/c40c326209315b57ce8da802b8e00616256e3bd6))
-* update pie-lib/pie-toolbox SC-27396, SC-27398 ([658a553](https://github.com/pie-framework/pie-elements/commit/658a55358181271b508f7d550467eefadcd71544))
-
+- update pie-lib/pie-toolbox PD-2068, PD-2060 ([b63f783](https://github.com/pie-framework/pie-elements/commit/b63f78371452e265f31f721dcfa5f8ba9789089c))
+- update pie-lib/pie-toolbox PD-3352 ([c40c326](https://github.com/pie-framework/pie-elements/commit/c40c326209315b57ce8da802b8e00616256e3bd6))
+- update pie-lib/pie-toolbox SC-27396, SC-27398 ([658a553](https://github.com/pie-framework/pie-elements/commit/658a55358181271b508f7d550467eefadcd71544))
 
 ### Features
 
-* refactor for pie-lib/pie-toolbox and add print module for boilerplate-item-type ([8230d26](https://github.com/pie-framework/pie-elements/commit/8230d264069672c4a3242ff5ed60a6842bf5147f))
-
-
-
-
+- refactor for pie-lib/pie-toolbox and add print module for boilerplate-item-type ([8230d26](https://github.com/pie-framework/pie-elements/commit/8230d264069672c4a3242ff5ed60a6842bf5147f))
 
 ## [10.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.1.1...@pie-element/extended-text-entry@10.1.2) (2024-01-08)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3352,PD-3348, PD-3296 ([48b1952](https://github.com/pie-framework/pie-elements/commit/48b1952831835ead598b692abb3d492ec9adb564))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3352,PD-3348, PD-3296 ([48b1952](https://github.com/pie-framework/pie-elements/commit/48b1952831835ead598b692abb3d492ec9adb564))
 
 ## [10.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.1.0...@pie-element/extended-text-entry@10.1.1) (2024-01-04)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-2068, PD-2060 ([e918850](https://github.com/pie-framework/pie-elements/commit/e9188502ffeaefe41bf0f23895d4bb2daf839364))
-* update pie-lib/pie-toolbox PD-3037 ([b2f689a](https://github.com/pie-framework/pie-elements/commit/b2f689a416c2c39d7ed423a22db02dd32415ba82))
-
-
-
-
+- update pie-lib/pie-toolbox PD-2068, PD-2060 ([e918850](https://github.com/pie-framework/pie-elements/commit/e9188502ffeaefe41bf0f23895d4bb2daf839364))
+- update pie-lib/pie-toolbox PD-3037 ([b2f689a](https://github.com/pie-framework/pie-elements/commit/b2f689a416c2c39d7ed423a22db02dd32415ba82))
 
 # [10.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.0.3...@pie-element/extended-text-entry@10.1.0) (2023-12-19)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
-
+- update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
 
 ### Features
 
-* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
-* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
-
-
-
-
+- update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+- update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
 
 ## [10.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.0.2...@pie-element/extended-text-entry@10.0.3) (2023-11-27)
 
-
 ### Bug Fixes
 
-* update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
-
-
-
-
+- update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
 
 ## [10.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.0.1...@pie-element/extended-text-entry@10.0.2) (2023-11-27)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
-* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
-
-
-
-
+- update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+- update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
 
 ## [10.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.0.0...@pie-element/extended-text-entry@10.0.1) (2023-11-09)
 
-
 ### Bug Fixes
 
-* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
-
-
-
-
+- update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
 
 # [10.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.6.1...@pie-element/extended-text-entry@10.0.0) (2023-11-07)
 
-
 ### Bug Fixes
 
-* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
-* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
-* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
-* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
-
+- update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+- update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+- update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+- update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
 
 ### Code Refactoring
 
-* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
-
+- replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
 
 ### BREAKING CHANGES
 
-* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
-
-
-
-
+- using pie-lib/pie-toolbox now, instead of any other pie-lib package.
 
 ## [9.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.6.0...@pie-element/extended-text-entry@9.6.1) (2023-10-26)
 
-
 ### Bug Fixes
 
-* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
-
-
-
-
+- update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
 
 # [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.5.5...@pie-element/extended-text-entry@9.6.0) (2023-10-16)
 
-
 ### Features
 
-* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
-
-
-
-
+- updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
 
 ## [9.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.5.4...@pie-element/extended-text-entry@9.5.5) (2023-10-16)
 
-
 ### Bug Fixes
 
-* updated pie-libs PD-3223, PD-3121, PD-3018, PD-2765, PD-3105 ([666e660](https://github.com/pie-framework/pie-elements/commit/666e6604c40b9bde8b88af5ce1b02ba65f11e957))
-
-
-
-
+- updated pie-libs PD-3223, PD-3121, PD-3018, PD-2765, PD-3105 ([666e660](https://github.com/pie-framework/pie-elements/commit/666e6604c40b9bde8b88af5ce1b02ba65f11e957))
 
 ## [9.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.5.3...@pie-element/extended-text-entry@9.5.4) (2023-10-03)
 
-
 ### Bug Fixes
 
-* update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
-
-
-
-
+- update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
 
 ## [9.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.5.2...@pie-element/extended-text-entry@9.5.3) (2023-09-28)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [9.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.5.1...@pie-element/extended-text-entry@9.5.2) (2023-09-26)
-
 
 ### Bug Fixes
 
-* update pie-libs ([702f4c6](https://github.com/pie-framework/pie-elements/commit/702f4c657f3413274b3a4443c1950e2cdf8e5588))
-
-
-
-
+- update pie-libs ([702f4c6](https://github.com/pie-framework/pie-elements/commit/702f4c657f3413274b3a4443c1950e2cdf8e5588))
 
 ## [9.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.5.0...@pie-element/extended-text-entry@9.5.1) (2023-09-25)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [9.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.7...@pie-element/extended-text-entry@9.5.0) (2023-09-25)
-
 
 ### Bug Fixes
 
-* update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
-* update pie-libs PD-3167 ([b21d0c3](https://github.com/pie-framework/pie-elements/commit/b21d0c332623667257a5de1363b9f4fc6ee2bb51))
-* update pie-libs PD-3167 ([1a76806](https://github.com/pie-framework/pie-elements/commit/1a7680657ebe0a73969f3100e60f0a090ffc7ada))
-* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
-
+- update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
+- update pie-libs PD-3167 ([b21d0c3](https://github.com/pie-framework/pie-elements/commit/b21d0c332623667257a5de1363b9f4fc6ee2bb51))
+- update pie-libs PD-3167 ([1a76806](https://github.com/pie-framework/pie-elements/commit/1a7680657ebe0a73969f3100e60f0a090ffc7ada))
+- update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
 
 ### Features
 
-* update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
-
-
-
-
+- update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
 
 ## [9.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.6...@pie-element/extended-text-entry@9.4.7) (2023-09-05)
 
-
 ### Bug Fixes
 
-* update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
-
-
-
-
+- update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
 
 ## [9.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.5...@pie-element/extended-text-entry@9.4.6) (2023-09-04)
 
-
 ### Bug Fixes
 
-* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
-* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
-
-
-
-
+- update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+- updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
 
 ## [9.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.4...@pie-element/extended-text-entry@9.4.5) (2023-08-21)
 
-
 ### Bug Fixes
 
-* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
-
-
-
-
+- update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
 
 ## [9.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.3...@pie-element/extended-text-entry@9.4.4) (2023-08-21)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [9.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.2...@pie-element/extended-text-entry@9.4.3) (2023-08-15)
-
 
 ### Bug Fixes
 
-* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
-* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
-* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
-
-
-
-
+- update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+- updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+- updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
 
 ## [9.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.1...@pie-element/extended-text-entry@9.4.2) (2023-07-24)
 
-
 ### Bug Fixes
 
-* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
-
-
-
-
+- update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
 
 ## [9.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.0...@pie-element/extended-text-entry@9.4.1) (2023-07-06)
 
-
 ### Bug Fixes
 
-* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
-* updated pie-lib PD-2150 ([72f20be](https://github.com/pie-framework/pie-elements/commit/72f20be258248c86dde8d5d587290cd640bfd947))
-
-
-
-
+- updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+- updated pie-lib PD-2150 ([72f20be](https://github.com/pie-framework/pie-elements/commit/72f20be258248c86dde8d5d587290cd640bfd947))
 
 # [9.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.3.0...@pie-element/extended-text-entry@9.4.0) (2023-06-13)
 
-
 ### Bug Fixes
 
-* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
-* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
-* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
-
+- update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+- update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+- update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
 
 ### Features
 
-* **extended-text-entry:** add hidden heading for screen readers PD-2883 ([fb794a0](https://github.com/pie-framework/pie-elements/commit/fb794a08bb35ab834d37397a2e57e93058315d96))
-* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
-
-
-
-
+- **extended-text-entry:** add hidden heading for screen readers PD-2883 ([fb794a0](https://github.com/pie-framework/pie-elements/commit/fb794a08bb35ab834d37397a2e57e93058315d96))
+- add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
 
 # [9.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.2.3...@pie-element/extended-text-entry@9.3.0) (2023-05-23)
 
-
 ### Bug Fixes
 
-* update pie-lib PD-2777, PD-1914, PD-2066 ([7102893](https://github.com/pie-framework/pie-elements/commit/71028930a6dc554eb587cf4de0c1d0d28bfff1f5))
-* update pie-libs PD-2774, PD-1026 ([04f8cd0](https://github.com/pie-framework/pie-elements/commit/04f8cd000afdb2ccb0c25146d46acb60c5fea651))
-
+- update pie-lib PD-2777, PD-1914, PD-2066 ([7102893](https://github.com/pie-framework/pie-elements/commit/71028930a6dc554eb587cf4de0c1d0d28bfff1f5))
+- update pie-libs PD-2774, PD-1026 ([04f8cd0](https://github.com/pie-framework/pie-elements/commit/04f8cd000afdb2ccb0c25146d46acb60c5fea651))
 
 ### Features
 
-* ability to upload images when using imageSupoort from pie-api-components PD-2707 ([685f3b0](https://github.com/pie-framework/pie-elements/commit/685f3b035d86c5f4ad60cdb9ec84690d5ccaa4fc))
-
-
-
-
+- ability to upload images when using imageSupoort from pie-api-components PD-2707 ([685f3b0](https://github.com/pie-framework/pie-elements/commit/685f3b035d86c5f4ad60cdb9ec84690d5ccaa4fc))
 
 ## [9.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.2.2...@pie-element/extended-text-entry@9.2.3) (2023-05-02)
 
-
 ### Bug Fixes
 
-* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
-* update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
-* update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
-
-
-
-
+- update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+- update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
+- update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
 
 ## [9.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.2.1...@pie-element/extended-text-entry@9.2.2) (2023-04-25)
 
-
 ### Bug Fixes
 
-* update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
-
-
-
-
+- update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
 
 ## [9.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.2.0...@pie-element/extended-text-entry@9.2.1) (2023-04-14)
 
-
 ### Bug Fixes
 
-* update pie-libs ([830e9fc](https://github.com/pie-framework/pie-elements/commit/830e9fcf07f057e632b44d7a64ddb436353d49f6))
-
-
-
-
+- update pie-libs ([830e9fc](https://github.com/pie-framework/pie-elements/commit/830e9fcf07f057e632b44d7a64ddb436353d49f6))
 
 # [9.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.1.5...@pie-element/extended-text-entry@9.2.0) (2023-04-10)
 
-
 ### Bug Fixes
 
-* update pie-libs ([b7d3e7f](https://github.com/pie-framework/pie-elements/commit/b7d3e7f7160aafd5dcfed2960bc6c2f03dba2180))
-* update pie-libs ([6738269](https://github.com/pie-framework/pie-elements/commit/6738269d878f24ec4429f210d18bbf591123a55f))
-* update pie-libs ([9f05be1](https://github.com/pie-framework/pie-elements/commit/9f05be1ae6bf0a9651739b6bef7eca32ecabb4ce))
-
+- update pie-libs ([b7d3e7f](https://github.com/pie-framework/pie-elements/commit/b7d3e7f7160aafd5dcfed2960bc6c2f03dba2180))
+- update pie-libs ([6738269](https://github.com/pie-framework/pie-elements/commit/6738269d878f24ec4429f210d18bbf591123a55f))
+- update pie-libs ([9f05be1](https://github.com/pie-framework/pie-elements/commit/9f05be1ae6bf0a9651739b6bef7eca32ecabb4ce))
 
 ### Features
 
-* added the ability to set min/max width and height for the content PD-2425 ([befba3a](https://github.com/pie-framework/pie-elements/commit/befba3a8fa23e8dd21a3e3f63f306bd6dfc35bdd))
-
-
-
-
+- added the ability to set min/max width and height for the content PD-2425 ([befba3a](https://github.com/pie-framework/pie-elements/commit/befba3a8fa23e8dd21a3e3f63f306bd6dfc35bdd))
 
 ## [9.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.1.3...@pie-element/extended-text-entry@9.1.5) (2023-03-20)
 
-
 ### Bug Fixes
 
-* version bump ([b3f6919](https://github.com/pie-framework/pie-elements/commit/b3f6919c3ad2078953ed5162327cf356090c9aec))
-
-
-
-
+- version bump ([b3f6919](https://github.com/pie-framework/pie-elements/commit/b3f6919c3ad2078953ed5162327cf356090c9aec))
 
 ## [9.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.1.2...@pie-element/extended-text-entry@9.1.3) (2023-03-20)
 
-
 ### Bug Fixes
 
-* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
-* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
-
-
-
-
+- update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+- update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
 
 ## [9.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.1.1...@pie-element/extended-text-entry@9.1.2) (2023-02-28)
 
-
 ### Bug Fixes
 
-* update pie-libs ([7bb37a7](https://github.com/pie-framework/pie-elements/commit/7bb37a7da11017eff7191968fad4517182f1c363))
-
-
-
-
+- update pie-libs ([7bb37a7](https://github.com/pie-framework/pie-elements/commit/7bb37a7da11017eff7191968fad4517182f1c363))
 
 ## [9.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.1.0...@pie-element/extended-text-entry@9.1.1) (2023-02-28)
 
-
 ### Bug Fixes
 
-* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
-
-
-
-
+- update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
 
 # [9.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.0.0...@pie-element/extended-text-entry@9.1.0) (2023-02-28)
 
-
 ### Bug Fixes
 
-* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
-
+- update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
 
 ### Features
 
-* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
-* Use a common structre for elements, styling and cleanup WIP ([3aa9002](https://github.com/pie-framework/pie-elements/commit/3aa9002e350e7f4b19f79fc18efb8ddff6586899))
-* **extended-text-entry:** add aria attributes to extended-text-entry) ([10b396c](https://github.com/pie-framework/pie-elements/commit/10b396cfb51866ed860a58ab5924246909621c9d))
-
-
-
-
+- add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+- Use a common structre for elements, styling and cleanup WIP ([3aa9002](https://github.com/pie-framework/pie-elements/commit/3aa9002e350e7f4b19f79fc18efb8ddff6586899))
+- **extended-text-entry:** add aria attributes to extended-text-entry) ([10b396c](https://github.com/pie-framework/pie-elements/commit/10b396cfb51866ed860a58ab5924246909621c9d))
 
 # [9.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@8.4.0...@pie-element/extended-text-entry@9.0.0) (2023-02-22)
 
-
 ### Bug Fixes
 
-* **drawing-response, extended-text-entry:** imports ([795a39b](https://github.com/pie-framework/pie-elements/commit/795a39b2fa89301393c4075da2d6c64eb9220065))
-* **drawing-response, extended-text-entry:** remove verifyRubric method. remove enabled logic ([bcd498d](https://github.com/pie-framework/pie-elements/commit/bcd498df3712a24643199103df7a72316c667a00))
-* change withRubric type for extended-text-entry and drawing-response. docs update from different pr for multi-trait-rubric ([7bf77ad](https://github.com/pie-framework/pie-elements/commit/7bf77ada1a09bc56a053341bce9a0eaf02955672))
-
+- **drawing-response, extended-text-entry:** imports ([795a39b](https://github.com/pie-framework/pie-elements/commit/795a39b2fa89301393c4075da2d6c64eb9220065))
+- **drawing-response, extended-text-entry:** remove verifyRubric method. remove enabled logic ([bcd498d](https://github.com/pie-framework/pie-elements/commit/bcd498df3712a24643199103df7a72316c667a00))
+- change withRubric type for extended-text-entry and drawing-response. docs update from different pr for multi-trait-rubric ([7bf77ad](https://github.com/pie-framework/pie-elements/commit/7bf77ada1a09bc56a053341bce9a0eaf02955672))
 
 ### BREAKING CHANGES
 
-* **drawing-response, extended-text-entry:** create new versions to avoid issues
-
-
-
-
+- **drawing-response, extended-text-entry:** create new versions to avoid issues
 
 # [8.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@8.3.0...@pie-element/extended-text-entry@8.4.0) (2023-02-14)
 
-
 ### Features
 
-* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
-* **elements:** updates snapshots and tests conform to new devault value-PD-2509 ([654aa5c](https://github.com/pie-framework/pie-elements/commit/654aa5c200acf5af557e4ae2a5801f26e001c699))
-* **pie-elements:** feedback turned off if model does not specify feedback settings ([6ced7e8](https://github.com/pie-framework/pie-elements/commit/6ced7e8daa4d3df86b44b724b884e7cf72c717ba))
-* remove force enabled logic from withRubric property PD-2624 ([9e557b9](https://github.com/pie-framework/pie-elements/commit/9e557b90285e3fe1ec3d70d2b3865fc4968cd690))
-
-
-
-
+- update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+- **elements:** updates snapshots and tests conform to new devault value-PD-2509 ([654aa5c](https://github.com/pie-framework/pie-elements/commit/654aa5c200acf5af557e4ae2a5801f26e001c699))
+- **pie-elements:** feedback turned off if model does not specify feedback settings ([6ced7e8](https://github.com/pie-framework/pie-elements/commit/6ced7e8daa4d3df86b44b724b884e7cf72c717ba))
+- remove force enabled logic from withRubric property PD-2624 ([9e557b9](https://github.com/pie-framework/pie-elements/commit/9e557b90285e3fe1ec3d70d2b3865fc4968cd690))
 
 # [8.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@8.2.0...@pie-element/extended-text-entry@8.3.0) (2023-02-01)
 
-
 ### Features
 
-* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
-
-
-
-
+- update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
 
 # [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@8.1.0...@pie-element/extended-text-entry@8.2.0) (2023-01-17)
 
-
 ### Features
 
-* update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
-
-
-
-
+- update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
 
 # [8.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@8.0.1...@pie-element/extended-text-entry@8.1.0) (2023-01-05)
 
-
 ### Features
 
-* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
-* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
-* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
-* **extended-text-entry:** added configuration prop to hide the settings panel PD-1999 ([ca137ff](https://github.com/pie-framework/pie-elements/commit/ca137fffaac68d645f36b1bc41eeec3a0dcac3ba))
-
-
-
-
+- update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+- update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+- update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+- **extended-text-entry:** added configuration prop to hide the settings panel PD-1999 ([ca137ff](https://github.com/pie-framework/pie-elements/commit/ca137fffaac68d645f36b1bc41eeec3a0dcac3ba))
 
 ## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@8.0.0...@pie-element/extended-text-entry@8.0.1) (2022-12-21)
 
-
 ### Bug Fixes
 
-* updated pie-libs ([8cb5b90](https://github.com/pie-framework/pie-elements/commit/8cb5b90d501ccbdf5ffd764e6555faa48b8f54d6))
-
-
-
-
+- updated pie-libs ([8cb5b90](https://github.com/pie-framework/pie-elements/commit/8cb5b90d501ccbdf5ffd764e6555faa48b8f54d6))
 
 # [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.3.4...@pie-element/extended-text-entry@8.0.0) (2022-12-20)
 
-
 ### Bug Fixes
 
-* **extended-text-entry:** update default label for player's spellcheck property in settings panel ([597996d](https://github.com/pie-framework/pie-elements/commit/597996da5e8042c7d9bf1257a8fb1ff0077996c8))
-* updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
-
+- **extended-text-entry:** update default label for player's spellcheck property in settings panel ([597996d](https://github.com/pie-framework/pie-elements/commit/597996da5e8042c7d9bf1257a8fb1ff0077996c8))
+- updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
 
 ### Features
 
-* **extended-text-entry:** fix tests for spellcheck property ([b11734f](https://github.com/pie-framework/pie-elements/commit/b11734fac9fc9df28de00222d4a53e29b7887f6a))
-* **extended-text-entry:** flip the meaning of the spellCheck property in player ([f07fe0c](https://github.com/pie-framework/pie-elements/commit/f07fe0c27c36fa9343bff401543a5d711a2603ae))
-* **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([bf4b656](https://github.com/pie-framework/pie-elements/commit/bf4b656241887acf8e2aa1264e747c0c338ed727))
-
+- **extended-text-entry:** fix tests for spellcheck property ([b11734f](https://github.com/pie-framework/pie-elements/commit/b11734fac9fc9df28de00222d4a53e29b7887f6a))
+- **extended-text-entry:** flip the meaning of the spellCheck property in player ([f07fe0c](https://github.com/pie-framework/pie-elements/commit/f07fe0c27c36fa9343bff401543a5d711a2603ae))
+- **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([bf4b656](https://github.com/pie-framework/pie-elements/commit/bf4b656241887acf8e2aa1264e747c0c338ed727))
 
 ### Performance Improvements
 
-* **extended-text-entry:** replace playerSpellCheckEnable with playerSpellCheckDisabled and change the meaning of spellcheckEnabled for player ([bc20d02](https://github.com/pie-framework/pie-elements/commit/bc20d021fe64f24e743e2f56d8c235ecb60c9eeb))
-
+- **extended-text-entry:** replace playerSpellCheckEnable with playerSpellCheckDisabled and change the meaning of spellcheckEnabled for player ([bc20d02](https://github.com/pie-framework/pie-elements/commit/bc20d021fe64f24e743e2f56d8c235ecb60c9eeb))
 
 ### BREAKING CHANGES
 
-* **extended-text-entry:** The playerSpellCheckEnable property is replaced by playerSpellCheckDisabled propery.
-The default bahaviour is to disable the spellcheck for the player.
-
-
-
-
+- **extended-text-entry:** The playerSpellCheckEnable property is replaced by playerSpellCheckDisabled propery.
+  The default bahaviour is to disable the spellcheck for the player.
 
 ## [7.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.3.3...@pie-element/extended-text-entry@7.3.4) (2022-12-07)
 
-
 ### Bug Fixes
 
-* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
-* update libs for PD-2030 PD-2031 ([3174022](https://github.com/pie-framework/pie-elements/commit/3174022d45603ed217bbe8804a142b07084636a5))
-* updated lib PD-1715 ([42e788d](https://github.com/pie-framework/pie-elements/commit/42e788db0c792838994e55001952da7701251a8e))
-* updated libs ([c20de3a](https://github.com/pie-framework/pie-elements/commit/c20de3a6ba4499a090c809e18e52588d2a585fa0))
-* updated libs ([0eed79a](https://github.com/pie-framework/pie-elements/commit/0eed79a32c3b777c16c8cabf201513fc1d2726a0))
-* updated libs ([343c9ec](https://github.com/pie-framework/pie-elements/commit/343c9ec3dccba7f781e90ae2bd195cac6f78f467))
-
-
-
-
+- update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+- update libs for PD-2030 PD-2031 ([3174022](https://github.com/pie-framework/pie-elements/commit/3174022d45603ed217bbe8804a142b07084636a5))
+- updated lib PD-1715 ([42e788d](https://github.com/pie-framework/pie-elements/commit/42e788db0c792838994e55001952da7701251a8e))
+- updated libs ([c20de3a](https://github.com/pie-framework/pie-elements/commit/c20de3a6ba4499a090c809e18e52588d2a585fa0))
+- updated libs ([0eed79a](https://github.com/pie-framework/pie-elements/commit/0eed79a32c3b777c16c8cabf201513fc1d2726a0))
+- updated libs ([343c9ec](https://github.com/pie-framework/pie-elements/commit/343c9ec3dccba7f781e90ae2bd195cac6f78f467))
 
 ## [7.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.3.2...@pie-element/extended-text-entry@7.3.3) (2022-11-15)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [7.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.3.1...@pie-element/extended-text-entry@7.3.2) (2022-11-11)
-
 
 ### Bug Fixes
 
-* add sanity checks ([1cfd187](https://github.com/pie-framework/pie-elements/commit/1cfd187d2c2bab2d589aa2d7b7563b1c69e3295e))
-
-
-
-
+- add sanity checks ([1cfd187](https://github.com/pie-framework/pie-elements/commit/1cfd187d2c2bab2d589aa2d7b7563b1c69e3295e))
 
 ## [7.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.3.0...@pie-element/extended-text-entry@7.3.1) (2022-11-11)
 
-
 ### Bug Fixes
 
-* **extended-text-entry:** add sanity checks for withRubric ([01ee1db](https://github.com/pie-framework/pie-elements/commit/01ee1db32ec5f6d6fc2602ee5d25ad5204ede456))
-
-
-
-
+- **extended-text-entry:** add sanity checks for withRubric ([01ee1db](https://github.com/pie-framework/pie-elements/commit/01ee1db32ec5f6d6fc2602ee5d25ad5204ede456))
 
 # [7.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.2.2...@pie-element/extended-text-entry@7.3.0) (2022-11-01)
 
-
 ### Features
 
-* add a different property in the config,  to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
-
-
-
-
+- add a different property in the config, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
 
 ## [7.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.2.1...@pie-element/extended-text-entry@7.2.2) (2022-11-01)
 
-
 ### Bug Fixes
 
-* trigger updating model depending on configuration.withRubric ([6b42963](https://github.com/pie-framework/pie-elements/commit/6b429639dade1f72e77e972530ab784c5417384c))
-* trigger updating model depending on configuration.withRubric (added additional check) ([02ae9c0](https://github.com/pie-framework/pie-elements/commit/02ae9c0664aa140d6624643b6efbdef33cea2acb))
-
-
-
-
+- trigger updating model depending on configuration.withRubric ([6b42963](https://github.com/pie-framework/pie-elements/commit/6b429639dade1f72e77e972530ab784c5417384c))
+- trigger updating model depending on configuration.withRubric (added additional check) ([02ae9c0](https://github.com/pie-framework/pie-elements/commit/02ae9c0664aa140d6624643b6efbdef33cea2acb))
 
 ## [7.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.2.0...@pie-element/extended-text-entry@7.2.1) (2022-10-31)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.9...@pie-element/extended-text-entry@7.2.0) (2022-10-17)
-
 
 ### Bug Fixes
 
-* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
-
+- update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
 
 ### Features
 
-* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
-* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
-* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
-* **extended-text-entry:** add pie-api config PD-23 ([59c151a](https://github.com/pie-framework/pie-elements/commit/59c151a668e6caf8828ee48547fbd34c0645f863))
-* **extended-text-entry:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2098 ([1046c20](https://github.com/pie-framework/pie-elements/commit/1046c207db5d1246479ec2daf6219cb30a10ec00))
-* **extended-text-entry:** updated snapshot PD-2098 ([1c06fc3](https://github.com/pie-framework/pie-elements/commit/1c06fc37827b6aa93cbfaeedb43207408c910f3c))
-* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
-* **extended-text-entry:** add uploadSoundSupport property PD-23-updated ([bf1ce39](https://github.com/pie-framework/pie-elements/commit/bf1ce390aa95e0ae9b937391a08e70139e842aaa))
-
-
-
-
+- set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+- update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+- **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+- **extended-text-entry:** add pie-api config PD-23 ([59c151a](https://github.com/pie-framework/pie-elements/commit/59c151a668e6caf8828ee48547fbd34c0645f863))
+- **extended-text-entry:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2098 ([1046c20](https://github.com/pie-framework/pie-elements/commit/1046c207db5d1246479ec2daf6219cb30a10ec00))
+- **extended-text-entry:** updated snapshot PD-2098 ([1c06fc3](https://github.com/pie-framework/pie-elements/commit/1c06fc37827b6aa93cbfaeedb43207408c910f3c))
+- enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+- **extended-text-entry:** add uploadSoundSupport property PD-23-updated ([bf1ce39](https://github.com/pie-framework/pie-elements/commit/bf1ce390aa95e0ae9b937391a08e70139e842aaa))
 
 ## [7.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.8...@pie-element/extended-text-entry@7.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [7.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.7...@pie-element/extended-text-entry@7.1.8) (2022-09-14)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [7.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.6...@pie-element/extended-text-entry@7.1.7) (2022-08-31)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [7.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.5...@pie-element/extended-text-entry@7.1.6) (2022-08-16)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [7.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.4...@pie-element/extended-text-entry@7.1.5) (2022-08-08)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [7.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.3...@pie-element/extended-text-entry@7.1.4) (2022-08-02)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [7.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.2...@pie-element/extended-text-entry@7.1.3) (2022-07-22)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [7.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.1...@pie-element/extended-text-entry@7.1.2) (2022-07-20)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [7.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.1.0...@pie-element/extended-text-entry@7.1.1) (2022-07-19)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.0.0...@pie-element/extended-text-entry@7.1.0) (2022-06-28)
-
 
 ### Bug Fixes
 
-* PD-1499 not having desired result (also, remove unnecessary code) - PD-1793 ([9987b4c](https://github.com/pie-framework/pie-elements/commit/9987b4c39f407ad7fab6db59cbe6ad1a66233cb6))
-* PD-1499 not having desired result with extended-text (TTS for math markup) - import renderMath - PD-1793 ([2db2559](https://github.com/pie-framework/pie-elements/commit/2db2559c9bc14dd052a3fa643528e81c7751e521))
-* PD-1499 not having desired result with extended-text (TTS for math markup) PD-1793 ([c0f6d78](https://github.com/pie-framework/pie-elements/commit/c0f6d78b718303b152008447b30262e167438bf0))
-
+- PD-1499 not having desired result (also, remove unnecessary code) - PD-1793 ([9987b4c](https://github.com/pie-framework/pie-elements/commit/9987b4c39f407ad7fab6db59cbe6ad1a66233cb6))
+- PD-1499 not having desired result with extended-text (TTS for math markup) - import renderMath - PD-1793 ([2db2559](https://github.com/pie-framework/pie-elements/commit/2db2559c9bc14dd052a3fa643528e81c7751e521))
+- PD-1499 not having desired result with extended-text (TTS for math markup) PD-1793 ([c0f6d78](https://github.com/pie-framework/pie-elements/commit/c0f6d78b718303b152008447b30262e167438bf0))
 
 ### Features
 
-* **extended-text-entry:** add maxImageWidth and maxImageHeight props PD-1801 ([82b1404](https://github.com/pie-framework/pie-elements/commit/82b1404a25c67d21599c916574a9caa66b536584))
-* **input:** added configurability for inserting spanish and special characters [PD-1461], [PD-1462] ([11f381e](https://github.com/pie-framework/pie-elements/commit/11f381ea44a3ae2b2c5c189dc53932d689c8e044))
-
-
-
-
+- **extended-text-entry:** add maxImageWidth and maxImageHeight props PD-1801 ([82b1404](https://github.com/pie-framework/pie-elements/commit/82b1404a25c67d21599c916574a9caa66b536584))
+- **input:** added configurability for inserting spanish and special characters [PD-1461], [PD-1462] ([11f381e](https://github.com/pie-framework/pie-elements/commit/11f381ea44a3ae2b2c5c189dc53932d689c8e044))
 
 # [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.13...@pie-element/extended-text-entry@7.0.0) (2022-06-28)
 
-
 ### chore
 
-* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
-
+- Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
 
 ### BREAKING CHANGES
 
-* Image percent buttons were removed from toolbar.
-New properties maxImageWidth and maxImageHeight were added.
-
-
-
-
+- Image percent buttons were removed from toolbar.
+  New properties maxImageWidth and maxImageHeight were added.
 
 ## [6.8.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.12...@pie-element/extended-text-entry@6.8.13) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.8.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.11...@pie-element/extended-text-entry@6.8.12) (2022-05-30)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.8.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.10...@pie-element/extended-text-entry@6.8.11) (2022-05-19)
-
 
 ### Bug Fixes
 
-* PD-1499 not having desired result with TTS - PD-1793 ([674432b](https://github.com/pie-framework/pie-elements/commit/674432b81b3577118ad5b8619f28a3d1ec0eefed))
-
-
-
-
+- PD-1499 not having desired result with TTS - PD-1793 ([674432b](https://github.com/pie-framework/pie-elements/commit/674432b81b3577118ad5b8619f28a3d1ec0eefed))
 
 ## [6.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.9...@pie-element/extended-text-entry@6.8.10) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.8...@pie-element/extended-text-entry@6.8.9) (2022-05-09)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.7...@pie-element/extended-text-entry@6.8.8) (2022-05-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.8.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.6...@pie-element/extended-text-entry@6.8.7) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.5...@pie-element/extended-text-entry@6.8.6) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.4...@pie-element/extended-text-entry@6.8.5) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.3...@pie-element/extended-text-entry@6.8.4) (2022-03-08)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.2...@pie-element/extended-text-entry@6.8.3) (2022-03-08)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.1...@pie-element/extended-text-entry@6.8.2) (2022-02-21)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.0...@pie-element/extended-text-entry@6.8.1) (2022-02-04)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.7.8...@pie-element/extended-text-entry@6.8.0) (2022-01-24)
-
 
 ### Bug Fixes
 
-* **extended-text-entry:** add static classname for editor DNA-13102 ([3ad662f](https://github.com/pie-framework/pie-elements/commit/3ad662fbc6413f5c1721862f87120696071bfdea))
-* **math-inline, extended-text-entry:** use new editors ([2123b8a](https://github.com/pie-framework/pie-elements/commit/2123b8a6d930852a629140053a8459dbc75f281f))
-* **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
-* **multiple-choice, explicit-constructed-response, extended-text-entry:** print do not show teacher instructions, rationale or prompt if they are diabled DNA-13089 ([06b9555](https://github.com/pie-framework/pie-elements/commit/06b9555b25e094e0b2bce0e6a852a206c6d2c17d))
-* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
-
+- **extended-text-entry:** add static classname for editor DNA-13102 ([3ad662f](https://github.com/pie-framework/pie-elements/commit/3ad662fbc6413f5c1721862f87120696071bfdea))
+- **math-inline, extended-text-entry:** use new editors ([2123b8a](https://github.com/pie-framework/pie-elements/commit/2123b8a6d930852a629140053a8459dbc75f281f))
+- **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
+- **multiple-choice, explicit-constructed-response, extended-text-entry:** print do not show teacher instructions, rationale or prompt if they are diabled DNA-13089 ([06b9555](https://github.com/pie-framework/pie-elements/commit/06b9555b25e094e0b2bce0e6a852a206c6d2c17d))
+- use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
 
 ### Features
 
-* **extended-text-entry:** Added the ability for instructor to annotate student's response with comments PD-744 ([6d266f9](https://github.com/pie-framework/pie-elements/commit/6d266f9de59bfe3f9b71089f8e222e9ad9026cbc))
-* **extended-text-entry:** implement print PD-1283 ([7e4f7d8](https://github.com/pie-framework/pie-elements/commit/7e4f7d8203f54d905f542369d444232b54261582))
-
-
-
-
+- **extended-text-entry:** Added the ability for instructor to annotate student's response with comments PD-744 ([6d266f9](https://github.com/pie-framework/pie-elements/commit/6d266f9de59bfe3f9b71089f8e222e9ad9026cbc))
+- **extended-text-entry:** implement print PD-1283 ([7e4f7d8](https://github.com/pie-framework/pie-elements/commit/7e4f7d8203f54d905f542369d444232b54261582))
 
 ## [6.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.7.7...@pie-element/extended-text-entry@6.7.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.7.6...@pie-element/extended-text-entry@6.7.7) (2021-12-23)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.7.4...@pie-element/extended-text-entry@6.7.5) (2021-12-13)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.7.1...@pie-element/extended-text-entry@6.7.2) (2021-11-29)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.6.4...@pie-element/extended-text-entry@6.7.1) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.5.3...@pie-element/extended-text-entry@6.7.0) (2021-11-11)
-
 
 ### Bug Fixes
 
-* **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
-* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
-* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
-* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
-* **extended-text-entry:** Removed main content padding PD-384 ([e3f0bb3](https://github.com/pie-framework/pie-elements/commit/e3f0bb33ef66fe7fdd2de80d470eaecc4864dbbb))
-
+- **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
+- pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+- Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+- Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+- **extended-text-entry:** Removed main content padding PD-384 ([e3f0bb3](https://github.com/pie-framework/pie-elements/commit/e3f0bb33ef66fe7fdd2de80d470eaecc4864dbbb))
 
 ### Features
 
-* **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
-* **extended-text-entry:** implement print PD-1283 ([7e4f7d8](https://github.com/pie-framework/pie-elements/commit/7e4f7d8203f54d905f542369d444232b54261582))
-
-
-
-
-
+- **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
+- **extended-text-entry:** implement print PD-1283 ([7e4f7d8](https://github.com/pie-framework/pie-elements/commit/7e4f7d8203f54d905f542369d444232b54261582))
 
 ## [6.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.6.3...@pie-element/extended-text-entry@6.6.4) (2021-11-01)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.6.2...@pie-element/extended-text-entry@6.6.3) (2021-10-04)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.6.1...@pie-element/extended-text-entry@6.6.2) (2021-09-20)
-
 
 ### Bug Fixes
 
-* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
-* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
-* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
-
-
-
-
+- pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+- Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+- Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
 
 ## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.6.0...@pie-element/extended-text-entry@6.6.1) (2021-09-01)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.5.3...@pie-element/extended-text-entry@6.6.0) (2021-08-05)
-
 
 ### Bug Fixes
 
-* **extended-text-entry:** Removed main content padding PD-384 ([e3f0bb3](https://github.com/pie-framework/pie-elements/commit/e3f0bb33ef66fe7fdd2de80d470eaecc4864dbbb))
-
+- **extended-text-entry:** Removed main content padding PD-384 ([e3f0bb3](https://github.com/pie-framework/pie-elements/commit/e3f0bb33ef66fe7fdd2de80d470eaecc4864dbbb))
 
 ### Features
 
-* **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
-
-
-
-
+- **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
 
 ## [6.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.5.1...@pie-element/extended-text-entry@6.5.3) (2021-08-05)
 
-
 ### Bug Fixes
 
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
+- force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
 
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.5.0...@pie-element/extended-text-entry@6.5.1) (2021-06-29)
 
-
 ### Bug Fixes
 
-* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
-
-
-
-
+- Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
 
 # [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.4.5...@pie-element/extended-text-entry@6.5.0) (2021-04-07)
 
-
 ### Bug Fixes
 
-* **extended-text-entry:** custom key fix for math keypad - PD-388 ([44fb9e2](https://github.com/pie-framework/pie-elements/commit/44fb9e2bde460632d2a517c33a32153b333f27f2))
-* **math-inline:** remove allow thousand separators from model, remove checkbox, validate answers indifferent to the presence of commas used as thousands separators PD-1031 ([#554](https://github.com/pie-framework/pie-elements/issues/554)) ([188555b](https://github.com/pie-framework/pie-elements/commit/188555ba3dd7fa6802a1d00eead0f8a86f4615b4))
-* rename the 'Everything' math editor as the 'Miscellaneous' math editor PD-870 ([cebc7da](https://github.com/pie-framework/pie-elements/commit/cebc7dad9cd8b8ad498134e116b705079c1e13c9))
-
+- **extended-text-entry:** custom key fix for math keypad - PD-388 ([44fb9e2](https://github.com/pie-framework/pie-elements/commit/44fb9e2bde460632d2a517c33a32153b333f27f2))
+- **math-inline:** remove allow thousand separators from model, remove checkbox, validate answers indifferent to the presence of commas used as thousands separators PD-1031 ([#554](https://github.com/pie-framework/pie-elements/issues/554)) ([188555b](https://github.com/pie-framework/pie-elements/commit/188555ba3dd7fa6802a1d00eead0f8a86f4615b4))
+- rename the 'Everything' math editor as the 'Miscellaneous' math editor PD-870 ([cebc7da](https://github.com/pie-framework/pie-elements/commit/cebc7dad9cd8b8ad498134e116b705079c1e13c9))
 
 ### Features
 
-* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
-
-
-
-
+- merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
 
 ## [6.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.4.2...@pie-element/extended-text-entry@6.4.5) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.4.1...@pie-element/extended-text-entry@6.4.2) (2021-03-03)
-
 
 ### Bug Fixes
 
-* **extended-text-entry:** add default dimensions to fix PD-694 ([bbebfd9](https://github.com/pie-framework/pie-elements/commit/bbebfd93d2a0e8d330629775732e184335661f34))
-
-
-
-
+- **extended-text-entry:** add default dimensions to fix PD-694 ([bbebfd9](https://github.com/pie-framework/pie-elements/commit/bbebfd93d2a0e8d330629775732e184335661f34))
 
 ## [6.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.4.0...@pie-element/extended-text-entry@6.4.1) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.10...@pie-element/extended-text-entry@6.4.0) (2021-02-02)
-
 
 ### Features
 
-* **extended-text-entry:** add all plugins to editable html authoring - PD-707 ([c8e3df3](https://github.com/pie-framework/pie-elements/commit/c8e3df3))
-
-
-
-
+- **extended-text-entry:** add all plugins to editable html authoring - PD-707 ([c8e3df3](https://github.com/pie-framework/pie-elements/commit/c8e3df3))
 
 ## [6.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.9...@pie-element/extended-text-entry@6.3.10) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.8...@pie-element/extended-text-entry@6.3.9) (2020-10-29)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.7...@pie-element/extended-text-entry@6.3.8) (2020-10-29)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.3.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.6...@pie-element/extended-text-entry@6.3.7) (2020-10-16)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.5...@pie-element/extended-text-entry@6.3.6) (2020-10-02)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.4...@pie-element/extended-text-entry@6.3.5) (2020-09-23)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.3...@pie-element/extended-text-entry@6.3.4) (2020-09-23)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.2...@pie-element/extended-text-entry@6.3.3) (2020-08-25)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.1...@pie-element/extended-text-entry@6.3.2) (2020-08-13)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.2.6...@pie-element/extended-text-entry@6.3.1) (2020-08-07)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.2.5...@pie-element/extended-text-entry@6.2.6) (2020-06-09)
-
 
 ### Bug Fixes
 
-* Excessive white space between the "parts" of "multi-part" Extended Text items. (pie-ui/extended-text-entry update) PD-37 ([4062996](https://github.com/pie-framework/pie-elements/commit/4062996))
-
-
-
-
+- Excessive white space between the "parts" of "multi-part" Extended Text items. (pie-ui/extended-text-entry update) PD-37 ([4062996](https://github.com/pie-framework/pie-elements/commit/4062996))
 
 ## [6.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.0-next.0...@pie-element/extended-text-entry@6.2.5) (2020-05-25)
 
-
 ### Bug Fixes
 
-* version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
-
-
-
-
+- version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
 
 # [6.3.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.2.4...@pie-element/extended-text-entry@6.3.0-next.0) (2020-05-25)
 
-
 ### Bug Fixes
 
-* bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
-
+- bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
 
 ### Features
 
-* add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
-
-
-
-
+- add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
 
 ## [6.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.2.3...@pie-element/extended-text-entry@6.2.4) (2020-04-28)
 
-
 ### Bug Fixes
 
-* bump ui/lib versions ([45f0da6](https://github.com/pie-framework/pie-elements/commit/45f0da6))
-* ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
-* update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
-
-
-
-
+- bump ui/lib versions ([45f0da6](https://github.com/pie-framework/pie-elements/commit/45f0da6))
+- ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
+- update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
 
 ## [6.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.2.2...@pie-element/extended-text-entry@6.2.3) (2020-04-14)
 
-
 ### Bug Fixes
 
-* bump ui/lib versions ([3edb232](https://github.com/pie-framework/pie-elements/commit/3edb232))
-
-
-
-
+- bump ui/lib versions ([3edb232](https://github.com/pie-framework/pie-elements/commit/3edb232))
 
 ## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.2.1...@pie-element/extended-text-entry@6.2.2) (2020-04-14)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.9...@pie-element/extended-text-entry@6.2.1) (2020-04-10)
-
 
 ### Bug Fixes
 
-* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
-* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
-* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
-* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
-* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
-
-
-
-
+- bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+- bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+- bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+- bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+- bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
 
 ## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.9...@pie-element/extended-text-entry@6.1.1) (2020-04-10)
 
-
 ### Bug Fixes
 
-* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
-* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
-* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
-* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
-
-
-
-
+- bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+- bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+- bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+- bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
 
 ## [6.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.8...@pie-element/extended-text-entry@6.0.9) (2020-02-18)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.7...@pie-element/extended-text-entry@6.0.8) (2020-02-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.6...@pie-element/extended-text-entry@6.0.7) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.5...@pie-element/extended-text-entry@6.0.6) (2019-12-18)
-
 
 ### Bug Fixes
 
-* bump pie-ui version ([6cf598a](https://github.com/pie-framework/pie-elements/commit/6cf598a))
-
-
-
-
+- bump pie-ui version ([6cf598a](https://github.com/pie-framework/pie-elements/commit/6cf598a))
 
 ## [6.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.4...@pie-element/extended-text-entry@6.0.5) (2019-12-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.3...@pie-element/extended-text-entry@6.0.4) (2019-11-08)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [6.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.2...@pie-element/extended-text-entry@6.0.3) (2019-11-06)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.1...@pie-element/extended-text-entry@6.0.2) (2019-10-15)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.0.0...@pie-element/extended-text-entry@6.0.1) (2019-10-11)
-
 
 ### Bug Fixes
 
-* Updated docs. ([3787619](https://github.com/pie-framework/pie-elements/commit/3787619))
-
-
-
-
+- Updated docs. ([3787619](https://github.com/pie-framework/pie-elements/commit/3787619))
 
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@5.1.3...@pie-element/extended-text-entry@6.0.0) (2019-10-08)
 
-
-* Andreea/ch3969/for all items default values should be true (#355) ([9916c38](https://github.com/pie-framework/pie-elements/commit/9916c38)), closes [#355](https://github.com/pie-framework/pie-elements/issues/355)
-
+- Andreea/ch3969/for all items default values should be true (#355) ([9916c38](https://github.com/pie-framework/pie-elements/commit/9916c38)), closes [#355](https://github.com/pie-framework/pie-elements/issues/355)
 
 ### BREAKING CHANGES
 
-* allowFeedback was replaced with feedbackEnabled.
+- allowFeedback was replaced with feedbackEnabled.
 
-* fix(charting): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(charting): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(drag-in-the-blank): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(drag-in-the-blank): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(drawing-response): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(drawing-response): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(ebsr): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(ebsr): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(explicit-constructed-response): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(explicit-constructed-response): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(extended-text-entry): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(extended-text-entry): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(graph-lines): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(graph-lines): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(graphing): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(graphing): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(hotspot): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(hotspot): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(image-cloze-association): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(image-cloze-association): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(inline-dropdown): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(inline-dropdown): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(match): replaced usage of allowFeedback with feedbackEnabled.  Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
-* allowFeedback was replaced with feedbackEnabled. `configuration.feedback.enabled` was moved to `model.feedbackEnabled`.
+- fix(match): replaced usage of allowFeedback with feedbackEnabled. Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- allowFeedback was replaced with feedbackEnabled. `configuration.feedback.enabled` was moved to `model.feedbackEnabled`.
 
-* fix(math-inline): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(math-inline): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(multiple-choice): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(multiple-choice): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(placement-ordering): replaced usage of allowFeedback with feedbackEnabled.  Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
-* allowFeedback was replaced with feedbackEnabled. `configuration.feedback.enabled` was moved to `model.feedbackEnabled`.
+- fix(placement-ordering): replaced usage of allowFeedback with feedbackEnabled. Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- allowFeedback was replaced with feedbackEnabled. `configuration.feedback.enabled` was moved to `model.feedbackEnabled`.
 
-* fix(select-text): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(select-text): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(text-entry): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(text-entry): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix: Updated pie-models.
+- fix: Updated pie-models.
 
-* fix(categorize): Added normalize function on controller (to be able to add default values to the model).
+- fix(categorize): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(charting): Added normalize function on controller (to be able to add default values to the model).
+- fix(charting): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(drag-in-the-blank): Added normalize function on controller (to be able to add default values to the model).
+- fix(drag-in-the-blank): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(drawing-response): Added normalize function on controller (to be able to add default values to the model).
+- fix(drawing-response): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(ebsr): Added normalize function on controller (to be able to add default values to the model).
+- fix(ebsr): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(explicit-constructed-response): Added normalize function on controller (to be able to add default values to the model).
+- fix(explicit-constructed-response): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(extended-text-entry): Added normalize function on controller (to be able to add default values to the model).
+- fix(extended-text-entry): Added normalize function on controller (to be able to add default values to the model).
 
-* Remove unnecessary change.
+- Remove unnecessary change.
 
-* fix(graph-lines): Added normalize function on controller (to be able to add default values to the model).
+- fix(graph-lines): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(graphing): Added normalize function on controller (to be able to add default values to the model).
+- fix(graphing): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(hotspot): Added normalize function on controller (to be able to add default values to the model).
+- fix(hotspot): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(image-cloze-association): Added normalize function on controller (to be able to add default values to the model).
+- fix(image-cloze-association): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(inline-dropdown): Added normalize function on controller (to be able to add default values to the model).
+- fix(inline-dropdown): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(match): Added normalize function on controller (to be able to add default values to the model).
+- fix(match): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(math-inline): Added normalize function on controller (to be able to add default values to the model).
+- fix(math-inline): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(multiple-choice): Added normalize function on controller (to be able to add default values to the model).
+- fix(multiple-choice): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(placement-ordering): Added normalize function on controller (to be able to add default values to the model).
+- fix(placement-ordering): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(select-text): Added normalize function on controller (to be able to add default values to the model).
+- fix(select-text): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(text-entry): Added normalize function on controller (to be able to add default values to the model).
-
-
-
-
+- fix(text-entry): Added normalize function on controller (to be able to add default values to the model).
 
 ## [5.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@5.1.2...@pie-element/extended-text-entry@5.1.3) (2019-10-04)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [5.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@5.1.1...@pie-element/extended-text-entry@5.1.2) (2019-10-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@5.1.0...@pie-element/extended-text-entry@5.1.1) (2019-10-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@5.0.3...@pie-element/extended-text-entry@5.1.0) (2019-09-27)
-
 
 ### Bug Fixes
 
-* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([839aa3c](https://github.com/pie-framework/pie-elements/commit/839aa3c))
-
+- added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([839aa3c](https://github.com/pie-framework/pie-elements/commit/839aa3c))
 
 ### Features
 
-* **extended-text-entry:** model based prompt ([f399425](https://github.com/pie-framework/pie-elements/commit/f399425))
-
-
-
-
+- **extended-text-entry:** model based prompt ([f399425](https://github.com/pie-framework/pie-elements/commit/f399425))
 
 ## [5.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@5.0.2...@pie-element/extended-text-entry@5.0.3) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [5.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@5.0.1...@pie-element/extended-text-entry@5.0.2) (2019-09-19)
-
 
 ### Bug Fixes
 
-* Keep settings from defaults.configuration if they are not defined in the new configuration. ([8245373](https://github.com/pie-framework/pie-elements/commit/8245373))
-
-
-
-
+- Keep settings from defaults.configuration if they are not defined in the new configuration. ([8245373](https://github.com/pie-framework/pie-elements/commit/8245373))
 
 ## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@5.0.0...@pie-element/extended-text-entry@5.0.1) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.7...@pie-element/extended-text-entry@5.0.0) (2019-09-17)
-
 
 ### Features
 
-* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([9238954](https://github.com/pie-framework/pie-elements/commit/9238954))
-
+- Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([9238954](https://github.com/pie-framework/pie-elements/commit/9238954))
 
 ### BREAKING CHANGES
 
-* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
-
-
-
-
+- `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
 
 ## [4.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.6...@pie-element/extended-text-entry@4.6.7) (2019-09-04)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.5...@pie-element/extended-text-entry@4.6.6) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [4.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.4...@pie-element/extended-text-entry@4.6.5) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.3...@pie-element/extended-text-entry@4.6.4) (2019-08-21)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.2...@pie-element/extended-text-entry@4.6.3) (2019-08-21)
-
 
 ### Bug Fixes
 
-* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
-
-
-
-
+- **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
 
 ## [4.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.1...@pie-element/extended-text-entry@4.6.2) (2019-08-18)
 
-
 ### Bug Fixes
 
-* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
-* remove 'Display' redundant text ([bc2ff8b](https://github.com/pie-framework/pie-elements/commit/bc2ff8b))
-* set default values to configuration properties ([70b06e1](https://github.com/pie-framework/pie-elements/commit/70b06e1))
-
-
-
-
+- **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+- remove 'Display' redundant text ([bc2ff8b](https://github.com/pie-framework/pie-elements/commit/bc2ff8b))
+- set default values to configuration properties ([70b06e1](https://github.com/pie-framework/pie-elements/commit/70b06e1))
 
 ## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.0...@pie-element/extended-text-entry@4.6.1) (2019-08-15)
 
-
 ### Bug Fixes
 
-* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
-
-
-
-
+- **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
 
 # [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.8...@pie-element/extended-text-entry@4.6.0) (2019-08-02)
 
-
 ### Bug Fixes
 
-* **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
-
+- **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
 
 ### Features
 
-* **extended-text-entry:** universal prompt treatment ([a9031c3](https://github.com/pie-framework/pie-elements/commit/a9031c3))
-
-
-
-
+- **extended-text-entry:** universal prompt treatment ([a9031c3](https://github.com/pie-framework/pie-elements/commit/a9031c3))
 
 ## [4.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.7...@pie-element/extended-text-entry@4.5.8) (2019-07-25)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.6...@pie-element/extended-text-entry@4.5.7) (2019-07-25)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [4.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.5...@pie-element/extended-text-entry@4.5.6) (2019-07-17)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.4...@pie-element/extended-text-entry@4.5.5) (2019-07-15)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.3...@pie-element/extended-text-entry@4.5.4) (2019-07-13)
-
 
 ### Bug Fixes
 
-* ch2363 focus issue bump config ui ([#274](https://github.com/pie-framework/pie-elements/issues/274)) ([1cf773d](https://github.com/pie-framework/pie-elements/commit/1cf773d))
-
-
-
-
+- ch2363 focus issue bump config ui ([#274](https://github.com/pie-framework/pie-elements/issues/274)) ([1cf773d](https://github.com/pie-framework/pie-elements/commit/1cf773d))
 
 ## [4.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.2...@pie-element/extended-text-entry@4.5.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.1...@pie-element/extended-text-entry@4.5.2) (2019-07-12)
-
 
 ### Bug Fixes
 
-* **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
-
-
-
-
+- **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
 
 ## [4.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.0...@pie-element/extended-text-entry@4.5.1) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.4.0...@pie-element/extended-text-entry@4.5.0) (2019-07-11)
-
 
 ### Bug Fixes
 
-* **behaviour:** added alternate scoring for placement-ordering [ch1304], rendered math in extended-text-entry [ch1016], moved the toolbar above the editor for [ch2493] ([05885fb](https://github.com/pie-framework/pie-elements/commit/05885fb))
-
+- **behaviour:** added alternate scoring for placement-ordering [ch1304], rendered math in extended-text-entry [ch1016], moved the toolbar above the editor for [ch2493] ([05885fb](https://github.com/pie-framework/pie-elements/commit/05885fb))
 
 ### Features
 
-* **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
-
-
-
-
+- **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
 
 # [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.8...@pie-element/extended-text-entry@4.4.0) (2019-07-09)
 
-
 ### Features
 
-* Added a dropdown in settings panel with Equation Editor Types if mathInput is true. ([324c3d9](https://github.com/pie-framework/pie-elements/commit/324c3d9))
-* Used mathInput value in order to hide/display math option in pie-ui/extended-text-entry. Moved width & height to settings panel. Added a dropdown in settings panel with Equation Editor Types if mathInput is true (functionality for it is WIP). Updated pie-models, pie-schemas & tests. ([fd65b22](https://github.com/pie-framework/pie-elements/commit/fd65b22))
-
-
-
-
+- Added a dropdown in settings panel with Equation Editor Types if mathInput is true. ([324c3d9](https://github.com/pie-framework/pie-elements/commit/324c3d9))
+- Used mathInput value in order to hide/display math option in pie-ui/extended-text-entry. Moved width & height to settings panel. Added a dropdown in settings panel with Equation Editor Types if mathInput is true (functionality for it is WIP). Updated pie-models, pie-schemas & tests. ([fd65b22](https://github.com/pie-framework/pie-elements/commit/fd65b22))
 
 ## [4.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.7...@pie-element/extended-text-entry@4.3.8) (2019-07-09)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.3.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.6...@pie-element/extended-text-entry@4.3.7) (2019-07-07)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.5...@pie-element/extended-text-entry@4.3.6) (2019-07-07)
-
 
 ### Bug Fixes
 
-* **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
-
-
-
-
+- **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
 
 ## [4.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.4...@pie-element/extended-text-entry@4.3.5) (2019-07-05)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.3...@pie-element/extended-text-entry@4.3.4) (2019-07-04)
-
 
 ### Bug Fixes
 
-* **template-els:** fixed some ditb issues ([9133840](https://github.com/pie-framework/pie-elements/commit/9133840))
-
-
-
-
+- **template-els:** fixed some ditb issues ([9133840](https://github.com/pie-framework/pie-elements/commit/9133840))
 
 ## [4.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.2...@pie-element/extended-text-entry@4.3.3) (2019-07-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.1...@pie-element/extended-text-entry@4.3.2) (2019-07-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.0...@pie-element/extended-text-entry@4.3.1) (2019-07-02)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.2.1...@pie-element/extended-text-entry@4.3.0) (2019-07-02)
-
 
 ### Features
 
-* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
-
-
-
-
+- **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
 
 ## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.2.0...@pie-element/extended-text-entry@4.2.1) (2019-06-26)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.1.1...@pie-element/extended-text-entry@4.2.0) (2019-06-26)
-
 
 ### Features
 
-* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
-
-
-
-
+- **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
 
 ## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.1.0...@pie-element/extended-text-entry@4.1.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.8...@pie-element/extended-text-entry@4.1.0) (2019-06-21)
-
 
 ### Features
 
-* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
-
-
-
-
+- **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
 
 ## [4.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.7...@pie-element/extended-text-entry@4.0.8) (2019-06-17)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.6...@pie-element/extended-text-entry@4.0.7) (2019-06-12)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [4.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.5...@pie-element/extended-text-entry@4.0.6) (2019-06-07)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.4...@pie-element/extended-text-entry@4.0.5) (2019-06-06)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [4.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.3...@pie-element/extended-text-entry@4.0.4) (2019-06-05)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.2...@pie-element/extended-text-entry@4.0.3) (2019-05-23)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.1...@pie-element/extended-text-entry@4.0.2) (2019-05-21)
-
 
 ### Bug Fixes
 
-* Updated pie-schema and config-schema. ([e552800](https://github.com/pie-framework/pie-elements/commit/e552800))
-
-
-
-
+- Updated pie-schema and config-schema. ([e552800](https://github.com/pie-framework/pie-elements/commit/e552800))
 
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.0...@pie-element/extended-text-entry@4.0.1) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.5...@pie-element/extended-text-entry@4.0.0) (2019-05-08)
-
 
 ### Bug Fixes
 
-* Renamed `multipleParts` with `multiple` for consistency. ([3685700](https://github.com/pie-framework/pie-elements/commit/3685700))
-
+- Renamed `multipleParts` with `multiple` for consistency. ([3685700](https://github.com/pie-framework/pie-elements/commit/3685700))
 
 ### Features
 
-* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (root.jsx) and updated tests. ([8f3ef1d](https://github.com/pie-framework/pie-elements/commit/8f3ef1d))
-
+- Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (root.jsx) and updated tests. ([8f3ef1d](https://github.com/pie-framework/pie-elements/commit/8f3ef1d))
 
 ### BREAKING CHANGES
 
-* `model.configure` is removed, use `configuration` instead.
-
-
-
-
+- `model.configure` is removed, use `configuration` instead.
 
 ## [3.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.4...@pie-element/extended-text-entry@3.10.5) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [3.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.3...@pie-element/extended-text-entry@3.10.4) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [3.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.2...@pie-element/extended-text-entry@3.10.3) (2019-05-01)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [3.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.1...@pie-element/extended-text-entry@3.10.2) (2019-04-26)
-
 
 ### Bug Fixes
 
-* Updated with new version of @pie-lib/config-ui. ([108b8f4](https://github.com/pie-framework/pie-elements/commit/108b8f4))
-
-
-
-
+- Updated with new version of @pie-lib/config-ui. ([108b8f4](https://github.com/pie-framework/pie-elements/commit/108b8f4))
 
 ## [3.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.0...@pie-element/extended-text-entry@3.10.1) (2019-04-23)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [3.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.6...@pie-element/extended-text-entry@3.10.0) (2019-04-23)
-
 
 ### Features
 
-* **extended-text-entry:** Updated model structure with new established structure, integrated settings panel and updated tests. ([cdb29e4](https://github.com/pie-framework/pie-elements/commit/cdb29e4))
-
-
-
-
+- **extended-text-entry:** Updated model structure with new established structure, integrated settings panel and updated tests. ([cdb29e4](https://github.com/pie-framework/pie-elements/commit/cdb29e4))
 
 ## [3.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.5...@pie-element/extended-text-entry@3.9.6) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [3.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.4...@pie-element/extended-text-entry@3.9.5) (2019-04-04)
-
 
 ### Bug Fixes
 
-* bump editable-html ([6f3cad2](https://github.com/pie-framework/pie-elements/commit/6f3cad2))
-* **package.json:** Updated @pie-lib/config-ui and @pie-lib/editable-html versions. ([e16d619](https://github.com/pie-framework/pie-elements/commit/e16d619))
-
-
-
-
+- bump editable-html ([6f3cad2](https://github.com/pie-framework/pie-elements/commit/6f3cad2))
+- **package.json:** Updated @pie-lib/config-ui and @pie-lib/editable-html versions. ([e16d619](https://github.com/pie-framework/pie-elements/commit/e16d619))
 
 ## [3.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.3...@pie-element/extended-text-entry@3.9.4) (2019-03-26)
 
-
 ### Bug Fixes
 
-* **extended-text-entry:** fixed the width for number text field (after updating pie-lib, it was required in few places). Added option to display error message on field. ([eb64e61](https://github.com/pie-framework/pie-elements/commit/eb64e61))
-* **extended-text-entry:** fixed updating dimensions (width & height). ([5f16e2a](https://github.com/pie-framework/pie-elements/commit/5f16e2a))
-
-
-
-
+- **extended-text-entry:** fixed the width for number text field (after updating pie-lib, it was required in few places). Added option to display error message on field. ([eb64e61](https://github.com/pie-framework/pie-elements/commit/eb64e61))
+- **extended-text-entry:** fixed updating dimensions (width & height). ([5f16e2a](https://github.com/pie-framework/pie-elements/commit/5f16e2a))
 
 ## [3.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.2...@pie-element/extended-text-entry@3.9.3) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [3.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.1...@pie-element/extended-text-entry@3.9.2) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [3.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.0...@pie-element/extended-text-entry@3.9.1) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [3.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.8.0...@pie-element/extended-text-entry@3.9.0) (2019-03-18)
-
 
 ### Features
 
-* **general:** initialize default model (2) ([#138](https://github.com/pie-framework/pie-elements/issues/138)) ([fc72eca](https://github.com/pie-framework/pie-elements/commit/fc72eca))
-
-
-
-
+- **general:** initialize default model (2) ([#138](https://github.com/pie-framework/pie-elements/issues/138)) ([fc72eca](https://github.com/pie-framework/pie-elements/commit/fc72eca))
 
 # [3.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.7.0...@pie-element/extended-text-entry@3.8.0) (2019-03-13)
 
-
 ### Features
 
-* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
-* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
-* update schema docs ([#136](https://github.com/pie-framework/pie-elements/issues/136)) ([184f262](https://github.com/pie-framework/pie-elements/commit/184f262))
-
-
-
-
+- **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+- all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+- update schema docs ([#136](https://github.com/pie-framework/pie-elements/issues/136)) ([184f262](https://github.com/pie-framework/pie-elements/commit/184f262))
 
 # [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.6.1...@pie-element/extended-text-entry@3.7.0) (2019-02-20)
 
-
 ### Features
 
-* **general:** updated the pie-lib/editable-html versions for all elements ([f642cb5](https://github.com/pie-framework/pie-elements/commit/f642cb5))
-
-
-
-
+- **general:** updated the pie-lib/editable-html versions for all elements ([f642cb5](https://github.com/pie-framework/pie-elements/commit/f642cb5))
 
 ## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.5.1...@pie-element/extended-text-entry@3.6.1) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 ## [3.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.4.1...@pie-element/extended-text-entry@3.5.1) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
-
-
-
-
 
 ## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.4.0...@pie-element/extended-text-entry@3.4.1) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
-
-
-
-
 # [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.3.3...@pie-element/extended-text-entry@3.4.0) (2019-02-08)
-
 
 ### Features
 
-* json schemas and docs ([6bfc2a9](https://github.com/pie-framework/pie-elements/commit/6bfc2a9))
-* **extended-text-entry:** removed the unnecessary space ([a1dfd90](https://github.com/pie-framework/pie-elements/commit/a1dfd90))
-
-
-
-
+- json schemas and docs ([6bfc2a9](https://github.com/pie-framework/pie-elements/commit/6bfc2a9))
+- **extended-text-entry:** removed the unnecessary space ([a1dfd90](https://github.com/pie-framework/pie-elements/commit/a1dfd90))
 
 ## [3.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.3.2...@pie-element/extended-text-entry@3.3.3) (2019-01-08)
 
-
 ### Bug Fixes
 
-* **general:** bumped the config-ui version for all packages ([159521d](https://github.com/pie-framework/pie-elements/commit/159521d))
-
-
-
-
+- **general:** bumped the config-ui version for all packages ([159521d](https://github.com/pie-framework/pie-elements/commit/159521d))
 
 <a name="3.3.2"></a>
+
 ## [3.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.3.1...@pie-element/extended-text-entry@3.3.2) (2018-10-10)
 
-
 ### Bug Fixes
 
-* **editable-html-package-update:** updated the editable-html version ([4240cb8](https://github.com/pie-framework/pie-elements/commit/4240cb8))
-
-
-
-
+- **editable-html-package-update:** updated the editable-html version ([4240cb8](https://github.com/pie-framework/pie-elements/commit/4240cb8))
 
 <a name="3.3.1"></a>
+
 ## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.3.0...@pie-element/extended-text-entry@3.3.1) (2018-09-20)
 
-
 ### Bug Fixes
 
-* build fixes ([3c3a7f2](https://github.com/pie-framework/pie-elements/commit/3c3a7f2))
-
-
-
-
+- build fixes ([3c3a7f2](https://github.com/pie-framework/pie-elements/commit/3c3a7f2))
 
 <a name="3.3.0"></a>
+
 # [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.2.0...@pie-element/extended-text-entry@3.3.0) (2018-09-13)
 
-
 ### Bug Fixes
 
-* bump ui version ([0f97b64](https://github.com/pie-framework/pie-elements/commit/0f97b64))
-
+- bump ui version ([0f97b64](https://github.com/pie-framework/pie-elements/commit/0f97b64))
 
 ### Features
 
-* use EditableHtml from prompt ([c2dc4de](https://github.com/pie-framework/pie-elements/commit/c2dc4de))
-
-
-
+- use EditableHtml from prompt ([c2dc4de](https://github.com/pie-framework/pie-elements/commit/c2dc4de))
 
 <a name="3.2.0"></a>
-# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.1.0...@pie-element/extended-text-entry@3.2.0) (2018-09-11)
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.1.0...@pie-element/extended-text-entry@3.2.0) (2018-09-11)
 
 ### Bug Fixes
 
-* bump ui dependency ([da39d3d](https://github.com/pie-framework/pie-elements/commit/da39d3d))
-
+- bump ui dependency ([da39d3d](https://github.com/pie-framework/pie-elements/commit/da39d3d))
 
 ### Features
 
-* **extended-text-entry:** added prompt to model and display ([9b3a530](https://github.com/pie-framework/pie-elements/commit/9b3a530))
-
-
-
+- **extended-text-entry:** added prompt to model and display ([9b3a530](https://github.com/pie-framework/pie-elements/commit/9b3a530))
 
 <a name="3.1.0"></a>
-# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.0.1...@pie-element/extended-text-entry@3.1.0) (2018-09-07)
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.0.1...@pie-element/extended-text-entry@3.1.0) (2018-09-07)
 
 ### Features
 
-* add outcome method to extended text-entry ([c92c41d](https://github.com/pie-framework/pie-elements/commit/c92c41d))
-
-
-
+- add outcome method to extended text-entry ([c92c41d](https://github.com/pie-framework/pie-elements/commit/c92c41d))
 
 <a name="3.0.1"></a>
+
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@2.1.0...@pie-element/extended-text-entry@3.0.1) (2018-05-25)
-
-
-
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
 
 <a name="2.1.0"></a>
-# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@2.0.0...@pie-element/extended-text-entry@2.1.0) (2018-05-22)
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@2.0.0...@pie-element/extended-text-entry@2.1.0) (2018-05-22)
 
 ### Features
 
-* upgrade dependencies ([bd4fb9c](https://github.com/pie-framework/pie-elements/commit/bd4fb9c))
-
-
-
+- upgrade dependencies ([bd4fb9c](https://github.com/pie-framework/pie-elements/commit/bd4fb9c))
 
 <a name="2.0.0"></a>
-# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@1.4.0...@pie-element/extended-text-entry@2.0.0) (2018-05-11)
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@1.4.0...@pie-element/extended-text-entry@2.0.0) (2018-05-11)
 
 ### Bug Fixes
 
-* **controller:** bump feedback version ([a07c9ec](https://github.com/pie-framework/pie-elements/commit/a07c9ec))
-* **dependecies:** bump [@pie-lib](https://github.com/pie-lib)/feedback ([4be839f](https://github.com/pie-framework/pie-elements/commit/4be839f))
-* **dependencies:** bump [@pie-lib](https://github.com/pie-lib)/feedback ([6fea7bb](https://github.com/pie-framework/pie-elements/commit/6fea7bb))
-
+- **controller:** bump feedback version ([a07c9ec](https://github.com/pie-framework/pie-elements/commit/a07c9ec))
+- **dependecies:** bump [@pie-lib](https://github.com/pie-lib)/feedback ([4be839f](https://github.com/pie-framework/pie-elements/commit/4be839f))
+- **dependencies:** bump [@pie-lib](https://github.com/pie-lib)/feedback ([6fea7bb](https://github.com/pie-framework/pie-elements/commit/6fea7bb))
 
 ### Features
 
-* **feedback:** Use new feedback model ([326f9b2](https://github.com/pie-framework/pie-elements/commit/326f9b2))
-* **model:** discard legacy model - use streamlined model. ([ed47b59](https://github.com/pie-framework/pie-elements/commit/ed47b59))
-* **select-text:** new select text component ([878f957](https://github.com/pie-framework/pie-elements/commit/878f957))
-
+- **feedback:** Use new feedback model ([326f9b2](https://github.com/pie-framework/pie-elements/commit/326f9b2))
+- **model:** discard legacy model - use streamlined model. ([ed47b59](https://github.com/pie-framework/pie-elements/commit/ed47b59))
+- **select-text:** new select text component ([878f957](https://github.com/pie-framework/pie-elements/commit/878f957))
 
 ### BREAKING CHANGES
 
-* **feedback:** Feedback is now of the form: `{type,default?, custom?}`
-* **model:** The old corespring model is no longer supported.
-
-
-
+- **feedback:** Feedback is now of the form: `{type,default?, custom?}`
+- **model:** The old corespring model is no longer supported.
 
 <a name="1.4.0"></a>
+
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@1.3.0...@pie-element/extended-text-entry@1.4.0) (2018-05-03)
 
-
 ### Features
 
-* **dependencies:** use latest of [@pie-ui](https://github.com/pie-ui)/* ([ac9d2e5](https://github.com/pie-framework/pie-elements/commit/ac9d2e5))
-
-
-
+- **dependencies:** use latest of [@pie-ui](https://github.com/pie-ui)/\* ([ac9d2e5](https://github.com/pie-framework/pie-elements/commit/ac9d2e5))
 
 <a name="1.3.0"></a>
-# 1.3.0 (2018-05-02)
 
+# 1.3.0 (2018-05-02)
 
 ### Bug Fixes
 
-* **dependencies:** bump dependencies ([17af8b5](https://github.com/pie-framework/pie-elements/commit/17af8b5))
-* **dependencies:** use [@pie-ui](https://github.com/pie-ui)/extended-text-entry@^0.0.8 ([16c121f](https://github.com/pie-framework/pie-elements/commit/16c121f))
-
+- **dependencies:** bump dependencies ([17af8b5](https://github.com/pie-framework/pie-elements/commit/17af8b5))
+- **dependencies:** use [@pie-ui](https://github.com/pie-ui)/extended-text-entry@^0.0.8 ([16c121f](https://github.com/pie-framework/pie-elements/commit/16c121f))
 
 ### Features
 
-* **ui:** finalise config ui ([75bd395](https://github.com/pie-framework/pie-elements/commit/75bd395))
-
-
+- **ui:** finalise config ui ([75bd395](https://github.com/pie-framework/pie-elements/commit/75bd395))
 
 <a name="1.2.2"></a>
-## 1.2.2 (2018-03-06)
 
+## 1.2.2 (2018-03-06)
 
 ### Bug Fixes
 
-* **dependencies:** update dependency names ([dc789ac](https://github.com/pie-framework/pie-elements/commit/dc789ac))
-
-
-
+- **dependencies:** update dependency names ([dc789ac](https://github.com/pie-framework/pie-elements/commit/dc789ac))
 
 <a name="1.2.2"></a>
-## 1.2.2 (2018-03-06)
 
+## 1.2.2 (2018-03-06)
 
 ### Bug Fixes
 
-* **dependencies:** update dependency names ([dc789ac](https://github.com/pie-framework/pie-elements/commit/dc789ac))
+- **dependencies:** update dependency names ([dc789ac](https://github.com/pie-framework/pie-elements/commit/dc789ac))

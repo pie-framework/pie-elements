@@ -1,19 +1,16 @@
 {
   "name": "@pie-element/math-templated-controller",
   "private": true,
-  "version": "4.3.3",
+  "version": "5.2.0-next.2",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
     "@pie-framework/math-validation": "^1.4.2",
-    "@pie-lib/controller-utils": "0.22.2",
-    "@pie-lib/translator": "2.23.1",
-    "debug": "^3.1.0",
-    "lodash": "^4.17.15"
-  },
-  "devDependencies": {
-    "lodash": "^4.17.15"
+    "@pie-lib/controller-utils": "2.0.0",
+    "@pie-lib/translator": "4.0.0",
+    "debug": "^4.1.1",
+    "lodash-es": "^4.17.23"
   },
   "author": "",
   "license": "ISC"

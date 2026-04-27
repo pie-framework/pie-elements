@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
 import InlineDropdown from './inline-dropdown';
@@ -9,6 +9,7 @@ export default class RootInlineDropdown extends HTMLElement {
     super();
     this._model = null;
     this._session = null;
+    this._root = null;
   }
   set model(m) {
     this._model = m;
@@ -54,7 +55,11 @@ export default class RootInlineDropdown extends HTMLElement {
 
       this.setLangAttribute();
 
-      ReactDOM.render(elem, this, () => {
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(elem);
+      queueMicrotask(() => {
         renderMath(this);
       });
     }
@@ -75,5 +80,11 @@ export default class RootInlineDropdown extends HTMLElement {
     this.setAttribute('role', 'region');
 
     this._render();
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

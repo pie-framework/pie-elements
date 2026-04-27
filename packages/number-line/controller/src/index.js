@@ -1,9 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
-import find from 'lodash/find';
-import isEmpty from 'lodash/isEmpty';
-import isEqualWith from 'lodash/isEqualWith';
-import merge from 'lodash/merge';
-import omitBy from 'lodash/omitBy';
+import { cloneDeep, find, isEmpty, isEqualWith, merge, omitBy } from 'lodash-es';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
 import * as math from 'mathjs';
@@ -36,11 +31,99 @@ const accumulateAnswer = (correctResponse) => (total, answer) => {
 };
 
 /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+
+  const studentAnswers = session?.answer || [];
+  const correctResponse = model?.correctResponse || [];
+
+  if (!studentAnswers.length) {
+   return ['Student did not interact with the number line.'];
+  }
+
+  const corrected = getCorrected(studentAnswers, cloneDeep(correctResponse));
+  const { correct, incorrect, notInAnswer, noCorrectResponse } = corrected;
+
+  if (noCorrectResponse) {
+    return ['No correct response is defined for this item.'];
+  }
+
+  const correctCount = correct.length;
+  const incorrectCount = incorrect.length;
+  const missingCount = notInAnswer.length;
+
+  if (correctCount > 0) {
+    traceLog.push(`${correctCount} object(s) correctly placed.`);
+  }
+
+  if (incorrectCount > 0) {
+    traceLog.push(`${incorrectCount} incorrect object(s) placed.`);
+  }
+
+  if (missingCount > 0) {
+    traceLog.push(`${missingCount} expected object(s) were not placed.`);
+  }
+
+  const studentAnswersCopy = [...studentAnswers];
+  const correctResponseCopy = [...correctResponse];
+
+  correct.forEach((index) => {
+    const answer = studentAnswersCopy[index];
+    const objectType = answer?.type || 'object';
+    traceLog.push(`${objectType.charAt(0).toUpperCase() + objectType.slice(1)} at position ${answer.domainPosition} is correct.`);
+  });
+
+  incorrect.forEach((index) => {
+    const answer = studentAnswersCopy[index];
+    const objectType = answer?.type || 'object';
+    traceLog.push(`${objectType.charAt(0).toUpperCase() + objectType.slice(1)} at position ${answer.domainPosition} does not match the expected response.`);
+  });
+
+  notInAnswer.forEach((expectedObject) => {
+    const objectType = expectedObject?.type || 'object';
+    traceLog.push(`Expected ${objectType} at position ${expectedObject.domainPosition} was not placed by the student.`);
+  });
+
+  const partialScoringEnabled = partialScoring.enabled(model, env);
+
+  if (partialScoringEnabled) {
+    traceLog.push('Score calculated using partial scoring.');
+    traceLog.push(`Partial scoring is based on the number of correct objects, with deductions for extras.`);
+  } else {
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+  }
+
+  const total = correctResponse.length || 1;
+  const extraPlacements =
+    studentAnswers.length > total ? studentAnswers.length - total : 0;
+
+  if (extraPlacements > 0) {
+    traceLog.push(
+      `${extraPlacements} extra object(s) beyond the required amount were placed and deducted.`,
+    );
+  }
+
+  const rawScore = Math.max(0, (correctCount - extraPlacements) / total);
+  const finalScore = partialScoringEnabled ? rawScore : rawScore === 1 ? 1 : 0;
+
+  traceLog.push(`Final score: ${finalScore}.`);
+
+  return traceLog;
+};
+
+
+/**
  */
 export function outcome(model, session, env) {
   return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
+      resolve({ score: 0, empty: true, logTrace: ['Student did not interact with the number line.'] });
     } else {
       const partialScoringEnabled = partialScoring.enabled(model, env);
       const numCorrect = (session.answer || []).reduce(accumulateAnswer(model.correctResponse), 0);
@@ -62,7 +145,10 @@ export function outcome(model, session, env) {
         score = 0;
       }
 
-      resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+      resolve({ 
+        score: partialScoringEnabled ? score : score === 1 ? 1 : 0,
+        logTrace: getLogTrace(model, session, env)
+      });
     }
   });
 }
@@ -229,59 +315,55 @@ const updateTicks = (model) => {
   return model;
 };
 
-export function model(question, session, env) {
+export async function model(question, session, env) {
   if (!question) {
-    return Promise.reject(new Error('question is null'));
+    throw new Error('question is null');
   }
 
-  return new Promise(async (resolve, reject) => {
-    const normalizedQuestion = await normalize(question);
-    const normalizedModel = updateTicks(normalizedQuestion);
-    // this function is also called in configure, it is a duplicate to maintain consistency and correctness
-    const graph = reloadTicksData(normalizedModel.graph);
+  const normalizedQuestion = await normalize(question);
+  const normalizedModel = updateTicks(normalizedQuestion);
+  // this function is also called in configure, it is a duplicate to maintain consistency and correctness
+  const graph = reloadTicksData(normalizedModel.graph);
 
-    if (graph) {
-      const evaluateMode = env.mode === 'evaluate';
+  if (graph) {
+    const evaluateMode = env.mode === 'evaluate';
 
-      const correctResponse = cloneDeep(normalizedQuestion.correctResponse);
-      const corrected = evaluateMode && getCorrected(session ? session.answer || [] : [], correctResponse);
-      const correctness = evaluateMode && getCorrectness(corrected);
+    const correctResponse = cloneDeep(normalizedQuestion.correctResponse);
+    const corrected = evaluateMode && getCorrected(session ? session.answer || [] : [], correctResponse);
+    const correctness = evaluateMode && getCorrectness(corrected);
 
-      const { exhibitOnly } = graph;
-      const disabled = env.mode !== 'gather' || exhibitOnly === true;
-      let teacherInstructions = null;
+    const { exhibitOnly } = graph;
+    const disabled = env.mode !== 'gather' || exhibitOnly === true;
+    let teacherInstructions = null;
 
-      if (env.role === 'instructor' && (env.mode === 'view' || evaluateMode)) {
-        teacherInstructions = normalizedQuestion.teacherInstructions;
-      }
-
-      const fb = evaluateMode
-        ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
-        : Promise.resolve(undefined);
-
-      fb.then((feedbackMessage) => {
-        const out = {
-          prompt: normalizedQuestion.prompt,
-          teacherInstructions,
-          graph,
-          disabled,
-          corrected,
-          correctResponse:
-            evaluateMode && ['unanswered', 'correct'].indexOf(correctness) === -1 && normalizedQuestion.correctResponse,
-          feedback: feedbackMessage && {
-            type: correctness,
-            message: feedbackMessage,
-          },
-          colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
-          language: normalizedQuestion.language,
-          extraCSSRules: normalizedQuestion.extraCSSRules,
-        };
-        resolve(omitBy(out, (v) => !v));
-      });
-    } else {
-      reject(new Error('graph is undefined'));
+    if (env.role === 'instructor' && (env.mode === 'view' || evaluateMode)) {
+      teacherInstructions = normalizedQuestion.teacherInstructions;
     }
-  });
+
+    const feedbackMessage = evaluateMode
+      ? await getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
+      : undefined;
+
+    const out = {
+      prompt: normalizedQuestion.prompt,
+      teacherInstructions,
+      graph,
+      disabled,
+      corrected,
+      correctResponse:
+        evaluateMode && ['unanswered', 'correct'].indexOf(correctness) === -1 && normalizedQuestion.correctResponse,
+      feedback: feedbackMessage && {
+        type: correctness,
+        message: feedbackMessage,
+      },
+      colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
+      language: normalizedQuestion.language,
+      extraCSSRules: normalizedQuestion.extraCSSRules,
+    };
+    return omitBy(out, (v) => !v);
+  } else {
+    throw new Error('graph is undefined');
+  }
 }
 
 export const createCorrectResponseSession = (question, env) => {

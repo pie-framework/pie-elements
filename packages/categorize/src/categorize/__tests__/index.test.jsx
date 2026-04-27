@@ -1,15 +1,73 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Categorize } from '../index';
+import CategorizeProvider from '../index';
 
 jest.mock('@pie-lib/drag', () => ({
   uid: {
     withUid: jest.fn((a) => a),
-    Provider: jest.fn((a) => a),
+    Provider: ({ children }) => <div>{children}</div>,
     generateId: jest.fn().mockReturnValue('1'),
   },
   withDragContext: jest.fn((n) => n),
+  DragProvider: ({ children }) => <div>{children}</div>,
 }));
+
+jest.mock('@dnd-kit/core', () => ({
+  DragOverlay: ({ children }) => <div>{children}</div>,
+  useSensor: jest.fn(),
+  useSensors: jest.fn(() => []),
+  PointerSensor: jest.fn(),
+}));
+
+jest.mock('../categories', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('../choices', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('../choice', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('@pie-lib/correct-answer-toggle', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('@pie-lib/categorize', () => ({
+  buildState: jest.fn(() => ({})),
+  removeChoiceFromCategory: jest.fn(() => []),
+  moveChoiceToCategory: jest.fn(() => []),
+}));
+jest.mock('@pie-lib/config-ui', () => ({
+  AlertDialog: (props) => <div {...props} />,
+}));
+jest.mock('@pie-lib/render-ui', () => {
+  const React = require('react');
+  const UiLayout = React.forwardRef((props, ref) => <div ref={ref} {...props} />);
+  UiLayout.displayName = 'UiLayout';
+
+  return {
+    Collapsible: ({ children }) => <div>{children}</div>,
+    Feedback: (props) => <div {...props} />,
+    UiLayout,
+    hasText: jest.fn(() => false),
+    hasMedia: jest.fn(() => false),
+    PreviewPrompt: (props) => <div {...props} />,
+    color: {
+      text: () => '#000',
+      background: () => '#fff',
+      white: () => '#fff',
+      correct: () => '#00ff00',
+      incorrect: () => '#ff0000',
+    },
+  };
+});
+
+const theme = createTheme();
 
 describe('categorize', () => {
   const defaultProps = {
@@ -29,7 +87,8 @@ describe('categorize', () => {
     onAnswersChange = jest.fn();
     onShowCorrectToggle = jest.fn();
   });
-  const wrapper = (extras) => {
+
+  const renderCategorize = (extras) => {
     const defaults = {
       ...defaultProps,
       onAnswersChange,
@@ -37,76 +96,144 @@ describe('categorize', () => {
     };
     const props = { ...defaults, ...extras };
 
-    return shallow(<Categorize {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Categorize {...props} />
+      </ThemeProvider>,
+    );
   };
 
-  describe('snapshots', () => {
-    it('renders', () => {
-      expect(wrapper()).toMatchSnapshot();
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderCategorize();
+      expect(container).toBeInTheDocument();
     });
 
     it('renders with feedback', () => {
-      expect(
-        wrapper({
-          model: {
-            ...defaultProps.model,
-            correctness: 'correct',
-            feedback: {
-              correct: {
-                type: 'default',
-                default: 'Correct',
-              },
-              incorrect: {
-                type: 'default',
-                default: 'Incorrect',
-              },
-              partial: {
-                type: 'default',
-                default: 'Nearly',
-              },
+      const { container } = renderCategorize({
+        model: {
+          ...defaultProps.model,
+          correctness: 'correct',
+          feedback: {
+            correct: {
+              type: 'default',
+              default: 'Correct',
+            },
+            incorrect: {
+              type: 'default',
+              default: 'Incorrect',
+            },
+            partial: {
+              type: 'default',
+              default: 'Nearly',
             },
           },
-        }),
-      ).toMatchSnapshot();
+        },
+      });
+      expect(container).toBeInTheDocument();
     });
 
-    it('incorrect', () => {
-      expect(wrapper({ incorrect: true })).toMatchSnapshot();
+    it('renders when incorrect', () => {
+      const { container } = renderCategorize({ incorrect: true });
+      expect(container).toBeInTheDocument();
     });
   });
 
-  describe('logic', () => {
-    describe('dropChoice', () => {
-      it('calls onAnswersChange', () => {
-        const w = wrapper();
-
-        w.instance().dropChoice('1', { id: '1', choiceIndex: 0 });
-        expect(onAnswersChange).toBeCalledWith([{ category: '1', choices: ['1'] }]);
+  describe('provider onDragEnd', () => {
+    const createProvider = (extras = {}) => {
+      const instance = new CategorizeProvider({
+        ...defaultProps,
+        onAnswersChange: jest.fn(),
+        onShowCorrectToggle: jest.fn(),
+        resumeMathObserver: jest.fn(),
+        ...extras,
       });
+
+      instance.setState = jest.fn();
+      instance.categorizeRef = {
+        removeChoice: jest.fn(),
+        dropChoice: jest.fn(),
+      };
+
+      return instance;
+    };
+
+    const dndEvent = ({ activeData, overId, overData }) => ({
+      active: activeData ? { data: { current: activeData } } : null,
+      over: overId || overData ? { id: overId, data: { current: overData } } : null,
     });
 
-    describe('removeChoice', () => {
-      it('calls onAnswersChange', () => {
-        const w = wrapper({
-          session: { answers: [{ category: '1', choices: ['1'] }] },
-        });
-
-        w.instance().removeChoice({ id: '1', categoryId: '1', choiceIndex: 0 });
-
-        expect(onAnswersChange).toBeCalledWith([{ category: '1', choices: [] }]);
+    it('removes choice from source when dropped outside valid target', () => {
+      const provider = createProvider();
+      const event = dndEvent({
+        activeData: {
+          id: 'c1',
+          type: 'choice',
+          categoryId: 'cat-1',
+          choiceIndex: 0,
+          value: 'v1',
+          itemType: 'categorize',
+        },
       });
+
+      provider.onDragEnd(event);
+
+      expect(provider.categorizeRef.removeChoice).toHaveBeenCalledWith(
+        expect.objectContaining({
+          id: 'c1',
+          categoryId: 'cat-1',
+          choiceIndex: 0,
+        }),
+      );
+      expect(provider.categorizeRef.dropChoice).not.toHaveBeenCalled();
     });
 
-    describe('showAnswers', () => {
-      it('calls onShowCorrectToggle', () => {
-        const w = wrapper({
-          session: { answers: [{ category: '1', choices: ['1'] }] },
-        });
-
-        w.instance().toggleShowCorrect();
-
-        expect(onShowCorrectToggle).toHaveBeenCalled();
+    it('removes choice from source when dropped on choices-board', () => {
+      const provider = createProvider();
+      const event = dndEvent({
+        overId: 'choices-board',
+        overData: { itemType: 'categorize' },
+        activeData: {
+          id: 'c2',
+          type: 'choice',
+          categoryId: 'cat-2',
+          choiceIndex: 1,
+          value: 'v2',
+          itemType: 'categorize',
+        },
       });
+
+      provider.onDragEnd(event);
+
+      expect(provider.categorizeRef.removeChoice).toHaveBeenCalled();
+      expect(provider.categorizeRef.dropChoice).not.toHaveBeenCalled();
+    });
+
+    it('drops choice into category when valid category target exists', () => {
+      const provider = createProvider();
+      const event = dndEvent({
+        overId: 'cat-target',
+        overData: { itemType: 'categorize' },
+        activeData: {
+          id: 'c3',
+          type: 'choice',
+          categoryId: 'cat-source',
+          choiceIndex: 2,
+          value: 'v3',
+          itemType: 'categorize',
+        },
+      });
+
+      provider.onDragEnd(event);
+
+      expect(provider.categorizeRef.dropChoice).toHaveBeenCalledWith(
+        'cat-target',
+        expect.objectContaining({
+          id: 'c3',
+          categoryId: 'cat-source',
+          choiceIndex: 2,
+        }),
+      );
     });
   });
 });

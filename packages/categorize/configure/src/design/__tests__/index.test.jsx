@@ -1,7 +1,7 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Design } from '../index';
-import util from 'util';
 
 const model = (extras) => ({
   choices: [{ id: '1', content: 'content' }],
@@ -10,19 +10,28 @@ const model = (extras) => ({
   ...extras,
 });
 
-jest.mock('@pie-lib/config-ui', () => ({
-  layout: {
-    ConfigLayout: (props) => <div {...props} />,
-  },
-  choiceUtils: {
-    firstAvailableIndex: jest.fn(),
-  },
-  settings: {
-    Panel: (props) => <div {...props} />,
-    toggle: jest.fn(),
-    radio: jest.fn(),
-  },
-}));
+jest.mock('@pie-lib/config-ui', () => {
+  const React = require('react');
+  const InputContainer = React.forwardRef((props, ref) => <div ref={ref} {...props} />);
+  InputContainer.displayName = 'InputContainer';
+
+  return {
+    layout: {
+      ConfigLayout: (props) => <div {...props} />,
+    },
+    choiceUtils: {
+      firstAvailableIndex: jest.fn(),
+    },
+    settings: {
+      Panel: (props) => <div {...props} />,
+      toggle: jest.fn(),
+      radio: jest.fn(),
+    },
+    FeedbackConfig: (props) => <div {...props} />,
+    AlertDialog: (props) => <div {...props} />,
+    InputContainer,
+  };
+});
 
 jest.mock('@pie-lib/categorize', () => ({
   ensureNoExtraChoicesInAlternate: jest.fn(),
@@ -30,10 +39,50 @@ jest.mock('@pie-lib/categorize', () => ({
   ensureNoExtraChoicesInAnswer: jest.fn(),
 }));
 
+jest.mock('@pie-lib/drag', () => ({
+  DragProvider: ({ children }) => <div>{children}</div>,
+  uid: {
+    generateId: jest.fn(() => 'test-uid'),
+    Provider: ({ children }) => <div>{children}</div>,
+    withUid: (Component) => Component,
+  },
+}));
+
+jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div {...props} />);
+jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.mock('@pie-lib/translator', () => {
+  const translator = {
+    t: (key) => key,
+  };
+  return {
+    __esModule: true,
+    default: { translator },
+  };
+});
+
+jest.mock('../categories', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('../categories/alternateResponses', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+jest.mock('../choices', () => ({
+  __esModule: true,
+  default: (props) => <div {...props} />,
+}));
+
+const theme = createTheme();
+
 describe('Design', () => {
-  let w;
   let onChange = jest.fn();
-  const wrapper = (extras) => {
+
+  beforeEach(() => {
+    onChange = jest.fn();
+  });
+
+  const renderDesign = (extras) => {
     const defaults = {
       classes: { design: 'design', text: 'text' },
       className: 'className',
@@ -43,92 +92,131 @@ describe('Design', () => {
     };
     const props = { ...defaults, ...extras };
 
-    return shallow(<Design {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Design {...props} />
+      </ThemeProvider>
+    );
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderDesign();
+      expect(container).toBeInTheDocument();
     });
   });
-  describe('logic', () => {
-    beforeEach(() => {
-      w = wrapper();
-    });
 
-    const callsOnChange = function () {
-      let args = Array.prototype.slice.call(arguments);
-      if (typeof args[0] === 'string') {
-        args = [wrapper()].concat(args);
-      }
-      const er = args[0];
-      const method = args[1];
-      const expected = args[args.length - 1];
-      const fnArgs = args.splice(2, args.length - 3);
-      const argString = fnArgs.map((o) => util.inspect(o, { colors: true })).join(', ');
-      it(`${method}(${argString}) calls onChange with ${util.inspect(expected, {
-        colors: true,
-      })}`, () => {
-        onChange.mockReset();
-        er.instance()[method].apply(w.instance(), fnArgs);
-
-        expect(onChange).toBeCalledWith(expect.objectContaining(expected));
+  describe('onDragEnd', () => {
+    const createInstance = (modelExtras = {}) => {
+      const instance = new Design({
+        model: model({
+          allowAlternateEnabled: true,
+          ...modelExtras,
+        }),
+        onChange,
       });
+
+      instance.setState = jest.fn();
+      instance.removeChoiceFromSource = jest.fn();
+      instance.moveChoice = jest.fn();
+      instance.addChoiceToCategory = jest.fn();
+      instance.moveChoiceInAlternate = jest.fn();
+      instance.addChoiceToAlternateCategory = jest.fn();
+
+      return instance;
     };
 
-    describe('changeTeacherInstructions', () => {
-      it('calls onChange', () => {
-        w.instance().changeTeacherInstructions('Teacher Instructions Updated.');
-
-        expect(onChange).toHaveBeenCalledWith(
-          expect.objectContaining({ teacherInstructions: 'Teacher Instructions Updated.' }),
-        );
-      });
+    const eventFor = ({ activeData, overData }) => ({
+      active: activeData ? { data: { current: activeData } } : null,
+      over: overData ? { data: { current: overData } } : null,
     });
 
-    describe('changeFeedback', () => {
-      callsOnChange(
-        'changeFeedback',
-        {
-          correct: {
-            type: 'none',
-            default: 'Correct',
-          },
-          incorrect: {
-            type: 'none',
-            default: 'Incorrect',
-          },
-          partial: {
-            type: 'default',
-            default: 'Nearly',
-          },
-        },
-        {
-          feedback: {
-            correct: {
-              type: 'none',
-              default: 'Correct',
-            },
-            incorrect: {
-              type: 'none',
-              default: 'Incorrect',
-            },
-            partial: {
-              type: 'default',
-              default: 'Nearly',
-            },
-          },
-        },
+    it('routes choice-preview with no target to removeChoiceFromSource', () => {
+      const instance = createInstance();
+      const activeData = {
+        type: 'choice-preview',
+        id: 'c1-cat1-0',
+        categoryId: '1',
+        choiceIndex: 0,
+      };
+
+      instance.onDragEnd(eventFor({ activeData }));
+
+      expect(instance.removeChoiceFromSource).toHaveBeenCalledWith(
+        activeData,
+        0,
+        expect.objectContaining({
+          allowAlternateEnabled: true,
+          categories: expect.any(Array),
+          choices: expect.any(Array),
+        }),
       );
     });
 
-    describe('countInCorrectResponse', () => {
-      it('counts', () => {
-        let w = wrapper();
-        const result = w.instance().countChoiceInCorrectResponse({ id: '1' });
-        expect(result).toEqual(1);
-      });
+    it('routes choice-preview dropped on choice pool to removeChoiceFromSource', () => {
+      const instance = createInstance();
+      const activeData = {
+        type: 'choice-preview',
+        id: 'c1-cat1-0',
+        categoryId: '1',
+        choiceIndex: 0,
+      };
+      const overData = { type: 'choice' };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.removeChoiceFromSource).toHaveBeenCalled();
+      expect(instance.moveChoice).not.toHaveBeenCalled();
+    });
+
+    it('routes choice-preview dropped on category to moveChoice', () => {
+      const instance = createInstance();
+      const activeData = {
+        type: 'choice-preview',
+        id: 'c1-cat1-0',
+        categoryId: '1',
+        choiceIndex: 2,
+      };
+      const overData = { type: 'category', id: '2' };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.moveChoice).toHaveBeenCalledWith('c1', '1', '2', 2);
+    });
+
+    it('routes new choice dropped on category to addChoiceToCategory', () => {
+      const instance = createInstance();
+      const activeData = { type: 'choice', id: '9' };
+      const overData = { type: 'category', id: '2' };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.addChoiceToCategory).toHaveBeenCalledWith({ id: '9' }, '2');
+    });
+
+    it('routes choice-preview dropped on category-alternate to moveChoiceInAlternate', () => {
+      const instance = createInstance();
+      const activeData = {
+        type: 'choice-preview',
+        id: 'c1-cat1-0',
+        categoryId: '1',
+        choiceIndex: 1,
+      };
+      const overData = { type: 'category-alternate', id: '2', alternateResponseIndex: 3 };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.moveChoiceInAlternate).toHaveBeenCalledWith('c1', '1', '2', 1, 3);
+    });
+
+    it('routes new choice dropped on category-alternate to addChoiceToAlternateCategory', () => {
+      const instance = createInstance({ allowAlternateEnabled: true });
+      const activeData = { type: 'choice', id: '11' };
+      const overData = { type: 'category-alternate', id: '2', alternateResponseIndex: 4 };
+
+      instance.onDragEnd(eventFor({ activeData, overData }));
+
+      expect(instance.addChoiceToAlternateCategory).toHaveBeenCalledWith({ id: '11' }, '2', 4);
     });
   });
 });

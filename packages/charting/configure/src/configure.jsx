@@ -1,11 +1,11 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import { chartTypes, ConfigureChartPanel } from '@pie-lib/charting';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import Typography from '@material-ui/core/Typography';
-import EditableHtml from '@pie-lib/editable-html';
+import Typography from '@mui/material/Typography';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
@@ -14,27 +14,21 @@ import { applyConstraints, getGridValues, getLabelValues } from './utils';
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio, dropdown, textField } = settings;
 
-const styles = (theme) => ({
-  title: {
-    fontSize: '1.1rem',
-    display: 'block',
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
-  },
-  promptHolder: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  description: {
-    marginBottom: theme.spacing.unit * 2.5,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize - 2,
-    color: theme.palette.error.main,
-    paddingTop: theme.spacing.unit,
-  },
-});
+const PromptHolder = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
+
+const Description = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(2.5),
+}));
+
+const ErrorText = styled('div')(({ theme }) => ({
+  fontSize: theme.typography.fontSize - 2,
+  color: theme.palette.error.main,
+  paddingTop: theme.spacing(1),
+}));
 
 const charts = [
   chartTypes.Bar(),
@@ -49,7 +43,6 @@ export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     onConfigurationChanged: PropTypes.func,
-    classes: PropTypes.object,
     imageSupport: PropTypes.object,
     uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
@@ -65,8 +58,6 @@ export class Configure extends React.Component {
 
     this.state = { gridValues, labelValues };
   }
-
-  static defaultProps = { classes: {} };
 
   onRationaleChange = (rationale) => this.props.onModelChanged({ ...this.props.model, rationale });
 
@@ -95,7 +86,7 @@ export class Configure extends React.Component {
   };
 
   render() {
-    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+    const { configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
 
     log('[render] model', model);
@@ -194,14 +185,13 @@ export class Configure extends React.Component {
           />
         }
       >
-        <Typography component="div" type="body1" className={classes.description}>
+        <Description component="div" type="body1">
           {instruction?.label || ''}
-        </Typography>
+        </Description>
 
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <PromptHolder label={teacherInstructions.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChange}
               imageSupport={imageSupport}
@@ -215,14 +205,13 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-          </InputContainer>
+            {teacherInstructionsError && <ErrorText>{teacherInstructionsError}</ErrorText>}
+          </PromptHolder>
         )}
 
         {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
+          <PromptHolder label={prompt.label}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.prompt}
               onChange={this.onPromptChange}
               imageSupport={imageSupport}
@@ -237,8 +226,8 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {promptError && <div className={classes.errorText}>{promptError}</div>}
-          </InputContainer>
+            {promptError && <ErrorText>{promptError}</ErrorText>}
+          </PromptHolder>
         )}
 
         <ConfigureChartPanel
@@ -279,9 +268,8 @@ export class Configure extends React.Component {
         />
 
         {rationaleEnabled && (
-          <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
+          <PromptHolder label={rationale.label || 'Rationale'}>
             <EditableHtml
-              className={classes.prompt}
               markup={model.rationale || ''}
               onChange={this.onRationaleChange}
               imageSupport={imageSupport}
@@ -294,12 +282,12 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
-            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
-          </InputContainer>
+            {rationaleError && <ErrorText>{rationaleError}</ErrorText>}
+          </PromptHolder>
         )}
       </layout.ConfigLayout>
     );
   }
 }
 
-export default withStyles(styles)(Configure);
+export default Configure;

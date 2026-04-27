@@ -6,7 +6,7 @@ import {
   DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Main from './main';
 
 import defaults from './defaults';
@@ -26,6 +26,7 @@ export default class ExtendedTextEntry extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._configuration = defaults.configuration;
 
     // if configuration.withRubric.forceEnabled is true, then we
@@ -120,7 +121,16 @@ export default class ExtendedTextEntry extends HTMLElement {
         },
       });
 
-      ReactDOM.render(element, this);
+      if (!this._root) {
+        this._root = createRoot(this);
+      }
+      this._root.render(element);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
     }
   }
 }

@@ -4,7 +4,6 @@ const debug = require('debug');
 const log = debug('pie-element:scripts:build');
 const argv = require('minimist')(process.argv.slice(2));
 const { readdirSync, pathExistsSync, readJson } = require('fs-extra');
-const _ = require('lodash');
 const { Commands, getPackage } = require('@pie-framework/build-helper');
 const { resolve, relative, join } = require('path');
 const minimist = require('minimist');
@@ -14,8 +13,7 @@ const toPkgFlag = (p) => `--package ${p.pkg.name}`;
 
 const args = minimist(process.argv.slice(2));
 
-const r = (...parts) =>
-  resolve.apply(null, [__dirname, '..', 'packages'].concat(parts));
+const r = (...parts) => resolve.apply(null, [__dirname, '..', 'packages'].concat(parts));
 
 const rel = (p) => relative(resolve(__dirname, '..'), p);
 
@@ -36,7 +34,7 @@ const expandPkg = (d) => {
 
 const getElementPackages = (dir) => {
   const dirs = readdirSync(dir);
-  const all = _.flatten(dirs.map((d) => expandPkg(d)));
+  const all = dirs.map((d) => expandPkg(d)).flat();
   const out = all.map(getPackage);
   return out;
 };
@@ -56,31 +54,44 @@ class ElementsCommands extends Commands {
         const cwd = resolve(__dirname, '..', p.dir);
         log('cwd:', cwd);
         return this.runCmd('rm -fr lib', { cwd });
-      })
+      }),
     );
   }
 
   async sharedBuild() {
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    const pslbConfig = require(resolve(__dirname, '../pslb/pslb.config.js'));
+    const pslbAllowed = new Set(pslbConfig.packages || []);
+
     const root = resolve(__dirname, '../packages');
     const allPackages = readdirSync(root);
     const pkgJson = await Promise.all(
       allPackages.map(async (n) => {
         const dir = resolve(root, n);
         return { dir, pkg: await readJson(resolve(dir, 'package.json')) };
-      })
+      }),
     );
 
-    const printPkgs = pkgJson.filter(
-      (p) => p.pkg.exports && p.pkg.exports['./print']
-    );
+    const withPrint = pkgJson.filter((p) => p.pkg.exports && p.pkg.exports['./print']);
+    const printPkgs = withPrint.filter((p) => pslbAllowed.has(p.pkg.name));
+    const skipped = withPrint.filter((p) => !pslbAllowed.has(p.pkg.name)).map((p) => p.pkg.name);
+    if (skipped.length > 0) {
+      console.warn(
+        '[sharedBuild] skipping pslb for packages with ./print not in pslb.config.js:',
+        skipped.join(', '),
+      );
+    }
     console.log(
-      'printPkgs',
-      printPkgs.map((p) => p.dir)
+      'printPkgs (pslb)',
+      printPkgs.map((p) => p.dir),
     );
 
-    const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs
-      .map(toPkgFlag)
-      .join(' ')} --logLevel silly`;
+    if (printPkgs.length === 0) {
+      console.warn('[sharedBuild] no pslb-eligible print packages; skipping pslb');
+      return Promise.resolve();
+    }
+
+    const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs.map(toPkgFlag).join(' ')} --logLevel silly`;
 
     return this.runCmd(cmd);
   }
@@ -89,16 +100,35 @@ class ElementsCommands extends Commands {
     return super.build().then(() => this.sharedBuild());
   }
 
-  babel() {
-    return Promise.all(
-      getElementPackages(join(this.projectRoot, 'packages'))
-        .filter((p) => pathExistsSync(join(p.dir, 'src')))
-        .map((p) => {
+  async babel() {
+    const packages = getElementPackages(join(this.projectRoot, 'packages')).filter((p) =>
+      pathExistsSync(join(p.dir, 'src')),
+    );
+
+    // Splits an array into chunks of a given size. Equivalent to lodash's `chunk` for normal usage.
+    const chunk = (arr, size) => {
+      const out = [];
+      for (let i = 0; i < arr.length; i += size) {
+        out.push(arr.slice(i, i + size));
+      }
+      return out;
+    };
+
+    // Process packages in batches to avoid OOM in CI environments
+    // Each babel process spawns a new Node.js process, so running
+    // all in parallel can exhaust memory. Batches of 3 balance speed and memory.
+    const batchSize = 3;
+    const batches = chunk(packages, batchSize);
+
+    for (const batch of batches) {
+      await Promise.all(
+        batch.map((p) => {
           const cwd = resolve(__dirname, '..', p.dir);
           const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
           return this.runCmd(cmd, { cwd });
-        })
-    );
+        }),
+      );
+    }
   }
 }
 

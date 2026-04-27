@@ -1,23 +1,17 @@
 import { getPluginProps } from '../utils';
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import EditableHtml from '@pie-lib/editable-html';
+import { styled } from '@mui/material/styles';
+import EditableHtml from '@pie-lib/editable-html-tip-tap';
 import { InputContainer } from '@pie-lib/render-ui';
 
-const styles = (theme) => ({
-  rowLabel: {
-    gridColumn: '1/3',
-  },
-  rowLabelHolder: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
-  },
-});
+const RowLabelContainer = styled(InputContainer)(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.spacing(1),
+  marginTop: theme.spacing(1),
+}));
 
-export const RowLabel = withStyles(styles)(
-  ({
+export const RowLabel = ({
     categoriesPerRow,
-    classes,
     configuration,
     disabled,
     markup,
@@ -39,7 +33,7 @@ export const RowLabel = withStyles(styles)(
           width: '100%',
         }}
       >
-        <InputContainer label="Row Label" className={classes.rowLabelHolder}>
+        <RowLabelContainer label="Row Label">
           <EditableHtml
             disabled={disabled}
             markup={markup}
@@ -55,8 +49,7 @@ export const RowLabel = withStyles(styles)(
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             mathMlOptions={mathMlOptions}
           />
-        </InputContainer>
+        </RowLabelContainer>
       </div>
     );
-  },
-);
+  };

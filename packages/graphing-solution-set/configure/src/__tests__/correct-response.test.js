@@ -1,10 +1,30 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CorrectResponse } from '../correct-response';
 import defaultValues from '../defaults';
 
+jest.mock('@pie-lib/graphing-solution-set', () => {
+  const React = require('react');
+  return {
+    GraphContainer: (props) => React.createElement('div', { 'data-testid': 'graph-container', ...props }),
+  };
+});
+
+jest.mock('@pie-lib/config-ui', () => {
+  const React = require('react');
+  return {
+    AlertDialog: (props) => React.createElement('div', { 'data-testid': 'alert-dialog', ...props }),
+  };
+});
+
+jest.mock('@pie-lib/math-rendering', () => ({
+  renderMath: jest.fn(),
+}));
+
+const theme = createTheme();
+
 describe('CorrectResponse', () => {
-  let wrapper;
   let props;
 
   beforeEach(() => {
@@ -14,28 +34,27 @@ describe('CorrectResponse', () => {
       onChange: jest.fn(),
       tools: [],
     };
-
-    wrapper = (newProps) => {
-      const configureProps = { ...props, newProps };
-
-      return shallow(<CorrectResponse {...configureProps} />);
-    };
   });
 
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-  });
+  const renderCorrectResponse = (newProps = {}) => {
+    const configureProps = { ...props, ...newProps };
+
+    return render(
+      <ThemeProvider theme={theme}>
+        <CorrectResponse {...configureProps} />
+      </ThemeProvider>
+    );
+  };
 
   describe('logic', () => {
     it('changeMarks calls onChange', () => {
-      const component = wrapper();
+      const onChange = jest.fn();
+      const testInstance = new CorrectResponse({ ...props, onChange });
       const marks = [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid' }];
 
-      component.instance().changeMarks(marks);
+      testInstance.changeMarks(marks);
 
-      expect(component.instance().props.onChange).toBeCalledWith({
+      expect(onChange).toBeCalledWith({
         ...defaultValues.model,
         answers: {
           ...defaultValues.model.answers,
@@ -50,37 +69,38 @@ describe('CorrectResponse', () => {
 });
 
 describe('CorrectResponse: if answers is null it should still work as expected', () => {
-  let wrapper;
   let props;
 
   beforeEach(() => {
     props = {
       classes: {},
-      model: defaultValues.model,
+      model: { ...defaultValues.model, answers: null },
       onChange: jest.fn(),
       tools: [],
     };
-
-    props.model.answers = null;
-
-    wrapper = (newProps) => {
-      const configureProps = { ...props, newProps };
-
-      return shallow(<CorrectResponse {...configureProps} />);
-    };
   });
+
+  const renderCorrectResponse = (newProps = {}) => {
+    const configureProps = { ...props, ...newProps };
+
+    return render(
+      <ThemeProvider theme={theme}>
+        <CorrectResponse {...configureProps} />
+      </ThemeProvider>
+    );
+  };
 
   describe('logic', () => {
     it('changeMarks calls onChange', () => {
-      const component = wrapper();
+      const onChange = jest.fn();
+      const testInstance = new CorrectResponse({ ...props, onChange });
       const marks = [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid' }];
 
-      component.instance().changeMarks(marks);
+      testInstance.changeMarks(marks);
 
-      expect(component.instance().props.onChange).toBeCalledWith({
-        ...defaultValues.model,
+      expect(onChange).toBeCalledWith({
+        ...props.model,
         answers: {
-          ...defaultValues.model.answers,
           correctAnswer: {
             marks,
           },
@@ -91,37 +111,38 @@ describe('CorrectResponse: if answers is null it should still work as expected',
 });
 
 describe('CorrectResponse: if answers is undefined it should still work as expected', () => {
-  let wrapper;
   let props;
 
   beforeEach(() => {
     props = {
       classes: {},
-      model: defaultValues.model,
+      model: { ...defaultValues.model, answers: undefined },
       onChange: jest.fn(),
       tools: [],
     };
-
-    props.model.answers = undefined;
-
-    wrapper = (newProps) => {
-      const configureProps = { ...props, newProps };
-
-      return shallow(<CorrectResponse {...configureProps} />);
-    };
   });
+
+  const renderCorrectResponse = (newProps = {}) => {
+    const configureProps = { ...props, ...newProps };
+
+    return render(
+      <ThemeProvider theme={theme}>
+        <CorrectResponse {...configureProps} />
+      </ThemeProvider>
+    );
+  };
 
   describe('logic', () => {
     it('changeMarks calls onChange', () => {
-      const component = wrapper();
+      const onChange = jest.fn();
+      const testInstance = new CorrectResponse({ ...props, onChange });
       const marks = [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid' }];
 
-      component.instance().changeMarks(marks);
+      testInstance.changeMarks(marks);
 
-      expect(component.instance().props.onChange).toBeCalledWith({
-        ...defaultValues.model,
+      expect(onChange).toBeCalledWith({
+        ...props.model,
         answers: {
-          ...defaultValues.model.answers,
           correctAnswer: {
             marks,
           },

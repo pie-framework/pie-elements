@@ -7,7 +7,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import debug from 'debug';
 
 import Root from './root';
@@ -33,6 +33,7 @@ export default class DrawableResponseConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._root = null;
     this._configuration = sensibleDefaults.configuration;
 
     // if configuration.withRubric.forceEnabled is true, then we
@@ -152,6 +153,15 @@ export default class DrawableResponseConfigure extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
-    ReactDOM.render(element, this);
+    if (!this._root) {
+      this._root = createRoot(this);
+    }
+    this._root.render(element);
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+    }
   }
 }

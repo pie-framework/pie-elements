@@ -1,8 +1,5 @@
 import debug from 'debug';
-import map from 'lodash/map';
-import reduce from 'lodash/reduce';
-import find from 'lodash/find';
-import isEmpty from 'lodash/isEmpty';
+import { find, isEmpty, map, reduce } from 'lodash-es';
 import { decode } from 'he';
 import { partialScoring } from '@pie-lib/controller-utils';
 import Translator from '@pie-lib/translator';
@@ -43,6 +40,10 @@ const getFeedback = (value) => {
 
 // also used in configure/src/markupUtils.js
 const getAdjustedLength = (length) => {
+  if (Math.abs(length) === Infinity) {
+    return 2;
+  }
+
   if (length <= 2) {
     return length + 2;
   }
@@ -65,7 +66,7 @@ const decodeHtmlEntities = (str) => {
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&#x27;|&#39;/g, '\'')
+    .replace(/&#x27;|&#39;/g, "'")
     .replace(/&amp;/g, '&');
 };
 
@@ -77,112 +78,109 @@ export const normalize = (question) => ({ ...defaults, ...question });
  * @param {*} session
  * @param {*} env
  */
-export function model(question, session, env) {
-  return new Promise(async (resolve) => {
-    // this was added to treat an exception, when the model has choices without
-    // the "value" property like: { label: 'test' }
-    if (question.choices) {
-      Object.keys(question.choices).forEach((key) => {
-        question.choices[key] = (question.choices[key] || []).map((item, index) => {
-          if (!item.value) {
-            log('Choice does not contain "value" property, which is required.', item);
-            return { value: `${index}`, ...item };
-          }
+export async function model(question, session, env) {
+  // this was added to treat an exception, when the model has choices without
+  // the "value" property like: { label: 'test' }
+  if (question.choices) {
+    Object.keys(question.choices).forEach((key) => {
+      question.choices[key] = (question.choices[key] || []).map((item, index) => {
+        if (!item.value) {
+          log('Choice does not contain "value" property, which is required.', item);
+          return { value: `${index}`, ...item };
+        }
 
-          return item;
-        });
+        return item;
       });
-    }
-
-    const normalizedQuestion = normalize(question);
-    const defaultFeedback = Object.assign(
-      { correct: 'Correct', incorrect: 'Incorrect' },
-      normalizedQuestion.defaultFeedback,
-    );
-    const prepareChoiceFn = prepareChoice(env.mode, defaultFeedback);
-    const choices = reduce(
-      normalizedQuestion.choices,
-      (obj, area, key) => {
-        obj[key] = map(area, prepareChoiceFn);
-
-        return obj;
-      },
-      {},
-    );
-
-    const { value = {} } = session || {};
-    const feedback =
-      env.mode === 'evaluate'
-        ? reduce(
-            normalizedQuestion.choices,
-            (obj, respArea, key) => {
-              const chosenValue = value && value[key];
-              const val =
-                !isEmpty(chosenValue) && find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue));
-
-              obj[key] = getFeedback(val);
-
-              return obj;
-            },
-            {},
-          )
-        : {};
-
-    // check if at least one choice has an alternate
-    const showNote = Object.values(choices).some((choice) => choice?.length > 1);
-    const note =
-      normalizedQuestion.note ||
-      translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
-
-    const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
-    const undefinedLengths = !maxLengthPerChoice.length;
-
-    // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
-    Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map((choice) => decodeHtmlEntities(choice.label || '').length);
-      const length = Math.max(...labelLengthsArr);
-
-      if (
-        undefinedLengths ||
-        !maxLengthPerChoice[index] ||
-        maxLengthPerChoice[index] < length ||
-        maxLengthPerChoice[index] > length + 10
-      ) {
-        maxLengthPerChoice[index] = getAdjustedLength(length);
-      }
     });
+  }
 
-    const out = {
-      choices,
-      disabled: env.mode !== 'gather',
-      displayType: normalizedQuestion.displayType,
-      mode: env.mode,
-      role: env.role,
-      feedback,
-      language: normalizedQuestion.language,
-      markup: normalizedQuestion.markup,
-      maxLengthPerChoice,
-      maxLengthPerChoiceEnabled,
-      note,
-      playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
-      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : defaults.prompt,
-      rationale: defaults.rationale,
-      responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
-      showNote,
-      teacherInstructions: defaults.teacherInstructions,
-      responseAreaInputConfiguration: normalizedQuestion.responseAreaInputConfiguration,
-      extraCSSRules: normalizedQuestion.extraCSSRules,
-    };
+  const normalizedQuestion = normalize(question);
+  const defaultFeedback = Object.assign(
+    { correct: 'Correct', incorrect: 'Incorrect' },
+    normalizedQuestion.defaultFeedback,
+  );
+  const prepareChoiceFn = prepareChoice(env.mode, defaultFeedback);
+  const choices = reduce(
+    normalizedQuestion.choices,
+    (obj, area, key) => {
+      obj[key] = map(area, prepareChoiceFn);
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : defaults.rationale;
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
-        ? normalizedQuestion.teacherInstructions
-        : defaults.teacherInstructions;
+      return obj;
+    },
+    {},
+  );
+
+  const { value = {} } = session || {};
+  const feedback =
+    env.mode === 'evaluate'
+      ? reduce(
+          normalizedQuestion.choices,
+          (obj, respArea, key) => {
+            const chosenValue = value && value[key];
+            const val = !isEmpty(chosenValue) && find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue));
+
+            obj[key] = getFeedback(val);
+
+            return obj;
+          },
+          {},
+        )
+      : {};
+
+  // check if at least one choice has an alternate
+  const showNote = Object.values(choices).some((choice) => choice?.length > 1);
+  const note =
+    normalizedQuestion.note ||
+    translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
+
+  const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
+  const undefinedLengths = !maxLengthPerChoice.length;
+
+  // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
+  Object.values(choices).forEach((choice, index) => {
+    const labelLengthsArr = (choice || []).map((choice) => decodeHtmlEntities(choice.label || '').length);
+    const length = Math.max(...labelLengthsArr);
+
+    if (
+      undefinedLengths ||
+      !maxLengthPerChoice[index] ||
+      maxLengthPerChoice[index] < length ||
+      maxLengthPerChoice[index] > length + 10
+    ) {
+      maxLengthPerChoice[index] = getAdjustedLength(length);
     }
-
-    resolve(out);
   });
+
+  const out = {
+    choices,
+    disabled: env.mode !== 'gather',
+    displayType: normalizedQuestion.displayType,
+    mode: env.mode,
+    role: env.role,
+    feedback,
+    language: normalizedQuestion.language,
+    markup: normalizedQuestion.markup,
+    maxLengthPerChoice,
+    maxLengthPerChoiceEnabled,
+    note,
+    playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
+    prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : defaults.prompt,
+    rationale: defaults.rationale,
+    responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
+    showNote,
+    teacherInstructions: defaults.teacherInstructions,
+    responseAreaInputConfiguration: normalizedQuestion.responseAreaInputConfiguration,
+    extraCSSRules: normalizedQuestion.extraCSSRules,
+  };
+
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : defaults.rationale;
+    out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+      ? normalizedQuestion.teacherInstructions
+      : defaults.teacherInstructions;
+  }
+
+  return out;
 }
 
 export const prepareVal = (html) => {
@@ -217,6 +215,77 @@ export const getScore = (config, session) => {
   return parseFloat(str);
 };
 
+  /**
+ * Generates detailed trace log for scoring evaluation
+ * @param {Object} model - the question model
+ * @param {Object} session - the student session
+ * @param {Object} env - the environment
+ * @returns {Array} traceLog - array of trace messages
+ */
+export const getLogTrace = (model, session, env) => {
+  const traceLog = [];
+  const { value } = session || {};
+  const { choices, markup } = model || {};
+  
+  const responseAreas = markup ? markup.match(/\{\{(.+?)\}\}/g) : [];
+  const totalAreas = responseAreas ? responseAreas.length : 0;
+  
+  traceLog.push(`${totalAreas} response area(s) defined in this question.`);
+  
+  if (value && Object.keys(value).length > 0) {
+    const filledAreas = Object.entries(value).filter(([key, val]) => val && val.trim()).length;
+    traceLog.push(`Student filled ${filledAreas} out of ${totalAreas} response area(s).`);
+    
+    Object.keys(choices || {}).forEach((areaKey) => {
+      const studentAnswer = (value && value[areaKey]) || '';
+      const correctOptions = choices[areaKey] || [];
+      const isCorrect = !isEmpty(studentAnswer.trim()) && 
+        correctOptions.some(option => prepareVal(option.label) === prepareVal(studentAnswer));
+      
+      if (studentAnswer.trim()) {
+        traceLog.push(`Response area ${parseInt(areaKey) + 1}: ${isCorrect ? 'CORRECT' : 'INCORRECT'}.`);
+      } else {
+        traceLog.push(`Response area ${parseInt(areaKey) + 1}: left empty.`);
+      }
+    });
+  } else {
+    traceLog.push('Student did not fill any response areas.');
+  }
+
+  const hasAlternates = Object.values(choices || {}).some(optionArray => optionArray.length > 1);
+  if (hasAlternates) {
+    traceLog.push(`Alternate answers are accepted for some response areas.`);
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(model, env);
+  
+  if (partialScoringEnabled) {
+    traceLog.push(`Score calculated using partial scoring.`);
+    traceLog.push(`Student receives credit for each correctly filled response area.`);
+    
+    if (value && Object.keys(value).length > 0) {
+      let correctCount = 0;
+      Object.keys(choices || {}).forEach((areaKey) => {
+        const studentAnswer = (value && value[areaKey]) || '';
+        const correctOptions = choices[areaKey] || [];
+        const isCorrect = !isEmpty(studentAnswer.trim()) && 
+          correctOptions.some(option => prepareVal(option.label) === prepareVal(studentAnswer));
+        if (isCorrect) correctCount++;
+      });
+      
+      traceLog.push(`Partial scoring: ${correctCount} correct out of ${totalAreas} response areas.`);
+    }
+  } else {
+    traceLog.push(`Score calculated using all-or-nothing scoring.`);
+    traceLog.push(`Student must fill all response areas correctly to receive full credit.`);
+  }
+
+  const score = getScore(model, session);
+  traceLog.push(`Score: ${score}.`);
+
+  return traceLog;
+};
+
 /**
  * The score is partial by default for checkbox mode, allOrNothing for radio mode.
  * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring =
@@ -230,10 +299,23 @@ export const getScore = (config, session) => {
  */
 export function outcome(model, session, env = {}) {
   return new Promise((resolve) => {
-    const partialScoringEnabled = partialScoring.enabled(model, env);
-    const score = getScore(model, session);
+    if (!session || isEmpty(session)) {
+      resolve({ 
+        score: 0, 
+        empty: true, 
+        traceLog: ['Student did not fill any response areas. Score: 0.'] 
+      });
+    } else {
+      const traceLog = getLogTrace(model, session, env);
+      const partialScoringEnabled = partialScoring.enabled(model, env);
+      const score = getScore(model, session);
 
-    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0, empty: isEmpty(session) });
+      resolve({ 
+        score: partialScoringEnabled ? score : score === 1 ? 1 : 0, 
+        empty: false,
+        traceLog 
+      });
+    }
   });
 }
 

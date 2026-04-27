@@ -1,6 +1,4 @@
-import isEqual from 'lodash/isEqual';
-import isEmpty from 'lodash/isEmpty';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep, isEmpty, isEqual } from 'lodash-es';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
@@ -133,21 +131,122 @@ const getOutComeScore = (question, env, answers = {}) => {
   return correctness === 'correct'
     ? 1
     : correctness === 'partial' && isPartialScoring
-    ? getPartialScore(question, answers)
-    : 0;
+      ? getPartialScore(question, answers)
+      : 0;
+};
+
+/**
+ * Generates detailed trace log for match item scoring evaluation
+ * @param {Object} question
+ * @param {Object} session
+ * @param {Object} env
+ * @returns {Array<string>} traceLog
+ */
+export const getLogTrace = (question, session, env) => {
+  const traceLog = [];
+
+  const answers = session?.answers || {};
+  const rows = question?.rows || [];
+  const checkboxMode = question.choiceMode === 'checkbox';
+
+  if (!answers || Object.keys(answers).length === 0) {
+    traceLog.push('Student did not provide any answer.');
+    return traceLog;
+  }
+
+  traceLog.push(`Match item contains ${rows.length} row(s).`);
+  traceLog.push(`Matching mode: ${checkboxMode ? 'checkbox (multiple matches allowed)' : 'radio (single match per row)'}.`);
+
+  let correctCount = 0;
+  let incorrectCount = 0;
+  let totalCorrect = 0;
+
+  rows.forEach((row) => {
+    const studentAnswer = answers[row.id];
+    const correctValues = row.values || [];
+
+    if (checkboxMode) {
+      correctValues.forEach((v, idx) => {
+        if (v) {
+          totalCorrect++;
+        }
+
+        if (studentAnswer && studentAnswer[idx]) {
+          if (studentAnswer[idx] === v) {
+            correctCount++;
+          } else {
+            incorrectCount++;
+          }
+        }
+      });
+    } else {
+      totalCorrect++;
+      if (studentAnswer) {
+        if (isEqual(correctValues, studentAnswer)) {
+          correctCount++;
+        } else {
+          incorrectCount++;
+        }
+      }
+    }
+  });
+
+  if (correctCount > 0) {
+    traceLog.push(`${correctCount} correct match(es) selected.`);
+  }
+
+  if (incorrectCount > 0) {
+    traceLog.push(`${incorrectCount} incorrect match(es) selected.`);
+  }
+
+  if (correctCount === 0 && incorrectCount === 0) {
+    traceLog.push('Student provided answers, but none matched the correct responses.');
+  }
+
+  const partialScoringEnabled = partialScoring.enabled(question, env);
+
+  if (partialScoringEnabled) {
+    traceLog.push('Score calculated using partial scoring.');
+
+    if (checkboxMode) {
+      traceLog.push(
+        'Score is based on the number of correct minus extra incorrect matches, divided by the total number of correct matches.',
+      );
+
+      if (correctCount + incorrectCount > totalCorrect) {
+        traceLog.push('Extra selected matches beyond the correct set reduce the score.');
+      }
+    } else {
+      traceLog.push(
+        'Score is based on the number of correctly matched rows divided by the total number of rows.',
+      );
+    }
+  } else {
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+    traceLog.push('Student must match all rows correctly to receive full credit.');
+  }
+
+  const rawScore = getOutComeScore(question, env, answers);
+  const finalScore = partialScoringEnabled ? rawScore : rawScore === 1 ? 1 : 0;
+
+  traceLog.push(`Final score: ${finalScore}.`);
+
+  return traceLog;
 };
 
 export const outcome = (question, session, env) => {
   return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
-      resolve({ score: undefined, completed: undefined });
+      resolve({ score: undefined, completed: undefined, logTrace: [] });
     } else {
       if (!session || isEmpty(session)) {
-        resolve({ score: 0, empty: true });
+        resolve({ score: 0, empty: true, logTrace: ['Student did not provide any answer.'] });
       }
 
       const out = {
         score: getOutComeScore(question, env, session.answers),
+        empty: false,
+        logTrace: getLogTrace(question, session, env),
       };
 
       resolve(out);
@@ -173,79 +272,81 @@ export const normalize = (question) => ({ ...defaults, ...question });
  * @param {*} env
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export function model(question, session, env, updateSession) {
-  return new Promise(async (resolve) => {
-    const normalizedQuestion = cloneDeep(normalize(question));
-    let correctness, score;
+export async function model(question, session, env, updateSession) {
+  const normalizedQuestion = cloneDeep(normalize(question));
+  let correctness, score;
 
-    if ((!session || isEmpty(session)) && env.mode === 'evaluate') {
-      correctness = 'unanswered';
-      score = '0%';
-    } else {
-      correctness = getCorrectness(normalizedQuestion, env, session && session.answers);
-      score = `${getOutComeScore(normalizedQuestion, env, session && session.answers) * 100}%`;
+  if ((!session || isEmpty(session)) && env.mode === 'evaluate') {
+    correctness = 'unanswered';
+    score = '0%';
+  } else {
+    correctness = getCorrectness(normalizedQuestion, env, session && session.answers);
+    score = `${getOutComeScore(normalizedQuestion, env, session && session.answers) * 100}%`;
+  }
+
+  const correctResponse = {};
+  const correctInfo = {
+    score,
+    correctness,
+  };
+
+  const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
+
+  if (!lockChoiceOrder) {
+    normalizedQuestion.rows = await getShuffledChoices(normalizedQuestion.rows, session, updateSession, 'id');
+  }
+
+  normalizedQuestion.rows.forEach((row) => {
+    correctResponse[row.id] = row.values;
+
+    if (env.mode !== 'evaluate') {
+      delete row.values;
     }
-
-    const correctResponse = {};
-    const correctInfo = {
-      score,
-      correctness,
-    };
-
-    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
-
-    if (!lockChoiceOrder) {
-      normalizedQuestion.rows = await getShuffledChoices(normalizedQuestion.rows, session, updateSession, 'id');
-    }
-
-    normalizedQuestion.rows.forEach((row) => {
-      correctResponse[row.id] = row.values;
-
-      if (env.mode !== 'evaluate') {
-        delete row.values;
-      }
-    });
-
-    const fb =
-      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
-        ? getFeedbackForCorrectness(correctInfo.correctness, normalizedQuestion.feedback)
-        : Promise.resolve(undefined);
-
-    fb.then((feedback) => {
-      const { extraCSSRules, feedbackEnabled, promptEnabled, prompt, lockChoiceOrder, ...essentials } =
-        normalizedQuestion;
-      const out = {
-        ...essentials,
-        extraCSSRules,
-        allowFeedback: feedbackEnabled,
-        prompt: promptEnabled ? prompt : null,
-        shuffled: !lockChoiceOrder,
-        feedback,
-        disabled: env.mode !== 'gather',
-        view: env.mode === 'view',
-      };
-
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
-          ? normalizedQuestion.teacherInstructions
-          : null;
-        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      } else {
-        out.rationale = null;
-        out.teacherInstructions = null;
-      }
-
-      if (env.mode === 'evaluate') {
-        Object.assign(out, {
-          correctResponse,
-          correctness: correctInfo,
-        });
-      }
-
-      log('out: ', out);
-      resolve(out);
-    });
   });
+
+  const feedback =
+    env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+      ? await getFeedbackForCorrectness(correctInfo.correctness, normalizedQuestion.feedback)
+      : undefined;
+
+  const {
+    extraCSSRules,
+    feedbackEnabled,
+    promptEnabled,
+    prompt,
+    lockChoiceOrder: _,
+    ...essentials
+  } = normalizedQuestion;
+  const out = {
+    ...essentials,
+    extraCSSRules,
+    allowFeedback: feedbackEnabled,
+    prompt: promptEnabled ? prompt : null,
+    shuffled: !lockChoiceOrder,
+    feedback,
+    disabled: env.mode !== 'gather',
+    view: env.mode === 'view',
+  };
+
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+      ? normalizedQuestion.teacherInstructions
+      : null;
+    out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+  } else {
+    out.rationale = null;
+    out.teacherInstructions = null;
+  }
+
+  if (env.mode === 'evaluate') {
+    Object.assign(out, {
+      correctResponse,
+      correctness: correctInfo,
+    });
+  }
+
+  log('out: ', out);
+  return out;
 }
 
 export const createCorrectResponseSession = (question, env) => {

@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { Main } from '../main';
@@ -200,79 +200,84 @@ describe('Main', () => {
   let onModelChanged;
   let onConfigurationChanged;
 
+  const defaultConfiguration = {
+    showStandards: {
+      settings: false,
+      label: 'Show Standards',
+      enabled: false,
+    },
+    showExcludeZero: {
+      settings: true,
+      label: 'Exclude Zero',
+      enabled: false,
+    },
+    showScorePointLabels: {
+      settings: true,
+      label: 'Show Score Point Labels',
+      enabled: false,
+    },
+    showLevelTagInput: {
+      settings: true,
+      label: 'Show Level Tag Input',
+      enabled: false,
+    },
+    showDescription: {
+      settings: true,
+      label: 'Show Description',
+      enabled: false,
+    },
+    showVisibleToStudent: {
+      settings: true,
+      label: 'Visible to Student',
+      enabled: false,
+    },
+    showHalfScoring: {
+      settings: true,
+      label: 'Half Scoring',
+      enabled: false,
+    },
+    dragAndDrop: {
+      settings: false,
+      label: 'Enable Drag and Drop',
+      enabled: false,
+    },
+    showMaxPoint: {
+      settings: true,
+      label: 'Show Max Points Dropdown',
+    },
+    addScale: {
+      settings: true,
+      label: 'Add Scale Available',
+    },
+  };
+
   const wrapper = (extras) => {
-    const defaults = {
+    const props = {
       onModelChanged,
       onConfigurationChanged,
       classes: {},
       model: model(extras),
-      configuration: {
-        showStandards: {
-          settings: false,
-          label: 'Show Standards',
-          enabled: false,
-        },
-        showExcludeZero: {
-          settings: true,
-          label: 'Exclude Zero',
-          enabled: false,
-        },
-        showScorePointLabels: {
-          settings: true,
-          label: 'Show Score Point Labels',
-          enabled: false,
-        },
-        showLevelTagInput: {
-          settings: true,
-          label: 'Show Level Tag Input',
-          enabled: false,
-        },
-        showDescription: {
-          settings: true,
-          label: 'Show Description',
-          enabled: false,
-        },
-        showVisibleToStudent: {
-          settings: true,
-          label: 'Visible to Student',
-          enabled: false,
-        },
-        showHalfScoring: {
-          settings: true,
-          label: 'Half Scoring',
-          enabled: false,
-        },
-        dragAndDrop: {
-          settings: false,
-          label: 'Enable Drag and Drop',
-          enabled: false,
-        },
-        showMaxPoint: {
-          settings: true,
-          label: 'Show Max Points Dropdown',
-        },
-        addScale: {
-          settings: true,
-          label: 'Add Scale Available',
-        },
-      },
+      configuration: defaultConfiguration,
     };
-    const props = { ...defaults };
 
-    return shallow(<Main {...props} />);
+    return render(<Main {...props} />);
   };
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      const w = wrapper();
-      expect(w).toMatchSnapshot();
+  const createInstance = (extras) => {
+    const props = {
+      onModelChanged,
+      onConfigurationChanged,
+      classes: {},
+      model: model(extras),
+      configuration: defaultConfiguration,
+    };
+    const instance = new Main(props);
+    instance.setState = jest.fn((state, callback) => {
+      Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+      if (callback) callback();
     });
-
-    it('renders without scales', () => {
-      const w = wrapper({ scales: [] });
-      expect(w).toMatchSnapshot();
-    });
-  });
+    return instance;
+  };
 
   describe('logic', () => {
     beforeEach(() => {
@@ -282,14 +287,14 @@ describe('Main', () => {
 
     describe('changeExcludeZero', () => {
       it('scales is empty array', () => {
-        const w = wrapper({ scales: null });
+        const instance = createInstance({ scales: null });
 
-        w.instance().changeExcludeZero(excludeZeroTypes.remove0);
+        instance.changeExcludeZero(excludeZeroTypes.remove0);
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('removes zero', () => {
-        const w = wrapper({
+        const instance = createInstance({
           scales: [
             {
               maxPoints: 4,
@@ -325,9 +330,9 @@ describe('Main', () => {
             },
           ],
         });
-        const { excludeZero } = w.instance().props.model;
+        const { excludeZero } = instance.props.model;
 
-        w.instance().changeExcludeZero(excludeZeroTypes.remove0);
+        instance.changeExcludeZero(excludeZeroTypes.remove0);
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -370,7 +375,7 @@ describe('Main', () => {
       });
 
       it('add0 zero', () => {
-        const w = wrapper({
+        const instance = createInstance({
           scales: [
             {
               maxPoints: 4,
@@ -406,9 +411,9 @@ describe('Main', () => {
             },
           ],
         });
-        const { excludeZero } = w.instance().props.model;
+        const { excludeZero } = instance.props.model;
 
-        w.instance().changeExcludeZero(excludeZeroTypes.add0);
+        instance.changeExcludeZero(excludeZeroTypes.add0);
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -451,7 +456,7 @@ describe('Main', () => {
       });
 
       it('shift to Left', () => {
-        const w = wrapper({
+        const instance = createInstance({
           scales: [
             {
               maxPoints: 4,
@@ -487,9 +492,9 @@ describe('Main', () => {
             },
           ],
         });
-        const { excludeZero } = w.instance().props.model;
+        const { excludeZero } = instance.props.model;
 
-        w.instance().changeExcludeZero(excludeZeroTypes.shiftLeft);
+        instance.changeExcludeZero(excludeZeroTypes.shiftLeft);
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -532,7 +537,7 @@ describe('Main', () => {
       });
 
       it('shift to Right', () => {
-        const w = wrapper({
+        const instance = createInstance({
           scales: [
             {
               maxPoints: 4,
@@ -568,9 +573,9 @@ describe('Main', () => {
             },
           ],
         });
-        const { excludeZero } = w.instance().props.model;
+        const { excludeZero } = instance.props.model;
 
-        w.instance().changeExcludeZero(excludeZeroTypes.shiftRight);
+        instance.changeExcludeZero(excludeZeroTypes.shiftRight);
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -615,8 +620,8 @@ describe('Main', () => {
 
     describe('onScaleAdded', () => {
       it('adds a scale', () => {
-        const w = wrapper();
-        w.instance().onScaleAdded();
+        const instance = createInstance();
+        instance.onScaleAdded();
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -635,44 +640,44 @@ describe('Main', () => {
 
     describe('onScaleChanged', () => {
       it('does not call onModelChanged if index less than 0', () => {
-        const w = wrapper();
-        w.instance().onScaleChanged(-1);
+        const instance = createInstance();
+        instance.onScaleChanged(-1);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call onModelChanged if index more than length', () => {
-        const w = wrapper();
-        w.instance().onScaleChanged(100);
+        const instance = createInstance();
+        instance.onScaleChanged(100);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call onModelChanged if params null', () => {
-        const w = wrapper();
-        w.instance().onScaleChanged(0, null);
+        const instance = createInstance();
+        instance.onScaleChanged(0, null);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call onModelChanged if params undefined', () => {
-        const w = wrapper();
-        w.instance().onScaleChanged(0, undefined);
+        const instance = createInstance();
+        instance.onScaleChanged(0, undefined);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call onModelChanged if params empty', () => {
-        const w = wrapper();
-        w.instance().onScaleChanged(0, {});
+        const instance = createInstance();
+        instance.onScaleChanged(0, {});
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it("changes a scale's maxPoints", () => {
-        const w = wrapper();
-        const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { maxPoints: 3 });
+        const instance = createInstance();
+        const [firstScale, ...scales] = instance.props.model.scales;
+        instance.onScaleChanged(0, { maxPoints: 3 });
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -681,9 +686,9 @@ describe('Main', () => {
       });
 
       it("changes a scale's scorePointsLabels", () => {
-        const w = wrapper();
-        const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { scorePointsLabels: [] });
+        const instance = createInstance();
+        const [firstScale, ...scales] = instance.props.model.scales;
+        instance.onScaleChanged(0, { scorePointsLabels: [] });
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -692,9 +697,9 @@ describe('Main', () => {
       });
 
       it("changes a scale's traitLabel", () => {
-        const w = wrapper();
-        const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { traitLabel: 'Test' });
+        const instance = createInstance();
+        const [firstScale, ...scales] = instance.props.model.scales;
+        instance.onScaleChanged(0, { traitLabel: 'Test' });
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -703,9 +708,9 @@ describe('Main', () => {
       });
 
       it("changes a scale's traits", () => {
-        const w = wrapper();
-        const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { traits: [] });
+        const instance = createInstance();
+        const [firstScale, ...scales] = instance.props.model.scales;
+        instance.onScaleChanged(0, { traits: [] });
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -716,24 +721,24 @@ describe('Main', () => {
 
     describe('onScaleRemoved', () => {
       it('does not call change scales if index less than 0', () => {
-        const w = wrapper();
-        w.instance().onScaleRemoved(-1);
+        const instance = createInstance();
+        instance.onScaleRemoved(-1);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call change scales if index more then length', () => {
-        const w = wrapper();
-        w.instance().onScaleRemoved(100);
+        const instance = createInstance();
+        instance.onScaleRemoved(100);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('removes scale', () => {
-        const w = wrapper();
-        const [firstScale, ...scales] = w.instance().props.model.scales;
+        const instance = createInstance();
+        const [firstScale, ...scales] = instance.props.model.scales;
 
-        w.instance().onScaleRemoved(0);
+        instance.onScaleRemoved(0);
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -744,9 +749,9 @@ describe('Main', () => {
 
     describe('onHalfScoringChanged', () => {
       it('changes half scoring', () => {
-        const w = wrapper();
-        const { halfScoring } = w.instance().props.model;
-        w.instance().onHalfScoringChanged();
+        const instance = createInstance();
+        const { halfScoring } = instance.props.model;
+        instance.onHalfScoringChanged();
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -757,9 +762,9 @@ describe('Main', () => {
 
     describe('onVisibleToStudentChanged', () => {
       it('changes visible to student', () => {
-        const w = wrapper();
-        const { visibleToStudent } = w.instance().props.model;
-        w.instance().onVisibleToStudentChanged();
+        const instance = createInstance();
+        const { visibleToStudent } = instance.props.model;
+        instance.onVisibleToStudentChanged();
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -770,9 +775,9 @@ describe('Main', () => {
 
     describe('changeShowScorePointLabels', () => {
       it('changes show score point labels', () => {
-        const w = wrapper();
-        const { pointLabels } = w.instance().props.model;
-        w.instance().changeShowScorePointLabels();
+        const instance = createInstance();
+        const { pointLabels } = instance.props.model;
+        instance.changeShowScorePointLabels();
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -783,9 +788,9 @@ describe('Main', () => {
 
     describe('changeShowDescription', () => {
       it('changes show description', () => {
-        const w = wrapper();
-        const { description } = w.instance().props.model;
-        w.instance().changeShowDescription();
+        const instance = createInstance();
+        const { description } = instance.props.model;
+        instance.changeShowDescription();
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
@@ -796,9 +801,9 @@ describe('Main', () => {
 
     describe('changeShowStandards', () => {
       it('changes show standards', () => {
-        const w = wrapper();
-        const { standards } = w.instance().props.model;
-        w.instance().changeShowStandards();
+        const instance = createInstance();
+        const { standards } = instance.props.model;
+        instance.changeShowStandards();
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,

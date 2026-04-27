@@ -1,90 +1,70 @@
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
 import { Feedback, color, PreviewPrompt } from '@pie-lib/render-ui';
-import Radio from '@material-ui/core/Radio';
+import Radio from '@mui/material/Radio';
 import classNames from 'classnames';
 
 import FeedbackTick from './feedback-tick';
 
 const CLASS_NAME = 'multiple-choice-component';
 
-const styleSheet = (theme) => ({
-  row: {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: color.background(),
+const Row = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  backgroundColor: color.background(),
+});
+
+const CheckboxHolder = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  backgroundColor: color.background(),
+  flex: 1,
+  '& .MuiFormControlLabel-root': {
+    marginLeft: '-14px', // to be consistent to previous versions before MUI v5 upgrade
   },
-  checkboxHolder: {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: color.background(),
-    flex: 1,
-    '& label': {
-      color: color.text(),
-      '& > span': {
-        fontSize: 'inherit',
-      },
-    },
-  },
-  horizontalLayout: {
-    [`& .${CLASS_NAME}`]: {
-      // visually reduce right padding, but maintain accessibility padding for checkbox indicators to be circles
-      // add margin to the top, left and bottom of the checkbox to keep the same spacing as before
-      padding: theme.spacing.unit,
-      margin: `${theme.spacing.unit / 2}px 0 ${theme.spacing.unit / 2}px ${theme.spacing.unit / 2}px`,
-    },
-  },
-  belowLayout: {
-    '& > label': {
-      alignItems: 'flex-start',
-    },
-  },
-  belowLayoutCenter: {
-    justifyContent: 'center',
-    '& > label': {
-      alignItems: 'center',
-    },
-  },
-  belowSelectionComponent: {
-    display: 'flex',
-    alignItems: 'center',
+  '& label': {
+    color: color.text(),
     '& > span': {
-      // visually reduce right padding, but maintain accessibility padding for checkbox indicators to be circles
-      marginLeft: `-${theme.spacing.unit}px`,
+      fontSize: 'inherit',
     },
-  },
-  srOnly: {
-    position: 'absolute',
-    left: '-10000px',
-    top: 'auto',
-    width: '1px',
-    height: '1px',
-    overflow: 'hidden',
+    '& > .MuiButtonBase-root': {
+      padding: '12px', // to be consistent to previous versions before MUI v5 upgrade
+    },
   },
 });
 
-const formStyleSheet = {
-  label: {
-    color: `${color.text()} !important`, //'var(--choice-input-color, black)'
+const BelowSelectionComponent = styled('span')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  '& > span': {
+    // visually reduce right padding, but maintain accessibility padding for checkbox indicators to be circles
+    marginLeft: `-${theme.spacing(1)}`,
+  },
+}));
+
+const SrOnly = styled('span')({
+  position: 'absolute',
+  left: '-10000px',
+  top: 'auto',
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+});
+
+export const StyledFormControlLabel = styled(FormControlLabel)({
+  '& .MuiFormControlLabel-label': {
+    color: `${color.text()} !important`,
     backgroundColor: color.background(),
     letterSpacing: 'normal',
   },
-  disabled: {
-    // apply to all children
-    '& *': {
-      cursor: 'not-allowed !important',
-    },
+  '&.Mui-disabled *': {
+    cursor: 'not-allowed !important',
   },
-};
-
-export const StyledFormControlLabel = withStyles(formStyleSheet, {
-  name: 'FormControlLabel',
-})((props) => (
-  <FormControlLabel {...props} classes={{ label: props.classes.label, disabled: props.classes.disabled }} />
-));
+});
 
 const colorStyle = (varName, fallback) => ({
   [`&.${CLASS_NAME}`]: {
@@ -92,95 +72,115 @@ const colorStyle = (varName, fallback) => ({
   },
 });
 
-const inputStyles = {
-  'correct-root': colorStyle('correct-color', color.text()),
-  'correct-checked': colorStyle('correct-selected-color', color.correct()), //green[500]),
-  'correct-disabled': colorStyle('correct-disabled-color', color.disabled()), //'grey'),
-  'incorrect-root': colorStyle('incorrect-color', color.incorrect()),
-  'incorrect-checked': colorStyle('incorrect-checked', color.incorrect()), //orange[500]),
-  'incorrect-disabled': colorStyle('incorrect-disabled-color', color.disabled()),
-  root: {
-    ...colorStyle('color', color.text()),
-    '&:hover': { color: `${color.primaryLight()} !important` },
-  },
-  checked: colorStyle('selected-color', color.primary()),
-  disabled: {
-    ...colorStyle('disabled-color', color.text()),
-    opacity: 0.6,
-    cursor: 'not-allowed !important',
-    pointerEvents: 'initial !important',
-  },
-  focusVisibleUnchecked: {
-    outline: `2px solid ${color.focusUncheckedBorder()}`,
-    backgroundColor: color.focusUnchecked(),
-  },
-  focusVisibleChecked: {
-    outline: `2px solid ${color.focusCheckedBorder()}`,
-    backgroundColor: color.focusChecked(),
-  },
+const getInputStyles = (correctness) => {
+  const key = (k) => (correctness ? `${correctness}-${k}` : k);
+
+  return {
+    [key('root')]: {
+      ...colorStyle('color', color.text()),
+      ...(correctness ? {} : {
+        '&:hover': { color: `${color.primaryLight()} !important` },
+      }),
+      ...(correctness === 'correct' ? colorStyle('correct-color', color.text()) : {}),
+      ...(correctness === 'incorrect' ? colorStyle('incorrect-color', color.incorrect()) : {}),
+    },
+    [key('checked')]: {
+      ...(correctness === 'correct' ? colorStyle('correct-selected-color', color.correct()) : {}),
+      ...(correctness === 'incorrect' ? colorStyle('incorrect-checked', color.incorrect()) : {}),
+      ...(!correctness ? colorStyle('selected-color', color.primary()) : {}),
+    },
+    [key('disabled')]: {
+      ...colorStyle('disabled-color', color.text()),
+      ...(correctness === 'correct' ? colorStyle('correct-disabled-color', color.disabled()) : {}),
+      ...(correctness === 'incorrect' ? colorStyle('incorrect-disabled-color', color.disabled()) : {}),
+      opacity: 0.6,
+      cursor: 'not-allowed !important',
+      pointerEvents: 'initial !important',
+    },
+    focusVisibleUnchecked: {
+      outline: `2px solid ${color.focusUncheckedBorder()}`,
+      backgroundColor: color.focusUnchecked(),
+    },
+    focusVisibleChecked: {
+      outline: `2px solid ${color.focusCheckedBorder()}`,
+      backgroundColor: color.focusChecked(),
+    },
+  };
 };
 
-export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, value, id, onKeyDown, inputRef } = props;
+const StyledCheckboxBase = styled(Checkbox, {
+  shouldForwardProp: (prop) => prop !== 'correctness',
+})(({ correctness }) => {
+  const styles = getInputStyles(correctness);
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
-  const resolved = {
-    root: classes[key('root')],
-    checked: classes[key('checked')],
-    disabled: classes[key('disabled')],
+  return {
+    [`&.${CLASS_NAME}`]: {
+      ...styles[key('root')],
+      '&.Mui-checked': styles[key('checked')],
+      '&.Mui-disabled': correctness ? {} : styles[key('disabled')],
+    },
+    '&.Mui-focusVisible': {
+      '&:not(.Mui-checked)': styles.focusVisibleUnchecked,
+      '&.Mui-checked': styles.focusVisibleChecked,
+    },
   };
-
-  const miniProps = { checked, onChange, disabled, value };
-
-  return (
-    <Checkbox
-      id={id}
-      inputRef={inputRef}
-      aria-checked={checked}
-      onKeyDown={onKeyDown}
-      focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
-      disableRipple
-      {...miniProps}
-      className={CLASS_NAME}
-      classes={{
-        root: resolved.root,
-        checked: resolved.checked,
-        disabled: `${correctness ? '' : resolved.disabled}`,
-      }}
-    />
-  );
 });
 
-export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, value, id, tagName, inputRef } = props;
-  const key = (k) => (correctness ? `${correctness}-${k}` : k);
-
-  const resolved = {
-    root: classes[key('root')],
-    checked: classes[key('checked')],
-    disabled: classes[key('disabled')],
-  };
+export const StyledCheckbox = (props) => {
+  const { correctness, checked, onChange, disabled, value, id, onKeyDown, inputRef } = props;
 
   const miniProps = { checked, onChange, disabled, value };
 
   return (
-    <Radio
+    <StyledCheckboxBase
       id={id}
-      inputRef={inputRef}
-      aria-checked={checked}
-      focusVisibleClassName={checked ? classes.focusVisibleChecked : classes.focusVisibleUnchecked}
+      slotProps={{ input: { ref: inputRef } }}
+      onKeyDown={onKeyDown}
       disableRipple
       {...miniProps}
+      correctness={correctness}
+      className={CLASS_NAME}
+    />
+  );
+};
+
+const StyledRadioBase = styled(Radio, {
+  shouldForwardProp: (prop) => prop !== 'correctness',
+})(({ correctness }) => {
+  const styles = getInputStyles(correctness);
+  const key = (k) => (correctness ? `${correctness}-${k}` : k);
+
+  return {
+    [`&.${CLASS_NAME}`]: {
+      ...styles[key('root')],
+      '&.Mui-checked': styles[key('checked')],
+      '&.Mui-disabled': correctness ? {} : styles[key('disabled')],
+    },
+    '&.Mui-focusVisible': {
+      '&:not(.Mui-checked)': styles.focusVisibleUnchecked,
+      '&.Mui-checked': styles.focusVisibleChecked,
+    },
+  };
+});
+
+export const StyledRadio = (props) => {
+  const { correctness, checked, onChange, disabled, value, id, tagName, inputRef } = props;
+
+  const miniProps = { checked, onChange, disabled, value };
+
+  return (
+    <StyledRadioBase
+      id={id}
+      slotProps={{ input: { ref: inputRef } }}
+      disableRipple
+      {...miniProps}
+      correctness={correctness}
       className={CLASS_NAME}
       name={tagName}
-      classes={{
-        root: resolved.root,
-        checked: resolved.checked,
-        disabled: `${correctness ? '' : resolved.disabled}`,
-      }}
     />
   );
-});
+};
 
 export class ChoiceInput extends React.Component {
   static propTypes = {
@@ -194,7 +194,6 @@ export class ChoiceInput extends React.Component {
     rationale: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
-    classes: PropTypes.object,
     className: PropTypes.string,
     tagName: PropTypes.string,
     hideTick: PropTypes.bool,
@@ -263,7 +262,6 @@ export class ChoiceInput extends React.Component {
       feedback,
       label,
       correctness,
-      classes,
       className,
       rationale,
       hideTick,
@@ -278,41 +276,24 @@ export class ChoiceInput extends React.Component {
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
 
-    const holderClassNames = classNames(classes.checkboxHolder, {
-      [classes.horizontalLayout]: choicesLayout === 'horizontal',
-      [classes.belowLayout]: isSelectionButtonBelow && choicesLayout !== 'grid',
-      [classes.belowLayoutCenter]: isSelectionButtonBelow && choicesLayout === 'grid',
-    });
-
-    const choicelabel = (
-      <>
-        {displayKey && !isSelectionButtonBelow ? (
-          <span className={classes.row}>
-            {displayKey}.{'\u00A0'}
-            <PreviewPrompt className="label" prompt={label} tagName="span" />
-          </span>
-        ) : (
-          <PreviewPrompt className="label" prompt={label} tagName="span" />
-        )}
-      </>
-    );
-
-    const screenReaderLabel = (
-      <span id={this.descId} className={classes.srOnly}>
-        {choiceMode === 'checkbox' ? 'Checkbox to select the answer below' : 'Radio button to select the answer below'}
-      </span>
-    );
-
-    const tagProps = {
-      disabled,
-      checked,
-      correctness,
-      tagName,
-      value,
-      id: this.choiceId,
-      onChange: this.onToggleChoice,
-      onKeyDown: this.handleKeyDown,
-      'aria-describedby': this.descId,
+    const holderSx = {
+      ...(choicesLayout === 'horizontal' && {
+        [`& .${CLASS_NAME}`]: {
+          padding: '8px',
+          margin: '4px 0 4px 4px',
+        },
+      }),
+      ...(isSelectionButtonBelow && choicesLayout !== 'grid' && {
+        '& > label': {
+          alignItems: 'flex-start',
+        },
+      }),
+      ...(isSelectionButtonBelow && choicesLayout === 'grid' && {
+        justifyContent: 'center',
+        '& > label': {
+          alignItems: 'center',
+        },
+      }),
     };
 
     const hasMathOrImage =
@@ -325,24 +306,55 @@ export class ChoiceInput extends React.Component {
         label.includes('data-raw') ||
         label.includes('<mjx-container'));
 
+    const screenReaderLabel = displayKey ? (
+      <SrOnly id={this.descId}>
+        {hasMathOrImage ? `Pick the answer below, ${displayKey}` : displayKey}
+      </SrOnly>
+    ) : null;
+
+    const choicelabel = (
+      <>
+        {displayKey && !isSelectionButtonBelow ? (
+          <Row component="span">
+            <span aria-hidden="true">{displayKey}.{'\u00A0'}</span>
+            <PreviewPrompt className="prompt-label" prompt={label} tagName="span" />
+          </Row>
+        ) : (
+          <PreviewPrompt className="prompt-label" prompt={label} tagName="span" />
+        )}
+      </>
+    );
+
+    const tagProps = {
+      disabled,
+      checked,
+      correctness,
+      tagName,
+      value,
+      id: this.choiceId,
+      onChange: this.onToggleChoice,
+      onKeyDown: this.handleKeyDown,
+      ...(screenReaderLabel ? { 'aria-describedby': this.descId } : {}),
+    };
+
     const control = isSelectionButtonBelow ? (
-      <span className={classes.belowSelectionComponent}>
-        {hasMathOrImage && screenReaderLabel}
+      <BelowSelectionComponent>
+        {screenReaderLabel}
         <Tag {...tagProps} style={{ padding: 0 }} />
-        {displayKey ? `${displayKey}.` : ''}
-      </span>
+        <span aria-hidden="true">{displayKey ? `${displayKey}.` : ''}</span>
+      </BelowSelectionComponent>
     ) : (
       <>
-        {hasMathOrImage && screenReaderLabel}
-        <Tag {...tagProps} inputRef={this.props.autoFocusRef} />
+        {screenReaderLabel}
+        <Tag {...tagProps} slotProps={{ input: { ref: this.props.autoFocusRef } }} />
       </>
     );
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
-        <div className={classes.row}>
+        <Row>
           {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
-          <div className={classNames(holderClassNames, 'checkbox-holder')}>
+          <CheckboxHolder className="checkbox-holder" sx={holderSx}>
             <StyledFormControlLabel
               label={choicelabel}
               value={value}
@@ -350,8 +362,8 @@ export class ChoiceInput extends React.Component {
               labelPlacement={isSelectionButtonBelow ? 'top' : undefined}
               control={control}
             />
-          </div>
-        </div>
+          </CheckboxHolder>
+        </Row>
         {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
         <Feedback feedback={feedback} correctness={correctness} />
       </div>
@@ -359,4 +371,4 @@ export class ChoiceInput extends React.Component {
   }
 }
 
-export default withStyles(styleSheet)(ChoiceInput);
+export default ChoiceInput;

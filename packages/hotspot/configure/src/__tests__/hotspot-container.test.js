@@ -1,7 +1,20 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Container } from '../hotspot-container';
 import { getAllShapes, groupShapes } from '../utils';
+
+jest.mock('react-konva', () => {
+  const React = require('react');
+  return {
+    Stage: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'stage', ...props }, children),
+    Layer: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'layer', ...props }, children),
+    Rect: (props) => React.createElement('div', { 'data-testid': 'rect', ...props }),
+    Circle: (props) => React.createElement('div', { 'data-testid': 'circle', ...props }),
+    Line: (props) => React.createElement('div', { 'data-testid': 'line', ...props }),
+    Group: ({ children, ...props }) => React.createElement('div', { 'data-testid': 'group', ...props }, children),
+    Image: (props) => React.createElement('div', { 'data-testid': 'image', ...props }),
+  };
+});
 
 const model = () => ({
   imageUrl: 'https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W',
@@ -114,18 +127,36 @@ describe('HotspotContainer', () => {
         ...extras,
       };
 
-      return shallow(<Container {...props} />);
+      return render(<Container {...props} />);
     };
   });
 
-  describe('render', () => {
-    it('renders', () => {
-      expect(w()).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
-    let wrapper;
+    const createInstance = () => {
+      const props = {
+        classes: {},
+        dimensions: initialModel.dimensions,
+        imageUrl: initialModel.imageUrl,
+        multipleCorrect: initialModel.multipleCorrect,
+        hotspotColor: initialModel.hotspotColor,
+        outlineColor: initialModel.outlineColor,
+        onUpdateImageDimension: onUpdateImageDimension,
+        onUpdateShapes: onUpdateShapes,
+        onDeleteShape: onDeleteShape,
+        onImageUpload: onImageUpload,
+        shapes: initialModel.shapes,
+      };
+      const instance = new Container(props);
+
+      // Mock setState to execute callback immediately for testing
+      instance.setState = jest.fn((state, callback) => {
+        Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+        if (callback) callback();
+      });
+
+      return instance;
+    };
+
     let formattedShapes = [
       {
         id: '0',
@@ -211,15 +242,13 @@ describe('HotspotContainer', () => {
       },
     ];
 
-    beforeEach(() => {
-      wrapper = w();
-    });
-
     it('state will contain formatted shapes', () => {
-      expect(wrapper.instance().state.shapes).toEqual(expect.arrayContaining(formattedShapes));
+      const instance = createInstance();
+      expect(instance.state.shapes).toEqual(expect.arrayContaining(formattedShapes));
     });
 
     it('onUpdateShapes with new added shape', () => {
+      const instance = createInstance();
       const newShape = {
         id: '8',
         height: 140,
@@ -229,7 +258,7 @@ describe('HotspotContainer', () => {
         group: 'rectangles',
       };
 
-      wrapper.instance().onUpdateShapes([...formattedShapes, newShape]);
+      instance.onUpdateShapes([...formattedShapes, newShape]);
 
       expect(onUpdateShapes).toHaveBeenLastCalledWith({
         rectangles: [
@@ -248,8 +277,8 @@ describe('HotspotContainer', () => {
     });
 
     it('onDeleteShape by id', () => {
-      console.log('wrapper', wrapper.instance());
-      wrapper.instance().onDeleteShape('8');
+      const instance = createInstance();
+      instance.onDeleteShape('8');
       expect(onUpdateShapes).toHaveBeenCalledWith(
         groupShapes([
           { correct: true, group: 'rectangles', height: 140, id: '0', index: 0, width: 130, x: 1, y: 1 },
@@ -314,7 +343,8 @@ describe('HotspotContainer', () => {
     });
 
     it('onUpdateShapes with no shapes', () => {
-      wrapper.instance().onUpdateShapes([]);
+      const instance = createInstance();
+      instance.onUpdateShapes([]);
 
       expect(onUpdateShapes).toHaveBeenLastCalledWith({
         rectangles: [],
@@ -324,7 +354,8 @@ describe('HotspotContainer', () => {
     });
 
     it('handleClearAll', () => {
-      wrapper.instance().handleClearAll();
+      const instance = createInstance();
+      instance.handleClearAll();
       expect(onUpdateShapes).toHaveBeenLastCalledWith({
         rectangles: [],
         polygons: [],

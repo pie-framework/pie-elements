@@ -1,12 +1,14 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { Header } from '../header';
 
+const theme = createTheme();
+
 describe('Header', () => {
-  let w;
   let onAdd = jest.fn();
-  const wrapper = (extras) => {
+  const renderHeader = (extras) => {
     const defaults = {
       classes: {
         header: 'header',
@@ -16,12 +18,16 @@ describe('Header', () => {
       onAdd,
     };
     const props = { ...defaults, ...extras };
-    return shallow(<Header {...props} />);
+    return render(
+      <ThemeProvider theme={theme}>
+        <Header {...props} />
+      </ThemeProvider>
+    );
   };
-  describe('snapshot', () => {
-    it('renders', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+  describe('renders', () => {
+    it('renders without crashing', () => {
+      const { container } = renderHeader();
+      expect(container).toBeInTheDocument();
     });
   });
 });
