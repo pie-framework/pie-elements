@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0-next.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.2.0-next.5...@pie-element/match-list@6.2.0-next.6) (2026-04-27)
+
+### Features
+
+- bump major libs and shared modules ([acb4bf3](https://github.com/pie-framework/pie-elements/commit/acb4bf32dafd5cd47cd1c673791b7af3c66b2938))
+
 # [6.2.0-next.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@6.2.0-next.4...@pie-element/match-list@6.2.0-next.5) (2026-04-24)
 
 ### Bug Fixes

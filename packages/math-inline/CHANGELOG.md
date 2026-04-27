@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-next.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.12...@pie-element/math-inline@11.2.0-next.13) (2026-04-27)
+
+### Features
+
+- bump major libs and shared modules ([acb4bf3](https://github.com/pie-framework/pie-elements/commit/acb4bf32dafd5cd47cd1c673791b7af3c66b2938))
+
 # [11.2.0-next.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@11.2.0-next.11...@pie-element/math-inline@11.2.0-next.12) (2026-04-24)
 
 ### Bug Fixes
