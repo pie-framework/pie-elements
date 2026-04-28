@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@9.0.0...@pie-element/inline-dropdown-configure@9.0.1) (2026-04-28)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
 # [8.2.0-next.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.2.0-next.11...@pie-element/inline-dropdown-configure@8.2.0-next.12) (2026-04-27)
 
 ### Features
