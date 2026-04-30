@@ -3,16 +3,6 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Main from '../main';
 
-const Mathquill = require('@pie-framework/mathquill');
-
-jest.mock('@pie-framework/mathquill', () => ({
-  StaticMath: jest.fn().mockReturnValue({
-    latex: jest.fn(),
-  }),
-  registerEmbed: jest.fn(),
-  getInterface: jest.fn().mockReturnThis(),
-}));
-
 jest.mock('@pie-lib/render-ui', () => ({
   color: {
     text: () => '#000',
@@ -46,6 +36,8 @@ jest.mock('@pie-lib/math-input', () => ({
   },
   HorizontalKeypad: (props) => <div data-testid="horizontal-keypad" {...props} />,
   updateSpans: jest.fn(),
+  registerEmbed: jest.fn(),
+  applyStaticMath: jest.fn(),
 }));
 
 jest.mock('@pie-lib/math-rendering', () => ({
