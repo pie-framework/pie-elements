@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.0.1...@pie-element/multiple-choice@13.1.0) (2026-05-04)
+
+### Features
+
+- **multiple-choice / ebsr:** handle logic for player heading attributes PIE-153 PIE-154 ([3530ce6](https://github.com/pie-framework/pie-elements/commit/3530ce6e6bad9f032ceb7c774cfdc66a43c1f252))
+
 ## [13.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.0.0...@pie-element/multiple-choice@13.0.1) (2026-04-28)
 
 **Note:** Version bump only for package @pie-element/multiple-choice
