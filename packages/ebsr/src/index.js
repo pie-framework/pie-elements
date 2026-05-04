@@ -26,6 +26,38 @@ export const isSessionComplete = (session) => {
   return isNonEmptyArray(a) && isNonEmptyArray(b);
 };
 
+function getPlayerAttributes(element) {
+  const player =
+    element.closest('pie-player') ||
+    element.closest('pie-item-player');
+
+  if (!player) {
+    return { baseHeadingLevel: undefined, includeSrHeading: true };
+  }
+
+  const getRaw = (camelCaseName, hyphenatedName, allLowerName) => {
+    let raw = player[camelCaseName];
+
+    // fallback in case someone sets via HTML attribute manually
+    if (raw == null) {
+      raw =
+        player.getAttribute(hyphenatedName) ??
+        player.getAttribute(allLowerName);
+    }
+
+    return raw;
+  };
+
+  const levelRaw = getRaw('baseHeadingLevel', 'base-heading-level', 'baseheadinglevel');
+  const level = parseInt(levelRaw, 10);
+  const baseHeadingLevel = Number.isFinite(level) && level >= 1 && level <= 6 ? level : undefined;
+
+  const srRaw = getRaw('includeSrHeading', 'include-sr-heading', 'includesrheading');
+  const includeSrHeading = srRaw == null ? true : srRaw !== false && srRaw !== 'false';
+
+  return { baseHeadingLevel, includeSrHeading };
+}
+
 export default class Ebsr extends HTMLElement {
   constructor() {
     super();
@@ -85,6 +117,12 @@ export default class Ebsr extends HTMLElement {
         mode,
         keyMode: this._model[key].choicePrefix,
       };
+
+      // Parts of an EBSR item should not render their own SR headings —
+      // the EBSR element itself provides the item-level heading.
+      const { includeSrHeading, baseHeadingLevel } = getPlayerAttributes(this);
+      part.includeSrHeading = includeSrHeading;
+      part.baseHeadingLevel = baseHeadingLevel !== undefined ? Math.min(6, baseHeadingLevel + (includeSrHeading ? 1 : 0)) : undefined;
     }
   }
 
@@ -116,16 +154,43 @@ export default class Ebsr extends HTMLElement {
 
   connectedCallback() {
     this._render();
+    this._initPlayerObserver();
     this.addEventListener(SESSION_CHANGED, this.onSessionUpdated);
   }
 
   disconnectedCallback() {
+    this._disconnectPlayerObserver();
     this.removeEventListener(SESSION_CHANGED, this.onSessionUpdated);
+  }
+
+  _initPlayerObserver() {
+    const player = this.closest('pie-player') || this.closest('pie-item-player');
+    if (!player) return;
+
+    this._playerObserver = new MutationObserver(() => {
+      this._render();
+    });
+    this._playerObserver.observe(player, {
+      attributes: true,
+      attributeFilter: ['base-heading-level', 'baseheadinglevel', 'include-sr-heading', 'includesrheading'],
+    });
+  }
+
+  _disconnectPlayerObserver() {
+    if (this._playerObserver) {
+      this._playerObserver.disconnect();
+      this._playerObserver = null;
+    }
   }
 
   _render() {
     this.ariaLabel = 'Two-Part Question';
     this.role = 'region';
+
+    const { baseHeadingLevel: ebsrLevel, includeSrHeading } = getPlayerAttributes(this);
+    const headingTag = ebsrLevel ? `h${Math.min(6, ebsrLevel)}` : 'h2';
+    const srHeading = includeSrHeading ? `<${headingTag} class="srOnly">Two-Part Question</${headingTag}>` : '';
+
     this.innerHTML = `
       <style>
         .srOnly {
@@ -140,7 +205,7 @@ export default class Ebsr extends HTMLElement {
       }
       ${this._model?.extraCSSRules?.rules}
       </style>
-        <h2 class="srOnly">Two-Part Question</h2>
+        ${srHeading}
         <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
         <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
     `;
