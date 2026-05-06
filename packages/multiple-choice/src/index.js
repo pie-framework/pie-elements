@@ -44,6 +44,51 @@ export const isComplete = (session, model, audioComplete, elementContext) => {
   return true;
 };
 
+function getPlayerAttributes(element) {
+  const player =
+    element.closest('pie-player') ||
+    element.closest('pie-item-player');
+
+  if (!player) {
+    return { baseHeadingLevel: undefined, includeSrHeading: true };
+  }
+
+  const getRaw = (camelCaseName, hyphenatedName, allLowerName) => {
+    let raw = player[camelCaseName];
+
+    // fallback in case someone sets via HTML attribute manually
+    if (raw == null) {
+      raw =
+        player.getAttribute(hyphenatedName) ??
+        player.getAttribute(allLowerName);
+    }
+
+    return raw;
+  };
+
+  const levelRaw = getRaw('baseHeadingLevel', 'base-heading-level', 'baseheadinglevel');
+  const level = parseInt(levelRaw, 10);
+  const baseHeadingLevel = Number.isFinite(level) && level >= 1 && level <= 6 ? level : undefined;
+
+  const srRaw = getRaw('includeSrHeading', 'include-sr-heading', 'includesrheading');
+  const includeSrHeading = srRaw == null ? true : srRaw !== false && srRaw !== 'false';
+
+  console.log('getPlayerAttributes', { baseHeadingLevel, includeSrHeading });
+  return { baseHeadingLevel, includeSrHeading };
+}
+
+// Resolves heading attributes for a custom element, preferring explicit instance
+// properties (set by a parent element such as EBSR) over player-level attributes.
+function resolveHeadingProps(element) {
+  const fromPlayer = getPlayerAttributes(element);
+
+  console.log('element._baseHeadingLevel', element._baseHeadingLevel, 'element._includeSrHeading', element._includeSrHeading);
+  return {
+    baseHeadingLevel: element._baseHeadingLevel !== undefined ? element._baseHeadingLevel : fromPlayer.baseHeadingLevel,
+    includeSrHeading: element._includeSrHeading !== undefined ? element._includeSrHeading : fromPlayer.includeSrHeading,
+  };
+}
+
 export default class MultipleChoice extends HTMLElement {
   constructor() {
     super();
@@ -67,6 +112,7 @@ export default class MultipleChoice extends HTMLElement {
             options: this._options,
             onChoiceChanged: this._onChange.bind(this),
             onShowCorrectToggle: this.onShowCorrectToggle.bind(this),
+            ...resolveHeadingProps(this),
           });
 
           //TODO: aria-label is set in the _rerender because we need to change it when the model.choiceMode is updated. Consider revisiting the placement of the aria-label setting in the _rerender
@@ -182,6 +228,16 @@ export default class MultipleChoice extends HTMLElement {
     this._rerender();
   }
 
+  set baseHeadingLevel(level) {
+    this._baseHeadingLevel = level;
+    this._rerender();
+  }
+
+  set includeSrHeading(value) {
+    this._includeSrHeading = value;
+    this._rerender();
+  }
+
   set session(s) {
     this._session = s;
     this._rerender();
@@ -224,6 +280,7 @@ export default class MultipleChoice extends HTMLElement {
 
   connectedCallback() {
     this._initMathObserver();
+    this._initPlayerObserver();
     this._rerender();
 
     // Observation:  audio in Chrome will have the autoplay attribute,
@@ -312,8 +369,29 @@ export default class MultipleChoice extends HTMLElement {
     }
   }
 
+  _initPlayerObserver() {
+    const player = this.closest('pie-player') || this.closest('pie-item-player');
+    if (!player) return;
+
+    this._playerObserver = new MutationObserver(() => {
+      this._rerender();
+    });
+    this._playerObserver.observe(player, {
+      attributes: true,
+      attributeFilter: ['base-heading-level', 'baseheadinglevel', 'include-sr-heading', 'includesrheading'],
+    });
+  }
+
+  _disconnectPlayerObserver() {
+    if (this._playerObserver) {
+      this._playerObserver.disconnect();
+      this._playerObserver = null;
+    }
+  }
+
   disconnectedCallback() {
     this._disconnectMathObserver();
+    this._disconnectPlayerObserver();
     if (this._keyboardEventsEnabled) {
       window.removeEventListener('keydown', this._boundHandleKeyDown);
       this._keyboardEventsEnabled = false;

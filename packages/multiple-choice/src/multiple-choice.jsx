@@ -4,7 +4,7 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import classNames from 'classnames';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt, transformDataHeadings } from '@pie-lib/render-ui';
 import Translator from '@pie-lib/translator';
 
 import Choice from './choice';
@@ -107,6 +107,8 @@ export class MultipleChoice extends React.Component {
       pauseImage: PropTypes.string,
     },
     options: PropTypes.object,
+    baseHeadingLevel: PropTypes.number,
+    includeSrHeading: PropTypes.bool,
   };
 
   constructor(props) {
@@ -233,17 +235,21 @@ export class MultipleChoice extends React.Component {
 
   // renderHeading function was added for accessibility.
   renderHeading() {
-    const { mode, choiceMode } = this.props;
+    const { mode, choiceMode, includeSrHeading, baseHeadingLevel, partLabel } = this.props;
 
-    if (mode !== 'gather') {
+    // When a part label is present the item is an EBSR part — the SR heading
+    // is provided by the EBSR element, not here.
+    const shouldRenderSrHeading = !partLabel && includeSrHeading !== false;
+
+    if (!shouldRenderSrHeading || mode !== 'gather') {
       return null;
     }
 
-    return choiceMode === 'radio' ? (
-      <SrOnly>Multiple Choice Question</SrOnly>
-    ) : (
-      <SrOnly>Multiple Select Question</SrOnly>
-    );
+    const clampedLevel = baseHeadingLevel ? Math.min(6, baseHeadingLevel) : 2;
+    const HeadingTag = SrOnly.withComponent(`h${clampedLevel}`);
+    const label = choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Select Question';
+
+    return <HeadingTag>{label}</HeadingTag>;
   }
 
   handleGroupFocus = (e) => {
@@ -284,12 +290,25 @@ export class MultipleChoice extends React.Component {
       session,
       customAudioButton,
       options,
+      baseHeadingLevel,
     } = this.props;
     const { showCorrect, maxSelectionsErrorState } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
     const selections = (session.value && session.value.length) || 0;
+
+    // Heading levels are optional and only applied when baseHeadingLevel is provided.
+    const getContentHeadingLevel = () => {
+      if (!baseHeadingLevel) return undefined;
+      // SR heading (rendered or external) sits at baseHeadingLevel.
+      // Content is always one below that; part label (EBSR) sits between them.
+      let offset = 1; // content default: baseHeadingLevel + 1
+      if (partLabel) offset += 1; // part label at base + 1, content pushed to base + 2
+      return Math.min(6, baseHeadingLevel + offset);
+    };
+    const contentHeadingLevel = getContentHeadingLevel();
+    const transformPrompt = (html) => (html && contentHeadingLevel) ? transformDataHeadings(html, contentHeadingLevel) : html;
 
     const teacherInstructionsDiv = (
       <PreviewPrompt
@@ -326,7 +345,7 @@ export class MultipleChoice extends React.Component {
 
     return (
       <MainContainer id={'main-container'} className={classNames(className, 'multiple-choice')}>
-        {partLabel && <PartLabel>{partLabel}</PartLabel>}
+        {partLabel && <PartLabel as={baseHeadingLevel ? `h${Math.min(6, baseHeadingLevel + 1)}` : 'h2'}>{partLabel}</PartLabel>}
 
         {this.renderHeading()}
 
@@ -355,7 +374,7 @@ export class MultipleChoice extends React.Component {
           <PreviewPrompt
             className="prompt"
             defaultClassName="prompt"
-            prompt={prompt}
+            prompt={transformPrompt(prompt)}
             tagName={'legend'}
             autoplayAudioEnabled={autoplayAudioEnabled}
             customAudioButton={customAudioButton}

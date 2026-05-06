@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@7.1.0-next.0...@pie-element/math-templated@7.1.0-next.1) (2026-05-06)
+
+### Bug Fixes
+
+- avoid keypad overlap the input when no below available space PIE-113 ([a58a01f](https://github.com/pie-framework/pie-elements/commit/a58a01fcebd903b05a1d34572680612e08c2e314))
+
 ## [7.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@7.0.0...@pie-element/math-templated@7.0.1) (2026-04-28)
 
 **Note:** Version bump only for package @pie-element/math-templated
