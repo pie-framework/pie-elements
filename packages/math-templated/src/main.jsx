@@ -794,18 +794,12 @@ export class Main extends React.Component {
                       modifiers: [
                         {
                           name: 'preventOverflow',
-                          enabled: true,
-                          options: {
-                            boundary: 'viewport',
-                            mainAxis: false,
-                            altAxis: true,
-                          },
+                          enabled: false,
                         },
                         {
                           name: 'flip',
                           enabled: false,
                         },
-
                         smartHorizontalPlacementModifier,
                       ],
                     },
