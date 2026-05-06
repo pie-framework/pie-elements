@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@9.1.0-next.0...@pie-element/graphing-controller@9.1.0-next.1) (2026-05-06)
+
+### Bug Fixes
+
+- bump libs and shared modules PIE-440, PIE-436, PIE-439, PIE-519, PIE-216 ([932fc12](https://github.com/pie-framework/pie-elements/commit/932fc12557ba56a737cee005be898d54d5e590ef))
+
 ## [9.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@9.0.0...@pie-element/graphing-controller@9.0.1) (2026-04-28)
 
 **Note:** Version bump only for package @pie-element/graphing-controller

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.2.0-next.0...@pie-element/multiple-choice@13.2.0-next.1) (2026-05-06)
+
+### Bug Fixes
+
+- bump libs and shared modules PIE-440, PIE-436, PIE-439, PIE-519, PIE-216 ([932fc12](https://github.com/pie-framework/pie-elements/commit/932fc12557ba56a737cee005be898d54d5e590ef))
+- fixed tests [PIE-439] ([aef44f6](https://github.com/pie-framework/pie-elements/commit/aef44f686c0d69c83f3fe464509092d68b32cbc1))
+- make sure initial changes to the model are applied to what is needed [PIE-439] ([892a3cc](https://github.com/pie-framework/pie-elements/commit/892a3cc4c6f0b37cb65f42cfdd9a9a01db447aed))
+
 # [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.0.1...@pie-element/multiple-choice@13.1.0) (2026-05-04)
 
 ### Features
