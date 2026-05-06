@@ -381,7 +381,9 @@ export class Main extends React.Component {
     }
 
     model.choices.splice(index, 1);
-    onModelChanged(model);
+    onModelChanged({
+      choices: model.choices,
+    });
   };
 
   onAddChoice = () => {
@@ -407,7 +409,9 @@ export class Main extends React.Component {
       feedback: { type: 'none' },
     });
 
-    onModelChanged(model);
+    onModelChanged({
+      choices: model.choices,
+    });
   };
 
   onChoiceChanged = (index, choice) => {
@@ -418,19 +422,19 @@ export class Main extends React.Component {
     }
 
     model.choices.splice(index, 1, choice);
-    onModelChanged(model);
+    onModelChanged({
+      choices: model.choices,
+    });
   };
 
   onPromptChanged = (prompt) => {
     this.props.onModelChanged({
-      ...this.props.model,
       prompt,
     });
   };
 
   onTeacherInstructionsChanged = (teacherInstructions) => {
     this.props.onModelChanged({
-      ...this.props.model,
       teacherInstructions,
     });
   };
@@ -460,7 +464,9 @@ export class Main extends React.Component {
           });
         }
 
-        onModelChanged(model, true);
+        onModelChanged({
+          choices: model.choices,
+        }, true);
         break;
       }
 

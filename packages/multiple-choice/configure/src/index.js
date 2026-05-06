@@ -137,7 +137,10 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   onModelChanged(m, reset) {
-    this._model = m;
+    this._model = {
+      ...this._model,
+      ...m,
+    };
     this._render();
 
     this.dispatchModelUpdated(reset);
