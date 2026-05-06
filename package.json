@@ -115,8 +115,7 @@
     "@pie-lib/test-utils": "2.0.0",
     "@pie-lib/text-select": "3.0.0",
     "@pie-lib/tools": "2.0.0",
-    "@pie-lib/translator": "4.0.0",
-    "@pie-framework/mathquill": "1.2.1-beta.1"
+    "@pie-lib/translator": "4.0.0"
   },
   "browserslist": [
     ">0.5%",
