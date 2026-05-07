@@ -94,21 +94,16 @@ class HotspotComponent extends React.Component {
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
+    const isGatherMode = mode === 'gather';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const showRationale = rationale && (hasText(rationale) || hasMedia(rationale));
     const showTeacherInstructions =
       teacherInstructions && (hasText(teacherInstructions) || hasMedia(teacherInstructions));
 
     return (
-      <StyledUiLayout
-        extraCSSRules={extraCSSRules}
-        id={'main-container'}
-        fontSizeFactor={fontSizeFactor}
-      >
+      <StyledUiLayout extraCSSRules={extraCSSRules} id={'main-container'} fontSizeFactor={fontSizeFactor}>
         {showTeacherInstructions && (
-          <StyledCollapsible
-            labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-          >
+          <StyledCollapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
             <PreviewPrompt className="prompt" prompt={teacherInstructions} />
           </StyledCollapsible>
         )}
@@ -138,7 +133,7 @@ class HotspotComponent extends React.Component {
             dimensions={dimensions}
             imageUrl={imageUrl}
             hotspotColor={hotspotColor}
-            hoverOutlineColor={hoverOutlineColor}
+            hoverOutlineColor={isGatherMode ? hoverOutlineColor : undefined}
             selectedHotspotColor={selectedHotspotColor}
             multipleCorrect={multipleCorrect}
             outlineColor={outlineColor}
