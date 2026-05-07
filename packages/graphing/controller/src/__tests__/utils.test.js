@@ -58,6 +58,14 @@ describe('equalPoint', () => {
         [p2_3, p1_10, false],
         [p0_0, p1_0, false],
         [pNull, pUndefined, true],
+        // label tests: a point is only correct if position AND label both match
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1, label: 'A' }, true],
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1, label: 'B' }, false],
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1 }, false],
+        [{ x: 1, y: 1 }, { x: 1, y: 1, label: 'A' }, false],
+        [{ x: 1, y: 1 }, { x: 1, y: 1 }, true],
+        // wrong position, label irrelevant
+        [{ x: 1, y: 1, label: 'A' }, { x: 2, y: 2, label: 'A' }, false],
     ])('%j, %j => %s', (pointA, pointB, expected) => {
         const result = equalPoint(pointA, pointB);
 
