@@ -48,6 +48,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: yarn
       - run: yarn install
+      - name: Bump @pie-lib/* to @next
+        run: npx lerna exec -- ncu '@pie-lib/*' --target @next -u
+      - name: Install bumped @pie-lib/* versions
+        run: yarn install
       - run: scripts/release --build
       - run: scripts/release --release --next --loglevel verbose
 
@@ -74,5 +78,17 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: yarn
       - run: yarn install
+      - name: Bump @pie-lib/* to latest
+        run: npx lerna exec "ncu -u '@pie-lib/*'"
+      - name: Install bumped @pie-lib/* versions
+        run: yarn install
+      - name: Commit @pie-lib/* bumps (if any)
+        run: |
+          if ! git diff --quiet -- '**/package.json' yarn.lock; then
+            git add '**/package.json' yarn.lock
+            git commit -m "chore: bump @pie-lib/* to latest"
+          else
+            echo "No @pie-lib/* changes to commit."
+          fi
       - run: scripts/release --build
       - run: scripts/release --release --loglevel verbose
