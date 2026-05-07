@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@10.1.0-next.1...@pie-element/graphing@10.1.0-next.2) (2026-05-07)
+
+### Bug Fixes
+
+- **graphing:** point labels scoring PIE-523 ([06e65e3](https://github.com/pie-framework/pie-elements/commit/06e65e3250d58bebc9632cf5903cd7b2281fd905))
+
 # [10.1.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@10.1.0-next.0...@pie-element/graphing@10.1.0-next.1) (2026-05-06)
 
 ### Bug Fixes
