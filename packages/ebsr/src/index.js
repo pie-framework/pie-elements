@@ -122,7 +122,7 @@ export default class Ebsr extends HTMLElement {
       // the EBSR element itself provides the item-level heading.
       const { includeSrHeading, baseHeadingLevel } = getPlayerAttributes(this);
       part.includeSrHeading = includeSrHeading;
-      part.baseHeadingLevel = baseHeadingLevel !== undefined ? Math.min(6, baseHeadingLevel + (includeSrHeading ? 1 : 0)) : undefined;
+      part.baseHeadingLevel = baseHeadingLevel;
     }
   }
 
