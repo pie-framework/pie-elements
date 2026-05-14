@@ -71,6 +71,12 @@ const ErrorText = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(1),
 }));
 
+// Module-scoped counter used to give each MultipleChoice instance a unique
+// radio `name` attribute. This keeps separate instances (e.g. Part A and
+// Part B inside an EBSR item) in distinct radio groups regardless of any
+// label-related model settings.
+let groupNameCounter = 0;
+
 export class MultipleChoice extends React.Component {
   static propTypes = {
     className: PropTypes.string,
@@ -121,6 +127,9 @@ export class MultipleChoice extends React.Component {
 
     this.onToggle = this.onToggle.bind(this);
     this.firstInputRef = React.createRef();
+
+    groupNameCounter += 1;
+    this.groupName = `mc-group-${groupNameCounter}`;
   }
 
   isSelected(value) {
@@ -256,6 +265,14 @@ export class MultipleChoice extends React.Component {
     const fieldset = e.currentTarget;
     const activeEl = document.activeElement;
 
+    // eslint-disable-next-line no-console
+    console.log('[MC handleGroupFocus]', {
+      partLabel: this.props.partLabel,
+      activeEl,
+      relatedTarget: e.relatedTarget,
+      firstInputRefCurrent: this.firstInputRef?.current,
+    });
+
     if (fieldset.contains(activeEl) && activeEl !== fieldset) {
       return;
     }
@@ -263,7 +280,12 @@ export class MultipleChoice extends React.Component {
     // Only focus the first input if user is tabbing forward
     if (!e.relatedTarget || fieldset.compareDocumentPosition(e.relatedTarget) & Node.DOCUMENT_POSITION_PRECEDING) {
       if (this.firstInputRef?.current) {
+        // eslint-disable-next-line no-console
+        console.log('[MC handleGroupFocus] focusing first input', this.firstInputRef.current);
         this.firstInputRef.current.focus();
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('[MC handleGroupFocus] firstInputRef.current is null — autoFocusRef did not attach');
       }
     }
   };
@@ -409,7 +431,7 @@ export class MultipleChoice extends React.Component {
                 isEvaluateMode={isEvaluateMode}
                 choiceMode={choiceMode}
                 disabled={disabled}
-                tagName={partLabel ? `group-${partLabel}` : 'group'}
+                tagName={this.groupName}
                 onChoiceChanged={this.handleChange}
                 hideTick={choice.hideTick}
                 checked={this.getChecked(choice)}
