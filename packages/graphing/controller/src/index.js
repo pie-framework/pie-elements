@@ -2,7 +2,7 @@ import debug from 'debug';
 
 import { cloneDeep, isEmpty, uniqWith } from 'lodash-es';
 import defaults from './defaults';
-import { equalMarks, sortedAnswers } from './utils';
+import { equalMarks, equalPointWithLabel, sortedAnswers } from './utils';
 
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -44,14 +44,19 @@ export const comparLabelMarks = (mark1, mark2) => {
   return mark1.label === mark2.label ? 'correct' : 'incorrect';
 };
 
-export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) => {
+export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers, withPointLabel = false }) => {
   sessionAnswers = sessionAnswers || [];
   correctAnswers = correctAnswers || [];
 
   const rez = cloneDeep(sessionAnswers).reduce((correctedAnswer, answer) => {
     const answerIsCorrect = correctAnswers.find((mark) => compareMarks(answer, mark));
 
-    answer.correctness = answerIsCorrect ? 'correct' : 'incorrect';
+    // For scoring points, check if both position AND label match
+    const isCorrectForScoring = answerIsCorrect && answer.type === 'point' && withPointLabel 
+      ? equalPointWithLabel(answer, answerIsCorrect)
+      : !!answerIsCorrect;
+
+    answer.correctness = isCorrectForScoring ? 'correct' : 'incorrect';
     if (answerIsCorrect) {
       answer.correctnesslabel = comparLabelMarks(answer, answerIsCorrect);
       answer.correctlabel = answerIsCorrect.label ? answerIsCorrect.label : '';
@@ -135,10 +140,11 @@ export const getBestAnswer = (question, session, env = {}) => {
 
       // returns array of marks, each having 'correctness' property
       const correctedAnswer = getAnswerCorrected({ sessionAnswers, marks });
-      const correctMarks = correctedAnswer.filter((answer) => answer.correctness === 'correct');
+      const correctedAnswerWithLabels = getAnswerCorrected({ sessionAnswers, marks, withPointLabel: true });
+      const correctMarks = correctedAnswerWithLabels.filter((answer) => answer.correctness === 'correct');
       // filter out missing objects because they do not affect the calculation of the score
       // only correct and incorrect are needed
-      const scoredCorrectedAnswer = correctedAnswer.filter((answer) => answer.correctness !== 'missing');
+      const scoredCorrectedAnswer = correctedAnswerWithLabels.filter((answer) => answer.correctness !== 'missing');
 
       const maxScore = marks.length;
       let score = correctMarks.length;
