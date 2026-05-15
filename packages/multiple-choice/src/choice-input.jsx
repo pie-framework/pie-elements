@@ -337,24 +337,16 @@ export class ChoiceInput extends React.Component {
       ...(screenReaderLabel ? { 'aria-describedby': this.descId } : {}),
     };
 
-    // eslint-disable-next-line no-console
-    console.log('[ChoiceInput render]', {
-      tagName,
-      value,
-      choiceMode,
-      autoFocusRefAttached: !!this.props.autoFocusRef,
-    });
-
     const control = isSelectionButtonBelow ? (
       <BelowSelectionComponent>
         {screenReaderLabel}
-        <Tag {...tagProps} style={{ padding: 0 }} />
+        <Tag {...tagProps} inputRef={this.props.autoFocusRef} style={{ padding: 0 }} />
         <span aria-hidden="true">{displayKey ? `${displayKey}.` : ''}</span>
       </BelowSelectionComponent>
     ) : (
       <>
         {screenReaderLabel}
-        <Tag {...tagProps} slotProps={{ input: { ref: this.props.autoFocusRef } }} />
+        <Tag {...tagProps} inputRef={this.props.autoFocusRef} />
       </>
     );
 
