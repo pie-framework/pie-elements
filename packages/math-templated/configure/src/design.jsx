@@ -205,7 +205,7 @@ export class Design extends React.Component {
       const newCachedResponses = cachedResponses ? cloneDeep(cachedResponses) : {};
 
       nodes.forEach((node) => {
-        const keyForNode = node.data.get('index');
+        const keyForNode = node.index;
 
         if (!newChoices[keyForNode] && newCachedResponses[keyForNode]) {
           Object.assign(newChoices, pick(newCachedResponses, keyForNode));
