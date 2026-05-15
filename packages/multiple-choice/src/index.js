@@ -73,7 +73,6 @@ function getPlayerAttributes(element) {
   const srRaw = getRaw('includeSrHeading', 'include-sr-heading', 'includesrheading');
   const includeSrHeading = srRaw == null ? true : srRaw !== false && srRaw !== 'false';
 
-  console.log('getPlayerAttributes', { baseHeadingLevel, includeSrHeading });
   return { baseHeadingLevel, includeSrHeading };
 }
 
@@ -82,7 +81,6 @@ function getPlayerAttributes(element) {
 function resolveHeadingProps(element) {
   const fromPlayer = getPlayerAttributes(element);
 
-  console.log('element._baseHeadingLevel', element._baseHeadingLevel, 'element._includeSrHeading', element._includeSrHeading);
   return {
     baseHeadingLevel: element._baseHeadingLevel !== undefined ? element._baseHeadingLevel : fromPlayer.baseHeadingLevel,
     includeSrHeading: element._includeSrHeading !== undefined ? element._includeSrHeading : fromPlayer.includeSrHeading,

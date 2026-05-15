@@ -51,9 +51,6 @@ const StyledFieldset = styled('fieldset')({
   padding: '0.01em 0 0 0',
   margin: '0px',
   minWidth: '0px',
-  '&:focus': {
-    outline: 'none',
-  },
 });
 
 const SrOnly = styled('h3')({
@@ -120,7 +117,6 @@ export class MultipleChoice extends React.Component {
     };
 
     this.onToggle = this.onToggle.bind(this);
-    this.firstInputRef = React.createRef();
 
     // Unique radio `name` attribute per instance, so separate MultipleChoice
     // instances (e.g. Part A and Part B inside EBSR, or two EBSRs on the same
@@ -258,22 +254,6 @@ export class MultipleChoice extends React.Component {
     return <HeadingTag>{label}</HeadingTag>;
   }
 
-  handleGroupFocus = (e) => {
-    const fieldset = e.currentTarget;
-    const activeEl = document.activeElement;
-
-    if (fieldset.contains(activeEl) && activeEl !== fieldset) {
-      return;
-    }
-
-    // Only focus the first input if user is tabbing forward
-    if (!e.relatedTarget || fieldset.compareDocumentPosition(e.relatedTarget) & Node.DOCUMENT_POSITION_PRECEDING) {
-      if (this.firstInputRef?.current) {
-        this.firstInputRef.current.focus();
-      }
-    }
-  };
-
   render() {
     const {
       mode,
@@ -372,11 +352,7 @@ export class MultipleChoice extends React.Component {
           </TeacherInstructions>
         )}
 
-        <StyledFieldset
-          tabIndex={0}
-          onFocus={this.handleGroupFocus}
-          role={choiceMode === 'radio' ? 'radiogroup' : 'group'}
-        >
+        <StyledFieldset role={choiceMode === 'radio' ? 'radiogroup' : 'group'}>
           <PreviewPrompt
             className="prompt"
             defaultClassName="prompt"
@@ -398,7 +374,6 @@ export class MultipleChoice extends React.Component {
           <LayoutComponent style={columnsStyle}>
             {choices.map((choice, index) => (
               <Choice
-                autoFocusRef={index === 0 ? this.firstInputRef : null}
                 choicesLayout={this.props.choicesLayout}
                 selectedAnswerBackgroundColor={this.props.selectedAnswerBackgroundColor}
                 selectedAnswerStrokeColor={this.props.selectedAnswerStrokeColor}

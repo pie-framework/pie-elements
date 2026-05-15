@@ -340,13 +340,13 @@ export class ChoiceInput extends React.Component {
     const control = isSelectionButtonBelow ? (
       <BelowSelectionComponent>
         {screenReaderLabel}
-        <Tag {...tagProps} inputRef={this.props.autoFocusRef} style={{ padding: 0 }} />
+        <Tag {...tagProps} style={{ padding: 0 }} />
         <span aria-hidden="true">{displayKey ? `${displayKey}.` : ''}</span>
       </BelowSelectionComponent>
     ) : (
       <>
         {screenReaderLabel}
-        <Tag {...tagProps} inputRef={this.props.autoFocusRef} />
+        <Tag {...tagProps} />
       </>
     );
 
