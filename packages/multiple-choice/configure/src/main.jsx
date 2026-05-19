@@ -465,6 +465,7 @@ export class Main extends React.Component {
         }
 
         onModelChanged({
+          choiceMode: model.choiceMode,
           choices: model.choices,
         }, true);
         break;
