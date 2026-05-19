@@ -46,12 +46,51 @@ const TabStyled = styled(Tab)(({ theme }) => ({
   background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
   fontSize: 'inherit',
   fontFamily: 'Roboto, sans-serif',
-  opacity: 0.7,
   color: theme.palette.common.black, // remove when PD-2801 is DONE
+  borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
+  border: '1px solid #D9DADA',
+  borderBottomWidth: 0,
+  minHeight: '56px',
+  padding: '8px 10px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  margin: `0 ${theme.spacing(1)}`,
+  textTransform: 'none',
+
+  '& span': {
+    display: '-webkit-box',
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'normal',
+    margin: 'auto 0',
+    opacity: 0.7,
+  },
+
   '&.Mui-selected': {
-    opacity: 1,
     color: theme.palette.common.black,
-  }
+    span: {
+      opacity: 1,
+    },
+    '.passage-label-underline': {
+      backgroundColor: '#146EB3',
+    },
+  },
+
+  '&:hover': {
+    '.passage-label-underline': {
+      backgroundColor: '#D0E2F0',
+    },
+  },
+}));
+
+const Underline = styled('div')(({ theme }) => ({
+  height: '2px',
+  width: '100%',
+  marginTop: '6px',
+  background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
 }));
 
 class StimulusTabs extends React.Component {
@@ -197,7 +236,7 @@ class StimulusTabs extends React.Component {
 
         {tab.author && (
           <Purpose purpose="passage-author">
-            <PassageAuthor className="author" dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}/>
+            <PassageAuthor className="author" dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }} />
           </Purpose>
         )}
 
@@ -229,15 +268,19 @@ class StimulusTabs extends React.Component {
           ) : (
             <>
               <Tabs
-                sx={{ 
-                  position: 'sticky', 
-                  top: 0, 
-                  background: color.background(), 
+                sx={{
+                  position: 'sticky',
+                  top: 0,
+                  background: color.background(),
                   color: color.text(),
                   fontFamily: 'Roboto, sans-serif',
+                  '& .MuiTabs-list': {
+                    borderBottom: '1px solid #D9DADA',
+                  },
                   '& .MuiTabs-indicator': {
-                    backgroundColor: '#f50057',
-                  }
+                    backgroundColor: '#ffffff',
+                    marginBottom: '-1px',
+                  },
                 }}
                 value={activeTab}
                 onChange={this.handleChange}
@@ -247,9 +290,12 @@ class StimulusTabs extends React.Component {
                     key={tab.id}
                     id={`button-${tab.id}`}
                     label={
-                      <Purpose purpose="passage-label">
-                        <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }}/>
-                      </Purpose>
+                      <>
+                        <Purpose purpose="passage-label">
+                          <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }}/>
+                        </Purpose>
+                        <Underline className="passage-label-underline" />
+                      </>
                     }
                     value={tab.id}
                     tabIndex={activeTab === tab.id ? 0 : -1}
