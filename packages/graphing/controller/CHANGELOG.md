@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@9.1.0-next.2...@pie-element/graphing-controller@9.1.0) (2026-05-21)
+
+### Bug Fixes
+
+- bump pie-libs PIE-434, PIE-437, PIE-452, PIE-510, PIE-451 ([f0764a8](https://github.com/pie-framework/pie-elements/commit/f0764a861ef328fd7c35bfefa5a274b0c6d2d77b))
+- **graphing:** add tests for equalPointWithLabel and update equalPoint tests ([9bd0746](https://github.com/pie-framework/pie-elements/commit/9bd0746533747d57e886a34c914f8dcf45610118))
+- **graphing:** label scoring PIE-523 ([d14664d](https://github.com/pie-framework/pie-elements/commit/d14664d72b9ea7e6a55d3fd869387c1087b72828))
+- publish missing libs ([04a5b2f](https://github.com/pie-framework/pie-elements/commit/04a5b2f26ae7b009b4f5df665b4c901d82e27775))
+
 # [9.1.0-next.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@9.1.0-next.1...@pie-element/graphing-controller@9.1.0-next.2) (2026-05-07)
 
 ### Bug Fixes
