@@ -290,6 +290,7 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith(
           {
+            choiceMode: 'radio',
             choices: expectedChoices,
           },
           true,
