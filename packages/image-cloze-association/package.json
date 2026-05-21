@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/image-cloze-association",
   "repository": "pie-framework/pie-elements",
-  "version": "10.0.0",
+  "version": "10.1.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -13,11 +13,11 @@
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "4.0.0",
-    "@pie-lib/drag": "4.0.0",
-    "@pie-lib/math-rendering": "5.0.0",
-    "@pie-lib/render-ui": "6.0.0",
-    "@pie-lib/translator": "4.0.0",
+    "@pie-lib/correct-answer-toggle": "4.0.2",
+    "@pie-lib/drag": "4.0.2",
+    "@pie-lib/math-rendering": "5.0.2",
+    "@pie-lib/render-ui": "6.1.0",
+    "@pie-lib/translator": "4.0.2",
     "classnames": "^2.2.6",
     "humps": "^2.0.1",
     "prop-types": "^15.8.1",

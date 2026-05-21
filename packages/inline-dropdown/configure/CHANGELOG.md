@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@9.1.0-next.1...@pie-element/inline-dropdown-configure@9.1.0) (2026-05-21)
+
+### Bug Fixes
+
+- bump pie-libs PIE-434, PIE-437, PIE-452, PIE-510, PIE-451 ([f0764a8](https://github.com/pie-framework/pie-elements/commit/f0764a861ef328fd7c35bfefa5a274b0c6d2d77b))
+- bump shared modules and libs PIE-522, PIE-451, PIE-511, PIE-561, PIE-562, PIE-563 ([5cfc2e9](https://github.com/pie-framework/pie-elements/commit/5cfc2e9f7d6c1a485538fd674f8602dd92018c50))
+- publish missing libs ([04a5b2f](https://github.com/pie-framework/pie-elements/commit/04a5b2f26ae7b009b4f5df665b4c901d82e27775))
+
+# [9.1.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@9.1.0-next.0...@pie-element/inline-dropdown-configure@9.1.0-next.1) (2026-05-06)
+
+### Bug Fixes
+
+- bump libs and shared modules PIE-440, PIE-436, PIE-439, PIE-519, PIE-216 ([932fc12](https://github.com/pie-framework/pie-elements/commit/932fc12557ba56a737cee005be898d54d5e590ef))
+
+## [9.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@9.0.0...@pie-element/inline-dropdown-configure@9.0.1) (2026-04-28)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
 # [8.2.0-next.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@8.2.0-next.11...@pie-element/inline-dropdown-configure@8.2.0-next.12) (2026-04-27)
 
 ### Features

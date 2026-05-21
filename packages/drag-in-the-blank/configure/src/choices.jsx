@@ -67,6 +67,11 @@ export class Choices extends React.Component {
   onChoiceChanged = (prevValue, val, key) => {
     const { onChange, model } = this.props;
     const { choices, correctResponse, alternateResponses } = model;
+
+    if (choiceIsEmpty({ value: prevValue }) && choiceIsEmpty({ value: val })) {
+      return;
+    }
+
     const duplicatedValue = (choices || []).find((c) => c.value === val && c.id !== key);
 
     // discard the new added choice or the changes if the choice would be a duplicate to one that already exists
@@ -126,11 +131,23 @@ export class Choices extends React.Component {
       return;
     }
 
-    const newChoicesWithoutTheEmptyOne = newChoices.filter((choice) => choice.id !== key);
+    onChange(newChoices);
+  };
 
-    onChange(newChoicesWithoutTheEmptyOne);
+  onChoiceDone = (choiceId) => {
+    const { onChange, model } = this.props;
+    const { choices } = model;
+    const currentChoice = (choices || []).find((c) => c.id === choiceId);
+
+    if (!currentChoice || !choiceIsEmpty(currentChoice)) {
+      this.setState({ focusedEl: undefined });
+      return;
+    }
+
+    onChange((choices || []).filter((c) => c.id !== choiceId));
 
     this.setState({
+      focusedEl: undefined,
       warning: {
         open: true,
         text: 'Answer choices cannot be blank.',
@@ -258,9 +275,7 @@ export class Choices extends React.Component {
                       return;
                     }
 
-                    this.setState({
-                      focusedEl: undefined,
-                    });
+                    this.onChoiceDone(choice.id);
                   }}
                   onBlur={(e) => {
                     const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');

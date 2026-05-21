@@ -126,7 +126,7 @@ const partModel = (base) => ({
 
 export default {
   model: {
-    partLabels: true,
+    partLabels: false,
     partLabelType: 'Letters',
     // partialScoring: false,
     partA: partModel(),

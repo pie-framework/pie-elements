@@ -1,5 +1,6 @@
 import {
     equalPoint,
+    equalPointWithLabel,
     equalSegment,
     equalVector,
     equalLine,
@@ -58,8 +59,38 @@ describe('equalPoint', () => {
         [p2_3, p1_10, false],
         [p0_0, p1_0, false],
         [pNull, pUndefined, true],
+        // equalPoint only checks position, not labels
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1, label: 'A' }, true],
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1, label: 'B' }, true],
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1 }, true],
+        [{ x: 1, y: 1 }, { x: 1, y: 1, label: 'A' }, true],
+        [{ x: 1, y: 1 }, { x: 1, y: 1 }, true],
+        // wrong position
+        [{ x: 1, y: 1, label: 'A' }, { x: 2, y: 2, label: 'A' }, false],
     ])('%j, %j => %s', (pointA, pointB, expected) => {
         const result = equalPoint(pointA, pointB);
+
+        expect(result).toEqual(expected);
+    });
+});
+
+describe('equalPointWithLabel', () => {
+    test.each([
+        [p0_0, p0_0, true],
+        [p10_10, p10_10, true],
+        [p2_3, p1_10, false],
+        [p0_0, p1_0, false],
+        [pNull, pUndefined, true],
+        // equalPointWithLabel checks both position AND label
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1, label: 'A' }, true],
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1, label: 'B' }, false],
+        [{ x: 1, y: 1, label: 'A' }, { x: 1, y: 1 }, false],
+        [{ x: 1, y: 1 }, { x: 1, y: 1, label: 'A' }, false],
+        [{ x: 1, y: 1 }, { x: 1, y: 1 }, true],
+        // wrong position, label irrelevant
+        [{ x: 1, y: 1, label: 'A' }, { x: 2, y: 2, label: 'A' }, false],
+    ])('%j, %j => %s', (pointA, pointB, expected) => {
+        const result = equalPointWithLabel(pointA, pointB);
 
         expect(result).toEqual(expected);
     });

@@ -1,15 +1,15 @@
 {
   "name": "@pie-element/explicit-constructed-response-controller",
   "private": true,
-  "version": "8.0.0",
+  "version": "8.1.0",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pie-lib/controller-utils": "2.0.0",
-    "@pie-lib/translator": "4.0.0",
+    "@pie-lib/controller-utils": "2.0.2",
+    "@pie-lib/translator": "4.0.2",
     "debug": "^4.1.1",
     "he": "^1.2.0",
     "lodash-es": "^4.17.23",

@@ -7,7 +7,17 @@ import {
 } from '@pie-lib/graphing-utils';
 
 export const equalPoint = (A, B) => {
+  A = { ...A };
+  B = { ...B };
+
+  return isEqual(A.x, B.x) && isEqual(A.y, B.y);
+};
+
+export const equalPointWithLabel = (A, B) => {
   // x1 = x2 & y1 = y2
+  // A point is only correct if both its position AND its label match.
+  // Labels are not scored independently; a point in the correct position
+  // with the wrong label is considered incorrect as a whole.
   let equalLabel = true;
 
   A = { ...A };
@@ -17,7 +27,7 @@ export const equalPoint = (A, B) => {
     equalLabel = isEqual(A.label, B.label);
   }
 
-  return isEqual(A.x, B.x) && isEqual(A.y, B.y);
+  return isEqual(A.x, B.x) && isEqual(A.y, B.y) && equalLabel;
 };
 
 export const equalSegment = (segment1, segment2) => {

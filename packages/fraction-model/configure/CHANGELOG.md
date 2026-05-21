@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-configure@5.1.0-next.1...@pie-element/fraction-model-configure@5.1.0) (2026-05-21)
+
+### Bug Fixes
+
+- bump pie-libs PIE-434, PIE-437, PIE-452, PIE-510, PIE-451 ([f0764a8](https://github.com/pie-framework/pie-elements/commit/f0764a861ef328fd7c35bfefa5a274b0c6d2d77b))
+- bump shared modules and libs PIE-522, PIE-451, PIE-511, PIE-561, PIE-562, PIE-563 ([5cfc2e9](https://github.com/pie-framework/pie-elements/commit/5cfc2e9f7d6c1a485538fd674f8602dd92018c50))
+
+# [5.1.0-next.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-configure@5.1.0-next.0...@pie-element/fraction-model-configure@5.1.0-next.1) (2026-05-06)
+
+### Bug Fixes
+
+- bump libs and shared modules PIE-440, PIE-436, PIE-439, PIE-519, PIE-216 ([932fc12](https://github.com/pie-framework/pie-elements/commit/932fc12557ba56a737cee005be898d54d5e590ef))
+
+## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-configure@5.0.0...@pie-element/fraction-model-configure@5.0.1) (2026-04-28)
+
+**Note:** Version bump only for package @pie-element/fraction-model-configure
+
 # [4.2.0-next.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-configure@4.2.0-next.9...@pie-element/fraction-model-configure@4.2.0-next.10) (2026-04-27)
 
 ### Features

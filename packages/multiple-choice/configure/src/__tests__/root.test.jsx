@@ -127,7 +127,6 @@ describe('Main', () => {
         instance.onRemoveChoice(0);
 
         expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
           choices: initialModel.choices.slice(1),
         });
       });
@@ -165,7 +164,6 @@ describe('Main', () => {
         instance.onAddChoice();
 
         expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
           choices: [
             ...initialModel.choices,
             {
@@ -203,7 +201,6 @@ describe('Main', () => {
           newChoices[1].correct = true;
 
           expect(onModelChanged).toBeCalledWith({
-            ...initialModel,
             choices: newChoices,
           });
         });
@@ -227,7 +224,6 @@ describe('Main', () => {
           instance.onChoiceChanged(1, choice);
 
           expect(onModelChanged).toBeCalledWith({
-            ...newModel,
             choices: [
               {
                 correct: false,
@@ -259,7 +255,6 @@ describe('Main', () => {
         instance.onPromptChanged('New Prompt');
 
         expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
           prompt: 'New Prompt',
         });
       });
@@ -271,7 +266,6 @@ describe('Main', () => {
         instance.onTeacherInstructionsChanged('New Teacher Instructions');
 
         expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
           teacherInstructions: 'New Teacher Instructions',
         });
       });
@@ -296,7 +290,6 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith(
           {
-            ...initialModel,
             choiceMode: 'radio',
             choices: expectedChoices,
           },

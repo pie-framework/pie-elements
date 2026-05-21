@@ -4,7 +4,7 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import classNames from 'classnames';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt, transformDataHeadings } from '@pie-lib/render-ui';
 import Translator from '@pie-lib/translator';
 
 import Choice from './choice';
@@ -51,9 +51,6 @@ const StyledFieldset = styled('fieldset')({
   padding: '0.01em 0 0 0',
   margin: '0px',
   minWidth: '0px',
-  '&:focus': {
-    outline: 'none',
-  },
 });
 
 const SrOnly = styled('h3')({
@@ -107,6 +104,8 @@ export class MultipleChoice extends React.Component {
       pauseImage: PropTypes.string,
     },
     options: PropTypes.object,
+    baseHeadingLevel: PropTypes.number,
+    includeSrHeading: PropTypes.bool,
   };
 
   constructor(props) {
@@ -118,7 +117,12 @@ export class MultipleChoice extends React.Component {
     };
 
     this.onToggle = this.onToggle.bind(this);
-    this.firstInputRef = React.createRef();
+
+    // Unique radio `name` attribute per instance, so separate MultipleChoice
+    // instances (e.g. Part A and Part B inside EBSR, or two EBSRs on the same
+    // page) are always treated as independent radio groups by the browser,
+    // regardless of any label-related model settings or bundle deduplication.
+    this.groupName = `mc-group-${Math.random().toString(36).slice(2, 10)}`;
   }
 
   isSelected(value) {
@@ -233,34 +237,22 @@ export class MultipleChoice extends React.Component {
 
   // renderHeading function was added for accessibility.
   renderHeading() {
-    const { mode, choiceMode } = this.props;
+    const { mode, choiceMode, includeSrHeading, baseHeadingLevel, partLabel } = this.props;
 
-    if (mode !== 'gather') {
+    // When a part label is present the item is an EBSR part — the SR heading
+    // is provided by the EBSR element, not here.
+    const shouldRenderSrHeading = !partLabel && includeSrHeading !== false;
+
+    if (!shouldRenderSrHeading || mode !== 'gather') {
       return null;
     }
 
-    return choiceMode === 'radio' ? (
-      <SrOnly>Multiple Choice Question</SrOnly>
-    ) : (
-      <SrOnly>Multiple Select Question</SrOnly>
-    );
+    const clampedLevel = baseHeadingLevel ? Math.min(6, baseHeadingLevel) : 2;
+    const HeadingTag = SrOnly.withComponent(`h${clampedLevel}`);
+    const label = choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Select Question';
+
+    return <HeadingTag>{label}</HeadingTag>;
   }
-
-  handleGroupFocus = (e) => {
-    const fieldset = e.currentTarget;
-    const activeEl = document.activeElement;
-
-    if (fieldset.contains(activeEl) && activeEl !== fieldset) {
-      return;
-    }
-
-    // Only focus the first input if user is tabbing forward
-    if (!e.relatedTarget || fieldset.compareDocumentPosition(e.relatedTarget) & Node.DOCUMENT_POSITION_PRECEDING) {
-      if (this.firstInputRef?.current) {
-        this.firstInputRef.current.focus();
-      }
-    }
-  };
 
   render() {
     const {
@@ -284,12 +276,25 @@ export class MultipleChoice extends React.Component {
       session,
       customAudioButton,
       options,
+      baseHeadingLevel,
     } = this.props;
     const { showCorrect, maxSelectionsErrorState } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
     const selections = (session.value && session.value.length) || 0;
+
+    // Heading levels are optional and only applied when baseHeadingLevel is provided.
+    const getContentHeadingLevel = () => {
+      if (!baseHeadingLevel) return undefined;
+      // SR heading (rendered or external) sits at baseHeadingLevel.
+      // Content is always one below that; part label (EBSR) sits between them.
+      let offset = 1; // content default: baseHeadingLevel + 1
+      if (partLabel) offset += 1; // part label at base + 1, content pushed to base + 2
+      return Math.min(6, baseHeadingLevel + offset);
+    };
+    const contentHeadingLevel = getContentHeadingLevel();
+    const transformPrompt = (html) => (html && contentHeadingLevel) ? transformDataHeadings(html, contentHeadingLevel) : html;
 
     const teacherInstructionsDiv = (
       <PreviewPrompt
@@ -326,7 +331,7 @@ export class MultipleChoice extends React.Component {
 
     return (
       <MainContainer id={'main-container'} className={classNames(className, 'multiple-choice')}>
-        {partLabel && <PartLabel>{partLabel}</PartLabel>}
+        {partLabel && <PartLabel as={baseHeadingLevel ? `h${Math.min(6, baseHeadingLevel + 1)}` : 'h2'}>{partLabel}</PartLabel>}
 
         {this.renderHeading()}
 
@@ -347,15 +352,11 @@ export class MultipleChoice extends React.Component {
           </TeacherInstructions>
         )}
 
-        <StyledFieldset
-          tabIndex={0}
-          onFocus={this.handleGroupFocus}
-          role={choiceMode === 'radio' ? 'radiogroup' : 'group'}
-        >
+        <StyledFieldset role={choiceMode === 'radio' ? 'radiogroup' : 'group'}>
           <PreviewPrompt
             className="prompt"
             defaultClassName="prompt"
-            prompt={prompt}
+            prompt={transformPrompt(prompt)}
             tagName={'legend'}
             autoplayAudioEnabled={autoplayAudioEnabled}
             customAudioButton={customAudioButton}
@@ -373,7 +374,6 @@ export class MultipleChoice extends React.Component {
           <LayoutComponent style={columnsStyle}>
             {choices.map((choice, index) => (
               <Choice
-                autoFocusRef={index === 0 ? this.firstInputRef : null}
                 choicesLayout={this.props.choicesLayout}
                 selectedAnswerBackgroundColor={this.props.selectedAnswerBackgroundColor}
                 selectedAnswerStrokeColor={this.props.selectedAnswerStrokeColor}
@@ -390,7 +390,7 @@ export class MultipleChoice extends React.Component {
                 isEvaluateMode={isEvaluateMode}
                 choiceMode={choiceMode}
                 disabled={disabled}
-                tagName={partLabel ? `group-${partLabel}` : 'group'}
+                tagName={this.groupName}
                 onChoiceChanged={this.handleChange}
                 hideTick={choice.hideTick}
                 checked={this.getChecked(choice)}
