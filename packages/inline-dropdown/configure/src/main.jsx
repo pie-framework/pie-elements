@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html-tip-tap';
+import EditableHtml, { ALL_PLUGINS, deleteInlineDropdownByIndex } from '@pie-lib/editable-html-tip-tap';
 import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { color } from '@pie-lib/render-ui';
@@ -169,19 +169,42 @@ export class Main extends React.Component {
     this.onModelChange({ slateMarkup });
   };
 
-  onCheck = (callback) => {
+  onCheck = (confirmCallback, cancelCallback) => {
     this.setState({
       warning: {
         open: true,
         text: 'Response areas with under 2 options or with no correct answers will be discarded.',
         onClose: () => {
-          this.setState({ warning: { open: false } });
+          this.setState({ warning: { open: false } }, cancelCallback);
         },
         onConfirm: () => {
-          this.setState({ warning: { open: false } }, callback);
+          this.setState({ warning: { open: false } }, confirmCallback);
         },
       },
     });
+  };
+
+  validateResponseAreaClose = (node, pos, editor, closeToolbar, onCancel) => {
+    const { respAreaChoices } = this.state;
+    const index = node.attrs.index;
+    const currentChoices = respAreaChoices[index] || [];
+    const shouldWarn = currentChoices.length < 2 || !currentChoices.find((c) => c.correct);
+
+    if (!shouldWarn) {
+      closeToolbar();
+      return;
+    }
+
+    editor._holdInlineDropdownToolbarIndex = index;
+
+    this.onCheck(
+      () => {
+        delete editor._holdInlineDropdownToolbarIndex;
+        deleteInlineDropdownByIndex(editor, index, pos);
+        closeToolbar();
+      },
+      onCancel,
+    );
   };
 
   onChange = (markup) => {
@@ -207,33 +230,21 @@ export class Main extends React.Component {
     );
 
     const newRespAreaChoices = {};
-    let shouldWarn = false;
 
     allRespAreas.forEach((el, index) => {
-      const newChoices = existingRespAreaChoices[el.dataset.index] || [];
+      const choices = existingRespAreaChoices[el.dataset.index];
 
-      if (newChoices.length < 2 || !newChoices.find((c) => c.correct)) {
-        el.remove();
-        shouldWarn = true;
-      } else {
-        newRespAreaChoices[index] = existingRespAreaChoices[el.dataset.index] || [];
-        el.dataset.index = index;
+      if (choices) {
+        newRespAreaChoices[index] = choices;
       }
+
+      el.dataset.index = index;
     });
 
-    if (shouldWarn) {
-      this.onCheck(() =>
-        this.onModelChange({
-          choices: cloneDeep(newRespAreaChoices),
-          slateMarkup: domMarkup.innerHTML,
-        }),
-      );
-    } else {
-      this.onModelChange({
-        choices: cloneDeep(newRespAreaChoices),
-        slateMarkup: domMarkup.innerHTML,
-      });
-    }
+    this.onModelChange({
+      choices: cloneDeep(newRespAreaChoices),
+      slateMarkup: domMarkup.innerHTML,
+    });
   };
 
   onAddChoice = (index, label, choiceIndex) => {
@@ -520,21 +531,23 @@ export class Main extends React.Component {
                 duplicates: true,
               },
               maxResponseAreas: maxResponseAreas,
-              respAreaToolbar: (nodeInfo, editor, onToolbarDone) => {
+              onToolbarCloseRequest: ([node, pos], editor, closeToolbar, onCancel) => {
+                this.validateResponseAreaClose(node, pos, editor, closeToolbar, onCancel);
+              },
+              respAreaToolbar: (nodeInfo, editor, closeToolbar) => {
                 const [node, pos] = nodeInfo;
                 const { respAreaChoices } = this.state;
 
-                return props => (
+                return (props) => (
                   <InlineDropdownToolbar
                     {...props}
                     onAddChoice={this.onAddChoice}
-                    onCheck={this.onCheck}
                     onRemoveChoice={(index) => this.onRemoveChoice(node.attrs.index, index)}
                     onSelectChoice={(index) => this.onSelectChoice(node.attrs.index, index)}
                     node={node}
                     pos={pos}
                     editor={editor}
-                    onToolbarDone={onToolbarDone}
+                    onToolbarDone={closeToolbar}
                     choices={respAreaChoices[node.attrs.index]}
                     spellCheck={spellCheckEnabled}
                     uploadSoundSupport={uploadSoundSupport}
