@@ -120,10 +120,7 @@ describe('Main', () => {
 
         testInstance.onModelChange({ promptEnabled: false });
 
-        expect(onModelChanged).toBeCalledWith({
-          ...prepareModel(model),
-          promptEnabled: false,
-        });
+        expect(onModelChanged).toBeCalledWith({ promptEnabled: false });
       });
     });
 
@@ -139,10 +136,7 @@ describe('Main', () => {
 
         testInstance.onPromptChanged('This is the new prompt');
 
-        expect(onModelChanged).toBeCalledWith({
-          ...prepareModel(model),
-          prompt: 'This is the new prompt',
-        });
+        expect(onModelChanged).toBeCalledWith({ prompt: 'This is the new prompt' });
       });
     });
 
@@ -158,10 +152,7 @@ describe('Main', () => {
 
         testInstance.onRationaleChanged('New Rationale');
 
-        expect(onModelChanged).toBeCalledWith({
-          ...prepareModel(model),
-          rationale: 'New Rationale',
-        });
+        expect(onModelChanged).toBeCalledWith({ rationale: 'New Rationale' });
       });
     });
 
@@ -177,10 +168,7 @@ describe('Main', () => {
 
         testInstance.onTeacherInstructionsChanged('New Teacher Instructions');
 
-        expect(onModelChanged).toBeCalledWith({
-          ...prepareModel(model),
-          teacherInstructions: 'New Teacher Instructions',
-        });
+        expect(onModelChanged).toBeCalledWith({ teacherInstructions: 'New Teacher Instructions' });
       });
     });
 
@@ -199,10 +187,7 @@ describe('Main', () => {
 
         testInstance.onMarkupChanged(slateMarkup);
 
-        expect(onModelChanged).toBeCalledWith({
-          ...prepareModel(model),
-          slateMarkup,
-        });
+        expect(onModelChanged).toBeCalledWith({ slateMarkup });
       });
     });
 
@@ -232,9 +217,32 @@ describe('Main', () => {
 
         testInstance.onResponsesChanged(newChoices);
 
+        expect(onModelChanged).toBeCalledWith({ choices: newChoices });
+      });
+    });
+
+    describe('onLengthChanged', () => {
+      it('changes maxLengthPerChoice value', () => {
+        const testInstance = new Main({
+          onModelChanged,
+          onConfigurationChanged,
+          classes: {},
+          model: prepareModel(model),
+          configuration: sensibleDefaults.configuration,
+        });
+
+        testInstance.onLengthChanged([8, 8, 6]);
+
+        expect(onModelChanged).toBeCalledWith({ maxLengthPerChoice: [8, 8, 6] });
+      });
+    });
+
+    describe('componentDidMount', () => {
+      it('calls onModelChanged with maxLengthPerChoice only', () => {
+        renderMain();
+
         expect(onModelChanged).toBeCalledWith({
-          ...prepareModel(model),
-          choices: newChoices,
+          maxLengthPerChoice: expect.arrayContaining([6, 6, 4]),
         });
       });
     });
