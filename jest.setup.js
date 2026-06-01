@@ -75,6 +75,13 @@ if (!Element.prototype.scrollIntoView) {
   Element.prototype.scrollIntoView = jest.fn();
 }
 
+// Shim elementFromPoint / elementsFromPoint (not implemented in jsdom)
+// prosemirror-view (transitive of @tiptap/pm@3.20.0) calls these from posAtCoords
+if (typeof document !== 'undefined' && !document.elementFromPoint) {
+  document.elementFromPoint = () => null;
+  document.elementsFromPoint = () => [];
+}
+
 // Mock createRange (required for @testing-library/user-event)
 if (!document.createRange) {
   document.createRange = () => ({
