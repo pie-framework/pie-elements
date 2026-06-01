@@ -58,7 +58,7 @@ const TabStyled = styled(Tab)(({ theme }) => ({
   margin: `0 ${theme.spacing(1)}`,
   textTransform: 'none',
 
-  '& span': {
+  '.passage-label': {
     display: '-webkit-box',
     WebkitLineClamp: 2,
     WebkitBoxOrient: 'vertical',
@@ -71,7 +71,7 @@ const TabStyled = styled(Tab)(({ theme }) => ({
 
   '&.Mui-selected': {
     color: theme.palette.common.black,
-    span: {
+    '.passage-label': {
       opacity: 1,
     },
     '.passage-label-underline': {
@@ -83,6 +83,10 @@ const TabStyled = styled(Tab)(({ theme }) => ({
     '.passage-label-underline': {
       backgroundColor: '#D0E2F0',
     },
+  },
+
+  '& .MuiTouchRipple-root': {
+    opacity: 0.7,
   },
 }));
 
@@ -292,7 +296,10 @@ class StimulusTabs extends React.Component {
                     label={
                       <>
                         <Purpose purpose="passage-label">
-                          <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }}/>
+                          <span
+                            className="passage-label"
+                            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }}
+                          />
                         </Purpose>
                         <Underline className="passage-label-underline" />
                       </>

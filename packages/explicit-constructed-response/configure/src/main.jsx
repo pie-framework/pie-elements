@@ -107,39 +107,39 @@ export class Main extends React.Component {
       }
     });
 
-    onModelChanged({ ...this.props.model, maxLengthPerChoice });
+    onModelChanged({ maxLengthPerChoice });
   }
 
   onModelChange = (newVal) => {
-    this.props.onModelChanged({ ...this.props.model, ...newVal });
+    this.props.onModelChanged({ ...newVal });
   };
 
   onPromptChanged = (prompt) => {
-    this.props.onModelChanged({ ...this.props.model, prompt });
+    this.props.onModelChanged({ prompt });
   };
 
   onRationaleChanged = (rationale) => {
-    this.props.onModelChanged({ ...this.props.model, rationale });
+    this.props.onModelChanged({ rationale });
   };
 
   onTeacherInstructionsChanged = (teacherInstructions) => {
-    const { model, onModelChanged } = this.props;
+    const { onModelChanged } = this.props;
 
-    onModelChanged({ ...model, teacherInstructions });
+    onModelChanged({ teacherInstructions });
   };
 
   onMarkupChanged = (slateMarkup) => {
-    this.props.onModelChanged({ ...this.props.model, slateMarkup });
+    this.props.onModelChanged({ slateMarkup });
   };
 
   onResponsesChanged = (choices) => {
-    this.props.onModelChanged({ ...this.props.model, choices });
+    this.props.onModelChanged({ choices });
   };
 
   onLengthChanged = (maxLengthPerChoice) => {
-    const { model, onModelChanged } = this.props;
+    const { onModelChanged } = this.props;
 
-    onModelChanged({ ...model, maxLengthPerChoice });
+    onModelChanged({ maxLengthPerChoice });
   };
 
   onChangeResponse = (index, newVal) => {
@@ -168,7 +168,7 @@ export class Main extends React.Component {
       }
     }
 
-    onModelChanged({ ...model, choices, maxLengthPerChoice });
+    onModelChanged({ choices, maxLengthPerChoice });
   };
 
   onChange = (markup) => {
@@ -200,7 +200,6 @@ export class Main extends React.Component {
 
     const callback = () =>
       onModelChanged({
-        ...this.props.model,
         choices: allChoices,
         slateMarkup: domMarkup.innerHTML,
         maxLengthPerChoice: updatedMaxLengthPerChoice,
@@ -242,7 +241,7 @@ export class Main extends React.Component {
         }
       });
 
-      const callback = () => onModelChanged({ ...this.props.model, choices: newChoices });
+      const callback = () => onModelChanged({ choices: newChoices });
 
       this.setState({ cachedChoices: newCachedChoices }, callback);
     },
