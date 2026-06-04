@@ -8,7 +8,7 @@ import PossibleResponse from './possible-response';
 
 const BaseContainer = styled('div')(({ theme }) => ({
   backgroundColor: color.background(),
-  padding: theme.spacing(2),
+  margin: theme.spacing(2),
   display: 'flex',
   alignItems: 'center',
   width: 'fit-content',
