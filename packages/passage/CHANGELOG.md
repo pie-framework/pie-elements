@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.1.1...@pie-element/passage@7.1.2) (2026-06-04)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+- **passage:** change active focus style PIE-598 ([155dc22](https://github.com/pie-framework/pie-elements/commit/155dc2218e6c07d55f5c7e8d556fc05689a0da52))
+
 ## [7.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.1.0...@pie-element/passage@7.1.1) (2026-05-21)
 
 **Note:** Version bump only for package @pie-element/passage

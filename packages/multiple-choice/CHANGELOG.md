@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.2.1...@pie-element/multiple-choice@13.2.2) (2026-06-04)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+- **multiple-choice:** change keyboard focus indicator PIE-104 ([cbb6308](https://github.com/pie-framework/pie-elements/commit/cbb6308c41137e1054a0bcb3179fe1c8fbdd4188))
+
 ## [13.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.2.0...@pie-element/multiple-choice@13.2.1) (2026-05-21)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

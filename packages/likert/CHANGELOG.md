@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@4.1.1...@pie-element/likert@4.1.2) (2026-06-04)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+- dedupe @tiptap/\* and react-transition-group PIE-624 ([87f07f3](https://github.com/pie-framework/pie-elements/commit/87f07f31c38b0fe876f87229c48adc566c369bb9))
+
 ## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@4.1.0...@pie-element/likert@4.1.1) (2026-05-21)
 
 **Note:** Version bump only for package @pie-element/likert

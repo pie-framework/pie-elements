@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@10.1.1...@pie-element/explicit-constructed-response-configure@10.1.2) (2026-06-04)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+- called onModelChanged with only the change, to no override changes done fast [PIE-509][PIE-562][PIE-563] ([0b9ac0f](https://github.com/pie-framework/pie-elements/commit/0b9ac0f69efc3e5be28230a784fa6c7e5faf92fb))
+
 ## [10.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@10.1.0...@pie-element/explicit-constructed-response-configure@10.1.1) (2026-05-21)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-configure

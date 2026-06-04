@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@4.1.1...@pie-element/matrix@4.1.2) (2026-06-04)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+
 ## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@4.1.0...@pie-element/matrix@4.1.1) (2026-05-21)
 
 **Note:** Version bump only for package @pie-element/matrix

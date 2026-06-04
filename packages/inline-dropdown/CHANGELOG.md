@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@10.1.1...@pie-element/inline-dropdown@10.1.2) (2026-06-04)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+- **inline-dropdown:** run validation when a response area toolbar component is closed PIE-574 ([166f539](https://github.com/pie-framework/pie-elements/commit/166f539ad51fdd96effada1bd7d65d9d6cc5b713))
+
 ## [10.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@10.1.0...@pie-element/inline-dropdown@10.1.1) (2026-05-21)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown
