@@ -8,11 +8,7 @@ import RespAreaToolbar from '../inline-dropdown-toolbar';
 jest.mock('@pie-lib/editable-html-tip-tap', () => {
   return function MockEditableHtml(props) {
     return (
-      <div
-        data-testid="editable-html"
-        onBlur={props.onBlur}
-        onKeyDown={props.onKeyDown}
-      >
+      <div data-testid="editable-html" onBlur={props.onBlur} onKeyDown={props.onKeyDown}>
         <input
           placeholder={props.placeholder}
           onChange={(e) => props.onChange(e.target.value)}
@@ -205,21 +201,10 @@ describe('RespAreaToolbar', () => {
         }
       }
 
-      const { rerender } = render(
-        <TestWrapper
-          {...defaultProps}
-          editor={localEditor}
-        />
-      );
+      const { rerender } = render(<TestWrapper {...defaultProps} editor={localEditor} />);
 
       // Trigger an update by rerendering with new props
-      rerender(
-        <TestWrapper
-          {...defaultProps}
-          editor={localEditor}
-          choices={[...defaultProps.choices]}
-        />
-      );
+      rerender(<TestWrapper {...defaultProps} editor={localEditor} choices={[...defaultProps.choices]} />);
 
       expect(renderMath).toHaveBeenCalled();
     });
@@ -315,7 +300,6 @@ describe('RespAreaToolbar', () => {
         instance.onDone(markup);
 
         expect(localEditor.commands.updateAttributes).toHaveBeenCalledWith('inline_dropdown', { value: markup });
-        expect(localOnToolbarDone).toHaveBeenCalledWith(false);
       });
 
       it('should call onAddChoice when editing a choice', () => {
@@ -384,7 +368,7 @@ describe('RespAreaToolbar', () => {
         expect(localEditor.commands.updateAttributes).toHaveBeenCalledWith('inline_dropdown', { value: newValue });
       });
 
-      it('should call onToolbarDone and onSelectChoice', () => {
+      it('should call onSelectChoice without closing the toolbar', () => {
         const localEditor = {
           ...editor,
           commands: {
@@ -404,7 +388,7 @@ describe('RespAreaToolbar', () => {
 
         instance.onSelectChoice(newValue, index);
 
-        expect(localOnToolbarDone).toHaveBeenCalledWith(false);
+        expect(localOnToolbarDone).not.toHaveBeenCalled();
         expect(localOnSelectChoice).toHaveBeenCalledWith(index);
       });
 
@@ -452,7 +436,7 @@ describe('RespAreaToolbar', () => {
         instance.onRemoveChoice(value, index);
 
         expect(localEditor.commands.updateAttributes).toHaveBeenCalledWith('inline_dropdown', { value: null });
-        expect(localOnToolbarDone).toHaveBeenCalledWith(false);
+        expect(localOnToolbarDone).not.toHaveBeenCalled();
       });
 
       it('should call onRemoveChoice for non-selected choice', () => {
@@ -545,6 +529,15 @@ describe('RespAreaToolbar', () => {
         instance.onEditChoice(value, index);
 
         expect(instance.preventDone).toBe(true);
+      });
+
+      it('should set clickedInside so blur from opening edit does not commit', () => {
+        const instance = createInstance();
+
+        instance.clickedInside = false;
+        instance.onEditChoice('dog', 1);
+
+        expect(instance.clickedInside).toBe(true);
       });
 
       it('should save current edit before starting a new edit', () => {
@@ -690,97 +683,10 @@ describe('RespAreaToolbar', () => {
         instance.onBlur();
 
         expect(instance.clickedInside).toBe(false);
-        expect(onCheck).not.toHaveBeenCalled();
+        expect(onToolbarDone).not.toHaveBeenCalled();
       });
 
-      it('should call onCheck if no choices exist', () => {
-        const mockTr = { isDone: false, deleteSelection: jest.fn() };
-        const localEditor = {
-          ...editor,
-          state: {
-            ...editor.state,
-            tr: mockTr,
-          },
-        };
-        const localOnCheck = jest.fn();
-        const instance = createInstance({
-          choices: null,
-          editor: localEditor,
-          onCheck: localOnCheck,
-        });
-
-        instance.onBlur();
-
-        expect(localOnCheck).toHaveBeenCalled();
-      });
-
-      it('should call onCheck if less than 2 choices', () => {
-        const mockTr = { isDone: false, deleteSelection: jest.fn() };
-        const localEditor = {
-          ...editor,
-          state: {
-            ...editor.state,
-            tr: mockTr,
-          },
-        };
-        const localOnCheck = jest.fn();
-        const instance = createInstance({
-          choices: [{ label: 'cow', correct: true }],
-          editor: localEditor,
-          onCheck: localOnCheck,
-        });
-
-        instance.onBlur();
-
-        expect(localOnCheck).toHaveBeenCalled();
-      });
-
-      it('should call onCheck if no correct response', () => {
-        const mockTr = { isDone: false, deleteSelection: jest.fn() };
-        const localEditor = {
-          ...editor,
-          state: {
-            ...editor.state,
-            tr: mockTr,
-          },
-        };
-        const localOnCheck = jest.fn();
-        const instance = createInstance({
-          choices: [
-            { label: 'cow', correct: false },
-            { label: 'dog', correct: false },
-          ],
-          editor: localEditor,
-          onCheck: localOnCheck,
-        });
-
-        instance.onBlur();
-
-        expect(localOnCheck).toHaveBeenCalled();
-      });
-
-      it('should not call onCheck if valid choices exist', () => {
-        const mockTr = { isDone: false, deleteSelection: jest.fn() };
-        const localEditor = {
-          ...editor,
-          state: {
-            ...editor.state,
-            tr: mockTr,
-          },
-        };
-        const localOnCheck = jest.fn();
-        const instance = createInstance({
-          editor: localEditor,
-          onCheck: localOnCheck,
-        });
-        instance.clickedInside = false;
-
-        instance.onBlur();
-
-        expect(localOnCheck).not.toHaveBeenCalled();
-      });
-
-      it('should execute callback from onCheck', () => {
+      it('should commit pending choice on blur without closing the toolbar', () => {
         const mockTr = { isDone: false, deleteSelection: jest.fn() };
         const mockDispatch = jest.fn();
         const localEditor = {
@@ -794,21 +700,74 @@ describe('RespAreaToolbar', () => {
             dispatch: mockDispatch,
           },
         };
-        const localOnCheck = jest.fn();
         const localOnToolbarDone = jest.fn();
         const instance = createInstance({
           choices: null,
           editor: localEditor,
-          onCheck: localOnCheck,
           onToolbarDone: localOnToolbarDone,
         });
-        localOnCheck.mockImplementation((callback) => callback());
 
         instance.onBlur();
 
-        expect(mockTr.deleteSelection).toHaveBeenCalled();
         expect(mockDispatch).toHaveBeenCalled();
-        expect(localOnToolbarDone).toHaveBeenCalledWith(false);
+        expect(localOnToolbarDone).not.toHaveBeenCalled();
+      });
+
+      it('should save the choice being edited when blurring with no relatedTarget', () => {
+        const localOnAddChoice = jest.fn();
+        const localEditor = {
+          ...editor,
+          commands: {
+            updateAttributes: jest.fn(),
+            refreshResponseArea: jest.fn(),
+          },
+        };
+        const instance = createInstance({
+          editor: localEditor,
+          onAddChoice: localOnAddChoice,
+        });
+
+        instance.editorRef = { getHTML: () => '<div>updated label</div>' };
+        instance.state.editedChoiceIndex = 1;
+        instance.preventDone = true;
+
+        instance.onBlur();
+
+        expect(localOnAddChoice).toHaveBeenCalledWith('0', '<div>updated label</div>', 1);
+        expect(instance.state.editedChoiceIndex).toBe(-1);
+        expect(instance.preventDone).toBe(false);
+      });
+    });
+
+    describe('componentWillUnmount', () => {
+      it('should save the choice being edited when the toolbar unmounts', () => {
+        const localOnAddChoice = jest.fn();
+        const localEditor = {
+          ...editor,
+          commands: {
+            updateAttributes: jest.fn(),
+            refreshResponseArea: jest.fn(),
+          },
+        };
+        const instance = createInstance({ onAddChoice: localOnAddChoice, editor: localEditor });
+
+        instance.editorRef = { getHTML: () => '<div>saved on close</div>' };
+        instance.state.editedChoiceIndex = 0;
+
+        instance.componentWillUnmount();
+
+        expect(localOnAddChoice).toHaveBeenCalledWith('0', '<div>saved on close</div>', 0);
+        expect(instance.state.editedChoiceIndex).toBe(-1);
+      });
+
+      it('should not call onAddChoice when not editing a choice', () => {
+        const localOnAddChoice = jest.fn();
+        const instance = createInstance({ onAddChoice: localOnAddChoice });
+
+        instance.state.editedChoiceIndex = -1;
+        instance.componentWillUnmount();
+
+        expect(localOnAddChoice).not.toHaveBeenCalled();
       });
     });
 
@@ -951,7 +910,8 @@ describe('RespAreaToolbar', () => {
 
       // Mock editor with HTML content
       instance.editorRef = {
-        getHTML: jest.fn()
+        getHTML: jest
+          .fn()
           .mockReturnValueOnce('<div>modified dog</div>')
           .mockReturnValueOnce('<div>modified cat</div>'),
       };
@@ -1000,8 +960,9 @@ describe('RespAreaToolbar', () => {
       instance.onEditChoice('dog', 1);
 
       // Should have auto-saved and updated attributes since it was the correct choice
-      expect(localEditor.commands.updateAttributes).toHaveBeenCalledWith('inline_dropdown', { value: '<div>modified cow</div>' });
-      expect(localOnToolbarDone).toHaveBeenCalledWith(false);
+      expect(localEditor.commands.updateAttributes).toHaveBeenCalledWith('inline_dropdown', {
+        value: '<div>modified cow</div>',
+      });
       expect(instance.state.editedChoiceIndex).toBe(1);
     });
   });
@@ -1072,23 +1033,29 @@ describe('RespAreaToolbar', () => {
 
     it('should handle empty choices array', () => {
       const mockTr = { isDone: false, deleteSelection: jest.fn() };
+      const mockDispatch = jest.fn();
       const localEditor = {
         ...editor,
         state: {
           ...editor.state,
           tr: mockTr,
         },
+        view: {
+          ...editor.view,
+          dispatch: mockDispatch,
+        },
       };
-      const localOnCheck = jest.fn();
+      const localOnToolbarDone = jest.fn();
       const instance = createInstance({
         choices: [],
         editor: localEditor,
-        onCheck: localOnCheck,
+        onToolbarDone: localOnToolbarDone,
       });
 
       instance.onBlur();
 
-      expect(localOnCheck).toHaveBeenCalled();
+      expect(mockDispatch).toHaveBeenCalled();
+      expect(localOnToolbarDone).not.toHaveBeenCalled();
     });
   });
 
@@ -1250,9 +1217,7 @@ describe('MenuItem Integration Tests', () => {
     });
 
     it('should render choice labels as HTML', () => {
-      const choices = [
-        { label: '<p><strong>Bold choice</strong></p>', correct: true },
-      ];
+      const choices = [{ label: '<p><strong>Bold choice</strong></p>', correct: true }];
 
       const instance = createToolbar(choices);
       const rendered = render(<>{instance.render()}</>);
@@ -1363,7 +1328,7 @@ describe('MenuItem Integration Tests', () => {
       fireEvent.click(removeButtons[0]); // Remove 'cow' which is the selected value
 
       expect(editor.commands.updateAttributes).toHaveBeenCalledWith('inline_dropdown', { value: null });
-      expect(onToolbarDone).toHaveBeenCalledWith(false);
+      expect(onToolbarDone).not.toHaveBeenCalled();
     });
   });
 
@@ -1386,9 +1351,7 @@ describe('MenuItem Integration Tests', () => {
     });
 
     it('should not trigger choice selection when clicking action buttons', () => {
-      const choices = [
-        { label: 'cow', correct: true },
-      ];
+      const choices = [{ label: 'cow', correct: true }];
 
       const instance = createToolbar(choices);
       const rendered = render(<>{instance.render()}</>);
@@ -1417,9 +1380,7 @@ describe('MenuItem Integration Tests', () => {
     });
 
     it('should show check icon for correct choice', () => {
-      const choices = [
-        { label: 'correct answer', correct: true },
-      ];
+      const choices = [{ label: 'correct answer', correct: true }];
 
       const instance = createToolbar(choices);
       const rendered = render(<>{instance.render()}</>);
@@ -1432,9 +1393,7 @@ describe('MenuItem Integration Tests', () => {
 
   describe('MenuItem Edge Cases', () => {
     it('should handle empty label gracefully', () => {
-      const choices = [
-        { label: '', correct: false },
-      ];
+      const choices = [{ label: '', correct: false }];
 
       const instance = createToolbar(choices);
       const rendered = render(<>{instance.render()}</>);
@@ -1444,9 +1403,7 @@ describe('MenuItem Integration Tests', () => {
     });
 
     it('should handle HTML entities in labels', () => {
-      const choices = [
-        { label: '&lt;p&gt;escaped&lt;/p&gt;', correct: false },
-      ];
+      const choices = [{ label: '&lt;p&gt;escaped&lt;/p&gt;', correct: false }];
 
       const instance = createToolbar(choices);
       const rendered = render(<>{instance.render()}</>);
@@ -1456,9 +1413,7 @@ describe('MenuItem Integration Tests', () => {
 
     it('should handle very long labels', () => {
       const longLabel = '<p>' + 'a'.repeat(500) + '</p>';
-      const choices = [
-        { label: longLabel, correct: false },
-      ];
+      const choices = [{ label: longLabel, correct: false }];
 
       const instance = createToolbar(choices);
       const rendered = render(<>{instance.render()}</>);
@@ -1467,9 +1422,7 @@ describe('MenuItem Integration Tests', () => {
     });
 
     it('should handle special characters in labels', () => {
-      const choices = [
-        { label: '<p>Math: x² + y² = z²</p>', correct: false },
-      ];
+      const choices = [{ label: '<p>Math: x² + y² = z²</p>', correct: false }];
 
       const instance = createToolbar(choices);
       const rendered = render(<>{instance.render()}</>);

@@ -98,12 +98,12 @@ const getInputStyles = (correctness) => {
       pointerEvents: 'initial !important',
     },
     focusVisibleUnchecked: {
-      outline: `2px solid ${color.focusUncheckedBorder()}`,
-      backgroundColor: color.focusUnchecked(),
+      outline: `2px solid ${color.keyBoardFocusIndicator()}`,
+      backgroundColor: 'transparent',
     },
     focusVisibleChecked: {
-      outline: `2px solid ${color.focusCheckedBorder()}`,
-      backgroundColor: color.focusChecked(),
+      outline: `2px solid ${color.keyBoardFocusIndicator()}`,
+      backgroundColor: 'transparent',
     },
   };
 };
@@ -158,6 +158,7 @@ const StyledRadioBase = styled(Radio, {
       '&.Mui-disabled': correctness ? {} : styles[key('disabled')],
     },
     '&.Mui-focusVisible': {
+      '& input': { outline: 0 },
       '&:not(.Mui-checked)': styles.focusVisibleUnchecked,
       '&.Mui-checked': styles.focusVisibleChecked,
     },

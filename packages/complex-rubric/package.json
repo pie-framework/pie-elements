@@ -13,11 +13,11 @@
     "@pie-element/multi-trait-rubric": "^8.1.1",
     "@pie-element/rubric": "^8.1.1",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/rubric": "2.0.4",
-    "classnames": "^2.2.5",
+    "@pie-lib/rubric": "2.0.6",
+    "classnames": "^2.2.6",
     "debug": "^4.1.1",
     "lodash-es": "^4.17.23",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.8.1"
   },
   "gitHead": "a15dd0ea81626703eb753bc0ab4c81bb2a96d58d",
   "scripts": {

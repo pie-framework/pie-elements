@@ -1,10 +1,20 @@
 import { render } from '@testing-library/react';
 import React from 'react';
+import { deleteInlineDropdownByIndex } from '@pie-lib/editable-html-tip-tap';
 
 import { Main } from '../main';
 import { cloneDeep } from 'lodash-es';
 import sensibleDefaults from '../defaults';
 import { createSlateMarkup, processMarkup } from '../markupUtils';
+
+jest.mock('@pie-lib/editable-html-tip-tap', () => {
+  const actual = jest.requireActual('@pie-lib/editable-html-tip-tap');
+
+  return {
+    ...actual,
+    deleteInlineDropdownByIndex: jest.fn(),
+  };
+});
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
@@ -144,8 +154,12 @@ describe('Main', () => {
     const instance = new Main(defaults);
 
     // Mock setState to execute updates immediately for testing
-    instance.setState = jest.fn((state) => {
+    instance.setState = jest.fn((state, callback) => {
       Object.assign(instance.state, typeof state === 'function' ? state(instance.state) : state);
+
+      if (callback) {
+        callback();
+      }
     });
 
     return instance;
@@ -217,7 +231,8 @@ describe('Main', () => {
     });
 
     describe('onChange', () => {
-      it('Removing choices (keeping only 1 choice): slateMarkup and choices are updated', () => {
+      it('Removing choices (keeping only 1 choice): syncs markup and choices without discarding', () => {
+        const oldModel = w.props.model;
         const newChoices = {
           ...model.choices,
           0: model.choices['0'].slice(0, 1),
@@ -227,11 +242,15 @@ describe('Main', () => {
         w.setState({ respAreaChoices: newChoices });
         w.onChange(newMarkup);
 
-        // TODO do we have to test what happens if clicking on OK/Cancel? How?
-        expect(onModelChanged).not.toBeCalled();
+        expect(onModelChanged).toBeCalledWith({
+          ...oldModel,
+          slateMarkup: newMarkup,
+          choices: newChoices,
+        });
       });
 
-      it('No correct choice selected: slateMarkup and choices are updated', () => {
+      it('No correct choice selected: syncs markup and choices without discarding', () => {
+        const oldModel = w.props.model;
         const newChoices = {
           ...model.choices,
           0: [
@@ -257,8 +276,11 @@ describe('Main', () => {
         w.setState({ respAreaChoices: newChoices });
         w.onChange(newMarkup);
 
-        // TODO do we have to test what happens if clicking on OK/Cancel? How?
-        expect(onModelChanged).not.toBeCalled();
+        expect(onModelChanged).toBeCalledWith({
+          ...oldModel,
+          slateMarkup: newMarkup,
+          choices: newChoices,
+        });
       });
 
       it('New choice: slateMarkup and choices are updated', () => {
@@ -335,6 +357,70 @@ describe('Main', () => {
           slateMarkup: newMarkup,
           choices: newChoices,
         });
+      });
+    });
+
+    describe('validateResponseAreaClose', () => {
+      const node = { attrs: { index: 0 } };
+      const closeToolbar = jest.fn();
+      const onCancel = jest.fn();
+
+      beforeEach(() => {
+        w.setState({ respAreaChoices: cloneDeep(model.choices) });
+        closeToolbar.mockClear();
+        onCancel.mockClear();
+        deleteInlineDropdownByIndex.mockClear();
+      });
+
+      it('closes toolbar when choices are valid', () => {
+        w.validateResponseAreaClose(node, 5, {}, closeToolbar, onCancel);
+
+        expect(closeToolbar).toHaveBeenCalled();
+        expect(w.state.warning.open).toBe(false);
+        expect(deleteInlineDropdownByIndex).not.toHaveBeenCalled();
+      });
+
+      it('shows warning when choices are invalid', () => {
+        w.setState({
+          respAreaChoices: {
+            0: [{ label: 'only', value: '0', correct: false }],
+          },
+        });
+
+        w.validateResponseAreaClose(node, 5, {}, closeToolbar, onCancel);
+
+        expect(closeToolbar).not.toHaveBeenCalled();
+        expect(w.state.warning.open).toBe(true);
+      });
+
+      it('deletes response area and closes toolbar on confirm', () => {
+        const editor = {};
+
+        w.setState({
+          respAreaChoices: {
+            0: [{ label: 'only', value: '0', correct: false }],
+          },
+        });
+
+        w.validateResponseAreaClose(node, 5, editor, closeToolbar, onCancel);
+        w.state.warning.onConfirm();
+
+        expect(deleteInlineDropdownByIndex).toHaveBeenCalledWith(editor, 0, 5);
+        expect(closeToolbar).toHaveBeenCalled();
+      });
+
+      it('calls pie-lib onCancel when dialog is dismissed', () => {
+        w.setState({
+          respAreaChoices: {
+            0: [{ label: 'only', value: '0', correct: false }],
+          },
+        });
+
+        w.validateResponseAreaClose(node, 5, {}, closeToolbar, onCancel);
+        w.state.warning.onClose();
+
+        expect(onCancel).toHaveBeenCalled();
+        expect(deleteInlineDropdownByIndex).not.toHaveBeenCalled();
       });
     });
 
