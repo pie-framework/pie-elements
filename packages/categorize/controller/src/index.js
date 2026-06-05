@@ -6,7 +6,7 @@ import Translator from '@pie-lib/translator';
 
 const { translator } = Translator;
 import defaults from './defaults';
-import { getCompleteResponseDetails, isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
+import { getCompleteResponseDetails, isAlternateDuplicated, isCorrectResponseDuplicated, multiplePlacements } from './utils';
 
 // eslint-disable-next-line no-console
 
@@ -153,6 +153,18 @@ export const model = async (question, session, env, updateSession) => {
   if (!lockChoiceOrder) {
     choices = await getShuffledChoices(choices, session, updateSession, 'id');
   }
+
+  choices = (choices || []).map((c) => {
+    let categoryCount;
+    if (normalizedQuestion.allowMultiplePlacementsEnabled === multiplePlacements.enabled) {
+      categoryCount = 0;
+    } else if (normalizedQuestion.allowMultiplePlacementsEnabled === multiplePlacements.disabled) {
+      categoryCount = 1;
+    } else {
+      categoryCount = c.categoryCount || 0;
+    }
+    return { ...c, categoryCount };
+  });
 
   if (!note) {
     note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: language });
