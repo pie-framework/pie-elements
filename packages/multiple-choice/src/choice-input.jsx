@@ -156,11 +156,12 @@ const StyledRadioBase = styled(Radio, {
       ...styles[key('root')],
       '&.Mui-checked': styles[key('checked')],
       '&.Mui-disabled': correctness ? {} : styles[key('disabled')],
+      '&.Mui-focusVisible:not(.Mui-checked)': styles.focusVisibleUnchecked,
+      '&.Mui-focusVisible.Mui-checked': styles.focusVisibleChecked,
     },
     '&.Mui-focusVisible': {
       '& input': { outline: 0 },
-      '&:not(.Mui-checked)': styles.focusVisibleUnchecked,
-      '&.Mui-checked': styles.focusVisibleChecked,
+      '& .MuiTouchRipple-root': { display: 'none' },
     },
   };
 });
