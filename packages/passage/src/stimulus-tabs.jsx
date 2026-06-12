@@ -82,13 +82,13 @@ const TabStyled = styled(Tab)(({ theme }) => ({
       opacity: 1,
     },
     '.passage-label-underline': {
-      backgroundColor: '#146EB3',
+      backgroundColor: color.tertiary(),
     },
   },
 
   '&:hover': {
     '.passage-label-underline': {
-      backgroundColor: '#D0E2F0',
+      backgroundColor: color.tertiaryLight(),
     },
   },
 
@@ -296,10 +296,11 @@ class StimulusTabs extends React.Component {
                   color: color.text(),
                   fontFamily: 'Roboto, sans-serif',
                   '& .MuiTabs-list': {
+                    backgroundColor: color.white(),
                     borderBottom: '1px solid #D9DADA',
                   },
                   '& .MuiTabs-indicator': {
-                    backgroundColor: '#ffffff',
+                    backgroundColor: color.white(),
                     marginBottom: '-1px',
                   },
                 }}
