@@ -12,7 +12,7 @@
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/math-rendering": "5.0.2",
-    "@pie-lib/render-ui": "6.1.1",
+    "@pie-lib/render-ui": "6.1.2",
     "clsx": "^1.1.1",
     "prop-types": "^15.8.1",
     "react": "18.3.1",
