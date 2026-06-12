@@ -25,7 +25,7 @@
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
     "@pie-lib/math-rendering": "5.0.2",
-    "@pie-lib/render-ui": "6.1.1",
+    "@pie-lib/render-ui": "6.1.2",
     "prop-types": "^15.8.1"
   },
   "author": "pie framework developers",
