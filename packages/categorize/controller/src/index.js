@@ -247,7 +247,7 @@ export const getLogTrace = (model, session, env) => {
   if (draggedChoices > 0) {
     traceLog.push(`Student placed ${draggedChoices} choice(s) into categories.`);
         
-    (categories || []).forEach((category, categoryIndex) => {
+    (categories || []).forEach((category) => {
       const categoryId = category.id;
       const builtCategory = builtCategories.find(c => c.id === categoryId);
       const studentChoices = builtCategory ? builtCategory.choices || [] : [];
@@ -280,11 +280,11 @@ export const getLogTrace = (model, session, env) => {
   }
 
   if (hasAlternates) {
-    traceLog.push(`Score calculated using all-or-nothing scoring (alternate responses disable partial scoring).`);
-    traceLog.push(`Student must get all categories completely correct to receive full credit.`);
+    traceLog.push('Score calculated using all-or-nothing scoring (alternate responses disable partial scoring).');
+    traceLog.push('Student must get all categories completely correct to receive full credit.');
   } else if (partialScoringEnabled) {
-    traceLog.push(`Score calculated using partial scoring.`);
-    traceLog.push(`Student receives credit for each correct placement, with deductions for incorrect placements beyond required amount.`);
+    traceLog.push('Score calculated using partial scoring.');
+    traceLog.push('Student receives credit for each correct placement, with deductions for incorrect placements beyond required amount.');
     
     if (draggedChoices > 0) {
       const totalCorrect = builtCategories.reduce((sum, cat) => 
@@ -301,8 +301,8 @@ export const getLogTrace = (model, session, env) => {
       }
     }
   } else {
-    traceLog.push(`Score calculated using all-or-nothing scoring.`);
-    traceLog.push(`Student must get all categories completely correct to receive full credit.`);
+    traceLog.push('Score calculated using all-or-nothing scoring.');
+    traceLog.push('Student must get all categories completely correct to receive full credit.');
   }
 
   const score = getTotalScore(model, session, env);
