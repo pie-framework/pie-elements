@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@13.1.2...@pie-element/categorize@13.1.3) (2026-06-12)
+
+### Bug Fixes
+
+- bump shared modules and libsPIE-603, PIE-604, PIE-663, PIE-662, PIE-678 ([e61c7a7](https://github.com/pie-framework/pie-elements/commit/e61c7a7d23744586337dfbb17a18ebfc656c202f))
+- **categorize:** fix lint warnings PIE-433 ([b3a61de](https://github.com/pie-framework/pie-elements/commit/b3a61de893e7aa0b3bfc119ca17a6acc769a042a))
+- **categorize:** normalize categoryCount based on allowMultiplePlacements PIE-433 ([60f8473](https://github.com/pie-framework/pie-elements/commit/60f847381b769fa3cc4add100cce821b2aa6338c))
+
 ## [13.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@13.1.1...@pie-element/categorize@13.1.2) (2026-06-04)
 
 ### Bug Fixes

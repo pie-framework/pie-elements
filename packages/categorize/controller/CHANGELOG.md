@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@10.1.1...@pie-element/categorize-controller@10.1.2) (2026-06-12)
+
+### Bug Fixes
+
+- **categorize:** fix lint warnings PIE-433 ([b3a61de](https://github.com/pie-framework/pie-elements/commit/b3a61de893e7aa0b3bfc119ca17a6acc769a042a))
+- **categorize:** normalize categoryCount based on allowMultiplePlacements PIE-433 ([60f8473](https://github.com/pie-framework/pie-elements/commit/60f847381b769fa3cc4add100cce821b2aa6338c))
+
 ## [10.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@10.1.0...@pie-element/categorize-controller@10.1.1) (2026-05-21)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

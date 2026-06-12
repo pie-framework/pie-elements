@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.2.2...@pie-element/multiple-choice@13.3.0) (2026-06-12)
+
+### Bug Fixes
+
+- bump shared modules and libsPIE-603, PIE-604, PIE-663, PIE-662, PIE-678 ([e61c7a7](https://github.com/pie-framework/pie-elements/commit/e61c7a7d23744586337dfbb17a18ebfc656c202f))
+- surpress ripple anim that generated visible background PIE-104 ([5c653ca](https://github.com/pie-framework/pie-elements/commit/5c653ca9a2967b1283b59e7b8fdb387ac76b6fa2))
+
+### Features
+
+- **multiple-choice:** hover styles for checkboxes and radios PIE-558 ([c5c38e8](https://github.com/pie-framework/pie-elements/commit/c5c38e8377e6ec919d100c5457531233ca119fbd))
+
 ## [13.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.2.1...@pie-element/multiple-choice@13.2.2) (2026-06-04)
 
 ### Bug Fixes
