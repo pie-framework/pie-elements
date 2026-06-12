@@ -5,6 +5,13 @@ import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
 import { Collapsible, color, PreviewPrompt, Purpose, UiLayout, transformDataHeadings } from '@pie-lib/render-ui';
 
+// Must match the breakpoint Quiz Engine passes to the PIE section player for
+// switching from the side-by-side passage/question layout to the tabbed layout.
+// Below (and at) this width the passage tabs scroll with the passage content
+// instead of being locked to the top of the panel, so that they do not lock up
+// space needed for the passage text (WCAG 1.4.10 Reflow, 400% zoom / 320px).
+const STICKY_TABS_BREAKPOINT = 840;
+
 const PassagesContainer = styled('div')({
   flexGrow: 1,
   backgroundColor: color.background(),
@@ -75,13 +82,13 @@ const TabStyled = styled(Tab)(({ theme }) => ({
       opacity: 1,
     },
     '.passage-label-underline': {
-      backgroundColor: '#146EB3',
+      backgroundColor: color.tertiary(),
     },
   },
 
   '&:hover': {
     '.passage-label-underline': {
-      backgroundColor: '#D0E2F0',
+      backgroundColor: color.tertiaryLight(),
     },
   },
 
@@ -273,16 +280,27 @@ class StimulusTabs extends React.Component {
             <>
               <Tabs
                 sx={{
-                  position: 'sticky',
-                  top: 0,
+                  // Below the breakpoint (e.g. WCAG 400% zoom, ~320px viewport)
+                  // the tabs are in normal flow and scroll with the passage text,
+                  // so they don't lock up space needed to display the passage.
+                  position: 'static',
+                  // Above the breakpoint there is adequate screen space, so the
+                  // tabs stay locked to the top of the panel while the passage
+                  // text scrolls beneath them.
+                  [`@media (min-width: ${STICKY_TABS_BREAKPOINT + 1}px)`]: {
+                    position: 'sticky',
+                    top: 0,
+                    zIndex: 1,
+                  },
                   background: color.background(),
                   color: color.text(),
                   fontFamily: 'Roboto, sans-serif',
                   '& .MuiTabs-list': {
+                    backgroundColor: color.white(),
                     borderBottom: '1px solid #D9DADA',
                   },
                   '& .MuiTabs-indicator': {
-                    backgroundColor: '#ffffff',
+                    backgroundColor: color.white(),
                     marginBottom: '-1px',
                   },
                 }}
