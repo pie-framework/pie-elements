@@ -157,6 +157,8 @@ const StyledRadioBase = styled(Radio, {
       ...styles[key('root')],
       '&.Mui-checked': styles[key('checked')],
       '&.Mui-disabled': correctness ? {} : styles[key('disabled')],
+      '&.Mui-focusVisible:not(.Mui-checked)': styles.focusVisibleUnchecked,
+      '&.Mui-focusVisible.Mui-checked': styles.focusVisibleChecked,
       '&:hover:not(.Mui-disabled) svg': {
         boxShadow: `0px 0px 0px 2px ${color.keyBoardFocusIndicator()}`,
         borderRadius: '50%',
@@ -164,8 +166,7 @@ const StyledRadioBase = styled(Radio, {
     },
     '&.Mui-focusVisible': {
       '& input': { outline: 0 },
-      '&:not(.Mui-checked)': styles.focusVisibleUnchecked,
-      '&.Mui-checked': styles.focusVisibleChecked,
+      '& .MuiTouchRipple-root': { display: 'none' },
     },
   };
 });
