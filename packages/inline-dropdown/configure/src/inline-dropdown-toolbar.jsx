@@ -206,14 +206,14 @@ class RespAreaToolbar extends React.Component {
       const domNodeRect = domNode.getBoundingClientRect();
       const editorNode = domNode.closest('.tiptap');
       const editorRect = editorNode.getBoundingClientRect();
-      const top = domNodeRect.top - domNodeRect.height;
+      const top = domNodeRect.top - editorRect.top;
       const left = domNodeRect.left - editorRect.left;
 
       this.setState({
         toolbarStyle: {
           position: 'absolute',
-          top: `${top + domNodeRect.height + 40}px`,
-          left: `${left + 25}px`,
+          top: `${top + domNodeRect.height + 25}px`,
+          left: `${left}px`,
         },
       });
     }
@@ -362,7 +362,7 @@ class RespAreaToolbar extends React.Component {
         style={{
           ...toolbarStyle,
           backgroundColor: '#E0E1E6',
-          zIndex: 1,
+          zIndex: 999,
         }}
         onMouseDown={this.onClickInside}
       >

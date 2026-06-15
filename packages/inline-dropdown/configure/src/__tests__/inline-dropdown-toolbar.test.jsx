@@ -58,6 +58,7 @@ describe('RespAreaToolbar', () => {
 
     mockEditorNode = {
       getBoundingClientRect: jest.fn().mockReturnValue({
+        top: 80,
         left: 25,
       }),
     };
@@ -137,7 +138,7 @@ describe('RespAreaToolbar', () => {
   };
 
   describe('Component Lifecycle', () => {
-    it('should set toolbar position on mount', () => {
+    it('should set toolbar position on mount relative to the editor', () => {
       const localEditor = {
         ...editor,
         view: {
@@ -151,8 +152,36 @@ describe('RespAreaToolbar', () => {
       expect(instance.setState).toHaveBeenCalled();
       expect(instance.state.toolbarStyle).toBeDefined();
       expect(instance.state.toolbarStyle.position).toBe('absolute');
-      expect(instance.state.toolbarStyle.top).toBe('140px'); // top + height + 40
-      expect(instance.state.toolbarStyle.left).toBe('50px');
+      // (domNodeRect.top - editorRect.top) + domNodeRect.height + 25
+      expect(instance.state.toolbarStyle.top).toBe('65px');
+      // domNodeRect.left - editorRect.left
+      expect(instance.state.toolbarStyle.left).toBe('25px');
+    });
+
+    it('should position toolbar below the response area node within the editor', () => {
+      const domNodeRect = { top: 200, left: 120, height: 30 };
+      const editorRect = { top: 150, left: 100 };
+
+      const domNode = {
+        nodeType: 1,
+        getBoundingClientRect: jest.fn().mockReturnValue(domNodeRect),
+        closest: jest.fn().mockReturnValue({
+          getBoundingClientRect: jest.fn().mockReturnValue(editorRect),
+        }),
+      };
+
+      const localEditor = {
+        ...editor,
+        view: {
+          ...editor.view,
+          nodeDOM: jest.fn().mockReturnValue(domNode),
+        },
+      };
+      const instance = createInstance({ editor: localEditor });
+      instance.componentDidMount();
+
+      expect(instance.state.toolbarStyle.top).toBe('105px');
+      expect(instance.state.toolbarStyle.left).toBe('20px');
     });
 
     it('should handle missing DOM node gracefully', () => {
@@ -821,6 +850,17 @@ describe('RespAreaToolbar', () => {
 
       expect(wrapper.container.querySelector('[aria-label="Add"]')).toBeTruthy();
     });
+
+    it('should render toolbar above other elements with a high z-index', () => {
+      const instance = createInstance();
+      instance.state.toolbarStyle = { position: 'absolute', top: '100px', left: '50px' };
+
+      const wrapper = render(<>{instance.render()}</>);
+      const toolbar = wrapper.container.querySelector('[data-inline-dropdown-toolbar]');
+
+      expect(toolbar).toBeTruthy();
+      expect(toolbar.style.zIndex).toBe('999');
+    });
   });
 
   describe('Integration', () => {
@@ -1131,6 +1171,7 @@ describe('MenuItem Integration Tests', () => {
 
     mockEditorNode = {
       getBoundingClientRect: jest.fn().mockReturnValue({
+        top: 80,
         left: 25,
       }),
     };
