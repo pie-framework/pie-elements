@@ -176,7 +176,12 @@ const oldModel = {
     height: 480,
   },
   coordinatesOnHover: false,
-  labels: { top: 'top', left: 'left', bottom: 'bottom', right: 'right' },
+  labels: {
+    "top": "<div>Math in the top label: <span data-latex=\"\" data-raw=\"x^2\">\\(x^2\\)</span>​</div>",
+    "right": "<div><span data-latex=\"\" data-raw=\"\\frac{\\pi}{2}\">\\(\\frac{\\pi}{2}\\)</span>​</div>",
+    "left": "<div><span data-latex=\"\" data-raw=\"3\\pi\">\\(3\\pi\\)</span>​</div>",
+    "bottom": "<div><span data-latex=\"\" data-raw=\"3x^2\">\\(3x^2\\)</span>​</div>"
+  },
   padding: true,
   prompt: 'Here goes item stem !!!!!!',
   promptEnabled: true,
@@ -189,7 +194,7 @@ const oldModel = {
     axisLabel: 'y',
   },
   rationale: 'Rationale goes here',
-  title: 'Graph title',
+  title: "<div>Math in the title: <span data-latex=\"\" data-raw=\"\\frac{x}{y}\">\\(\\frac{x}{y}\\)</span>​</div>",
   rubricEnabled: false,
 };
 
