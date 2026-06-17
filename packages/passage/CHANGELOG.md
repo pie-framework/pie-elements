@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.2.0...@pie-element/passage@7.2.1) (2026-06-17)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-661 PIE-664 PIE-683 PIE-666 PIE-656 PIE-657 PIE-658 PIE-659 PIE-670 ([ebd6be4](https://github.com/pie-framework/pie-elements/commit/ebd6be4fd48fca41ad4c4908f606b25334731aed))
+
 # [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.1.2...@pie-element/passage@7.2.0) (2026-06-12)
 
 ### Bug Fixes

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@11.1.3...@pie-element/categorize-configure@11.1.4) (2026-06-17)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-661 PIE-664 PIE-683 PIE-666 PIE-656 PIE-657 PIE-658 PIE-659 PIE-670 ([ebd6be4](https://github.com/pie-framework/pie-elements/commit/ebd6be4fd48fca41ad4c4908f606b25334731aed))
+- clear \_root reference on disconnect PIE-686 ([0a236ce](https://github.com/pie-framework/pie-elements/commit/0a236ce1decbd64b250d97484212179f62adc049))
+
 ## [11.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@11.1.2...@pie-element/categorize-configure@11.1.3) (2026-06-12)
 
 ### Bug Fixes

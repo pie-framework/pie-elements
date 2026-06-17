@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@5.1.3...@pie-element/complex-rubric-configure@5.1.4) (2026-06-17)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-661 PIE-664 PIE-683 PIE-666 PIE-656 PIE-657 PIE-658 PIE-659 PIE-670 ([ebd6be4](https://github.com/pie-framework/pie-elements/commit/ebd6be4fd48fca41ad4c4908f606b25334731aed))
+- nulling root in case consumer triggers recreation of the component on update PIE-672 ([efb5faa](https://github.com/pie-framework/pie-elements/commit/efb5faa2ee7dbcb1e9e32527c39f90c3dd25f7bc))
+
 ## [5.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@5.1.2...@pie-element/complex-rubric-configure@5.1.3) (2026-06-12)
 
 ### Bug Fixes
