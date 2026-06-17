@@ -1,7 +1,7 @@
 import { multiplePlacements } from './utils';
 
 export default {
-  allowMultiplePlacementsEnabled: multiplePlacements.enabled,
+  allowMultiplePlacementsEnabled: multiplePlacements.disabled,
   alternates: [],
   categories: [],
   categoriesPerRow: 2,
