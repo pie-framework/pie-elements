@@ -42,9 +42,10 @@ exports.model = (id, element) => ({
       editable: false,
     },
   ],
-  // domain: {
-  //   label: 'Characters',
-  // },
+  domain: {
+    label:
+      '<div>Math in the bottom label: <span data-latex="" data-raw="3x^2">\\(3x^2\\)</span>\u200b</div>',
+  },
   graph: {
     width: 480,
     height: 480,
@@ -53,11 +54,13 @@ exports.model = (id, element) => ({
   promptEnabled: true,
   rationale: 'Rationale goes here!',
   range: {
-    label: 'Amount',
+    label:
+      '<div>Math in the left label: <span data-latex="" data-raw="\\frac{\\pi}{2}">\\(\\frac{\\pi}{2}\\)</span>\u200b</div>',
     max: 3,
     min: 0,
     labelStep: 1,
   },
-  // title: 'This is a chart!',
+  title:
+    '<div>Math in the title: <span data-latex="" data-raw="\\frac{x}{y}">\\(\\frac{x}{y}\\)</span>\u200b</div>',
   rubricEnabled: false,
 });
