@@ -11,6 +11,43 @@ export default class Graphing extends HTMLElement {
   constructor() {
     super();
     this._root = null;
+    this._mathObserver = null;
+    this._mathRenderPending = false;
+  }
+
+  // The title and axis labels are injected synchronously via dangerouslySetInnerHTML,
+  // but createRoot().render() commits asynchronously, so a queueMicrotask(renderMath)
+  // would run before the LaTeX spans are in the DOM and leave raw LaTeX on first render.
+  // Observing the DOM and typesetting after each commit keeps math in sync regardless of timing.
+  _scheduleMathRender = () => {
+    if (this._mathRenderPending) return;
+    this._mathRenderPending = true;
+
+    requestAnimationFrame(() => {
+      if (this._mathObserver) {
+        this._mathObserver.disconnect();
+      }
+      renderMath(this);
+      this._mathRenderPending = false;
+      setTimeout(() => {
+        if (this._mathObserver) {
+          this._mathObserver.observe(this, { childList: true, subtree: true });
+        }
+      }, 50);
+    });
+  };
+
+  _initMathObserver() {
+    if (this._mathObserver) return;
+    this._mathObserver = new MutationObserver(this._scheduleMathRender);
+    this._mathObserver.observe(this, { childList: true, subtree: true });
+  }
+
+  _disconnectMathObserver() {
+    if (this._mathObserver) {
+      this._mathObserver.disconnect();
+      this._mathObserver = null;
+    }
   }
 
   set model(m) {
@@ -28,6 +65,7 @@ export default class Graphing extends HTMLElement {
   }
 
   connectedCallback() {
+    this._initMathObserver();
     this._render();
   }
 
@@ -46,6 +84,8 @@ export default class Graphing extends HTMLElement {
       return;
     }
 
+    this._initMathObserver();
+
     const el = React.createElement(Main, {
       model: this._model,
       session: this._session,
@@ -56,12 +96,10 @@ export default class Graphing extends HTMLElement {
       this._root = createRoot(this);
     }
     this._root.render(el);
-    queueMicrotask(() => {
-      renderMath(this);
-    });
   }
 
   disconnectedCallback() {
+    this._disconnectMathObserver();
     if (this._root) {
       this._root.unmount();
     }
