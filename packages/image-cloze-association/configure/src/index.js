@@ -106,9 +106,14 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
     this._root.render(element);
   }
 
+  connectedCallback() {
+    this._render();
+  }
+
   disconnectedCallback() {
     if (this._root) {
       this._root.unmount();
+      this._root = null;
     }
   }
 }

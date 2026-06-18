@@ -113,12 +113,14 @@ export default class Ordering extends HTMLElement {
 
   connectedCallback() {
     this._initMathObserver();
+    this.render();
   }
 
   disconnectedCallback() {
     this._disconnectMathObserver();
     if (this._root) {
       this._root.unmount();
+      this._root = null;
     }
   }
 }
