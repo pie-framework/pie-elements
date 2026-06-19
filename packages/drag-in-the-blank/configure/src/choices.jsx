@@ -134,12 +134,20 @@ export class Choices extends React.Component {
     onChange(newChoices);
   };
 
-  onChoiceDone = (choiceId) => {
+  onChoiceDone = (choiceId, latestValue) => {
     const { onChange, model } = this.props;
     const { choices } = model;
     const currentChoice = (choices || []).find((c) => c.id === choiceId);
 
-    if (!currentChoice || !choiceIsEmpty(currentChoice)) {
+    // model.choices[i].value can be stale when the editor's onChange did not fire for the most recent edit 
+    // (for example, image uploads). In that case, we want to use the latest value from the editor.
+    const effectiveValue = latestValue !== undefined ? latestValue : currentChoice && currentChoice.value;
+
+    if (!currentChoice || !choiceIsEmpty({ value: effectiveValue })) {
+      if (currentChoice && currentChoice.value !== effectiveValue) {
+        const newChoices = (choices || []).map((c) => (c.id === choiceId ? { ...c, value: effectiveValue } : c));
+        onChange(newChoices);
+      }
       this.setState({ focusedEl: undefined });
       return;
     }
@@ -270,12 +278,12 @@ export class Choices extends React.Component {
 
                     this.onChoiceChanged(choice.value, val, choice.id);
                   }}
-                  onDone={() => {
+                  onDone={(val) => {
                     if (this.preventDone) {
                       return;
                     }
 
-                    this.onChoiceDone(choice.id);
+                    this.onChoiceDone(choice.id, val);
                   }}
                   onBlur={(e) => {
                     const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
