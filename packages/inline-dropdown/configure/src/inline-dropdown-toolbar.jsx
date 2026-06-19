@@ -150,7 +150,7 @@ const RespArea = styled(EditableHtml)(({ theme }) => ({
   },
 }));
 
-const AddButton = styled(IconButton)(({ theme }) => ({
+const ToolbarButton = styled(IconButton)(({ theme }) => ({
   fontSize: theme.typography.fontSize + 2,
   padding: theme.spacing(0.5),
   color: theme.palette.common.black,
@@ -307,12 +307,16 @@ class RespAreaToolbar extends React.Component {
     this.setState({ editedChoiceIndex: index });
   };
 
+  finishEditing = () => {
+    const html = this.editorRef.getHTML() || '';
+
+    this.onDone(html);
+    this.preventDone = true;
+  };
+
   onKeyDown = (event) => {
     if (event.key === 'Enter') {
-      const html = this.editorRef.getHTML() || '';
-
-      this.onDone(html);
-      this.preventDone = true;
+      this.finishEditing();
 
       // Cancelling event
       return true;
@@ -350,7 +354,7 @@ class RespAreaToolbar extends React.Component {
       baseInputConfiguration = {},
       responseAreaInputConfiguration = {},
     } = this.props;
-    const { respAreaMarkup, toolbarStyle } = this.state;
+    const { respAreaMarkup, toolbarStyle, editedChoiceIndex } = this.state;
 
     if (!toolbarStyle) {
       return null;
@@ -420,13 +424,13 @@ class RespAreaToolbar extends React.Component {
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}
           />
-          <AddButton
-            onClick={() => this.onAddChoice()}
+          <ToolbarButton
+            onClick={() => editedChoiceIndex >= 0 ? this.finishEditing() : this.onAddChoice()}
             size="small"
             aria-label="Add"
           >
-            <AddIcon fontSize="inherit" />
-          </AddButton>
+            {editedChoiceIndex >= 0 ? <CheckIcon fontSize="inherit" /> : <AddIcon fontSize="inherit"/>}
+          </ToolbarButton>
         </ItemBuilder>
 
         {choices && (

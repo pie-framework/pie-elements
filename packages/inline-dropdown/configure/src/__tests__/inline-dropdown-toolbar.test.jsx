@@ -656,6 +656,45 @@ describe('RespAreaToolbar', () => {
   });
 
   describe('Event Handlers', () => {
+    describe('finishEditing', () => {
+      it('should call onDone with editor HTML and set preventDone', () => {
+        const localOnAddChoice = jest.fn();
+        const localEditor = {
+          ...editor,
+          commands: {
+            ...editor.commands,
+            refreshResponseArea: jest.fn(),
+          },
+        };
+        const instance = createInstance({
+          onAddChoice: localOnAddChoice,
+          editor: localEditor,
+        });
+        instance.editorRef = {
+          getHTML: jest.fn().mockReturnValue('<div>finished edit</div>'),
+        };
+        instance.preventDone = false;
+
+        instance.finishEditing();
+
+        expect(localOnAddChoice).toHaveBeenCalledWith('0', '<div>finished edit</div>', -1);
+        expect(instance.preventDone).toBe(true);
+      });
+
+      it('should handle empty HTML from editor', () => {
+        const localOnAddChoice = jest.fn();
+        const instance = createInstance({ onAddChoice: localOnAddChoice });
+        instance.editorRef = {
+          getHTML: jest.fn().mockReturnValue(''),
+        };
+
+        instance.finishEditing();
+
+        expect(localOnAddChoice).not.toHaveBeenCalled();
+        expect(instance.preventDone).toBe(true);
+      });
+    });
+
     describe('onKeyDown', () => {
       it('should call onDone and return true when Enter is pressed', () => {
         const localOnAddChoice = jest.fn();
@@ -842,13 +881,75 @@ describe('RespAreaToolbar', () => {
       expect(menuItems.length).toBe(0);
     });
 
-    it('should render Add button', () => {
+    it('should render Add button when not editing a choice', () => {
       const instance = createInstance();
       instance.state.toolbarStyle = { position: 'absolute', top: '100px', left: '50px' };
+      instance.state.editedChoiceIndex = -1;
 
       const wrapper = render(<>{instance.render()}</>);
 
-      expect(wrapper.container.querySelector('[aria-label="Add"]')).toBeTruthy();
+      const addButton = wrapper.container.querySelector('[aria-label="Add"]');
+      expect(addButton).toBeTruthy();
+      expect(addButton.querySelector('[data-testid="AddIcon"]')).toBeTruthy();
+    });
+
+    it('should render Check icon on toolbar button when editing a choice', () => {
+      const instance = createInstance();
+      instance.state.toolbarStyle = { position: 'absolute', top: '100px', left: '50px' };
+      instance.state.editedChoiceIndex = 1;
+
+      const wrapper = render(<>{instance.render()}</>);
+
+      const toolbarButton = wrapper.container.querySelector('[aria-label="Add"]');
+      expect(toolbarButton).toBeTruthy();
+      expect(toolbarButton.querySelector('[data-testid="CheckIcon"]')).toBeTruthy();
+      expect(toolbarButton.querySelector('[data-testid="AddIcon"]')).toBeNull();
+    });
+
+    it('should finish editing when toolbar button is clicked while editing', () => {
+      const localOnAddChoice = jest.fn();
+      const localEditor = {
+        ...editor,
+        commands: {
+          ...editor.commands,
+          refreshResponseArea: jest.fn(),
+        },
+      };
+      const instance = createInstance({
+        onAddChoice: localOnAddChoice,
+        editor: localEditor,
+      });
+      instance.state.toolbarStyle = { position: 'absolute', top: '100px', left: '50px' };
+      instance.state.editedChoiceIndex = 1;
+      instance.editorRef = {
+        getHTML: jest.fn().mockReturnValue('<div>updated dog</div>'),
+      };
+
+      const wrapper = render(<>{instance.render()}</>);
+      fireEvent.click(wrapper.container.querySelector('[aria-label="Add"]'));
+
+      expect(localOnAddChoice).toHaveBeenCalledWith('0', '<div>updated dog</div>', 1);
+      expect(instance.preventDone).toBe(true);
+    });
+
+    it('should call onAddChoice when toolbar button is clicked while not editing', () => {
+      const mockTr = { isDone: false, deleteSelection: jest.fn() };
+      const localEditor = {
+        ...editor,
+        state: {
+          ...editor.state,
+          tr: mockTr,
+        },
+      };
+      const instance = createInstance({ editor: localEditor });
+      instance.state.toolbarStyle = { position: 'absolute', top: '100px', left: '50px' };
+      instance.state.editedChoiceIndex = -1;
+
+      const wrapper = render(<>{instance.render()}</>);
+      fireEvent.click(wrapper.container.querySelector('[aria-label="Add"]'));
+
+      expect(mockTr.isDone).toBe(true);
+      expect(localEditor.view.dispatch).toHaveBeenCalledWith(mockTr);
     });
 
     it('should render toolbar above other elements with a high z-index', () => {
