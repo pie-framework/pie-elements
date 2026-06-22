@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.1.4...@pie-element/match-list@7.1.5) (2026-06-22)
+
+### Bug Fixes
+
+- handle webcomponent lifecycle on every element that misses it PIE-703 ([9d5923f](https://github.com/pie-framework/pie-elements/commit/9d5923f973f0471e1e8f69ad4309cfc63d980d93))
+
 ## [7.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.1.3...@pie-element/match-list@7.1.4) (2026-06-17)
 
 ### Bug Fixes

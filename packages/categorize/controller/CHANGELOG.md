@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@10.1.2...@pie-element/categorize-controller@10.1.3) (2026-06-22)
+
+### Bug Fixes
+
+- if allowMultiplePlacements is missing default should be false PIE-682 ([3f93d0d](https://github.com/pie-framework/pie-elements/commit/3f93d0de81de3a5cbd2763184d2241f31e9dbae0))
+
 ## [10.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@10.1.1...@pie-element/categorize-controller@10.1.2) (2026-06-12)
 
 ### Bug Fixes

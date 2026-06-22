@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@11.1.4...@pie-element/categorize-configure@11.1.5) (2026-06-22)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-674, PIE-662, PIE-705, PIE-674, PIE-963 ([78a3f64](https://github.com/pie-framework/pie-elements/commit/78a3f64652c9581c61bd4159f3210fc1e32d8bcf))
+- if allowMultiplePlacements default should be false PIE-682 ([b7447f4](https://github.com/pie-framework/pie-elements/commit/b7447f4d97e9d7cc2415f54a17ffe13ed15d1ebb))
+
 ## [11.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@11.1.3...@pie-element/categorize-configure@11.1.4) (2026-06-17)
 
 ### Bug Fixes

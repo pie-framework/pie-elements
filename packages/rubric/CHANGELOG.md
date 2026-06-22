@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@8.1.4...@pie-element/rubric@8.1.5) (2026-06-22)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-674, PIE-662, PIE-705, PIE-674, PIE-963 ([78a3f64](https://github.com/pie-framework/pie-elements/commit/78a3f64652c9581c61bd4159f3210fc1e32d8bcf))
+- **rubric/math-observer:** implement math rendering observer for improved sync PIE-671 ([aeb4e0c](https://github.com/pie-framework/pie-elements/commit/aeb4e0c9e2c67e5915ef0c435ea4065447a7c1b1))
+
 ## [8.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@8.1.3...@pie-element/rubric@8.1.4) (2026-06-17)
 
 ### Bug Fixes

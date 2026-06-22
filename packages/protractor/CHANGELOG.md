@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@8.1.2...@pie-element/protractor@8.1.3) (2026-06-22)
+
+### Bug Fixes
+
+- handle webcomponent lifecycle on every element that misses it PIE-703 ([9d5923f](https://github.com/pie-framework/pie-elements/commit/9d5923f973f0471e1e8f69ad4309cfc63d980d93))
+
 ## [8.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@8.1.1...@pie-element/protractor@8.1.2) (2026-06-12)
 
 ### Bug Fixes
