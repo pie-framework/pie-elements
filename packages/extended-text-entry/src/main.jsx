@@ -23,6 +23,7 @@ const StyledPrompt = styled(Typography)(({ theme }) => ({
   color: color.text(),
   marginBottom: theme.spacing(2),
   fontSize: 'inherit',
+  display: 'block',
 }));
 
 const TeacherInstructions = styled('div')(({ theme }) => ({
