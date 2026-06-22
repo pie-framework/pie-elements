@@ -272,8 +272,6 @@ export class Main extends React.Component {
       respAreaChoices[index] = [];
     }
 
-
-
     // check for duplicate answer, but exclude the one that is currently edited
     if ((respAreaChoices[index] || []).find((r, idx) => r.label === label && idx !== choiceIndex)) {
       showWarning('Duplicate answers are not allowed.');
