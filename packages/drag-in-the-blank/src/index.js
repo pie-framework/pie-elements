@@ -223,6 +223,7 @@ export default class DragInTheBlank extends HTMLElement {
 
     if (this._root) {
       this._root.unmount();
+      this._root = null;
     }
   }
 }

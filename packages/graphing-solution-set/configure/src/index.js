@@ -158,9 +158,14 @@ export default class GraphLinesConfigure extends HTMLElement {
     }
   }
 
+  connectedCallback() {
+    this._render();
+  }
+
   disconnectedCallback() {
     if (this._root) {
       this._root.unmount();
+      this._root = null;
     }
   }
 }

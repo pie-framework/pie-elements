@@ -85,6 +85,7 @@ export default class MatchList extends HTMLElement {
   disconnectedCallback() {
     if (this._root) {
       this._root.unmount();
+      this._root = null;
     }
   }
 }
