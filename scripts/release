@@ -221,19 +221,24 @@ const release = () => {
 
   log(chalk.magenta('--- STEP 7: PUBLISH PACKAGES ---'));
   const loglevel = argv.loglevel ? ` --loglevel ${argv.loglevel}` : '';
+  // `from-git` publishes the versions tagged by `lerna version`. It is not
+  // idempotent — a single transient npm failure aborts it and leaves the
+  // release partially published — so we never let its failure stop the run.
   try {
     runCmd(`npx lerna publish from-git --yes${loglevel}`);
   } catch (err) {
-    // `from-git` is not idempotent: it republishes every tagged version, so a
-    // single transient npm failure aborts the whole release and leaves it
-    // partially published. `from-package` compares local versions against the
-    // registry and publishes only what is missing, so it recovers the failed
-    // packages and is safe to re-run.
-    warn(`from-git publish failed (${err.message}); recovering missing packages with from-package`);
-    runCmd(`npx lerna publish from-package --yes${loglevel}`);
+    warn(`from-git publish failed (${err.message}); continuing to from-package sweep`);
   }
 
-  log(chalk.magenta('--- STEP 8: PUSH TAGS ---'));
+  // `from-package` compares each local package version against the registry and
+  // publishes only what is missing. Running it unconditionally makes releases
+  // self-healing: it finishes anything `from-git` missed in this run and
+  // back-fills versions stranded by a previous failed release. It is a no-op
+  // when everything is already published.
+  log(chalk.magenta('--- STEP 8: SWEEP MISSING PACKAGES ---'));
+  runCmd(`npx lerna publish from-package --yes${loglevel}`);
+
+  log(chalk.magenta('--- STEP 9: PUSH TAGS ---'));
   runCmd(`git push origin ${getCurrentBranch()} --follow-tags`);
 };
 
