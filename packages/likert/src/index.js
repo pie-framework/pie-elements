@@ -60,6 +60,7 @@ export default class Likert extends HTMLElement {
   disconnectedCallback() {
     if (this._root) {
       this._root.unmount();
+      this._root = null;
     }
   }
 }

@@ -128,9 +128,14 @@ export default class ExtendedTextEntry extends HTMLElement {
     }
   }
 
+  connectedCallback() {
+    this.render();
+  }
+
   disconnectedCallback() {
     if (this._root) {
       this._root.unmount();
+      this._root = null;
     }
   }
 }

@@ -405,6 +405,7 @@ export default class MultipleChoice extends HTMLElement {
 
     if (this._root) {
       this._root.unmount();
+      this._root = null;
     }
   }
 
