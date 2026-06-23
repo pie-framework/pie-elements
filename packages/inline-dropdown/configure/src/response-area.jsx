@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import EditableHtml from '@pie-lib/editable-html';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/render-math-bundled';
 
 const styles = (theme) => ({
   responseArea: {

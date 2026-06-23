@@ -2576,6 +2576,17 @@
     react-redux "^6.0.0"
     redux "^4.0.1"
 
+"@pie-lib/render-math-bundled@3.18.0-hotfix.0":
+  version "3.18.0-hotfix.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-math-bundled/-/render-math-bundled-3.18.0-hotfix.0.tgz#ad7e536f22d621508be65164cea470619e1d1a24"
+  integrity sha512-8u5BcJaA9JZ9xSPJ7zYlpWnppAGsyGAFk9F6f/LljC4eW8312U6SzSLLoVipUFV19UwRC8zAN+bdYFhNos8EKg==
+  dependencies:
+    "@pie-framework/mathml-to-latex" "1.4.4"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    mathjax-full "3.2.2"
+    react "^16.8.1"
+
 "@pie-lib/render-ui@^4.31.0":
   version "4.31.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.31.0.tgz#04443d75a67cc81009f563b6749b7b5e6daa270a"

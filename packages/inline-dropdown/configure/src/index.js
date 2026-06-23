@@ -1,3 +1,5 @@
+import './math-rendering-provider';
+
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,

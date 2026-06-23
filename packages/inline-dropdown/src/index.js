@@ -1,7 +1,8 @@
+import './math-rendering-provider';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/render-math-bundled';
 import InlineDropdown from './inline-dropdown';
 
 export default class RootInlineDropdown extends HTMLElement {
