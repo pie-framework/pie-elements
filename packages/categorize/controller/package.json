@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@pie-lib/categorize": "2.0.2",
-    "@pie-lib/controller-utils": "2.0.2",
+    "@pie-lib/controller-utils": "2.0.3",
     "@pie-lib/feedback": "2.0.2",
     "@pie-lib/translator": "4.0.2",
     "lodash-es": "^4.17.23"
