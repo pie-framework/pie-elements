@@ -12,6 +12,35 @@ import { Collapsible, color, PreviewPrompt, Purpose, UiLayout, transformDataHead
 // space needed for the passage text (WCAG 1.4.10 Reflow, 400% zoom / 320px).
 const STICKY_TABS_BREAKPOINT = 840;
 
+/**
+ * Zoom compensation for the passage selection tabs.
+ *
+ * The tabs scale naturally with browser zoom up to 200%. Beyond 200%,
+ * we shrink their CSS size proportionally so their physical on-screen size
+ * freezes at the 200% appearance, leaving more room for passage content
+ * in high-zoom / small-window situations.
+ * The factor is min(1, 2 / zoom): exactly 1 at zoom <= 200% (component
+ * behavior unchanged), shrinking proportionally above that. A lower clamp
+ * of 0.4 guards against inflated ratios (docked devtools, browser side
+ * panels, window chrome) ever making the tabs unusably small.
+ */
+const MAX_TABS_ZOOM = 2;
+const MIN_ZOOM_COMPENSATION = 0.4;
+
+// Per-tab horizontal-space floor in CSS pixels. When the passage container is
+// narrow enough that each tab would have at most this much room
+// (containerWidth <= tabs.length * NUMERIC_LABEL_MIN_WIDTH_PER_TAB), tab labels
+// fall back to "Passage 1", "Passage 2", ... so navigation stays usable instead
+// of being dominated by aggressively truncated titles.
+const NUMERIC_LABEL_MIN_WIDTH_PER_TAB = 170;
+
+const computeZoomCompensation = () => {
+  if (typeof window === 'undefined') return 1;
+  const ratio = window.outerWidth / window.innerWidth;
+  const zoom = Number.isFinite(ratio) && ratio > 0 ? ratio : 1;
+  return Math.max(MIN_ZOOM_COMPENSATION, Math.min(1, MAX_TABS_ZOOM / zoom));
+};
+
 const PassagesContainer = styled('div')({
   flexGrow: 1,
   backgroundColor: color.background(),
@@ -107,6 +136,45 @@ const Underline = styled('div')(({ theme }) => ({
 class StimulusTabs extends React.Component {
   state = {
     activeTab: 0,
+    zoomCompensation: computeZoomCompensation(),
+    containerWidth: 0,
+  };
+
+  containerRef = React.createRef();
+
+  componentDidMount() {
+    if (typeof window === 'undefined') return;
+    window.addEventListener('resize', this.updateZoomCompensation);
+
+    if (this.containerRef.current && typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(this.updateContainerWidth);
+      this.resizeObserver.observe(this.containerRef.current);
+    }
+
+    this.updateContainerWidth();
+  }
+
+  componentWillUnmount() {
+    if (typeof window === 'undefined') return;
+    window.removeEventListener('resize', this.updateZoomCompensation);
+
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
+    }
+  }
+
+  updateZoomCompensation = () => {
+    this.setState({ zoomCompensation: computeZoomCompensation() });
+  };
+
+  updateContainerWidth = () => {
+    const node = this.containerRef.current;
+    if (!node) return;
+    const width = node.clientWidth;
+    if (width !== this.state.containerWidth) {
+      this.setState({ containerWidth: width });
+    }
   };
 
   handleChange = (event, activeTab) => {
@@ -262,7 +330,7 @@ class StimulusTabs extends React.Component {
 
   render() {
     const { model, tabs, disabledTabs } = this.props;
-    const { activeTab } = this.state;
+    const { activeTab, zoomCompensation, containerWidth } = this.state;
 
     if (!tabs?.length) {
       return;
@@ -271,9 +339,20 @@ class StimulusTabs extends React.Component {
     const { extraCSSRules } = model || {};
     const selectedTab = (tabs || []).find((tab) => tab.id === activeTab);
 
+    // cap each tab at 1/n of the passage container width so a single long
+    // title can't push other tabs off-screen. Existing two-line wrap + ellipsis
+    // on .passage-label still trims anything that doesn't fit.
+    const tabMaxWidth = containerWidth > 0 ? containerWidth / tabs.length : null;
+    // When per-tab horizontal space drops to NUMERIC_LABEL_MIN_WIDTH_PER_TAB or
+    // less, titles become unreadably truncated; swap to "Passage N" so users
+    // can still navigate. Container width is read once layout has settled
+    // (>0), so initial render uses real labels.
+    const useNumericLabels =
+      containerWidth > 0 && containerWidth <= tabs.length * NUMERIC_LABEL_MIN_WIDTH_PER_TAB;
+
     return (
       <UiLayout extraCSSRules={extraCSSRules}>
-        <PassagesContainer className="passages">
+        <PassagesContainer className="passages" ref={this.containerRef}>
           {disabledTabs || tabs.length === 1 ? (
             tabs.map((tab) => this.renderTab(tab, disabledTabs))
           ) : (
@@ -295,6 +374,12 @@ class StimulusTabs extends React.Component {
                   background: color.background(),
                   color: color.text(),
                   fontFamily: 'Roboto, sans-serif',
+                  // Freeze the tabs' physical size at their 200%-zoom appearance
+                  // when browser zoom exceeds 200%. The factor is 1 at zoom <= 200%,
+                  // so behavior below that threshold is unchanged. Using `zoom`
+                  // (rather than transform: scale) shrinks the layout box itself,
+                  // so the reclaimed space flows to the passage content below.
+                  zoom: zoomCompensation,
                   '& .MuiTabs-list': {
                     backgroundColor: color.white(),
                     borderBottom: '1px solid #D9DADA',
@@ -307,17 +392,22 @@ class StimulusTabs extends React.Component {
                 value={activeTab}
                 onChange={this.handleChange}
               >
-                {tabs.map((tab) => (
+                {tabs.map((tab, index) => (
                   <TabStyled
                     key={tab.id}
                     id={`button-${tab.id}`}
+                    sx={tabMaxWidth ? { maxWidth: `${tabMaxWidth}px` } : undefined}
                     label={
                       <>
                         <Purpose purpose="passage-label">
-                          <span
-                            className="passage-label"
-                            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }}
-                          />
+                          {useNumericLabels ? (
+                            <span className="passage-label">{`Passage ${index + 1}`}</span>
+                          ) : (
+                            <span
+                              className="passage-label"
+                              dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }}
+                            />
+                          )}
                         </Purpose>
                         <Underline className="passage-label-underline" />
                       </>
