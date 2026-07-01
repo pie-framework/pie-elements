@@ -134,6 +134,39 @@ const runCmdWithRetry = (command, { attempts = 4, delayMs = 15000, options = {} 
 };
 
 /**
+ * Pre-warms unpkg's edge cache for every shared-module manifest pslb will fetch.
+ *
+ * pslb fetches these with node-fetch@2, which throws "Premature close" when unpkg
+ * drops a connection mid-response -- most often when a freshly published version is
+ * still cold in unpkg's cache and served slowly from origin. Pulling each file first
+ * with `curl --retry` (which handles Premature close / redirects robustly) forces
+ * unpkg to cache it at the edge, so pslb's own fetch then hits a warm, fast path.
+ *
+ * It also fails loudly, naming the exact URL, if a manifest is genuinely unavailable
+ * -- far clearer than the downstream mathquill.css sucrase error that a dropped
+ * manifest otherwise produces.
+ *
+ * @param {{libs?: {packages?: Array<{name: string, version: string}>}}} pslbConfig
+ */
+const prewarmManifests = (pslbConfig) => {
+  const libs = (pslbConfig.libs && pslbConfig.libs.packages) || [];
+  if (libs.length === 0) {
+    return;
+  }
+  log(chalk.magenta('--- STEP 4a: PRE-WARM UNPKG MANIFESTS ---'));
+  for (const { name, version } of libs) {
+    for (const file of ['package.json', 'module/manifest.json']) {
+      const url = `https://unpkg.com/${name}@${version}/${file}`;
+      // -f fail on HTTP errors, -sS quiet but show errors, -L follow unpkg's
+      // semver redirect; aggressive retry rides out transient drops / cold-cache slowness.
+      runCmd(
+        `curl -fsSL --retry 6 --retry-all-errors --retry-delay 3 --max-time 60 -o /dev/null "${url}"`,
+      );
+    }
+  }
+};
+
+/**
  * Retrieves the name of the current Git branch.
  *
  * This function executes a Git command to determine the branch name
@@ -187,6 +220,8 @@ const buildPrintModules = () => {
     warn('No pslb-eligible packages with ./print export; skipping pslb');
     return;
   }
+
+  prewarmManifests(pslbConfig);
 
   log('print packages for pslb:', printPkgNames.join(', '));
   const pkgFlags = printPkgNames.map((n) => `--package ${n}`).join(' ');
