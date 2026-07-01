@@ -92,81 +92,6 @@ const runCmd = (command, options = {}) => {
 };
 
 /**
- * Blocks the current thread for the given number of milliseconds without busy-waiting.
- *
- * @param {number} ms - Milliseconds to sleep.
- */
-const sleep = (ms) => {
-  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
-};
-
-/**
- * Runs a command, retrying on failure with a linear backoff.
- *
- * pslb fetches every shared-module manifest from unpkg at build time. node-fetch@2
- * does not retry on thrown network errors (only on 404/429 statuses), so a single
- * transient "Premature close" / connection reset from unpkg drops a manifest, which
- * silently disables externalization and surfaces as an unrelated mathquill.css
- * sucrase syntax error. Each retry is a fresh process (fresh connections) and the
- * delay rides out short unpkg blips.
- *
- * @param {string} command - The shell command to execute.
- * @param {Object} [opts] - Retry configuration.
- * @param {number} [opts.attempts=4] - Total number of attempts before giving up.
- * @param {number} [opts.delayMs=15000] - Base delay between attempts (multiplied by attempt number).
- * @param {Object} [opts.options={}] - Options forwarded to runCmd/execSync.
- */
-const runCmdWithRetry = (command, { attempts = 4, delayMs = 15000, options = {} } = {}) => {
-  for (let attempt = 1; attempt <= attempts; attempt += 1) {
-    try {
-      runCmd(command, options);
-      return;
-    } catch (err) {
-      if (attempt === attempts) {
-        throw err;
-      }
-      const wait = delayMs * attempt;
-      warn(`Command failed (attempt ${attempt}/${attempts}): ${err.message}`);
-      warn(`Retrying in ${wait / 1000}s (transient unpkg/network failures during pslb manifest fetch)...`);
-      sleep(wait);
-    }
-  }
-};
-
-/**
- * Pre-warms unpkg's edge cache for every shared-module manifest pslb will fetch.
- *
- * pslb fetches these with node-fetch@2, which throws "Premature close" when unpkg
- * drops a connection mid-response -- most often when a freshly published version is
- * still cold in unpkg's cache and served slowly from origin. Pulling each file first
- * with `curl --retry` (which handles Premature close / redirects robustly) forces
- * unpkg to cache it at the edge, so pslb's own fetch then hits a warm, fast path.
- *
- * It also fails loudly, naming the exact URL, if a manifest is genuinely unavailable
- * -- far clearer than the downstream mathquill.css sucrase error that a dropped
- * manifest otherwise produces.
- *
- * @param {{libs?: {packages?: Array<{name: string, version: string}>}}} pslbConfig
- */
-const prewarmManifests = (pslbConfig) => {
-  const libs = (pslbConfig.libs && pslbConfig.libs.packages) || [];
-  if (libs.length === 0) {
-    return;
-  }
-  log(chalk.magenta('--- STEP 4a: PRE-WARM UNPKG MANIFESTS ---'));
-  for (const { name, version } of libs) {
-    for (const file of ['package.json', 'module/manifest.json']) {
-      const url = `https://unpkg.com/${name}@${version}/${file}`;
-      // -f fail on HTTP errors, -sS quiet but show errors, -L follow unpkg's
-      // semver redirect; aggressive retry rides out transient drops / cold-cache slowness.
-      runCmd(
-        `curl -fsSL --retry 6 --retry-all-errors --retry-delay 3 --max-time 60 -o /dev/null "${url}"`,
-      );
-    }
-  }
-};
-
-/**
  * Retrieves the name of the current Git branch.
  *
  * This function executes a Git command to determine the branch name
@@ -221,14 +146,9 @@ const buildPrintModules = () => {
     return;
   }
 
-  prewarmManifests(pslbConfig);
-
   log('print packages for pslb:', printPkgNames.join(', '));
   const pkgFlags = printPkgNames.map((n) => `--package ${n}`).join(' ');
-  runCmdWithRetry(`yarn pslb --config pslb/pslb.config.js ${pkgFlags} --logLevel silly`, {
-    attempts: 4,
-    delayMs: 15000,
-  });
+  runCmd(`yarn pslb --config pslb/pslb.config.js ${pkgFlags} --logLevel silly`);
 };
 
 /**
