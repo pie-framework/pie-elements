@@ -92,6 +92,48 @@ const runCmd = (command, options = {}) => {
 };
 
 /**
+ * Blocks the current thread for the given number of milliseconds without busy-waiting.
+ *
+ * @param {number} ms - Milliseconds to sleep.
+ */
+const sleep = (ms) => {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+};
+
+/**
+ * Runs a command, retrying on failure with a linear backoff.
+ *
+ * pslb fetches every shared-module manifest from unpkg at build time. node-fetch@2
+ * does not retry on thrown network errors (only on 404/429 statuses), so a single
+ * transient "Premature close" / connection reset from unpkg drops a manifest, which
+ * silently disables externalization and surfaces as an unrelated mathquill.css
+ * sucrase syntax error. Each retry is a fresh process (fresh connections) and the
+ * delay rides out short unpkg blips.
+ *
+ * @param {string} command - The shell command to execute.
+ * @param {Object} [opts] - Retry configuration.
+ * @param {number} [opts.attempts=4] - Total number of attempts before giving up.
+ * @param {number} [opts.delayMs=15000] - Base delay between attempts (multiplied by attempt number).
+ * @param {Object} [opts.options={}] - Options forwarded to runCmd/execSync.
+ */
+const runCmdWithRetry = (command, { attempts = 4, delayMs = 15000, options = {} } = {}) => {
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      runCmd(command, options);
+      return;
+    } catch (err) {
+      if (attempt === attempts) {
+        throw err;
+      }
+      const wait = delayMs * attempt;
+      warn(`Command failed (attempt ${attempt}/${attempts}): ${err.message}`);
+      warn(`Retrying in ${wait / 1000}s (transient unpkg/network failures during pslb manifest fetch)...`);
+      sleep(wait);
+    }
+  }
+};
+
+/**
  * Retrieves the name of the current Git branch.
  *
  * This function executes a Git command to determine the branch name
@@ -148,7 +190,10 @@ const buildPrintModules = () => {
 
   log('print packages for pslb:', printPkgNames.join(', '));
   const pkgFlags = printPkgNames.map((n) => `--package ${n}`).join(' ');
-  runCmd(`yarn pslb --config pslb/pslb.config.js ${pkgFlags} --logLevel silly`);
+  runCmdWithRetry(`yarn pslb --config pslb/pslb.config.js ${pkgFlags} --logLevel silly`, {
+    attempts: 4,
+    delayMs: 15000,
+  });
 };
 
 /**
