@@ -2907,7 +2907,7 @@
     prop-types "^15.6.2"
     react-transition-group "^4.4.5"
 
-"@pie-lib/drag@4.0.6", "@pie-lib/drag@^4.0.5", "@pie-lib/drag@^4.0.6":
+"@pie-lib/drag@4.0.6", "@pie-lib/drag@^4.0.6":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-4.0.6.tgz#4331896d4c4a29c674b5eded4faf3152b889ee20"
   integrity sha512-mKHYr8x29M7l2fOL6NEqNw1OkFCjCW0HQYs0Yhv3qAYFXO+FKD0/a/dsRpr5pC8HO5qtQN5Rnj0iVARV6RslMQ==
@@ -2971,10 +2971,10 @@
     tippy.js latest
     to-style "^1.3.3"
 
-"@pie-lib/editable-html@13.0.6":
-  version "13.0.6"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-13.0.6.tgz#1bd6d139edf08aee1d0d4d068265f1038b9728d1"
-  integrity sha512-vHMmHg6QIW1YWgSG+nyuOXYQ+xiSkB0Ltlc/j3wZv8Vu1Y8v+98jg0HIqr+rqQCzNoZnWLyEKY9AJQno5KtHXg==
+"@pie-lib/editable-html@13.0.7":
+  version "13.0.7"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-13.0.7.tgz#bdbef5e7840f101bae646c5794acba75bf9951c4"
+  integrity sha512-7KfclL2IMe+FCZ3yD49SIll0wMP1uPNiPAt4JOX1RIn5TBrko3XLMpcaktku5zlW8e4Y2XzLX6MgUy8wodHvvw==
   dependencies:
     "@dnd-kit/core" "6.3.1"
     "@dnd-kit/modifiers" "9.0.0"
@@ -2983,11 +2983,11 @@
     "@emotion/styled" "^11.14.1"
     "@mui/icons-material" "^7.3.4"
     "@mui/material" "^7.3.4"
-    "@pie-lib/drag" "^4.0.5"
+    "@pie-lib/drag" "^4.0.6"
     "@pie-lib/math-input" "^8.1.1"
-    "@pie-lib/math-rendering" "^5.0.2"
-    "@pie-lib/math-toolbar" "^3.0.5"
-    "@pie-lib/render-ui" "^6.1.2"
+    "@pie-lib/math-rendering" "^5.1.0"
+    "@pie-lib/math-toolbar" "^3.0.6"
+    "@pie-lib/render-ui" "^6.1.3"
     change-case "^3.0.2"
     classnames "^2.2.6"
     debug "^4.1.1"
@@ -3172,7 +3172,7 @@
     mathml-to-latex "1.2.0"
     react "^18.2.0"
 
-"@pie-lib/math-rendering@5.1.0", "@pie-lib/math-rendering@^5.0.2", "@pie-lib/math-rendering@^5.1.0":
+"@pie-lib/math-rendering@5.1.0", "@pie-lib/math-rendering@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-5.1.0.tgz#cb983fa811c6250fc3c7e5e8842f37dd974f3951"
   integrity sha512-yZcHmDPBuuZb8DPuO5lwU2O05zzKnEjPaJ1UKoGhqVaqJ3H7A4G17tOhg71/T2UMUq/qCkxM0AgtZYkOElUbGQ==
@@ -3183,7 +3183,7 @@
     mathjax-full "3.2.2"
     react "^18.2.0"
 
-"@pie-lib/math-toolbar@3.0.6", "@pie-lib/math-toolbar@^3.0.5", "@pie-lib/math-toolbar@^3.0.6":
+"@pie-lib/math-toolbar@3.0.6", "@pie-lib/math-toolbar@^3.0.6":
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-3.0.6.tgz#3006af4b3105e8a5064e5f4f468ee4fce37bbd26"
   integrity sha512-w8qHzxlfjlLNuLYqf96zUVCaNDOMJu6AKn8J85USfhiNveCNahtm7jm/dJ5M1Pn7NrmGZftOPHBnw2WEQBxz/w==
@@ -3222,7 +3222,7 @@
     react-redux "^6.0.0"
     redux "^4.0.1"
 
-"@pie-lib/render-ui@6.1.3", "@pie-lib/render-ui@^6.1.2", "@pie-lib/render-ui@^6.1.3":
+"@pie-lib/render-ui@6.1.3", "@pie-lib/render-ui@^6.1.3":
   version "6.1.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-6.1.3.tgz#c22b9f6cc6e82a4e8b6f51dd104cdda594d089a4"
   integrity sha512-agoG7oarL7cn9B/ueEI/0PWQcCYIiIScX9Ws1CLiu/okT/PzTZvUMb3huyd+sCiGS6mllCmlBZcfSCLS9t0tMg==

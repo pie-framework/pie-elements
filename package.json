@@ -94,7 +94,7 @@
     "@pie-lib/controller-utils": "2.0.3",
     "@pie-lib/correct-answer-toggle": "4.0.5",
     "@pie-lib/drag": "4.0.6",
-    "@pie-lib/editable-html": "13.0.6",
+    "@pie-lib/editable-html": "13.0.7",
     "@pie-lib/editable-html-tip-tap": "2.1.9",
     "@pie-lib/feedback": "2.0.2",
     "@pie-lib/graphing-solution-set": "4.0.11",
