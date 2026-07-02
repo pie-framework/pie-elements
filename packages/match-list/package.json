@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "7.1.5",
+  "version": "7.1.6",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

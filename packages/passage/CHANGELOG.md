@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.2.2...@pie-element/passage@7.3.0) (2026-07-02)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-695, PIE-697, PIE-699, PIE-680, PIE-714, PIE-665, PIE-656 ([4b76ae7](https://github.com/pie-framework/pie-elements/commit/4b76ae75d1c5ea6d55f7c6fb53f299dfcbda2b1f))
+- sync libs versions ([48b5be9](https://github.com/pie-framework/pie-elements/commit/48b5be9559eb5b5235ca05f51c5f0161032a7041))
+
+### Features
+
+- **passage:** implement zoom compensation and dynamic tab width in StimulusTabs component PIE-728 ([8612da7](https://github.com/pie-framework/pie-elements/commit/8612da7d15a431511d053288ad616d545c96fc1d))
+
 ## [7.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.2.1...@pie-element/passage@7.2.2) (2026-06-22)
 
 ### Bug Fixes
