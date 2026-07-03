@@ -9,6 +9,8 @@ import {
     equalCircle,
     equalSine,
     equalParabola,
+    equalAbsolute,
+    equalExponential,
     constructSegmentsFromPoints,
     removeDuplicateSegments,
     removeInvalidSegments,
@@ -534,6 +536,70 @@ describe('equalParabola', () => {
         {root: {x: -4.5, y: 93 / 4}, edge: {x: -67.9, y: -3996.3000009}},
         false,
     );
+});
+
+describe('equalAbsolute', () => {
+    // y = a * |x - h| + k, where root = (h, k) is the vertex and edge is a point on a ray.
+    // Two absolutes are equal only when both the vertex AND the slope a match.
+    test.each([
+        // identical vertex + edge => equal
+        [{root: p0_0, edge: p1_1}, {root: p0_0, edge: p1_1}, true],
+        // same vertex, edge mirrored across the axis of symmetry => same |slope| => equal
+        // (0,0),(1,2) and (0,0),(-1,2) both describe a = 2
+        [{root: p0_0, edge: {x: 1, y: 2}}, {root: p0_0, edge: {x: -1, y: 2}}, true],
+        // same vertex, edge further along the same ray => same slope => equal
+        // (0,0),(1,2) and (0,0),(2,4) both describe a = 2
+        [{root: p0_0, edge: {x: 1, y: 2}}, {root: p0_0, edge: {x: 2, y: 4}}, true],
+        // same vertex, different slope => not equal (a = 2 vs a = 3)
+        [{root: p0_0, edge: {x: 1, y: 2}}, {root: p0_0, edge: {x: 1, y: 3}}, false],
+        // different vertex => not equal even when slope matches
+        [{root: p0_0, edge: {x: 1, y: 2}}, {root: p1_1, edge: {x: 2, y: 3}}, false],
+        [{root: pNull, edge: pUndefined}, {root: pNull, edge: pUndefined}, true],
+    ])('%j, %j => %s', (a1, a2, expected) => {
+        const result = equalAbsolute(a1, a2);
+
+        expect(result).toEqual(expected);
+    });
+});
+
+describe('equalExponential', () => {
+    // y = a * b^x, derived from two points. Two exponentials are equal only when
+    // both a and b match. Regression coverage for SCSTU-377 / the PGM QA scoring bug
+    // where a destructuring typo made every comparison return true.
+    test.each([
+        // identical points => equal
+        [{root: p0_1, edge: p1_1}, {root: p0_1, edge: p1_1}, true],
+        // same curve y = 2 * 3^x sampled at different points => equal
+        // (0,2),(1,6) and (1,6),(2,18) both describe a = 2, b = 3
+        [{root: {x: 0, y: 2}, edge: {x: 1, y: 6}}, {root: {x: 1, y: 6}, edge: {x: 2, y: 18}}, true],
+        // same curve, comparison is order-independent
+        [{root: {x: 0, y: 2}, edge: {x: 2, y: 18}}, {root: {x: 0, y: 2}, edge: {x: 1, y: 6}}, true],
+
+        // --- Jira reproduction cases (must NOT be equal) ---
+        // Actual SCSTU-377 assessment: correct answer is (1,1),(9,9); a student
+        // could draw any two positive points and still receive full marks.
+        [
+            {root: {x: 10, y: 30}, edge: {x: 18, y: 50}},
+            {root: {x: 1, y: 1}, edge: {x: 9, y: 9}},
+            false,
+        ],
+        // Item 1: student drew (10,30),(18,50) but correct answer is (10,30),(14,50)
+        [
+            {root: {x: 10, y: 30}, edge: {x: 18, y: 50}},
+            {root: {x: 10, y: 30}, edge: {x: 14, y: 50}},
+            false,
+        ],
+        // Item 4: student drew (1,1),(5,4) but correct answer is (1,1),(2,3)
+        [
+            {root: {x: 1, y: 1}, edge: {x: 5, y: 4}},
+            {root: {x: 1, y: 1}, edge: {x: 2, y: 3}},
+            false,
+        ],
+    ])('%j, %j => %s', (e1, e2, expected) => {
+        const result = equalExponential(e1, e2);
+
+        expect(result).toEqual(expected);
+    });
 });
 
 describe('constructSegmentsFromPoints', () => {

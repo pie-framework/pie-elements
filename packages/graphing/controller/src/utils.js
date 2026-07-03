@@ -316,8 +316,8 @@ export const equalExponential = (p1, p2) => {
   const p1edge = edgeP1 || { ...rootP1 };
   const p2edge = edgeP2 || { ...rootP2 };
 
-  const { a1, b1 } = pointsToABForExponential(rootP1, p1edge);
-  const { a2, b2 } = pointsToABForExponential(rootP2, p2edge);
+  const { a: a1, b: b1 } = pointsToABForExponential(rootP1, p1edge);
+  const { a: a2, b: b2 } = pointsToABForExponential(rootP2, p2edge);
 
   // if both a and b value are equal
   return isEqual(a2, a1) && isEqual(b2, b1);

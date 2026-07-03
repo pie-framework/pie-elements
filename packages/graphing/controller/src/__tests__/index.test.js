@@ -577,6 +577,142 @@ describe('outcome', () => {
     expect(result.score).toEqual(1);
   });
 
+  // Regression for SCSTU-377: students were awarded full marks for exponential
+  // marks whose coordinates did not match the correct answer. The controller's
+  // equalExponential destructured non-existent keys, so every comparison returned
+  // true. These tests pin the full model + outcome scoring path.
+  it('Exponentials are correctly scored (SCSTU-377)', async () => {
+    const m = {
+      element: 'pie-element-graphing',
+      id: 'scstu-377',
+      graph: { width: 500, height: 500 },
+      domain: { min: -20, max: 20, step: 1, labelStep: 5, axisLabel: 'x' },
+      range: { min: -20, max: 60, step: 5, labelStep: 10, axisLabel: 'f(x)' },
+      rationale: 'Rationale',
+      prompt: 'Prompt',
+      // actual assessment: correct exponential passes through (1,1) and (9,9)
+      answers: {
+        correctAnswer: {
+          marks: [{ type: 'exponential', root: { x: 1, y: 1 }, edge: { x: 9, y: 9 } }],
+        },
+      },
+      toolbarTools: ['exponential'],
+    };
+    const env = { mode: 'evaluate' };
+
+    // student drew a different exponential (the ticket's (10,30),(18,50)) => incorrect
+    const wrongSession = {
+      answer: [{ type: 'exponential', root: { x: 10, y: 30 }, edge: { x: 18, y: 50 } }],
+    };
+    expect((await outcome(await model(m, wrongSession, env), wrongSession, env)).score).toEqual(0);
+
+    // any two positive points used to score full marks before the fix => still incorrect
+    const wrongSession2 = {
+      answer: [{ type: 'exponential', root: { x: 2, y: 3 }, edge: { x: 5, y: 4 } }],
+    };
+    expect((await outcome(await model(m, wrongSession2, env), wrongSession2, env)).score).toEqual(0);
+
+    // exact match => full marks
+    const correctSession = {
+      answer: [{ type: 'exponential', root: { x: 1, y: 1 }, edge: { x: 9, y: 9 } }],
+    };
+    expect((await outcome(await model(m, correctSession, env), correctSession, env)).score).toEqual(1);
+
+    // same curve sampled at a different point still matches => full marks
+    // y = 2 * 3^x passes through (0,2),(1,6) and (1,6),(2,18)
+    const curveModel = {
+      ...m,
+      answers: {
+        correctAnswer: {
+          marks: [{ type: 'exponential', root: { x: 0, y: 2 }, edge: { x: 1, y: 6 } }],
+        },
+      },
+    };
+    const equivalentSession = {
+      answer: [{ type: 'exponential', root: { x: 1, y: 6 }, edge: { x: 2, y: 18 } }],
+    };
+    expect((await outcome(await model(curveModel, equivalentSession, env), equivalentSession, env)).score).toEqual(1);
+  });
+
+  // Faithful reproduction of the SCSTU-377 ticket steps, using the exact
+  // coordinates from the SchoolCity assessment items.
+  describe('SchoolCity SCSTU-377 repro steps', () => {
+    // Item 1: an item with BOTH an Absolute and an Exponential response part.
+    // Correct answer: absolute (vertex (-5,-7), edge (-3,-5)) and
+    // exponential through (10,30),(14,50).
+    // Student: absolute matches, but exponential is (10,30),(18,50) (second
+    // coordinate 18,50 does not match 14,50). The item must NOT be full marks.
+    const item1Answers = {
+      correctAnswer: {
+        marks: [
+          { type: 'absolute', root: { x: -5, y: -7 }, edge: { x: -3, y: -5 } },
+          { type: 'exponential', root: { x: 10, y: 30 }, edge: { x: 14, y: 50 } },
+        ],
+      },
+    };
+    const item1Session = {
+      answer: [
+        { type: 'absolute', root: { x: -5, y: -7 }, edge: { x: -3, y: -5 } },
+        { type: 'exponential', root: { x: 10, y: 30 }, edge: { x: 18, y: 50 } },
+      ],
+    };
+
+    it('Item 1: absolute correct + wrong exponential is not full marks (partial => 0.5)', async () => {
+      const question = { answers: item1Answers, scoringType: 'partial scoring' };
+      const env = { mode: 'evaluate', partialScoring: true };
+      const result = await outcome(await model(question, item1Session, env), item1Session, env);
+
+      // 1 of 2 correct (absolute), exponential incorrect
+      expect(result.score).toEqual(0.5);
+    });
+
+    it('Item 1: absolute correct + wrong exponential is not full marks (dichotomous => 0)', async () => {
+      const question = { answers: item1Answers, scoringType: 'all or nothing' };
+      const env = { mode: 'evaluate', partialScoring: false };
+      const result = await outcome(await model(question, item1Session, env), item1Session, env);
+
+      expect(result.score).toEqual(0);
+    });
+
+    // Item 4: single Exponential response. Correct answer (1,1),(2,3).
+    // Student draws (1,1),(5,4) (second coordinate 5,4 does not match 2,3).
+    const item4Answers = {
+      correctAnswer: {
+        marks: [{ type: 'exponential', root: { x: 1, y: 1 }, edge: { x: 2, y: 3 } }],
+      },
+    };
+    const item4Session = {
+      answer: [{ type: 'exponential', root: { x: 1, y: 1 }, edge: { x: 5, y: 4 } }],
+    };
+
+    it('Item 4: wrong exponential scores 0 (partial)', async () => {
+      const question = { answers: item4Answers, scoringType: 'partial scoring' };
+      const env = { mode: 'evaluate', partialScoring: true };
+      const result = await outcome(await model(question, item4Session, env), item4Session, env);
+
+      expect(result.score).toEqual(0);
+    });
+
+    it('Item 4: wrong exponential scores 0 (dichotomous)', async () => {
+      const question = { answers: item4Answers, scoringType: 'all or nothing' };
+      const env = { mode: 'evaluate', partialScoring: false };
+      const result = await outcome(await model(question, item4Session, env), item4Session, env);
+
+      expect(result.score).toEqual(0);
+    });
+
+    it('Item 4: matching exponential scores full marks', async () => {
+      const question = { answers: item4Answers, scoringType: 'all or nothing' };
+      const env = { mode: 'evaluate', partialScoring: false };
+      const correctSession = {
+        answer: [{ type: 'exponential', root: { x: 1, y: 1 }, edge: { x: 2, y: 3 } }],
+      };
+      const result = await outcome(await model(question, correctSession, env), correctSession, env);
+
+      expect(result.score).toEqual(1);
+    });
+  });
+
   it('Lines are correctly scored (ch4126)', async () => {
     const m = {
       id: '4028e4a24ca05186014cbae62f752be7',
