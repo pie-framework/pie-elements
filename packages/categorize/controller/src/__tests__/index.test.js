@@ -161,6 +161,73 @@ describe('controller', () => {
     });
   });
 
+  describe('allowMultiplePlacementsEnabled / categoryCount', () => {
+    const exclusiveCorrectResponse = [
+      { category: '1', choices: ['1', '2'] },
+      { category: '2', choices: ['3', '4'] },
+    ];
+    const nonExclusiveCorrectResponse = [
+      { category: '1', choices: ['1', '2'] },
+      { category: '2', choices: ['2', '3'] }, // '2' appears in both → reuse required
+    ];
+
+    it('explicit "Yes" → categoryCount 0 for all choices', async () => {
+      const q = makeQuestion({ allowMultiplePlacementsEnabled: 'Yes', correctResponse: exclusiveCorrectResponse });
+      const result = await model(q, {}, { mode: 'gather' }, jest.fn());
+      expect(result.choices.every((c) => c.categoryCount === 0)).toBe(true);
+    });
+
+    it('explicit "No" → categoryCount 1 for all choices', async () => {
+      const q = makeQuestion({ allowMultiplePlacementsEnabled: 'No', correctResponse: nonExclusiveCorrectResponse });
+      const result = await model(q, {}, { mode: 'gather' }, jest.fn());
+      expect(result.choices.every((c) => c.categoryCount === 1)).toBe(true);
+    });
+
+    it('no property + exclusive correct response → derived "No" → categoryCount 1', async () => {
+      const q = makeQuestion({ correctResponse: exclusiveCorrectResponse });
+      const result = await model(q, {}, { mode: 'gather' }, jest.fn());
+      expect(result.choices.every((c) => c.categoryCount === 1)).toBe(true);
+    });
+
+    it('no property + non-exclusive correct response → derived "Yes" → categoryCount 0', async () => {
+      const q = makeQuestion({ correctResponse: nonExclusiveCorrectResponse });
+      const result = await model(q, {}, { mode: 'gather' }, jest.fn());
+      expect(result.choices.every((c) => c.categoryCount === 0)).toBe(true);
+    });
+
+    it('no property + exclusive → sets allowMultiplePlacementsEnabled on out', async () => {
+      const q = makeQuestion({ correctResponse: exclusiveCorrectResponse });
+      const result = await model(q, {}, { mode: 'gather' }, jest.fn());
+      expect(result.allowMultiplePlacementsEnabled).toBe('No');
+    });
+
+    it('no property + non-exclusive → sets allowMultiplePlacementsEnabled on out', async () => {
+      const q = makeQuestion({ correctResponse: nonExclusiveCorrectResponse });
+      const result = await model(q, {}, { mode: 'gather' }, jest.fn());
+      expect(result.allowMultiplePlacementsEnabled).toBe('Yes');
+    });
+
+    it('explicit property → does not set allowMultiplePlacementsEnabled on out', async () => {
+      const q = makeQuestion({ allowMultiplePlacementsEnabled: 'No', correctResponse: exclusiveCorrectResponse });
+      const result = await model(q, {}, { mode: 'gather' }, jest.fn());
+      expect(result.allowMultiplePlacementsEnabled).toBeUndefined();
+    });
+
+    it('perChoice → uses categoryCount from each choice', async () => {
+      const q = makeQuestion({
+        allowMultiplePlacementsEnabled: 'Set Per Choice',
+        choices: [
+          { id: '1', content: 'Foo', categoryCount: 0 },
+          { id: '2', content: 'Bar', categoryCount: 1 },
+        ],
+        correctResponse: exclusiveCorrectResponse,
+      });
+      const result = await model(q, {}, { mode: 'gather' }, jest.fn());
+      expect(result.choices.find((c) => c.id === '1').categoryCount).toBe(0);
+      expect(result.choices.find((c) => c.id === '2').categoryCount).toBe(1);
+    });
+  });
+
   describe('correct response', () => {
     it('returns correct response if env is correct', async () => {
       const sess = await createCorrectResponseSession(question, {
