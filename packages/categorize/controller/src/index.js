@@ -288,7 +288,7 @@ export const getLogTrace = (model, session, env) => {
   }
 
   if (hasAlternates) {
-    traceLog.push(`Alternate response combinations are accepted for this question.`);
+    traceLog.push('Alternate response combinations are accepted for this question.');
   }
 
   if (hasAlternates) {
