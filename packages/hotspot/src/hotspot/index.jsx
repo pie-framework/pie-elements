@@ -1,7 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Collapsible, hasText, PreviewPrompt, UiLayout, hasMedia } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
 import { styled } from '@mui/material/styles';
 
 import Container from './container';
@@ -54,6 +56,18 @@ class HotspotComponent extends React.Component {
     if (target) {
       this.observer.observe(target, { attributes: true, attributeFilter: ['style'] });
     }
+
+    // eslint-disable-next-line react/no-find-dom-node
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
+  }
+
+  componentDidUpdate() {
+    // eslint-disable-next-line react/no-find-dom-node
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
   }
 
   componentWillUnmount() {

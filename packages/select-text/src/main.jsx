@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { TextSelect, Legend } from '@pie-lib/text-select';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Feedback, Collapsible, hasText, hasMedia, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
+import { renderMath } from '@pie-lib/math-rendering';
 import { styled } from '@mui/material/styles';
 import generateModel from './utils';
 
@@ -55,6 +57,20 @@ export class Main extends React.Component {
       showCorrectAnswer: !!nextProps.model.alwaysShowCorrect,
       model: generateModel(nextProps.model),
     });
+  }
+
+  componentDidMount() {
+    // eslint-disable-next-line react/no-find-dom-node
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
+  }
+
+  componentDidUpdate() {
+    // eslint-disable-next-line react/no-find-dom-node
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
   }
 
   toggleShowCorrect = () => {
