@@ -1,11 +1,16 @@
 import { render } from '@testing-library/react';
 import React from 'react';
+import { renderMath } from '@pie-lib/math-rendering';
 import { Main } from '../main';
 
 jest.mock('@pie-lib/text-select', () => ({
   prepareText: jest.fn(),
   TextSelect: (props) => <div data-testid="text-select" {...props} />,
   Legend: (props) => <div data-testid="legend" {...props} />,
+}));
+
+jest.mock('@pie-lib/math-rendering', () => ({
+  renderMath: jest.fn(),
 }));
 
 describe('main', () => {
@@ -47,6 +52,43 @@ describe('main', () => {
     instance.props = defaultProps;
     return instance;
   };
+
+  beforeEach(() => {
+    renderMath.mockClear();
+  });
+
+  describe('math rendering', () => {
+    it('calls renderMath on mount', () => {
+      getWrapper();
+      expect(renderMath).toHaveBeenCalled();
+    });
+
+    it('passes the rendered dom node to renderMath on mount', () => {
+      getWrapper();
+      expect(renderMath).toHaveBeenCalledWith(expect.any(HTMLElement));
+    });
+
+    it('calls renderMath again on update', () => {
+      const { rerender } = getWrapper();
+      renderMath.mockClear();
+
+      rerender(
+        <Main
+          onSelectionChange={jest.fn()}
+          model={{
+            text: 'bar',
+            tokens: [{ start: 0, end: 1, text: 'b' }],
+          }}
+          session={{
+            selectedTokens: [{ start: 0, end: 1, text: 'b' }],
+          }}
+          classes={{}}
+        />,
+      );
+
+      expect(renderMath).toHaveBeenCalled();
+    });
+  });
 
   describe('logic', () => {
     it('shows correct answer', () => {
