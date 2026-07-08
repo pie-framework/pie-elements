@@ -1,10 +1,7 @@
-import { multiplePlacements } from './utils';
-
 export default {
   model: {
     allowAlternateEnabled: true,
     allowMaxChoicesPerCategory: false,
-    allowMultiplePlacementsEnabled: multiplePlacements.disabled,
     alternates: [],
     categories: [],
     categoriesPerRow: 2,

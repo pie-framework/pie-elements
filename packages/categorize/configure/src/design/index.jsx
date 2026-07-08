@@ -538,10 +538,19 @@ export class Design extends React.Component {
       model.correctResponse || [],
     );
 
+    const resolvedAllowMultiplePlacements = (() => {
+      if (model.allowMultiplePlacementsEnabled != null) {
+        return model.allowMultiplePlacementsEnabled;
+      }
+      const allChoiceIds = (model.correctResponse || []).flatMap((cr) => cr.choices || []);
+      const isExclusive = allChoiceIds.length === new Set(allChoiceIds).size;
+      return isExclusive ? multiplePlacements.disabled : multiplePlacements.enabled;
+    })();
+
     const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
       // ensure categoryCount is set even though updatedModel hasn't been called
-      c.categoryCount = this.checkAllowMultiplePlacements(model.allowMultiplePlacementsEnabled, c);
+      c.categoryCount = this.checkAllowMultiplePlacements(resolvedAllowMultiplePlacements, c);
       return c;
     });
 
@@ -612,7 +621,7 @@ export class Design extends React.Component {
             hideSettings={settingsPanelDisabled}
             settings={
               <Panel
-                model={model}
+                model={{ ...model, allowMultiplePlacementsEnabled: resolvedAllowMultiplePlacements }}
                 onChangeModel={this.updateModel}
                 configuration={configuration}
                 onChangeConfiguration={onConfigurationChanged}
@@ -692,7 +701,7 @@ export class Design extends React.Component {
               imageSupport={imageSupport}
               uploadSoundSupport={uploadSoundSupport}
               choices={choices}
-              model={model}
+              model={{ ...model, allowMultiplePlacementsEnabled: resolvedAllowMultiplePlacements }}
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
