@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.3.3...@pie-element/multiple-choice@13.3.4) (2026-07-08)
+
+### Bug Fixes
+
+- bump libs & shared modules PIE-706, PIE-702, PIE-679, PIE-698 ([5b1a8c4](https://github.com/pie-framework/pie-elements/commit/5b1a8c4c3eba2126fc43d78fd0187e7cd11d5424))
+
 ## [13.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.3.2...@pie-element/multiple-choice@13.3.3) (2026-07-02)
 
 ### Bug Fixes

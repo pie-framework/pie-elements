@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@10.1.6...@pie-element/graphing@10.1.7) (2026-07-08)
+
+### Bug Fixes
+
+- bump libs & shared modules PIE-706, PIE-702, PIE-679, PIE-698 ([5b1a8c4](https://github.com/pie-framework/pie-elements/commit/5b1a8c4c3eba2126fc43d78fd0187e7cd11d5424))
+- **graphing:** compare derived a/b coefficients when scoring exponentials + add exponential/absolute test coverage SCSTU-377 PIE-745 ([7f09452](https://github.com/pie-framework/pie-elements/commit/7f09452c1006118147a1f77c4a9ce1e886f7b89f))
+
 ## [10.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@10.1.5...@pie-element/graphing@10.1.6) (2026-07-02)
 
 ### Bug Fixes

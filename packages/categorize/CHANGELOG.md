@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@13.1.6...@pie-element/categorize@13.1.7) (2026-07-08)
+
+### Bug Fixes
+
+- bump libs & shared modules PIE-706, PIE-702, PIE-679, PIE-698 ([5b1a8c4](https://github.com/pie-framework/pie-elements/commit/5b1a8c4c3eba2126fc43d78fd0187e7cd11d5424))
+- **categorize:** compute allowmultiple based on response when missing, get rid of defaults value PIE, add tests PIE-723 ([3217ede](https://github.com/pie-framework/pie-elements/commit/3217edebf20e3906a8c46d775dfb2e3ee0095fd6))
+- **categorize:** use single quotes lint warning PIE-723 ([4d2162a](https://github.com/pie-framework/pie-elements/commit/4d2162a6a618a7f5104a89e753a02dba75fb8c11))
+
 ## [13.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@13.1.5...@pie-element/categorize@13.1.6) (2026-07-02)
 
 ### Bug Fixes

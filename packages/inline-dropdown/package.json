@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "10.1.6",
+  "version": "10.1.7",
   "description": "",
   "scripts": {
     "postpublish": "../../scripts/postpublish"

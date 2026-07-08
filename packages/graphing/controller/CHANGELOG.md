@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@9.1.2...@pie-element/graphing-controller@9.1.3) (2026-07-08)
+
+### Bug Fixes
+
+- **graphing:** compare derived a/b coefficients when scoring exponentials + add exponential/absolute test coverage SCSTU-377 PIE-745 ([7f09452](https://github.com/pie-framework/pie-elements/commit/7f09452c1006118147a1f77c4a9ce1e886f7b89f))
+
 ## [9.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@9.1.1...@pie-element/graphing-controller@9.1.2) (2026-07-02)
 
 ### Bug Fixes

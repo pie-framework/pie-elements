@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.3.0...@pie-element/passage@7.3.1) (2026-07-08)
+
+### Bug Fixes
+
+- bump libs & shared modules PIE-706, PIE-702, PIE-679, PIE-698 ([5b1a8c4](https://github.com/pie-framework/pie-elements/commit/5b1a8c4c3eba2126fc43d78fd0187e7cd11d5424))
+- **stimulus-tabs:** update background colors to use CSS variables for theming support PIE-746 ([5db9d79](https://github.com/pie-framework/pie-elements/commit/5db9d79be4ee14c698342047a70292154d078d80))
+
 # [7.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.2.2...@pie-element/passage@7.3.0) (2026-07-02)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@14.2.6...@pie-element/ebsr@14.2.7) (2026-07-08)
+
+### Bug Fixes
+
+- bump libs & shared modules PIE-706, PIE-702, PIE-679, PIE-698 ([5b1a8c4](https://github.com/pie-framework/pie-elements/commit/5b1a8c4c3eba2126fc43d78fd0187e7cd11d5424))
+
 ## [14.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@14.2.5...@pie-element/ebsr@14.2.6) (2026-07-02)
 
 ### Bug Fixes
