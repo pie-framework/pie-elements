@@ -371,7 +371,7 @@ class StimulusTabs extends React.Component {
                     top: 0,
                     zIndex: 1,
                   },
-                  background: color.background(),
+                  background: 'var(--pie-passage-header-background, rgba(255,255,255,0))',
                   color: color.text(),
                   fontFamily: 'Roboto, sans-serif',
                   // Freeze the tabs' physical size at their 200%-zoom appearance
@@ -381,7 +381,7 @@ class StimulusTabs extends React.Component {
                   // so the reclaimed space flows to the passage content below.
                   zoom: zoomCompensation,
                   '& .MuiTabs-list': {
-                    backgroundColor: color.white(),
+                    backgroundColor: 'var(--pie-passage-header-background, #ffffff)',
                     borderBottom: '1px solid #D9DADA',
                   },
                   '& .MuiTabs-indicator': {
