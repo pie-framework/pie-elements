@@ -252,17 +252,22 @@ export class Container extends React.Component {
           </Layer>
         </StyledStage>
 
-        {sortedShapes.map((shape) => (
-          <HiddenFocusable
-            key={`focus-${shape.id}`}
-            tabIndex={disabled ? -1 : 0}
-            role="button"
-            aria-label={`Hotspot ${shape.id}`}
-            onFocus={() => this.handleShapeFocus(shape.id)}
-            onBlur={this.handleShapeBlur}
-            onKeyDown={(e) => this.handleShapeKeyDown(e, shape.id)}
-          />
-        ))}
+        {sortedShapes.map((shape) => {
+          const selected = this.isSelected(shape);
+
+          return (
+            <HiddenFocusable
+              key={`focus-${shape.id}`}
+              tabIndex={disabled ? -1 : 0}
+              role="button"
+              aria-label={shape.ariaLabel || ''}
+              aria-pressed={selected}
+              onFocus={() => this.handleShapeFocus(shape.id)}
+              onBlur={this.handleShapeBlur}
+              onKeyDown={(e) => this.handleShapeKeyDown(e, shape.id)}
+            />
+          );
+        })}
       </BaseContainer>
     );
   }
