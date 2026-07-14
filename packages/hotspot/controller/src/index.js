@@ -8,6 +8,8 @@ import defaults from './defaults';
 
 const log = debug('pie-elements:hotspot:controller');
 
+const checkNullish = (value) => value !== null && value !== undefined;
+
 export const normalize = (question) => ({
   ...defaults,
   ...question,
@@ -44,7 +46,7 @@ export function model(question, session, env) {
       imageUrl,
       outlineColor,
       hotspotColor,
-      hoverOutlineColor,
+      hoverOutlineColor: checkNullish(hoverOutlineColor) ? hoverOutlineColor : 'black',
       selectedHotspotColor,
       multipleCorrect,
       partialScoring,
@@ -150,25 +152,25 @@ export const getLogTrace = (model, session, env) => {
   const traceLog = [];
   const { answers } = session || {};
   const { shapes } = model || {};
-  
+
   const allShapes = [];
   if (shapes) {
     if (shapes.rectangles) allShapes.push(...shapes.rectangles);
     if (shapes.polygons) allShapes.push(...shapes.polygons);
     if (shapes.circles) allShapes.push(...shapes.circles);
   }
-  
+
   const correctShapes = allShapes.filter(shape => shape.correct);
   const totalShapes = allShapes.length;
-  
+
   traceLog.push(`Total of ${totalShapes} hotspot(s) defined, ${correctShapes.length} correct.`);
-  
+
   if (answers && answers.length > 0) {
     traceLog.push(`Student selected ${answers.length} hotspot(s).`);
-    
+
     let correctSelections = 0;
     let incorrectSelections = 0;
-    
+
     answers.forEach(answer => {
       const shape = allShapes.find(s => s.id === answer.id);
       if (shape && shape.correct) {
@@ -177,11 +179,11 @@ export const getLogTrace = (model, session, env) => {
         incorrectSelections++;
       }
     });
-    
-    const missedCorrect = correctShapes.filter(correctShape => 
+
+    const missedCorrect = correctShapes.filter(correctShape =>
       !answers.some(answer => answer.id === correctShape.id)
     ).length;
-    
+
     if (correctSelections > 0) {
       traceLog.push(`${correctSelections} correct hotspot(s) selected.`);
     }
@@ -196,14 +198,14 @@ export const getLogTrace = (model, session, env) => {
   }
 
   const partialScoringEnabled = partialScoring.enabled(model, env);
-  
+
   if (partialScoringEnabled) {
     traceLog.push(`Score calculated using partial scoring.`);
-    
+
     if (answers && answers.length > 0) {
       let correctSelections = 0;
       let incorrectSelections = 0;
-      
+
       answers.forEach(answer => {
         const shape = allShapes.find(s => s.id === answer.id);
         if (shape && shape.correct) {
@@ -212,10 +214,10 @@ export const getLogTrace = (model, session, env) => {
           incorrectSelections++;
         }
       });
-      
+
       const totalCorrectAvailable = correctShapes.length;
       traceLog.push(`Partial scoring calculation: ${correctSelections} correct selections out of ${totalCorrectAvailable} available.`);
-      
+
       if (incorrectSelections > totalCorrectAvailable) {
         const extraSelections = incorrectSelections - (totalCorrectAvailable - correctSelections);
         traceLog.push(`${extraSelections} extra incorrect selection(s) beyond required amount are deducted from score.`);
@@ -236,12 +238,12 @@ export function outcome(config, session, env = {}) {
     log('outcome...');
 
     if (!session || isEmpty(session)) {
-      resolve({ 
-        score: 0, 
-        empty: true, 
-        traceLog: ['No hotspots selected. Score: 0.'] 
+      resolve({
+        score: 0,
+        empty: true,
+        traceLog: ['No hotspots selected. Score: 0.']
       });
-    } 
+    }
 
     if (session.answers) {
       const traceLog = getLogTrace(config, session, env);
@@ -249,10 +251,10 @@ export function outcome(config, session, env = {}) {
 
       resolve({ score, empty: false, traceLog });
     } else {
-      resolve({ 
-        score: 0, 
-        empty: true, 
-        traceLog: ['No hotspots selected. Score: 0.'] 
+      resolve({
+        score: 0,
+        empty: true,
+        traceLog: ['No hotspots selected. Score: 0.']
       });
     }
   });

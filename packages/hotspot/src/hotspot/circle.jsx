@@ -50,6 +50,7 @@ class CircleComponent extends React.Component {
       hoverOutlineColor,
       outlineColor,
       selected,
+      focused,
       x,
       y,
       evaluateText,
@@ -88,7 +89,7 @@ class CircleComponent extends React.Component {
       }
     }
 
-    const useHoveredStyle = hovered && hoverOutlineColor;
+    const useHoveredStyle = (hovered || focused) && hoverOutlineColor;
 
     return (
       <Group scaleX={scale} scaleY={scale}>
@@ -128,6 +129,7 @@ CircleComponent.propTypes = {
   isCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   isEvaluateMode: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
+  focused: PropTypes.bool,
   hoverOutlineColor: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
@@ -145,6 +147,7 @@ CircleComponent.propTypes = {
 CircleComponent.defaultProps = {
   isCorrect: false,
   evaluateText: null,
+  focused: false,
   strokeWidth: 5,
   scale: 1,
 };

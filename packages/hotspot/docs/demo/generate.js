@@ -13,6 +13,7 @@ exports.model = (id, element) => ({
     'rgba(254, 241, 96, 0.25)',
     'rgba(0, 0, 0, 0.1)',
   ],
+  // hoverOutlineColor: 'black',
   outlineColor: 'blue',
   outlineList: ['blue', 'red', 'yellow'],
   multipleCorrect: true,
