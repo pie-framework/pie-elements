@@ -14,7 +14,18 @@ const BaseContainer = styled('div')(({ theme }) => ({
   background: theme.palette.common.white,
   border: `${theme.spacing(1)} solid ${theme.palette.common.white}`,
   width: 'fit-content',
+  maxWidth: '100%',
+  overflowX: 'auto',
 }));
+
+const HiddenFocusable = styled('span')({
+  position: 'absolute',
+  width: 1,
+  height: 1,
+  overflow: 'hidden',
+  clip: 'rect(0, 0, 0, 0)',
+  whiteSpace: 'nowrap',
+});
 
 const ImageContainer = styled('div')({
   position: 'relative',
@@ -34,6 +45,13 @@ const StyledStage = styled(Stage)({
 });
 
 export class Container extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      focusedShapeId: null,
+    };
+  }
+
   isSelected(shape) {
     const selectedShape = this.props.session.answers.filter((answer) => answer.id === shape.id)[0];
     return !!selectedShape;
@@ -57,6 +75,44 @@ export class Container extends React.Component {
     return null;
   };
 
+  getAllShapesSorted = () => {
+    const { shapes: { rectangles = [], polygons = [], circles = [] } } = this.props;
+    const allShapes = [
+      ...rectangles.map((s) => ({ ...s, type: 'rectangle' })),
+      ...polygons.map((s) => ({ ...s, type: 'polygon' })),
+      ...circles.map((s) => ({ ...s, type: 'circle' })),
+    ];
+    allShapes.sort((a, b) => String(a.id).localeCompare(String(b.id), undefined, { numeric: true }));
+
+    return allShapes;
+  };
+
+  handleShapeFocus = (shapeId) => {
+    this.setState({ focusedShapeId: shapeId });
+  };
+
+  handleShapeBlur = () => {
+    this.setState({ focusedShapeId: null });
+  };
+
+  handleShapeKeyDown = (e, shapeId) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+
+      const { onSelectChoice, disabled } = this.props;
+
+      if (!disabled) {
+        const shape = this.getAllShapesSorted().find((s) => s.id === shapeId);
+
+        if (shape) {
+          const selected = this.isSelected(shape);
+
+          onSelectChoice({ id: shapeId, selected: !selected, selector: 'Keyboard' });
+        }
+      }
+    }
+  };
+
   render() {
     const {
       dimensions: { width: withProp, height: heightProp },
@@ -74,8 +130,12 @@ export class Container extends React.Component {
       showCorrect,
     } = this.props;
 
+    const { focusedShapeId } = this.state;
+
     const width = withProp * SCALE;
     const height = heightProp * SCALE;
+
+    const sortedShapes = this.getAllShapesSorted();
 
     return (
       <BaseContainer style={{ padding: strokeWidth / 2 }}>
@@ -125,6 +185,7 @@ export class Container extends React.Component {
                   strokeWidth={strokeWidth}
                   markAsCorrect={markAsCorrect}
                   showCorrectEnabled={showCorrect}
+                  focused={focusedShapeId === shape.id}
                 />
               );
             })}
@@ -153,6 +214,7 @@ export class Container extends React.Component {
                   selectedHotspotColor={selectedHotspotColor}
                   hoverOutlineColor={hoverOutlineColor}
                   showCorrectEnabled={showCorrect}
+                  focused={focusedShapeId === polygon.id}
                 />
               );
             })}
@@ -183,11 +245,29 @@ export class Container extends React.Component {
                   selectedHotspotColor={selectedHotspotColor}
                   hoverOutlineColor={hoverOutlineColor}
                   showCorrectEnabled={showCorrect}
+                  focused={focusedShapeId === shape.id}
                 />
               );
             })}
           </Layer>
         </StyledStage>
+
+        {sortedShapes.map((shape) => {
+          const selected = this.isSelected(shape);
+
+          return (
+            <HiddenFocusable
+              key={`focus-${shape.id}`}
+              tabIndex={disabled ? -1 : 0}
+              role="button"
+              aria-label={shape.ariaLabel || ''}
+              aria-pressed={selected}
+              onFocus={() => this.handleShapeFocus(shape.id)}
+              onBlur={this.handleShapeBlur}
+              onKeyDown={(e) => this.handleShapeKeyDown(e, shape.id)}
+            />
+          );
+        })}
       </BaseContainer>
     );
   }

@@ -68,6 +68,7 @@ class PolygonComponent extends React.Component {
       hoverOutlineColor,
       outlineColor,
       selected,
+      focused,
       points,
       evaluateText,
       strokeWidth,
@@ -120,7 +121,7 @@ class PolygonComponent extends React.Component {
         iconSrc = faWrong;
       }
     }
-    const useHoveredStyle = hovered && hoverOutlineColor;
+    const useHoveredStyle = (hovered || focused) && hoverOutlineColor;
 
     const xValues = pointsParsed.filter((_, index) => index % 2 === 0); // Even indices are x-coordinates
     const yValues = pointsParsed.filter((_, index) => index % 2 !== 0); // Odd indices are y-coordinates
@@ -174,6 +175,7 @@ PolygonComponent.propTypes = {
   isEvaluateMode: PropTypes.bool.isRequired,
   hoverOutlineColor: PropTypes.string,
   disabled: PropTypes.bool.isRequired,
+  focused: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   points: PropTypes.array.isRequired,
@@ -188,6 +190,7 @@ PolygonComponent.propTypes = {
 
 PolygonComponent.defaultProps = {
   evaluateText: null,
+  focused: false,
   strokeWidth: 5,
   scale: 1,
 };

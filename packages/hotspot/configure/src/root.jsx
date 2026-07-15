@@ -12,6 +12,8 @@ import { updateImageDimensions, generateValidationMessage, getUpdatedShapes, get
 
 const { Panel, toggle, dropdown } = settings;
 
+const checkNullish = (value) => value !== null && value !== undefined;
+
 const DimensionsContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   marginBottom: theme.spacing(1.5),
@@ -164,6 +166,7 @@ export class Root extends React.Component {
       ...props,
     });
 
+
     return (
       <layout.ConfigLayout
         extraCSSRules={extraCSSRules}
@@ -225,15 +228,8 @@ export class Root extends React.Component {
         )}
 
         <FlexContainer>
-          <SubHeading variant="h6">
-            Define Hotspot
-          </SubHeading>
-          <StyledTooltip
-            disableFocusListener
-            disableTouchListener
-            placement={'left'}
-            title={validationMessage}
-          >
+          <SubHeading variant="h6">Define Hotspot</SubHeading>
+          <StyledTooltip disableFocusListener disableTouchListener placement={'left'} title={validationMessage}>
             <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }} />
           </StyledTooltip>
         </FlexContainer>
@@ -255,7 +251,7 @@ export class Root extends React.Component {
           hotspotColor={model.hotspotColor}
           outlineColor={model.outlineColor}
           selectedHotspotColor={model.selectedHotspotColor}
-          hoverOutlineColor={model.hoverOutlineColor}
+          hoverOutlineColor={checkNullish(model.hoverOutlineColor) ? model.hoverOutlineColor : 'black'}
           onUpdateImageDimension={onUpdateImageDimension}
           onUpdateShapes={onUpdateShapes}
           onImageUpload={onImageUpload}

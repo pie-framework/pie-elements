@@ -51,6 +51,7 @@ class RectComponent extends React.Component {
       isEvaluateMode,
       outlineColor,
       selected,
+      focused,
       width,
       x,
       y,
@@ -60,6 +61,7 @@ class RectComponent extends React.Component {
       markAsCorrect,
       showCorrectEnabled,
     } = this.props;
+    const { hovered } = this.state;
 
     const outlineColorParsed = isEvaluateMode
       ? this.getEvaluateOutlineColor(isCorrect, markAsCorrect, outlineColor)
@@ -102,8 +104,7 @@ class RectComponent extends React.Component {
       }
     }
 
-    const { hovered } = this.state;
-    const useHoveredStyle = hovered && hoverOutlineColor;
+    const useHoveredStyle = (hovered || focused) && hoverOutlineColor;
 
     return (
       <Group scaleX={scale} scaleY={scale}>
@@ -147,6 +148,7 @@ RectComponent.propTypes = {
   isEvaluateMode: PropTypes.bool.isRequired,
   hoverOutlineColor: PropTypes.string,
   disabled: PropTypes.bool.isRequired,
+  focused: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
@@ -164,6 +166,7 @@ RectComponent.propTypes = {
 RectComponent.defaultProps = {
   isCorrect: false,
   evaluateText: null,
+  focused: false,
   strokeWidth: 5,
   scale: 1,
 };
