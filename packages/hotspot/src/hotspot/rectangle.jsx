@@ -107,18 +107,7 @@ class RectComponent extends React.Component {
     const useHoveredStyle = (hovered || focused) && hoverOutlineColor;
 
     return (
-      <Group scaleX={scale} scaleY={scale}>
-        {useHoveredStyle && (
-          <Rect
-            x={x}
-            y={y}
-            width={width}
-            height={height}
-            stroke={selected ? 'transparent' : hoverOutlineColor}
-            strokeWidth={strokeWidth}
-            listening={false}
-          />
-        )}
+      <Group scaleX={scale} scaleY={scale} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Rect
           x={x}
           y={y}
@@ -130,10 +119,19 @@ class RectComponent extends React.Component {
           draggable={false}
           stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
           strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseEnter={this.handleMouseEnter}
           cursor="pointer"
         />
+        {useHoveredStyle && (
+          <Rect
+            x={x}
+            y={y}
+            width={width}
+            height={height}
+            stroke={hoverOutlineColor}
+            strokeWidth={strokeWidth}
+            listening={false}
+          />
+        )}
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
