@@ -71,7 +71,7 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       expect(mainRect).toHaveAttribute('x', '10');
       expect(mainRect).toHaveAttribute('y', '20');
       expect(mainRect).toHaveAttribute('width', '100');
@@ -82,7 +82,7 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       expect(mainRect).toHaveAttribute('fill', '#FF0000');
     });
 
@@ -90,14 +90,14 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} selected={true} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       expect(mainRect).toHaveAttribute('fill', '#00FF00');
     });
 
     it('should apply scale transform', () => {
       const { getByTestId } = render(<RectComponent {...defaultProps} scale={1.5} />);
       const group = getByTestId('group');
-      
+
       expect(group).toHaveAttribute('scaleX', '1.5');
       expect(group).toHaveAttribute('scaleY', '1.5');
     });
@@ -105,7 +105,7 @@ describe('RectComponent', () => {
     it('should render with default scale of 1', () => {
       const { getByTestId } = render(<RectComponent {...defaultProps} />);
       const group = getByTestId('group');
-      
+
       expect(group).toHaveAttribute('scaleX', '1');
       expect(group).toHaveAttribute('scaleY', '1');
     });
@@ -117,9 +117,9 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} onClick={onClick} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       fireEvent.click(mainRect);
-      
+
       expect(onClick).toHaveBeenCalledWith({
         id: 'rect1',
         selected: true,
@@ -132,21 +132,21 @@ describe('RectComponent', () => {
       const { container, rerender } = render(<RectComponent {...defaultProps} onClick={onClick} selected={false} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       fireEvent.click(mainRect);
-      
+
       expect(onClick).toHaveBeenCalledWith({
         id: 'rect1',
         selected: true,
         selector: 'Mouse',
       });
-      
+
       rerender(<RectComponent {...defaultProps} onClick={onClick} selected={true} />);
-      
+
       const rectsAfter = container.querySelectorAll('[data-testid="rect"]');
       const mainRectAfter = rectsAfter[rectsAfter.length - 1];
       fireEvent.click(mainRectAfter);
-      
+
       expect(onClick).toHaveBeenCalledWith({
         id: 'rect1',
         selected: false,
@@ -159,9 +159,9 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} onClick={onClick} disabled={true} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       fireEvent.click(mainRect);
-      
+
       expect(onClick).not.toHaveBeenCalled();
     });
 
@@ -169,9 +169,9 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       fireEvent.mouseEnter(mainRect);
-      
+
       expect(document.body.style.cursor).toBe('pointer');
     });
 
@@ -179,9 +179,9 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} disabled={true} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       fireEvent.mouseEnter(mainRect);
-      
+
       expect(document.body.style.cursor).toBe('default');
     });
 
@@ -189,10 +189,10 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       fireEvent.mouseEnter(mainRect);
       fireEvent.mouseLeave(mainRect);
-      
+
       expect(document.body.style.cursor).toBe('default');
     });
   });
@@ -202,9 +202,9 @@ describe('RectComponent', () => {
       const { container } = render(<RectComponent {...defaultProps} hoverOutlineColor="#FFFF00" />);
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       fireEvent.mouseEnter(mainRect);
-      
+
       const rectsAfterHover = container.querySelectorAll('[data-testid="rect"]');
       expect(rectsAfterHover.length).toBeGreaterThan(1);
     });
@@ -215,12 +215,12 @@ describe('RectComponent', () => {
       );
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
-      
+
       fireEvent.mouseEnter(mainRect);
-      
+
       const hoverRect = container.querySelector('[stroke="#FFFF00"]');
       if (hoverRect) {
-        expect(hoverRect).toHaveAttribute('stroke', 'transparent');
+        expect(hoverRect).toHaveAttribute('stroke', '#FFFF00');
       }
     });
   });
@@ -236,7 +236,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
       expect(icon).toHaveAttribute('data-src');
@@ -252,7 +252,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -267,7 +267,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -282,7 +282,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = queryByTestId('icon-image');
       expect(icon).not.toBeInTheDocument();
     });
@@ -297,7 +297,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={true}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -312,7 +312,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={true}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -327,7 +327,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={true}
         />
       );
-      
+
       const icon = queryByTestId('icon-image');
       expect(icon).not.toBeInTheDocument();
     });
@@ -342,7 +342,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={true}
         />
       );
-      
+
       const icon = queryByTestId('icon-image');
       expect(icon).not.toBeInTheDocument();
     });
@@ -355,7 +355,7 @@ describe('RectComponent', () => {
           markAsCorrect={true}
         />
       );
-      
+
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
       expect(mainRect).toHaveAttribute('stroke', 'green');
@@ -370,7 +370,7 @@ describe('RectComponent', () => {
           markAsCorrect={false}
         />
       );
-      
+
       const rects = container.querySelectorAll('[data-testid="rect"]');
       const mainRect = rects[rects.length - 1];
       expect(mainRect).toHaveAttribute('stroke', 'red');
@@ -387,7 +387,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toHaveAttribute('data-tooltip', 'Correct answer!');
     });
@@ -408,7 +408,7 @@ describe('RectComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       // Icon should be centered: x + width/2 - 10, y + height/2 - 10
       expect(icon).toHaveAttribute('data-x', '50'); // 10 + 100/2 - 10

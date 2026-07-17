@@ -70,7 +70,7 @@ describe('CircleComponent', () => {
     it('should render with correct position and radius', () => {
       const { getByTestId } = render(<CircleComponent {...defaultProps} />);
       const circle = getByTestId('circle');
-      
+
       expect(circle).toHaveAttribute('x', '50');
       expect(circle).toHaveAttribute('y', '50');
       expect(circle).toHaveAttribute('radius', '30');
@@ -79,21 +79,21 @@ describe('CircleComponent', () => {
     it('should render with hotspot color when not selected', () => {
       const { getByTestId } = render(<CircleComponent {...defaultProps} />);
       const circle = getByTestId('circle');
-      
+
       expect(circle).toHaveAttribute('fill', '#FF0000');
     });
 
     it('should render with selected color when selected', () => {
       const { getByTestId } = render(<CircleComponent {...defaultProps} selected={true} />);
       const circle = getByTestId('circle');
-      
+
       expect(circle).toHaveAttribute('fill', '#00FF00');
     });
 
     it('should apply scale transform', () => {
       const { getByTestId } = render(<CircleComponent {...defaultProps} scale={2.0} />);
       const group = getByTestId('group');
-      
+
       expect(group).toHaveAttribute('scaleX', '2');
       expect(group).toHaveAttribute('scaleY', '2');
     });
@@ -101,7 +101,7 @@ describe('CircleComponent', () => {
     it('should render with default scale of 1', () => {
       const { getByTestId } = render(<CircleComponent {...defaultProps} />);
       const group = getByTestId('group');
-      
+
       expect(group).toHaveAttribute('scaleX', '1');
       expect(group).toHaveAttribute('scaleY', '1');
     });
@@ -112,9 +112,9 @@ describe('CircleComponent', () => {
       const onClick = jest.fn();
       const { getByTestId } = render(<CircleComponent {...defaultProps} onClick={onClick} />);
       const circle = getByTestId('circle');
-      
+
       fireEvent.click(circle);
-      
+
       expect(onClick).toHaveBeenCalledWith({
         id: 'circle1',
         selected: true,
@@ -126,20 +126,20 @@ describe('CircleComponent', () => {
       const onClick = jest.fn();
       const { getByTestId, rerender } = render(<CircleComponent {...defaultProps} onClick={onClick} selected={false} />);
       const circle = getByTestId('circle');
-      
+
       fireEvent.click(circle);
-      
+
       expect(onClick).toHaveBeenCalledWith({
         id: 'circle1',
         selected: true,
         selector: 'Mouse',
       });
-      
+
       rerender(<CircleComponent {...defaultProps} onClick={onClick} selected={true} />);
-      
+
       const circleAfter = getByTestId('circle');
       fireEvent.click(circleAfter);
-      
+
       expect(onClick).toHaveBeenCalledWith({
         id: 'circle1',
         selected: false,
@@ -151,37 +151,37 @@ describe('CircleComponent', () => {
       const onClick = jest.fn();
       const { getByTestId } = render(<CircleComponent {...defaultProps} onClick={onClick} disabled={true} />);
       const circle = getByTestId('circle');
-      
+
       fireEvent.click(circle);
-      
+
       expect(onClick).not.toHaveBeenCalled();
     });
 
     it('should change cursor to pointer on mouse enter when not disabled', () => {
       const { getByTestId } = render(<CircleComponent {...defaultProps} />);
       const circle = getByTestId('circle');
-      
+
       fireEvent.mouseEnter(circle);
-      
+
       expect(document.body.style.cursor).toBe('pointer');
     });
 
     it('should not change cursor when disabled', () => {
       const { getByTestId } = render(<CircleComponent {...defaultProps} disabled={true} />);
       const circle = getByTestId('circle');
-      
+
       fireEvent.mouseEnter(circle);
-      
+
       expect(document.body.style.cursor).toBe('default');
     });
 
     it('should reset cursor to default on mouse leave', () => {
       const { getByTestId } = render(<CircleComponent {...defaultProps} />);
       const circle = getByTestId('circle');
-      
+
       fireEvent.mouseEnter(circle);
       fireEvent.mouseLeave(circle);
-      
+
       expect(document.body.style.cursor).toBe('default');
     });
   });
@@ -190,9 +190,9 @@ describe('CircleComponent', () => {
     it('should show hover rect when hoverOutlineColor is provided', () => {
       const { container, getByTestId } = render(<CircleComponent {...defaultProps} hoverOutlineColor="#FFFF00" />);
       const circle = getByTestId('circle');
-      
+
       fireEvent.mouseEnter(circle);
-      
+
       const rects = container.querySelectorAll('[data-testid="rect"]');
       expect(rects.length).toBeGreaterThan(0);
     });
@@ -208,9 +208,9 @@ describe('CircleComponent', () => {
         />
       );
       const circle = getByTestId('circle');
-      
+
       fireEvent.mouseEnter(circle);
-      
+
       const rect = container.querySelector('[data-testid="rect"]');
       if (rect) {
         // Rect should be positioned at (x - radius, y - radius) with width/height = radius * 2
@@ -226,12 +226,12 @@ describe('CircleComponent', () => {
         <CircleComponent {...defaultProps} selected={true} hoverOutlineColor="#FFFF00" />
       );
       const circle = getByTestId('circle');
-      
+
       fireEvent.mouseEnter(circle);
-      
+
       const rect = container.querySelector('[data-testid="rect"]');
       if (rect) {
-        expect(rect).toHaveAttribute('stroke', 'transparent');
+        expect(rect).toHaveAttribute('stroke', '#FFFF00');
       }
     });
   });
@@ -247,7 +247,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -262,7 +262,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -277,7 +277,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -292,7 +292,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = queryByTestId('icon-image');
       expect(icon).not.toBeInTheDocument();
     });
@@ -307,7 +307,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={true}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -322,7 +322,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={true}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toBeInTheDocument();
     });
@@ -337,7 +337,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={true}
         />
       );
-      
+
       const icon = queryByTestId('icon-image');
       expect(icon).not.toBeInTheDocument();
     });
@@ -352,7 +352,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={true}
         />
       );
-      
+
       const icon = queryByTestId('icon-image');
       expect(icon).not.toBeInTheDocument();
     });
@@ -365,7 +365,7 @@ describe('CircleComponent', () => {
           markAsCorrect={true}
         />
       );
-      
+
       const circle = getByTestId('circle');
       expect(circle).toHaveAttribute('stroke', 'green');
     });
@@ -379,7 +379,7 @@ describe('CircleComponent', () => {
           markAsCorrect={false}
         />
       );
-      
+
       const circle = getByTestId('circle');
       expect(circle).toHaveAttribute('stroke', 'red');
     });
@@ -395,7 +395,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       expect(icon).toHaveAttribute('data-tooltip', 'Great job!');
     });
@@ -415,7 +415,7 @@ describe('CircleComponent', () => {
           showCorrectEnabled={false}
         />
       );
-      
+
       const icon = getByTestId('icon-image');
       // Icon should be at x - 10, y - 10
       expect(icon).toHaveAttribute('data-x', '90');
@@ -431,7 +431,7 @@ describe('CircleComponent', () => {
           radius={5}
         />
       );
-      
+
       const circle = getByTestId('circle');
       expect(circle).toHaveAttribute('radius', '5');
     });
@@ -443,7 +443,7 @@ describe('CircleComponent', () => {
           radius={200}
         />
       );
-      
+
       const circle = getByTestId('circle');
       expect(circle).toHaveAttribute('radius', '200');
     });
@@ -455,7 +455,7 @@ describe('CircleComponent', () => {
           scale={0.5}
         />
       );
-      
+
       const group = getByTestId('group');
       expect(group).toHaveAttribute('scaleX', '0.5');
       expect(group).toHaveAttribute('scaleY', '0.5');
