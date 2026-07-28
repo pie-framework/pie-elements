@@ -137,10 +137,7 @@ export class MultipleChoice extends React.Component {
     const { value, checked } = event.target;
     const { choiceMode, maxSelections, onChoiceChanged, session } = this.props;
 
-    console.log('Arimie choiceMode', choiceMode, maxSelections);
-
     if (choiceMode !== 'radio' && session.value && reachedMaxSelections(session.value.length, maxSelections)) {
-      console.log('Arimie here');
       // show/hide max selections error when user select/deselect an answer
       this.setState({ maxSelectionsErrorState: checked });
 
