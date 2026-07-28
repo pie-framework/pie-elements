@@ -8,6 +8,7 @@ import { color, Collapsible, PreviewPrompt, transformDataHeadings } from '@pie-l
 import Translator from '@pie-lib/translator';
 
 import Choice from './choice';
+import { reachedMaxSelections } from './utils';
 
 const { translator } = Translator;
 
@@ -134,9 +135,12 @@ export class MultipleChoice extends React.Component {
   // handleChange was added for accessibility. Please see comments and videos from PD-2441.
   handleChange = (event) => {
     const { value, checked } = event.target;
-    const { maxSelections, onChoiceChanged, session } = this.props;
+    const { choiceMode, maxSelections, onChoiceChanged, session } = this.props;
 
-    if (session.value && session.value.length >= maxSelections) {
+    console.log('Arimie choiceMode', choiceMode, maxSelections);
+
+    if (choiceMode !== 'radio' && session.value && reachedMaxSelections(session.value.length, maxSelections)) {
+      console.log('Arimie here');
       // show/hide max selections error when user select/deselect an answer
       this.setState({ maxSelectionsErrorState: checked });
 

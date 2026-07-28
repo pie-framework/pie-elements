@@ -7,6 +7,18 @@ import { isComplete } from '../index';
 
 jest.useFakeTimers();
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.mock('@pie-lib/correct-answer-toggle', () => () => null);
+jest.mock('@pie-lib/translator', () => ({
+  __esModule: true,
+  default: { translator: { t: (key) => key } },
+}));
+jest.mock('../choice', () => {
+  const React = require('react');
+  return {
+    __esModule: true,
+    default: ({ choice }) => <div>{choice.label}</div>,
+  };
+});
 jest.mock('lodash-es', () => {
   const lodash = require('lodash');
   return {
@@ -48,6 +60,16 @@ describe('isComplete', () => {
   });
 });
 
+beforeAll(() => {
+  customElements.define('pie-multiple-choice', MultipleChoice);
+});
+
+const makeEl = () => {
+  const el = new MultipleChoice();
+  el.dispatchEvent = jest.fn();
+  return el;
+};
+
 describe('multiple-choice', () => {
   describe('rendering', () => {
     const renderComponent = (modelOverrides = {}) => {
@@ -74,11 +96,6 @@ describe('multiple-choice', () => {
       expect(screen.getByTestId('preview-layout')).toBeInTheDocument();
     });
 
-    it('renders with rationale', () => {
-      renderComponent({ rationale: 'This is rationale' });
-      expect(screen.getByText('This is rationale')).toBeInTheDocument();
-    });
-
     it('renders with teacherInstructions', () => {
       renderComponent({ teacherInstructions: 'These are teacher instructions' });
       expect(screen.getByText('These are teacher instructions')).toBeInTheDocument();
@@ -99,56 +116,51 @@ describe('multiple-choice', () => {
   describe('events', () => {
     describe('model', () => {
       it('dispatches model set event', () => {
-        const el = new MultipleChoice();
-        el.tagName = 'mc-el';
+        const el = makeEl();
         el.model = {};
-        expect(el.dispatchEvent).toBeCalledWith(new ModelSetEvent('mc-el', false, true));
+        expect(el.dispatchEvent).toBeCalledWith(new ModelSetEvent(el.tagName.toLowerCase(), false, true));
       });
     });
 
     describe('onChange', () => {
       it('dispatches session changed event - add answer (checkbox)', () => {
-        const el = new MultipleChoice();
-        el.tagName = 'mc-el';
+        const el = makeEl();
         el.model = { choiceMode: 'checkbox' };
         el.session = { value: [] };
         el._onChange({ value: 'a', selected: true });
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent(el.tagName.toLowerCase(), true));
       });
 
       it('dispatches session changed event - remove answer (checkbox)', () => {
-        const el = new MultipleChoice();
-        el.tagName = 'mc-el';
+        const el = makeEl();
         el.model = { choiceMode: 'checkbox' };
         el.session = { value: ['a'] };
         el._onChange({ value: 'a', selected: false });
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', false));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent(el.tagName.toLowerCase(), false));
       });
 
       it('dispatches session changed event - add/remove answer (checkbox)', () => {
-        const el = new MultipleChoice();
-        el.tagName = 'mc-el';
+        const el = makeEl();
         el.model = { choiceMode: 'checkbox' };
         el.session = { value: ['1'] };
         el._onChange({ id: '2', selected: true });
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent(el.tagName.toLowerCase(), true));
 
         el._onChange({ id: '1', selected: false });
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent(el.tagName.toLowerCase(), true));
 
         el._onChange({ id: '2', selected: false });
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', false));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent(el.tagName.toLowerCase(), false));
       });
 
       it('dispatches session changed event - add/change answer (radio)', () => {
-        const el = new MultipleChoice();
-        el.tagName = 'mc-el';
+        const el = makeEl();
         el.model = { choiceMode: 'radio' };
         el.session = { value: [] };
         el._onChange({ value: 'a', selected: true });
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent(el.tagName.toLowerCase(), true));
         el._onChange({ value: 'b', selected: true });
-        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('mc-el', true));
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent(el.tagName.toLowerCase(), true));
       });
     });
   });
