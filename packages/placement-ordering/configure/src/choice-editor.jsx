@@ -185,7 +185,7 @@ class ChoiceEditor extends React.Component {
 
     const vTilerStyle = {
       gridTemplateColumns: 'repeat(2, 1fr)',
-      gridTemplateRows: `repeat(${choices.length}, 1fr)`,
+      gridTemplateRows: `repeat(${choices.length}, auto)`,
     };
 
     return (

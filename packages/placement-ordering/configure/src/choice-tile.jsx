@@ -139,7 +139,7 @@ export const ChoiceTile = (props) => {
     <div ref={setDropRef}>
       <div ref={setDragRef} {...filteredListeners} {...attributes}>
         <StyledChoiceTile style={style}>
-          <div style={{ width: '100%', display: 'flex' }}>
+          <div style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
             <CardActions>
               <StyledActions />
             </CardActions>
