@@ -137,31 +137,30 @@ class PolygonComponent extends React.Component {
     const rectHeight = maxY - minY;
 
     return (
-      <Group scaleX={scale} scaleY={scale}>
+      <Group scaleX={scale} scaleY={scale} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+        <Line
+          points={pointsParsed}
+          closed={true}
+          fill={selected && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
+          onClick={this.handleClick}
+          onTap={this.handleClick}
+          draggable={false}
+          stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
+          strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
+          cursor="pointer"
+          position="relative"
+        />
         {useHoveredStyle && (
           <Rect
             x={rectX}
             y={rectY}
             width={rectWidth}
             height={rectHeight}
-            stroke={selected ? 'transparent' : hoverOutlineColor}
+            stroke={hoverOutlineColor}
             strokeWidth={strokeWidth}
+            listening={false}
           />
         )}
-        <Line
-          points={pointsParsed}
-          closed={true}
-          fill={selected && selectedHotspotColor? selectedHotspotColor : hotspotColor}
-          onClick={this.handleClick}
-          onTap={this.handleClick}
-          draggable={false}
-          stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
-          strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseEnter={this.handleMouseEnter}
-          cursor='pointer'
-          position='relative'
-        />
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
