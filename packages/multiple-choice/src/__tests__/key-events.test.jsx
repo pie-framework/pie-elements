@@ -1,4 +1,10 @@
-import MultipleChoice from '../multiple-choice';
+import MultipleChoice from '../index';
+
+beforeAll(() => {
+  if (!customElements.get('pie-multiple-choice-key-events')) {
+    customElements.define('pie-multiple-choice-key-events', MultipleChoice);
+  }
+});
 
 describe('MultipleChoice', () => {
   let instance;
@@ -6,6 +12,7 @@ describe('MultipleChoice', () => {
   beforeEach(() => {
     instance = new MultipleChoice();
     instance._model = {
+      mode: 'gather',
       choices: [
         { value: '1' },
         { value: '2' },
@@ -28,6 +35,7 @@ describe('MultipleChoice', () => {
       expect(instance._onChange).toHaveBeenCalledWith({
         value: '1',
         selected: true,
+        selector: 'Keyboard',
       });
     });
 
@@ -37,6 +45,7 @@ describe('MultipleChoice', () => {
       expect(instance._onChange).toHaveBeenCalledWith({
         value: '1',
         selected: false,
+        selector: 'Keyboard',
       });
     });
 
@@ -45,6 +54,7 @@ describe('MultipleChoice', () => {
       expect(instance._onChange).toHaveBeenCalledWith({
         value: '1',
         selected: true,
+        selector: 'Keyboard',
       });
     });
 
@@ -59,6 +69,7 @@ describe('MultipleChoice', () => {
       expect(instance._onChange).toHaveBeenCalledWith({
         value: '2',
         selected: true,
+        selector: 'Keyboard',
       });
     });
 
@@ -69,6 +80,7 @@ describe('MultipleChoice', () => {
       expect(instance._onChange).toHaveBeenCalledWith({
         value: '3',
         selected: true,
+        selector: 'Keyboard',
       });
     });
 
@@ -79,6 +91,7 @@ describe('MultipleChoice', () => {
       expect(instance._onChange).toHaveBeenCalledWith({
         value: '1',
         selected: true,
+        selector: 'Keyboard',
       });
     });
 

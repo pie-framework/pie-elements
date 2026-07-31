@@ -245,12 +245,14 @@ export const validate = (model = {}, config = {}) => {
   });
 
   let hasCorrectResponse = false;
+  let correctCount = 0;
 
   reversedChoices.forEach((choice, index) => {
     const { correct, value, label, rationale } = choice;
 
     if (correct) {
       hasCorrectResponse = true;
+      correctCount++;
     }
 
     if (!getContent(label)) {
@@ -278,6 +280,12 @@ export const validate = (model = {}, config = {}) => {
 
   if (!hasCorrectResponse) {
     errors.correctResponse = 'No correct response defined.';
+  } else {
+    const { maxSelections, choiceMode } = model;
+
+    if (choiceMode !== 'radio' && maxSelections != null && correctCount > maxSelections) {
+      errors.correctResponse = `The number of correct answers (${correctCount}) exceeds max selections (${maxSelections}). Students won't be able to select all correct answers.`;
+    }
   }
 
   if (!isEmpty(choicesErrors)) {
