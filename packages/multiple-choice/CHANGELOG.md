@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.3.4...@pie-element/multiple-choice@13.3.5) (2026-07-31)
+
+### Bug Fixes
+
+- **multiple-choice:** maxSelections should not affect single choices, repair tests in src PIE-432 ([feba612](https://github.com/pie-framework/pie-elements/commit/feba61239db62626c05fa8099d8adc373f968061))
+- **multiple-choice:** maxSelections should not affect single choices, repair tests in src PIE-432 ([6010172](https://github.com/pie-framework/pie-elements/commit/6010172f083a9670b5c0f48375e690c483bdedaf))
+
 ## [13.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.3.3...@pie-element/multiple-choice@13.3.4) (2026-07-08)
 
 ### Bug Fixes

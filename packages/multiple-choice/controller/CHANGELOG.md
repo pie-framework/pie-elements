@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@8.1.2...@pie-element/multiple-choice-controller@8.1.3) (2026-07-31)
+
+### Bug Fixes
+
+- **multiple-choice:** maxSelections should not affect single choices, repair tests in src PIE-432 ([6010172](https://github.com/pie-framework/pie-elements/commit/6010172f083a9670b5c0f48375e690c483bdedaf))
+
 ## [8.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@8.1.1...@pie-element/multiple-choice-controller@8.1.2) (2026-07-02)
 
 ### Bug Fixes

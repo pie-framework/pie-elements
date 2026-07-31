@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@11.1.7...@pie-element/hotspot@11.2.0) (2026-07-31)
+
+### Bug Fixes
+
+- **hotspot:** improve hover effect handling PIE-783 ([b27c51f](https://github.com/pie-framework/pie-elements/commit/b27c51f77eb41f6a3aee1e87c85ea7c8769b542f))
+
+### Features
+
+- **hotspot:** add ariaLabel to shapes for improved accessibility PIE-639 ([8791de3](https://github.com/pie-framework/pie-elements/commit/8791de36640adc85a8cf43d095a092bce6d7e7a1))
+- **hotspot:** enhance focus handling and default hover outline color PIE-637 PIE-640 ([249d6e9](https://github.com/pie-framework/pie-elements/commit/249d6e9ae2da47a008ea0b5d73f34b64fd451795))
+
 ## [11.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@11.1.6...@pie-element/hotspot@11.1.7) (2026-07-08)
 
 ### Bug Fixes

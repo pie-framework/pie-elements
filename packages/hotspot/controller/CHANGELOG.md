@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@8.1.2...@pie-element/hotspot-controller@8.2.0) (2026-07-31)
+
+### Features
+
+- **hotspot:** enhance focus handling and default hover outline color PIE-637 PIE-640 ([249d6e9](https://github.com/pie-framework/pie-elements/commit/249d6e9ae2da47a008ea0b5d73f34b64fd451795))
+
 ## [8.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@8.1.1...@pie-element/hotspot-controller@8.1.2) (2026-07-02)
 
 ### Bug Fixes
