@@ -68,6 +68,7 @@ class PolygonComponent extends React.Component {
       hoverOutlineColor,
       outlineColor,
       selected,
+      focused,
       points,
       evaluateText,
       strokeWidth,
@@ -120,7 +121,7 @@ class PolygonComponent extends React.Component {
         iconSrc = faWrong;
       }
     }
-    const useHoveredStyle = hovered && hoverOutlineColor;
+    const useHoveredStyle = (hovered || focused) && hoverOutlineColor;
 
     const xValues = pointsParsed.filter((_, index) => index % 2 === 0); // Even indices are x-coordinates
     const yValues = pointsParsed.filter((_, index) => index % 2 !== 0); // Odd indices are y-coordinates
@@ -136,31 +137,30 @@ class PolygonComponent extends React.Component {
     const rectHeight = maxY - minY;
 
     return (
-      <Group scaleX={scale} scaleY={scale}>
+      <Group scaleX={scale} scaleY={scale} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+        <Line
+          points={pointsParsed}
+          closed={true}
+          fill={selected && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
+          onClick={this.handleClick}
+          onTap={this.handleClick}
+          draggable={false}
+          stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
+          strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
+          cursor="pointer"
+          position="relative"
+        />
         {useHoveredStyle && (
           <Rect
             x={rectX}
             y={rectY}
             width={rectWidth}
             height={rectHeight}
-            stroke={selected ? 'transparent' : hoverOutlineColor}
+            stroke={hoverOutlineColor}
             strokeWidth={strokeWidth}
+            listening={false}
           />
         )}
-        <Line
-          points={pointsParsed}
-          closed={true}
-          fill={selected && selectedHotspotColor? selectedHotspotColor : hotspotColor}
-          onClick={this.handleClick}
-          onTap={this.handleClick}
-          draggable={false}
-          stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
-          strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseEnter={this.handleMouseEnter}
-          cursor='pointer'
-          position='relative'
-        />
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
@@ -174,6 +174,7 @@ PolygonComponent.propTypes = {
   isEvaluateMode: PropTypes.bool.isRequired,
   hoverOutlineColor: PropTypes.string,
   disabled: PropTypes.bool.isRequired,
+  focused: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   points: PropTypes.array.isRequired,
@@ -188,6 +189,7 @@ PolygonComponent.propTypes = {
 
 PolygonComponent.defaultProps = {
   evaluateText: null,
+  focused: false,
   strokeWidth: 5,
   scale: 1,
 };

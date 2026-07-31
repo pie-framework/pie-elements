@@ -13,6 +13,7 @@ exports.model = (id, element) => ({
     'rgba(254, 241, 96, 0.25)',
     'rgba(0, 0, 0, 0.1)',
   ],
+  // hoverOutlineColor: 'black',
   outlineColor: 'blue',
   outlineList: ['blue', 'red', 'yellow'],
   multipleCorrect: true,
@@ -25,7 +26,8 @@ exports.model = (id, element) => ({
         x: 261,
         y: 44,
         index: 2,
-        correct: true
+        correct: true,
+        // ariaLabel: 'First rectangle',
       },
       {
         id: '4',
@@ -34,8 +36,8 @@ exports.model = (id, element) => ({
         x: 270,
         y: 215.4886474609375,
         index: 3,
-        correct: false
-      }
+        correct: false,
+      },
     ],
     polygons: [
       {
@@ -53,10 +55,11 @@ exports.model = (id, element) => ({
           { x: 109, y: 294 },
           { x: 106, y: 280 },
           { x: 56, y: 193 },
-          { x: 68, y: 139 }
+          { x: 68, y: 139 },
         ],
         index: 1,
-        correct: false
+        correct: false,
+        // ariaLabel: 'First polygon',
       },
       {
         id: '5',
@@ -71,10 +74,10 @@ exports.model = (id, element) => ({
           { x: 564, y: 465 },
           { x: 575, y: 461 },
           { x: 575, y: 438 },
-          { x: 544, y: 367 }
+          { x: 544, y: 367 },
         ],
         index: 4,
-        correct: false
+        correct: false,
       },
       {
         id: '7',
@@ -84,11 +87,11 @@ exports.model = (id, element) => ({
           { x: 556, y: 287 },
           { x: 575, y: 302 },
           { x: 601, y: 280 },
-          { x: 598, y: 246 }
+          { x: 598, y: 246 },
         ],
         index: 6,
-        correct: true
-      }
+        correct: true,
+      },
     ],
     circles: [
       {
@@ -97,7 +100,8 @@ exports.model = (id, element) => ({
         x: 71,
         y: 420,
         index: 1,
-        correct: false
+        correct: false,
+        // ariaLabel: 'First circle',
       },
       {
         id: '6',
@@ -105,14 +109,14 @@ exports.model = (id, element) => ({
         x: 479,
         y: 140,
         index: 5,
-        correct: false
-      }
-    ]
+        correct: false,
+        // ariaLabel: 'Second circle',
+      },
+    ],
   },
   rationale: null,
   teacherInstructions: null,
   toolbarEditorPosition: 'bottom',
-  prompt:
-    '<div>Which state(s) have names beginning in "North"?</div>',
+  prompt: '<div>Which state(s) have names beginning in "North"?</div>',
   rubricEnabled: false,
 });

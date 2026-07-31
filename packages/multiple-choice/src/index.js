@@ -7,6 +7,7 @@ import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-ev
 import { renderMath } from '@pie-lib/math-rendering';
 import { EnableAudioAutoplayImage } from '@pie-lib/render-ui';
 import { updateSessionValue, updateSessionMetadata } from './session-updater';
+import { exceedsMaxSelections } from './utils';
 
 const log = debug('pie-ui:multiple-choice');
 
@@ -37,7 +38,7 @@ export const isComplete = (session, model, audioComplete, elementContext) => {
     return !!selections;
   }
 
-  if (selections < minSelections || selections > maxSelections) {
+  if (selections < minSelections || exceedsMaxSelections(selections, maxSelections)) {
     return false;
   }
 
@@ -439,9 +440,10 @@ export default class MultipleChoice extends HTMLElement {
     const currentValue = this._session.value || [];
     const choiceId = this._model.choices[choiceIndex].value;
 
+    const alreadySelected = currentValue.includes(choiceId);
     const newValue = {
       value: choiceId,
-      selected: !currentValue.includes(choiceId),
+      selected: this._model.choiceMode === 'radio' ? true : !alreadySelected,
       selector: 'Keyboard',
     };
 

@@ -1,4 +1,4 @@
-import { model, outcome, getScore, createCorrectResponseSession, normalize } from '../index';
+import { model, outcome, getScore, createCorrectResponseSession, normalize, validate } from '../index';
 import { isResponseCorrect } from '../utils';
 import defaults from '../defaults';
 
@@ -476,6 +476,47 @@ describe('controller', () => {
       const sess = await normalize(question);
 
       expect(sess).toEqual({ ...defaults, ...question, choicesLayout: 'vertical' });
+    });
+  });
+
+  describe('validate', () => {
+    const makeChoice = (value, correct = false) => ({ value, label: value, correct });
+    const config = { minAnswerChoices: 2, maxAnswerChoices: 5 };
+
+    it('returns no error when maxSelections >= correctCount', () => {
+      const m = {
+        choiceMode: 'checkbox',
+        maxSelections: 2,
+        choices: [makeChoice('A', true), makeChoice('B', true), makeChoice('C')],
+      };
+      expect(validate(m, config).correctResponse).toBeUndefined();
+    });
+
+    it('returns error when maxSelections < correctCount', () => {
+      const m = {
+        choiceMode: 'checkbox',
+        maxSelections: 1,
+        choices: [makeChoice('A', true), makeChoice('B', true), makeChoice('C')],
+      };
+      expect(validate(m, config).correctResponse).toMatch(/exceeds max selections/);
+    });
+
+    it('does not error in radio mode even if maxSelections < correctCount', () => {
+      const m = {
+        choiceMode: 'radio',
+        maxSelections: 1,
+        choices: [makeChoice('A', true), makeChoice('B', true), makeChoice('C')],
+      };
+      expect(validate(m, config).correctResponse).toBeUndefined();
+    });
+
+    it('does not error when maxSelections is null', () => {
+      const m = {
+        choiceMode: 'checkbox',
+        maxSelections: null,
+        choices: [makeChoice('A', true), makeChoice('B', true), makeChoice('C')],
+      };
+      expect(validate(m, config).correctResponse).toBeUndefined();
     });
   });
 });

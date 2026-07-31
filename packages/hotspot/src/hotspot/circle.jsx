@@ -50,6 +50,7 @@ class CircleComponent extends React.Component {
       hoverOutlineColor,
       outlineColor,
       selected,
+      focused,
       x,
       y,
       evaluateText,
@@ -88,20 +89,10 @@ class CircleComponent extends React.Component {
       }
     }
 
-    const useHoveredStyle = hovered && hoverOutlineColor;
+    const useHoveredStyle = (hovered || focused) && hoverOutlineColor;
 
     return (
-      <Group scaleX={scale} scaleY={scale}>
-        {useHoveredStyle && (
-          <Rect
-            x={x - radius}
-            y={y - radius}
-            width={radius * 2}
-            height={radius * 2}
-            stroke={selected ? 'transparent' : hoverOutlineColor}
-            strokeWidth={strokeWidth}
-          />
-        )}
+      <Group scaleX={scale} scaleY={scale} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Circle
           radius={radius}
           fill={selected && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
@@ -110,11 +101,20 @@ class CircleComponent extends React.Component {
           draggable={false}
           stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
           strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseEnter={this.handleMouseEnter}
           x={x}
           y={y}
         />
+        {useHoveredStyle && (
+          <Rect
+            x={x - radius}
+            y={y - radius}
+            width={radius * 2}
+            height={radius * 2}
+            stroke={hoverOutlineColor}
+            strokeWidth={strokeWidth}
+            listening={false}
+          />
+        )}
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
@@ -128,6 +128,7 @@ CircleComponent.propTypes = {
   isCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   isEvaluateMode: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
+  focused: PropTypes.bool,
   hoverOutlineColor: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
@@ -145,6 +146,7 @@ CircleComponent.propTypes = {
 CircleComponent.defaultProps = {
   isCorrect: false,
   evaluateText: null,
+  focused: false,
   strokeWidth: 5,
   scale: 1,
 };

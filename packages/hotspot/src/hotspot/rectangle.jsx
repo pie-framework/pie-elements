@@ -51,6 +51,7 @@ class RectComponent extends React.Component {
       isEvaluateMode,
       outlineColor,
       selected,
+      focused,
       width,
       x,
       y,
@@ -60,6 +61,7 @@ class RectComponent extends React.Component {
       markAsCorrect,
       showCorrectEnabled,
     } = this.props;
+    const { hovered } = this.state;
 
     const outlineColorParsed = isEvaluateMode
       ? this.getEvaluateOutlineColor(isCorrect, markAsCorrect, outlineColor)
@@ -102,22 +104,10 @@ class RectComponent extends React.Component {
       }
     }
 
-    const { hovered } = this.state;
-    const useHoveredStyle = hovered && hoverOutlineColor;
+    const useHoveredStyle = (hovered || focused) && hoverOutlineColor;
 
     return (
-      <Group scaleX={scale} scaleY={scale}>
-        {useHoveredStyle && (
-          <Rect
-            x={x}
-            y={y}
-            width={width}
-            height={height}
-            stroke={selected ? 'transparent' : hoverOutlineColor}
-            strokeWidth={strokeWidth}
-            listening={false}
-          />
-        )}
+      <Group scaleX={scale} scaleY={scale} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Rect
           x={x}
           y={y}
@@ -129,10 +119,19 @@ class RectComponent extends React.Component {
           draggable={false}
           stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
           strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseEnter={this.handleMouseEnter}
           cursor="pointer"
         />
+        {useHoveredStyle && (
+          <Rect
+            x={x}
+            y={y}
+            width={width}
+            height={height}
+            stroke={hoverOutlineColor}
+            strokeWidth={strokeWidth}
+            listening={false}
+          />
+        )}
         {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
@@ -147,6 +146,7 @@ RectComponent.propTypes = {
   isEvaluateMode: PropTypes.bool.isRequired,
   hoverOutlineColor: PropTypes.string,
   disabled: PropTypes.bool.isRequired,
+  focused: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
@@ -164,6 +164,7 @@ RectComponent.propTypes = {
 RectComponent.defaultProps = {
   isCorrect: false,
   evaluateText: null,
+  focused: false,
   strokeWidth: 5,
   scale: 1,
 };
