@@ -30,3 +30,14 @@ export const closestCorners = jest.fn();
 export const getFirstCollision = jest.fn();
 export const pointerWithin = jest.fn();
 export const rectIntersectionAlgorithm = jest.fn();
+
+export const KeyboardCode = {
+  Space: 'Space',
+  Down: 'ArrowDown',
+  Right: 'ArrowRight',
+  Left: 'ArrowLeft',
+  Up: 'ArrowUp',
+  Esc: 'Escape',
+  Enter: 'Enter',
+  Tab: 'Tab',
+};
