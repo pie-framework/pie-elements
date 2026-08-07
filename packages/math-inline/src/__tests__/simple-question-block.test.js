@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { mq } from '@pie-lib/math-input';
+import { mq } from '@pie-lib/math-input-mathlive';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import SimpleQuestionBlock from '../simple-question-block';
 
-jest.mock('@pie-lib/math-input', () => ({
+jest.mock('@pie-lib/math-input-mathlive', () => ({
   mq: {
     Static: (props) => <div data-testid="mq-static" {...props} />,
   },

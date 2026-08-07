@@ -29,7 +29,7 @@ jest.mock('@pie-lib/correct-answer-toggle', () => (props) => (
 
 jest.mock('../simple-question-block', () => (props) => <div data-testid="simple-question-block" {...props} />);
 
-jest.mock('@pie-lib/math-input', () => ({
+jest.mock('@pie-lib/math-input-mathlive', () => ({
   mq: {
     Static: (props) => <div data-testid="mq-static" {...props} />,
   },
@@ -48,7 +48,7 @@ jest.mock('@pie-lib/translator', () => ({
   default: (props) => <div data-testid="translator">{props.children}</div>,
 }));
 
-const { registerEmbed } = require('@pie-lib/math-input');
+const { registerEmbed } = require('@pie-lib/math-input-mathlive');
 
 describe('Math-Inline Main', () => {
   const defaultProps = {

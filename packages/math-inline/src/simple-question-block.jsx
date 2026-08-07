@@ -1,6 +1,6 @@
 import React from 'react';
 import { MathToolbar } from '@pie-lib/math-toolbar';
-import { mq } from '@pie-lib/math-input';
+import { mq } from '@pie-lib/math-input-mathlive';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import { color } from '@pie-lib/render-ui';

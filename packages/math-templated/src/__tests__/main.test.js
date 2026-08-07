@@ -30,7 +30,7 @@ jest.mock('@pie-lib/correct-answer-toggle', () => ({
   default: (props) => <div data-testid="correct-answer-toggle" onClick={props.onToggle} {...props} />,
 }));
 
-jest.mock('@pie-lib/math-input', () => ({
+jest.mock('@pie-lib/math-input-mathlive', () => ({
   mq: {
     Static: (props) => <div data-testid="mq-static" {...props} />,
   },

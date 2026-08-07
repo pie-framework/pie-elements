@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@12.2.0-beta.0...@pie-element/drawing-response@12.3.0-beta.0) (2026-08-07)
+
+**Note:** Version bump only for package @pie-element/drawing-response
+
 # [12.2.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@12.1.0...@pie-element/drawing-response@12.2.0-beta.0) (2026-08-07)
 
 ### Bug Fixes
