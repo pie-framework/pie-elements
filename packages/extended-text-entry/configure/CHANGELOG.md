@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@13.1.0...@pie-element/extended-text-entry-configure@13.2.0-beta.0) (2026-08-07)
+
+### Bug Fixes
+
+- bump libs & shared modules PIE-706, PIE-702, PIE-679, PIE-698 ([5b1a8c4](https://github.com/pie-framework/pie-elements/commit/5b1a8c4c3eba2126fc43d78fd0187e7cd11d5424))
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+- bump shared modules and libs PIE-661 PIE-664 PIE-683 PIE-666 PIE-656 PIE-657 PIE-658 PIE-659 PIE-670 ([ebd6be4](https://github.com/pie-framework/pie-elements/commit/ebd6be4fd48fca41ad4c4908f606b25334731aed))
+- bump shared modules and libs PIE-674, PIE-662, PIE-705, PIE-674, PIE-963 ([78a3f64](https://github.com/pie-framework/pie-elements/commit/78a3f64652c9581c61bd4159f3210fc1e32d8bcf))
+- bump shared modules and libs PIE-695, PIE-697, PIE-699, PIE-680, PIE-714, PIE-665, PIE-656 ([4b76ae7](https://github.com/pie-framework/pie-elements/commit/4b76ae75d1c5ea6d55f7c6fb53f299dfcbda2b1f))
+- bump shared modules and libsPIE-603, PIE-604, PIE-663, PIE-662, PIE-678 ([e61c7a7](https://github.com/pie-framework/pie-elements/commit/e61c7a7d23744586337dfbb17a18ebfc656c202f))
+- **extended-text-entry:** re-render elements on reconnect PIE-672 ([9b241e8](https://github.com/pie-framework/pie-elements/commit/9b241e850263da72de72692265d244dbb023e3a1))
+- if allowMultiplePlacements default should be false PIE-682 ([b7447f4](https://github.com/pie-framework/pie-elements/commit/b7447f4d97e9d7cc2415f54a17ffe13ed15d1ebb))
+- sync libs versions ([48b5be9](https://github.com/pie-framework/pie-elements/commit/48b5be9559eb5b5235ca05f51c5f0161032a7041))
+
 # [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@13.1.0-next.1...@pie-element/extended-text-entry-configure@13.1.0) (2026-05-21)
 
 ### Bug Fixes

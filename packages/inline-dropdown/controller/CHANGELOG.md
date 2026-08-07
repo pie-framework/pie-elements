@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@9.1.0...@pie-element/inline-dropdown-controller@9.2.0-beta.0) (2026-08-07)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-695, PIE-697, PIE-699, PIE-680, PIE-714, PIE-665, PIE-656 ([4b76ae7](https://github.com/pie-framework/pie-elements/commit/4b76ae75d1c5ea6d55f7c6fb53f299dfcbda2b1f))
+
 # [9.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@9.1.0-next.1...@pie-element/inline-dropdown-controller@9.1.0) (2026-05-21)
 
 ### Bug Fixes

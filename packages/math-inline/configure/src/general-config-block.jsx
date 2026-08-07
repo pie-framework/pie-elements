@@ -11,7 +11,7 @@ import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import { isEqual } from 'lodash-es';
 import { ResponseTypes, generateValidationMessage, getPluginProps } from './utils';
-import { registerEmbed, applyStaticMath } from '@pie-lib/math-input';
+import { registerEmbed, applyStaticMath } from '@pie-lib/math-input-mathlive';
 import Info from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
 

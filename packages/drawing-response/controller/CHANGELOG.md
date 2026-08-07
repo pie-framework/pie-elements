@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@6.0.2...@pie-element/drawing-response-controller@6.1.0-beta.0) (2026-08-07)
+
+**Note:** Version bump only for package @pie-element/drawing-response-controller
+
 ## [6.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@6.0.2-next.0...@pie-element/drawing-response-controller@6.0.2) (2026-05-21)
 
 **Note:** Version bump only for package @pie-element/drawing-response-controller

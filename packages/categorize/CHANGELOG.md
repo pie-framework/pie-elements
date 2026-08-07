@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@13.1.0...@pie-element/categorize@13.2.0-beta.0) (2026-08-07)
+
+### Bug Fixes
+
+- bump libs & shared modules PIE-706, PIE-702, PIE-679, PIE-698 ([5b1a8c4](https://github.com/pie-framework/pie-elements/commit/5b1a8c4c3eba2126fc43d78fd0187e7cd11d5424))
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+- bump shared modules and libs PIE-661 PIE-664 PIE-683 PIE-666 PIE-656 PIE-657 PIE-658 PIE-659 PIE-670 ([ebd6be4](https://github.com/pie-framework/pie-elements/commit/ebd6be4fd48fca41ad4c4908f606b25334731aed))
+- bump shared modules and libs PIE-674, PIE-662, PIE-705, PIE-674, PIE-963 ([78a3f64](https://github.com/pie-framework/pie-elements/commit/78a3f64652c9581c61bd4159f3210fc1e32d8bcf))
+- bump shared modules and libs PIE-695, PIE-697, PIE-699, PIE-680, PIE-714, PIE-665, PIE-656 ([4b76ae7](https://github.com/pie-framework/pie-elements/commit/4b76ae75d1c5ea6d55f7c6fb53f299dfcbda2b1f))
+- bump shared modules and libsPIE-603, PIE-604, PIE-663, PIE-662, PIE-678 ([e61c7a7](https://github.com/pie-framework/pie-elements/commit/e61c7a7d23744586337dfbb17a18ebfc656c202f))
+- **categorize:** compute allowmultiple based on response when missing, get rid of defaults value PIE, add tests PIE-723 ([3217ede](https://github.com/pie-framework/pie-elements/commit/3217edebf20e3906a8c46d775dfb2e3ee0095fd6))
+- **categorize:** fix lint warnings PIE-433 ([b3a61de](https://github.com/pie-framework/pie-elements/commit/b3a61de893e7aa0b3bfc119ca17a6acc769a042a))
+- **categorize:** normalize categoryCount based on allowMultiplePlacements PIE-433 ([60f8473](https://github.com/pie-framework/pie-elements/commit/60f847381b769fa3cc4add100cce821b2aa6338c))
+- **categorize:** use single quotes lint warning PIE-723 ([4d2162a](https://github.com/pie-framework/pie-elements/commit/4d2162a6a618a7f5104a89e753a02dba75fb8c11))
+- clear \_root reference on disconnect PIE-686 ([0a236ce](https://github.com/pie-framework/pie-elements/commit/0a236ce1decbd64b250d97484212179f62adc049))
+- if allowMultiplePlacements default should be false PIE-682 ([b7447f4](https://github.com/pie-framework/pie-elements/commit/b7447f4d97e9d7cc2415f54a17ffe13ed15d1ebb))
+- if allowMultiplePlacements is missing default should be false PIE-682 ([3f93d0d](https://github.com/pie-framework/pie-elements/commit/3f93d0de81de3a5cbd2763184d2241f31e9dbae0))
+- sync libs versions ([48b5be9](https://github.com/pie-framework/pie-elements/commit/48b5be9559eb5b5235ca05f51c5f0161032a7041))
+
 # [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@13.1.0-next.1...@pie-element/categorize@13.1.0) (2026-05-21)
 
 ### Bug Fixes

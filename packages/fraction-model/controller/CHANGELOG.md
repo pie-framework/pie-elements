@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@5.1.0...@pie-element/fraction-model-controller@5.2.0-beta.0) (2026-08-07)
+
+### Bug Fixes
+
+- bump shared modules and libsPIE-603, PIE-604, PIE-663, PIE-662, PIE-678 ([e61c7a7](https://github.com/pie-framework/pie-elements/commit/e61c7a7d23744586337dfbb17a18ebfc656c202f))
+- sync libs versions ([48b5be9](https://github.com/pie-framework/pie-elements/commit/48b5be9559eb5b5235ca05f51c5f0161032a7041))
+
 # [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@5.1.0-next.1...@pie-element/fraction-model-controller@5.1.0) (2026-05-21)
 
 ### Bug Fixes

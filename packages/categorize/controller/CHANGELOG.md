@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@10.1.0...@pie-element/categorize-controller@10.2.0-beta.0) (2026-08-07)
+
+### Bug Fixes
+
+- bump shared modules and libs PIE-695, PIE-697, PIE-699, PIE-680, PIE-714, PIE-665, PIE-656 ([4b76ae7](https://github.com/pie-framework/pie-elements/commit/4b76ae75d1c5ea6d55f7c6fb53f299dfcbda2b1f))
+- **categorize:** compute allowmultiple based on response when missing, get rid of defaults value PIE, add tests PIE-723 ([3217ede](https://github.com/pie-framework/pie-elements/commit/3217edebf20e3906a8c46d775dfb2e3ee0095fd6))
+- **categorize:** fix lint warnings PIE-433 ([b3a61de](https://github.com/pie-framework/pie-elements/commit/b3a61de893e7aa0b3bfc119ca17a6acc769a042a))
+- **categorize:** normalize categoryCount based on allowMultiplePlacements PIE-433 ([60f8473](https://github.com/pie-framework/pie-elements/commit/60f847381b769fa3cc4add100cce821b2aa6338c))
+- **categorize:** use single quotes lint warning PIE-723 ([4d2162a](https://github.com/pie-framework/pie-elements/commit/4d2162a6a618a7f5104a89e753a02dba75fb8c11))
+- if allowMultiplePlacements is missing default should be false PIE-682 ([3f93d0d](https://github.com/pie-framework/pie-elements/commit/3f93d0de81de3a5cbd2763184d2241f31e9dbae0))
+
 # [10.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@10.1.0-next.1...@pie-element/categorize-controller@10.1.0) (2026-05-21)
 
 ### Bug Fixes

@@ -28,7 +28,7 @@ jest.mock('@pie-lib/math-toolbar', () => ({
   MathToolbar: (props) => <div data-testid="math-toolbar" {...props} />,
 }));
 
-jest.mock('@pie-lib/math-input', () => ({
+jest.mock('@pie-lib/math-input-mathlive', () => ({
   registerEmbed: jest.fn(),
   applyStaticMath: jest.fn(),
 }));
@@ -37,7 +37,7 @@ jest.mock('@pie-lib/editable-html-tip-tap', () => (props) => <div data-testid="e
 
 jest.mock('../response', () => (props) => <div data-testid="response" {...props} />);
 
-const { registerEmbed } = require('@pie-lib/math-input');
+const { registerEmbed } = require('@pie-lib/math-input-mathlive');
 
 const defaultProps = {
   model: {

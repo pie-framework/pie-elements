@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@10.1.0...@pie-element/inline-dropdown@10.2.0-beta.0) (2026-08-07)
+
+### Bug Fixes
+
+- add done button when editing choice [PIE-683] ([4e07188](https://github.com/pie-framework/pie-elements/commit/4e071883666d7bf33906379ac1f433077a3db8d7))
+- bump libs & shared modules PIE-706, PIE-702, PIE-679, PIE-698 ([5b1a8c4](https://github.com/pie-framework/pie-elements/commit/5b1a8c4c3eba2126fc43d78fd0187e7cd11d5424))
+- bump shared modules and libs PIE-600, PIE-602 ([ce99f6a](https://github.com/pie-framework/pie-elements/commit/ce99f6af50cb855b666a6df9340f9f5445fde4c4))
+- bump shared modules and libs PIE-661 PIE-664 PIE-683 PIE-666 PIE-656 PIE-657 PIE-658 PIE-659 PIE-670 ([ebd6be4](https://github.com/pie-framework/pie-elements/commit/ebd6be4fd48fca41ad4c4908f606b25334731aed))
+- bump shared modules and libs PIE-674, PIE-662, PIE-705, PIE-674, PIE-963 ([78a3f64](https://github.com/pie-framework/pie-elements/commit/78a3f64652c9581c61bd4159f3210fc1e32d8bcf))
+- bump shared modules and libs PIE-695, PIE-697, PIE-699, PIE-680, PIE-714, PIE-665, PIE-656 ([4b76ae7](https://github.com/pie-framework/pie-elements/commit/4b76ae75d1c5ea6d55f7c6fb53f299dfcbda2b1f))
+- bump shared modules and libsPIE-603, PIE-604, PIE-663, PIE-662, PIE-678 ([e61c7a7](https://github.com/pie-framework/pie-elements/commit/e61c7a7d23744586337dfbb17a18ebfc656c202f))
+- handle webcomponent lifecycle on every element that misses it PIE-703 ([9d5923f](https://github.com/pie-framework/pie-elements/commit/9d5923f973f0471e1e8f69ad4309cfc63d980d93))
+- **inline-dropdown:** run validation when a response area toolbar component is closed PIE-574 ([166f539](https://github.com/pie-framework/pie-elements/commit/166f539ad51fdd96effada1bd7d65d9d6cc5b713))
+- made sure inline dropdown toolbar is rendered inside the editor [PIE-683] ([2923c6f](https://github.com/pie-framework/pie-elements/commit/2923c6f3e2c1898a9e7e97ba7d19bc61cc2351fa))
+- sync libs versions ([48b5be9](https://github.com/pie-framework/pie-elements/commit/48b5be9559eb5b5235ca05f51c5f0161032a7041))
+
 # [10.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@10.1.0-next.1...@pie-element/inline-dropdown@10.1.0) (2026-05-21)
 
 ### Bug Fixes
