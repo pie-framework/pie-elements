@@ -3159,10 +3159,10 @@
     lodash-es "^4.17.23"
     mathjs "^7.0.1"
 
-"@pie-lib/math-input-mathlive@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-input-mathlive/-/math-input-mathlive-1.0.5.tgz#6aa7fe6c0e7f0790709996542c63e77b51c7f577"
-  integrity sha512-Jox4XHSTOVy2BQWZBIucuqp9Imo6H5yeAyVqCnHKP3oipd3bWRxThSkm7o/qVsA6YUA1jLkAQKPLj7GPfrNCbQ==
+"@pie-lib/math-input-mathlive@1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input-mathlive/-/math-input-mathlive-1.0.7.tgz#7000751017feea5d6a79e9e11e452df0134a9bbd"
+  integrity sha512-X+EAs666FWydiPFw6GqflEbznX4bOMzD+5cMbvoQ00p+mc+WisRdp6q+hvE9FvfvbzzOrZbb9x1L0md7QqZ7Pg==
   dependencies:
     "@emotion/react" "^11.14.0"
     "@emotion/styled" "^11.14.1"
