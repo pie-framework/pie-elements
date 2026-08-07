@@ -43,10 +43,9 @@ Holder.propTypes = {
 const AnswerContentContainer = styled('div')(({ theme, isDragging, isOver, disabled, outcome }) => ({
   color: color.text(),
   backgroundColor: color.white(),
-  border: `1px solid ${outcome === 'correct' ? color.correct() :
-    outcome === 'incorrect' ? color.incorrect() :
-      theme.palette.grey[400]
-    }`,
+  border: `1px solid ${
+    outcome === 'correct' ? color.correct() : outcome === 'incorrect' ? color.incorrect() : theme.palette.grey[400]
+  }`,
   cursor: disabled ? 'not-allowed' : 'pointer',
   width: '100%',
   padding: '10px',
@@ -55,20 +54,14 @@ const AnswerContentContainer = styled('div')(({ theme, isDragging, isOver, disab
   transition: 'opacity 200ms linear',
   wordBreak: 'break-word',
   opacity: isDragging && !disabled ? 0.5 : isOver && !disabled ? 0.2 : 1,
-  touchAction: 'none'
+  touchAction: 'none',
 }));
 
 const AnswerContent = (props) => {
   const { isDragging, isOver, title, disabled, empty, outcome, guideIndex, type } = props;
 
   if (empty) {
-    return <Holder
-      index={guideIndex}
-      isOver={isOver}
-      disabled={disabled}
-      type={type}
-
-    />;
+    return <Holder index={guideIndex} isOver={isOver} disabled={disabled} type={type} />;
   } else {
     return (
       <AnswerContentContainer
@@ -91,9 +84,12 @@ const AnswerContainer = styled('div')(({ correct, theme }) => ({
   padding: '0px',
   textAlign: 'center',
   height: 'initial',
-  border: correct === true ? `1px solid var(--feedback-correct-bg-color, ${color.correct()})` :
-    correct === false ? `1px solid var(--feedback-incorrect-bg-color, ${color.incorrect()})` :
-      'none',
+  border:
+    correct === true
+      ? `1px solid var(--feedback-correct-bg-color, ${color.correct()})`
+      : correct === false
+        ? `1px solid var(--feedback-incorrect-bg-color, ${color.incorrect()})`
+        : 'none',
 }));
 
 export class Answer extends React.Component {
@@ -130,16 +126,7 @@ export class Answer extends React.Component {
   };
 
   render() {
-    const {
-      id,
-      title,
-      isDragging = false,
-      className,
-      disabled,
-      isOver = false,
-      type,
-      correct,
-    } = this.props;
+    const { id, title, isDragging = false, className, disabled, isOver = false, type, correct } = this.props;
 
     log('[render], props: ', this.props);
 
@@ -195,25 +182,25 @@ function DragAndDropAnswer(props) {
   const isOver = droppable.isOver;
 
   // compute style: apply transform to the element that actually moves
-  const transformStyle = transform
-    ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-    : undefined;
+  const transformStyle = transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined;
 
   // If this item is a drop-zone (prompt slot), we render an outer droppable wrapper.
-  // For droppable wrapper we apply style to the outer wrapper
+  // The outer wrapper's rect is what dnd-kit measures for this slot's own droppable
+  // ("drop-{promptId}"), so it must stay untransformed — applying the drag transform
+  // there would make the slot's own droppable rect chase the dragged item during the
+  // drag, corrupting collision/keyboard-navigation results. The transform belongs on
+  // the inner draggable node instead.
   if (dropId) {
     return (
       <div
         ref={setDropRef}
         style={{
           flex: 1,
-          transform: transformStyle,
-          transition,
           opacity: isDragging ? 0.5 : 1,
-          backgroundColor: isOver ? 'rgba(0,0,0,0.05)' : 'transparent',
+          backgroundColor: isDragging || isOver ? 'rgba(0,0,0,0.05)' : 'transparent',
         }}
       >
-        <div ref={setDragRef} {...listeners} {...attributes}>
+        <div ref={setDragRef} {...listeners} {...attributes} style={{ transform: transformStyle, transition }}>
           <Answer {...props} isDragging={isDragging} isOver={isOver} />
         </div>
       </div>
