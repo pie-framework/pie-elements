@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@9.3.0-beta.0...@pie-element/extended-text-entry-controller@9.4.0-beta.0) (2026-08-07)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-controller
+
+# [9.3.0-beta.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@9.3.0-beta.0...@pie-element/extended-text-entry-controller@9.3.0-beta.1) (2026-08-07)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-controller
+
 # [9.3.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@9.2.0-beta.0...@pie-element/extended-text-entry-controller@9.3.0-beta.0) (2026-08-07)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

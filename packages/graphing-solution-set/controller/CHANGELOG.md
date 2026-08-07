@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@5.2.0-beta.0...@pie-element/graphing-solution-set-controller@5.3.0-beta.0) (2026-08-07)
+
+**Note:** Version bump only for package @pie-element/graphing-solution-set-controller
+
+# [5.2.0-beta.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@5.2.0-beta.0...@pie-element/graphing-solution-set-controller@5.2.0-beta.1) (2026-08-07)
+
+**Note:** Version bump only for package @pie-element/graphing-solution-set-controller
+
 # [5.2.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@5.1.0-beta.0...@pie-element/graphing-solution-set-controller@5.2.0-beta.0) (2026-08-07)
 
 **Note:** Version bump only for package @pie-element/graphing-solution-set-controller

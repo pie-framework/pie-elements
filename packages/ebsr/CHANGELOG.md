@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.5.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@14.4.0-beta.0...@pie-element/ebsr@14.5.0-beta.0) (2026-08-07)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+# [14.4.0-beta.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@14.4.0-beta.0...@pie-element/ebsr@14.4.0-beta.1) (2026-08-07)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
 # [14.4.0-beta.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@14.3.0-beta.0...@pie-element/ebsr@14.4.0-beta.0) (2026-08-07)
 
 **Note:** Version bump only for package @pie-element/ebsr
