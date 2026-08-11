@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@14.1.7...@pie-element/placement-ordering@14.1.9) (2026-08-11)
+
+### Bug Fixes
+
+- **placement-ordering:** adjust choice grid row height and center choices PIE-787 ([ad3e41e](https://github.com/pie-framework/pie-elements/commit/ad3e41e606a1e80b2c6ba2c37e18367cbb9ccda1))
+
 ## [14.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@14.1.7...@pie-element/placement-ordering@14.1.8) (2026-07-31)
 
 ### Bug Fixes

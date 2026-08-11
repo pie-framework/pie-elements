@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@5.1.4...@pie-element/fraction-model-controller@5.1.5) (2026-08-11)
+
+**Note:** Version bump only for package @pie-element/fraction-model-controller
+
 ## [5.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model-controller@5.1.3...@pie-element/fraction-model-controller@5.1.4) (2026-07-02)
 
 ### Bug Fixes

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@8.1.2...@pie-element/explicit-constructed-response-controller@8.1.3) (2026-08-11)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-controller
+
 ## [8.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@8.1.1...@pie-element/explicit-constructed-response-controller@8.1.2) (2026-07-02)
 
 ### Bug Fixes

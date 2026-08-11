@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@10.1.7...@pie-element/hotspot-configure@10.2.1) (2026-08-11)
+
+### Features
+
+- **hotspot:** enhance focus handling and default hover outline color PIE-637 PIE-640 ([249d6e9](https://github.com/pie-framework/pie-elements/commit/249d6e9ae2da47a008ea0b5d73f34b64fd451795))
+
 # [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@10.1.7...@pie-element/hotspot-configure@10.2.0) (2026-07-31)
 
 ### Features

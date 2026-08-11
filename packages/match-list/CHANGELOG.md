@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.1.6...@pie-element/match-list@7.1.7) (2026-08-11)
+
+**Note:** Version bump only for package @pie-element/match-list
+
 ## [7.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.1.5...@pie-element/match-list@7.1.6) (2026-07-02)
 
 ### Bug Fixes
