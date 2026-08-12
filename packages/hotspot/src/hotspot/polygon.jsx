@@ -10,7 +10,27 @@ class PolygonComponent extends React.Component {
     this.state = {
       hovered: false,
     };
+    this.groupRef = React.createRef();
   }
+
+  componentDidMount() {
+    if (this.props.focused) {
+      this.moveGroupToTop();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // `focused` (keyboard focus) can turn on the hovered style without going through handleMouseEnter
+    if (!prevProps.focused && this.props.focused) {
+      this.moveGroupToTop();
+    }
+  }
+
+  moveGroupToTop = () => {
+    if (this.groupRef.current) {
+      this.groupRef.current.moveToTop();
+    }
+  };
 
   getPolygonCenter = (points) => {
     const x = points.map(({ x }) => x);
@@ -47,6 +67,7 @@ class PolygonComponent extends React.Component {
       document.body.style.cursor = 'pointer';
     }
     this.setState({ hovered: true });
+    this.moveGroupToTop();
   };
 
   handleMouseLeave = () => {
@@ -137,7 +158,13 @@ class PolygonComponent extends React.Component {
     const rectHeight = maxY - minY;
 
     return (
-      <Group scaleX={scale} scaleY={scale} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+      <Group
+        ref={this.groupRef}
+        scaleX={scale}
+        scaleY={scale}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <Line
           points={pointsParsed}
           closed={true}
