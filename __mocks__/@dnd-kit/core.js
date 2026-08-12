@@ -41,3 +41,19 @@ export const KeyboardCode = {
   Enter: 'Enter',
   Tab: 'Tab',
 };
+
+// Mirrors dnd-kit's own defaultKeyboardCoordinateGetter (25px step per arrow key).
+export const defaultKeyboardCoordinateGetter = (event, { currentCoordinates }) => {
+  switch (event.code) {
+    case KeyboardCode.Right:
+      return { ...currentCoordinates, x: currentCoordinates.x + 25 };
+    case KeyboardCode.Left:
+      return { ...currentCoordinates, x: currentCoordinates.x - 25 };
+    case KeyboardCode.Down:
+      return { ...currentCoordinates, y: currentCoordinates.y + 25 };
+    case KeyboardCode.Up:
+      return { ...currentCoordinates, y: currentCoordinates.y - 25 };
+    default:
+      return undefined;
+  }
+};

@@ -158,4 +158,21 @@ describe('ordering', () => {
       }
     });
   });
+
+  describe('placing into an already-occupied target', () => {
+    // Whether the "move" action originates from pointer dragging, arrow-key dragging,
+    // or Tab-based keyboard placement, it all funnels through this same reducer path —
+    // placing onto an occupied target swaps the two targets' contents.
+    it('swaps the two targets instead of overwriting', () => {
+      const choices = [{ id: 1 }, { id: 2 }, { id: 3 }];
+      const state = buildState(choices, [1, 2, undefined], [], { includeTargets: true, allowSameChoiceInTargets: true });
+
+      const from = { id: 1, type: 'target', index: 0 };
+      const to = { id: 2, type: 'target', index: 1 };
+
+      const update = reducer({ type: 'move', from, to }, state);
+
+      expect(update.response).toEqual([2, 1, undefined]);
+    });
+  });
 });
