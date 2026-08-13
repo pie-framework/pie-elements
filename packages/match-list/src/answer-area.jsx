@@ -6,9 +6,14 @@ import { isEmpty, isUndefined, reduce } from 'lodash-es';
 import Arrow from './arrow';
 import DragAndDropAnswer from './answer';
 
+// matches the min width of the answer entries (see AnswerContainer in ./answer), so the two columns
+// give the row an intrinsic min width that the horizontal scroll container can overflow.
+const MIN_COLUMN_WIDTH = 200;
+
 const ArrowEntry = styled('div')({
   alignItems: 'normal',
   display: 'flex',
+  flexShrink: 0,
   height: 40,
   margin: '10px 20px',
 });
@@ -29,6 +34,7 @@ const PromptEntry = styled('div')(({ theme }) => ({
   flex: 1,
   margin: '10px 0',
   minHeight: 40,
+  minWidth: MIN_COLUMN_WIDTH,
   overflow: 'hidden',
   padding: 10,
   textAlign: 'center',

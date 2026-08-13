@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import debug from 'debug';
 import { difference, isEqual, uniqueId } from 'lodash-es';
 import { styled } from '@mui/material/styles';
-import { closestCenter } from '@dnd-kit/core';
+import { rectIntersection } from '@dnd-kit/core';
+import { restrictToParentElement } from '@dnd-kit/modifiers';
 
 import { Collapsible, color, Feedback, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
@@ -15,6 +16,25 @@ import { DragProvider } from '@pie-lib/drag';
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
 import { haveSameValuesButDifferentOrder } from './utils';
+import { closestDroppableKeyboardCoordinates } from './keyboard-coordinates';
+
+const getKeyboardDragOptions = (includeTargets) =>
+  includeTargets
+    ? {
+        keyboardCoordinateGetter: closestDroppableKeyboardCoordinates,
+        keyboardCodes: {
+          start: ['Space', 'Enter'],
+          cancel: ['Escape'],
+          end: ['Space', 'Enter'],
+        },
+        accessibility: {
+          screenReaderInstructions: {
+            draggable:
+              'Press Space or Enter to pick up this answer choice. Once picked up, use Tab or Shift+Tab to cycle through response areas, or use arrow keys to move it freely. Press Space or Enter to drop, or Escape to cancel.',
+          },
+        },
+      }
+    : {};
 
 const { translator } = Translator;
 
@@ -27,6 +47,26 @@ const PlacementOrderingContainer = styled('div')({
   flexDirection: 'column',
   alignItems: 'center',
   boxSizing: 'border-box',
+});
+
+// The interactive region - the choices and answers columns for a vertical item, or the choices and
+// answers rows for a horizontal one - scrolls horizontally when it does not fit the available width.
+const InteractiveRegion = styled('div')({
+  // the ancestors centre their children, which shrink-wraps this box to its content. without a
+  // definite width it grows with the tiler and the overflow escapes outwards instead of scrolling.
+  alignSelf: 'stretch',
+  maxWidth: '100%',
+  overflowX: 'auto',
+  // tiles are dragged by transform, which counts towards scrollable overflow, so leaving this axis
+  // scrollable would pop a vertical scrollbar mid-drag
+  overflowY: 'hidden',
+});
+
+// keeps the tiler at its natural width, and centred while it still fits
+const InteractiveRegionContent = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  minWidth: 'min-content',
 });
 
 const StyledPrompt = styled('div')(({ theme }) => ({
@@ -321,10 +361,17 @@ export class PlacementOrdering extends React.Component {
       flexDirection: 'column',
       alignItems: 'center',
       boxSizing: 'border-box',
+      width: '100%',
     };
 
     return (
-      <DragProvider onDragStart={() => { }} onDragEnd={this.onDragEnd} collisionDetection={closestCenter}>
+      <DragProvider
+        onDragStart={() => { }}
+        onDragEnd={this.onDragEnd}
+        collisionDetection={rectIntersection}
+        modifiers={[restrictToParentElement]}
+        {...getKeyboardDragOptions(includeTargets)}
+      >
         <PlacementOrderingContainer>
           <UiLayout extraCSSRules={extraCSSRules} style={containerStyle}>
             {showTeacherInstructions && (
@@ -347,18 +394,22 @@ export class PlacementOrdering extends React.Component {
               language={language}
             />
 
-            <OrderingTiler
-              instanceId={this.instanceId}
-              choiceLabel={config.choiceLabel}
-              targetLabel={config.targetLabel}
-              ordering={ordering}
-              tiler={Tiler}
-              disabled={disabled}
-              addGuide={config.showOrdering}
-              tileSize={config.tileSize}
-              includeTargets={includeTargets}
-              choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
-            />
+            <InteractiveRegion>
+              <InteractiveRegionContent>
+                <OrderingTiler
+                  instanceId={this.instanceId}
+                  choiceLabel={config.choiceLabel}
+                  targetLabel={config.targetLabel}
+                  ordering={ordering}
+                  tiler={Tiler}
+                  disabled={disabled}
+                  addGuide={config.showOrdering}
+                  tileSize={config.tileSize}
+                  includeTargets={includeTargets}
+                  choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
+                />
+              </InteractiveRegionContent>
+            </InteractiveRegion>
 
             {displayNote && <StyledNote dangerouslySetInnerHTML={{ __html: note }} />}
 

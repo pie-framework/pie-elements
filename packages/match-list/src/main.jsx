@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { swap } from '@pie-lib/drag';
-import { DndContext, DragOverlay } from '@dnd-kit/core';
+import { DndContext, DragOverlay, PointerSensor, KeyboardSensor, KeyboardCode, rectIntersection } from '@dnd-kit/core';
 import { restrictToFirstScrollableAncestor } from '@dnd-kit/modifiers';
+import { closestDroppableKeyboardCoordinates } from './keyboard-coordinates';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Feedback, PreviewPrompt } from '@pie-lib/render-ui';
 import { styled } from '@mui/material/styles';
@@ -11,12 +12,41 @@ import AnswerArea from './answer-area';
 import ChoicesList from './choices-list';
 import { Answer } from './answer';
 
+const sensors = [
+  { sensor: PointerSensor, options: {} },
+  {
+    sensor: KeyboardSensor,
+    options: {
+      coordinateGetter: closestDroppableKeyboardCoordinates,
+      keyboardCodes: {
+        start: [KeyboardCode.Space, KeyboardCode.Enter],
+        cancel: [KeyboardCode.Esc],
+        end: [KeyboardCode.Space, KeyboardCode.Enter],
+      },
+    },
+  },
+];
+
 const MainContainer = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   color: color.text(),
   backgroundColor: color.background(),
+});
+
+const InteractiveRegion = styled('div')({
+  width: '100%',
+  overflowX: 'auto',
+  overflowY: 'hidden',
+});
+
+// A block child of a scroll port is sized to the scroll port, so it has to opt out explicitly for
+// the content to be able to overflow. min-content keeps the rows and the pool the same width.
+const InteractiveRegionContent = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  minWidth: 'min-content',
 });
 
 export class Main extends React.Component {
@@ -83,16 +113,16 @@ export class Main extends React.Component {
       config: { duplicates },
     } = model;
 
-      if (isUndefined(session.value)) {
-        session.value = {};
-      }
+    if (isUndefined(session.value)) {
+      session.value = {};
+    }
 
-      // dropping a placed answer back to the choices pool = remove it
-      if (overData.type === 'choices-pool' && activeData.promptId !== undefined) {
-        session.value[activeData.promptId] = undefined;
-        onSessionChange(session);
-        return;
-      }
+    // dropping a placed answer back to the choices pool = remove it
+    if (overData.type === 'choices-pool' && activeData.promptId !== undefined) {
+      session.value[activeData.promptId] = undefined;
+      onSessionChange(session);
+      return;
+    }
 
     const answerId = activeData.id;
     const sourcePromptId = activeData.promptId;
@@ -166,11 +196,79 @@ export class Main extends React.Component {
     const { config, mode } = model;
     const { prompt, language } = config;
 
+    // Helpers for accessible announcements
+    const getChoiceLabel = (dragId) => {
+      // dragId is like "choice-123" or "target-123"
+      const answerId = String(dragId).replace(/^(choice|target)-/, '');
+      const answer = config.answers.find((a) => String(a.id) === answerId);
+
+      if (answer?.title) {
+        // Strip HTML tags for screen reader
+        const text = answer.title.replace(/<[^>]*>/g, '').trim();
+        return text || `Answer ${answerId}`;
+      }
+
+      return `Answer ${answerId}`;
+    };
+
+    const getDropTargetLabel = (dropId) => {
+      // dropId is like "drop-456" or "choices-pool"
+      if (dropId === 'choices-pool') {
+        return { label: 'Choices list', choiceId: null };
+      }
+
+      const promptId = String(dropId).replace(/^drop-/, '');
+      const promptItem = config.prompts.find((p) => String(p.id) === promptId);
+      const label = promptItem?.title
+        ? `Response area for ${promptItem.title.replace(/<[^>]*>/g, '').trim()}`
+        : `Response area ${promptId}`;
+      const choiceId = session.value?.[promptId];
+
+      return { label, choiceId: choiceId || null };
+    };
+
+    const announcements = {
+      onDragStart({ active }) {
+        return `Picked up ${getChoiceLabel(active.id)}. Use Tab to move between response areas, then press Space or Enter to drop.`;
+      },
+
+      onDragOver({ active, over }) {
+        if (!over) {
+          return `${getChoiceLabel(active.id)} is not over a response area.`;
+        }
+
+        const target = getDropTargetLabel(over.id);
+        const content = target.choiceId ? `Currently contains ${getChoiceLabel(target.choiceId)}.` : 'Currently empty.';
+
+        return `Over ${target.label}. ${content}`;
+      },
+
+      onDragEnd({ active, over }) {
+        if (!over) {
+          return `${getChoiceLabel(active.id)} was returned to its original position.`;
+        }
+
+        return `Dropped ${getChoiceLabel(active.id)} in ${getDropTargetLabel(over.id).label}.`;
+      },
+
+      onDragCancel({ active }) {
+        return `Cancelled. ${getChoiceLabel(active.id)} was returned to its original position.`;
+      },
+    };
+
     return (
       <DndContext
+        sensors={sensors}
+        collisionDetection={rectIntersection}
         onDragStart={this.onDragStart}
         onDragEnd={this.onPlaceAnswer}
         modifiers={[restrictToFirstScrollableAncestor]}
+        accessibility={{
+          screenReaderInstructions: {
+            draggable:
+              'Press Space or Enter to pick up this answer choice. Once picked up, use Tab or Shift+Tab to cycle through response areas, or use arrow keys to move it freely. Press Space or Enter to drop, or Escape to cancel.',
+          },
+        }}
       >
         <MainContainer>
           <PreviewPrompt className="prompt" prompt={prompt} />
@@ -182,22 +280,26 @@ export class Main extends React.Component {
             language={language}
           />
 
-          <AnswerArea
-            instanceId={this.instanceId}
-            model={model}
-            session={session}
-            onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
-            disabled={mode !== 'gather'}
-            showCorrect={showCorrectAnswer}
-          />
+          <InteractiveRegion>
+            <InteractiveRegionContent>
+              <AnswerArea
+                instanceId={this.instanceId}
+                model={model}
+                session={session}
+                onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
+                disabled={mode !== 'gather'}
+                showCorrect={showCorrectAnswer}
+              />
 
-          <ChoicesList
-            instanceId={this.instanceId}
-            model={model}
-            session={session}
-            disabled={mode !== 'gather'}
-            onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
-          />
+              <ChoicesList
+                instanceId={this.instanceId}
+                model={model}
+                session={session}
+                disabled={mode !== 'gather'}
+                onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
+              />
+            </InteractiveRegionContent>
+          </InteractiveRegion>
 
           {model.correctness && model.feedback && !showCorrectAnswer && (
             <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />

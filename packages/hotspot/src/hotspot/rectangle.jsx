@@ -10,7 +10,27 @@ class RectComponent extends React.Component {
     this.state = {
       hovered: false,
     };
+    this.groupRef = React.createRef();
   }
+
+  componentDidMount() {
+    if (this.props.focused) {
+      this.moveGroupToTop();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // `focused` (keyboard focus) can turn on the hovered style without going through handleMouseEnter
+    if (!prevProps.focused && this.props.focused) {
+      this.moveGroupToTop();
+    }
+  }
+
+  moveGroupToTop = () => {
+    if (this.groupRef.current) {
+      this.groupRef.current.moveToTop();
+    }
+  };
 
   handleClick = (e) => {
     const { onClick, id, selected, disabled } = this.props;
@@ -28,6 +48,7 @@ class RectComponent extends React.Component {
       document.body.style.cursor = 'pointer';
     }
     this.setState({ hovered: true });
+    this.moveGroupToTop();
   };
 
   handleMouseLeave = () => {
@@ -107,7 +128,13 @@ class RectComponent extends React.Component {
     const useHoveredStyle = (hovered || focused) && hoverOutlineColor;
 
     return (
-      <Group scaleX={scale} scaleY={scale} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
+      <Group
+        ref={this.groupRef}
+        scaleX={scale}
+        scaleY={scale}
+        onMouseLeave={this.handleMouseLeave}
+        onMouseEnter={this.handleMouseEnter}
+      >
         <Rect
           x={x}
           y={y}
