@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import debug from 'debug';
 import { difference, isEqual, uniqueId } from 'lodash-es';
 import { styled } from '@mui/material/styles';
-import { closestCenter } from '@dnd-kit/core';
+import { rectIntersection } from '@dnd-kit/core';
 import { restrictToParentElement } from '@dnd-kit/modifiers';
 
 import { Collapsible, color, Feedback, hasMedia, hasText, PreviewPrompt, UiLayout } from '@pie-lib/render-ui';
@@ -16,6 +16,25 @@ import { DragProvider } from '@pie-lib/drag';
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
 import { haveSameValuesButDifferentOrder } from './utils';
+import { closestDroppableKeyboardCoordinates } from './keyboard-coordinates';
+
+const getKeyboardDragOptions = (includeTargets) =>
+  includeTargets
+    ? {
+        keyboardCoordinateGetter: closestDroppableKeyboardCoordinates,
+        keyboardCodes: {
+          start: ['Space', 'Enter'],
+          cancel: ['Escape'],
+          end: ['Space', 'Enter'],
+        },
+        accessibility: {
+          screenReaderInstructions: {
+            draggable:
+              'Press Space or Enter to pick up this answer choice. Once picked up, use Tab or Shift+Tab to cycle through response areas, or use arrow keys to move it freely. Press Space or Enter to drop, or Escape to cancel.',
+          },
+        },
+      }
+    : {};
 
 const { translator } = Translator;
 
@@ -349,8 +368,9 @@ export class PlacementOrdering extends React.Component {
       <DragProvider
         onDragStart={() => { }}
         onDragEnd={this.onDragEnd}
-        collisionDetection={closestCenter}
+        collisionDetection={rectIntersection}
         modifiers={[restrictToParentElement]}
+        {...getKeyboardDragOptions(includeTargets)}
       >
         <PlacementOrderingContainer>
           <UiLayout extraCSSRules={extraCSSRules} style={containerStyle}>
