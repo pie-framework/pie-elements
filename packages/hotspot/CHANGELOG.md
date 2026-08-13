@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@11.2.0...@pie-element/hotspot@11.2.2) (2026-08-13)
+
+### Bug Fixes
+
+- **hotspot:** render hovered shape on top of other shapes PIE-900 ([23dfd21](https://github.com/pie-framework/pie-elements/commit/23dfd21a8c7b8909f2f494f47945831de79f40cc))
+
 ## [11.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@11.1.7...@pie-element/hotspot@11.2.1) (2026-08-11)
 
 ### Bug Fixes

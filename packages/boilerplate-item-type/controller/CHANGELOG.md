@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@6.0.3...@pie-element/boilerplate-item-type-controller@6.0.5) (2026-08-13)
+
+**Note:** Version bump only for package @pie-element/boilerplate-item-type-controller
+
 ## [6.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@6.0.3...@pie-element/boilerplate-item-type-controller@6.0.4) (2026-08-11)
 
 **Note:** Version bump only for package @pie-element/boilerplate-item-type-controller

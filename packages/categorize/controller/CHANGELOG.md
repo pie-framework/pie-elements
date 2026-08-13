@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@10.1.5...@pie-element/categorize-controller@10.1.7) (2026-08-13)
+
+**Note:** Version bump only for package @pie-element/categorize-controller
+
 ## [10.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@10.1.5...@pie-element/categorize-controller@10.1.6) (2026-08-11)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

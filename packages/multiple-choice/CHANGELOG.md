@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.3.5...@pie-element/multiple-choice@13.3.7) (2026-08-13)
+
+### Bug Fixes
+
+- **multiple-choice, number-line:** add render math in configure PIE-763 ([b7dfd29](https://github.com/pie-framework/pie-elements/commit/b7dfd29e6d5f1981799f8cef96f6f73ae829951c))
+- **multiple-choice, number-line:** revert initial fix, avoid calling renderMath is not necessary PIE-763 ([d8f7078](https://github.com/pie-framework/pie-elements/commit/d8f70789a8ab88e65c8ee1f0235e3603065b2090))
+
 ## [13.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@13.3.4...@pie-element/multiple-choice@13.3.6) (2026-08-11)
 
 ### Bug Fixes

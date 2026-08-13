@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-controller@3.0.3...@pie-element/matrix-controller@3.0.5) (2026-08-13)
+
+**Note:** Version bump only for package @pie-element/matrix-controller
+
 ## [3.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-controller@3.0.3...@pie-element/matrix-controller@3.0.4) (2026-08-11)
 
 **Note:** Version bump only for package @pie-element/matrix-controller

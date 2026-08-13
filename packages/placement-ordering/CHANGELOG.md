@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@14.1.8...@pie-element/placement-ordering@14.2.0) (2026-08-13)
+
+### Bug Fixes
+
+- **match-list/placement-ordering:** scroll the interactive region horizontally when it does not fit PIE-766 & PIE-768 ([f0395a9](https://github.com/pie-framework/pie-elements/commit/f0395a91b16a803c5609d5ece6d3f87208dee1b2))
+
+### Features
+
+- **placement-ordering:** add Tab/Shift+Tab keyboard accessibility support PIE-767 ([6199e0e](https://github.com/pie-framework/pie-elements/commit/6199e0ef2689304d33d2fe576f4ab3f2788703b5))
+
 ## [14.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@14.1.7...@pie-element/placement-ordering@14.1.9) (2026-08-11)
 
 ### Bug Fixes

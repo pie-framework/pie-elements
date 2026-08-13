@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.1.6...@pie-element/match-list@7.1.8) (2026-08-13)
+
+### Bug Fixes
+
+- **match-list/placement-ordering:** scroll the interactive region horizontally when it does not fit PIE-766 & PIE-768 ([f0395a9](https://github.com/pie-framework/pie-elements/commit/f0395a91b16a803c5609d5ece6d3f87208dee1b2))
+- **match-list:** improve keyboard drag-and-drop, collision detection and drop-zone visuals PIE-643 ([265b832](https://github.com/pie-framework/pie-elements/commit/265b8329b27b0226ce49ac83f3f3b944c18fc506))
+
 ## [7.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.1.6...@pie-element/match-list@7.1.7) (2026-08-11)
 
 **Note:** Version bump only for package @pie-element/match-list

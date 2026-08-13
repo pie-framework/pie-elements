@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@8.2.0...@pie-element/hotspot-controller@8.2.2) (2026-08-13)
+
+**Note:** Version bump only for package @pie-element/hotspot-controller
+
 ## [8.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@8.1.2...@pie-element/hotspot-controller@8.2.1) (2026-08-11)
 
 ### Features
