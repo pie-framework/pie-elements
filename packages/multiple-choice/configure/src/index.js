@@ -1,7 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import debug from 'debug';
-import { renderMath } from '@pie-lib/math-rendering';
 import {
   DeleteImageEvent,
   InsertImageEvent,
@@ -213,8 +212,6 @@ export default class MultipleChoice extends HTMLElement {
       log('_render - Calling root.render()');
       this._root.render(element);
       log('_render - Render completed successfully');
-
-      setTimeout(() => renderMath(this), 0);
     } catch (error) {
       console.error('❌ [multiple-choice-configure] Render error:', error);
       console.error('Error stack:', error.stack);
