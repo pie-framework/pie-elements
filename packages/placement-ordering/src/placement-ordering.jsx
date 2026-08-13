@@ -368,7 +368,7 @@ export class PlacementOrdering extends React.Component {
       <DragProvider
         onDragStart={() => { }}
         onDragEnd={this.onDragEnd}
-        collisionDetection={closestCenter}
+        collisionDetection={rectIntersection}
         modifiers={[restrictToParentElement]}
         {...getKeyboardDragOptions(includeTargets)}
       >
