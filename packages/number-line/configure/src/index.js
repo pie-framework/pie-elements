@@ -1,7 +1,6 @@
 import Main from './main';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { renderMath } from '@pie-lib/math-rendering';
 import {
   ModelUpdatedEvent,
   InsertSoundEvent,
@@ -180,7 +179,6 @@ export default class NumberLine extends HTMLElement {
       this._root = createRoot(this);
     }
     this._root.render(element);
-    setTimeout(() => renderMath(this), 0);
   }
 
   connectedCallback() {

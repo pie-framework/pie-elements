@@ -35,6 +35,20 @@ const MainContainer = styled('div')({
   backgroundColor: color.background(),
 });
 
+const InteractiveRegion = styled('div')({
+  width: '100%',
+  overflowX: 'auto',
+  overflowY: 'hidden',
+});
+
+// A block child of a scroll port is sized to the scroll port, so it has to opt out explicitly for
+// the content to be able to overflow. min-content keeps the rows and the pool the same width.
+const InteractiveRegionContent = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  minWidth: 'min-content',
+});
+
 export class Main extends React.Component {
   static propTypes = {
     session: PropTypes.object.isRequired,
@@ -266,22 +280,26 @@ export class Main extends React.Component {
             language={language}
           />
 
-          <AnswerArea
-            instanceId={this.instanceId}
-            model={model}
-            session={session}
-            onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
-            disabled={mode !== 'gather'}
-            showCorrect={showCorrectAnswer}
-          />
+          <InteractiveRegion>
+            <InteractiveRegionContent>
+              <AnswerArea
+                instanceId={this.instanceId}
+                model={model}
+                session={session}
+                onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
+                disabled={mode !== 'gather'}
+                showCorrect={showCorrectAnswer}
+              />
 
-          <ChoicesList
-            instanceId={this.instanceId}
-            model={model}
-            session={session}
-            disabled={mode !== 'gather'}
-            onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
-          />
+              <ChoicesList
+                instanceId={this.instanceId}
+                model={model}
+                session={session}
+                disabled={mode !== 'gather'}
+                onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
+              />
+            </InteractiveRegionContent>
+          </InteractiveRegion>
 
           {model.correctness && model.feedback && !showCorrectAnswer && (
             <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />
