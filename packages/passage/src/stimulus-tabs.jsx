@@ -79,12 +79,26 @@ const PassageAuthor = styled('div')({
 });
 
 const TabStyled = styled(Tab)(({ theme }) => ({
-  background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
+  /*
+   * The tab carries the colour of the panel it opens, which is what makes it read as a
+   * tab rather than a button, and it has to be the themed panel colour: MUI's palette
+   * does not follow `--pie-*`, so `common.white` here left the tab white on every color
+   * scheme while the passage body beneath it went dark. The comment this replaces gated
+   * the change on PD-2801, which is about OT's `color-contrast` class -- the mechanism
+   * pie-theme superseded, and blocked since 2023.
+   */
+  background: color.background(),
   fontSize: 'inherit',
   fontFamily: 'Roboto, sans-serif',
-  color: theme.palette.common.black, // remove when PD-2801 is DONE
+  color: color.text(),
   borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
-  border: '1px solid #D9DADA',
+  /*
+   * `--pie-border-gray` is stepped to the 3:1 non-text minimum in every scheme. The
+   * literal it replaces measured about 1.2:1 against the dark schemes' surfaces, so the
+   * tab outline -- the only thing separating an unselected tab from the strip -- was
+   * invisible there.
+   */
+  border: `1px solid ${color.borderGray()}`,
   borderBottomWidth: 0,
   minHeight: '56px',
   padding: '8px 10px',
@@ -106,7 +120,7 @@ const TabStyled = styled(Tab)(({ theme }) => ({
   },
 
   '&.Mui-selected': {
-    color: theme.palette.common.black,
+    color: color.text(),
     '.passage-label': {
       opacity: 1,
     },
@@ -126,11 +140,16 @@ const TabStyled = styled(Tab)(({ theme }) => ({
   },
 }));
 
-const Underline = styled('div')(({ theme }) => ({
+/*
+ * The selection indicator, one per tab. Unselected it has to disappear into the tab, so it
+ * paints the tab's own background rather than a fixed white; selected it becomes
+ * `--pie-tertiary`, which every scheme sets.
+ */
+const Underline = styled('div')(() => ({
   height: '2px',
   width: '100%',
   marginTop: '6px',
-  background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
+  background: color.background(),
 }));
 
 class StimulusTabs extends React.Component {
@@ -381,8 +400,16 @@ class StimulusTabs extends React.Component {
                   // so the reclaimed space flows to the passage content below.
                   zoom: zoomCompensation,
                   '& .MuiTabs-list': {
-                    backgroundColor: 'var(--pie-passage-header-background, #ffffff)',
-                    borderBottom: '1px solid #D9DADA',
+                    /*
+                     * The strip behind the tabs. A host that has opted into
+                     * `--pie-passage-header-background` keeps its own colour on every
+                     * scheme -- Knowledge Checks' pale green-blue is deliberate and is not
+                     * a scheme's business to override. With no host colour the fallback has
+                     * to be a theme token rather than a white literal, or the strip stays
+                     * white over a dark passage body.
+                     */
+                    backgroundColor: `var(--pie-passage-header-background, ${color.backgroundDark()})`,
+                    borderBottom: `1px solid ${color.borderGray()}`,
                   },
                   '& .MuiTabs-indicator': {
                     backgroundColor: color.white(),
