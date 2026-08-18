@@ -16,10 +16,22 @@ export class ChoicesList extends React.Component {
     model: PropTypes.object.isRequired,
     disabled: PropTypes.bool.isRequired,
     onRemoveAnswer: PropTypes.func,
+    selectedAnswer: PropTypes.object,
+    onChoiceClick: PropTypes.func,
+    onPlacementClick: PropTypes.func,
   };
 
   render() {
-    const { model, disabled, session, instanceId, onRemoveAnswer } = this.props;
+    const {
+      model,
+      disabled,
+      session,
+      instanceId,
+      onRemoveAnswer,
+      selectedAnswer,
+      onChoiceClick,
+      onPlacementClick,
+    } = this.props;
     const { config } = model;
     const { duplicates } = config;
 
@@ -39,13 +51,20 @@ export class ChoicesList extends React.Component {
           disabled={disabled}
           session={session}
           type="choice"
+          selectedAnswer={selectedAnswer}
+          onSelectClick={onChoiceClick}
           {...answer}
         />
       ));
 
     return (
       <ChoicesContainer>
-        <DroppablePlaceholder id="choices-pool" disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
+        <DroppablePlaceholder
+          id="choices-pool"
+          disabled={disabled}
+          onRemoveAnswer={onRemoveAnswer}
+          onPlacementClick={onPlacementClick}
+        >
           {filteredAnswers}
         </DroppablePlaceholder>
       </ChoicesContainer>
