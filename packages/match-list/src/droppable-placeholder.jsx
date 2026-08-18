@@ -16,16 +16,25 @@ const Container = styled('div')(({ theme }) => ({
     transition: 'background-color 200ms ease',
 }));
 
-export function DroppablePlaceholder({ id, disabled, children, ...rest }) {
+export function DroppablePlaceholder({ id, disabled, children, onPlacementClick, ...rest }) {
     const { setNodeRef, isOver } = useDroppable({
         id: id || 'choices-pool',
         data: { type: 'choices-pool' },
         disabled,
     });
 
+    const handleClick = () => {
+        if (disabled) {
+          return;
+        }
+
+        onPlacementClick?.({ type: 'choices-pool' });
+    };
+
     return (
         <Container
             ref={setNodeRef}
+            onClick={handleClick}
             style={{ backgroundColor: isOver ? 'rgba(0,0,0,0.05)' : 'transparent' }}
             {...rest}
         >
@@ -40,6 +49,7 @@ DroppablePlaceholder.propTypes = {
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     disabled: PropTypes.bool,
     children: PropTypes.node,
+    onPlacementClick: PropTypes.func,
 };
 
 export default DroppablePlaceholder;

@@ -59,6 +59,9 @@ export class AnswerArea extends React.Component {
     instanceId: PropTypes.string.isRequired,
     model: PropTypes.object.isRequired,
     prompt: PropTypes.string,
+    selectedAnswer: PropTypes.object,
+    onChoiceClick: PropTypes.func,
+    onPlacementClick: PropTypes.func,
   };
 
   getAnswerFromSession = (promptId) => {
@@ -129,7 +132,7 @@ export class AnswerArea extends React.Component {
   };
 
   render() {
-    const { disabled, instanceId, onRemoveAnswer } = this.props;
+    const { disabled, instanceId, onRemoveAnswer, selectedAnswer, onChoiceClick, onPlacementClick } = this.props;
     const rows = this.buildRows();
     const correctnessMap = this.getCorrectOrIncorrectMap();
 
@@ -158,6 +161,9 @@ export class AnswerArea extends React.Component {
                 title={sessionAnswer.title}
                 type={'target'}
                 onRemoveChoice={() => onRemoveAnswer(id)}
+                selectedAnswer={selectedAnswer}
+                onSelectClick={onChoiceClick}
+                onPlacementClick={onPlacementClick}
               />
             </Row>
           );
