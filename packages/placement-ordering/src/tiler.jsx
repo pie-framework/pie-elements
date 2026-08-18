@@ -11,6 +11,9 @@ const types = {
   tiles: PropTypes.array.isRequired,
   tileSize: PropTypes.string,
   addGuide: PropTypes.bool,
+  selectedChoice: PropTypes.object,
+  onChoiceClick: PropTypes.func,
+  onPlacementClick: PropTypes.func,
 };
 
 const defaults = {
@@ -26,6 +29,9 @@ const buildTiles = (props) => {
     tile.guideIndex = props.addGuide ? tile.index + 1 : undefined;
     // unique key for dnd-kit IDs
     tile.tileIndex = index;
+    tile.selectedChoice = props.selectedChoice;
+    tile.onChoiceClick = props.onChoiceClick;
+    tile.onPlacementClick = props.onPlacementClick;
 
     if (props.includeTargets) {
       return <Tile {...tile} key={index} />;
