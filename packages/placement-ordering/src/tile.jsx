@@ -29,70 +29,82 @@ Holder.propTypes = {
   disabled: PropTypes.bool,
 };
 
-const StyledTileContent = styled('div')(({ theme, isDragging, isOver, disabled, outcome, label, type }) => ({
-  cursor: disabled ? 'not-allowed' : 'grab',
-  width: '100%',
-  height: '100%',
-  padding: '10px',
-  boxSizing: 'border-box',
-  overflow: 'hidden',
-  border: (type === 'choice' || type === 'target') ? `1px solid ${theme.palette.grey[400]}` : '1px solid transparent',
-  backgroundColor: (type === 'choice' || type === 'target') ? color.background() : 'transparent',
-  transition: (type === 'choice' || type === 'target') ? 'background-color 150ms ease, border-color 150ms ease, opacity 150ms ease' : 'none',
-  pointerEvents: 'none',
-  userSelect: 'none',
+const StyledTileContent = styled('div')(
+  ({ theme, isDragging, isSelected, isOver, disabled, outcome, label, type }) => ({
+    cursor: disabled ? 'not-allowed' : 'grab',
+    width: '100%',
+    height: '100%',
+    padding: '10px',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    border: type === 'choice' || type === 'target' ? `1px solid ${theme.palette.grey[400]}` : '1px solid transparent',
+    backgroundColor: type === 'choice' || type === 'target' ? color.background() : 'transparent',
+    transition:
+      type === 'choice' || type === 'target'
+        ? 'background-color 150ms ease, border-color 150ms ease, opacity 150ms ease'
+        : 'none',
+    pointerEvents: 'none',
+    userSelect: 'none',
 
-  ...((type === 'choice' || type === 'target') && {
-    '&:hover': {
-      backgroundColor: disabled ? color.background() : color.secondary(),
-      borderColor: disabled ? theme.palette.grey[400] : theme.palette.primary.main,
-      transform: disabled ? 'none' : 'scale(1.02)',
-    },
-  }),
+    ...((type === 'choice' || type === 'target') && {
+      '&:hover': {
+        backgroundColor: disabled ? color.background() : color.secondary(),
+        borderColor: disabled ? theme.palette.grey[400] : theme.palette.primary.main,
+        transform: disabled ? 'none' : 'scale(1.02)',
+      },
+    }),
 
-  // Apply conditional styles based on props (only if not empty spacing tile)
-  ...((type === 'choice' || type === 'target') && isOver && !disabled && {
-    opacity: 0.4,
-    backgroundColor: color.primaryLight(),
-    borderColor: theme.palette.primary.main,
-    borderStyle: 'dashed',
-    transform: 'scale(1.05)',
-  }),
+    // Apply conditional styles based on props (only if not empty spacing tile)
+    ...((type === 'choice' || type === 'target') &&
+      isOver &&
+      !disabled && {
+        opacity: 0.4,
+        backgroundColor: color.primaryLight(),
+        borderColor: theme.palette.primary.main,
+        borderStyle: 'dashed',
+        transform: 'scale(1.05)',
+      }),
 
-  ...((type === 'choice' || type === 'target') && isDragging && !disabled && {
-    opacity: 0.6,
-    backgroundColor: color.secondaryLight(),
-    transform: 'scale(1.05) rotate(2deg)',
-    boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
-    cursor: 'grabbing',
-  }),
+    ...((type === 'choice' || type === 'target') &&
+      (isDragging || isSelected) &&
+      !disabled && {
+        opacity: 0.6,
+        backgroundColor: color.secondaryLight(),
+        transform: 'scale(1.05) rotate(2deg)',
+        boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
+        cursor: 'grabbing',
+      }),
 
-  ...((type === 'choice' || type === 'target') && disabled && {
-    cursor: 'not-allowed',
-    '&:hover': {
-      backgroundColor: color.background(),
-      transform: 'none',
-    },
-  }),
+    ...((type === 'choice' || type === 'target') &&
+      disabled && {
+        cursor: 'not-allowed',
+        '&:hover': {
+          backgroundColor: color.background(),
+          transform: 'none',
+        },
+      }),
 
-  ...((type === 'choice' || type === 'target') && outcome === 'incorrect' && {
-    border: `1px solid ${color.incorrect()}`,
-  }),
+    ...((type === 'choice' || type === 'target') &&
+      outcome === 'incorrect' && {
+        border: `1px solid ${color.incorrect()}`,
+      }),
 
-  ...((type === 'choice' || type === 'target') && outcome === 'correct' && {
-    border: `1px solid ${color.correct()}`,
-  }),
+    ...((type === 'choice' || type === 'target') &&
+      outcome === 'correct' && {
+        border: `1px solid ${color.correct()}`,
+      }),
 
-  ...(!label && {
-    border: 'none',
-    '&:hover': {
-      backgroundColor: 'unset',
-    },
+    ...(!label && {
+      border: 'none',
+      '&:hover': {
+        backgroundColor: 'unset',
+      },
+    }),
   }),
-}));
+);
 
 const TileContent = (props) => {
-  const { type, isDragging, empty, isOver, label, disabled, outcome, guideIndex } = props;
+  const { type, isDragging, isSelected, empty, isOver, label, disabled, outcome, guideIndex } = props;
 
   if (empty) {
     return <Holder type={type} index={guideIndex} isOver={isOver} disabled={disabled} />;
@@ -101,6 +113,7 @@ const TileContent = (props) => {
       <StyledTileContent
         type={type}
         isDragging={isDragging}
+        isSelected={isSelected}
         isOver={isOver}
         disabled={disabled}
         outcome={outcome}
@@ -124,6 +137,9 @@ export const Tile = (props) => {
     instanceId,
     draggable,
     tileIndex,
+    selectedChoice,
+    onChoiceClick,
+    onPlacementClick,
   } = props;
 
   // Use type + tileIndex in the IDs to guarantee uniqueness in all modes.
@@ -133,6 +149,10 @@ export const Tile = (props) => {
   const dragId = `tile-${type}-${id != null ? id : 'empty'}-${tileIndex}-${instanceId}`;
   const dropId = `drop-${type}-${id != null ? id : 'empty'}-${tileIndex}-${instanceId}`;
 
+  // Built once and reused for dnd-kit's own drag/drop data and for the click handlers
+  // below, so a click carries exactly the same shape a real drag would.
+  const tileData = { id, type, instanceId, value: label, index };
+
   const {
     attributes,
     listeners,
@@ -141,32 +161,79 @@ export const Tile = (props) => {
     isDragging,
   } = useDraggable({
     id: dragId,
-    data: {
-      id,
-      type,
-      instanceId,
-      value: label,
-      index
-    },
+    data: tileData,
     disabled: !draggable || disabled,
   });
 
-  const {
-    setNodeRef: setDropRef,
-    isOver: dropIsOver,
-  } = useDroppable({
+  const { setNodeRef: setDropRef, isOver: dropIsOver } = useDroppable({
     id: dropId,
-    data: {
-      id,
-      type,
-      instanceId,
-      value: label,
-      index
-    },
+    data: tileData,
     // Disable droppable on the tile currently being dragged so closestCenter
     // cannot pick it as the drop target (prevents self-collision and wrong matches).
     disabled: isDragging,
   });
+
+  const isSelected =
+    !!selectedChoice &&
+    selectedChoice.type === tileData.type &&
+    selectedChoice.id === tileData.id &&
+    selectedChoice.index === tileData.index;
+
+  // dnd-kit's own isOver (dropIsOver) only reflects real collision detection during an
+  // active drag, so it stays false while a placement area is merely a candidate for a
+  // pending click-based placement. Track hovering locally and fold it into the same
+  // isOver signal the styling below already uses, so hovering a response area while
+  // something is selected gets the exact same treatment as hovering it during a real
+  // drag — one code path, no duplicated CSS.
+  const [isHovered, setIsHovered] = React.useState(false);
+  const hasSelection = !!selectedChoice && !disabled;
+  const showsHoverEffect = dropIsOver || (type === 'target' && hasSelection && isHovered);
+
+  // Click-to-select/click-to-place (both choices and targets are handled by this same
+  // component, differentiated by `type`):
+  //  - Choice tile: selects/switches/deselects it, UNLESS a placed answer (a "target")
+  //    is currently selected, in which case clicking any choice-row tile returns it to
+  //    the choices column/row (choice -> choice has no placement meaning in the
+  //    reducer, so there's no ambiguity there).
+  //  - Target tile: clicking the already-selected placed answer again deselects it;
+  //    clicking it while something else is selected places that selection here
+  //    (empty or occupied); clicking a filled target with nothing selected selects
+  //    that placed answer for moving, the same way Tab+Space/Enter does. An empty
+  //    target with nothing selected is a no-op.
+  const handleClick = () => {
+    if (disabled) return;
+
+    if (type === 'choice') {
+      if (selectedChoice?.type === 'target') {
+        onPlacementClick?.(tileData);
+      } else if (draggable) {
+        onChoiceClick?.(tileData);
+      }
+    } else if (type === 'target') {
+      if (isSelected) {
+        onChoiceClick?.(tileData);
+      } else if (selectedChoice) {
+        onPlacementClick?.(tileData);
+      } else if (draggable) {
+        onChoiceClick?.(tileData);
+      }
+    }
+  };
+
+  // dnd-kit's own draggable attributes (spread below) already make a draggable tile a
+  // native Tab stop with its own Space/Enter activation. An empty tile is never
+  // draggable, so without this it wouldn't be reachable by Tab at all — needed for
+  // "select a choice, then Tab to a placement area and press Space/Enter" to work.
+  // Gated to non-draggable tiles specifically so it never overrides dnd-kit's own
+  // keydown handling (see the conditional spread order below).
+  const isNativeTabStop = !(draggable && !disabled) && !disabled;
+
+  const handleKeyDown = (e) => {
+    if (e.code === 'Space' || e.code === 'Enter') {
+      e.preventDefault();
+      handleClick();
+    }
+  };
 
   const ref = React.useRef(null);
 
@@ -204,7 +271,7 @@ export const Tile = (props) => {
     margin: 0,
     textAlign: 'center',
     pointerEvents: 'auto',
-    cursor: disabled ? 'not-allowed' : (isDragging ? 'grabbing' : 'grab'),
+    cursor: disabled ? 'not-allowed' : type === 'target' && hasSelection ? 'pointer' : isDragging ? 'grabbing' : 'grab',
     zIndex: isDragging ? 1000 : 'auto',
     willChange: isDragging ? 'transform' : 'auto',
   };
@@ -213,6 +280,12 @@ export const Tile = (props) => {
     <div
       ref={setRefs}
       style={style}
+      role={isNativeTabStop ? 'button' : undefined}
+      tabIndex={isNativeTabStop ? 0 : undefined}
+      onKeyDown={isNativeTabStop ? handleKeyDown : undefined}
+      onClick={handleClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       {...(draggable && !disabled ? { ...listeners, ...attributes } : {})}
     >
       <TileContent
@@ -221,8 +294,9 @@ export const Tile = (props) => {
         empty={empty}
         index={index}
         guideIndex={guideIndex}
-        isOver={dropIsOver}
+        isOver={showsHoverEffect}
         isDragging={isDragging}
+        isSelected={isSelected}
         disabled={disabled}
         outcome={outcome}
         type={type}
@@ -244,6 +318,9 @@ Tile.propTypes = {
   instanceId: PropTypes.any,
   draggable: PropTypes.bool,
   tileIndex: PropTypes.number,
+  selectedChoice: PropTypes.object,
+  onChoiceClick: PropTypes.func,
+  onPlacementClick: PropTypes.func,
 };
 
 export default Tile;

@@ -18,6 +18,11 @@ import { buildState, reducer } from './ordering';
 import { haveSameValuesButDifferentOrder } from './utils';
 import { closestDroppableKeyboardCoordinates } from './keyboard-coordinates';
 
+// A click that lands right after a real drag gesture ends must be ignored by the
+// click-to-select/click-to-place handlers below, or it would immediately reopen or
+// re-trigger a selection for a drag that just completed.
+const CLICK_AFTER_DRAG_GUARD_MS = 250;
+
 const getKeyboardDragOptions = (includeTargets) =>
   includeTargets
     ? {
@@ -122,7 +127,9 @@ export class PlacementOrdering extends React.Component {
 
     this.state = {
       showingCorrect: false,
+      selectedChoice: null,
     };
+    this.lastDragEndAt = 0;
 
     const { model } = props || {};
     const { env } = model || {};
@@ -300,6 +307,12 @@ export class PlacementOrdering extends React.Component {
     const { over, active } = event;
     const ordering = this.createOrdering();
 
+    // A real drag (pointer or keyboard) just ended — whatever mirrored selection it
+    // set on start is now resolved, and any click landing immediately after this must
+    // not be misread as a fresh selection/placement
+    this.cancelSelection();
+    this.lastDragEndAt = Date.now();
+
     if (over && active) {
       const draggedItem = active.data.current;
       const droppedOnItem = over.data.current;
@@ -318,6 +331,86 @@ export class PlacementOrdering extends React.Component {
         this.onRemoveChoice(draggedItem, ordering);
       }
     }
+  };
+
+  onDragStart = (event) => {
+    const { active } = event;
+
+    if (active?.data?.current) {
+      // A real drag (pointer or keyboard) is itself a selection — mirror it into the
+      // same selectedChoice state that click-to-select uses, so the two interaction
+      // models can be freely intermixed
+      this.selectChoice(active.data.current);
+    }
+  };
+
+  onDragCancel = () => {
+    this.cancelSelection();
+    this.lastDragEndAt = Date.now();
+  };
+
+  isSameChoice = (a, b) => !!a && !!b && a.type === b.type && a.id === b.id && a.index === b.index;
+
+  selectChoice = (data) => {
+    this.setState({ selectedChoice: data });
+  };
+
+  // Click-to-select semantics: selecting the currently-selected choice again clears
+  // the selection instead of re-selecting it.
+  toggleChoiceSelection = (data) => {
+    this.setState((state) => ({
+      selectedChoice: this.isSameChoice(state.selectedChoice, data) ? null : data,
+    }));
+  };
+
+  cancelSelection = () => {
+    this.setState({ selectedChoice: null });
+  };
+
+  // If a real dnd-kit drag (started via keyboard Space/Enter) is still live when a
+  // click completes the placement below, it needs to be cleanly ended — otherwise
+  // dnd-kit would still think a drag is in progress. Escape is already configured as
+  // this sensor's cancel key (see getKeyboardDragOptions), and dispatching it as a real
+  // DOM KeyboardEvent is how dnd-kit's own document-level listener is reached from
+  // outside its sensor. onDragCancel only resets local UI state, not the session, so
+  // this is safe to call unconditionally, including when no drag is actually live
+  // (dnd-kit simply has no listener attached in that case, and the dispatch is a
+  // no-op).
+  endAnyLiveKeyboardDrag = () => {
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'Escape', bubbles: true, cancelable: true }));
+  };
+
+  placeSelectedChoice = (targetTileData) => {
+    const { selectedChoice } = this.state;
+
+    if (!selectedChoice) {
+      return;
+    }
+
+    const ordering = this.createOrdering();
+
+    this.onDropChoice(targetTileData, selectedChoice, ordering);
+    this.cancelSelection();
+    this.endAnyLiveKeyboardDrag();
+    this.lastDragEndAt = Date.now();
+  };
+
+  isClickSoonAfterDragEnd = () => Date.now() - this.lastDragEndAt < CLICK_AFTER_DRAG_GUARD_MS;
+
+  onChoiceClick = (data) => {
+    if (this.isClickSoonAfterDragEnd()) {
+      return;
+    }
+
+    this.toggleChoiceSelection(data);
+  };
+
+  onPlacementClick = (targetTileData) => {
+    if (this.isClickSoonAfterDragEnd()) {
+      return;
+    }
+
+    this.placeSelectedChoice(targetTileData);
   };
 
   render() {
@@ -364,10 +457,19 @@ export class PlacementOrdering extends React.Component {
       width: '100%',
     };
 
+    const clickPlacementProps = includeTargets
+      ? {
+          selectedChoice: this.state.selectedChoice,
+          onChoiceClick: this.onChoiceClick,
+          onPlacementClick: this.onPlacementClick,
+        }
+      : {};
+
     return (
       <DragProvider
-        onDragStart={() => { }}
+        onDragStart={this.onDragStart}
         onDragEnd={this.onDragEnd}
+        onDragCancel={this.onDragCancel}
         collisionDetection={rectIntersection}
         modifiers={[restrictToParentElement]}
         {...getKeyboardDragOptions(includeTargets)}
@@ -407,6 +509,7 @@ export class PlacementOrdering extends React.Component {
                   tileSize={config.tileSize}
                   includeTargets={includeTargets}
                   choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
+                  {...clickPlacementProps}
                 />
               </InteractiveRegionContent>
             </InteractiveRegion>
