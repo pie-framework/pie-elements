@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/ruler",
   "repository": "pie-framework/pie-elements",
-  "version": "10.1.10",
+  "version": "10.1.11",
   "publishConfig": {
     "access": "public"
   },

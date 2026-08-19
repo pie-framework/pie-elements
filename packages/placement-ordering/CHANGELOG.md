@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@14.2.0...@pie-element/placement-ordering@14.2.1) (2026-08-19)
+
+### Bug Fixes
+
+- bump libs and shared modules PIE-681, PIE-708 ([08af8b5](https://github.com/pie-framework/pie-elements/commit/08af8b5802aecc8ee5454a1b6d60277d7ec94204))
+
 # [14.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@14.1.8...@pie-element/placement-ordering@14.2.0) (2026-08-13)
 
 ### Bug Fixes

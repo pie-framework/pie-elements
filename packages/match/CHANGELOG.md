@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@12.1.10...@pie-element/match@12.1.11) (2026-08-19)
+
+### Bug Fixes
+
+- bump libs and shared modules PIE-681, PIE-708 ([08af8b5](https://github.com/pie-framework/pie-elements/commit/08af8b5802aecc8ee5454a1b6d60277d7ec94204))
+
 ## [12.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@12.1.8...@pie-element/match@12.1.10) (2026-08-13)
 
 **Note:** Version bump only for package @pie-element/match

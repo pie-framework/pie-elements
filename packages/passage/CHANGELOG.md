@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.3.4...@pie-element/passage@7.3.5) (2026-08-19)
+
+### Bug Fixes
+
+- bump libs and shared modules PIE-681, PIE-708 ([08af8b5](https://github.com/pie-framework/pie-elements/commit/08af8b5802aecc8ee5454a1b6d60277d7ec94204))
+- **passage:** let the stimulus tabs follow the theme PIE-818 ([5c499e1](https://github.com/pie-framework/pie-elements/commit/5c499e1e38e1e9e8948e0d23532f63bd316204f8)), closes [#D9](https://github.com/pie-framework/pie-elements/issues/D9)
+
 ## [7.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@7.3.2...@pie-element/passage@7.3.4) (2026-08-13)
 
 **Note:** Version bump only for package @pie-element/passage
