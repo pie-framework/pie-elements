@@ -35,7 +35,7 @@ export default class ImageClozeAssociation extends HTMLElement {
     if (autoplayAudioEnabled && completeAudioEnabled && !this.audioComplete) {
       if (elementContext) {
         const audio = elementContext.querySelector('audio');
-        const isInsidePrompt = audio && audio.closest('#preview-prompt');
+        const isInsidePrompt = audio && audio.closest('.preview-prompt');
 
         // only require audio completion if audio exists and is inside the prompt
         if (audio && isInsidePrompt) {
@@ -144,7 +144,7 @@ export default class ImageClozeAssociation extends HTMLElement {
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
           const audio = this.querySelector('audio');
-          const isInsidePrompt = audio && audio.closest('#preview-prompt');
+          const isInsidePrompt = audio && audio.closest('.preview-prompt');
 
           if (!this._model) return;
           if (!this._model.autoplayAudioEnabled) return;

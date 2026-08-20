@@ -37,7 +37,7 @@ export default class Hotspot extends HTMLElement {
     if (autoplayAudioEnabled && completeAudioEnabled && !this.audioComplete) {
       if (elementContext) {
         const audio = elementContext.querySelector('audio');
-        const isInsidePrompt = audio && audio.closest('#preview-prompt');
+        const isInsidePrompt = audio && audio.closest('.preview-prompt');
 
         // only require audio completion if audio exists and is inside the prompt
         if (audio && isInsidePrompt) {
@@ -112,7 +112,7 @@ export default class Hotspot extends HTMLElement {
         if (mutation.type === 'childList') {
           if (this._audioInitialized) return;
           const audio = this.querySelector('audio');
-          const isInsidePrompt = audio && audio.closest('#preview-prompt');
+          const isInsidePrompt = audio && audio.closest('.preview-prompt');
 
           if (!this._model) return;
           if (!this._model.autoplayAudioEnabled) return;

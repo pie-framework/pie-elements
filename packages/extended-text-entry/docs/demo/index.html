@@ -1,3 +1,69 @@
+<style>
+  .math-demo-note {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .math-demo-note code {
+    background: #eef;
+    border-radius: 3px;
+    padding: 1px 4px;
+  }
+  .math-demo-item {
+    border: 2px dashed #bbb;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    background: #fff;
+  }
+  .math-demo-item > h5 {
+    margin: 0 0 8px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #666;
+  }
+</style>
+
 <div class="body">
-  <extended-text-entry pie-id="1"></extended-text-entry>
+  <div class="math-demo-note">
+    <strong>Five items on one page, 30 tagged prompt expressions.</strong>
+    Each item's prompt carries the same six expressions, tagged <code>[1.E1]</code>&hellip;<code>[5.E6]</code>.
+    All 30 should show as typeset math. An expression that shows its raw latex source instead can be
+    reported by its tag &mdash; a single item on a page typesets fine, so it takes several items to see
+    whether each one asks for typesetting at a moment its own prompt is actually in the DOM.
+    <br />
+    <code>[n.T1]</code> (teacher instructions) needs <code>role=instructor</code> with
+    <code>mode=view</code> or <code>evaluate</code>; <code>[n.F1]</code> (feedback) needs
+    <code>mode=evaluate</code>.
+  </div>
+
+  <div class="math-demo-item">
+    <h5>item 1 &mdash; 1.E1&ndash;1.E6</h5>
+    <extended-text-entry pie-id="1"></extended-text-entry>
+  </div>
+
+  <div class="math-demo-item">
+    <h5>item 2 &mdash; 2.E1&ndash;2.E6</h5>
+    <extended-text-entry pie-id="2"></extended-text-entry>
+  </div>
+
+  <div class="math-demo-item">
+    <h5>item 3 &mdash; 3.E1&ndash;3.E6</h5>
+    <extended-text-entry pie-id="3"></extended-text-entry>
+  </div>
+
+  <div class="math-demo-item">
+    <h5>item 4 &mdash; 4.E1&ndash;4.E6</h5>
+    <extended-text-entry pie-id="4"></extended-text-entry>
+  </div>
+
+  <div class="math-demo-item">
+    <h5>item 5 &mdash; 5.E1&ndash;5.E6</h5>
+    <extended-text-entry pie-id="5"></extended-text-entry>
+  </div>
 </div>
