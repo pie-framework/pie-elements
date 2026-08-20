@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "13.4.0-beta.6",
+  "version": "13.4.0-beta.7",
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",
@@ -16,7 +16,7 @@
     "@mui/material": "^7.3.4",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/categorize": "2.0.2",
-    "@pie-lib/config-ui": "13.1.0-beta.3",
+    "@pie-lib/config-ui": "13.1.0-beta.4",
     "@pie-lib/correct-answer-toggle": "4.0.5",
     "@pie-lib/drag": "4.0.6",
     "@pie-lib/math-rendering": "5.1.0",
