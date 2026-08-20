@@ -10,6 +10,7 @@ import debug from 'debug';
 import { set } from 'lodash-es';
 import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html-tip-tap';
 import { DragProvider } from '@pie-lib/drag';
+import { color } from '@pie-lib/render-ui';
 
 const log = debug('pie-elements:match:configure');
 
@@ -24,7 +25,7 @@ const RowContainer = styled('div')(({ theme }) => ({
   alignItems: 'center',
   flex: 1,
   width: '100%',
-  borderBottom: `2px solid ${theme.palette.grey['A100']}`,
+  borderBottom: `2px solid ${color.border()}`,
   paddingBottom: theme.spacing(2),
   marginTop: theme.spacing(2),
   marginBottom: theme.spacing(1),

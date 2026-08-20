@@ -10,6 +10,7 @@ jest.mock('@mui/icons-material/DragHandle', () => () => <div data-testid="drag-h
 jest.mock('@pie-lib/render-ui', () => ({
   color: {
     tertiary: () => '#999',
+    border: () => 'var(--pie-border, #9A9A9A)',
   },
 }));
 jest.mock('@pie-lib/editable-html-tip-tap', () => {

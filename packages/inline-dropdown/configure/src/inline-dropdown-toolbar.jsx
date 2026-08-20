@@ -14,12 +14,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 
-const MenuItemWrapper = styled('div')(({ theme }) => ({
+const MenuItemWrapper = styled('div')(() => ({
   display: 'flex',
   alignItems: 'flex-start',
   position: 'relative',
-  background: theme.palette.common.white,
-  borderBottom: `1px solid ${theme.palette.grey[400]}`,
+  // Surface and divider move together; see annotation-menu for why.
+  background: color.white(),
+  borderBottom: `1px solid ${color.border()}`,
 
   '&:last-child': {
     borderRadius: '0 0 4px 4px',
@@ -365,7 +366,7 @@ class RespAreaToolbar extends React.Component {
         data-inline-dropdown-toolbar=""
         style={{
           ...toolbarStyle,
-          backgroundColor: '#E0E1E6',
+          backgroundColor: color.dropdownBackground(),
           zIndex: 999,
         }}
         onMouseDown={this.onClickInside}

@@ -4,6 +4,7 @@ import MoreVert from '@mui/icons-material/MoreVert';
 import Delete from '@mui/icons-material/Delete';
 import { useDraggable } from '@dnd-kit/core';
 import { styled } from '@mui/material/styles';
+import { color } from '@pie-lib/render-ui';
 import { choiceIsEmpty } from './markupUtils';
 
 const GripIcon = ({ style }) => (
@@ -30,7 +31,7 @@ const StyledChoice = styled('div', {
   position: 'relative',
   padding: '8px 35px 8px 35px',
   cursor: 'grab',
-  border: `1px solid ${error ? '#f44336' : '#C0C3CF'}`,
+  border: `1px solid ${error ? '#f44336' : color.border()}`,
   '& img': {
     display: 'flex',
   },
@@ -47,7 +48,7 @@ const StyledDeleteIcon = styled(Delete)(({ theme }) => ({
   position: 'absolute',
   top: '6px',
   right: '0',
-  color: theme.palette.grey[500],
+  color: color.text(),
   zIndex: 2,
   '&:hover': {
     cursor: 'pointer',
@@ -91,7 +92,7 @@ export const BlankContent = (props) => {
           position: 'absolute',
           top: '6px',
           left: '15px',
-          color: '#9e9e9e',
+          color: color.borderGray(),
           zIndex: 2,
         }}
       />
