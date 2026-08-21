@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@7.1.11...@pie-element/complex-rubric@7.2.0) (2026-08-21)
+
+### Features
+
+- bump libs PIE-856, PIE-681, PIE-927 ([cb26d7a](https://github.com/pie-framework/pie-elements/commit/cb26d7afa6c99522533c321d5ff8ce3148a66e9e))
+
 ## [7.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@7.1.10...@pie-element/complex-rubric@7.1.11) (2026-08-19)
 
 ### Bug Fixes

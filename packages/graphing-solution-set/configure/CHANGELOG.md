@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@5.1.11...@pie-element/graphing-solution-set-configure@5.2.0) (2026-08-21)
+
+### Bug Fixes
+
+- move [@pie-lib](https://github.com/pie-lib) deps back to latest, off next prereleases PIE-927 ([a53e012](https://github.com/pie-framework/pie-elements/commit/a53e0127eb4ac95ece54e1e2bd669ae4974f4251))
+
+### Features
+
+- bump libs PIE-856, PIE-681, PIE-927 ([cb26d7a](https://github.com/pie-framework/pie-elements/commit/cb26d7afa6c99522533c321d5ff8ce3148a66e9e))
+
 ## [5.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@5.1.10...@pie-element/graphing-solution-set-configure@5.1.11) (2026-08-19)
 
 ### Bug Fixes

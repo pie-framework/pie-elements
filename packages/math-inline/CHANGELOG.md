@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@12.1.11...@pie-element/math-inline@12.2.0) (2026-08-21)
+
+### Bug Fixes
+
+- move [@pie-lib](https://github.com/pie-lib) deps back to latest, off next prereleases PIE-927 ([a53e012](https://github.com/pie-framework/pie-elements/commit/a53e0127eb4ac95ece54e1e2bd669ae4974f4251))
+- **theming:** move the grey palette reads onto --pie-\* tokens PIE-856 ([d7d005b](https://github.com/pie-framework/pie-elements/commit/d7d005bf081843335b4b0377852f2ecd075cb62d)), closes [#000000](https://github.com/pie-framework/pie-elements/issues/000000) [#E0E1E6](https://github.com/pie-framework/pie-elements/issues/E0E1E6) [#646464](https://github.com/pie-framework/pie-elements/issues/646464) [#616161](https://github.com/pie-framework/pie-elements/issues/616161) [#E0E1E6](https://github.com/pie-framework/pie-elements/issues/E0E1E6) [#C0C3](https://github.com/pie-framework/pie-elements/issues/C0C3)
+
+### Features
+
+- bump libs PIE-856, PIE-681, PIE-927 ([cb26d7a](https://github.com/pie-framework/pie-elements/commit/cb26d7afa6c99522533c321d5ff8ce3148a66e9e))
+
 ## [12.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@12.1.10...@pie-element/math-inline@12.1.11) (2026-08-19)
 
 ### Bug Fixes

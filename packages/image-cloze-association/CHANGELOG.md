@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@10.1.11...@pie-element/image-cloze-association@10.2.0) (2026-08-21)
+
+### Bug Fixes
+
+- move [@pie-lib](https://github.com/pie-lib) deps back to latest, off next prereleases PIE-927 ([a53e012](https://github.com/pie-framework/pie-elements/commit/a53e0127eb4ac95ece54e1e2bd669ae4974f4251))
+- read the prompt container by class, not by the id pie-lib removed PIE-927 ([aaaf6c2](https://github.com/pie-framework/pie-elements/commit/aaaf6c2f189de3b39f9de85969aeb2e50376c548))
+
+### Features
+
+- bump libs PIE-856, PIE-681, PIE-927 ([cb26d7a](https://github.com/pie-framework/pie-elements/commit/cb26d7afa6c99522533c321d5ff8ce3148a66e9e))
+
 ## [10.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@10.1.10...@pie-element/image-cloze-association@10.1.11) (2026-08-19)
 
 ### Bug Fixes
