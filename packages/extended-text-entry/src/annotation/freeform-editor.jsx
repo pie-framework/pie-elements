@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Popover, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { color } from '@pie-lib/render-ui';
 
-const StyledPopover = styled(Popover)(({ theme, annotationType }) => ({
+const StyledPopover = styled(Popover)(({ annotationType }) => ({
   '& .MuiPaper-root': {
     overflowX: 'unset',
     overflowY: 'unset',
@@ -18,7 +19,7 @@ const StyledPopover = styled(Popover)(({ theme, annotationType }) => ({
       width: 0,
       pointerEvents: 'none',
       borderWidth: '7px',
-      borderRightColor: theme.palette.grey[100],
+      borderRightColor: color.border(),
     },
     ...(annotationType === 'negative' && {
       '&::before': {
@@ -33,12 +34,14 @@ const StyledPopover = styled(Popover)(({ theme, annotationType }) => ({
   },
 }));
 
-const Wrapper = styled('div')(({ theme, annotationType }) => ({
+// See annotation-menu: the popover surface has to follow the scheme alongside its
+// stroke, or a scheme's border colour lands on a permanently white card.
+const Wrapper = styled('div')(({ annotationType }) => ({
   width: '200px',
   overflow: 'hidden',
   borderRadius: '4px',
-  backgroundColor: '#ffffff',
-  border: `4px solid ${theme.palette.grey[100]}`,
+  backgroundColor: color.white(),
+  border: `4px solid ${color.border()}`,
   ...(annotationType === 'negative' && {
     borderColor: 'rgb(255, 204, 238) !important',
   }),
@@ -47,23 +50,23 @@ const Wrapper = styled('div')(({ theme, annotationType }) => ({
   }),
 }));
 
-const Holder = styled('div')(({ theme }) => ({
+const Holder = styled('div')(() => ({
   display: 'flex',
   flexWrap: 'wrap',
-  borderTop: `2px solid ${theme.palette.grey[100]}`,
+  borderTop: `2px solid ${color.border()}`,
 }));
 
-const Button = styled('div')(({ theme, variant, annotationType }) => ({
+const Button = styled('div')(({ variant, annotationType }) => ({
   flexGrow: 1,
   width: '28%',
   textAlign: 'center',
   padding: '4px',
   cursor: 'pointer',
   '&:not(:nth-child(3n))': {
-    borderRight: `1px solid ${theme.palette.grey[100]}`,
+    borderRight: `1px solid ${color.border()}`,
   },
   '&:hover': {
-    backgroundColor: theme.palette.grey[100],
+    backgroundColor: color.backgroundDark(),
   },
   ...(variant === 'positive' && {
     backgroundColor: 'rgb(153, 255, 153) !important',

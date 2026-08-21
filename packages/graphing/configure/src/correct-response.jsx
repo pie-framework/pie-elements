@@ -5,28 +5,32 @@ import { styled } from '@mui/material/styles';
 import { GraphContainer as Graph } from '@pie-lib/graphing';
 import { AlertDialog } from '@pie-lib/config-ui';
 import { renderMath } from '@pie-lib/math-rendering';
+import { color } from '@pie-lib/render-ui';
 import Delete from '@mui/icons-material/Delete';
 import { set, isEqual } from 'lodash-es';
 import { MenuItem, Select, Tooltip, Typography } from '@mui/material';
 import Info from '@mui/icons-material/Info';
 
 // custom grey values close to old v3 accents
-const GREY_A100 = '#D5D5D5';
-const GREY_A200 = '#AAAAAA';
-
+/*
+  * GREY_A100/GREY_A200 were file-local literals, the same defect as the palette reads
+  * below: a grey no scheme can reach. Fills take `--pie-background-dark` and the
+  * pressed state `--pie-dropdown-background`; strokes and ink take the stroke and text
+  * tokens, which are stepped for contrast per scheme.
+  */
 const GraphingTools = styled('div')({
-  color: GREY_A200,
+  color: color.text(),
 });
 
 const Button = styled('div')(({ theme }) => ({
   margin: `${theme.spacing(2.5)} 0`,
   cursor: 'pointer',
-  background: theme.palette.grey[200],
+  background: color.backgroundDark(),
   padding: theme.spacing(1.5),
   width: 'fit-content',
   borderRadius: '4px',
   '&:hover': {
-    background: GREY_A100,
+    background: color.dropdownBackground(),
   },
 }));
 
@@ -40,16 +44,18 @@ const AvailableTool = styled('div')(({ theme }) => ({
   cursor: 'pointer',
   margin: theme.spacing(1),
   padding: theme.spacing(1),
-  border: `2px solid ${theme.palette.common.white}`,
+  // A spacer border reserving room for SelectedTool's stroke; it must read as absent,
+  // which is what `common.white` meant on a white page and `--pie-background` means on any.
+  border: `2px solid ${color.background()}`,
   textTransform: 'capitalize',
   '&:hover': {
-    color: theme.palette.grey[800],
+    color: color.text(),
   },
 }));
 
 const SelectedTool = styled(AvailableTool)({
-  background: GREY_A100,
-  border: `2px solid ${GREY_A200}`,
+  background: color.dropdownBackground(),
+  border: `2px solid ${color.border()}`,
 });
 
 const ResponseTitle = styled('div')(({ theme }) => ({
@@ -58,12 +64,14 @@ const ResponseTitle = styled('div')(({ theme }) => ({
   marginTop: theme.spacing(2.5),
 }));
 
-const IconButton = styled('div')(({ theme }) => ({
+const IconButton = styled('div')(() => ({
   marginLeft: '6px',
-  color: theme.palette.grey[600],
+  // Deliberately quieter than the hover state, but still a control: `--pie-border-gray`
+  // holds 3.17:1 against every scheme, enough for a non-text glyph.
+  color: color.borderGray(),
   '&:hover': {
     cursor: 'pointer',
-    color: theme.palette.common.black,
+    color: color.text(),
   },
 }));
 
@@ -101,7 +109,7 @@ const DefaultTool = styled('div')({
 const DefaultToolSelect = styled(Select)(({ theme }) => ({
   marginLeft: theme.spacing(1),
   textTransform: 'uppercase',
-  color: theme.palette.grey[800],
+  color: color.text(),
 }));
 
 const StyledMenuItem = styled(MenuItem)({

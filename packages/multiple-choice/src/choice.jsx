@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import { color } from '@pie-lib/render-ui';
 
 import ChoiceInput from './choice-input';
 
@@ -12,7 +13,13 @@ const ChoiceContainer = styled(Box, {
   paddingBottom: `calc(${theme.spacing(1)} + 2px)`,
   paddingLeft: `calc(${theme.spacing(1)} + 2px)`,
   paddingRight: `calc(${theme.spacing(1)} + 2px)`,
-  borderBottom: noBorder ? 'none' : `1px solid ${theme.palette.grey[300]}`,
+  /*
+   * The separator between answer choices. MUI's grey[300] does not follow `--pie-*`,
+   * so it stayed #e0e0e0 on every scheme -- about 1.1:1 against black-on-rose's own
+   * background, which is where George reported it. `--pie-border` is stepped per
+   * scheme and holds at least 3.23:1 everywhere.
+   */
+  borderBottom: noBorder ? 'none' : `1px solid ${color.border()}`,
   ...(horizontalLayout && {
     paddingRight: theme.spacing(2.5),
     '& label': {

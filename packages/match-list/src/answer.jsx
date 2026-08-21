@@ -40,11 +40,11 @@ Holder.propTypes = {
   type: PropTypes.string,
 };
 
-const AnswerContentContainer = styled('div')(({ theme, isDragging, isSelected, isOver, disabled, outcome }) => ({
+const AnswerContentContainer = styled('div')(({ isDragging, isSelected, isOver, disabled, outcome }) => ({
   color: color.text(),
   backgroundColor: color.white(),
   border: `1px solid ${
-    outcome === 'correct' ? color.correct() : outcome === 'incorrect' ? color.incorrect() : theme.palette.grey[400]
+    outcome === 'correct' ? color.correct() : outcome === 'incorrect' ? color.incorrect() : color.border()
   }`,
   cursor: disabled ? 'not-allowed' : 'pointer',
   width: '100%',

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ArrowHead from '@mui/icons-material/ArrowDropDown';
 import { styled } from '@mui/material/styles';
+import { color } from '@pie-lib/render-ui';
 
 const ArrowContainer = styled('div')({
   display: 'inline-block',
@@ -9,8 +10,10 @@ const ArrowContainer = styled('div')({
   width: '100%',
 });
 
-const Line = styled('span')(({ theme, isRight }) => ({
-  backgroundColor: theme.palette.grey[500],
+// A 1px rule joining a prompt to its answer: it is the connector, so it needs to
+// stay perceivable on every scheme's surface.
+const Line = styled('span')(({ isRight }) => ({
+  backgroundColor: color.border(),
   bottom: isRight ? 20 : 19,
   content: '""',
   display: 'block',
@@ -40,7 +43,9 @@ export class Arrow extends React.Component {
         <ArrowHead
           style={{
             transform: 'rotate(90deg)',
-            color: '#979797',
+            // Pairs with Line above: head and shaft are one connector and have to
+            // step together, or the arrow loses its point on a dark scheme.
+            color: color.border(),
             fontSize: 40,
           }}
         />
