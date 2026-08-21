@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { max } from 'lodash-es';
 import EditableHtml from '@pie-lib/editable-html-tip-tap';
+import { color } from '@pie-lib/render-ui';
 import { stripHtmlTags, getAdjustedLength, decodeHTML } from './markupUtils';
 
 const DesignContainer = styled('div')(({ theme }) => ({
@@ -36,9 +37,10 @@ const StyledEditableHtml = styled(EditableHtml)(({ theme, hasError }) => ({
   }),
 }));
 
-const StyledDeleteButton = styled(IconButton)(({ theme }) => ({
+const StyledDeleteButton = styled(IconButton)(() => ({
   '& svg': {
-    fill: theme.palette.grey[600],
+    // A delete control: it has to be found before it can be avoided.
+    fill: color.text(),
   },
 }));
 

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { Popover } from '@mui/material';
+import { color } from '@pie-lib/render-ui';
 
 const StyledPopover = styled(Popover)({
   '& .MuiPaper-root': {
@@ -17,17 +18,23 @@ const StyledPopover = styled(Popover)({
       width: 0,
       pointerEvents: 'none',
       borderWidth: '7px',
-      borderTopColor: 'black',
+      borderTopColor: color.border(),
     },
   },
 });
 
-const MainWrapper = styled('div')(({ theme }) => ({
+/*
+ * Surface and stroke move together. Tokenising the border alone would put a scheme's
+ * border colour on a fixed white popover -- under white-on-black, `--pie-border` is
+ * #ffffff, so the outline would vanish. `--pie-white` inverts with the scheme, which
+ * is what `common.white` was standing in for.
+ */
+const MainWrapper = styled('div')(() => ({
   width: '300px',
   overflow: 'hidden',
   borderRadius: '4px',
-  backgroundColor: theme.palette.common.white,
-  border: `2px solid ${theme.palette.grey[100]}`,
+  backgroundColor: color.white(),
+  border: `2px solid ${color.border()}`,
 }));
 
 const AnnotationsWrapper = styled('div')({
@@ -35,26 +42,26 @@ const AnnotationsWrapper = styled('div')({
   flexWrap: 'wrap',
 });
 
-const ControlsWrapper = styled('div')(({ theme }) => ({
+const ControlsWrapper = styled('div')(() => ({
   display: 'flex',
   flexWrap: 'wrap',
-  borderTop: `2px solid ${theme.palette.grey[100]}`,
+  borderTop: `2px solid ${color.border()}`,
 }));
 
-const Button = styled('div')(({ theme, variant }) => ({
+const Button = styled('div')(({ variant }) => ({
   width: '22%',
   textAlign: 'center',
   padding: '4px',
   cursor: 'pointer',
-  borderBottom: `1px solid ${theme.palette.grey[100]}`,
+  borderBottom: `1px solid ${color.border()}`,
   '&:not(:nth-child(4n))': {
-    borderRight: `1px solid ${theme.palette.grey[100]}`,
+    borderRight: `1px solid ${color.border()}`,
   },
   '&:nth-child(4n)': {
     flexGrow: 1,
   },
   '&:hover': {
-    backgroundColor: theme.palette.grey[100],
+    backgroundColor: color.backgroundDark(),
   },
   ...(variant === 'positive' && {
     backgroundColor: 'rgb(153, 255, 153) !important',

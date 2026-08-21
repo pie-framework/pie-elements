@@ -24,8 +24,13 @@ const RadioButtonsWrapper = styled('div')({
   flexDirection: 'column',
 });
 
+/*
+ * A column header is text, so it needs 4.5:1 and no neutral token clears that in
+ * every scheme -- `--pie-border-gray` tops out at 3.17:1. grey[400] measured 1.88:1
+ * on white, so this was failing already; `--pie-text` is the only correct answer.
+ */
 const RadioButtonsColumnHeader = styled('p')(({ theme }) => ({
-  color: theme.palette.grey[400],
+  color: color.text(),
   fontSize: theme.typography.fontSize - 2,
 }));
 
