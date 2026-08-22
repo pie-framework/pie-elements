@@ -3136,10 +3136,10 @@
     "@mui/material" "^7.3.4"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@3.0.16":
-  version "3.0.16"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-3.0.16.tgz#302858eb5e07ea13a50d479fff5ce82811a577af"
-  integrity sha512-2LLjKYebXQJFB1AQBbXKDiOB5jU/z855k+/AVK8f06pVYwlreRXvQHPFAPOOF/HjyKi7j/5gsZavMXbTU30s0g==
+"@pie-lib/mask-markup@3.0.17":
+  version "3.0.17"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-3.0.17.tgz#29a379273020676ace891e6d6d87557c1ff9bd4f"
+  integrity sha512-G92H0fqv0VcCiPPpFFeSRWYppS8GSlbYlSGg33/3WWA0BnMchzN+egvA/veViTIdKtMiRBnSdvq0LjBMsiSZ2A==
   dependencies:
     "@emotion/react" "^11.14.0"
     "@emotion/styled" "^11.14.1"
