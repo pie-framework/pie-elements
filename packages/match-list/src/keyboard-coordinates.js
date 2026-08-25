@@ -50,21 +50,6 @@ export const closestDroppableKeyboardCoordinates = (event, { active, context, cu
     return currentCoordinates;
   }
 
-  // `currentCoordinates` is the top-left of the dragged item's collision rect (not its
-  // center), so derive the dragged item's center in the same frame before comparing it
-  // against droppable centers below. Returning a droppable's *center* as the next
-  // coordinates (as opposed to its top-left) would shift the dragged item's top-left to
-  // that center, overshooting the target by roughly half its size and causing
-  // dnd-kit to resolve collisions against a neighboring droppable instead.
-  const draggedHalfSize = {
-    x: (collisionRect?.width || 0) / 2,
-    y: (collisionRect?.height || 0) / 2,
-  };
-  const currentCenter = {
-    x: currentCoordinates.x + draggedHalfSize.x,
-    y: currentCoordinates.y + draggedHalfSize.y,
-  };
-
   // A placed answer ("target") is itself a droppable for its own prompt slot
   // ("drop-{promptId}"). That self drop-zone must never be treated as a navigable
   // target: it sits under the dragged item, so a tiny (even sub-pixel) discrepancy
@@ -74,7 +59,7 @@ export const closestDroppableKeyboardCoordinates = (event, { active, context, cu
   const activeData = active?.data?.current;
   const ownDropId = activeData?.promptId != null ? `drop-${activeData.promptId}` : undefined;
 
-  // Collect top-left and center of all enabled droppable containers
+  // Collect rect, top-left and center of all enabled droppable containers
   const targets = [];
 
   for (const [id, container] of droppableContainers) {
@@ -97,7 +82,7 @@ export const closestDroppableKeyboardCoordinates = (event, { active, context, cu
       y: rect.top + rect.height / 2,
     };
 
-    targets.push({ id, dropPosition, center });
+    targets.push({ id, rect, dropPosition, center });
   }
 
   if (targets.length === 0) {
@@ -113,16 +98,39 @@ export const closestDroppableKeyboardCoordinates = (event, { active, context, cu
     return a.center.x - b.center.x;
   });
 
-  // Find the current target (closest to current coordinates)
-  let currentIndex = 0;
-  let minDist = Infinity;
+  // Find the current target. Whichever target the dragged item's own center point
+  // actually falls inside of is the current target — this is what "currently sitting
+  // on a target" means, and it holds regardless of how the dragged item's size compares
+  // to the target's: a compact answer tile landed (per `dropPosition` above) at a wide
+  // response row's left edge is still contained within that row's rect.
+  //
+  // Comparing distances between the dragged item's *center* and each target's *center*
+  // (as this used to) breaks down for exactly that shape (a small tile in a much wider
+  // row): the dragged item's own center sits well short of the row's true center, by
+  // roughly half the width difference — enough that a completely different droppable
+  // (e.g. the choices pool) can end up "closer", so once the item is actually sitting on
+  // a target, the next press re-matches the position as if it were still somewhere
+  // else, and keeps recomputing the same move instead of advancing.
+  const draggedCenter = collisionRect
+    ? { x: collisionRect.left + collisionRect.width / 2, y: collisionRect.top + collisionRect.height / 2 }
+    : currentCoordinates;
 
-  for (let i = 0; i < targets.length; i++) {
-    const dist = distance(currentCenter, targets[i].center);
+  let currentIndex = targets.findIndex(
+    (t) => draggedCenter.x >= t.rect.left && draggedCenter.x <= t.rect.right && draggedCenter.y >= t.rect.top && draggedCenter.y <= t.rect.bottom,
+  );
 
-    if (dist < minDist) {
-      minDist = dist;
-      currentIndex = i;
+  // Fall back to nearest-by-dropPosition if the dragged item's center isn't strictly
+  // inside any target (e.g. mid-flight after a free arrow-key move).
+  if (currentIndex === -1) {
+    let minDist = Infinity;
+
+    for (let i = 0; i < targets.length; i++) {
+      const dist = distance(currentCoordinates, targets[i].dropPosition);
+
+      if (dist < minDist) {
+        minDist = dist;
+        currentIndex = i;
+      }
     }
   }
 

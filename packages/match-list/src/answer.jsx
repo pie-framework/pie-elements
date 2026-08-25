@@ -204,6 +204,15 @@ function DragAndDropAnswer(props) {
     id: dragId,
     data: activeData,
     disabled: !draggable || disabled,
+    // dnd-kit's own `attributes` default tabIndex to 0 unconditionally, even when
+    // `disabled` — so a non-draggable (empty) tile stays a native Tab stop of its own.
+    // For a drop-zone (dropId set), that duplicates the outer wrapper's own tab stop
+    // (see isNativeTabStop below) at the exact same position, so Tab/Shift+Tab has to
+    // pass through both to move anywhere visibly, making every other press look like a
+    // no-op. Drop it out of the tab order here whenever it isn't independently
+    // reachable/interactive, leaving the outer wrapper (for an empty drop-zone) or
+    // nothing (for a disabled choice) as the sole stop.
+    attributes: { tabIndex: draggable && !disabled ? 0 : -1 },
   });
 
   const droppable = useDroppable({
