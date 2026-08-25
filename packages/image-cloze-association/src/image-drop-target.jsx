@@ -43,7 +43,11 @@ const ImageDropTarget = ({
   maxResponsePerZone,
   onDrop,
   index,
+  selectedResponse,
+  onSelectClick,
+  onPlacementClick,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const [shouldHaveSmallPadding, setShouldHaveSmallPadding] = useState(false);
   const dropContainerRef = useRef(null);
   const dropContainerResponsesHeightRef = useRef(null);
@@ -73,9 +77,11 @@ const ImageDropTarget = ({
   }, []);
 
   const isDraggingElement = !!draggingElement.id;
+  const hasSelection = !!selectedResponse;
+  const showsHoverEffect = isOver || (hasSelection && isHovered && canDrag);
 
   const containerClasses = cx({
-    'is-over': isOver,
+    'is-over': showsHoverEffect,
     dashed: showDashedBorder && !isDraggingElement,
     active: isDraggingElement,
   });
@@ -84,6 +90,31 @@ const ImageDropTarget = ({
     padding: maxResponsePerZone === 1 ? '0' : responseContainerPadding,
     ...containerStyle,
     ...(responseAreaFill && !isDraggingElement && { backgroundColor: responseAreaFill }),
+    cursor: hasSelection && canDrag ? 'pointer' : undefined,
+  };
+
+  const handleContainerClick = () => {
+    if (!canDrag) return;
+
+    if (selectedResponse) {
+      onPlacementClick?.(index);
+    }
+
+    // Empty background clicked with nothing selected: nothing to place.
+  };
+
+  // Only a native Tab stop when there's nothing else in this container to carry
+  // tabbability — once it holds an answer, that answer's own tile (rendered by
+  // PossibleResponse, via dnd-kit's `useDraggable`) is already independently tabbable,
+  // and adding a second stop for the same visual container would add an extra stop to
+  // the existing Tab order (match-list's equivalent)
+  const isNativeTabStop = answers.length === 0 && canDrag;
+
+  const handleContainerKeyDown = (e) => {
+    if (e.code === 'Space' || e.code === 'Enter') {
+      e.preventDefault();
+      handleContainerClick();
+    }
   };
 
   return (
@@ -94,6 +125,12 @@ const ImageDropTarget = ({
       }}
       className={containerClasses}
       style={updatedContainerStyle}
+      role={isNativeTabStop ? 'button' : undefined}
+      tabIndex={isNativeTabStop ? 0 : -1}
+      onClick={handleContainerClick}
+      onKeyDown={isNativeTabStop ? handleContainerKeyDown : undefined}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {answers.length ? (
         <AnswersContainer
@@ -112,6 +149,9 @@ const ImageDropTarget = ({
               containerStyle={{
                 padding: imageDropTargetPadding ? imageDropTargetPadding : shouldHaveSmallPadding ? '2px' : '6px 10px',
               }}
+              selectedResponse={selectedResponse}
+              onSelectClick={onSelectClick}
+              onPlacementClick={onPlacementClick}
             />
           ))}
         </AnswersContainer>
@@ -135,6 +175,9 @@ ImageDropTarget.propTypes = {
   responseContainerPadding: PropTypes.string,
   imageDropTargetPadding: PropTypes.string,
   maxResponsePerZone: PropTypes.number,
+  selectedResponse: PropTypes.object,
+  onSelectClick: PropTypes.func,
+  onPlacementClick: PropTypes.func,
 };
 
 export default ImageDropTarget;
