@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@11.2.0...@pie-element/explicit-constructed-response@11.2.1) (2026-08-26)
+
+### Bug Fixes
+
+- PIE-518 ([f19ac71](https://github.com/pie-framework/pie-elements/commit/f19ac7145e5daf9dde0377ac6d634b44c9201973))
+
 # [11.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@11.1.11...@pie-element/explicit-constructed-response@11.2.0) (2026-08-21)
 
 ### Bug Fixes

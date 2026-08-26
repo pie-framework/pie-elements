@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.2.0...@pie-element/match-list@7.2.1) (2026-08-26)
+
+### Bug Fixes
+
+- **match-list:** match dragged item to droppable by containment, not reconstructed center PIE-920 PIE-921 ([f77c20c](https://github.com/pie-framework/pie-elements/commit/f77c20cedae8628fdd9675c2bec29373d7939a3c))
+
 # [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.1.9...@pie-element/match-list@7.2.0) (2026-08-21)
 
 ### Bug Fixes

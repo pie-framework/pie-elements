@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@10.2.0...@pie-element/image-cloze-association@10.3.0) (2026-08-26)
+
+### Features
+
+- **image-cloze-association:** add additional keyboard navigation (Tab/Shift+Tab placement) PIE-802 and click-to-select/click-to-place functionality PIE-795 ([603e597](https://github.com/pie-framework/pie-elements/commit/603e5972c1de522b5578ade70fcf26be31cb5685))
+
 # [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@10.1.11...@pie-element/image-cloze-association@10.2.0) (2026-08-21)
 
 ### Bug Fixes
