@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.2-beta.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@12.4.0-beta.7...@pie-element/charting@12.2.2-beta.2) (2026-08-26)
+
+**Note:** Version bump only for package @pie-element/charting
+
 # [12.4.0-beta.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@12.4.0-beta.6...@pie-element/charting@12.4.0-beta.7) (2026-08-20)
 
 **Note:** Version bump only for package @pie-element/charting
