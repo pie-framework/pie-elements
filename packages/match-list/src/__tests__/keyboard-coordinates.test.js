@@ -92,7 +92,8 @@ describe('closestDroppableKeyboardCoordinates', () => {
         ['drop-1', { left: 0, top: 100, width: 200, height: 40 }],
         ['drop-2', { left: 0, top: 152, width: 200, height: 42 }], // active item's own slot, slightly offset
         ['drop-3', { left: 0, top: 200, width: 200, height: 40 }],
-        ['choices-pool', choicesPoolRect],
+        // Sits below all rows (non-overlapping), same as in the real layout.
+        ['choices-pool', { left: 0, top: 250, width: 400, height: 300 }],
       ]);
       const droppableContainers = new Map(
         Array.from(droppableRects.keys(), (id) => [id, { disabled: false }]),
@@ -110,6 +111,45 @@ describe('closestDroppableKeyboardCoordinates', () => {
       // drop-3's center-left point (top:200, height:40 -> y:220), not the own
       // slightly-lower drop-2.
       expect(next).toEqual({ x: 0, y: 220 });
+    });
+
+    it('keeps advancing on repeated Shift+Tab when response rows are much wider than the dragged item', () => {
+      // Regression test for a real report: after Shift+Tab lands the dragged item on a
+      // wide response row, the *next* Shift+Tab appeared to do nothing. Response rows
+      // here (900px) are much wider than the dragged choice tile (100px) and the
+      // choices pool is comparatively narrow — the exact shape that reproduced it.
+      const rowWidth = 900;
+      const rowHeight = 40;
+      const droppableRects = new Map([
+        ['drop-1', { left: 0, top: 0, width: rowWidth, height: rowHeight }],
+        ['drop-2', { left: 0, top: 50, width: rowWidth, height: rowHeight }],
+        ['drop-3', { left: 0, top: 100, width: rowWidth, height: rowHeight }],
+        ['choices-pool', { left: 0, top: 140, width: 300, height: 300 }],
+      ]);
+      const droppableContainers = new Map(
+        Array.from(droppableRects.keys(), (id) => [id, { disabled: false }]),
+      );
+      const context = { droppableRects, droppableContainers };
+      const active = { id: 'choice-1', data: { current: { type: 'choice', id: 1 } } };
+
+      // Shift+Tab #1: starting from inside the pool, lands on drop-3 (the last row).
+      const afterFirst = closestDroppableKeyboardCoordinates(makeEvent('Tab', true), {
+        active,
+        context,
+        currentCoordinates: { x: 20, y: 300 },
+      });
+
+      expect(afterFirst).toEqual({ x: 0, y: 120 }); // drop-3's center-left point
+
+      // Shift+Tab #2: now sitting exactly at drop-3's drop position, should advance to
+      // drop-2 — not re-match the choices pool as "current" and recompute the same move.
+      const afterSecond = closestDroppableKeyboardCoordinates(makeEvent('Tab', true), {
+        active,
+        context,
+        currentCoordinates: afterFirst,
+      });
+
+      expect(afterSecond).toEqual({ x: 0, y: 70 }); // drop-2's center-left point
     });
   });
 });
