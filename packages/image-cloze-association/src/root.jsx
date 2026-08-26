@@ -16,8 +16,15 @@ import InteractiveSection from './interactive-section';
 import PossibleResponses from './possible-responses';
 import { getUnansweredAnswers, getAnswersCorrectness } from './utils-correctness';
 import PossibleResponse from './possible-response';
+import { closestDroppableKeyboardCoordinates } from './keyboard-coordinates';
 
 const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
+
+// A click that lands right after a real drag gesture ends (pointer drag-and-drop, or
+// the browser's own synthetic click for a keyboard Space/Enter) must be ignored by the
+// click-to-select/click-to-place handlers below, or it would immediately reopen or
+// re-trigger a selection for a drag that just completed.
+const CLICK_AFTER_DRAG_GUARD_MS = 250;
 
 const StyledUiLayout = styled(UiLayout)({
   color: color.text(),
@@ -76,7 +83,9 @@ export class ImageClozeAssociationComponent extends React.Component {
       maxResponsePerZone: maxResponsePerZone || 1,
       showCorrect: false,
       isValidDrop: false,
+      selectedResponse: null,
     };
+    this.lastDragEndAt = 0;
   }
 
   onDragStart = (event) => {
@@ -86,6 +95,7 @@ export class ImageClozeAssociationComponent extends React.Component {
       this.setState({
         draggingElement: active.data.current,
         isValidDrop: false,
+        selectedResponse: active.data.current,
       });
     }
   };
@@ -112,6 +122,9 @@ export class ImageClozeAssociationComponent extends React.Component {
       isValidDrop: shouldDisableAnimation,
     });
 
+    this.cancelSelection();
+    this.lastDragEndAt = Date.now();
+
     if (!over || !active) {
       return;
     }
@@ -121,13 +134,103 @@ export class ImageClozeAssociationComponent extends React.Component {
     }
 
     if (over.id === 'ica-board') {
-      this.handleOnAnswerRemove(draggedItem);
+      if (draggedItem.containerIndex !== undefined) {
+        this.handleOnAnswerRemove(draggedItem);
+      }
       return;
     }
 
     if (responseArea) {
       this.handleOnAnswerSelect(draggedItem, responseArea.containerIndex);
     }
+  };
+
+  onDragCancel = () => {
+    this.setState({ draggingElement: { id: '', value: '' } });
+    this.cancelSelection();
+    this.lastDragEndAt = Date.now();
+  };
+
+  isSameResponse = (a, b) => !!a && !!b && a.id === b.id && a.containerIndex === b.containerIndex;
+
+  // Click-to-select semantics: selecting the currently-selected response again clears
+  // the selection instead of re-selecting it.
+  toggleResponseSelection = (data) => {
+    this.setState((state) => ({
+      selectedResponse: this.isSameResponse(state.selectedResponse, data) ? null : data,
+    }));
+  };
+
+  cancelSelection = () => {
+    this.setState({ selectedResponse: null });
+  };
+
+  // If a real dnd-kit drag (started via keyboard Space/Enter) is still live when a
+  // click completes the placement below, it needs to be cleanly ended — otherwise
+  // dnd-kit would still think a drag is in progress. Escape is already configured as
+  // this sensor's cancel key (see the keyboardCodes passed to DragProvider below), and
+  // dispatching it as a real DOM KeyboardEvent is how dnd-kit's own document-level
+  // listener is reached from outside its sensor.
+  //
+  // Only dispatch when a drag is actually live (draggingElement.id is truthy) — this is
+  // a synthetic Escape keydown on `document`, so an unconditional dispatch would also be
+  // observed by any other document-level Escape listener (host player modals/dialogs,
+  // or another mounted instance of this same component) even when nothing here actually
+  // needed cancelling.
+  endAnyLiveKeyboardDrag = () => {
+    if (!this.state.draggingElement.id) {
+      return;
+    }
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'Escape', bubbles: true, cancelable: true }));
+  };
+
+  placeSelectedResponse = (containerIndex) => {
+    const { selectedResponse } = this.state;
+
+    if (!selectedResponse) {
+      return;
+    }
+
+    if (containerIndex === undefined) {
+      // Placing into the pool = removing it from wherever it currently is
+      if (selectedResponse.containerIndex !== undefined) {
+        this.handleOnAnswerRemove(selectedResponse);
+      }
+    } else {
+      this.handleOnAnswerSelect(selectedResponse, containerIndex);
+    }
+
+    this.cancelSelection();
+    this.endAnyLiveKeyboardDrag();
+    this.lastDragEndAt = Date.now();
+  };
+
+  isClickSoonAfterDragEnd = () => Date.now() - this.lastDragEndAt < CLICK_AFTER_DRAG_GUARD_MS;
+
+  onResponseClick = (data) => {
+    if (this.isClickSoonAfterDragEnd()) {
+      return;
+    }
+
+    // A click that selects/deselects/switches a tile must end any dnd-kit drag that's
+    // still live from an earlier keyboard Space/Enter pick-up first — otherwise dnd-kit
+    // keeps thinking that earlier item is being dragged (it ignores new sensor
+    // activation while a drag is active) while selectedResponse visually points at
+    // whatever this click just selected. Ending the stale drag first (rather than
+    // after) matters: ending it also cancels the current selection as a side effect
+    // (see onDragCancel above), so doing it before
+    // toggleResponseSelection lets this click's own selection be the one that sticks.
+    this.endAnyLiveKeyboardDrag();
+    this.toggleResponseSelection(data);
+  };
+
+  onPlacementClick = (containerIndex) => {
+    if (this.isClickSoonAfterDragEnd()) {
+      return;
+    }
+
+    this.placeSelectedResponse(containerIndex);
   };
 
   renderDragOverlay = () => {
@@ -353,6 +456,9 @@ export class ImageClozeAssociationComponent extends React.Component {
       responseContainerPadding,
       imageDropTargetPadding,
       maxResponsePerZone,
+      selectedResponse: this.state.selectedResponse,
+      onSelectClick: this.onResponseClick,
+      onPlacementClick: this.onPlacementClick,
     };
 
     const renderImage = () => (
@@ -381,13 +487,22 @@ export class ImageClozeAssociationComponent extends React.Component {
             }}
             isVertical={isVertical}
             minHeight={isVertical ? image?.height : undefined}
+            selectedResponse={this.state.selectedResponse}
+            onSelectClick={this.onResponseClick}
+            onPlacementClick={this.onPlacementClick}
           />
         </React.Fragment>
       );
     };
 
     return (
-      <DragProvider onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
+      <DragProvider
+        onDragStart={this.onDragStart}
+        onDragEnd={this.onDragEnd}
+        onDragCancel={this.onDragCancel}
+        keyboardCoordinateGetter={closestDroppableKeyboardCoordinates}
+        keyboardCodes={{ start: ['Space', 'Enter'], cancel: ['Escape'], end: ['Space', 'Enter'] }}
+      >
         <StyledUiLayout extraCSSRules={extraCSSRules} id={'main-container'} fontSizeFactor={fontSizeFactor}>
           {showTeacherInstructions && (
             <StyledTeacherInstructions

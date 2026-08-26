@@ -27,6 +27,9 @@ class ImageContainer extends Component {
       responseContainerPadding,
       imageDropTargetPadding,
       maxResponsePerZone,
+      selectedResponse,
+      onSelectClick,
+      onPlacementClick,
     } = this.props;
 
     return (
@@ -62,6 +65,9 @@ class ImageContainer extends Component {
               responseContainerPadding={responseContainerPadding}
               imageDropTargetPadding={imageDropTargetPadding}
               maxResponsePerZone={maxResponsePerZone}
+              selectedResponse={selectedResponse}
+              onSelectClick={onSelectClick}
+              onPlacementClick={onPlacementClick}
             />
           );
         })}
@@ -85,6 +91,9 @@ ImageContainer.propTypes = {
   responseContainerPadding: PropTypes.string,
   imageDropTargetPadding: PropTypes.string,
   maxResponsePerZone: PropTypes.number,
+  selectedResponse: PropTypes.object,
+  onSelectClick: PropTypes.func,
+  onPlacementClick: PropTypes.func,
 };
 
 export default ImageContainer;
