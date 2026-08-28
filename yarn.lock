@@ -3085,10 +3085,10 @@
     debug "^4.1.1"
     lodash-es "^4.17.23"
 
-"@pie-lib/graphing@4.0.18":
-  version "4.0.18"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-4.0.18.tgz#b207badb082283a789cb2d0bd64c4487a232665c"
-  integrity sha512-e2LVvFUNDn4IrG1TClddXjagG7ilxoJxN0omOZImP720/37vhQpqf+5qbEiQ69/AdPEzDTU2Mctv4eohQZvsUA==
+"@pie-lib/graphing@4.0.19":
+  version "4.0.19"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-4.0.19.tgz#d4c84b29c09b08da48216a3708042cde38388b88"
+  integrity sha512-9tH2C102mvGrkvf1Cie3A5JqPHctbk44eFdbZu1gzDuUZc95IO6/p+IG0JoM/C/UN7GDdiZWJz9NiUEI+l5TyQ==
   dependencies:
     "@dnd-kit/sortable" "10.0.0"
     "@emotion/react" "^11.14.0"
