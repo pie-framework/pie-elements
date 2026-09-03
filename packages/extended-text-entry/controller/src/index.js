@@ -62,7 +62,9 @@ export async function model(question, session, env) {
     spanishInput: normalizedQuestion.spanishInput,
     specialInput: normalizedQuestion.specialInput,
     equationEditor,
-    spellCheckEnabled: !normalizedQuestion.playerSpellCheckDisabled,
+    // Spellcheck is off unless the author explicitly opted in: normalize's defaults cover a
+    // missing key, but a key present as undefined/null overwrites them. See PIE-978.
+    spellCheckEnabled: normalizedQuestion.playerSpellCheckDisabled === false,
     playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom',
     annotatorMode,
     disabledAnnotator: normalizedQuestion.annotationsEnabled ? env.role !== 'instructor' : true,
