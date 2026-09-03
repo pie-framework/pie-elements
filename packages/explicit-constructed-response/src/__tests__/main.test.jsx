@@ -21,8 +21,14 @@ jest.mock('@pie-lib/correct-answer-toggle', () => ({
   default: ({ children }) => <div data-testid="correct-answer-toggle">{children}</div>,
 }));
 
+const constructedResponseProps = [];
+
 jest.mock('@pie-lib/mask-markup', () => ({
-  ConstructedResponse: (props) => <div data-testid="constructed-response" {...props} />,
+  ConstructedResponse: (props) => {
+    constructedResponseProps.push(props);
+
+    return <div data-testid="constructed-response" {...props} />;
+  },
 }));
 
 const theme = createTheme();
@@ -116,6 +122,26 @@ describe('Main', () => {
       mainInstance.onChange({ 0: 'a', 1: 'b', 2: 'c' });
 
       expect(onChange).toHaveBeenCalledWith({ 0: 'a', 1: 'b', 2: 'c' });
+    });
+  });
+
+  // The controller resolves playerSpellCheckEnabled to a boolean; the response area editor has
+  // to receive it so the browser spellchecker stays off for students. See PIE-979.
+  describe('player spellcheck', () => {
+    const renderAndGetProps = (extra) => {
+      constructedResponseProps.length = 0;
+
+      renderMain(extra);
+
+      return constructedResponseProps[constructedResponseProps.length - 1];
+    };
+
+    it('forwards playerSpellCheckEnabled: false to the response area editor', () => {
+      expect(renderAndGetProps({ playerSpellCheckEnabled: false }).spellCheck).toBe(false);
+    });
+
+    it('forwards playerSpellCheckEnabled: true to the response area editor', () => {
+      expect(renderAndGetProps({ playerSpellCheckEnabled: true }).spellCheck).toBe(true);
     });
   });
 });
