@@ -4,7 +4,8 @@ export default {
     displayType: 'block',
     markup: '',
     maxLengthPerChoiceEnabled: true,
-    playerSpellCheckEnabled: true,
+    // Student-facing spellcheck is off unless the author turns it on. See PIE-979.
+    playerSpellCheckEnabled: false,
     prompt: '',
     promptEnabled: true,
     rationale: '',
