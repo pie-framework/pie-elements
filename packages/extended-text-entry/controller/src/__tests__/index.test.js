@@ -317,5 +317,46 @@ describe('controller', () => {
         equationEditor: 8,
       });
     });
+
+    // See PIE-978: spellcheck has to be off for students unless the item author opts in.
+    describe('spellCheckEnabled', () => {
+      assert('playerSpellCheckDisabled absent defaults to disabled', {}, session, env, {
+        spellCheckEnabled: false,
+      });
+
+      assert(
+        'playerSpellCheckDisabled: true disables spellcheck',
+        q({ playerSpellCheckDisabled: true }),
+        session,
+        env,
+        { spellCheckEnabled: false },
+      );
+
+      assert(
+        'playerSpellCheckDisabled: false enables spellcheck',
+        q({ playerSpellCheckDisabled: false }),
+        session,
+        env,
+        { spellCheckEnabled: true },
+      );
+
+      // A key present as undefined/null wins over normalize's defaults, so these have to be
+      // read as disabled rather than as "no preference".
+      assert(
+        'playerSpellCheckDisabled: undefined disables spellcheck',
+        q({ playerSpellCheckDisabled: undefined }),
+        session,
+        env,
+        { spellCheckEnabled: false },
+      );
+
+      assert(
+        'playerSpellCheckDisabled: null disables spellcheck',
+        q({ playerSpellCheckDisabled: null }),
+        session,
+        env,
+        { spellCheckEnabled: false },
+      );
+    });
   });
 });
