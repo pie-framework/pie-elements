@@ -165,12 +165,20 @@ export class Main extends React.Component {
           const targetHasItem = session.value[targetPromptId] != null;
 
           if (targetHasItem && !duplicates) {
-            // swap items between placeholders
+            // Without duplicates each choice is placed at most once, so trading the two
+            // answers is the only way to fill the target without dropping the answer it
+            // already holds.
             const temp = session.value[targetPromptId];
             session.value[targetPromptId] = answerId;
             session.value[sourcePromptId] = temp;
-          } else if (!targetHasItem) {
-            // move item to empty placeholder
+          } else {
+            // Empty target, or duplicates allowed: the moved answer takes the target and
+            // the source area is vacated. Any answer displaced from the target is simply
+            // available in the pool again — which with duplicates enabled always lists
+            // every choice anyway — matching how the choice -> occupied target path above
+            // already behaves. Leaving this case unhandled (as it was) made moving a
+            // placed answer onto an occupied area a silent no-op whenever duplicates
+            // were enabled.
             session.value[targetPromptId] = answerId;
             delete session.value[sourcePromptId];
           }
@@ -297,10 +305,8 @@ export class Main extends React.Component {
     const { prompt, language } = config;
 
     // Helpers for accessible announcements
-    const getChoiceLabel = (dragId) => {
-      // dragId is like "choice-123" or "target-123"
-      const answerId = String(dragId).replace(/^(choice|target)-/, '');
-      const answer = config.answers.find((a) => String(a.id) === answerId);
+    const getChoiceLabel = (answerId) => {
+      const answer = config.answers.find((a) => String(a.id) === String(answerId));
 
       if (answer?.title) {
         // Strip HTML tags for screen reader
@@ -311,33 +317,41 @@ export class Main extends React.Component {
       return `Answer ${answerId}`;
     };
 
-    const getDropTargetLabel = (dropId) => {
-      // dropId is like "drop-456" or "choices-pool"
-      if (dropId === 'choices-pool') {
+    // Read the dragged choice off the tile's own drag data rather than parsing it back
+    // out of the drag id: a drag id identifies the tile (a response area, for a placed
+    // answer — see buildDragId in ./answer), not the choice the tile holds.
+    const getDraggedLabel = (active) => getChoiceLabel(active?.data?.current?.id);
+
+    const getDropTargetLabel = (over) => {
+      const overData = over?.data?.current;
+
+      if (overData?.type === 'choices-pool' || over?.id === 'choices-pool') {
         return { label: 'Choices list', choiceId: null };
       }
 
-      const promptId = String(dropId).replace(/^drop-/, '');
-      const promptItem = config.prompts.find((p) => String(p.id) === promptId);
+      // Prefer the droppable's own data; fall back to the id for a droppable registered
+      // without any (the id shape is "drop-{promptId}").
+      const promptId = overData?.promptId != null ? overData.promptId : String(over?.id).replace(/^drop-/, '');
+      const promptItem = config.prompts.find((p) => String(p.id) === String(promptId));
       const label = promptItem?.title
         ? `Response area for ${promptItem.title.replace(/<[^>]*>/g, '').trim()}`
         : `Response area ${promptId}`;
       const choiceId = session.value?.[promptId];
 
-      return { label, choiceId: choiceId || null };
+      return { label, choiceId: choiceId != null ? choiceId : null };
     };
 
     const announcements = {
       onDragStart({ active }) {
-        return `Picked up ${getChoiceLabel(active.id)}. Use Tab to move between response areas, then press Space or Enter to drop.`;
+        return `Picked up ${getDraggedLabel(active)}. Use Tab to move between response areas, then press Space or Enter to drop.`;
       },
 
       onDragOver({ active, over }) {
         if (!over) {
-          return `${getChoiceLabel(active.id)} is not over a response area.`;
+          return `${getDraggedLabel(active)} is not over a response area.`;
         }
 
-        const target = getDropTargetLabel(over.id);
+        const target = getDropTargetLabel(over);
         const content = target.choiceId ? `Currently contains ${getChoiceLabel(target.choiceId)}.` : 'Currently empty.';
 
         return `Over ${target.label}. ${content}`;
@@ -345,14 +359,14 @@ export class Main extends React.Component {
 
       onDragEnd({ active, over }) {
         if (!over) {
-          return `${getChoiceLabel(active.id)} was returned to its original position.`;
+          return `${getDraggedLabel(active)} was returned to its original position.`;
         }
 
-        return `Dropped ${getChoiceLabel(active.id)} in ${getDropTargetLabel(over.id).label}.`;
+        return `Dropped ${getDraggedLabel(active)} in ${getDropTargetLabel(over).label}.`;
       },
 
       onDragCancel({ active }) {
-        return `Cancelled. ${getChoiceLabel(active.id)} was returned to its original position.`;
+        return `Cancelled. ${getDraggedLabel(active)} was returned to its original position.`;
       },
     };
 
