@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/hotspot-controller",
   "private": true,
-  "version": "8.4.0-beta.8",
+  "version": "8.4.0-beta.9",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
