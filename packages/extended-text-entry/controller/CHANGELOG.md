@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@9.1.3...@pie-element/extended-text-entry-controller@9.1.4) (2026-09-04)
+
+### Bug Fixes
+
+- **extended-text-entry:** read the spellcheck flag strictly PIE-978 ([61507a7](https://github.com/pie-framework/pie-elements/commit/61507a7506734fb62e5f0ccf74bf3e57902a07db))
+
 ## [9.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@9.1.1...@pie-element/extended-text-entry-controller@9.1.3) (2026-08-13)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

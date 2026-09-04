@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@9.2.2...@pie-element/graphing-configure@9.2.3) (2026-09-04)
+
+### Bug Fixes
+
+- bump libs PIE-978, PIE-980 ([96489ba](https://github.com/pie-framework/pie-elements/commit/96489ba3c220604f21c3ce4500d79f4389266e9e))
+
 ## [9.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@9.2.1...@pie-element/graphing-configure@9.2.2) (2026-08-28)
 
 ### Bug Fixes

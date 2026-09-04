@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@11.2.1...@pie-element/explicit-constructed-response@11.2.2) (2026-09-04)
+
+### Bug Fixes
+
+- bump libs PIE-978, PIE-980 ([96489ba](https://github.com/pie-framework/pie-elements/commit/96489ba3c220604f21c3ce4500d79f4389266e9e))
+- **explicit-constructed-response:** honor the student spellcheck setting PIE-979 ([98c67b3](https://github.com/pie-framework/pie-elements/commit/98c67b3484472b0325defc1fc694822ea3c6cd64))
+
 ## [11.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@11.2.0...@pie-element/explicit-constructed-response@11.2.1) (2026-08-26)
 
 ### Bug Fixes

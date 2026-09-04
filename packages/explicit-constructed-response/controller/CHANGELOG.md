@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@8.1.4...@pie-element/explicit-constructed-response-controller@8.1.5) (2026-09-04)
+
+### Bug Fixes
+
+- **explicit-constructed-response:** honor the student spellcheck setting PIE-979 ([98c67b3](https://github.com/pie-framework/pie-elements/commit/98c67b3484472b0325defc1fc694822ea3c6cd64))
+
 ## [8.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@8.1.2...@pie-element/explicit-constructed-response-controller@8.1.4) (2026-08-13)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-controller

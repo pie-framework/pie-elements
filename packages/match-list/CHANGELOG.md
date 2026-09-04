@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.2.1...@pie-element/match-list@7.2.2) (2026-09-04)
+
+### Bug Fixes
+
+- **match-list:** scope drag ids to response areas so re-used answer choices behave independently PIE-965 ([9fb66cc](https://github.com/pie-framework/pie-elements/commit/9fb66cc99073fd8fafd23145bd316edceb1141a1))
+
 ## [7.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@7.2.0...@pie-element/match-list@7.2.1) (2026-08-26)
 
 ### Bug Fixes

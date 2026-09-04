@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@9.1.4...@pie-element/number-line-controller@9.1.5) (2026-09-04)
+
+**Note:** Version bump only for package @pie-element/number-line-controller
+
 ## [9.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@9.1.2...@pie-element/number-line-controller@9.1.4) (2026-08-13)
 
 **Note:** Version bump only for package @pie-element/number-line-controller

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@15.2.1...@pie-element/extended-text-entry@15.2.2) (2026-09-04)
+
+### Bug Fixes
+
+- bump libs PIE-978, PIE-980 ([96489ba](https://github.com/pie-framework/pie-elements/commit/96489ba3c220604f21c3ce4500d79f4389266e9e))
+- **extended-text-entry:** honor the player spellcheck setting PIE-978 ([b0a3312](https://github.com/pie-framework/pie-elements/commit/b0a331236f963464a67834e97d8587cd7f23beaa))
+- **extended-text-entry:** read the spellcheck flag strictly PIE-978 ([61507a7](https://github.com/pie-framework/pie-elements/commit/61507a7506734fb62e5f0ccf74bf3e57902a07db))
+
 ## [15.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@15.2.0...@pie-element/extended-text-entry@15.2.1) (2026-08-26)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
