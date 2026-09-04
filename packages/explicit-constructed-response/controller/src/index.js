@@ -163,7 +163,9 @@ export async function model(question, session, env) {
     maxLengthPerChoice,
     maxLengthPerChoiceEnabled,
     note,
-    playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
+    // normalize's defaults cover a missing key, but a key present as undefined/null overwrites
+    // them and would reach the editor as undefined, which enables spellcheck. See PIE-979.
+    playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled === true,
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : defaults.prompt,
     rationale: defaults.rationale,
     responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,

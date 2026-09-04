@@ -141,7 +141,10 @@ export class AnswerArea extends React.Component {
       <ItemList>
         {rows.map(({ sessionAnswer, title, id }, index) => {
           return (
-            <Row key={index}>
+            // Keyed by prompt id, not row index: each row owns a dnd-kit draggable/droppable
+            // registration derived from its promptId, so React must not reuse one row's
+            // instance for a different prompt.
+            <Row key={id}>
               <PromptEntry dangerouslySetInnerHTML={{ __html: title }} />
 
               <ArrowEntry>
@@ -150,7 +153,6 @@ export class AnswerArea extends React.Component {
               </ArrowEntry>
 
               <DragAndDropAnswer
-                key={index}
                 className="answer"
                 index={index}
                 promptId={id}

@@ -159,6 +159,26 @@ export class Answer extends React.Component {
   }
 }
 
+// dnd-kit keys its entire draggable registry off this string, and derives both
+// `isDragging` and the drag transform from `active.id === id`. It therefore has to
+// identify the *rendered tile*, not the answer choice the tile happens to hold.
+//
+// A placed answer is identified by the response area it sits in: with `config.duplicates`
+// enabled the same choice can occupy several response areas at once, and naming those
+// tiles after the choice would register all of them under one id. dnd-kit's
+// `draggableNodes` is a Map, so they would collapse into a single entry — every tile
+// with that id reporting `isDragging` and picking up the transform together (all of them
+// appearing to move at once), the last-registered tile's data resolving as the drag
+// payload (so the wrong response area is the one that actually changes), and unmounting
+// any one of them deleting the entry the still-mounted siblings depend on (leaving a
+// visible tile that is focusable but no longer draggable or reachable by the keyboard
+// sensor).
+//
+// Pool choices stay keyed by choice id: the pool renders each choice at most once, and
+// a choice there has no response area to be identified by.
+export const buildDragId = ({ type, id, promptId }) =>
+  promptId !== undefined && promptId !== null ? `${type || 'answer'}-prompt-${promptId}` : `${type || 'answer'}-${id}`;
+
 function DragAndDropAnswer(props) {
   const {
     id,
@@ -172,7 +192,7 @@ function DragAndDropAnswer(props) {
     onPlacementClick,
   } = props;
 
-  const dragId = `${type || 'answer'}-${id}`;
+  const dragId = buildDragId({ type, id, promptId });
   // droppable only if promptId exists
   const dropId = promptId !== undefined && promptId !== null ? `drop-${promptId}` : undefined;
 

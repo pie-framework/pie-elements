@@ -375,6 +375,28 @@ describe('controller', () => {
     );
   });
 
+  // See PIE-979: the student editor spellchecks only when the model explicitly asks it to, and
+  // the editor prop is opt-out, so the controller has to emit a real boolean rather than undefined.
+  describe('playerSpellCheckEnabled', () => {
+    const questionWithoutFlag = { ...question };
+
+    delete questionWithoutFlag.playerSpellCheckEnabled;
+
+    const assertSpellCheck = (label, q, expected) => {
+      it(label, async () => {
+        const m = await model(q, {}, { mode: 'gather' });
+
+        expect(m.playerSpellCheckEnabled).toBe(expected);
+      });
+    };
+
+    assertSpellCheck('true enables spellcheck', { ...question, playerSpellCheckEnabled: true }, true);
+    assertSpellCheck('false disables spellcheck', { ...question, playerSpellCheckEnabled: false }, false);
+    assertSpellCheck('absent disables spellcheck', questionWithoutFlag, false);
+    assertSpellCheck('undefined disables spellcheck', { ...question, playerSpellCheckEnabled: undefined }, false);
+    assertSpellCheck('null disables spellcheck', { ...question, playerSpellCheckEnabled: null }, false);
+  });
+
   describe('get score', () => {
     const assertScore = (session, expected) => {
       it('return score', () => {
