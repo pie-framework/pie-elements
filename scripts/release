@@ -20,6 +20,8 @@ const CWD = process.cwd();
  * - `boolean`: Specifies arguments that should be treated as booleans.
  *   - `dry-run`: Indicates whether the operation is a dry run. Defaults to `false`.
  *   - `next`: Flag for enabling next-related actions. Defaults to `false`.
+ *   - `bump`/`publish`: The two halves of `release`, so CI can run them as
+ *     separate jobs (see the comments on `versionPackages`/`publishPackages`).
  * - `string`: Specifies arguments that should be treated as strings.
  *   - `loglevel`: Defines the logging level, if provided.
  * - `default`: Sets default values for parameters.
@@ -27,9 +29,17 @@ const CWD = process.cwd();
  *   - `next`: Defaults to `false`.
  */
 const argv = minimist(process.argv.slice(2), {
-  boolean: ['dry-run', 'next', 'build', 'test', 'release'],
+  boolean: ['dry-run', 'next', 'build', 'test', 'release', 'bump', 'publish'],
   string: ['loglevel'],
-  default: { 'dry-run': false, next: false, build: false, test: false, release: false },
+  default: {
+    'dry-run': false,
+    next: false,
+    build: false,
+    test: false,
+    release: false,
+    bump: false,
+    publish: false,
+  },
 });
 
 /**
@@ -196,50 +206,104 @@ const test = () => {
 };
 
 /**
- * Handles the release process, including versioning, pushing tags, and publishing packages.
+ * How many times to attempt the publish before giving up. Each attempt only has
+ * to deal with what the previous one left behind — see `publishPackages`.
+ */
+const PUBLISH_ATTEMPTS = 3;
+
+/**
+ * Restores every package manifest to its committed state.
  *
- * This function executes the following steps:
- * 1. Logs the initiation of the versioning process and versions the packages using Lerna with conventional commits.
- * 2. Pushes the tags and updates the branch to a remote git repository.
- * 3. Publishes the packages to the package registry using Lerna, with optional customization for next/canary releases and log level.
+ * Before packing, lerna writes a temporary `gitHead` field into each manifest it
+ * is about to publish, and removes it again only once the publish has resolved.
+ * A failed publish therefore leaves the manifests dirty, and lerna refuses to
+ * publish from a dirty working tree (`EUNCOMMIT`) — so without this, the first
+ * failure poisons every publish that follows it in the same checkout.
+ */
+const restoreManifests = () =>
+  runCmd('git checkout -- package.json "packages/*/package.json" "packages/*/*/package.json"');
+
+/**
+ * Versions the packages: bumps them from the conventional-commit history, writes
+ * the version commit, tags it, and pushes both to the remote.
+ *
+ * This is the cheap, reliable half of a release — no registry, no signing — and
+ * it is deliberately separate from `publishPackages` so that a publish failure
+ * never puts the repository's versions and tags in doubt.
+ *
+ * `lerna version` pushes the commit and tags itself; the explicit push is a
+ * safeguard for the case where that is configured off.
+ */
+const versionPackages = () => {
+  log(chalk.magenta('--- VERSION PACKAGES ---'));
+  runCmd('npx lerna version --conventional-commits --yes');
+
+  log(chalk.magenta('--- PUSH TAGS ---'));
+  runCmd(`git push origin ${getCurrentBranch()} --follow-tags`);
+};
+
+/**
+ * Publishes every local package version that is missing from the registry.
+ *
+ * `from-package` diffs each local version against the registry, which makes it
+ * idempotent: it publishes only what is absent, is a no-op once everything is
+ * out, and back-fills versions stranded by an earlier failed release.
+ *
+ * It is retried because lerna aborts its entire publish queue on the first error
+ * it does not recognise — a transient npm provenance/transparency-log failure,
+ * say — leaving the packages behind it in the queue unattempted. Since each
+ * attempt starts from what the registry actually has, retrying converges on a
+ * complete release instead of stranding a dozen packages behind one flake.
+ *
+ * `from-git` is deliberately not used. After `lerna version` the versions it
+ * would publish are a subset of what `from-package` publishes, so it added no
+ * coverage — only a second way to fail, whose failures left the manifests dirty
+ * and so blocked the publish that was meant to recover from them.
+ */
+const publishPackages = () => {
+  log(chalk.magenta('--- PUBLISH PACKAGES ---'));
+  const loglevel = argv.loglevel ? ` --loglevel ${argv.loglevel}` : '';
+
+  for (let attempt = 1; attempt <= PUBLISH_ATTEMPTS; attempt += 1) {
+    // Only restore between attempts. A manifest dirtied before the first one is
+    // the caller's own edit, and lerna refusing to publish it is the correct,
+    // informative failure; from the second attempt on, the only thing that can
+    // have dirtied it is the previous attempt's abort.
+    if (attempt > 1) restoreManifests();
+
+    try {
+      runCmd(`npx lerna publish from-package --yes${loglevel}`);
+      return;
+    } catch (err) {
+      if (attempt === PUBLISH_ATTEMPTS) throw err;
+      warn(`publish attempt ${attempt}/${PUBLISH_ATTEMPTS} failed (${err.message}); retrying`);
+    }
+  }
+};
+
+/**
+ * Handles the release process: versions the packages, then publishes them.
  *
  * Conditional behavior:
- * - If the `argv.next` flag is provided, the release process will include canary versioning with a preid and dist-tag of "next".
- * - If the `argv.loglevel` flag is provided, the specified log level will be included in the publishing command.
+ * - If the `argv.next` flag is provided, the release is a canary instead, with a
+ *   preid and dist-tag of "next".
+ * - If the `argv.loglevel` flag is provided, the specified log level will be
+ *   included in the publishing command.
+ *
+ * CI runs the two halves as separate jobs via `--bump` and `--publish`; this
+ * composes them for a release driven from a single command.
  */
 const release = () => {
   if (argv.next) {
-    log(chalk.magenta('--- STEP 6: NEXT/CANARY RELEASE ---'));
+    log(chalk.magenta('--- NEXT/CANARY RELEASE ---'));
     let releaseCmd = 'npx lerna publish --canary --preid next --dist-tag next --include-merged-tags --yes';
     if (argv.loglevel) releaseCmd += ` --loglevel ${argv.loglevel}`;
     runCmd(releaseCmd);
     return;
   }
 
-  log(chalk.magenta('--- STEP 6: VERSION PACKAGES ---'));
-  runCmd('npx lerna version --conventional-commits --yes');
-
-  log(chalk.magenta('--- STEP 7: PUBLISH PACKAGES ---'));
-  const loglevel = argv.loglevel ? ` --loglevel ${argv.loglevel}` : '';
-  // `from-git` publishes the versions tagged by `lerna version`. It is not
-  // idempotent — a single transient npm failure aborts it and leaves the
-  // release partially published — so we never let its failure stop the run.
-  try {
-    runCmd(`npx lerna publish from-git --yes${loglevel}`);
-  } catch (err) {
-    warn(`from-git publish failed (${err.message}); continuing to from-package sweep`);
-  }
-
-  // `from-package` compares each local package version against the registry and
-  // publishes only what is missing. Running it unconditionally makes releases
-  // self-healing: it finishes anything `from-git` missed in this run and
-  // back-fills versions stranded by a previous failed release. It is a no-op
-  // when everything is already published.
-  log(chalk.magenta('--- STEP 8: SWEEP MISSING PACKAGES ---'));
-  runCmd(`npx lerna publish from-package --yes${loglevel}`);
-
-  log(chalk.magenta('--- STEP 9: PUSH TAGS ---'));
-  runCmd(`git push origin ${getCurrentBranch()} --follow-tags`);
+  versionPackages();
+  publishPackages();
 };
 
 /**
@@ -256,7 +320,7 @@ const release = () => {
 const run = () => {
   try {
     // If no specific flags, run full workflow
-    const anyFlag = argv.build || argv.test || argv.release;
+    const anyFlag = argv.build || argv.test || argv.release || argv.bump || argv.publish;
     if (!anyFlag) {
       build();
       test();
@@ -265,6 +329,8 @@ const run = () => {
       if (argv.build) build();
       if (argv.test) test();
       if (argv.release) release();
+      if (argv.bump) versionPackages();
+      if (argv.publish) publishPackages();
     }
     log(chalk.green('✅ Tasks completed successfully.'));
   } catch (err) {
