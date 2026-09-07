@@ -86,7 +86,12 @@ export class Tick extends React.Component {
   render() {
     //the domain value
     let { x, y, type, xScale, fraction } = this.props;
-    const displayFraction = fraction && x.n !== x.d && x.n !== 0 && x.d !== 1;
+    // mathjs >= 13 (fraction.js 5) exposes Fraction n/d/s as BigInt. Coerce to Number:
+    // BigInt !== Number is always true, and React drops BigInt text children silently.
+    const xn = fraction ? Number(x.n) : x.n;
+    const xd = fraction ? Number(x.d) : x.d;
+    const xs = fraction ? Number(x.s) : x.s;
+    const displayFraction = fraction && xn !== xd && xn !== 0 && xd !== 1;
     const labelTick = type === 'major';
     const height = labelTick ? 20 : 10;
     const { width: textWidth = 0, height: textHeight = 0, x: textX = 0, y: textY = 0 } = this.state.textBox;
@@ -94,14 +99,14 @@ export class Tick extends React.Component {
     const xText = !fraction ? (
       Number(x.toFixed(3))
     ) : !displayFraction ? (
-      x.n * x.s
+      xn * xs
     ) : (
       <React.Fragment>
         <tspan x="0" dy="0.71em">
-          {x.n * x.s}
+          {xn * xs}
         </tspan>
         <tspan x="0" dy="1.11em">
-          {x.d}
+          {xd}
         </tspan>
       </React.Fragment>
     );
