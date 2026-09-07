@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@9.1.5...@pie-element/number-line-controller@9.1.6) (2026-09-07)
+
+### Bug Fixes
+
+- restore fraction tick labels after mathjs upgrade PIE-926 PIE-1005 ([32c53c3](https://github.com/pie-framework/pie-elements/commit/32c53c30214ca26740823ccaf3a2b308d89b5e03))
+
 ## [9.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@9.1.4...@pie-element/number-line-controller@9.1.5) (2026-09-04)
 
 **Note:** Version bump only for package @pie-element/number-line-controller

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@13.2.2...@pie-element/number-line@13.2.3) (2026-09-07)
+
+### Bug Fixes
+
+- restore fraction tick labels after mathjs upgrade PIE-926 PIE-1005 ([32c53c3](https://github.com/pie-framework/pie-elements/commit/32c53c30214ca26740823ccaf3a2b308d89b5e03))
+
 ## [13.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@13.2.1...@pie-element/number-line@13.2.2) (2026-09-04)
 
 ### Bug Fixes
