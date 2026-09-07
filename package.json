@@ -86,7 +86,7 @@
     "jest-config": "29.7.0",
     "d3-scale": "4.0.2",
     "d3-selection": "3.0.0",
-    "fraction.js": "5.3.4",
+    "fraction.js": "4.3.7",
     "@jest/test-sequencer": "29.7.0",
     "@types/d3-array": "3.0.3",
     "@pie-lib/categorize": "2.0.2",
