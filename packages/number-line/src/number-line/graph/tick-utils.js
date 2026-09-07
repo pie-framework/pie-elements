@@ -282,8 +282,10 @@ export const generateMinorValues = (minorLimits) => {
 export const generateMajorValuesForMinor = (minor, domain, width) => {
   let out = { decimal: [], fraction: [] };
   let fraction = math.fraction(math.number(math.number(minor)));
-  let n = fraction.n;
-  let d = fraction.d;
+  // mathjs >= 13 (fraction.js 5) exposes Fraction n/d/s as BigInt; coerce so the
+  // strict comparisons below (d === 1) and the labelMultiplier lookup still work.
+  let n = Number(fraction.n);
+  let d = Number(fraction.d);
   if (n >= 1 && d === 1) {
     for (let i = 1; i <= 10; i++) {
       let num = math.number(math.multiply(n, i));
@@ -302,10 +304,10 @@ export const generateMajorValuesForMinor = (minor, domain, width) => {
       let ticksData = { minor: minor, major: math.number(num) };
       let output = buildTickData(domain, width, ticksData, { fraction: undefined });
       if (output.filter((x) => x.type === 'major').length > 1) {
-        if (num.d !== 1) {
-          out.fraction.push(num.n + '/' + num.d);
+        if (Number(num.d) !== 1) {
+          out.fraction.push(Number(num.n) + '/' + Number(num.d));
         } else {
-          out.fraction.push(num.n.toString());
+          out.fraction.push(Number(num.n).toString());
         }
         out.decimal.push(math.number(num));
       }
