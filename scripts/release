@@ -206,10 +206,18 @@ const test = () => {
 };
 
 /**
- * How many times to attempt the publish before giving up. Each attempt only has
- * to deal with what the previous one left behind — see `publishPackages`.
+ * How many times to attempt the publish before giving up: three chances to get
+ * every package out, plus a fourth that acts as verification.
+ *
+ * Each attempt only has to deal with what the previous one left behind, so the
+ * last one usually finds nothing to publish — and a `from-package` pass with
+ * nothing to do exits successfully in seconds, without packing or signing
+ * anything. That matters because a package can reach the registry on the same
+ * attempt that reports a transparency-log error: the release is then complete
+ * and only the exit code says otherwise, so the run should end on a pass that
+ * asked the registry rather than on that error. See `publishPackages`.
  */
-const PUBLISH_ATTEMPTS = 3;
+const PUBLISH_ATTEMPTS = 4;
 
 /**
  * Restores every package manifest to its committed state.
@@ -254,6 +262,13 @@ const versionPackages = () => {
  * say — leaving the packages behind it in the queue unattempted. Since each
  * attempt starts from what the registry actually has, retrying converges on a
  * complete release instead of stranding a dozen packages behind one flake.
+ *
+ * Retrying also settles whether such an error mattered. A transparency-log write
+ * is not a gate on the registry publish, so the package can land while the
+ * command still exits non-zero — and because the error is raised before lerna
+ * reaches the registry, it never gets to the "already published" case it would
+ * otherwise tolerate. Only a pass that finds nothing left to publish tells us
+ * the release is genuinely complete.
  *
  * `from-git` is deliberately not used. After `lerna version` the versions it
  * would publish are a subset of what `from-package` publishes, so it added no
