@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@9.1.6...@pie-element/number-line-controller@9.1.7) (2026-09-07)
+
+### Bug Fixes
+
+- keep number-line on fraction.js 4 to avoid BigInt bundle errors PIE-926 PIE-1005 ([ec1d0d8](https://github.com/pie-framework/pie-elements/commit/ec1d0d8bd3e820d3b55a162e0896c1700cf8b794))
+
 ## [9.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@9.1.5...@pie-element/number-line-controller@9.1.6) (2026-09-07)
 
 ### Bug Fixes
