@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@10.2.2...@pie-element/inline-dropdown@10.2.3) (2026-09-09)
+
+### Bug Fixes
+
+- **mask-markup:** prevent transparent dropdown background PIE-1008 ([1562bd8](https://github.com/pie-framework/pie-elements/commit/1562bd863abc4f062429dc545318f074ce096efc))
+
 ## [10.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@10.2.1...@pie-element/inline-dropdown@10.2.2) (2026-09-04)
 
 ### Bug Fixes
