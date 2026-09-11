@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/hotspot",
   "repository": "pie-framework/pie-elements",
-  "version": "11.3.2-beta.3",
+  "version": "11.3.2-beta.4",
   "description": "",
   "publishConfig": {
     "access": "public"
