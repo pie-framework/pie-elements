@@ -2,6 +2,7 @@ import Main from './main';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import debug from 'debug';
+import { debounce } from 'lodash-es';
 
 import { renderMath } from '@pie-lib/math-rendering';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
@@ -39,6 +40,25 @@ export default class RootExtendedTextEntry extends HTMLElement {
     this._model = null;
     this._session = null;
     this._root = null;
+
+    // The session is written synchronously on commit and only the dispatch is
+    // deferred, so any layer that reads `this._session` sees the response as
+    // soon as the editor commits it. Debouncing the write instead left the
+    // session stale until the timer fired, which is what made the response
+    // unrecoverable when the element was torn down inside the window.
+    //
+    // One debouncer per session field, so each keeps its own `complete`.
+    this._dispatchValueChanged = debounce(() => {
+      this.dispatchEvent(
+        new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session && this._session.value)),
+      );
+    }, 1500);
+
+    this._dispatchCommentChanged = debounce(() => {
+      this.dispatchEvent(
+        new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session && this._session.comment)),
+      );
+    }, 1500);
   }
 
   setLangAttribute() {
@@ -66,7 +86,7 @@ export default class RootExtendedTextEntry extends HTMLElement {
   valueChange(value) {
     this._session.value = value;
 
-    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value)));
+    this._dispatchValueChanged();
 
     this.render();
   }
@@ -82,9 +102,22 @@ export default class RootExtendedTextEntry extends HTMLElement {
   commentChange(comment) {
     this._session.comment = comment;
 
-    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(comment)));
+    this._dispatchCommentChanged();
 
     this.render();
+  }
+
+  /**
+   * Dispatch every deferred `session-changed` now.
+   *
+   * A player calls this before it discards the element, while the element is
+   * still attached and the event can therefore still reach a `document`-level
+   * listener. A no-op when nothing is pending, so a teardown adds no event in
+   * the normal path.
+   */
+  commitPendingSession() {
+    this._dispatchValueChanged.flush();
+    this._dispatchCommentChanged.flush();
   }
 
   connectedCallback() {
@@ -117,6 +150,11 @@ export default class RootExtendedTextEntry extends HTMLElement {
   }
 
   disconnectedCallback() {
+    // For a host on a player with no commit seam. This runs after removal, so
+    // the event reaches a listener bound inside the removed subtree and not one
+    // on `document`; `commitPendingSession()` is the path that reaches both.
+    this.commitPendingSession();
+
     if (this._root) {
       this._root.unmount();
       this._root = null;
