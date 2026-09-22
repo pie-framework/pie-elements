@@ -11,8 +11,15 @@
  *   3. Rewrites the @pie-lib/* entries in root `resolutions`:
  *        - direct deps  -> the exact version used in the workspace
  *        - transitive-only deps already in resolutions but not declared in any
- *          package (e.g. editable-html, math-evaluator, plot, scoring-config,
- *          style-utils, math-rendering-accessible) -> latest published version.
+ *          package (currently plot and style-utils, pulled in by charting /
+ *          graphing / graphing-solution-set and text-select / tools
+ *          respectively) -> latest published version.
+ *
+ * Only pin a transitive dep here if something actually depends on it. An entry
+ * nothing requests is dead weight: it costs an `npm view` call per run, and if a
+ * later pie-lib release starts pulling that package in at a different major the
+ * stale pin silently forces the wrong version instead of letting yarn resolve
+ * it.
  */
 const fs = require('fs');
 const path = require('path');
