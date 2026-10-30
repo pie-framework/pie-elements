@@ -1,5 +1,10 @@
 # pie-elements
 
+> [!IMPORTANT]
+> This repository is no longer maintained. Development and npm publishing for
+> `@pie-element/*` have moved to
+> [pie-elements-ng](https://github.com/pie-framework/pie-elements-ng).
+
 A collection of pies. These packages are pie packages in that they have an optional `configure` and/or `controller` sub package.
 
 ## Install
